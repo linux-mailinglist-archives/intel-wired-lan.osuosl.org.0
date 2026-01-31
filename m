@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8O6OLeYQfmkqVQIAu9opvQ
+	id IDtpMfMQfmkbVQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:42 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:55 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C5DDC2470
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:42 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50703C2528
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 321F160B5F;
-	Sat, 31 Jan 2026 14:25:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D0E9040BE1;
+	Sat, 31 Jan 2026 14:25:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mQmv0Tv9aakp; Sat, 31 Jan 2026 14:25:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6uZ7T8UfHymb; Sat, 31 Jan 2026 14:25:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3571C60B64
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96BCA40B8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769869539;
-	bh=Qf0mhDXuGgvxgZB61QxmhrGQz1icMrc5GOk5uUew8JA=;
+	s=default; t=1769869549;
+	bh=kgWRZJO10pCbmbrYBsmWwI+Ld/AoTtijA1FhNorGAok=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=WfZYqNZKNM38nH0WDVytu/SedYUF0s+mc12gXvFjuGrdtApNYBlAzyU1+NQrI3Gey
-	 HpKx9fuOT831/vzmVoj2p5WKkfWofsFAhN1Ph0cEV2IYezshq67pIIcJaVCogbwUgx
-	 IcgEaOm/F5EM5gWEHP1T+C0dY+0RrF19Df8l37KSRLRPRlBPWTkFlEKdscSwAKj/wG
-	 85hvzk3dmnxHJD+eMtKitcp1n3AliDCDrgzo6JV7KVzehF0s997nvmSkr22gbNQ21H
-	 en5wcrtO+SNzZUq5f4TQtOKwxXHJ6XWqw7/tXs1yDngzLnUqiXTU6YTALcGaatUla2
-	 zFrqru/lUCvmA==
+	b=zEhd6E33vR4GH6HowG5hW+VQ+KYTX4QX/JL4y4tJ13gjtAlQYTsYyol8FWlkACq1c
+	 ETGfzfyJLAhPOksv5Qzk1SMuVcSdGS0gcghCm893zxQpKG1WgXoBdqaUxC4DTmUWPt
+	 b7QbJ6pCAQ05lXccXwiP/Ae8o3IOOzkBqIWQrWH1NSU5C1loDOyEZWcxD18NAFGWTU
+	 njr0SXnP9Zw679eg08m32rp136Xtamyw1eFH0LHupI+Fj9p7f3UP9xzRxkKKHHhlPq
+	 yg48vKAyyo88KTqe8vNlvCaZW4IC2IVOWN4hNvZT8jOnRlMiKNtYHbK93EVjI1iYyX
+	 jWThRoDRLXiYA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3571C60B64;
-	Sat, 31 Jan 2026 14:25:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 96BCA40B8C;
+	Sat, 31 Jan 2026 14:25:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 0D84B2D3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 28D9B25F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2519260B4B
+ by smtp2.osuosl.org (Postfix) with ESMTP id B4BE540814
  for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xWWeF8LOfKTp for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mb1blmWhEo01 for <intel-wired-lan@lists.osuosl.org>;
  Sat, 31 Jan 2026 14:25:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
  helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 13FA060B4C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13FA060B4C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 714AF40820
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 714AF40820
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13FA060B4C
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 714AF40820
  for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:23 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id A9A914454B;
+ by sea.source.kernel.org (Postfix) with ESMTP id B018644558;
  Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BFFCC2BCAF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 30946C4DDF2;
  Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vmBua-0000000AVmN-1hvH; Sat, 31 Jan 2026 15:25:20 +0100
+ id 1vmBua-0000000AVmR-1p2Y; Sat, 31 Jan 2026 15:25:20 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Corbet <corbet@lwn.net>,
+To: Jonathan Corbet <corbet@lwn.net>, Kees Cook <kees@kernel.org>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>,
- Shuah Khan <skhan@linuxfoundation.org>
-Date: Sat, 31 Jan 2026 15:25:14 +0100
-Message-ID: <b6502c5c5576d00afb6eb275600eb1fdc8abff87.1769867954.git.mchehab+huawei@kernel.org>
+ Randy Dunlap <rdunlap@infradead.org>
+Date: Sat, 31 Jan 2026 15:25:15 +0100
+Message-ID: <5132658a4c47babf905f1e469eba289ae1ebdc8c.1769867954.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769867953.git.mchehab+huawei@kernel.org>
 References: <cover.1769867953.git.mchehab+huawei@kernel.org>
@@ -81,22 +81,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769869522;
- bh=JgAESjeyMdGBTP/DT74Q19UkIkpbBQsD4O6RYrpw4MQ=;
+ bh=BBoYIDvTc4/ZRDpBii5k/vxa0438Gqzt0Fqrx3bypIQ=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FWjwGdDDFTueSCv2dGBxIxcKTvz6ucwoQyWv2j0Enk5xwhFFzMr/Ai1X7nhp7J0Zn
- KUZWXHrUjbulh7pnOD45vi2mjdH9u1F+3y55NKPPkrYzNy4Svo+LXOhE95ucYTCkqs
- zm4i6CzQop1iYv6z8oZ8TnQOhSk/9BLdRXK06mDyPMJnjoIWWrE8MBP43XiAHGqFlT
- sVOK8sBbmRg991tJEBDsw1JPHerSy4TVVL3/W1Lm52j+xgKTOMWxuYO30ST/Bj8CoK
- tIyYF3hyUU0JvsJ+CCR7VWRAzO/+o1rg53sCKQ57wQ0PxRSyOm/afznVCo5F8higx+
- OCD2IcsBZSeGA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=XfC7C9GXjgcC3bK4pVfL/M0YbnVLJf+h24CzHZ+giiSpzH2BFGgGNQ7fN0n9/u7Kh
+ UNoQaJyEU2t3gOyoRFq44/qIo8NG8NotEPNT+ppK8CziERcCMZysBJcoV005dAfAL+
+ ilBtg8RTllg9DrkKWwS1JoolakTPwaIFkb3WgBcz5wFddBg3CkjcBEjcR+O98j5yV8
+ fsn0kKD9t7sLEnixqLDxR73oa2IDmTYJ21FlLPt6miJQV4KjwsEf9EjoLFzlHpKB9E
+ l1/lY8P2qf5/lStvrdThacFtFSEARL94VaaAWfsbnaeP0eBAxs7xGU6eRFrKgCDjPS
+ +mGijVX0jySPA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=FWjwGdDD
-Subject: [Intel-wired-lan] [PATCH v4 40/41] docs: python: add helpers to run
- unit tests
+ header.a=rsa-sha256 header.s=k20201202 header.b=XfC7C9GX
+Subject: [Intel-wired-lan] [PATCH v4 41/41] tools: unittests: add tests for
+ kernel-doc NestedMatch and KernRe
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,453 +112,774 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
 	RCVD_TLS_LAST(0.00)[];
 	TAGGED_FROM(0.00)[huawei];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:mchehab@kernel.org,m:rdunlap@infradead.org,m:skhan@linuxfoundation.org,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:kees@kernel.org,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:gustavoars@kernel.org,m:mchehab@kernel.org,m:rdunlap@infradead.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.998];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCPT_COUNT_SEVEN(0.00)[10];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	NEURAL_HAM(-0.00)[-0.999];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 5C5DDC2470
+X-Rspamd-Queue-Id: 50703C2528
 X-Rspamd-Action: no action
 
-While python internal libraries have support for unit tests, its
-output is not nice. Add a helper module to improve its output.
+The NestedMatch logic is complex enough to justify tests to ensure
+that it is doing its job.
 
-I wrote this module last year while testing some scripts I used
-internally. The initial skeleton was generated with the help of
-LLM tools, but it was higly modified to ensure that it will work
-as I would expect.
+Add unittests to check the functionality provided by NestedMatch
+by replicating expected patterns.
+
+The NestedMatch class handles with complex macros. Add an unittest
+to check if its doing the right thing and detect eventual regressions
+as we improve its code.
+
+The initial version was generated using gpt-oss:latest LLM
+on my local GPU, as LLMs aren't bad transforming patterns
+into unittests.
+
+Yet, the curent version contains only the skeleton of what
+LLM produced, as I ended higly changing its content to be
+more representative and to have real case scenarios.
+
+The kdoc_xforms test suite contains 3 test groups. Two of
+them tests the basic functionality of NestedMatch to
+replace patterns.
+
+The last one (TestRealUsecases) contains real code snippets
+from the Kernel with some cleanups to better fit in 80 columns
+and uses the same transforms as kernel-doc, thus allowing
+to test the logic used inside kdoc_parser to transform
+functions, structs and variable patterns.
+
+Its output is like this:
+
+        $ tools/unittests/kdoc_xforms.py
+        Ran 25 tests in 0.003s
+
+        OK
+        kdoc_xforms:
+            TestDifferentReplacements:
+                test_strip_multiple_acquires:               OK
+                test_sub_count_parameter:                   OK
+                test_sub_mixed_placeholders:                OK
+                test_sub_multiple_placeholders:             OK
+                test_sub_no_placeholder:                    OK
+                test_sub_single_placeholder:                OK
+                test_sub_with_capture:                      OK
+                test_sub_zero_placeholder:                  OK
+            TestMultipleMacros:
+                test_acquires_multiple:                     OK
+                test_acquires_nested_paren:                 OK
+                test_acquires_simple:                       OK
+                test_mixed_macros:                          OK
+                test_must_hold:                             OK
+                test_must_hold_shared:                      OK
+                test_no_false_positive:                     OK
+                test_no_function:                           OK
+                test_no_macro_remains:                      OK
+            TestRealUsecases:
+                test_functions_with_acquires_and_releases:  OK
+                test_raw_struct_group:                      OK
+                test_raw_struct_group_tagged:               OK
+                test_struct_group:                          OK
+                test_struct_group_attr:                     OK
+                test_struct_group_tagged_with_private:      OK
+                test_struct_kcov:                           OK
+                test_vars_stackdepot:                       OK
+
+        Ran 25 tests
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- Documentation/tools/python.rst      |   2 +
- Documentation/tools/unittest.rst    |  24 ++
- tools/lib/python/unittest_helper.py | 348 ++++++++++++++++++++++++++++
- 3 files changed, 374 insertions(+)
- create mode 100644 Documentation/tools/unittest.rst
- create mode 100755 tools/lib/python/unittest_helper.py
+ tools/unittests/kdoc_xforms.py | 654 +++++++++++++++++++++++++++++++++
+ 1 file changed, 654 insertions(+)
+ create mode 100755 tools/unittests/kdoc_xforms.py
 
-diff --git a/Documentation/tools/python.rst b/Documentation/tools/python.rst
-index 1444c1816735..3b7299161f20 100644
---- a/Documentation/tools/python.rst
-+++ b/Documentation/tools/python.rst
-@@ -11,3 +11,5 @@ Python libraries
-    feat
-    kdoc
-    kabi
-+
-+   unittest
-diff --git a/Documentation/tools/unittest.rst b/Documentation/tools/unittest.rst
-new file mode 100644
-index 000000000000..14a2b2a65236
---- /dev/null
-+++ b/Documentation/tools/unittest.rst
-@@ -0,0 +1,24 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+===============
-+Python unittest
-+===============
-+
-+Checking consistency of python modules can be complex. Sometimes, it is
-+useful to define a set of unit tests to help checking them.
-+
-+While the actual test implementation is usecase dependent, Python already
-+provides a standard way to add unit tests by using ``import unittest``.
-+
-+Using such class, requires setting up a test suite. Also, the default format
-+is a little bit ackward. To improve it and provide a more uniform way to
-+report errors, some unittest classes and functions are defined.
-+
-+
-+Unittest helper module
-+======================
-+
-+.. automodule:: lib.python.unittest_helper
-+   :members:
-+   :show-inheritance:
-+   :undoc-members:
-diff --git a/tools/lib/python/unittest_helper.py b/tools/lib/python/unittest_helper.py
+diff --git a/tools/unittests/kdoc_xforms.py b/tools/unittests/kdoc_xforms.py
 new file mode 100755
-index 000000000000..d2efb78d8561
+index 000000000000..71b42c8c75ea
 --- /dev/null
-+++ b/tools/lib/python/unittest_helper.py
-@@ -0,0 +1,348 @@
++++ b/tools/unittests/kdoc_xforms.py
+@@ -0,0 +1,654 @@
 +#!/usr/bin/env python3
 +# SPDX-License-Identifier: GPL-2.0
-+# Copyright(c) 2025-2026: Mauro Carvalho Chehab <mchehab@kernel.org>.
++# Copyright(c) 2026: Mauro Carvalho Chehab <mchehab@kernel.org>.
 +#
-+# pylint: disable=C0103,R0912,R0914,E1101
++# pylint: disable=C0413,R0904
++
 +
 +"""
-+Provides helper functions and classes execute python unit tests.
-+
-+Those help functions provide a nice colored output summary of each
-+executed test and, when a test fails, it shows the different in diff
-+format when running in verbose mode, like::
-+
-+    $ tools/unittests/nested_match.py -v
-+    ...
-+    Traceback (most recent call last):
-+    File "/new_devel/docs/tools/unittests/nested_match.py", line 69, in test_count_limit
-+        self.assertEqual(replaced, "bar(a); bar(b); foo(c)")
-+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+    AssertionError: 'bar(a) foo(b); foo(c)' != 'bar(a); bar(b); foo(c)'
-+    - bar(a) foo(b); foo(c)
-+    ?       ^^^^
-+    + bar(a); bar(b); foo(c)
-+    ?       ^^^^^
-+    ...
-+
-+It also allows filtering what tests will be executed via ``-k`` parameter.
-+
-+Typical usage is to do::
-+
-+    from unittest_helper import run_unittest
-+    ...
-+
-+    if __name__ == "__main__":
-+        run_unittest(__file__)
-+
-+If passing arguments is needed, on a more complex scenario, it can be
-+used like on this example::
-+
-+    from unittest_helper import TestUnits, run_unittest
-+    ...
-+    env = {'sudo': ""}
-+    ...
-+    if __name__ == "__main__":
-+        runner = TestUnits()
-+        base_parser = runner.parse_args()
-+        base_parser.add_argument('--sudo', action='store_true',
-+                                help='Enable tests requiring sudo privileges')
-+
-+        args = base_parser.parse_args()
-+
-+        # Update module-level flag
-+        if args.sudo:
-+            env['sudo'] = "1"
-+
-+        # Run tests with customized arguments
-+        runner.run(__file__, parser=base_parser, args=args, env=env)
++Unit tests for kernel-doc NestedMatch.
 +"""
 +
-+import argparse
-+import atexit
 +import os
 +import re
-+import unittest
 +import sys
++import unittest
 +
-+from unittest.mock import patch
 +
++# Import Python modules
 +
-+class Summary(unittest.TestResult):
++SRC_DIR = os.path.dirname(os.path.realpath(__file__))
++sys.path.insert(0, os.path.join(SRC_DIR, "../lib/python"))
++
++from kdoc.kdoc_re import NestedMatch, CFunction
++from kdoc.xforms_lists import CTransforms
++from unittest_helper import run_unittest
++
++#
++# Override unittest.TestCase to better compare diffs ignoring whitespaces
++#
++class TestCaseDiff(unittest.TestCase):
 +    """
-+    Overrides ``unittest.TestResult`` class to provide a nice colored
-+    summary. When in verbose mode, displays actual/expected difference in
-+    unified diff format.
++    Disable maximum limit on diffs and add a method to better
++    handle diffs with whitespace differences.
 +    """
-+    def __init__(self, *args, **kwargs):
-+        super().__init__(*args, **kwargs)
 +
-+        #: Dictionary to store organized test results.
-+        self.test_results = {}
++    @classmethod
++    def setUpClass(cls):
++        """Ensure that there won't be limit for diffs"""
++        cls.maxDiff = None
 +
-+        #: max length of the test names.
-+        self.max_name_length = 0
-+
-+    def startTest(self, test):
-+        super().startTest(test)
-+        test_id = test.id()
-+        parts = test_id.split(".")
-+
-+        # Extract module, class, and method names
-+        if len(parts) >= 3:
-+            module_name = parts[-3]
-+        else:
-+            module_name = ""
-+        if len(parts) >= 2:
-+            class_name = parts[-2]
-+        else:
-+            class_name = ""
-+
-+        method_name = parts[-1]
-+
-+        # Build the hierarchical structure
-+        if module_name not in self.test_results:
-+            self.test_results[module_name] = {}
-+
-+        if class_name not in self.test_results[module_name]:
-+            self.test_results[module_name][class_name] = []
-+
-+        # Track maximum test name length for alignment
-+        display_name = f"{method_name}:"
-+
-+        self.max_name_length = max(len(display_name), self.max_name_length)
-+
-+    def _record_test(self, test, status):
-+        test_id = test.id()
-+        parts = test_id.split(".")
-+        if len(parts) >= 3:
-+            module_name = parts[-3]
-+        else:
-+            module_name = ""
-+        if len(parts) >= 2:
-+            class_name = parts[-2]
-+        else:
-+            class_name = ""
-+        method_name = parts[-1]
-+        self.test_results[module_name][class_name].append((method_name, status))
-+
-+    def addSuccess(self, test):
-+        super().addSuccess(test)
-+        self._record_test(test, "OK")
-+
-+    def addFailure(self, test, err):
-+        super().addFailure(test, err)
-+        self._record_test(test, "FAIL")
-+
-+    def addError(self, test, err):
-+        super().addError(test, err)
-+        self._record_test(test, "ERROR")
-+
-+    def addSkip(self, test, reason):
-+        super().addSkip(test, reason)
-+        self._record_test(test, f"SKIP ({reason})")
-+
-+    def printResults(self):
++    def assertLogicallyEqual(self, a, b):
 +        """
-+        Print results using colors if tty.
++        Compare two results ignoring multiple whitespace differences.
++
++        This is useful to check more complex matches picked from examples.
++        On a plus side, we also don't need to use dedent.
++        Please notice that line breaks still need to match. We might
++        remove it at the regex, but this way, checking the diff is easier.
 +        """
-+        # Check for ANSI color support
-+        use_color = sys.stdout.isatty()
-+        COLORS = {
-+            "OK":            "\033[32m",   # Green
-+            "FAIL":          "\033[31m",   # Red
-+            "SKIP":          "\033[1;33m", # Yellow
-+            "PARTIAL":       "\033[33m",   # Orange
-+            "EXPECTED_FAIL": "\033[36m",   # Cyan
-+            "reset":         "\033[0m",    # Reset to default terminal color
-+        }
-+        if not use_color:
-+            for c in COLORS:
-+                COLORS[c] = ""
++        a = re.sub(r"[\t ]+", " ", a.strip())
++        b = re.sub(r"[\t ]+", " ", b.strip())
 +
-+        # Calculate maximum test name length
-+        if not self.test_results:
-+            return
-+        try:
-+            lengths = []
-+            for module in self.test_results.values():
-+                for tests in module.values():
-+                    for test_name, _ in tests:
-+                        lengths.append(len(test_name) + 1)  # +1 for colon
-+            max_length = max(lengths) + 2  # Additional padding
-+        except ValueError:
-+            sys.exit("Test list is empty")
++        a = re.sub(" ;", ";", a)
++        b = re.sub(" ;", ";", b)
 +
-+        # Print results
-+        for module_name, classes in self.test_results.items():
-+            print(f"{module_name}:")
-+            for class_name, tests in classes.items():
-+                print(f"    {class_name}:")
-+                for test_name, status in tests:
-+                    # Get base status without reason for SKIP
-+                    if status.startswith("SKIP"):
-+                        status_code = status.split()[0]
-+                    else:
-+                        status_code = status
-+                    color = COLORS.get(status_code, "")
-+                    print(
-+                        f"        {test_name + ':':<{max_length}}{color}{status}{COLORS['reset']}"
-+                    )
-+            print()
++        self.assertEqual(a, b)
 +
-+        # Print summary
-+        print(f"\nRan {self.testsRun} tests", end="")
-+        if hasattr(self, "timeTaken"):
-+            print(f" in {self.timeTaken:.3f}s", end="")
-+        print()
++#
++# Tests doing with different macros
++#
 +
-+        if not self.wasSuccessful():
-+            print(f"\n{COLORS['FAIL']}FAILED (", end="")
-+            failures = getattr(self, "failures", [])
-+            errors = getattr(self, "errors", [])
-+            if failures:
-+                print(f"failures={len(failures)}", end="")
-+            if errors:
-+                if failures:
-+                    print(", ", end="")
-+                print(f"errors={len(errors)}", end="")
-+            print(f"){COLORS['reset']}")
-+
-+
-+def flatten_suite(suite):
-+    """Flatten test suite hierarchy."""
-+    tests = []
-+    for item in suite:
-+        if isinstance(item, unittest.TestSuite):
-+            tests.extend(flatten_suite(item))
-+        else:
-+            tests.append(item)
-+    return tests
-+
-+
-+class TestUnits:
++class TestMultipleMacros(TestCaseDiff):
 +    """
-+    Helper class to set verbosity level.
++    Tests doing with different macros.
 +
-+    This class discover test files, import its unittest classes and
-+    executes the test on it.
++    Here, we won't use assertLogicallyEqual. Instead, we'll check if each
++    of the expected patterns are present at the answer.
 +    """
-+    def parse_args(self):
-+        """Returns a parser for command line arguments."""
-+        parser = argparse.ArgumentParser(description="Test runner with regex filtering")
-+        parser.add_argument("-v", "--verbose", action="count", default=1)
-+        parser.add_argument("-f", "--failfast", action="store_true")
-+        parser.add_argument("-k", "--keyword",
-+                            help="Regex pattern to filter test methods")
-+        return parser
 +
-+    def run(self, caller_file=None, pattern=None,
-+            suite=None, parser=None, args=None, env=None):
++    def test_acquires_simple(self):
++        """Simple replacement test with __acquires"""
++        line = "__acquires(ctx) foo();"
++        result = NestedMatch(r"__acquires\s*\(").sub("REPLACED", line)
++
++        self.assertNotIn("__acquires(", result)
++        self.assertIn("foo();", result)
++
++    def test_acquires_multiple(self):
++        """Multiple __acquires"""
++        line = "__acquires(ctx) __acquires(other) bar();"
++        result = NestedMatch(r"__acquires\s*\(").sub("REPLACED", line)
++
++        self.assertNotIn("__acquires(", result)
++        self.assertEqual(result.count("REPLACED"), 2)
++
++    def test_acquires_nested_paren(self):
++        """__acquires with nested pattern"""
++        line = "__acquires((ctx1, ctx2)) baz();"
++        result = NestedMatch(r"__acquires\s*\(").sub("REPLACED", line)
++
++        self.assertNotIn("__acquires(", result)
++        self.assertIn("baz();", result)
++
++    def test_must_hold(self):
++        """__must_hold with a pointer"""
++        line = "__must_hold(&lock) do_something();"
++        result = NestedMatch(r"__must_hold\s*\(").sub("REPLACED", line)
++
++        self.assertNotIn("__must_hold(", result)
++        self.assertIn("do_something();", result)
++
++    def test_must_hold_shared(self):
++        """__must_hold with an upercase defined value"""
++        line = "__must_hold_shared(RCU) other();"
++        result = NestedMatch(r"__must_hold_shared\s*\(").sub("REPLACED", line)
++
++        self.assertNotIn("__must_hold_shared(", result)
++        self.assertIn("other();", result)
++
++    def test_no_false_positive(self):
 +        """
-+        Execute all tests from the unity test file.
-+
-+        It contains several optional parameters:
-+
-+        ``caller_file``:
-+            -  name of the file that contains test.
-+
-+               typical usage is to place __file__ at the caller test, e.g.::
-+
-+                    if __name__ == "__main__":
-+                        TestUnits().run(__file__)
-+
-+        ``pattern``:
-+            - optional pattern to match multiple file names. Defaults
-+              to basename of ``caller_file``.
-+
-+        ``suite``:
-+            - an unittest suite initialized by the caller using
-+              ``unittest.TestLoader().discover()``.
-+
-+        ``parser``:
-+            - an argparse parser. If not defined, this helper will create
-+              one.
-+
-+        ``args``:
-+            - an ``argparse.Namespace`` data filled by the caller.
-+
-+        ``env``:
-+            - environment variables that will be passed to the test suite
-+
-+        At least ``caller_file`` or ``suite`` must be used, otherwise a
-+        ``TypeError`` will be raised.
++        Ensure that unrelated text containing similar patterns is preserved
 +        """
-+        if not args:
-+            if not parser:
-+                parser = self.parse_args()
-+            args = parser.parse_args()
++        line = "call__acquires(foo);  // should stay intact"
++        result = NestedMatch(r"\b__acquires\s*\(").sub("REPLACED", line)
 +
-+        if not caller_file and not suite:
-+            raise TypeError("Either caller_file or suite is needed at TestUnits")
++        self.assertEqual(result, line)
 +
-+        if env:
-+            patcher = patch.dict(os.environ, env)
-+            patcher.start()
-+            # ensure it gets stopped after
-+            atexit.register(patcher.stop)
++    def test_mixed_macros(self):
++        """Add a mix of macros"""
++        line = "__acquires(ctx) __releases(ctx) __must_hold(&lock) foo();"
 +
-+        verbose = args.verbose
++        result = NestedMatch(r"__acquires\s*\(").sub("REPLACED", line)
++        result = NestedMatch(r"__releases\s*\(").sub("REPLACED", result)
++        result = NestedMatch(r"__must_hold\s*\(").sub("REPLACED", result)
 +
-+        if verbose >= 2:
-+            unittest.TextTestRunner(verbosity=verbose).run = lambda suite: suite
++        self.assertNotIn("__acquires(", result)
++        self.assertNotIn("__releases(", result)
++        self.assertNotIn("__must_hold(", result)
 +
-+        # Load ONLY tests from the calling file
-+        if not suite:
-+            if not pattern:
-+                pattern = caller_file
++        self.assertIn("foo();", result)
 +
-+            loader = unittest.TestLoader()
-+            suite = loader.discover(start_dir=os.path.dirname(caller_file),
-+                                    pattern=os.path.basename(caller_file))
++    def test_no_macro_remains(self):
++        """Ensures that unmatched macros are untouched"""
++        line = "do_something_else();"
++        result = NestedMatch(r"__acquires\s*\(").sub("REPLACED", line)
 +
-+        # Flatten the suite for environment injection
-+        tests_to_inject = flatten_suite(suite)
++        self.assertEqual(result, line)
 +
-+        # Filter tests by method name if -k specified
-+        if args.keyword:
-+            try:
-+                pattern = re.compile(args.keyword)
-+                filtered_suite = unittest.TestSuite()
-+                for test in tests_to_inject:  # Use the pre-flattened list
-+                    method_name = test.id().split(".")[-1]
-+                    if pattern.search(method_name):
-+                        filtered_suite.addTest(test)
-+                suite = filtered_suite
-+            except re.error as e:
-+                sys.stderr.write(f"Invalid regex pattern: {e}\n")
-+                sys.exit(1)
-+        else:
-+            # Maintain original suite structure if no keyword filtering
-+            suite = unittest.TestSuite(tests_to_inject)
++    def test_no_function(self):
++        """Ensures that no functions will remain untouched"""
++        line = "something"
++        result = NestedMatch(line).sub("REPLACED", line)
 +
-+        if verbose >= 2:
-+            resultclass = None
-+        else:
-+            resultclass = Summary
++        self.assertEqual(result, line)
 +
-+        runner = unittest.TextTestRunner(verbosity=args.verbose,
-+                                            resultclass=resultclass,
-+                                            failfast=args.failfast)
-+        result = runner.run(suite)
-+        if resultclass:
-+            result.printResults()
++#
++# Check if the diff is logically equivalent. To simplify, the tests here
++# use a single macro name for all replacements.
++#
 +
-+        sys.exit(not result.wasSuccessful())
-+
-+
-+def run_unittest(fname):
++class TestDifferentReplacements(TestCaseDiff):
 +    """
-+    Basic usage of TestUnits class.
++    Test argument replacements.
 +
-+    Use it when there's no need to pass any extra argument to the tests
-+    with. The recommended way is to place this at the end of each
-+    unittest module::
-+
-+        if __name__ == "__main__":
-+            run_unittest(__file__)
++    Here, the function name can be anything. So, we picked __attribute__(),
++    to mimic a macro found at the Kernel, but none of the replacements her
++    has any relationship with the Kernel usage.
 +    """
-+    TestUnits().run(fname)
++
++    MACRO = "__attribute__"
++
++    @classmethod
++    def setUpClass(cls):
++        """Define a NestedMatch to be used for all tests"""
++        cls.matcher = NestedMatch(re.compile(rf"{cls.MACRO}\s*\("))
++
++    def test_sub_with_capture(self):
++        """Test all arguments replacement with a single arg"""
++        line = f"{self.MACRO}(&ctx)\nfoo();"
++
++        result = self.matcher.sub(r"ACQUIRED(\0)", line)
++
++        self.assertLogicallyEqual("ACQUIRED(&ctx)\nfoo();", result)
++
++    def test_sub_zero_placeholder(self):
++        """Test all arguments replacement with a multiple args"""
++        line = f"{self.MACRO}(arg1, arg2)\nbar();"
++
++        result = self.matcher.sub(r"REPLACED(\0)", line)
++
++        self.assertLogicallyEqual("REPLACED(arg1, arg2)\nbar();", result)
++
++    def test_sub_single_placeholder(self):
++        """Single replacement rule for \1"""
++        line = f"{self.MACRO}(ctx, boo)\nfoo();"
++        result = self.matcher.sub(r"ACQUIRED(\1)", line)
++
++        self.assertLogicallyEqual("ACQUIRED(ctx)\nfoo();", result)
++
++    def test_sub_multiple_placeholders(self):
++        """Replacement rule for both \1 and \2"""
++        line = f"{self.MACRO}(arg1, arg2)\nbar();"
++        result = self.matcher.sub(r"REPLACE(\1, \2)", line)
++
++        self.assertLogicallyEqual("REPLACE(arg1, arg2)\nbar();", result)
++
++    def test_sub_mixed_placeholders(self):
++        """Replacement rule for \0, \1 and additional text"""
++        line = f"{self.MACRO}(foo, bar)\nbaz();"
++        result = self.matcher.sub(r"ALL(\0) FIRST(\1)", line)
++
++        self.assertLogicallyEqual("ALL(foo, bar) FIRST(foo)\nbaz();", result)
++
++    def test_sub_no_placeholder(self):
++        """Replacement without placeholders"""
++        line = f"{self.MACRO}(arg)\nfoo();"
++        result = self.matcher.sub(r"NO_BACKREFS()", line)
++
++        self.assertLogicallyEqual("NO_BACKREFS()\nfoo();", result)
++
++    def test_sub_count_parameter(self):
++        """Verify that the algorithm stops after the requested count"""
++        line = f"{self.MACRO}(a1) x();\n{self.MACRO}(a2) y();"
++        result = self.matcher.sub(r"ONLY_FIRST(\1) ", line, count=1)
++
++        self.assertLogicallyEqual(f"ONLY_FIRST(a1) x();\n{self.MACRO}(a2) y();",
++                                  result)
++
++    def test_strip_multiple_acquires(self):
++        """Check if spaces between removed delimiters will be dropped"""
++        line = f"int {self.MACRO}(1)  {self.MACRO}(2 )   {self.MACRO}(3) foo;"
++        result = self.matcher.sub(r"", line)
++
++        self.assertLogicallyEqual(result, "int foo;")
++
++
++#
++# Test struct_group replacements
++#
++
++
++class TestRealUsecases(TestCaseDiff):
++    """
++    Test diferent usecase patterns found at the Kernel.
++
++    Here, replacements using both NestedMatch and KernRe can be tested,
++    as it will import the actual replacement rules used by kernel-doc.
++    """
++
++    xforms = {
++        "func":   CTransforms.function_xforms,
++        "struct": CTransforms.struct_xforms,
++        "var":    CTransforms.var_xforms,
++    }
++
++    @classmethod
++    def apply_transforms(cls, xform_type, text):
++        """
++        Mimic the behavior of kdoc_parser.apply_transforms() method.
++
++        For each element of STRUCT_XFORMS, apply apply_transforms.
++
++        There are two parameters:
++
++        - ``xform_type``
++            Can be ``func``, ``struct`` or ``var``;
++        - ``text``
++            The text where the sub patterns from CTransforms will be applied.
++        """
++        for search, subst in cls.xforms.get(xform_type):
++            text = search.sub(subst, text)
++
++        return text.strip()
++
++        cls.matcher = NestedMatch(r"\bstruct_group[\w\_]*\(")
++
++    def test_struct_group(self):
++        """
++        Test struct_group using a pattern from
++        drivers/net/ethernet/asix/ax88796c_main.h.
++        """
++        line = """
++            struct tx_pkt_info {
++                    struct_group(tx_overhead,
++                            struct tx_sop_header sop;
++                            struct tx_segment_header seg;
++                    );
++                    struct tx_eop_header eop;
++                    u16 pkt_len;
++                    u16 seq_num;
++            };
++        """
++        expected = """
++            struct tx_pkt_info {
++                    struct tx_sop_header sop;
++                    struct tx_segment_header seg;;
++                    struct tx_eop_header eop;
++                    u16 pkt_len;
++                    u16 seq_num;
++            };
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_struct_group_attr(self):
++        """
++        Test two struct_group_attr using patterns from fs/smb/client/cifspdu.h.
++        """
++        line = """
++            typedef struct smb_com_open_rsp {
++                struct smb_hdr hdr;     /* wct = 34 BB */
++                __u8 AndXCommand;
++                __u8 AndXReserved;
++                __le16 AndXOffset;
++                __u8 OplockLevel;
++                __u16 Fid;
++                __le32 CreateAction;
++                struct_group_attr(common_attributes, __packed,
++                    __le64 CreationTime;
++                    __le64 LastAccessTime;
++                    __le64 LastWriteTime;
++                    __le64 ChangeTime;
++                    __le32 FileAttributes;
++                );
++                __le64 AllocationSize;
++                __le64 EndOfFile;
++                __le16 FileType;
++                __le16 DeviceState;
++                __u8 DirectoryFlag;
++                __u16 ByteCount;        /* bct = 0 */
++            } __packed OPEN_RSP;
++
++            typedef struct {
++                struct_group_attr(common_attributes, __packed,
++                    __le64 CreationTime;
++                    __le64 LastAccessTime;
++                    __le64 LastWriteTime;
++                    __le64 ChangeTime;
++                    __le32 Attributes;
++                );
++                __u32 Pad1;
++                __le64 AllocationSize;
++                __le64 EndOfFile;
++                __le32 NumberOfLinks;
++                __u8 DeletePending;
++                __u8 Directory;
++                __u16 Pad2;
++                __le32 EASize;
++                __le32 FileNameLength;
++                union {
++                    char __pad;
++                    DECLARE_FLEX_ARRAY(char, FileName);
++                };
++            } __packed FILE_ALL_INFO;       /* level 0x107 QPathInfo */
++        """
++        expected = """
++            typedef struct smb_com_open_rsp {
++                struct smb_hdr hdr; /* wct = 34 BB */
++                __u8 AndXCommand;
++                __u8 AndXReserved;
++                __le16 AndXOffset;
++                __u8 OplockLevel;
++                __u16 Fid;
++                __le32 CreateAction;
++                __le64 CreationTime;
++                __le64 LastAccessTime;
++                __le64 LastWriteTime;
++                __le64 ChangeTime;
++                __le32 FileAttributes;;
++                __le64 AllocationSize;
++                __le64 EndOfFile;
++                __le16 FileType;
++                __le16 DeviceState;
++                __u8 DirectoryFlag;
++                __u16 ByteCount; /* bct = 0 */
++            } OPEN_RSP;
++
++        typedef struct {
++            __le64 CreationTime;
++            __le64 LastAccessTime;
++            __le64 LastWriteTime;
++            __le64 ChangeTime;
++            __le32 Attributes;;
++            __u32 Pad1;
++            __le64 AllocationSize;
++            __le64 EndOfFile;
++            __le32 NumberOfLinks;
++            __u8 DeletePending;
++            __u8 Directory;
++            __u16 Pad2;
++            __le32 EASize;
++            __le32 FileNameLength;
++            union {
++                char __pad;
++                char FileName[];
++            };
++        } FILE_ALL_INFO; /* level 0x107 QPathInfo */
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_raw_struct_group(self):
++        """
++        Test a __struct_group pattern from include/uapi/cxl/features.h.
++        """
++        line = """
++            struct cxl_mbox_get_sup_feats_out {
++                __struct_group(cxl_mbox_get_sup_feats_out_hdr, hdr, /* empty */,
++                    __le16 num_entries;
++                    __le16 supported_feats;
++                    __u8 reserved[4];
++                );
++                struct cxl_feat_entry ents[] __counted_by_le(num_entries);
++            } __attribute__ ((__packed__));
++        """
++        expected = """
++            struct cxl_mbox_get_sup_feats_out {
++                __le16 num_entries;
++                __le16 supported_feats;
++                __u8 reserved[4];;
++                struct cxl_feat_entry ents[];
++            };
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_raw_struct_group_tagged(self):
++        """
++        Test some  struct_group_tagged patterns from drivers/cxl/cxl.h.
++        """
++        line = """
++            struct cxl_regs {
++                struct_group_tagged(cxl_component_regs, component,
++                    void __iomem *hdm_decoder;
++                    void __iomem *ras;
++                );
++
++                struct_group_tagged(cxl_device_regs, device_regs,
++                    void __iomem *status, *mbox, *memdev;
++                );
++
++                struct_group_tagged(cxl_pmu_regs, pmu_regs,
++                    void __iomem *pmu;
++                );
++
++                struct_group_tagged(cxl_rch_regs, rch_regs,
++                    void __iomem *dport_aer;
++                );
++
++                struct_group_tagged(cxl_rcd_regs, rcd_regs,
++                    void __iomem *rcd_pcie_cap;
++                );
++            };
++        """
++        expected = """
++        struct cxl_regs {
++            struct cxl_component_regs component; void __iomem *hdm_decoder;
++            void __iomem *ras;;
++
++            struct cxl_device_regs device_regs; void __iomem *status;
++
++            struct cxl_pmu_regs pmu_regs; void __iomem *pmu;;
++
++            struct cxl_rch_regs rch_regs; void __iomem *dport_aer;;
++
++            struct cxl_rcd_regs rcd_regs; void __iomem *rcd_pcie_cap;;
++        };
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_struct_group_tagged_with_private(self):
++        """
++        Replace struct_group_tagged with private, using the same regex
++        for the replacement as what happens in xforms_lists.py.
++
++        As the private removal happens outside NestedGroup class, we manually
++        dropped the remaining part of the struct, to simulate what happens
++        at kdoc_parser.
++
++        Taken from include/net/page_pool/types.h
++        """
++        line = """
++            struct page_pool_params {
++                struct_group_tagged(page_pool_params_fast, fast,
++                    unsigned int    order;
++                    unsigned int    pool_size;
++                    int             nid;
++                    struct device   *dev;
++                    struct napi_struct *napi;
++                    enum dma_data_direction dma_dir;
++                    unsigned int    max_len;
++                    unsigned int    offset;
++                );
++                struct_group_tagged(page_pool_params_slow, slow,
++                    struct net_device *netdev;
++                    unsigned int queue_idx;
++                    unsigned int    flags;
++            /* private: used by test code only */
++        """
++        expected = """
++            struct page_pool_params {
++                struct page_pool_params_fast fast; unsigned int order;
++                unsigned int    pool_size;
++                int             nid;
++                struct device   *dev;
++                struct napi_struct *napi;
++                enum dma_data_direction dma_dir;
++                unsigned int    max_len;
++                unsigned int    offset;;
++                struct page_pool_params_slow slow; struct net_device *netdev;
++                unsigned int queue_idx;
++                unsigned int    flags;
++                /* private: used by test code only */
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_struct_kcov(self):
++        """
++        """
++        line = """
++            struct kcov {
++                refcount_t              refcount;
++                spinlock_t              lock;
++                enum kcov_mode          mode __guarded_by(&lock);
++                unsigned int            size __guarded_by(&lock);
++                void                    *area __guarded_by(&lock);
++                struct task_struct      *t __guarded_by(&lock);
++                bool                    remote;
++                unsigned int            remote_size;
++                int                     sequence;
++            };
++        """
++        expected = """
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++
++    def test_struct_kcov(self):
++        """
++        Test a struct from kernel/kcov.c.
++        """
++        line = """
++            struct kcov {
++                refcount_t              refcount;
++                spinlock_t              lock;
++                enum kcov_mode          mode __guarded_by(&lock);
++                unsigned int            size __guarded_by(&lock);
++                void                    *area __guarded_by(&lock);
++                struct task_struct      *t __guarded_by(&lock);
++                bool                    remote;
++                unsigned int            remote_size;
++                int                     sequence;
++            };
++        """
++        expected = """
++            struct kcov {
++                refcount_t              refcount;
++                spinlock_t              lock;
++                enum kcov_mode          mode;
++                unsigned int            size;
++                void                    *area;
++                struct task_struct      *t;
++                bool                    remote;
++                unsigned int            remote_size;
++                int                     sequence;
++            };
++        """
++
++        result = self.apply_transforms("struct", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_vars_stackdepot(self):
++        """
++        Test guarded_by on vars from lib/stackdepot.c.
++        """
++        line = """
++            size_t pool_offset __guarded_by(&pool_lock) = DEPOT_POOL_SIZE;
++            __guarded_by(&pool_lock) LIST_HEAD(free_stacks);
++            void **stack_pools __pt_guarded_by(&pool_lock);
++        """
++        expected = """
++            size_t pool_offset = DEPOT_POOL_SIZE;
++            struct list_head free_stacks;
++            void **stack_pools;
++        """
++
++        result = self.apply_transforms("var", line)
++        self.assertLogicallyEqual(result, expected)
++
++    def test_functions_with_acquires_and_releases(self):
++        """
++        Test guarded_by on vars from lib/stackdepot.c.
++        """
++        line = """
++            bool prepare_report_consumer(unsigned long *flags,
++                                         const struct access_info *ai,
++                                         struct other_info *other_info) \
++                                        __cond_acquires(true, &report_lock);
++
++            int tcp_sigpool_start(unsigned int id, struct tcp_sigpool *c) \
++                                  __cond_acquires(0, RCU_BH);
++
++            bool undo_report_consumer(unsigned long *flags,
++                                      const struct access_info *ai,
++                                      struct other_info *other_info) \
++                                     __cond_releases(true, &report_lock);
++
++            void debugfs_enter_cancellation(struct file *file,
++                                            struct debugfs_cancellation *c) \
++                                           __acquires(cancellation);
++
++            void debugfs_leave_cancellation(struct file *file,
++                                            struct debugfs_cancellation *c) \
++                                           __releases(cancellation);
++
++            acpi_cpu_flags acpi_os_acquire_lock(acpi_spinlock lockp) \
++                                               __acquires(lockp);
++
++            void acpi_os_release_lock(acpi_spinlock lockp,
++                                      acpi_cpu_flags not_used) \
++                                     __releases(lockp)
++        """
++        expected = """
++            bool prepare_report_consumer(unsigned long *flags,
++                                         const struct access_info *ai,
++                                         struct other_info *other_info);
++
++            int tcp_sigpool_start(unsigned int id, struct tcp_sigpool *c);
++
++            bool undo_report_consumer(unsigned long *flags,
++                                      const struct access_info *ai,
++                                      struct other_info *other_info);
++
++            void debugfs_enter_cancellation(struct file *file,
++                                            struct debugfs_cancellation *c);
++
++            void debugfs_leave_cancellation(struct file *file,
++                                            struct debugfs_cancellation *c);
++
++            acpi_cpu_flags acpi_os_acquire_lock(acpi_spinlock lockp);
++
++            void acpi_os_release_lock(acpi_spinlock lockp,
++                                      acpi_cpu_flags not_used)
++        """
++
++        result = self.apply_transforms("func", line)
++        self.assertLogicallyEqual(result, expected)
++
++
++#
++# Run all tests
++#
++if __name__ == "__main__":
++    run_unittest(__file__)
 -- 
 2.52.0
 
