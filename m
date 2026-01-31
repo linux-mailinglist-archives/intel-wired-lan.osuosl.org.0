@@ -2,100 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 2DPsNPUQfmkqVQIAu9opvQ
+	id SMI1Kd4QfmkbVQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:57 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:34 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6DC01C253D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:57 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7F58B40A9B;
-	Sat, 31 Jan 2026 14:25:52 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id E0MAc81o6Wtu; Sat, 31 Jan 2026 14:25:51 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 771BF40BF3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769869551;
-	bh=5s82xQm4tb10Ohy8/G/8lNaZDocILp147qF+IhsU+Qg=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=JMKAikqEVz6pX+pm/brpAJPnKM/nwzKP3MLfYC5OFQQgqZJ3GYrkkeo5nc5Xb60Fc
-	 xsudsCoKfyU7thweSSIIVB8vPWMqNuRg61861eAKsBEYJj1/h2yfJM1omd3uiDgCv2
-	 Iz8dRLbMt/59s6msU4qBCgAi1ELXZkFOWXQLbUI5a7dwEGwQSQhtDbAvFgvEw1eptN
-	 /mOA7IeiOYAQHTqb47GOHuCoPlbjfpYzPLHh6+OkpsyupUJaWHj9wppDhKDJlAE8ls
-	 8dK0pXEVDpd5i22mxXZ4JnTtlX/F26u/vPDhaWChF8jf0mHOyjFD6lWI9Q01/W2J5J
-	 mvplVzl/oCRiA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 771BF40BF3;
-	Sat, 31 Jan 2026 14:25:51 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 0EFA81E0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:36 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E688C2404
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C9BEB60B57
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3DC2860B5C;
+	Sat, 31 Jan 2026 14:25:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FLEfx57ggn5n for <intel-wired-lan@lists.osuosl.org>;
- Sat, 31 Jan 2026 14:25:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A072C60B4E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A072C60B4E
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A072C60B4E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:24 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 4322360130;
+ id K6yfL1mSRRnB; Sat, 31 Jan 2026 14:25:30 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B423F60B3C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1769869530;
+	bh=fzAe1NMF2FCAdL3cOT3LjbUXSajrHhaG2DA/j7r4k9s=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=wTlMd2xu/DJMa3uWJV951eJTI/71Cd4P1qStz4yccnh1/UkEa6bpamM/oSueWg8Se
+	 klNxLRwb+Igz99Kw+y1slpzfeSb57w5SW8MiZYZ9IoWr8HAqjjpAD/MwEauNvh+cjH
+	 rZhGbGa0RhnL/J0t1+gQ84cIJSp3Ytvu5AVcvxOWvvbinuyTrUK6nu30hQy5L/VfwH
+	 Dhay9WSvJVBhdFGL4M9cQ0nwzCCSb4HhCjGkBVo6CMw0ECgGjZVg0sSOLZZqbyUQUF
+	 wUlqM3yfXjf/SW3Do+i1j3/IVTYha0SyNQ1THUL1NxqBRblDy28LRDAeeUFwIYO1bh
+	 pNiOHGZrkZqSQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id B423F60B3C;
+	Sat, 31 Jan 2026 14:25:30 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2409D2D3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3329D4008D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:23 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lzP6UwK6Qgkm for <intel-wired-lan@lists.osuosl.org>;
  Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A0B3C2BCB3;
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8A85A40800
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A85A40800
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8A85A40800
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id D486B443D7;
+ Sat, 31 Jan 2026 14:25:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74611C2BC9E;
  Sat, 31 Jan 2026 14:25:21 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vmBuZ-0000000AVjl-1EAr; Sat, 31 Jan 2026 15:25:19 +0100
+ id 1vmBuZ-0000000AVjo-1Mqq; Sat, 31 Jan 2026 15:25:19 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Jonathan Corbet <corbet@lwn.net>, Kees Cook <kees@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
+To: Jonathan Corbet <corbet@lwn.net>,
+ Linux Doc Mailing List <linux-doc@vger.kernel.org>
 Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- intel-wired-lan@lists.osuosl.org, linux-doc@vger.kernel.org,
- linux-hardening@vger.kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Randy Dunlap <rdunlap@infradead.org>,
- Shuah Khan <skhan@linuxfoundation.org>
-Date: Sat, 31 Jan 2026 15:24:34 +0100
-Message-ID: <cover.1769867953.git.mchehab+huawei@kernel.org>
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Randy Dunlap <rdunlap@infradead.org>
+Date: Sat, 31 Jan 2026 15:24:35 +0100
+Message-ID: <fb753f9fe5ecbb218917da0b5787c66ecfa1a918.1769867953.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
+In-Reply-To: <cover.1769867953.git.mchehab+huawei@kernel.org>
+References: <cover.1769867953.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769869521;
- bh=GQxQSIJ9zVioMxXOuLm+2OSq66234rnFskvJugtkkiE=;
- h=From:To:Cc:Subject:Date:From;
- b=ZtBiOkliM1tjI/dshe2DJ87tkxKsNQsJeXpHs8bUPcsxuZkIImeIyj/oImKn3dIO6
- mvbJcCvzjM6rbgMJQRIjNqswn7r+IAaTLy9XbeV7aPlMmSCrcNfKV2ZJgDjRFiUMkO
- UIwvNOGftYnoLX2HDlPe6voh1rOeSphwEnb9ZfOJ9eQ5fsQXQDLX7bIa9hfrZKKfYV
- i6UYuBr5d22/k2GtAkeHVuyRe6GBl7kUhlwSxsx+xepH9Mrhb0FiqqpI7noh8w/rM0
- 404IwE5Rqy/HvRbsOdRS6fMU6mzT7fV7K02g8RG5RwwPwn/ENHUbra0rlOo6fRnD7l
- NloskcjdjEvNQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=gMIMQCBzXE8M1JL5w9F3R5TyIvM3vcLDpK3YDNHeLyM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=itzFgM1hHQtINK9Tggf9nZluKqT1tfa33omgqV7sSa4Pogr/jZmmS3rJPEfY3DhiN
+ QjKK5oCCmyQxC2pIqEI/guZsIXdLh+bFKIPOZ4Ne6UrbsC3Ysdg768tiB3tP2XdNU0
+ IcP01cHajYZ2ff9yXY77rkpq0Iusq3XNv80hFLcy0TGna1bsaBIDkEclwuzxRgpOwf
+ amm4WJguATio9mS6n0oXrQ6vic4mPWBXPwk2VCUI5NgF/5RCKmwmF0rNt8GrR4O4lN
+ mnv3YsyHSG7vayq2JYn4QRUwmnstoq6Jz9YIGGoglJLdhetsm6rMpeVwT1I3u2fQu1
+ Ywk2eSmwuk4QA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ZtBiOkli
-Subject: [Intel-wired-lan] [PATCH v4 00/41] kernel-doc: make it parse new
- functions and structs
+ header.a=rsa-sha256 header.s=k20201202 header.b=itzFgM1h
+Subject: [Intel-wired-lan] [PATCH v4 01/41] docs: kdoc_re: add support for
+ groups()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,284 +113,72 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.19 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	TAGGED_FROM(0.00)[huawei];
+	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
-	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[14];
-	FORGED_RECIPIENTS(0.00)[m:aleksander.lobakin@intel.com,m:corbet@lwn.net,m:kees@kernel.org,m:mchehab@kernel.org,m:mchehab+huawei@kernel.org,m:linux-doc@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:gustavoars@kernel.org,m:aleksandr.loktionov@intel.com,m:rdunlap@infradead.org,m:skhan@linuxfoundation.org,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+];
 	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab+huawei@kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:mchehab@kernel.org,m:rdunlap@infradead.org,s:lists@lfdr.de];
+	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	NEURAL_HAM(-0.00)[-0.991];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	NEURAL_HAM(-0.00)[-0.994];
-	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCPT_COUNT_SEVEN(0.00)[10];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 6DC01C253D
+X-Rspamd-Queue-Id: 6E688C2404
 X-Rspamd-Action: no action
 
-Hi Jon,
+Add an equivalent to re groups() method.
+This is useful on debug messages.
 
-Rebased the changes on the top of docs-mw, and merged
-the /4 patch series with fixes from me that ws pending
-and contained a conflicting patch with this series.
-
-Oh well, it means that this one increased its size
-again...
-
-The initial goal were to address some new warnings
-at linux next due to some new macro annotations.
-
-As the previous version, this one contains a new
-CFunction class, with is just an alias for "NestedMatch",
-meant to make easier to maintain transforms, which are
-now on a separate file:
-
-    tools/lib/python/kdoc/xforms_lists.py
-
-With that, transform lists now use CFunction for macros
-with a function prototype, using KernRe only the
-remaining macros and part of the declarations we want to
-strip (like extern).
-
-So, for instance, the entire transform list for structs
-is now:
-
-    #: Transforms for structs and unions
-    struct_xforms = [
-        (CFunction("__attribute__"), ' '),
-        (CFunction('__aligned'), ' '),
-        (CFunction('__counted_by'), ' '),
-        (CFunction('__counted_by_(le|be)'), ' '),
-        (CFunction('__guarded_by'), ' '),
-        (CFunction('__pt_guarded_by'), ' '),
-
-        (KernRe(r'\s*__packed\s*', re.S), ' '),
-        (KernRe(r'\s*CRYPTO_MINALIGN_ATTR', re.S), ' '),
-        (KernRe(r'\s*__private', re.S), ' '),
-        (KernRe(r'\s*__rcu', re.S), ' '),
-        (KernRe(r'\s*____cacheline_aligned_in_smp', re.S), ' '),
-        (KernRe(r'\s*____cacheline_aligned', re.S), ' '),
-
-        (CFunction('__cacheline_group_(begin|end)'), ''),
-
-        (CFunction('struct_group'), r'\2'),
-        (CFunction('struct_group_attr'), r'\3'),
-        (CFunction('struct_group_tagged'), r'struct \1 \2; \3'),
-        (CFunction('__struct_group'), r'\4'),
-
-        (CFunction('__ETHTOOL_DECLARE_LINK_MODE_MASK'), r'DECLARE_BITMAP(\1, __ETHTOOL_LINK_MODE_MASK_NBITS)'),
-        (CFunction('DECLARE_PHY_INTERFACE_MASK',), r'DECLARE_BITMAP(\1, PHY_INTERFACE_MODE_MAX)'),
-        (CFunction('DECLARE_BITMAP'), r'unsigned long \1[BITS_TO_LONGS(\2)]'),
-
-        (CFunction('DECLARE_HASHTABLE'), r'unsigned long \1[1 << ((\2) - 1)]'),
-        (CFunction('DECLARE_KFIFO'), r'\2 *\1'),
-        (CFunction('DECLARE_KFIFO_PTR'), r'\2 *\1'),
-        (CFunction('(?:__)?DECLARE_FLEX_ARRAY'), r'\1 \2[]'),
-        (CFunction('DEFINE_DMA_UNMAP_ADDR'), r'dma_addr_t \1'),
-        (CFunction('DEFINE_DMA_UNMAP_LEN'), r'__u32 \1'),
-        (CFunction('VIRTIO_DECLARE_FEATURES'), r'union { u64 \1; u64 \1_array[VIRTIO_FEATURES_U64S]; }'),
-    ]
-
-As KernRe, CFunction and NestedMatch have a ".sub" method, a
-single transforms table can have them all.
-
-Due to the complexity of NestedMatch, I opted to write
-unit tests to verify that the logic there is correct.
-
-On this version, the module was almost entirely re-written
-by hand, and the test suite has now 3 groups:
-
-- TestDifferentReplacements: basic tests using several
-  tests to try checkin border cases with NestedMatch.sub.
-  They all use a single macro name;
-- TestMultipleMacros: test different macros and conditions,
-  also trying to get border cases;
-- TestRealUsecases: as the name says, on this one I picked
-  real test cases. I used an example given by Randy on
-  some of them and placed a testset to try covering
-  struct_group macros, which are quite complex.
-
-Using it is as easy as running:
-
-	$ tools/unittests/kdoc_xforms.py
-
-And, if something goes wrong, -v will show the problem in unified diff[1]:
-
-    $ tools/unittests/kdoc_xforms.py -k test_functions_with_acquires_and_releases -v
-
-    test_functions_with_acquires_and_releases (kdoc_xforms.TestRealUsecases.test_functions_with_acquires_and_releases)
-    Test guarded_by on vars from lib/stackdepot.c. ... FAIL
-    
-    ======================================================================
-    FAIL: test_functions_with_acquires_and_releases (kdoc_xforms.TestRealUsecases.test_functions_with_acquires_and_releases)
-    Test guarded_by on vars from lib/stackdepot.c.
-    ----------------------------------------------------------------------
-    Traceback (most recent call last):
-      File "/new_devel/docs/tools/unittests/kdoc_xforms.py", line 649, in test_functions_with_acquires_and_releases
-        self.assertLogicallyEqual(result, expected)
-        ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-      File "/new_devel/docs/tools/unittests/kdoc_xforms.py", line 56, in assertLogicallyEqual
-        self.assertEqual(a, b)
-        ~~~~~~~~~~~~~~~~^^^^^^
-    AssertionError: 'bool[477 chars]\n\n acpi_cpu_flags acpi_os_acquire_lock(acpi_[90 chars]sed)' != 'bool[477 chars]\n\n /* THIS IS UNEXPECTED. TEST WILL FAIL HER[140 chars]sed)'
-      bool prepare_report_consumer(unsigned long *flags,
-       const struct access_info *ai,
-       struct other_info *other_info);
-      
-       int tcp_sigpool_start(unsigned int id, struct tcp_sigpool *c);
-      
-       bool undo_report_consumer(unsigned long *flags,
-       const struct access_info *ai,
-       struct other_info *other_info);
-      
-       void debugfs_enter_cancellation(struct file *file,
-       struct debugfs_cancellation *c);
-      
-       void debugfs_leave_cancellation(struct file *file,
-       struct debugfs_cancellation *c);
-      
-    +  /* THIS IS UNEXPECTED. TEST WILL FAIL HERE */
-    + 
-       acpi_cpu_flags acpi_os_acquire_lock(acpi_spinlock lockp);
-      
-       void acpi_os_release_lock(acpi_spinlock lockp,
-       acpi_cpu_flags not_used)
-    
-    
-    ----------------------------------------------------------------------
-    Ran 1 test in 0.001s
-    
-    FAILED (failures=1)
-
-[1] This error was caused when I applied this patch:
-
-    --- a/tools/unittests/kdoc_xforms.py
-    +++ b/tools/unittests/kdoc_xforms.py
-    @@ -637,6 +637,8 @@ class TestRealUsecases(TestCaseDiff):
-                 void debugfs_leave_cancellation(struct file *file,
-                                                 struct debugfs_cancellation *c);
- 
-    +            /* THIS IS UNEXPECTED. TEST WILL FAIL HERE */
-    +
-                 acpi_cpu_flags acpi_os_acquire_lock(acpi_spinlock lockp);
- 
-                 void acpi_os_release_lock(acpi_spinlock lockp,
-
-
-
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Acked-by: Randy Dunlap <rdunlap@infradead.org>
+Tested-by: Randy Dunlap <rdunlap@infradead.org>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
-v4:
-- minor cleanups at the description on the first 30 patches;
-- picked paches from this series:
-    https://lore.kernel.org/linux-doc/cover.1769500383.git.mchehab+huawei@kernel.org/
-- added patches to make easier for kernel-doc to be used on
-  other projects (QEMU currently uses it)
-- did some extra fixes at NestedMatch for some corner cases;
-- added patches to improve man pages output;
-- unittests were revamped.
+ tools/lib/python/kdoc/kdoc_re.py | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-v3:
-- improved the unittest helper to allow adding in the future
-  a runner to create a test suite directly;
-- added unittest to tools/python library documentation;
-- improved comments at the new modules;
-- did several cleanups at the new logic;
-- added a fix for NestedMatch not remove ";" at the end,
-  mimicing the behavior of KernRe;
-- moved transforms to a separate module;
-- replaced all regexes to parse macros with the new CFunction
-  alias for NestedMatch.
-
-v2:
-- added 10 new patches adding support at NestedMatch
-  to properly group and replace arguments with \1, \2, ...
-
-Mauro Carvalho Chehab (39):
-  docs: kdoc_re: add support for groups()
-  docs: kdoc_re: don't go past the end of a line
-  docs: kdoc_parser: move var transformers to the beginning
-  docs: kdoc_parser: don't mangle with function defines
-  docs: kdoc_parser: add functions support for NestedMatch
-  docs: kdoc_parser: use NestedMatch to handle __attribute__ on
-    functions
-  docs: kdoc_parser: fix variable regexes to work with size_t
-  docs: kdoc_parser: fix the default_value logic for variables
-  docs: kdoc_parser: add some debug for variable parsing
-  docs: kdoc_parser: don't exclude defaults from prototype
-  docs: kdoc_parser: fix parser to support multi-word types
-  docs: kdoc_parser: add support for LIST_HEAD
-  docs: kdoc_re: properly handle strings and escape chars on it
-  docs: kdoc_re: better show KernRe() at documentation
-  docs: kdoc_re: don't recompile NestedMatch regex every time
-  docs: kdoc_re: Change NestedMath args replacement to \0
-  docs: kdoc_re: make NestedMatch use KernRe
-  docs: kdoc_re: add support on NestedMatch for argument replacement
-  docs: kdoc_parser: better handle struct_group macros
-  docs: kdoc_re: fix a parse bug on struct page_pool_params
-  docs: kdoc_re: add a helper class to declare C function matches
-  docs: kdoc_parser: use the new CFunction class
-  docs: kdoc_parser: minimize differences with struct_group_tagged
-  docs: kdoc_parser: move transform lists to a separate file
-  docs: kdoc_re: don't remove the trailing ";" with NestedMatch
-  docs: kdoc_re: prevent adding whitespaces on sub replacements
-  docs: xforms_lists.py: use CFuntion to handle all function macros
-  docs: kdoc_files: allows the caller to use a different xforms class
-  docs: kdoc_re: Fix NestedMatch.sub() which causes PDF builds to break
-  docs: sphinx-build-wrapper: allow -v override -q
-  tools: sphinx-build-wrapper: improve its help message
-  docs: kdoc_files: document KernelFiles() ABI
-  docs: kdoc_output: add optional args to ManOutput class
-  docs: sphinx-build-wrapper: better handle troff .TH markups
-  docs: kdoc_output: use a more standard order for .TH on man pages
-  docs: kdoc_output: describe the class init parameters
-  docs: kdoc_output: pick a better default for modulename
-  docs: python: add helpers to run unit tests
-  tools: unittests: add tests for kernel-doc NestedMatch and KernRe
-
-Randy Dunlap (2):
-  docs: kdoc_parser: ignore context analysis and lock attributes
-  docs: kdoc_parser: handle struct member macro
-    VIRTIO_DECLARE_FEATURES(name)
-
- Documentation/tools/kdoc_parser.rst   |   8 +
- Documentation/tools/python.rst        |   2 +
- Documentation/tools/unittest.rst      |  24 +
- tools/docs/kernel-doc                 |   1 -
- tools/docs/sphinx-build-wrapper       |  50 +-
- tools/lib/python/kdoc/kdoc_files.py   |  54 ++-
- tools/lib/python/kdoc/kdoc_output.py  |  73 ++-
- tools/lib/python/kdoc/kdoc_parser.py  | 182 ++-----
- tools/lib/python/kdoc/kdoc_re.py      | 242 +++++++---
- tools/lib/python/kdoc/xforms_lists.py | 108 +++++
- tools/lib/python/unittest_helper.py   | 348 ++++++++++++++
- tools/unittests/kdoc_xforms.py        | 654 ++++++++++++++++++++++++++
- 12 files changed, 1515 insertions(+), 231 deletions(-)
- create mode 100644 Documentation/tools/unittest.rst
- create mode 100644 tools/lib/python/kdoc/xforms_lists.py
- create mode 100755 tools/lib/python/unittest_helper.py
- create mode 100755 tools/unittests/kdoc_xforms.py
-
+diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
+index 2816bd9f90f8..19e777e2c97e 100644
+--- a/tools/lib/python/kdoc/kdoc_re.py
++++ b/tools/lib/python/kdoc/kdoc_re.py
+@@ -106,6 +106,13 @@ class KernRe:
+ 
+         return self.last_match.group(num)
+ 
++    def groups(self):
++        """
++        Returns the group results of the last match
++        """
++
++        return self.last_match.groups()
++
+ 
+ class NestedMatch:
+     """
 -- 
 2.52.0
 
