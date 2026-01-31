@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oFgNIukQfmkqVQIAu9opvQ
+	id 2PWLI+0QfmkqVQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:45 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:49 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57EE8C2495
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A1F4C24D4
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Jan 2026 15:25:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 83EEC83BD4;
-	Sat, 31 Jan 2026 14:25:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C43240AEB;
+	Sat, 31 Jan 2026 14:25:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w3d6Qkq-bGBi; Sat, 31 Jan 2026 14:25:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eZl6njfr0jEV; Sat, 31 Jan 2026 14:25:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C79AD83D41
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B277C40B61
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1769869539;
-	bh=3PSI7gZx8iaBeNdujHBnlJpL7/HXugXtICQR0Wy+bF0=;
+	s=default; t=1769869544;
+	bh=Y/p8i7TblQHKirA2Wa6TPSzqqAJI7/6Bq5fN7qqDJw0=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=J+Y4cVRlWpGQeTLHr+DfcjcMYwW2il37DdoI7TFreKBeuuZ5chfTNU1qGS3x2v+3O
-	 LusZdJII0STWBtjO8FDPZiyLQJMGhZMaH0/683gHhtfGHP25+5WK463EK3/uFw1yqy
-	 MclQCNmgh2tS9V/VUL/x40tksujWjtWKPcXTF4p7hagfLRUwYl4cPRJVIm8EeLZxTU
-	 +buN5gH/E+Ny5BBl28zTX4BrBKmK3NrnybpjDuKfXZU2UherFnpoQATZ3TdqRGvAqX
-	 /kJQqAfpKaeArrrQI+ywC4I3kHisvnl5vxxTS7xSKUelUE8XSR90uHDVdEW+WOse9b
-	 ghd0HjWE+snoQ==
+	b=h7+QJm51wQsATty9XZFgmL/RD3f3hnlJ9qpguHmi2jHKl0oZ5YGWjcQdd+GaXaKn9
+	 tnorQuC1HNMZEBnehEzOVpryG0nol5RyA8pUwZllx/ovvIKXHjMg9MDwJ7iONvj80h
+	 DGWkcVOVHX8sLf4DvzQMZ+tAkiiRQ8WyrIybRh0OM1rE06DI5E4ho510i3GFaFxsqc
+	 ZdESBa6q9dKChpTfoAieVJN/FHMDBFV/+L5vNtE0rbA7pSy9NEwnXckl/B3IMM9pTG
+	 2gKkquWKn1fQRH7GA8i5rVbh2Z9DWGz3VDt3I21tTDp5U+YaAT6XNAxvwdasBuCh5q
+	 hT54p2l3OuaMA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C79AD83D41;
-	Sat, 31 Jan 2026 14:25:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B277C40B61;
+	Sat, 31 Jan 2026 14:25:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 0E2B125F
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 175D369
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 310A083BF3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A295560B52
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OxO301B7jocZ for <intel-wired-lan@lists.osuosl.org>;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1Nk6TEhpYEkC for <intel-wired-lan@lists.osuosl.org>;
  Sat, 31 Jan 2026 14:25:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
  helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1AF6B83BBF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1AF6B83BBF
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CF34B60B44
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF34B60B44
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1AF6B83BBF
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CF34B60B44
  for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 4548344453;
+ by sea.source.kernel.org (Postfix) with ESMTP id 2C10744428;
  Sat, 31 Jan 2026 14:25:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A8E79C2BCFF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C03EC2BCF7;
  Sat, 31 Jan 2026 14:25:21 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vmBuZ-0000000AVl6-3ii2; Sat, 31 Jan 2026 15:25:19 +0100
+ id 1vmBuZ-0000000AVlA-3q05; Sat, 31 Jan 2026 15:25:19 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -71,8 +71,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Sat, 31 Jan 2026 15:24:55 +0100
-Message-ID: <5429d80aaf51f22a8b840f269ef2e0a2b55bca82.1769867953.git.mchehab+huawei@kernel.org>
+Date: Sat, 31 Jan 2026 15:24:56 +0100
+Message-ID: <d6e000cb1bf6fd56410cbf6bcdfcb8a790d70dfe.1769867953.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1769867953.git.mchehab+huawei@kernel.org>
 References: <cover.1769867953.git.mchehab+huawei@kernel.org>
@@ -81,22 +81,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1769869521;
- bh=yHTvoLbqPGgQzPgBOzeytRzZYEiySFBnO0ERiQ2SquU=;
+ bh=k3Exn/v9pCnRWah8GG4TA6vNRtpJjwGM1Bhrsrl1p0Y=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ih6ncNprGLq//Yqu8qYVTYKtlrKIjoBVXKfVLoguaydHod2z+8k7gZ6WyA/N99XnD
- aVmqJ1ksWogW5q1zJ91xrSLLDm8+9PFa7aAf5ibzhqslu1QAOCI58+mOTpypB3Tfhh
- 24l13tvvffnuD1TAOLXKEkN36JwdtG8XHPr/hbglzW0F4e1U8+yY0udtZ0IC+VO2/e
- Mv1cgFZh8gH6ux25BlTIZJjc4wgHzRTvTe1G1uflypKUwYQj4RLxZvVulqDimJURbK
- DhHUMw4HXQzQn3tlxcnDOdXyskwU27kvekbm8SddgOvCAzKSCTc0c3aszXzWrnv3P+
- WjC4vo4U+ZG3g==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=OvUudNjX9xrBKQrvkqkcZvMH601ogLtpT+0oXRR2dpWAB8f/780ewGG6WMxsM4r+R
+ /qWk8x9l0KQ+MgNRhpX4po7LY32bs0eG0GFxYyyirb35OPfCFmfoIPV8AjDA7/iJI2
+ eKvAxJ1V1tSeElsStiIz0ihE97MXE0GWf7j0B0YuflF9atJAjEJOkQ6qM5gxq/rScA
+ G8jmIUndsVxh2xGzjPbaEOtmhKFvz6p0RF0FzQu9w5htZQCpQxd+ViYBW0q8tmTZh6
+ DqT4cEGbpvCSHbwhiJbhyPU5D70/byqprc2r1nJzAmrVm0FZsXWVDxFGpsfuS2US+T
+ ya7v53B2g7Zhg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ih6ncNpr
-Subject: [Intel-wired-lan] [PATCH v4 21/41] docs: kdoc_parser: better handle
- struct_group macros
+ header.a=rsa-sha256 header.s=k20201202 header.b=OvUudNjX
+Subject: [Intel-wired-lan] [PATCH v4 22/41] docs: kdoc_re: fix a parse bug
+ on struct page_pool_params
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,17 +112,17 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TAGGED_FROM(0.00)[huawei];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email];
 	RCVD_TLS_LAST(0.00)[];
+	TAGGED_FROM(0.00)[huawei];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
@@ -131,62 +131,85 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,intel.com:email];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.990];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.993];
 	RCPT_COUNT_SEVEN(0.00)[10];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 57EE8C2495
+X-Rspamd-Queue-Id: 5A1F4C24D4
 X-Rspamd-Action: no action
 
-Instead of converting them on two steps, implement a single
-logic to parse them using the new sub functionality of
-NestedMatch.sub().
+The struct page_pool_params definition has a private
+definition on it:
+
+    struct page_pool_params {
+	struct_group_tagged(page_pool_params_fast, fast,
+		unsigned int	order;
+		unsigned int	pool_size;
+		int		nid;
+		struct device	*dev;
+		struct napi_struct *napi;
+		enum dma_data_direction dma_dir;
+		unsigned int	max_len;
+		unsigned int	offset;
+	);
+	struct_group_tagged(page_pool_params_slow, slow,
+		struct net_device *netdev;
+		unsigned int queue_idx;
+		unsigned int	flags;
+    /* private: used by test code only */
+		void (*init_callback)(netmem_ref netmem, void *arg);
+		void *init_arg;
+	);
+   };
+
+This makes kernel-doc parser to miss the end parenthesis of
+the second struct_group_tagged, causing documentation issues.
+
+Address it by ensuring that, if are there anything at the stack,
+it will be placed as the last part of the argument.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- tools/lib/python/kdoc/kdoc_parser.py | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ tools/lib/python/kdoc/kdoc_re.py | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
-index 3a5614106af7..d2eb93f9d489 100644
---- a/tools/lib/python/kdoc/kdoc_parser.py
-+++ b/tools/lib/python/kdoc/kdoc_parser.py
-@@ -124,10 +124,11 @@ struct_xforms = [
-     # matched. So, the implementation to drop STRUCT_GROUP() will be
-     # handled in separate.
-     #
--    (KernRe(r'\bstruct_group\s*\(([^,]*,)', re.S), r'STRUCT_GROUP('),
--    (KernRe(r'\bstruct_group_attr\s*\(([^,]*,){2}', re.S), r'STRUCT_GROUP('),
--    (KernRe(r'\bstruct_group_tagged\s*\(([^,]*),([^,]*),', re.S), r'struct \1 \2; STRUCT_GROUP('),
--    (KernRe(r'\b__struct_group\s*\(([^,]*,){3}', re.S), r'STRUCT_GROUP('),
-+    (NestedMatch(r'\bstruct_group\s*\('), r'\2'),
-+    (NestedMatch(r'\bstruct_group_attr\s*\('), r'\3'),
-+    (NestedMatch(r'\bstruct_group_tagged\s*\('), r'struct \1 { \3 } \2;'),
-+    (NestedMatch(r'\b__struct_group\s*\('), r'\4'),
-+
-     #
-     # Replace macros
-     #
-@@ -153,7 +154,6 @@ struct_xforms = [
-     (KernRe(r'DEFINE_DMA_UNMAP_ADDR\s*\(' + struct_args_pattern + r'\)', re.S), r'dma_addr_t \1'),
-     (KernRe(r'DEFINE_DMA_UNMAP_LEN\s*\(' + struct_args_pattern + r'\)', re.S), r'__u32 \1'),
-     (KernRe(r'VIRTIO_DECLARE_FEATURES\(([\w_]+)\)'), r'union { u64 \1; u64 \1_array[VIRTIO_FEATURES_U64S]; }'),
--    (NestedMatch(r'\bSTRUCT_GROUP\('), r'\0'),
- ]
+diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
+index 858cc688a58f..5f455ffff7b2 100644
+--- a/tools/lib/python/kdoc/kdoc_re.py
++++ b/tools/lib/python/kdoc/kdoc_re.py
+@@ -201,6 +201,9 @@ class NestedMatch:
+         """
  
- #
+         stack = []
++        start = 0
++        offset = 0
++        pos = 0
+ 
+         for match_re in self.regex.finditer(line):
+             start = match_re.start()
+@@ -250,6 +253,11 @@ class NestedMatch:
+                         yield start, offset, pos + 1
+                         break
+ 
++        # When /* private */ is used, it may end the end delimiterq
++        if stack:
++            stack.pop()
++            yield start, offset, len(line) + 1
++
+     def search(self, line):
+         """
+         This is similar to re.search:
 -- 
 2.52.0
 
