@@ -2,232 +2,110 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sAJbFbdpgGlA7wIAu9opvQ
+	id 5Ej/Hfl5gGnE8wIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 10:09:11 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 11:18:33 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A39DBC9ED1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 10:09:10 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55B2BCAC32
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 11:18:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 47AA8409D2;
-	Mon,  2 Feb 2026 09:09:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7838840A5A;
+	Mon,  2 Feb 2026 10:18:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W0f6o-SKuNa3; Mon,  2 Feb 2026 09:09:06 +0000 (UTC)
+ id Fjyois-LRsDJ; Mon,  2 Feb 2026 10:18:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A625D409B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C807F40A4E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770023346;
-	bh=FZbFmM1sSzCQ48Bb/4DFgY2gVhwseiqx/ml9Yum4niE=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=sAYonqr/GF+p6g3GM/5nRVF0SRJUCv1lYF7KPrsH5akdV9AZueI/dHs5LLN26vhPi
-	 XmKzme+0o/0knXyQHzSiYe1e3IuNEwlfX5Z1+PWQn7S3vpmKaS7ltam/p/d7rlV+yL
-	 BGwVy4VcUpcTGqqKdzaXI67V+4FVXH75UCEpB3KX2YmQQA+pCIreH/l1eZNJqFC9DB
-	 E+XHViSPXAw+DT0CRrK/qk5Z/v3taEMHpX0Rrjtxla6sYz3b5GDxYeQ1LBF82VArq0
-	 J8mkqTcAFQLsmO3T/kVsb4jj38t4SeQgQGRZCpHMsPrhgeBYmPIJ4np/obd/15Q/N8
-	 Jy0eutJJ+JhPw==
+	s=default; t=1770027508;
+	bh=QwkSiX1Hp8rIk3qxgAOsnlMj5FGX8DKdzbss4//3U/M=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=t8PK6+GqwJkLgXV2pO6DoHV3NKSDeLdnJaERmXapGF3BpaT+H9iCTwAdbIU8ecdrR
+	 9TG2gfA++xui3mKrPHjuQnAxQRMvHNpgvSAajhjB5ckKI20o2qJ89Fs4yseN43Cr7l
+	 B9M91R/ZBtU1cD9jlbNmE71xmk8lDWhC5uDZrTODCIQNDTPul1xBVjXzMPyBEQqp9D
+	 rxFf5tqQeUil0jpL7S6m5lFjNT7GIlFs4F8g9XaHbkB3AYpz1xVHM1y6g73GraUVge
+	 YvU5gT4DsLcBuw7CrN6yUGAm+ABv0dZx/ZPwgTPpBlKW/NUg6oPYpCzDFhuapz2jOh
+	 M1Tyr3k5htVHA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A625D409B4;
-	Mon,  2 Feb 2026 09:09:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C807F40A4E;
+	Mon,  2 Feb 2026 10:18:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id AA7E4149
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 09:09:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1CEB21E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 10:18:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 99ACA40257
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 09:09:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0B57582FF9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 10:18:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PEjsUDtNT-wC for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Feb 2026 09:09:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ut8vPp9dMj6K for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Feb 2026 10:18:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 860E140245
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 860E140245
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 860E140245
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 09:09:03 +0000 (UTC)
-X-CSE-ConnectionGUID: AUN/D0h9R2eMpzn2HknF5Q==
-X-CSE-MsgGUID: g/o/VnZTQAS8uOAAnDWE4A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11689"; a="70896678"
-X-IronPort-AV: E=Sophos;i="6.21,268,1763452800"; d="scan'208";a="70896678"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2026 01:09:03 -0800
-X-CSE-ConnectionGUID: UxIMEqjtQTWBXdDb0pEupQ==
-X-CSE-MsgGUID: Aq4uuG2tTjyAUNdfah0KJQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,268,1763452800"; d="scan'208";a="208567688"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Feb 2026 01:09:02 -0800
-Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Mon, 2 Feb 2026 01:09:01 -0800
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35 via Frontend Transport; Mon, 2 Feb 2026 01:09:01 -0800
-Received: from PH7PR06CU001.outbound.protection.outlook.com (52.101.201.65) by
- edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Mon, 2 Feb 2026 01:09:01 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ei9uba2d2sBXbh1Dw1FDLmUXBgX+zIyknPh+rCcjh8RuwFpXY2UCoiKKbtLJO936EZK9mvbg0oeWQPLhEWFQKUPlNCJBVLP1SeE4eb3uw2RnD6H6AyADc6ha7Y3WYNNDetndrP1vfu9eUMO0VPnXRENcS6FJpF3s0CS9OkilyC09etMw8d4qrQgF82snR5A8quHnTnWrzXwPX9PIVmtGsg4P/FXOgRXjczGSaDtLwSnSlGAOX0WE9YlcfZmptEf09WkR/Q9RSTR7mj+wc75HeVeq7GM5/vyTixAn1SrJto5If2+jhQy4Bnk+SHFsmtYeV+7DIz1+jHfA6hXg6TlWgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FZbFmM1sSzCQ48Bb/4DFgY2gVhwseiqx/ml9Yum4niE=;
- b=ssDU7f/QrF3rJuWuMI/4wkJoh5QfGN05kW3JCYgEYOzuptkenMBZBCtvSB/5Y1sl8dvug7Dn6K1ADW9ZOajDGUvf4ztdUCy62OdkjkvwKKMqtRSFvArcqc37u8JMviLzXC7TUJ8HMJewCBkNRqBWluRjIlCQz/WE0c3tiwB6XMNgNpWgpb0Hr5tfNTBvfKHez7FbR6ky59/qt0tYBMwzvadSvmn+ESOP/7YloU1yt/Kcm3enhPolHT1xnAJMbfczVKsd/M3X3BLAQDJCvuHBKd38FpHXIVibsUnNfpxbaqi62nB2HGcUFNMDwly7zInFSef5656MLE6+fTC3If0pPw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by SJ0PR11MB4989.namprd11.prod.outlook.com (2603:10b6:a03:2d9::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.16; Mon, 2 Feb
- 2026 09:08:59 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9564.014; Mon, 2 Feb 2026
- 09:08:59 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Kohei Enju <kohei@enjuk.jp>
-CC: "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "edumazet@google.com" <edumazet@google.com>, "horms@kernel.org"
- <horms@kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "kohei.enju@gmail.com"
- <kohei.enju@gmail.com>, "kuba@kernel.org" <kuba@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-Thread-Topic: [PATCH v2 iwl-next 1/3] igc: prepare for RSS key get/set support
-Thread-Index: AQHcks8Hemhp0uzvwkyT/L2MZ2BUvLVvDdXggAAS+ACAAACrYA==
-Date: Mon, 2 Feb 2026 09:08:59 +0000
-Message-ID: <IA3PR11MB8986E05683AE7A28AA932B39E59AA@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <IA3PR11MB89866EDA0E5756FBE635AF8DE59AA@IA3PR11MB8986.namprd11.prod.outlook.com>
- <20260202090704.13025-1-kohei@enjuk.jp>
-In-Reply-To: <20260202090704.13025-1-kohei@enjuk.jp>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SJ0PR11MB4989:EE_
-x-ms-office365-filtering-correlation-id: c79c13d9-26b3-4f71-a770-08de623ab390
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|1800799024|366016|7053199007|38070700021; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?IqTGIRdjlMhWTFhqJv1Y85JMh793nrokre6JNoilwkV0ad2nzhue/h+ehh3a?=
- =?us-ascii?Q?w9k3PwJJ3Xe6p/E3AchVgMPExl7r28moe82Te+vFDE5hkj/kKzCAaJGmLMr2?=
- =?us-ascii?Q?1DO91gnFC1cWcjXep6TUFYf8O37anS8QXRo2GASV1kVNj/MFHTz/kuhExroH?=
- =?us-ascii?Q?KYrMEVjK0xDEQpLzJvNk4EkLj5OLmFVUwJfSz2amfLT9QAt45U+WJhG7YOrW?=
- =?us-ascii?Q?UAAahEUPB4WpMIR5Bq5INxT3GLBSMBtTpqZ8yuVziPV/hZNoTFdK/hjsy33l?=
- =?us-ascii?Q?b1/137tupNzfO9GjowkFKD8GF0+a18GwRVTkjfvjtIrvTezCs6dRmxIvZeM6?=
- =?us-ascii?Q?TvpJy9V3VOtbxU9iD2lTiRps3HVCrOLBtW5j++BKR9+OH7e0+JsBuUofTFIs?=
- =?us-ascii?Q?BQkUhEeSItP5Q4GBQMQDb9Qlgzw9BNmV8puD6O+uFXXZjaejvnAgh0L3IwZb?=
- =?us-ascii?Q?X0vUGS763Xt2GB3B+goiuKylGtGLpvc9URsGGF1x+PgvvXqD1+KmZNOH9sXv?=
- =?us-ascii?Q?CfQ4qIZP6XSdakLLOu/mRJrthjyOkAeqQu4+DF6F5nCqX6GZnLyGeR0SbPkK?=
- =?us-ascii?Q?a5pBRbUXMWbWWVUcj65ECqVmod4ky/HA6/7cVNvws0uQJRVtqD4AnKXlTJLb?=
- =?us-ascii?Q?CayQzVu1CznU3/aLkZG/pexuRU2Lg/mmqt57a7Kd8F+7sMRXRr+FHDLW162f?=
- =?us-ascii?Q?W3KFvaZnl2yv8pMpnuis0CAlbBMNzl5Ig2ierafhmvcDMiZ7H+fqv1ZiwSSD?=
- =?us-ascii?Q?AaqTiAmyY7hgI0H5jIzxipLpcvLgpg91qxly3RF0+pAcDs+A8CQ+SMjYMj53?=
- =?us-ascii?Q?PBeoAZjiObBpWRyn7HdiYsE8zNGvjwwbtXlFZTE0+K2yV34kWoCTS5McrZ9Q?=
- =?us-ascii?Q?75KgEm+ZZ1EjOPWeTpw0p7RGg8epCW9poQGDwsDymYWQUWAX8fDQAmE/EX+/?=
- =?us-ascii?Q?pYAy1Dw/03x+AtvMA1m8lkix9gngUnRyKLbWNkAau9KI6pFz02FePKEQ1RJG?=
- =?us-ascii?Q?99nemq/gBELiT2KZfKFnc4ljbfxylsC8FeQ/H1q49/nVzhRQXV9uKNdJhtkS?=
- =?us-ascii?Q?BwqO8bBNJE8c3fRyUb+yGZyidGwqFJB8NE8vmt831f7cRXOlPOT8Y4DDWCQB?=
- =?us-ascii?Q?SWZGjWHW0g2gzLsWbtKigYchYhj/b7evpmyG6Wu6j80qFLcwuu46cZsq9U9f?=
- =?us-ascii?Q?WutK9yUHWGfEPmCIibG4h1XQjLkHqZZRUSGUDSnEa8w1+0inF/ylI0Vo/kQF?=
- =?us-ascii?Q?UardjLwdmmPi6kzt0vmqhRzL1JgrkfEjR11D9rdjcEuem8RPO0lsqDcLjHfw?=
- =?us-ascii?Q?ClAhd5CAlYLPI0w7Tzeg+yfel895GwG6uSe6K2OwF0G8Zcsju+/OPFF/Wqix?=
- =?us-ascii?Q?erBOU6PY2w6enK0azZ+xQNjPX/YMe3Kp/rpdVESaaAnEVEKPKFTv/fdzy2wS?=
- =?us-ascii?Q?2T2GUCsxNbWuf8jiV7lSKQfbYuEweIcJVJMSfHMRruBwVuYPbA2/euILOZS8?=
- =?us-ascii?Q?NQO81MJbFi8opRi7jCsbLGIz91/ExnSv7UMERYrHHfgSKAY7Ak7IiEem+jUR?=
- =?us-ascii?Q?PSNNOFgUQdfpgFfm4LBxL8QHGSuw9ECK3u8lTKIWS1+6bgUj2vyay81EMydf?=
- =?us-ascii?Q?O+wM49GJ75omYkhwAMVJfvI=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(1800799024)(366016)(7053199007)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?GdQDc7mSRe1RMGa14fVpHhId65MD+J4HH6mdZb34tdwjFgCK5uVFHMCN+6oT?=
- =?us-ascii?Q?+p4DlZtQ51ea6rJmJb6cPh3X3U2kjbPWxmZujUzgGF/062PJDaquITXLlVA7?=
- =?us-ascii?Q?NgbEO6t5+AKRqAEeh349dRSA/SGyNsJG2h1WDjYyBm77c8vYdaOJSv6YZLVr?=
- =?us-ascii?Q?S+vQNybnNOcXzybMAXWC+vb9BSjJedzi5QHQpSdyT0i5WgWQR0OLbX8RMKQl?=
- =?us-ascii?Q?Ldo3drUGmaIQ6tGYR7/ZuOc/A+g1eAXStMYdEmSbiwkRkJDBYjSAd8Sfclyv?=
- =?us-ascii?Q?2o9Rpdj1TXqI4VDI1nfX94JMy+dZ/5SNBobfcO60eiBFi18gu1snNivFdjiW?=
- =?us-ascii?Q?qEP1zxRSWQ5XcIMQArJNRKqTjU+PuCAJ7jVRuCgOytA75Ob+ZWcBVwLj1McU?=
- =?us-ascii?Q?gGiG/kAbbzQ9zUkUjvjH/F0DQbbNfxe7KuqBnWgXbg0gsNlv+Hl2VCe22CA0?=
- =?us-ascii?Q?cSBj0UK1Dq9mVdv7VgK9NkCQwlkFpuSKVCPHUbXK+zFd6WO6k3eItfOlEyid?=
- =?us-ascii?Q?BE9qzJHGv0CyTE1h4fYSGTav5ttLSO4WVBrxVYJrTAk61zYxicrHPhMC9kZG?=
- =?us-ascii?Q?yctZgZrRAIfuVfl9piJKg6f0nL/o5P//eJ0724muTobjMEU5sRRQSr3Y+WLe?=
- =?us-ascii?Q?V38WLskUujOlfJ+H0oBNLSBtbKAA9csY1/IfVRF2mUaK32/icdgPrjJ1fBPb?=
- =?us-ascii?Q?FUPpbiXD6YHpehBDW0moBOAjPeodeVNY42k9hSNyYPOXpA7THgyeq6NGCckN?=
- =?us-ascii?Q?hFb5yasr/EV9JPZ2vQParDIkgCQzB/KYu2i63/8i8uawlZEVfikeIYNjO8/l?=
- =?us-ascii?Q?npY/XxljuCAjOH3qnoqwrUf7R7ji1qE3jOHF8hX3keUoDpD2jzm0zW5ndExw?=
- =?us-ascii?Q?RNq3O7KkPiOS8z2+y+ZFYYnpCoiNBZNsleXaLJgaHYmvfQ8Bl3PWqOxthd07?=
- =?us-ascii?Q?k1BSImHwF2rwWE4AdafQoSQ/mh/87AUdZXXZN2Cz1rRjTbs7+/MFPeZVPLVx?=
- =?us-ascii?Q?oH2GegrmGRfxaHkwsq3oFj5oit3C6/qygQt3i3XNqBiagwUGWiU/cj7cszEj?=
- =?us-ascii?Q?nRRvPd9heznfNhnFN4arwKJxcRpySfLk05R7Ju/s8P1xPF3WnEKTkK1uWdFK?=
- =?us-ascii?Q?n3aw7pe9U224Af2KohfOMVm9Y5YETlG+r3543vAOF79vRZxAl15gRahPKqIr?=
- =?us-ascii?Q?fJgwb8oBmnKPi+j1PwDovJR2gjfzB9yiYUtuKCA9YEfrcbe+IcVTSu+8amic?=
- =?us-ascii?Q?IM7GtJuo2QxMCEOj6FjaJSS8+TVxUMbxRRV8vP6I8dxtYEHn/UnH+tCtqJMr?=
- =?us-ascii?Q?QrS6CANmr/1QTPZ5psFeNWBJP92BkTpmSHfBfP3PIexJF5n7YZ8vlCW/peKk?=
- =?us-ascii?Q?zq7+lJGC+27c3HIr/7jd9Daw7RJmHWXbJRXbCpYmbKZEfmG+w5T3nOWRA3YK?=
- =?us-ascii?Q?2hobkpkr5tFj8HZtegZuRdN/1CF4K+28QV4vfttH7TEcH3+MbZEAoEF62faU?=
- =?us-ascii?Q?z54uQLIzLwHUdfbB//SbAUEB99biPMrB+J2owcOgjKPBpIdarHSsOGsXqD+I?=
- =?us-ascii?Q?uNvzl89XJm82HWpBKZYk+322SRU87wS66pkoMym9ofqbEBlMEJEPB0Rm38DC?=
- =?us-ascii?Q?v3s1mfvVU1M+Gd9Xm2LtEKihMFlTDvDxrCSN/W7ARW5m9O3d/vTuMiEay8iz?=
- =?us-ascii?Q?bNc8chkq12vedZrydQT5XgDt99vV720B3pgCq9NaKRm/jBTK4sHumvByhxIn?=
- =?us-ascii?Q?cTCBfC0cBw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E1EB782F98
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E1EB782F98
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E1EB782F98
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 10:18:24 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-261-EV51GaeONfiBLUq-hmGr9A-1; Mon,
+ 02 Feb 2026 05:18:22 -0500
+X-MC-Unique: EV51GaeONfiBLUq-hmGr9A-1
+X-Mimecast-MFC-AGG-ID: EV51GaeONfiBLUq-hmGr9A_1770027499
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 77DC2195606F; Mon,  2 Feb 2026 10:18:19 +0000 (UTC)
+Received: from rhel-developer-toolbox-latest (unknown [10.43.3.143])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 37F9D19560A2; Mon,  2 Feb 2026 10:18:16 +0000 (UTC)
+From: Michal Schmidt <mschmidt@redhat.com>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Michal Kubiak <michal.kubiak@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Mon,  2 Feb 2026 11:17:54 +0100
+Message-ID: <20260202101755.315528-1-mschmidt@redhat.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c79c13d9-26b3-4f71-a770-08de623ab390
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Feb 2026 09:08:59.2899 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2dtZJuDWHh/M/KMyXRO6ZtCOfrkiio9Awc+Vr7iQcavHGRUMUla7YUvp4D71h0JiiGFAYHUK8+6D88oLKbpn1Jwx9elPYp4c/4jv2RdJWxQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4989
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770023344; x=1801559344;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=EbkztBHWEjXo353ezdMvTM0PDoyrh73XmQxHiAU9V0E=;
- b=N9N1CsCA1f3zltM4oe1DekK/xyWDwCkCRiIfXXwfcRY5AkUDmGrBsWzc
- LC6hTVa97dZ9kWO4DFP6bO+e3XvuoKLhkJRVgZG4JFrtBKrmarFzsZqP/
- w2BosPxzkPSIn66/2YwhuzD1WaGu+sE3S5ssIL7XypKMy16CmsYF4V2l7
- iXF3PoU+CZiT5JaoCme8fGruzZopEMWI40AphmId/bycAaio/ZXrqkJE+
- YzlKHfjWROZDB9hstjTgQ6esFGhVH+wxAZxhO0DD4t0n+Ntmbxi5bxMr2
- JixOn1HqxsuFup4FzIPmH+FfT7uoH/mWBuALL09eEXAfe/L3BISNu5xhs
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=N9N1CsCA
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 1/3] igc: prepare for RSS
- key get/set support
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1770027504;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=QwkSiX1Hp8rIk3qxgAOsnlMj5FGX8DKdzbss4//3U/M=;
+ b=Vj/0PrfIQDl2mesD2IDxUy3zRl00k5fqlbqCZ0KCP572hdFJsV0Smquam9531mQiSfqYIK
+ PDdDfzD8HcBvsYg1rOCQ1+Fl1fPNkyJ1UNQpFNkps0NCFyC3fky0Rs6kP90tSTLgTUE2+4
+ /dBHAO8+BQhxYwNFHeBQiQ5rvtIDR00=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Vj/0PrfI
+Subject: [Intel-wired-lan] [PATCH net] ice: fix crash in ethtool offline
+ loopback test
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -243,124 +121,180 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.89 / 15.00];
+X-Spamd-Result: default: False [3.79 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	MAILLIST(-0.20)[mailman];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:kohei@enjuk.jp,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:horms@kernel.org,m:kohei.enju@gmail.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:pabeni@redhat.com,m:przemyslaw.kitszel@intel.com,m:vitaly.lifshits@intel.com,m:andrew@lunn.ch,m:koheienju@gmail.com,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksander.lobakin@intel.com,m:jacob.e.keller@intel.com,m:michal.kubiak@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
+	FORGED_SENDER(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_CC(0.00)[lunn.ch,intel.com,davemloft.net,google.com,kernel.org,lists.osuosl.org,gmail.com,vger.kernel.org,redhat.com];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[13];
+	MIME_TRACE(0.00)[0:+];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.994];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:email,osuosl.org:dkim,enjuk.jp:email,lunn.ch:email,intel.com:email,davemloft.net:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns]
-X-Rspamd-Queue-Id: A39DBC9ED1
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[10]
+X-Rspamd-Queue-Id: 55B2BCAC32
 X-Rspamd-Action: no action
 
+Since the conversion of ice to page pool, the ethtool loopback test
+crashes:
 
+ BUG: kernel NULL pointer dereference, address: 000000000000000c
+ #PF: supervisor write access in kernel mode
+ #PF: error_code(0x0002) - not-present page
+ PGD 1100f1067 P4D 0
+ Oops: Oops: 0002 [#1] SMP NOPTI
+ CPU: 23 UID: 0 PID: 5904 Comm: ethtool Kdump: loaded Not tainted 6.19.0-0.rc7.260128g1f97d9dcf5364.49.eln154.x86_64 #1 PREEMPT(lazy)
+ Hardware name: [...]
+ RIP: 0010:ice_alloc_rx_bufs+0x1cd/0x310 [ice]
+ Code: 83 6c 24 30 01 66 41 89 47 08 0f 84 c0 00 00 00 41 0f b7 dc 48 8b 44 24 18 48 c1 e3 04 41 bb 00 10 00 00 48 8d 2c 18 8b 04 24 <89> 45 0c 41 8b 4d 00 49 d3 e3 44 3b 5c 24 24 0f 83 ac fe ff ff 44
+ RSP: 0018:ff7894738aa1f768 EFLAGS: 00010246
+ RAX: 0000000000000000 RBX: 0000000000000000 RCX: 0000000000000000
+ RDX: 0000000000000000 RSI: 0000000000000700 RDI: 0000000000000000
+ RBP: 0000000000000000 R08: ff16dcae79880200 R09: 0000000000000019
+ R10: 0000000000000001 R11: 0000000000001000 R12: 0000000000000000
+ R13: 0000000000000000 R14: 0000000000000000 R15: ff16dcae6c670000
+ FS:  00007fcf428850c0(0000) GS:ff16dcb149710000(0000) knlGS:0000000000000000
+ CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ CR2: 000000000000000c CR3: 0000000121227005 CR4: 0000000000773ef0
+ PKRU: 55555554
+ Call Trace:
+  <TASK>
+  ice_vsi_cfg_rxq+0xca/0x460 [ice]
+  ice_vsi_cfg_rxqs+0x54/0x70 [ice]
+  ice_loopback_test+0xa9/0x520 [ice]
+  ice_self_test+0x1b9/0x280 [ice]
+  ethtool_self_test+0xe5/0x200
+  __dev_ethtool+0x1106/0x1a90
+  dev_ethtool+0xbe/0x1a0
+  dev_ioctl+0x258/0x4c0
+  sock_do_ioctl+0xe3/0x130
+  __x64_sys_ioctl+0xb9/0x100
+  do_syscall_64+0x7c/0x700
+  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+  [...]
 
-> -----Original Message-----
-> From: Kohei Enju <kohei@enjuk.jp>
-> Sent: Monday, February 2, 2026 10:06 AM
-> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> Cc: andrew+netdev@lunn.ch; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; davem@davemloft.net;
-> edumazet@google.com; horms@kernel.org; intel-wired-
-> lan@lists.osuosl.org; kohei.enju@gmail.com; kohei@enjuk.jp;
-> kuba@kernel.org; netdev@vger.kernel.org; pabeni@redhat.com; Kitszel,
-> Przemyslaw <przemyslaw.kitszel@intel.com>; Lifshits, Vitaly
-> <vitaly.lifshits@intel.com>
-> Subject: Re: [PATCH v2 iwl-next 1/3] igc: prepare for RSS key get/set
-> support
->=20
-> On Mon, 2 Feb 2026 07:59:55 +0000, "Loktionov, Aleksandr" wrote:
->=20
-> > > @@ -360,6 +362,7 @@ unsigned int igc_get_max_rss_queues(struct
-> > > igc_adapter *adapter);  void igc_set_flag_queue_pairs(struct
-> > > igc_adapter *adapter,
-> > >  			      const u32 max_rss_queues);  int
-> igc_reinit_queues(struct
-> > > igc_adapter *adapter);
-> > > +void igc_write_rss_key(struct igc_adapter *adapter);
-> > >  void igc_write_rss_indir_tbl(struct igc_adapter *adapter);  bool
-> > > igc_has_link(struct igc_adapter *adapter);  void igc_reset(struct
-> > > igc_adapter *adapter); diff --git
-> > > a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> > > b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> > > index 3172cdbca9cc..1b4075e7e8e6 100644
-> > > --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> > > +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
-> > I think here should be added include?
-> >
-> > #include <linux/unaligned.h> /* for get_unaligned_le32() */
-> >
-> > Isn't it?
->=20
-> Hi Alex, thank you for reviewing.
->=20
-> Compilation succeeds as is, and the header file is included indirectly
-> in the following path.
->=20
-> igc_ethtool.c
->   -> linux/if_vlan.h
->     -> linux/etherdevice.h
->       -> linux/unaligned.h
->=20
-> >
-> > > @@ -1460,6 +1460,26 @@ static int igc_ethtool_set_rxnfc(struct
-> > >net_device *dev,
-> > >  	}
-> > >  }
-> > >=3D20
-> > > +/**
-> > > + * igc_write_rss_key - Program the RSS key into device registers
-> > > + * @adapter: board private structure
-> > > + *
-> > > + * Write the RSS key stored in adapter->rss_key to the IGC_RSSRK
-> > > registers.
-> > > + * Each 32-bit chunk of the key is read using
-> get_unaligned_le32()
-> > > and
-> > > +written
-> > > + * to the appropriate register.
-> > > + */
-> > > +void igc_write_rss_key(struct igc_adapter *adapter) {
-> > > +	struct igc_hw *hw =3D3D &adapter->hw;
-> > > +	u32 val;
-> > > +	int i;
-> > > +
-> > > +	for (i =3D3D 0; i < IGC_RSS_KEY_SIZE / 4; i++) {
-> > > +		val =3D3D get_unaligned_le32(&adapter->rss_key[i * 4]);
-> > > +		wr32(IGC_RSSRK(i), val);
-> > > +	}
-> > > +}
-> > > +
-> >
-> > ...
-> >
-> > > --
-> > > 2.51.0
+It crashes because we have not initialized libeth for the rx ring.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Fix it by treating ICE_VSI_LB VSIs slightly more like normal PF VSIs and
+letting them have a q_vector. It's just a dummy, because the loopback
+test does not use interrupts, but it contains a napi struct that can be
+passed to libeth_rx_fq_create() called from ice_vsi_cfg_rxq() ->
+ice_rxq_pp_create().
+
+Fixes: 93f53db9f9dc ("ice: switch to Page Pool")
+Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_base.c    |  5 ++++-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c |  4 ++++
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 15 ++++++++++-----
+ 3 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index eadb1e3d12b3..f0da50df6791 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -124,6 +124,8 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
+ 	if (vsi->type == ICE_VSI_VF) {
+ 		ice_calc_vf_reg_idx(vsi->vf, q_vector);
+ 		goto out;
++	} else if (vsi->type == ICE_VSI_LB) {
++		goto skip_alloc;
+ 	} else if (vsi->type == ICE_VSI_CTRL && vsi->vf) {
+ 		struct ice_vsi *ctrl_vsi = ice_get_vf_ctrl_vsi(pf, vsi);
+ 
+@@ -662,7 +664,8 @@ static int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
+ 	u32 rx_buf_len;
+ 	int err;
+ 
+-	if (ring->vsi->type == ICE_VSI_PF || ring->vsi->type == ICE_VSI_SF) {
++	if (ring->vsi->type == ICE_VSI_PF || ring->vsi->type == ICE_VSI_SF ||
++	    ring->vsi->type == ICE_VSI_LB) {
+ 		if (!xdp_rxq_info_is_reg(&ring->xdp_rxq)) {
+ 			err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+ 						 ring->q_index,
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 3565a5d96c6d..e9f2618950c8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -1289,6 +1289,10 @@ static u64 ice_loopback_test(struct net_device *netdev)
+ 	test_vsi->netdev = netdev;
+ 	tx_ring = test_vsi->tx_rings[0];
+ 	rx_ring = test_vsi->rx_rings[0];
++	/* Dummy q_vector and napi. Fill the minimum required for
++	 * ice_rxq_pp_create().
++	 */
++	rx_ring->q_vector->napi.dev = netdev;
+ 
+ 	if (ice_lbtest_prepare_rings(test_vsi)) {
+ 		ret = 2;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index d47af94f31a9..bad67e4dc044 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -107,10 +107,6 @@ static int ice_vsi_alloc_arrays(struct ice_vsi *vsi)
+ 	if (!vsi->rxq_map)
+ 		goto err_rxq_map;
+ 
+-	/* There is no need to allocate q_vectors for a loopback VSI. */
+-	if (vsi->type == ICE_VSI_LB)
+-		return 0;
+-
+ 	/* allocate memory for q_vector pointers */
+ 	vsi->q_vectors = devm_kcalloc(dev, vsi->num_q_vectors,
+ 				      sizeof(*vsi->q_vectors), GFP_KERNEL);
+@@ -239,6 +235,8 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi)
+ 	case ICE_VSI_LB:
+ 		vsi->alloc_txq = 1;
+ 		vsi->alloc_rxq = 1;
++		/* A dummy q_vector, no actual IRQ. */
++		vsi->num_q_vectors = 1;
+ 		break;
+ 	default:
+ 		dev_warn(ice_pf_to_dev(pf), "Unknown VSI type %d\n", vsi_type);
+@@ -2424,14 +2422,21 @@ static int ice_vsi_cfg_def(struct ice_vsi *vsi)
+ 		}
+ 		break;
+ 	case ICE_VSI_LB:
+-		ret = ice_vsi_alloc_rings(vsi);
++		ret = ice_vsi_alloc_q_vectors(vsi);
+ 		if (ret)
+ 			goto unroll_vsi_init;
+ 
++		ret = ice_vsi_alloc_rings(vsi);
++		if (ret)
++			goto unroll_alloc_q_vector;
++
+ 		ret = ice_vsi_alloc_ring_stats(vsi);
+ 		if (ret)
+ 			goto unroll_vector_base;
+ 
++		/* Simply map the dummy q_vector to the only rx_ring */
++		vsi->rx_rings[0]->q_vector = vsi->q_vectors[0];
++
+ 		break;
+ 	default:
+ 		/* clean up the resources and exit */
+-- 
+2.52.0
+
