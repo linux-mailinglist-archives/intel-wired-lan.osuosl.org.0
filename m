@@ -2,80 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id qBSeDiXcgGnMBwMAu9opvQ
+	id EMJAMybcgGnMBwMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 18:17:25 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 18:17:26 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A2FBBCF78A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 18:17:24 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 45A93CF791
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Feb 2026 18:17:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CCB7B60BF9;
-	Mon,  2 Feb 2026 17:17:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E229181E09;
+	Mon,  2 Feb 2026 17:17:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yZSR-Oy-WH14; Mon,  2 Feb 2026 17:17:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id K9UpRLBdUsDf; Mon,  2 Feb 2026 17:17:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 081CD60C22
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 47BC481E64
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770052641;
-	bh=QV89xPUnCNJIH6v1OPSMlUsAUmfkwSqBeHfnsysjb1c=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1770052644;
+	bh=swufWl6SHGcyC7YD5gze37xCr7gFlNxzAIYlJ+GmO3U=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=chkTHpJYoqMJglt3fgCesZYh0Y8iCo6u7CFFoSwADVxrn+QsUuExG4oEvR1+8FHaG
-	 67mHO2yK6Xl3gFDR4Z86I/mplzKOalZB95Cm661hd1EfsdR/Z0ZOX6wIEqYDe+9wkL
-	 HD+wM7sJySHt7zF7hGkkgIiJW/+ymUfyvKSNAnuhbENv3cjvz81KQ/4GdPrcx4xr/G
-	 dkv/w/fnGcNSYr70XfZZGDKhp0suNq7QsMOQUk5utbTqPIy/xGAbFKvtMRu4Pk2biM
-	 2BqqbzLW8IttQmwcjcFRecYAC2iQQkhFXjaZVQUbMpKd2pevzuRV1hJIY/va5lb768
-	 5c559wbuy2Hdg==
+	 From;
+	b=Arff5ZS8iRDdRXPKTg/KvjYSSpx3yJsQLqx6V+xddceIZ/DpCnUeGLzl+9N341f59
+	 Q7EEFZPHfn3O7zTxADavD8JkNgLhxVPLV5vqgNii/zwB/rBdwqZ7x5e9Jq0T3NvqC3
+	 2YQryWtoucLYkZ3ZuTLJFKOY342xx81P4pUCY+VoW6EQP8WnY0B4CGSOkDGA3ZLUOd
+	 /VAPH1Tkqf1VMRavuMEbt6InnAr6YmNbs6WLeW3Qrd1KtUGLcPkRMbwAGilWb5XtKN
+	 l81WxEPyUMYD2bsbrRzzqlONTS7i1ssiom5W7iW+/GsGtOfSkHKUbl5x10G5bj6QXe
+	 WhzFVppujGEUA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 081CD60C22;
-	Mon,  2 Feb 2026 17:17:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 47BC481E64;
+	Mon,  2 Feb 2026 17:17:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id B336923E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:18 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 38480149
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AC10260BF9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 267F460C22
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id muvilvDBzcSR for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Feb 2026 17:17:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ id xfxhpIfwA9uz for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Feb 2026 17:17:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9984260BF1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9984260BF1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0C71F60C27
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C71F60C27
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9984260BF1
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:17 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0C71F60C27
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Feb 2026 17:17:20 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-12-tYj-W-DdOEiFRa9He3W0gg-1; Mon,
- 02 Feb 2026 12:17:09 -0500
-X-MC-Unique: tYj-W-DdOEiFRa9He3W0gg-1
-X-Mimecast-MFC-AGG-ID: tYj-W-DdOEiFRa9He3W0gg_1770052627
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-151-JIpztd8oPWOZCQvw1Goocw-1; Mon,
+ 02 Feb 2026 12:17:16 -0500
+X-MC-Unique: JIpztd8oPWOZCQvw1Goocw-1
+X-Mimecast-MFC-AGG-ID: JIpztd8oPWOZCQvw1Goocw_1770052634
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 362D81954B17; Mon,  2 Feb 2026 17:17:07 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B28EF1956061; Mon,  2 Feb 2026 17:17:13 +0000 (UTC)
 Received: from p16v.redhat.com (unknown [10.45.224.17])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DAE6219560B2; Mon,  2 Feb 2026 17:17:00 +0000 (UTC)
+ id 9DBC619560B2; Mon,  2 Feb 2026 17:17:07 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Mon,  2 Feb 2026 18:16:32 +0100
-Message-ID: <20260202171638.17427-4-ivecera@redhat.com>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jiri Pirko <jiri@resnulli.us>, Jonathan Lemon <jonathan.lemon@gmail.com>,
+ Leon Romanovsky <leon@kernel.org>, Mark Bloch <mbloch@nvidia.com>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Prathosh Satish <Prathosh.Satish@microchip.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-rdma@vger.kernel.org
+Date: Mon,  2 Feb 2026 18:16:33 +0100
+Message-ID: <20260202171638.17427-5-ivecera@redhat.com>
 In-Reply-To: <20260202171638.17427-1-ivecera@redhat.com>
 References: <20260202171638.17427-1-ivecera@redhat.com>
 MIME-Version: 1.0
@@ -83,24 +100,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1770052636;
+ s=mimecast20190719; t=1770052640;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QV89xPUnCNJIH6v1OPSMlUsAUmfkwSqBeHfnsysjb1c=;
- b=WXrKTNGu2IL5kjR/LClZWlwtmFpEIHePi7wFIQ+uXeYjl1ZSbjgQgmseoo5ZX5xI1RE2vr
- fwOxfTe0UFG2jhfQOWQlbgiw7Bv45DVm+YZZGq89LZH2dzepuuDX9FXdzyGUi8njcPeOFZ
- JjAbomyZH92oUh0OCyaK3/VBnDrOcVA=
+ bh=swufWl6SHGcyC7YD5gze37xCr7gFlNxzAIYlJ+GmO3U=;
+ b=g0L/noaqjfNJKvrmKiGBLkHbeKMz8ukzpWOMsykMyNzp0Hy7x97fzN6HKSISu8rNQvs+qD
+ zZvoKG+XVoGXFdEohkgfUIxbGEDFNIgsv6y/kaNX380hVRVznTHenxwPJax9se5i+wEcpp
+ sn24M4NqBrBdr+yFD3P09o8UrLTHoOs=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=WXrKTNGu
-Subject: [Intel-wired-lan] [PATCH net-next v4 3/9] dpll: Add notifier chain
- for dpll events
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=g0L/noaq
+Subject: [Intel-wired-lan] [PATCH net-next v4 4/9] dpll: Support dynamic pin
+ index allocation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,19 +129,6 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Leon Romanovsky <leon@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, linux-rdma@vger.kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
- Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, Mark Bloch <mbloch@nvidia.com>,
- linux-kernel@vger.kernel.org, Tariq Toukan <tariqt@nvidia.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Jonathan Lemon <jonathan.lemon@gmail.com>,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
@@ -140,16 +143,16 @@ X-Spamd-Result: default: False [3.79 / 15.00];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:edumazet@google.com,m:anthony.l.nguyen@intel.com,m:leon@kernel.org,m:aleksander.lobakin@intel.com,m:linux-rdma@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:arkadiusz.kubalewski@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jiri@resnulli.us,m:richardcochran@gmail.com,m:Prathosh.Satish@microchip.com,m:vadim.fedorenko@linux.dev,m:mbloch@nvidia.com,m:linux-kernel@vger.kernel.org,m:tariqt@nvidia.com,m:andrew+netdev@lunn.ch,m:jonathan.lemon@gmail.com,m:saeedm@nvidia.com,m:davem@davemloft.net,m:andrew@lunn.ch,m:jonathanlemon@gmail.com,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:aleksander.lobakin@intel.com,m:andrew+netdev@lunn.ch,m:arkadiusz.kubalewski@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:jiri@resnulli.us,m:jonathan.lemon@gmail.com,m:leon@kernel.org,m:mbloch@nvidia.com,m:pabeni@redhat.com,m:Prathosh.Satish@microchip.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:saeedm@nvidia.com,m:tariqt@nvidia.com,m:anthony.l.nguyen@intel.com,m:vadim.fedorenko@linux.dev,m:linux-kernel@vger.kernel.org,m:linux-rdma@vger.kernel.org,m:andrew@lunn.ch,m:jonathanlemon@gmail.com,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,linux.dev:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email];
 	ARC_NA(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[22];
+	RCPT_COUNT_TWELVE(0.00)[23];
 	FORGED_SENDER(0.00)[ivecera@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_CC(0.00)[google.com,intel.com,kernel.org,vger.kernel.org,lists.osuosl.org,redhat.com,resnulli.us,gmail.com,microchip.com,linux.dev,nvidia.com,lunn.ch,davemloft.net];
+	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,resnulli.us,gmail.com,nvidia.com,redhat.com,microchip.com,linux.dev,lists.osuosl.org,vger.kernel.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
@@ -163,233 +166,145 @@ X-Spamd-Result: default: False [3.79 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: A2FBBCF78A
+X-Rspamd-Queue-Id: 45A93CF791
 X-Rspamd-Action: no action
 
-From: Petr Oros <poros@redhat.com>
+Allow drivers to register DPLL pins without manually specifying a pin
+index.
 
-Currently, the DPLL subsystem reports events (creation, deletion, changes)
-to userspace via Netlink. However, there is no mechanism for other kernel
-components to be notified of these events directly.
+Currently, drivers must provide a unique pin index when calling
+dpll_pin_get(). This works well for hardware-mapped pins but creates
+friction for drivers handling virtual pins or those without a strict
+hardware indexing scheme.
 
-Add a raw notifier chain to the DPLL core protected by dpll_lock. This
-allows other kernel subsystems or drivers to register callbacks and
-receive notifications when DPLL devices or pins are created, deleted,
-or modified.
+Introduce DPLL_PIN_IDX_UNSPEC (U32_MAX). When a driver passes this
+value as the pin index:
+1. The core allocates a unique index using an IDA
+2. The allocated index is mapped to a range starting above `INT_MAX`
 
-Define the following:
-- Registration helpers: {,un}register_dpll_notifier()
-- Event types: DPLL_DEVICE_CREATED, DPLL_PIN_CREATED, etc.
-- Context structures: dpll_{device,pin}_notifier_info  to pass relevant
-  data to the listeners.
+This separation ensures that dynamically allocated indices never collide
+with standard driver-provided hardware indices, which are assumed to be
+within the `0` to `INT_MAX` range. The index is automatically freed when
+the pin is released in dpll_pin_put().
 
-The notification chain is invoked alongside the existing Netlink event
-generation to ensure in-kernel listeners are kept in sync with the
-subsystem state.
-
-Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Co-developed-by: Ivan Vecera <ivecera@redhat.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-Signed-off-by: Petr Oros <poros@redhat.com>
 ---
- drivers/dpll/dpll_core.c    | 57 +++++++++++++++++++++++++++++++++++++
- drivers/dpll/dpll_core.h    |  4 +++
- drivers/dpll/dpll_netlink.c |  6 ++++
- include/linux/dpll.h        | 29 +++++++++++++++++++
- 4 files changed, 96 insertions(+)
+v2:
+* fixed integer overflow in dpll_pin_idx_free()
+---
+ drivers/dpll/dpll_core.c | 48 ++++++++++++++++++++++++++++++++++++++--
+ include/linux/dpll.h     |  2 ++
+ 2 files changed, 48 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
-index f04ed7195cadd..b05fe2ba46d91 100644
+index b05fe2ba46d91..59081cf2c73ae 100644
 --- a/drivers/dpll/dpll_core.c
 +++ b/drivers/dpll/dpll_core.c
-@@ -23,6 +23,8 @@ DEFINE_MUTEX(dpll_lock);
- DEFINE_XARRAY_FLAGS(dpll_device_xa, XA_FLAGS_ALLOC);
+@@ -10,6 +10,7 @@
+ 
+ #include <linux/device.h>
+ #include <linux/err.h>
++#include <linux/idr.h>
+ #include <linux/property.h>
+ #include <linux/slab.h>
+ #include <linux/string.h>
+@@ -24,6 +25,7 @@ DEFINE_XARRAY_FLAGS(dpll_device_xa, XA_FLAGS_ALLOC);
  DEFINE_XARRAY_FLAGS(dpll_pin_xa, XA_FLAGS_ALLOC);
  
-+static RAW_NOTIFIER_HEAD(dpll_notifier_chain);
-+
+ static RAW_NOTIFIER_HEAD(dpll_notifier_chain);
++static DEFINE_IDA(dpll_pin_idx_ida);
+ 
  static u32 dpll_device_xa_id;
  static u32 dpll_pin_xa_id;
- 
-@@ -46,6 +48,39 @@ struct dpll_pin_registration {
- 	void *cookie;
- };
- 
-+static int call_dpll_notifiers(unsigned long action, void *info)
-+{
-+	lockdep_assert_held(&dpll_lock);
-+	return raw_notifier_call_chain(&dpll_notifier_chain, action, info);
-+}
-+
-+void dpll_device_notify(struct dpll_device *dpll, unsigned long action)
-+{
-+	struct dpll_device_notifier_info info = {
-+		.dpll = dpll,
-+		.id = dpll->id,
-+		.idx = dpll->device_idx,
-+		.clock_id = dpll->clock_id,
-+		.type = dpll->type,
-+	};
-+
-+	call_dpll_notifiers(action, &info);
-+}
-+
-+void dpll_pin_notify(struct dpll_pin *pin, unsigned long action)
-+{
-+	struct dpll_pin_notifier_info info = {
-+		.pin = pin,
-+		.id = pin->id,
-+		.idx = pin->pin_idx,
-+		.clock_id = pin->clock_id,
-+		.fwnode = pin->fwnode,
-+		.prop = &pin->prop,
-+	};
-+
-+	call_dpll_notifiers(action, &info);
-+}
-+
- struct dpll_device *dpll_device_get_by_id(int id)
- {
- 	if (xa_get_mark(&dpll_device_xa, id, DPLL_REGISTERED))
-@@ -539,6 +574,28 @@ void dpll_netdev_pin_clear(struct net_device *dev)
+@@ -464,6 +466,36 @@ void dpll_device_unregister(struct dpll_device *dpll,
  }
- EXPORT_SYMBOL(dpll_netdev_pin_clear);
+ EXPORT_SYMBOL_GPL(dpll_device_unregister);
  
-+int register_dpll_notifier(struct notifier_block *nb)
++static int dpll_pin_idx_alloc(u32 *pin_idx)
 +{
 +	int ret;
 +
-+	mutex_lock(&dpll_lock);
-+	ret = raw_notifier_chain_register(&dpll_notifier_chain, nb);
-+	mutex_unlock(&dpll_lock);
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(register_dpll_notifier);
++	if (!pin_idx)
++		return -EINVAL;
 +
-+int unregister_dpll_notifier(struct notifier_block *nb)
++	/* Alloc unique number from IDA. Number belongs to <0, INT_MAX> range */
++	ret = ida_alloc(&dpll_pin_idx_ida, GFP_KERNEL);
++	if (ret < 0)
++		return ret;
++
++	/* Map the value to dynamic pin index range <INT_MAX+1, U32_MAX> */
++	*pin_idx = (u32)ret + INT_MAX + 1;
++
++	return 0;
++}
++
++static void dpll_pin_idx_free(u32 pin_idx)
 +{
-+	int ret;
++	if (pin_idx <= INT_MAX)
++		return; /* Not a dynamic pin index */
 +
-+	mutex_lock(&dpll_lock);
-+	ret = raw_notifier_chain_unregister(&dpll_notifier_chain, nb);
-+	mutex_unlock(&dpll_lock);
-+	return ret;
++	/* Map the index value from dynamic pin index range to IDA range and
++	 * free it.
++	 */
++	pin_idx -= (u32)INT_MAX + 1;
++	ida_free(&dpll_pin_idx_ida, pin_idx);
 +}
-+EXPORT_SYMBOL_GPL(unregister_dpll_notifier);
 +
- /**
-  * dpll_pin_get - find existing or create new dpll pin
-  * @clock_id: clock_id of creator
-diff --git a/drivers/dpll/dpll_core.h b/drivers/dpll/dpll_core.h
-index d3e17ff0ecef0..b7b4bb251f739 100644
---- a/drivers/dpll/dpll_core.h
-+++ b/drivers/dpll/dpll_core.h
-@@ -91,4 +91,8 @@ struct dpll_pin_ref *dpll_xa_ref_dpll_first(struct xarray *xa_refs);
- extern struct xarray dpll_device_xa;
- extern struct xarray dpll_pin_xa;
- extern struct mutex dpll_lock;
-+
-+void dpll_device_notify(struct dpll_device *dpll, unsigned long action);
-+void dpll_pin_notify(struct dpll_pin *pin, unsigned long action);
-+
- #endif
-diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
-index 904199ddd1781..83cbd64abf5a4 100644
---- a/drivers/dpll/dpll_netlink.c
-+++ b/drivers/dpll/dpll_netlink.c
-@@ -761,17 +761,20 @@ dpll_device_event_send(enum dpll_cmd event, struct dpll_device *dpll)
- 
- int dpll_device_create_ntf(struct dpll_device *dpll)
+ static void dpll_pin_prop_free(struct dpll_pin_properties *prop)
  {
-+	dpll_device_notify(dpll, DPLL_DEVICE_CREATED);
- 	return dpll_device_event_send(DPLL_CMD_DEVICE_CREATE_NTF, dpll);
+ 	kfree(prop->package_label);
+@@ -521,9 +553,18 @@ dpll_pin_alloc(u64 clock_id, u32 pin_idx, struct module *module,
+ 	struct dpll_pin *pin;
+ 	int ret;
+ 
++	if (pin_idx == DPLL_PIN_IDX_UNSPEC) {
++		ret = dpll_pin_idx_alloc(&pin_idx);
++		if (ret)
++			return ERR_PTR(ret);
++	} else if (pin_idx > INT_MAX) {
++		return ERR_PTR(-EINVAL);
++	}
+ 	pin = kzalloc(sizeof(*pin), GFP_KERNEL);
+-	if (!pin)
+-		return ERR_PTR(-ENOMEM);
++	if (!pin) {
++		ret = -ENOMEM;
++		goto err_pin_alloc;
++	}
+ 	pin->pin_idx = pin_idx;
+ 	pin->clock_id = clock_id;
+ 	pin->module = module;
+@@ -551,6 +592,8 @@ dpll_pin_alloc(u64 clock_id, u32 pin_idx, struct module *module,
+ 	dpll_pin_prop_free(&pin->prop);
+ err_pin_prop:
+ 	kfree(pin);
++err_pin_alloc:
++	dpll_pin_idx_free(pin_idx);
+ 	return ERR_PTR(ret);
  }
  
- int dpll_device_delete_ntf(struct dpll_device *dpll)
- {
-+	dpll_device_notify(dpll, DPLL_DEVICE_DELETED);
- 	return dpll_device_event_send(DPLL_CMD_DEVICE_DELETE_NTF, dpll);
- }
- 
- static int
- __dpll_device_change_ntf(struct dpll_device *dpll)
- {
-+	dpll_device_notify(dpll, DPLL_DEVICE_CHANGED);
- 	return dpll_device_event_send(DPLL_CMD_DEVICE_CHANGE_NTF, dpll);
- }
- 
-@@ -829,16 +832,19 @@ dpll_pin_event_send(enum dpll_cmd event, struct dpll_pin *pin)
- 
- int dpll_pin_create_ntf(struct dpll_pin *pin)
- {
-+	dpll_pin_notify(pin, DPLL_PIN_CREATED);
- 	return dpll_pin_event_send(DPLL_CMD_PIN_CREATE_NTF, pin);
- }
- 
- int dpll_pin_delete_ntf(struct dpll_pin *pin)
- {
-+	dpll_pin_notify(pin, DPLL_PIN_DELETED);
- 	return dpll_pin_event_send(DPLL_CMD_PIN_DELETE_NTF, pin);
- }
- 
- int __dpll_pin_change_ntf(struct dpll_pin *pin)
- {
-+	dpll_pin_notify(pin, DPLL_PIN_CHANGED);
- 	return dpll_pin_event_send(DPLL_CMD_PIN_CHANGE_NTF, pin);
- }
- 
+@@ -654,6 +697,7 @@ void dpll_pin_put(struct dpll_pin *pin)
+ 		xa_destroy(&pin->ref_sync_pins);
+ 		dpll_pin_prop_free(&pin->prop);
+ 		fwnode_handle_put(pin->fwnode);
++		dpll_pin_idx_free(pin->pin_idx);
+ 		kfree_rcu(pin, rcu);
+ 	}
+ 	mutex_unlock(&dpll_lock);
 diff --git a/include/linux/dpll.h b/include/linux/dpll.h
-index f2e8660e90cdf..8ed90dfc65f05 100644
+index 8ed90dfc65f05..8fff048131f1d 100644
 --- a/include/linux/dpll.h
 +++ b/include/linux/dpll.h
-@@ -11,6 +11,7 @@
- #include <linux/device.h>
- #include <linux/netlink.h>
- #include <linux/netdevice.h>
-+#include <linux/notifier.h>
- #include <linux/rtnetlink.h>
+@@ -240,6 +240,8 @@ int dpll_device_register(struct dpll_device *dpll, enum dpll_type type,
+ void dpll_device_unregister(struct dpll_device *dpll,
+ 			    const struct dpll_device_ops *ops, void *priv);
  
- struct dpll_device;
-@@ -172,6 +173,30 @@ struct dpll_pin_properties {
- 	u32 phase_gran;
- };
- 
-+#define DPLL_DEVICE_CREATED	1
-+#define DPLL_DEVICE_DELETED	2
-+#define DPLL_DEVICE_CHANGED	3
-+#define DPLL_PIN_CREATED	4
-+#define DPLL_PIN_DELETED	5
-+#define DPLL_PIN_CHANGED	6
++#define DPLL_PIN_IDX_UNSPEC	U32_MAX
 +
-+struct dpll_device_notifier_info {
-+	struct dpll_device *dpll;
-+	u32 id;
-+	u32 idx;
-+	u64 clock_id;
-+	enum dpll_type type;
-+};
-+
-+struct dpll_pin_notifier_info {
-+	struct dpll_pin *pin;
-+	u32 id;
-+	u32 idx;
-+	u64 clock_id;
-+	const struct fwnode_handle *fwnode;
-+	const struct dpll_pin_properties *prop;
-+};
-+
- #if IS_ENABLED(CONFIG_DPLL)
- void dpll_netdev_pin_set(struct net_device *dev, struct dpll_pin *dpll_pin);
- void dpll_netdev_pin_clear(struct net_device *dev);
-@@ -242,4 +267,8 @@ int dpll_device_change_ntf(struct dpll_device *dpll);
- 
- int dpll_pin_change_ntf(struct dpll_pin *pin);
- 
-+int register_dpll_notifier(struct notifier_block *nb);
-+
-+int unregister_dpll_notifier(struct notifier_block *nb);
-+
- #endif
+ struct dpll_pin *
+ dpll_pin_get(u64 clock_id, u32 dev_driver_id, struct module *module,
+ 	     const struct dpll_pin_properties *prop);
 -- 
 2.52.0
 
