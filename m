@@ -2,121 +2,132 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iDAzDzLMgWl1JwMAu9opvQ
+	id yJQAIFDagWlBLQMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 11:21:38 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:21:52 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B9E49D783C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 11:21:37 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DF1ED834B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:21:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6A651823DD;
-	Tue,  3 Feb 2026 10:21:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E549683BAD;
+	Tue,  3 Feb 2026 11:21:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bWlqOFGMBlxd; Tue,  3 Feb 2026 10:21:35 +0000 (UTC)
+ id smlY6_K21gps; Tue,  3 Feb 2026 11:21:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A8C0482389
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CC2883C60
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770114095;
-	bh=TblGRIK+EVqQkPbymIqDvw5SKo5IqX4mHjR+G3bgeLc=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=dHcurqs7OWJHGNOx9nhp6Zol13Ac5+mQ880BY3kCBlV8aKvROE6kqfpMqpATEqqc3
-	 DV6Z4jfRhwKcpnpsGsofs5J6psZu3iJ95U7PBJwnqrOriQJJMF9Bl69T1XObJe8oDA
-	 nqNnKEO6/nqpu1TttPK6yi1b0naXXDRRTqqwGZWA36FvmJoWnh4QSLb/eeMVCaWyfX
-	 M2UnWmkqccuzuLRXRKw4aFsJPI8D/e4g2rdtR7NeOMv5CcB9DropviY8Syw7OPo9w0
-	 6STam7sHcXcTYU5QrtFgc8ntwwr35rIfUQ6nR52H6aS8RQcuPJsqjiUW9Wp99kANao
-	 4DP1SWNU+GTNA==
+	s=default; t=1770117709;
+	bh=GOMQ//7WqdHHMURmgeB5p++6x3QhnlxGxaHmVYa6W0M=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=AsmYoGf/rxOXOGTLQwYskFvCB/WtXXVz4w1QLOkopHcR9jhL367bmbyCnve/xm2iO
+	 rHUq1nUBGPM3+QlAF80Bl3aFo5L5qtKjEa77P5HoDmdEZmFXiIMqAwcCr/8bP6pScn
+	 p7LrScydnLTHWMBkIyyz94yFN5uW/eSqgGqku1JoGgNKTOW6m46GSY5skRMXwxXxkf
+	 UqHKTv1NC6GAwqYARK/gZXDWv+6vj2azCSiemfVDCR8m8zAKh7++TKQBi4Nfn+5pBO
+	 Y6+SxkJrriZZJkx/1z3m0esbP/cCNs9eRXnF7PWpaEVnpOqfkarM49+bwwmMtCmcuA
+	 hZmlhImw+TJ+g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A8C0482389;
-	Tue,  3 Feb 2026 10:21:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0CC2883C60;
+	Tue,  3 Feb 2026 11:21:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 42646F5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 10:21:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 468BB1A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2C6244043A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 10:21:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 268D8407DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JD2Jx0CDCyws for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Feb 2026 10:21:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
+ id D3G69POJvk1n for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Feb 2026 11:21:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1986D40562
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1986D40562
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1986D40562
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 10:21:32 +0000 (UTC)
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-318-kB-9cYPYMlGiKlMTHqtflw-1; Tue,
- 03 Feb 2026 05:21:26 -0500
-X-MC-Unique: kB-9cYPYMlGiKlMTHqtflw-1
-X-Mimecast-MFC-AGG-ID: kB-9cYPYMlGiKlMTHqtflw_1770114083
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 01CE7195605F; Tue,  3 Feb 2026 10:21:23 +0000 (UTC)
-Received: from [10.43.3.114] (unknown [10.43.3.114])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8883619560B2; Tue,  3 Feb 2026 10:21:17 +0000 (UTC)
-Message-ID: <67478aa2-54f5-4a3f-8063-ab6e877693e4@redhat.com>
-Date: Tue, 3 Feb 2026 11:21:16 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: kernel test robot <lkp@intel.com>, netdev@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Leon Romanovsky <leon@kernel.org>,
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4202A407AC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4202A407AC
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4202A407AC
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:45 +0000 (UTC)
+X-CSE-ConnectionGUID: PxuJ++5yTwWBTIM6k7ApHA==
+X-CSE-MsgGUID: tKUTASflSFyRIrkrlL5Ygg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11690"; a="71185827"
+X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="71185827"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Feb 2026 03:21:46 -0800
+X-CSE-ConnectionGUID: I6c+m5qrQEOnKrYxngMrSw==
+X-CSE-MsgGUID: Q9pqdu6xToyyToKMr1/xhw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="209913228"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa007.jf.intel.com with ESMTP; 03 Feb 2026 03:21:37 -0800
+Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 6B0AC28195;
+ Tue,  3 Feb 2026 11:21:33 +0000 (GMT)
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: bpf@vger.kernel.org
+Cc: Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Vladimir Oltean <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Andrii Nakryiko <andrii@kernel.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>,
+ Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>,
+ Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
+ Simon Horman <horms@kernel.org>, Shuah Khan <shuah@kernel.org>,
  Alexander Lobakin <aleksander.lobakin@intel.com>,
- linux-rdma@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
- Richard Cochran <richardcochran@gmail.com>,
- Prathosh Satish <Prathosh.Satish@microchip.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>, Mark Bloch <mbloch@nvidia.com>,
- linux-kernel@vger.kernel.org, Tariq Toukan <tariqt@nvidia.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>
-References: <20260202171638.17427-8-ivecera@redhat.com>
- <202602030538.6ok1xugA-lkp@intel.com>
-Content-Language: en-US
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <202602030538.6ok1xugA-lkp@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1770114091;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TblGRIK+EVqQkPbymIqDvw5SKo5IqX4mHjR+G3bgeLc=;
- b=ia1qoDPCTze9Boyb6Luxbrsl8AHbkLeTKTCfF6bah8CwTZ2lRBPEwYzYCjgAiHFFzx2XaX
- H/5ECQq6udwYXWeSokFHCmIdGFzXRb5hlrwNQEuQ1HPLLY6LIzIXdDtAmBW1VV0kEXIA2t
- 2SUBkxkDv8CwEGVQjIE2DnPHCUJgG/k=
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ "Bastien Curutchet (eBPF Foundation)" <bastien.curutchet@bootlin.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>,
+ Tushar Vyavahare <tushar.vyavahare@intel.com>,
+ Jason Xing <kernelxing@tencent.com>,
+ =?UTF-8?q?Ricardo=20B=2E=20Marli=C3=A8re?= <rbm@suse.com>,
+ Eelco Chaudron <echaudro@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Toke Hoiland-Jorgensen <toke@redhat.com>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Tue,  3 Feb 2026 11:53:28 +0100
+Message-ID: <20260203105417.2302672-1-larysa.zaremba@intel.com>
+X-Mailer: git-send-email 2.52.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1770117707; x=1801653707;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=8bCdRho/FfoOYD6UnG8W+0FXP5Gu9038UhW698s44IY=;
+ b=cDPPcTH83qsqjtwQD/YwiPUG96WEknmIaEa9gPJ9CSJ46uH9ssqm5Qah
+ IJsVnxcWN0FblKblCGQjzj0K1mKHPitnT66CFZ0WboeDpcEkE/mKp6ScI
+ HuB1ti39C/0F7tC4YW8sakNyUj3dCfzTYqEsr+HHHFLc7GpS2D0+fEJCj
+ fTTktZ/8yB/BiKvg5W9sRuo8yLG7vAot8UvyLT9VZWfhSfGp9+/tyQO66
+ hyL1M2ips5cECFII0jyxjq/g/uUJvlM2GiWsyv4s97oEMeqJeOABY2cUF
+ r2wChpG1B5Hcv/U0rE1fs1eo/342xy8uqYgU1D/bMqKpyMUYWmSaX6pGs
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=ia1qoDPC
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 7/9] dpll: Add reference
- count tracking support
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=cDPPcTH8
+Subject: [Intel-wired-lan] [PATCH bpf 0/6] Address XDP frags having negative
+ tailroom
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,90 +143,181 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[23];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[43];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:lkp@intel.com,m:netdev@vger.kernel.org,m:oe-kbuild-all@lists.linux.dev,m:edumazet@google.com,m:anthony.l.nguyen@intel.com,m:leon@kernel.org,m:aleksander.lobakin@intel.com,m:linux-rdma@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:arkadiusz.kubalewski@intel.com,m:aleksandr.loktionov@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jiri@resnulli.us,m:richardcochran@gmail.com,m:Prathosh.Satish@microchip.com,m:vadim.fedorenko@linux.dev,m:mbloch@nvidia.com,m:linux-kernel@vger.kernel.org,m:tariqt@nvidia.com,m:jonathan.lemon@gmail.com,m:saeedm@nvidia.com,m:jonathanlemon@gmail.com,s:lists@lfdr.de];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:bpf@vger.kernel.org,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:horms@kernel.org,m:shuah@kernel.org,m:aleksander.lobakin@intel.com,m:maciej.fijalkowski@intel.com,m:bastien.curutchet@bootlin.com,m:larysa.zaremba@intel.com,m:tushar.vyavahare@intel.com,m:kernelxing@tencent.com,m:rbm@suse.com,m:echaudro@redhat.com,m:lorenzo@kernel.org,m:toke@redhat.com,m:imx@lists.linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktiono
+ v@intel.com,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
+	FREEMAIL_CC(0.00)[nxp.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,intel.com,iogearbox.net,gmail.com,fomichev.me,linux.dev,bootlin.com,tencent.com,suse.com,lists.linux.dev,vger.kernel.org,lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_SENDER(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[ivecera@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_CC(0.00)[lists.linux.dev,google.com,intel.com,kernel.org,vger.kernel.org,lists.osuosl.org,redhat.com,resnulli.us,gmail.com,microchip.com,linux.dev,nvidia.com];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[01.org:url,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim,intel.com:email];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[ivecera@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
+	FROM_NEQ_ENVFROM(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-0.999];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: B9E49D783C
+X-Rspamd-Queue-Id: 4DF1ED834B
 X-Rspamd-Action: no action
 
+Many ethernet drivers report xdp Rx queue frag size as being the same as
+DMA write size. However, the only user of this field, namely
+bpf_xdp_frags_increase_tail(), clearly expects a truesize.
 
+Such difference leads to unspecific memory corruption issues under certain
+circumstances, e.g. in ixgbevf maximum DMA write size is 3 KB, so when
+running xskxceiver's XDP_ADJUST_TAIL_GROW_MULTI_BUFF, 6K packet fully uses
+all DMA-writable space in 2 buffers. This would be fine, if only
+rxq->frag_size was properly set to 4K, but value of 3K results in a
+negative tailroom, because there is a non-zero page offset.
 
-On 2/2/26 10:48 PM, kernel test robot wrote:
-> Hi Ivan,
-> 
-> kernel test robot noticed the following build errors:
-> 
-> [auto build test ERROR on net-next/main]
-> 
-> url:    https://github.com/intel-lab-lkp/linux/commits/Ivan-Vecera/dpll-Allow-associating-dpll-pin-with-a-firmware-node/20260203-012705
-> base:   net-next/main
-> patch link:    https://lore.kernel.org/r/20260202171638.17427-8-ivecera%40redhat.com
-> patch subject: [Intel-wired-lan] [PATCH net-next v4 7/9] dpll: Add reference count tracking support
-> config: i386-randconfig-141-20260203 (https://download.01.org/0day-ci/archive/20260203/202602030538.6ok1xugA-lkp@intel.com/config)
-> compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-> smatch version: v0.5.0-8994-gd50c5a4c
-> reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260203/202602030538.6ok1xugA-lkp@intel.com/reproduce)
-> 
-> If you fix the issue in a separate patch/commit (i.e. not just a new version of
-> the same patch/commit), kindly add following tags
-> | Reported-by: kernel test robot <lkp@intel.com>
-> | Closes: https://lore.kernel.org/oe-kbuild-all/202602030538.6ok1xugA-lkp@intel.com/
-> 
-> All errors (new ones prefixed by >>):
-> 
->     In file included from net/core/rtnetlink.c:61:
->>> include/linux/dpll.h:235:1: error: expected identifier or '('
->       235 | {
->           | ^
->     1 error generated.
-> 
-> 
-> vim +235 include/linux/dpll.h
-> 
-> 877c40367bc8a7 Ivan Vecera 2026-02-02  232
-> 877c40367bc8a7 Ivan Vecera 2026-02-02  233  static inline struct dpll_pin *
-> bed78c2008cb37 Ivan Vecera 2026-02-02  234  fwnode_dpll_pin_find(struct fwnode_handle *fwnode, dpll_tracker *tracker);
+We could return -EINVAL and be done with it in such case, but due to
+tailroom being stored as an unsigned int, it is reported to be somewhere
+near UINT_MAX, resulting in a tail being grown, even if the requested
+offset is too much (it is around 2K in the abovementioned test). This later
+leads to all kinds of unspecific calltraces.
 
-Oh god, extra semicolon in this stub :-(
+[ 7340.337579] xskxceiver[1440]: segfault at 1da718 ip 00007f4161aeac9d sp 00007f41615a6a00 error 6
+[ 7340.338040] xskxceiver[1441]: segfault at 7f410000000b ip 00000000004042b5 sp 00007f415bffecf0 error 4
+[ 7340.338179]  in libc.so.6[61c9d,7f4161aaf000+160000]
+[ 7340.339230]  in xskxceiver[42b5,400000+69000]
+[ 7340.340300]  likely on CPU 6 (core 0, socket 6)
+[ 7340.340302] Code: ff ff 01 e9 f4 fe ff ff 0f 1f 44 00 00 4c 39 f0 74 73 31 c0 ba 01 00 00 00 f0 0f b1 17 0f 85 ba 00 00 00 49 8b 87 88 00 00 00 <4c> 89 70 08 eb cc 0f 1f 44 00 00 48 8d bd f0 fe ff ff 89 85 ec fe
+[ 7340.340888]  likely on CPU 3 (core 0, socket 3)
+[ 7340.345088] Code: 00 00 00 ba 00 00 00 00 be 00 00 00 00 89 c7 e8 31 ca ff ff 89 45 ec 8b 45 ec 85 c0 78 07 b8 00 00 00 00 eb 46 e8 0b c8 ff ff <8b> 00 83 f8 69 74 24 e8 ff c7 ff ff 8b 00 83 f8 0b 74 18 e8 f3 c7
+[ 7340.404334] Oops: general protection fault, probably for non-canonical address 0x6d255010bdffc: 0000 [#1] SMP NOPTI
+[ 7340.405972] CPU: 7 UID: 0 PID: 1439 Comm: xskxceiver Not tainted 6.19.0-rc1+ #21 PREEMPT(lazy)
+[ 7340.408006] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.17.0-5.fc42 04/01/2014
+[ 7340.409716] RIP: 0010:lookup_swap_cgroup_id+0x44/0x80
+[ 7340.410455] Code: 83 f8 1c 73 39 48 ba ff ff ff ff ff ff ff 03 48 8b 04 c5 20 55 fa bd 48 21 d1 48 89 ca 83 e1 01 48 d1 ea c1 e1 04 48 8d 04 90 <8b> 00 48 83 c4 10 d3 e8 c3 cc cc cc cc 31 c0 e9 98 b7 dd 00 48 89
+[ 7340.412787] RSP: 0018:ffffcc5c04f7f6d0 EFLAGS: 00010202
+[ 7340.413494] RAX: 0006d255010bdffc RBX: ffff891f477895a8 RCX: 0000000000000010
+[ 7340.414431] RDX: 0001c17e3fffffff RSI: 00fa070000000000 RDI: 000382fc7fffffff
+[ 7340.415354] RBP: 00fa070000000000 R08: ffffcc5c04f7f8f8 R09: ffffcc5c04f7f7d0
+[ 7340.416283] R10: ffff891f4c1a7000 R11: ffffcc5c04f7f9c8 R12: ffffcc5c04f7f7d0
+[ 7340.417218] R13: 03ffffffffffffff R14: 00fa06fffffffe00 R15: ffff891f47789500
+[ 7340.418229] FS:  0000000000000000(0000) GS:ffff891ffdfaa000(0000) knlGS:0000000000000000
+[ 7340.419489] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 7340.420286] CR2: 00007f415bfffd58 CR3: 0000000103f03002 CR4: 0000000000772ef0
+[ 7340.421237] PKRU: 55555554
+[ 7340.421623] Call Trace:
+[ 7340.421987]  <TASK>
+[ 7340.422309]  ? softleaf_from_pte+0x77/0xa0
+[ 7340.422855]  swap_pte_batch+0xa7/0x290
+[ 7340.423363]  zap_nonpresent_ptes.constprop.0.isra.0+0xd1/0x270
+[ 7340.424102]  zap_pte_range+0x281/0x580
+[ 7340.424607]  zap_pmd_range.isra.0+0xc9/0x240
+[ 7340.425177]  unmap_page_range+0x24d/0x420
+[ 7340.425714]  unmap_vmas+0xa1/0x180
+[ 7340.426185]  exit_mmap+0xe1/0x3b0
+[ 7340.426644]  __mmput+0x41/0x150
+[ 7340.427098]  exit_mm+0xb1/0x110
+[ 7340.427539]  do_exit+0x1b2/0x460
+[ 7340.427992]  do_group_exit+0x2d/0xc0
+[ 7340.428477]  get_signal+0x79d/0x7e0
+[ 7340.428957]  arch_do_signal_or_restart+0x34/0x100
+[ 7340.429571]  exit_to_user_mode_loop+0x8e/0x4c0
+[ 7340.430159]  do_syscall_64+0x188/0x6b0
+[ 7340.430672]  ? __do_sys_clone3+0xd9/0x120
+[ 7340.431212]  ? switch_fpu_return+0x4e/0xd0
+[ 7340.431761]  ? arch_exit_to_user_mode_prepare.isra.0+0xa1/0xc0
+[ 7340.432498]  ? do_syscall_64+0xbb/0x6b0
+[ 7340.433015]  ? __handle_mm_fault+0x445/0x690
+[ 7340.433582]  ? count_memcg_events+0xd6/0x210
+[ 7340.434151]  ? handle_mm_fault+0x212/0x340
+[ 7340.434697]  ? do_user_addr_fault+0x2b4/0x7b0
+[ 7340.435271]  ? clear_bhb_loop+0x30/0x80
+[ 7340.435788]  ? clear_bhb_loop+0x30/0x80
+[ 7340.436299]  ? clear_bhb_loop+0x30/0x80
+[ 7340.436812]  ? clear_bhb_loop+0x30/0x80
+[ 7340.437323]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[ 7340.437973] RIP: 0033:0x7f4161b14169
+[ 7340.438468] Code: Unable to access opcode bytes at 0x7f4161b1413f.
+[ 7340.439242] RSP: 002b:00007ffc6ebfa770 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
+[ 7340.440173] RAX: fffffffffffffe00 RBX: 00000000000005a1 RCX: 00007f4161b14169
+[ 7340.441061] RDX: 00000000000005a1 RSI: 0000000000000109 RDI: 00007f415bfff990
+[ 7340.441943] RBP: 00007ffc6ebfa7a0 R08: 0000000000000000 R09: 00000000ffffffff
+[ 7340.442824] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[ 7340.443707] R13: 0000000000000000 R14: 00007f415bfff990 R15: 00007f415bfff6c0
+[ 7340.444586]  </TASK>
+[ 7340.444922] Modules linked in: rfkill intel_rapl_msr intel_rapl_common intel_uncore_frequency_common skx_edac_common nfit libnvdimm kvm_intel vfat fat kvm snd_pcm irqbypass rapl iTCO_wdt snd_timer intel_pmc_bxt iTCO_vendor_support snd ixgbevf virtio_net soundcore i2c_i801 pcspkr libeth_xdp net_failover i2c_smbus lpc_ich failover libeth virtio_balloon joydev 9p fuse loop zram lz4hc_compress lz4_compress 9pnet_virtio 9pnet netfs ghash_clmulni_intel serio_raw qemu_fw_cfg
+[ 7340.449650] ---[ end trace 0000000000000000 ]---
 
-Will submit the fix after 24h grace period.
+The issue can be fixed in all in-tree drivers, but we cannot just trust OOT
+drivers to not do this. Therefore, make tailroom a signed int and produce a
+warning when it is negative to prevent such mistakes in the future.
 
-I.
-> 877c40367bc8a7 Ivan Vecera 2026-02-02 @235  {
-> 877c40367bc8a7 Ivan Vecera 2026-02-02  236  	return NULL;
-> 877c40367bc8a7 Ivan Vecera 2026-02-02  237  }
-> 5f18426928800c Jiri Pirko  2023-09-13  238  #endif
-> 5f18426928800c Jiri Pirko  2023-09-13  239
+The issue can also be easily reproduced with ice driver, by applying
+the following diff to xskxceiver and enjoying a kernel panic in xdpdrv mode:
 
+diff --git a/tools/testing/selftests/bpf/prog_tests/test_xsk.c b/tools/testing/selftests/bpf/prog_tests/test_xsk.c
+index 5af28f359cfd..042d587fa7ef 100644
+--- a/tools/testing/selftests/bpf/prog_tests/test_xsk.c
++++ b/tools/testing/selftests/bpf/prog_tests/test_xsk.c
+@@ -2541,8 +2541,8 @@ int testapp_adjust_tail_grow_mb(struct test_spec *test)
+ {
+        test->mtu = MAX_ETH_JUMBO_SIZE;
+        /* Grow by (frag_size - last_frag_Size) - 1 to stay inside the last fragment */
+-       return testapp_adjust_tail(test, (XSK_UMEM__MAX_FRAME_SIZE / 2) - 1,
+-                                  XSK_UMEM__LARGE_FRAME_SIZE * 2);
++       return testapp_adjust_tail(test, XSK_UMEM__MAX_FRAME_SIZE * 100,
++                                  6912);
+ }
 
+ int testapp_tx_queue_consumer(struct test_spec *test)
+
+If we print out the values involved in the tailroom calculation:
+
+tailroom = rxq->frag_size - skb_frag_size(frag) - skb_frag_off(frag);
+
+4294967040 = 3456 - 3456 - 256
+
+There may be also such issue on ZC path particulatly in i40e, but it would need
+to be addressed separately, as within my understanding it seems like
+neither frame_len nor chunk_size are appropriate values, instead
+we should calculate frag_size the following way (like frame_sz in ZC buffers):
+
+frag_size = xsk_pool_get_chunk_size(pool) - pool->headroom.
+
+I personally reproduced and verified the issue in ice only,
+aside from WiP ixgbevf implementation.
+
+Larysa Zaremba (6):
+  xdp: produce a warning when calculated tailroom is negative
+  ice: fix rxq info registering in mbuf packets
+  ice: change XDP RxQ frag_size from DMA write length to truesize
+  i40e: use truesize as XDP RxQ info frag_size
+  idpf: use truesize as XDP RxQ info frag_size
+  net: enetc: use truesize as XDP RxQ info frag_size
+
+ drivers/net/ethernet/freescale/enetc/enetc.c |  2 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c  |  5 ++--
+ drivers/net/ethernet/intel/ice/ice_base.c    | 26 ++++++--------------
+ drivers/net/ethernet/intel/ice/ice_xsk.c     |  3 +++
+ drivers/net/ethernet/intel/idpf/xdp.c        |  2 +-
+ net/core/filter.c                            |  3 ++-
+ 6 files changed, 17 insertions(+), 24 deletions(-)
+
+-- 
+2.52.0
 
