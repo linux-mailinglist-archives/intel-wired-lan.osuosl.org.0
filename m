@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wLWjE1ragWlBLQMAu9opvQ
+	id QPLwIl3agWlBLQMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:22:02 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:22:05 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C06ED836F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:22:02 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A104D837E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 03 Feb 2026 12:22:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF53A83BAD;
-	Tue,  3 Feb 2026 11:22:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AAC0983C63;
+	Tue,  3 Feb 2026 11:22:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Aq_J6XQWnLQc; Tue,  3 Feb 2026 11:22:00 +0000 (UTC)
+ id Emk_QVABDJam; Tue,  3 Feb 2026 11:22:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D414E83C8A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DFD2D83C8A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770117719;
-	bh=TayuPgzQ+qJ5M3O8xU4Ul0xYpIJ8Biwa5uskWOxqLBk=;
+	s=default; t=1770117723;
+	bh=TTGEwZ18gYUGlp6FhIk5YO2Z/T5aWVKrxn+3g5hCPuQ=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ajW8lrAywfXlaHCoEz29294nexf5DC7FZNrIytwF8TknFtzkDEFimzhhlLE7rhi5M
-	 nk9dmtpmt223lUGDwhJHsDERO56pzX3VKyXK9AqE/mIfFbKKqeF8PCBms/Ojv6LxSD
-	 Vn3X+z4yhmQnSEosuPAI1ukvzgA58NQUHPgm50LRZL5TatboDCE2JSCdzGyeFzJonv
-	 emB3sUoXVGom9mLGyWsf2E4hAVtFgeBpruF7NL/WkOdIBpRAZnzSYWTru4wTLC+N/Z
-	 mm/6mVaDnGPc5oVBXJBk9E7VxXFQFHp2uughIg5+rl+SSWVzgSgMONtIHKFxnfW283
-	 MoankMTnazGvw==
+	b=gyWUJsrxDyCbXhkgb2CY6+G9cLQbXCSn1SUpPtlEQKz665rRYv89Y3HicXaVe7Ww2
+	 7s7fLiu00tLU2iHqCo2Wj5925voBhE46ZvRedWsZXEqAtnQSm9hLdq4msGv9zfdqcY
+	 jg2NpGvHsU4Z+GJUfMlHUTCnACwArg8y3ZbpTx8wlZvtoOGrSU6QKHhjBcAquxtROQ
+	 MkdJPCWi/vXHl475N2hjVi58o4LGBDga1Q8wMVsq6VlOwnsllrrvO1vZs5bIk5IwgS
+	 GY1eZOuRufE9wgtJAqCWIPLG2DvvTvgjeaEt9dR3CoEqC/lSO09ORBAtmTtPl+f8jq
+	 ZBqLnH9ySmE1g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D414E83C8A;
-	Tue,  3 Feb 2026 11:21:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DFD2D83C8A;
+	Tue,  3 Feb 2026 11:22:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 62F671A6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:57 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id A8F161A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:22:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 405AC40995
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8712E40A7B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:22:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yGUpIrU-FqBK for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Feb 2026 11:21:56 +0000 (UTC)
+ id d9a_N1sylFu2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Feb 2026 11:21:59 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
  helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3BA8D407AC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3BA8D407AC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8844640A8B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8844640A8B
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3BA8D407AC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:56 +0000 (UTC)
-X-CSE-ConnectionGUID: YiuxVn/FQsKcT6VcDhx9EA==
-X-CSE-MsgGUID: HnG/6DX+RtenRclQV1hEMA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11690"; a="71185922"
-X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="71185922"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8844640A8B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Feb 2026 11:21:59 +0000 (UTC)
+X-CSE-ConnectionGUID: sV9bufwdTZecbLvsLro05g==
+X-CSE-MsgGUID: jfLKZZpIQjif+gkrcgsIYg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11690"; a="71185945"
+X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="71185945"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Feb 2026 03:21:56 -0800
-X-CSE-ConnectionGUID: 3yTk6wtERLeQgOP2czKlHQ==
-X-CSE-MsgGUID: rT4JS999TziPmYsvVWtavQ==
+ 03 Feb 2026 03:22:00 -0800
+X-CSE-ConnectionGUID: DM+ZiF5ZTyS1qURgMAkgVw==
+X-CSE-MsgGUID: otFw1S5dQteqm3gH1/y13Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="209913269"
+X-IronPort-AV: E=Sophos;i="6.21,270,1763452800"; d="scan'208";a="209913299"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa007.jf.intel.com with ESMTP; 03 Feb 2026 03:21:49 -0800
+ by orviesa007.jf.intel.com with ESMTP; 03 Feb 2026 03:21:51 -0800
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 8CEB928195;
- Tue,  3 Feb 2026 11:21:45 +0000 (GMT)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id DC38E28196;
+ Tue,  3 Feb 2026 11:21:47 +0000 (GMT)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: bpf@vger.kernel.org
 Cc: Claudiu Manoil <claudiu.manoil@nxp.com>,
@@ -102,8 +102,8 @@ Cc: Claudiu Manoil <claudiu.manoil@nxp.com>,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Tue,  3 Feb 2026 11:53:33 +0100
-Message-ID: <20260203105417.2302672-6-larysa.zaremba@intel.com>
+Date: Tue,  3 Feb 2026 11:53:34 +0100
+Message-ID: <20260203105417.2302672-7-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260203105417.2302672-1-larysa.zaremba@intel.com>
 References: <20260203105417.2302672-1-larysa.zaremba@intel.com>
@@ -111,25 +111,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770117717; x=1801653717;
+ t=1770117720; x=1801653720;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=DoEHOpDkte0lq2Qu38Srj0S/5EmbLjXyklYvoIStbGQ=;
- b=ZRh+78elKePw+G4EkVYjTeNhhGeFw1GcHE+grgsmfTOa9qnjLuESx9Eo
- rQCvbHlXtF2u43S+kMQ7UEM5AUsew5iynKOJooFpZINRHsNydst5dpx+t
- VlNKfynzyGIAg6VGriOtXHkrUwbO/lnE0Q+A+ZbFGfvMu/Ii7mtZzyCdI
- Y91lMauCOuc/14a2pRNmTF1nogm/FxFhEvmRhUpLajB/IW4oF4pcYZnf3
- ZMk9xy2+tfZB22S8YhFgBoSpMO8qG4QH1oBCjn2mt0oVqismL0+kHrf4P
- AEphz5t4sQ6rJgBDrJ3r/IdMYqJNvWXFsTWIoKv+dxlYqo1aJsolOYZP1
+ bh=I/ds7VPivI7MC56xPmzXpkEugesnbH4oVfiwGT7GqoU=;
+ b=BrVl0dLD4kqwsgvqpoZz3qYb4hv2yG+JNIPmh/I/7dZIsQ4B7zryN709
+ 2pJ6lsVPiBjTQ67GTmw7GKFE084c+0KyvG7eWeJbDhq7J10AWgYtIB6/E
+ 1sAFNxWjSMJh71zSjoJOHyX+3ENlwHXB6hnM04STndIES+F14py34DZSj
+ 6O2HvCgu28ozEDF/6dFgM4EQ1lhAl4IYB+rx5+KxnEuMr0m6QeqkhjFfU
+ 6B9Hmd100GtDFSU1FC9g9zi4R0mRZz3oPe7aYzOifsQKDhti0a8Fxcsk9
+ Zh//dGFOwObFLvjorrN5kpknDGFtRd6ndsBItyIhvY5Qj1W3PAZJqxl2U
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZRh+78el
-Subject: [Intel-wired-lan] [PATCH bpf 5/6] idpf: use truesize as XDP RxQ
- info frag_size
+ header.a=rsa-sha256 header.s=Intel header.b=BrVl0dLD
+Subject: [Intel-wired-lan] [PATCH bpf 6/6] net: enetc: use truesize as XDP
+ RxQ info frag_size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -169,7 +169,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,intel.com:mid,intel.com:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	TO_DN_SOME(0.00)[];
@@ -180,35 +180,35 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 1C06ED836F
+X-Rspamd-Queue-Id: 0A104D837E
 X-Rspamd-Action: no action
 
 The only user of frag_size field in XDP RxQ info is
 bpf_xdp_frags_increase_tail(). It clearly expects truesize instead of DMA
-write size. Different assumptions in idpf driver configuration lead to
+write size. Different assumptions in enetc driver configuration lead to
 negative tailroom.
 
 Set frag_size to the same value as frame_sz.
 
-Fixes: ac8a861f632e ("idpf: prepare structures to support XDP")
+Fixes: 2768b2e2f7d2 ("net: enetc: register XDP RX queues with frag_size")
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/xdp.c | 2 +-
+ drivers/net/ethernet/freescale/enetc/enetc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
-index 958d16f87424..4966376a9785 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/xdp.c
-@@ -50,7 +50,7 @@ static int __idpf_xdp_rxq_info_init(struct idpf_rx_queue *rxq, void *arg)
+diff --git a/drivers/net/ethernet/freescale/enetc/enetc.c b/drivers/net/ethernet/freescale/enetc/enetc.c
+index 53b26cece16a..389331571d9e 100644
+--- a/drivers/net/ethernet/freescale/enetc/enetc.c
++++ b/drivers/net/ethernet/freescale/enetc/enetc.c
+@@ -3465,7 +3465,7 @@ static int enetc_int_vector_init(struct enetc_ndev_priv *priv, int i,
+ 	priv->rx_ring[i] = bdr;
  
- 	err = __xdp_rxq_info_reg(&rxq->xdp_rxq, vport->netdev, rxq->idx,
- 				 rxq->q_vector->napi.napi_id,
--				 rxq->rx_buf_size);
-+				 rxq->truesize);
+ 	err = __xdp_rxq_info_reg(&bdr->xdp.rxq, priv->ndev, i, 0,
+-				 ENETC_RXB_DMA_SIZE_XDP);
++				 ENETC_RXB_TRUESIZE);
  	if (err)
- 		return err;
+ 		goto free_vector;
  
 -- 
 2.52.0
