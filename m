@@ -2,107 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id uLRhO2hpg2kbmgMAu9opvQ
+	id yMvKI2tpg2kbmgMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:40 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:43 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C986E946D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:40 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 60C2BE947D
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2797561039;
+	by smtp3.osuosl.org (Postfix) with ESMTP id 88DA26109B;
 	Wed,  4 Feb 2026 15:44:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Vg1ohfGdTVO3; Wed,  4 Feb 2026 15:44:35 +0000 (UTC)
+ id iTFpN0Bvf_IO; Wed,  4 Feb 2026 15:44:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE8C560D7E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B9FBC61054
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770219873;
-	bh=rB+NF6Lj31wNmcslNxJOtoJ6P4iw8UYoPZpsfE3bJaI=;
+	s=default; t=1770219874;
+	bh=kNSPUkMn+4jd2EtoaMs0Jl1E0LSfQYPIgtw85UsoAQ0=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=36pUOzx1dL3H9ePKmt4uNYQXgrzgJ9e2xXglzF8fdXWqDJkWfrfTTSyS+dLiQXRQc
-	 deelbbB7S/8eQYgRrhZO2OpxLBTJbRZkNqIeoo/gIESyya98CZrdY6nKysu3e+3vjL
-	 ekUDViVpVNCGDmMWpj/KmSg993Z4GQttRd3L/vESu8OW3a8SKdbtz2yNPZZJR3FuqI
-	 u9c1Xx2NbOovMsc0dpxUAF2UOC/VU2mzS2/uiWQZuV4svmzo3ejRtX/cNWi0EZu0+C
-	 sNw3FdBXSp2p+hWQmsEyC5nwK0wkImO5xa8CPgNlsLKgDtMNaERjGUTVB7sHhV2Apg
-	 929Z6wMflkzHA==
+	b=1gBM8+6S6xA46BMJhTTJUWIFf/1ju7eE1Qf44HIg4YiVx1BYYBNlEY+2YDk/4I07M
+	 vO/WjgJgIKyJdFekQvaZTRaNI9EqeMPDwcfPrukRFmuNaEpvqvUq60JCIDyfuJoEnT
+	 1tC7ygWKPOsvmIqHkqbw08xpmMUMyagWRqFq9QDN6FLGI36MLHHRSgSCln5LLcngwL
+	 OKS4ANhzQGwownSX5lGDidGOv81TxP1ro+GhOii9rwoLrm/8Np7oDmXbQ4Mj6u8CAp
+	 xW5Ps+j06V8uVkyg/0Ndz6ANHBf1cwZoVwFVpYG5qkE8wV3qlSVgw2+UF39T/iVS9q
+	 5wq48if3yp0DQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AE8C560D7E;
-	Wed,  4 Feb 2026 15:44:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B9FBC61054;
+	Wed,  4 Feb 2026 15:44:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3B8F5F4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9F647F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 033018032C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8019480B3F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8Tlw7dMmRUFu for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Feb 2026 15:44:26 +0000 (UTC)
+ id jPvAbDoj0F7c for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Feb 2026 15:44:28 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
  helo=mgamail.intel.com; envelope-from=jakub.slepecki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0A16483E9A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A16483E9A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 484F380A79
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 484F380A79
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0A16483E9A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:25 +0000 (UTC)
-X-CSE-ConnectionGUID: c7oMCQINSxmFFfzTs3YHgw==
-X-CSE-MsgGUID: ej25iwf/RyaMc+JxQoKsUA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="88987091"
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="88987091"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 484F380A79
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:28 +0000 (UTC)
+X-CSE-ConnectionGUID: Qg6jo6xeQme0OwRNmIk6rA==
+X-CSE-MsgGUID: LaMve96lTcqQ3JgN+a51JA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="88987095"
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="88987095"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2026 07:44:26 -0800
-X-CSE-ConnectionGUID: 6jqfFe4nRtKo1bJylNkOEA==
-X-CSE-MsgGUID: AKljs61XQ7SXqFBlobG3LA==
+ 04 Feb 2026 07:44:28 -0800
+X-CSE-ConnectionGUID: yBmta7mfQ8+a1p3dhQUvbA==
+X-CSE-MsgGUID: +nldAG6bQ7Cu9jKtAMF2nw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="209494118"
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="209494121"
 Received: from hpe-dl385gen10.igk.intel.com ([10.91.240.117])
- by orviesa010.jf.intel.com with ESMTP; 04 Feb 2026 07:44:23 -0800
+ by orviesa010.jf.intel.com with ESMTP; 04 Feb 2026 07:44:26 -0800
 From: Jakub Slepecki <jakub.slepecki@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com,
  michal.swiatkowski@linux.intel.com, jakub.slepecki@intel.com,
  aleksandr.loktionov@intel.com
-Date: Wed,  4 Feb 2026 16:44:13 +0100
-Message-ID: <20260204154418.1285309-3-jakub.slepecki@intel.com>
+Date: Wed,  4 Feb 2026 16:44:14 +0100
+Message-ID: <20260204154418.1285309-4-jakub.slepecki@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260204154418.1285309-1-jakub.slepecki@intel.com>
 References: <20260204154418.1285309-1-jakub.slepecki@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
  80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770219866; x=1801755866;
+ t=1770219868; x=1801755868;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=JWmvUqaxGBDpmxTflwTsgJtVOJVahu8eyBgHP2/Rcdo=;
- b=LE6/xRd6KnwS4BIC3dG0IiWxf0uJUkQYZ1a24hgPxh9ynzh85C3UpRPR
- J08gK9XuCFC4+pOrCgq59KcNv6zzAPXz6dIdr7GkeUg540Lssal79Y+o1
- sf+XR1+Cg2fclaWo1wMUK48tq7XWpFe7+q9iDo5iYTT4f3iQ4/HEczu6m
- 2k2LRrExMXwLeV1tMtE4SbZxxK5z68s3nDfl1d6ikSgodrqvNQ3q6IP7q
- 8+2Qr/5C4+x0R+DJg+1teQXl6oundqwGZxEKpTxwBqL91ovxM3tKi063C
- daMub3zyvnEWhZFSv/Kvg1Ys/leX9kueKlVLlWEceM2MvcSrkWJSG0lqx
+ bh=Jlx1HM4WhK92C63jv0PewtEGzcL37nDTi+iriH0kgzk=;
+ b=aHcPivog6DkbdZVRUsMKPFsEvsUj8O4TkpCI278ljLOBTC3XPvujT4u8
+ 5znGPm1SfgNPxSKEORRwGs0ZnHcjiLHLiOW8H6fu3X+jOVpAJzbfXZ86H
+ 85nZRI1Gi5z1lfbno9nqdoRf+RHRI3c461LgY0YOTT8/+V0vtdMbn8fDq
+ rdUhu99h6/mrbM5KdM5yJeUACGpAXFhbRQ7zYo1jcqsarlpmF8kefZ7ue
+ pRAbttuk+Eqaei2V8nS47Ikms2sm1vBrMHNRAn/oDb+1GFYpBrOcdGQTr
+ LEU9tLxNciNAglRg7CNV85rYJZg8JLWGpXVsupxxQmbcOm9DbOtNWNsGG
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LE6/xRd6
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 2/7] ice: allow creating mac,
- vlan filters along mac filters
+ header.a=rsa-sha256 header.s=Intel header.b=aHcPivog
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 3/7] ice: allow overriding
+ lan_en, lb_en in switch
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,174 +119,179 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [0.29 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	HAS_ORG_HEADER(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jakub.slepecki@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	HAS_ORG_HEADER(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	MIME_TRACE(0.00)[0:+];
 	TO_DN_NONE(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim];
+	FROM_NEQ_ENVFROM(0.00)[jakub.slepecki@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	RCPT_COUNT_SEVEN(0.00)[8];
+	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 7C986E946D
+X-Rspamd-Queue-Id: 60C2BE947D
 X-Rspamd-Action: no action
 
-Among other uses, MAC filters are currently used to forward loopback
-traffic between VSIs.  However, they only match destination MAC addresses
-making them prone to mistakes when handling traffic within multiple
-VLANs and especially across the boundaries.
+Currently, lan_en and lb_en are determined based on switching mode,
+destination MAC, and the lookup type, action type and flags of the rule
+in question.  This gives little to no options for the user (such as
+ice_fltr.c) to enforce rules to behave in a specific way.
 
-Allows the driver to create MAC,VLAN filters in the same flow as
-MAC-only filters completely interchangeably.  This is intended to be
-used to forward the loopback traffic only within the boundaries of
-particular VLANs.
+Such functionality is needed to work with pairs of rules, for example,
+when handling MAC forward to LAN together with MAC,VLAN forward to
+loopback rules pair.  This case could not be easily deduced in a context
+of a single filter without adding some guessing logic or a specialized
+flag.
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Add a slightly more generic flag to the lan_en and lb_en themselves
+for the ice_fltr.c to request specific destination flags later on,
+for example, to override both values:
+
+    struct ice_fltr_info fi;
+    fi.lb_en = ICE_FLTR_INFO_LB_LAN_FORCE_ENABLED;
+    fi.lan_en = ICE_FLTR_INFO_LB_LAN_FORCE_DISABLED;
+
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Jakub Slepecki <jakub.slepecki@intel.com>
+---
+Added R-B from Aleksandr as we talked live and he reviewed the changes.
 
----
 No changes in v4.
-No changes in v3.
-No changes in v2.
+
+Changes in v3:
+  - LB_LAN masks and values no longer rely on boolean promotion.
+  - ice_fill_sw_info() deals with u8 the entire time instead of building
+    building lb_en and lan_en values at the end from booleans.
+
+Changes in v2:
+  - Use FIELD_GET et al. when handling fi.lb_en and fi.lan_en.
+  - Rename /LB_LAN/s/_MASK/_M/ because one of uses would need to break
+    line
 ---
- drivers/net/ethernet/intel/ice/ice_switch.c | 48 ++++++++++++++++-----
- 1 file changed, 38 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_switch.c | 25 +++++++++++++--------
+ drivers/net/ethernet/intel/ice/ice_switch.h | 19 +++++++++++++---
+ 2 files changed, 32 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 84848f0123e7..0275e2910c6b 100644
+index 04e5d653efce..3caccd798220 100644
 --- a/drivers/net/ethernet/intel/ice/ice_switch.c
 +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3606,6 +3606,29 @@ bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle)
- 	return false;
- }
- 
-+/**
-+ * ice_fltr_mac_address - Find MAC in filter
-+ * @dst: output MAC address
-+ * @info: information struct for the filter in question
-+ *
-+ * Return: 0 for success, %-ENXIO if no address was found in the filter
-+ * information.
-+ */
-+static
-+int ice_fltr_mac_address(u8 *dst, struct ice_fltr_info *info)
-+{
-+	switch (info->lkup_type) {
-+	case ICE_SW_LKUP_MAC:
-+		ether_addr_copy(dst, info->l_data.mac.mac_addr);
-+		return 0;
-+	case ICE_SW_LKUP_MAC_VLAN:
-+		ether_addr_copy(dst, info->l_data.mac_vlan.mac_addr);
-+		return 0;
-+	default:
-+		return -ENXIO;
-+	}
-+}
-+
- /**
-  * ice_add_mac - Add a MAC address based filter rule
-  * @hw: pointer to the hardware structure
-@@ -3614,16 +3637,19 @@ bool ice_vlan_fltr_exist(struct ice_hw *hw, u16 vlan_id, u16 vsi_handle)
- int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
+@@ -2534,12 +2534,14 @@ int ice_get_initial_sw_cfg(struct ice_hw *hw)
+  *
+  * This helper function populates the lb_en and lan_en elements of the provided
+  * ice_fltr_info struct using the switch's type and characteristics of the
+- * switch rule being configured.
++ * switch rule being configured.  Elements are updated only if their FORCE bit
++ * is not set.
+  */
+ static void ice_fill_sw_info(struct ice_hw *hw, struct ice_fltr_info *fi)
  {
- 	struct ice_fltr_list_entry *m_list_itr;
--	int status = 0;
-+	int err;
+-	fi->lb_en = false;
+-	fi->lan_en = false;
++	u8 lan_en = fi->lan_en;
++	u8 lb_en = fi->lb_en;
++
+ 	if ((fi->flag & ICE_FLTR_TX) &&
+ 	    (fi->fltr_act == ICE_FWD_TO_VSI ||
+ 	     fi->fltr_act == ICE_FWD_TO_VSI_LIST ||
+@@ -2549,7 +2551,7 @@ static void ice_fill_sw_info(struct ice_hw *hw, struct ice_fltr_info *fi)
+ 		 * packets to the internal switch that will be dropped.
+ 		 */
+ 		if (fi->lkup_type != ICE_SW_LKUP_VLAN)
+-			fi->lb_en = true;
++			FIELD_MODIFY(ICE_FLTR_INFO_LB_LAN_VALUE_M, &lb_en, 1);
  
- 	if (!m_list || !hw)
- 		return -EINVAL;
- 
- 	list_for_each_entry(m_list_itr, m_list, list_entry) {
--		u8 *add = &m_list_itr->fltr_info.l_data.mac.mac_addr[0];
-+		u8 addr[ETH_ALEN];
- 		u16 vsi_handle;
- 		u16 hw_vsi_id;
- 
-+		err = ice_fltr_mac_address(addr, &m_list_itr->fltr_info);
-+		if (err || is_zero_ether_addr(addr))
-+			return -EINVAL;
- 		m_list_itr->fltr_info.flag = ICE_FLTR_TX;
- 		vsi_handle = m_list_itr->fltr_info.vsi_handle;
- 		if (!ice_is_vsi_valid(hw, vsi_handle))
-@@ -3634,17 +3660,19 @@ int ice_add_mac(struct ice_hw *hw, struct list_head *m_list)
- 		if (m_list_itr->fltr_info.src_id != ICE_SRC_ID_VSI)
- 			return -EINVAL;
- 		m_list_itr->fltr_info.src = hw_vsi_id;
--		if (m_list_itr->fltr_info.lkup_type != ICE_SW_LKUP_MAC ||
--		    is_zero_ether_addr(add))
-+		if (m_list_itr->fltr_info.lkup_type != ICE_SW_LKUP_MAC &&
-+		    m_list_itr->fltr_info.lkup_type != ICE_SW_LKUP_MAC_VLAN)
- 			return -EINVAL;
- 
--		m_list_itr->status = ice_add_rule_internal(hw, ICE_SW_LKUP_MAC,
--							   m_list_itr);
-+		m_list_itr->status =
-+			ice_add_rule_internal(hw,
-+					      m_list_itr->fltr_info.lkup_type,
-+					      m_list_itr);
- 		if (m_list_itr->status)
- 			return m_list_itr->status;
+ 		/* Set lan_en to TRUE if
+ 		 * 1. The switch is a VEB AND
+@@ -2578,14 +2580,19 @@ static void ice_fill_sw_info(struct ice_hw *hw, struct ice_fltr_info *fi)
+ 			     !is_unicast_ether_addr(fi->l_data.mac.mac_addr)) ||
+ 			    (fi->lkup_type == ICE_SW_LKUP_MAC_VLAN &&
+ 			     !is_unicast_ether_addr(fi->l_data.mac.mac_addr)))
+-				fi->lan_en = true;
++				FIELD_MODIFY(ICE_FLTR_INFO_LB_LAN_VALUE_M,
++					     &lan_en, 1);
+ 		} else {
+-			fi->lan_en = true;
++			FIELD_MODIFY(ICE_FLTR_INFO_LB_LAN_VALUE_M, &lan_en, 1);
+ 		}
  	}
  
--	return status;
-+	return 0;
+ 	if (fi->flag & ICE_FLTR_TX_ONLY)
+-		fi->lan_en = false;
++		FIELD_MODIFY(ICE_FLTR_INFO_LB_LAN_VALUE_M, &lan_en, 0);
++	if (!FIELD_GET(ICE_FLTR_INFO_LB_LAN_FORCE_M, lb_en))
++		fi->lb_en = lb_en;
++	if (!FIELD_GET(ICE_FLTR_INFO_LB_LAN_FORCE_M, lan_en))
++		fi->lan_en = lan_en;
  }
  
  /**
-@@ -4055,7 +4083,7 @@ int ice_remove_mac(struct ice_hw *hw, struct list_head *m_list)
- 		enum ice_sw_lkup_type l_type = list_itr->fltr_info.lkup_type;
- 		u16 vsi_handle;
+@@ -2669,9 +2676,9 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
+ 		return;
+ 	}
  
--		if (l_type != ICE_SW_LKUP_MAC)
-+		if (l_type != ICE_SW_LKUP_MAC && l_type != ICE_SW_LKUP_MAC_VLAN)
- 			return -EINVAL;
+-	if (f_info->lb_en)
++	if (FIELD_GET(ICE_FLTR_INFO_LB_LAN_VALUE_M, f_info->lb_en))
+ 		act |= ICE_SINGLE_ACT_LB_ENABLE;
+-	if (f_info->lan_en)
++	if (FIELD_GET(ICE_FLTR_INFO_LB_LAN_VALUE_M, f_info->lan_en))
+ 		act |= ICE_SINGLE_ACT_LAN_ENABLE;
  
- 		vsi_handle = list_itr->fltr_info.vsi_handle;
-@@ -4066,7 +4094,7 @@ int ice_remove_mac(struct ice_hw *hw, struct list_head *m_list)
- 					ice_get_hw_vsi_num(hw, vsi_handle);
+ 	switch (f_info->lkup_type) {
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+index 671d7a5f359f..137eae878ab1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.h
++++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+@@ -72,6 +72,14 @@ enum ice_src_id {
+ 	ICE_SRC_ID_LPORT,
+ };
  
- 		list_itr->status = ice_remove_rule_internal(hw,
--							    ICE_SW_LKUP_MAC,
-+							    l_type,
- 							    list_itr);
- 		if (list_itr->status)
- 			return list_itr->status;
-@@ -4507,6 +4535,7 @@ ice_remove_vsi_lkup_fltr(struct ice_hw *hw, u16 vsi_handle,
++#define ICE_FLTR_INFO_LB_LAN_VALUE_M BIT(0)
++#define ICE_FLTR_INFO_LB_LAN_FORCE_M BIT(1)
++#define ICE_FLTR_INFO_LB_LAN_FORCE_ENABLED			 \
++	(FIELD_PREP_CONST(ICE_FLTR_INFO_LB_LAN_VALUE_M, 1) |  \
++	 FIELD_PREP_CONST(ICE_FLTR_INFO_LB_LAN_FORCE_M, 1))
++#define ICE_FLTR_INFO_LB_LAN_FORCE_DISABLED			 \
++	(FIELD_PREP_CONST(ICE_FLTR_INFO_LB_LAN_FORCE_M, 1))
++
+ struct ice_fltr_info {
+ 	/* Look up information: how to look up packet */
+ 	enum ice_sw_lkup_type lkup_type;
+@@ -131,9 +139,14 @@ struct ice_fltr_info {
+ 	 */
+ 	u8 qgrp_size;
  
- 	switch (lkup) {
- 	case ICE_SW_LKUP_MAC:
-+	case ICE_SW_LKUP_MAC_VLAN:
- 		ice_remove_mac(hw, &remove_list_head);
- 		break;
- 	case ICE_SW_LKUP_VLAN:
-@@ -4516,7 +4545,6 @@ ice_remove_vsi_lkup_fltr(struct ice_hw *hw, u16 vsi_handle,
- 	case ICE_SW_LKUP_PROMISC_VLAN:
- 		ice_remove_promisc(hw, lkup, &remove_list_head);
- 		break;
--	case ICE_SW_LKUP_MAC_VLAN:
- 	case ICE_SW_LKUP_ETHERTYPE:
- 	case ICE_SW_LKUP_ETHERTYPE_MAC:
- 	case ICE_SW_LKUP_DFLT:
+-	/* Rule creations populate these indicators basing on the switch type */
+-	u8 lb_en;	/* Indicate if packet can be looped back */
+-	u8 lan_en;	/* Indicate if packet can be forwarded to the uplink */
++	/* Following members have two bits: VALUE and FORCE.  Rule creation will
++	 * populate VALUE bit of these members based on switch type, but only if
++	 * their FORCE bit is not set.
++	 *
++	 * See ICE_FLTR_INFO_LB_LAN_VALUE_M and ICE_FLTR_INFO_LB_LAN_FORCE_M.
++	 */
++	u8 lb_en;	/* VALUE bit: packet can be looped back */
++	u8 lan_en;	/* VALUE bit: packet can be forwarded to the uplink */
+ };
+ 
+ struct ice_update_recipe_lkup_idx_params {
 -- 
 2.43.0
 
