@@ -2,79 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SN4MNm1pg2kbmgMAu9opvQ
+	id gDISJ3Fpg2kbmgMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:45 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:49 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CBC2E9485
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:45 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5236EE949B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B643960F90;
-	Wed,  4 Feb 2026 15:44:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 66800607B3;
+	Wed,  4 Feb 2026 15:44:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 01PN0AuQVZJP; Wed,  4 Feb 2026 15:44:38 +0000 (UTC)
+ id CIqWC4XO9iEv; Wed,  4 Feb 2026 15:44:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5149A60D7E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9A642610B1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770219877;
-	bh=C7FZGuDQTohwXgeGisHnQZD2kRajNLxYDyMBOWiC/SI=;
+	s=default; t=1770219878;
+	bh=8BXPZzJV0ibu0eH7V/NXqC/A1pBOBRP67oboFdk1MVA=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=M3xkoO29G+2WzUEVGeXy6+63FrKfl+pqz584hH3DwKwUsVVlLQE1RDZEoobO2RPqn
-	 Uma4N/GMeg/uI/BJ3gslGYnAAvL+GEVS6NSQjOGbrB9QmGO8v7WqXc3xWyz3JHRl9t
-	 LIbZEf/Qm1cvu7xyCdNGPr7DNofxLTqwlfqRpxNZCQ1utf7Ph4Fpiwn/wdXAa4CQa0
-	 iVGeQpnpk/bwd6+4GMMjDz5Te5xvnF67JU2zFGgazl8sjUjgEbOims0Vk3gfzXbDoG
-	 8RWQnS96AH7VorKch7IonBIfr+AWOTUKq2oy32X/JeWslqzVRZkFNvktWdHZdVBU8U
-	 7Hbw/9L2HQJ0g==
+	b=3F1t35Oxy5MCPUdJkbbQCX7Y2Oe+/3malHHE044+V7gj0X944GAVwzQ1PQjBZb+7G
+	 IPdBFGvGtg006KTtSvgpEf02i+aoTdxukl5AjJcoD1fh0SVBnCCF+SG9LKEk1sYuCx
+	 lwdF7/McXZNTpFQDVej+gVkEB31CMmf3hg4RCkfnvObAS+IxZODEMVAv09/+VxX9Jx
+	 DheyPAH6LTLgnNS+pYegd8XtG8vsdSZYoUQq32t1MtGKf97b/G+T7TANRw4Q5AxLsn
+	 KTJneErsxnMHDIaft1TM1KPbtITNtAUXByn3up1DBdroKmrAymIpjn3RP4q1Jqy/ok
+	 XIhGI4S8uvj+g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5149A60D7E;
-	Wed,  4 Feb 2026 15:44:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A642610B1;
+	Wed,  4 Feb 2026 15:44:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id C97EFF4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:33 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2E7C5F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C10F280DA2
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 19BF180E50
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6LDaFNYyxlSw for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Feb 2026 15:44:32 +0000 (UTC)
+ id pSFZwwI0TSdZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Feb 2026 15:44:35 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
  helo=mgamail.intel.com; envelope-from=jakub.slepecki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C042980CA6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C042980CA6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 16F6D80CA6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 16F6D80CA6
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C042980CA6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:32 +0000 (UTC)
-X-CSE-ConnectionGUID: zuve9o+ERdSHj+X39DvloA==
-X-CSE-MsgGUID: LvlSFiaGTXGQsErcpvq3aw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="88987108"
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="88987108"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 16F6D80CA6
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:35 +0000 (UTC)
+X-CSE-ConnectionGUID: /06/kmwESHqaIq/tW5Pvmg==
+X-CSE-MsgGUID: BMwYmS+WTXmI+6z8W7cK1A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="88987114"
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="88987114"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2026 07:44:32 -0800
-X-CSE-ConnectionGUID: NQERNJTwRwGdCp99zs+DDQ==
-X-CSE-MsgGUID: bt0nrMdZRry52fO+LEIbvA==
+ 04 Feb 2026 07:44:35 -0800
+X-CSE-ConnectionGUID: dSAUQIflSTuYohwg3SIPYg==
+X-CSE-MsgGUID: Qp/7AQxdSsOPPRzlbTZHfQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="209494131"
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="209494136"
 Received: from hpe-dl385gen10.igk.intel.com ([10.91.240.117])
- by orviesa010.jf.intel.com with ESMTP; 04 Feb 2026 07:44:30 -0800
+ by orviesa010.jf.intel.com with ESMTP; 04 Feb 2026 07:44:32 -0800
 From: Jakub Slepecki <jakub.slepecki@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com,
  michal.swiatkowski@linux.intel.com, jakub.slepecki@intel.com,
  aleksandr.loktionov@intel.com
-Date: Wed,  4 Feb 2026 16:44:16 +0100
-Message-ID: <20260204154418.1285309-6-jakub.slepecki@intel.com>
+Date: Wed,  4 Feb 2026 16:44:17 +0100
+Message-ID: <20260204154418.1285309-7-jakub.slepecki@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260204154418.1285309-1-jakub.slepecki@intel.com>
 References: <20260204154418.1285309-1-jakub.slepecki@intel.com>
@@ -84,25 +84,25 @@ Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770219873; x=1801755873;
+ t=1770219875; x=1801755875;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=e/SbG2tv+Vp5aAA6qUNCeSUnTaIUvHurv8Z6KAFxvRs=;
- b=mk7k41lMtXL30OhLHUAq3KwkkoZxYYZTomwKDGZerIcg1EsFstx5RVSe
- t177+39i178bkh1iTQh6u70QjV7ifxesNV6n9CP50pkzh+7Bt2HuKlhJA
- ydJRwfA4CYNZ48Au1OsRpaACH9fgd2zvdFQGs69qbs/I7U+0htQYiUlyv
- xv8gFyxyKznzcDrJLTSVkp0Bn6wGjFbhOEKM8ag9xhyt4u7O6TqV5euxU
- XwAyPFcH+WFwNocIS4/FFCjcawLg6+4YGgA+4jekScC5A08JzTQ5GvGK2
- T8wL4Jm6tGRhmIA+3H1L+3qTbLkzzQBN1gc+XaVDl9UN2RweM8h4tKxp3
- w==;
+ bh=K0E7+UMYGPTimqdt5ibfjpZFUmqBu3rV8ubOJ6pR7tc=;
+ b=i7HS1P/yUSO5GwgnChNqglh3qnciJeXHEpAjx0kG8tQtqwoQ/nUi3wM5
+ Mbozutd8SO0qha3UT0jWO28s90OXMjROkAPY91wXk+rfp+7wBzZNsstEd
+ M+1Y9SmZyLad4tPNdIYfv1JgW8o/IlwmegKBv+SROWsB636CGtPMRfyrH
+ qXKaXdoM7UvCpKcsb/a68jLvJpnJmIX/+GmDSLLqeRd3PqFQ218vRDHot
+ oyBlrZ2a8OVooyaNvFc80QkU1W7xRRtvZDDu8PTj6IszwA6Rr42arZLuK
+ niDybjSx/My5oUYe4/bW2P2p7V7aKmE0Sf67nxTLNqNUpKDJWjpdH08nn
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mk7k41lM
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 5/7] ice: add functions to
- query for vsi's pvids
+ header.a=rsa-sha256 header.s=Intel header.b=i7HS1P/y
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 6/7] ice: add mac vlan to
+ filter API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -145,105 +145,87 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 	NEURAL_HAM(-0.00)[-1.000];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 5CBC2E9485
+X-Rspamd-Queue-Id: 5236EE949B
 X-Rspamd-Action: no action
 
-PVID information is set across two structs and several members depending
-primarily on DVM support and VSI type.  Add function that guess whether
-PVID is set and where and allow to access raw VLAN ID set.  This is
-intended to be used later on to decide what MAC{,VLAN} filters to set
-for a VSI.
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Allow mac vlan filters to be managed by filters API in ice driver.
+Together with mac-only filters they will be used to forward traffic
+intended for loopback in VEB mode.
+
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Jakub Slepecki <jakub.slepecki@intel.com>
 
 ---
-No changes iv v4.
+No changes in v4.
 No changes in v3.
 No changes in v2.
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 56 ++++++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_lib.h |  2 +
- 2 files changed, 58 insertions(+)
+ drivers/net/ethernet/intel/ice/ice_fltr.c | 33 +++++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fltr.h |  4 +++
+ 2 files changed, 37 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 041278caf8e3..ff4763cea2e5 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -4136,3 +4136,59 @@ void ice_vsi_update_l2tsel(struct ice_vsi *vsi, enum ice_l2tsel l2tsel)
- 		wr32(hw, qrx_context_offset, regval);
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.c b/drivers/net/ethernet/intel/ice/ice_fltr.c
+index aff7a141c30d..96a4e4b1b3fc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fltr.c
++++ b/drivers/net/ethernet/intel/ice/ice_fltr.c
+@@ -240,6 +240,39 @@ ice_fltr_add_mac_to_list(struct ice_vsi *vsi, struct list_head *list,
+ 					  list);
  }
-+
-+/**
-+ * ice_vsi_has_outer_pvid - check if VSI has outer Port VLAN ID assigned
-+ * @info: props of VSI in question
-+ *
-+ * Return: true if VSI has outer PVID, false otherwise.
-+ */
-+static bool
-+ice_vsi_has_outer_pvid(const struct ice_aqc_vsi_props *info)
-+{
-+	return info->outer_vlan_flags & ICE_AQ_VSI_OUTER_VLAN_PORT_BASED_INSERT;
-+}
-+
-+/**
-+ * ice_vsi_has_inner_pvid - check if VSI has inner Port VLAN ID assigned
-+ * @info: props of VSI in question
-+ *
-+ * Return: true if VSI has inner PVID, false otherwise.
-+ */
-+static bool
-+ice_vsi_has_inner_pvid(const struct ice_aqc_vsi_props *info)
-+{
-+	return info->inner_vlan_flags & ICE_AQ_VSI_INNER_VLAN_INSERT_PVID;
-+}
-+
-+/**
-+ * ice_vsi_has_pvid - check if VSI has Port VLAN ID assigned
-+ * @vsi: VSI in question
-+ *
-+ * Return: true if VSI has either outer or inner PVID, false otherwise.
-+ */
-+bool
-+ice_vsi_has_pvid(struct ice_vsi *vsi)
-+{
-+	return ice_vsi_has_outer_pvid(&vsi->info) ||
-+	       ice_vsi_has_inner_pvid(&vsi->info);
-+}
-+
-+/**
-+ * ice_vsi_pvid - retrieve VSI's Port VLAN ID
-+ * @vsi: VSI in question
-+ *
-+ * Return: VSI's PVID; it is valid only if ice_vsi_has_pvid is true.
-+ */
-+u16
-+ice_vsi_pvid(struct ice_vsi *vsi)
-+{
-+	__le16 vlan_info = 0;
-+
-+	if (ice_vsi_has_outer_pvid(&vsi->info))
-+		vlan_info = vsi->info.port_based_outer_vlan;
-+	else if (ice_vsi_has_inner_pvid(&vsi->info))
-+		vlan_info = vsi->info.port_based_inner_vlan;
-+
-+	return le16_to_cpu(vlan_info) & VLAN_VID_MASK;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index 2d3168458891..46152e26a995 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -134,6 +134,8 @@ void ice_clear_feature_support(struct ice_pf *pf, enum ice_feature f);
- void ice_init_feature_support(struct ice_pf *pf);
- bool ice_vsi_is_rx_queue_active(struct ice_vsi *vsi);
- void ice_vsi_update_l2tsel(struct ice_vsi *vsi, enum ice_l2tsel l2tsel);
-+bool ice_vsi_has_pvid(struct ice_vsi *vsi);
-+u16 ice_vsi_pvid(struct ice_vsi *vsi);
  
- extern const struct netdev_queue_mgmt_ops ice_queue_mgmt_ops;
- 
++/**
++ * ice_fltr_add_mac_vlan_to_list - add MAC VLAN filter info to
++ * existing list
++ * @vsi: pointer to VSI struct
++ * @list: list to add filter info to
++ * @mac: MAC address to add
++ * @vlan_id: VLAN id to add
++ * @action: filter action
++ *
++ * Return:
++ * * 0 if entry for filter was added, or
++ * * %-ENOMEM if entry could not be allocated.
++ */
++int
++ice_fltr_add_mac_vlan_to_list(struct ice_vsi *vsi, struct list_head *list,
++			      const u8 *mac, u16 vlan_id,
++			      enum ice_sw_fwd_act_type action)
++{
++	struct ice_fltr_info info = {};
++
++	info.flag = ICE_FLTR_TX;
++	info.src_id = ICE_SRC_ID_VSI;
++	info.lkup_type = ICE_SW_LKUP_MAC_VLAN;
++	info.fltr_act = action;
++	info.vsi_handle = vsi->idx;
++
++	info.l_data.mac_vlan.vlan_id = vlan_id;
++	ether_addr_copy(info.l_data.mac_vlan.mac_addr, mac);
++
++	return ice_fltr_add_entry_to_list(ice_pf_to_dev(vsi->back), &info,
++					  list);
++}
++
+ /**
+  * ice_fltr_add_vlan_to_list - add VLAN filter info to exsisting list
+  * @vsi: pointer to VSI struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.h b/drivers/net/ethernet/intel/ice/ice_fltr.h
+index 0f3dbc308eec..fb9ffb39be50 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fltr.h
++++ b/drivers/net/ethernet/intel/ice/ice_fltr.h
+@@ -23,6 +23,10 @@ int
+ ice_fltr_add_mac_to_list(struct ice_vsi *vsi, struct list_head *list,
+ 			 const u8 *mac, enum ice_sw_fwd_act_type action);
+ int
++ice_fltr_add_mac_vlan_to_list(struct ice_vsi *vsi, struct list_head *list,
++			      const u8 *mac, u16 vlan_id,
++			      enum ice_sw_fwd_act_type action);
++int
+ ice_fltr_add_mac(struct ice_vsi *vsi, const u8 *mac,
+ 		 enum ice_sw_fwd_act_type action);
+ int
 -- 
 2.43.0
 
