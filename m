@@ -2,107 +2,224 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id qPrtMnNpg2kbmgMAu9opvQ
+	id +JqYKQZ0g2mFmwMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:51 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 17:29:58 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63EE6E94A9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:44:51 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 097E8EA3DA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 17:29:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 95CA860F69;
-	Wed,  4 Feb 2026 15:44:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AAF8960C08;
+	Wed,  4 Feb 2026 16:29:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TXePl-PBTp98; Wed,  4 Feb 2026 15:44:41 +0000 (UTC)
+ id 2Bf5PVPSpgX4; Wed,  4 Feb 2026 16:29:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 931F8610C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C0C0160DF1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770219881;
-	bh=+91DrlpujevDnrl1CdRDW34p13is/6pm1oMCd0UEwoo=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1770222595;
+	bh=S0V85kHCwHI63ccazC8MjAkOFJBZsbI7OVy2hSInMVE=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=RvcCsrZYNs0HliigulGCZJkODpQ8OFE31YXTR7lLGt0lYR9078pGaiur7LU+o/Xcj
-	 cMZJWzDnrDVML3udzGBw4sLYmf+YF2Td29Q2kgTZTdd3dF4ab1tIPtgOcVjnH+a6IC
-	 uf5xRC3TAPKhBbfmT7a2HQ+LODzjptmuvJ9+g8SQPJ+s4IFJ1PnSY9+AKtGschSrT4
-	 Ki0o7NrVxESQYpf7EE6vseHTYmV7MoOaLlOwFZn8wG9Z68bnrnCzxlIz5qCGFbmGhw
-	 BXjVKq0TX+D7rGgAiuZiI8emeZtWPcYEo8qPeTh1fTzNRQEfWQDFgr8RR4SjdsBQty
-	 +uI4kr4Vt3YMw==
+	b=iF+or2TdWOZ00KAhGkDp6rWNKI9bn64TiKfCg7uWAwJZcVFYTaeSlCvMmQTli+ThH
+	 N0USYPlJp834Z6k5RDP+qBXuDkFhSNOEK9qPpQw0RKUSvtUEkW/q+fqbilyyFEXok/
+	 fiQrZxIShJgpgio7YaK0MxpMUTx23EBkw94KvkJndlHoj0YnTmAbZz7pCtrzyvDXUb
+	 DD33LgX5SiSI7rF2N1jBiBq2rLY0BVni7vcoUs3dil/b71v4AmpdkcWihEBC06j7rd
+	 2vzqdmammeg32Gxq8l4g2wpozthtwlJ6W64CwBxX+W7/HBcbEpZLlvitWCxJSK2zMc
+	 GCaehgn//WsYg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 931F8610C8;
-	Wed,  4 Feb 2026 15:44:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C0C0160DF1;
+	Wed,  4 Feb 2026 16:29:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id E68EDF4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:38 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 34877173
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 16:29:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C808D80F9E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:38 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 16733405B2
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 16:29:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gV1ugm-XlnOW for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Feb 2026 15:44:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=jakub.slepecki@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Xcoe18i8PGBc for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Feb 2026 16:29:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6B74D80EAB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B74D80EAB
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6B74D80EAB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:44:37 +0000 (UTC)
-X-CSE-ConnectionGUID: oSnQUOitTF6fNwuc0tBF9A==
-X-CSE-MsgGUID: 4A94CRy2Rkm+YKZzc/JJzA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="88987119"
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="88987119"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Feb 2026 07:44:37 -0800
-X-CSE-ConnectionGUID: qCR+cfYxTIezkzzbHzI5gw==
-X-CSE-MsgGUID: DE2VbgKGToqCRUb1ZvS2vQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 550B4402DB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 550B4402DB
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 550B4402DB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 16:29:53 +0000 (UTC)
+X-CSE-ConnectionGUID: ggOZqspMSp6nQgYdjaXEaQ==
+X-CSE-MsgGUID: w3TWbpPYT9iNJz5DDfPOxg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="96866651"
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="96866651"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2026 08:29:52 -0800
+X-CSE-ConnectionGUID: pMuRoqosRyCE1loRDUCsjA==
+X-CSE-MsgGUID: dlI6m6U8R6quIOtbpSITfw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="209494139"
-Received: from hpe-dl385gen10.igk.intel.com ([10.91.240.117])
- by orviesa010.jf.intel.com with ESMTP; 04 Feb 2026 07:44:35 -0800
-From: Jakub Slepecki <jakub.slepecki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com,
- michal.swiatkowski@linux.intel.com, jakub.slepecki@intel.com,
- aleksandr.loktionov@intel.com
-Date: Wed,  4 Feb 2026 16:44:18 +0100
-Message-ID: <20260204154418.1285309-8-jakub.slepecki@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260204154418.1285309-1-jakub.slepecki@intel.com>
-References: <20260204154418.1285309-1-jakub.slepecki@intel.com>
+X-IronPort-AV: E=Sophos;i="6.21,272,1763452800"; d="scan'208";a="247803883"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+ by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Feb 2026 08:29:52 -0800
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Wed, 4 Feb 2026 08:29:51 -0800
+Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35 via Frontend Transport; Wed, 4 Feb 2026 08:29:51 -0800
+Received: from PH8PR06CU001.outbound.protection.outlook.com (40.107.209.46) by
+ edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Wed, 4 Feb 2026 08:29:50 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Je3Rs3npGOReUQqCYqTgkC4JcNtNHA4J7v4mc7u+gqWBMm1yZtEdhMhfec5PNHJ4UoxRRqNfNZPvCuzx5TACxOMkW+2ZNaYmWCZItzAyJT9u2PfEWuBH37pSgJLkIpoYWB41av2jKFsgQrRpb+mf+zeWF1tkiE2Mu2MvqCXtK1SCleTZgtSPuKo1QdCH6EM+n6SIgaR9+tULh72FngU5QSZXKL53cQpY5bDXE+03KDQ31Ypbj94n2qfiNjWJXBPEgACe621/UwEEMDIWYqcWjtYRIE9Gqmpj2jxLL16fxhSPRUJtPbmA1zlN7zjXFwJIQJyXF9vdbTLKXFzVBbQb5g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=S0V85kHCwHI63ccazC8MjAkOFJBZsbI7OVy2hSInMVE=;
+ b=Mn4vYnO7sbj7klOkdEept/QdSVWs7qox8jedKmSkQRTYSQKyH+TFM04rF65Lm19HywHdmVez+RdxzQ/p650fjxMY3+SWzp7oJ043CAQcO5DHf9ry0d6VwPp6LF4+p3pV8cV1qBiIY4y+Ydp1vBpW5qvw5q+MmHnMXWlWUxQRsokNZTODZspiIv1lz7kNrTwRVXMe5+NOIZ92F2BAClsjKTCKbs4x9oDWJUK6vadtOdUfalMk7teeZBMudKCrbyc8tpjllIhUxsy1xhN4ME3myaw9CdSMMbtNjeDoKAv4jGdw+v4lM4ul6t3AVYr6/syqSVXNVeOV7+UeYxghGJ1T5A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by SJ0PR11MB4926.namprd11.prod.outlook.com (2603:10b6:a03:2d7::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.13; Wed, 4 Feb
+ 2026 16:29:47 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9587.010; Wed, 4 Feb 2026
+ 16:29:47 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: Keita Morisaki <kmta1236@gmail.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH] ice: fix race condition in TX
+ timestamp ring cleanup
+Thread-Index: AQHclfKAfzlDJjBHpEWVtFZcC575a7VyutwQ
+Date: Wed, 4 Feb 2026 16:29:47 +0000
+Message-ID: <IA3PR11MB8986EB459D2FD1697644CF98E598A@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20260204044822.2754803-1-kmta1236@gmail.com>
+In-Reply-To: <20260204044822.2754803-1-kmta1236@gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SJ0PR11MB4926:EE_
+x-ms-office365-filtering-correlation-id: 12536228-e806-473c-f138-08de640a9ca1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700021;
+x-microsoft-antispam-message-info: =?us-ascii?Q?NG8Dg6QS3zEKLeiok3mJoSVvdvn53X9B0MgbuVwvfN5puXqedST/o5oeuOz5?=
+ =?us-ascii?Q?+qXiQ6eKIKw/gxmMXzoTFlKgoD9Kc5rbgWOMk0Y8CCUagkTaX/SG7sJawgX8?=
+ =?us-ascii?Q?rrJwBKE9FV/GFMgs2tjF+x9/TNvqMouw9oLkidX2T86zv1NBW1yx9WNC4BUQ?=
+ =?us-ascii?Q?uaOChQFtLYW+nua3vCNX5Vreir6XY44MlbUbtCEVuWpWe/ILBxyrmZn4oWGr?=
+ =?us-ascii?Q?MdKs0qDRm3bRZy5waMKEAV7PI+3gi6QHDuCDqIF61eZknumH9uIAvqsWQqH5?=
+ =?us-ascii?Q?UpLuR0llSVERoXujEO4AX72Lw1E0tnXxXtvzZ8sEtDqM3EHl6i8cPwunNINH?=
+ =?us-ascii?Q?zmHVd0On3KlmRTqbpsTtMd+XT4TN73XfeFijXQ85xZjTZ3vEkL64Og2e1pop?=
+ =?us-ascii?Q?V0HWeVkGB6ABaajSl4HO8cHLo0+RMFRXHvXJN2MWxkX0uFQiUCdgi9nm2nUQ?=
+ =?us-ascii?Q?tC86hUI7Z6PbRuWT4ajEGybg34gDhYqBxBITbv++yJQZAD1mx9pt7Jer8MNG?=
+ =?us-ascii?Q?7dJKLcpdKgbPUI9OGZdNWkxn8f9Cwf0ZwhCk+ip1RVBKTJootv+8QhRdHkv4?=
+ =?us-ascii?Q?cY78iRLMxQ1k4waxiP1GT2HSKm1mikckNhmR4IS2fL9JG228k52f8LX0OSuI?=
+ =?us-ascii?Q?+Ig65oiAVSr8+32+fFYOlzqv3MCLMlYPVC/efPz75znig+nUjOeyz6a4B4WO?=
+ =?us-ascii?Q?y/2FR/otICqkVfINXu4gGeSub/oqGd+3BJRhLYY6i1tKb5FbUMl+bXDKveB9?=
+ =?us-ascii?Q?Vdp2uVyFmeD69xN8ZJJAHv4ITIQCTlVWreYaseVt21TZPcye9dm1h4xzUExm?=
+ =?us-ascii?Q?JwZdRxuDtAn5iiE4jB7Q3jCsq7OhQb1Gq1uu1enPk/0REkv1G0mJiSYFjkJY?=
+ =?us-ascii?Q?HKnS8fBkCOhTqpHS1BDRfYlGyzkkrzuGjopTsCtevwGOUPdAxwVmf7EsuVk6?=
+ =?us-ascii?Q?SnpHpgbnAPFvqHuugPTRy00vmMqQnKfNo7e6VTjGsgwg1Vc0GULKFnxFsnFj?=
+ =?us-ascii?Q?NZenhRH9jDQvy2y1Rd8u8eB971Wt01U5bshgHv11EItZObecXLsHp7qgiYRH?=
+ =?us-ascii?Q?QYvuJ2SwII3l1ndZp2DBcXBkKR7WbdZeB+51U51uXEi9shlT6U9LOGxKj5lY?=
+ =?us-ascii?Q?hUkq/GRcgXsi7t4nSIEQwXQhcMBIT2xL+L6Y0CjzbYmK1aryoEYiMMu8rLBn?=
+ =?us-ascii?Q?RsSvQFAmJrKdOkXcdC/S/9oNZN8nHi8IOWWEEA4Gre5wtgiSNruscl7KPqKw?=
+ =?us-ascii?Q?XPrWPEtEwwVVSBlt7MXvGGOENkQtLEfNnhQhVw/Rrsx3vwjxEgMXO9BZB7IG?=
+ =?us-ascii?Q?IbYIoYPqgbfLFJqI6o2687U1/+GQubePkvBSpM50jokshg88l3n5g5FF/9eb?=
+ =?us-ascii?Q?6zwRHRZF//2xK5kkDok4b7bCJysuMx7/QZpJsLit+FPpNUpsXndEqBLnFZV+?=
+ =?us-ascii?Q?H1/zk1qYY9AmxJoRBqbzYyrruxMQm5MflTGx01QN1yCuK/IpGtYAqQNlglLa?=
+ =?us-ascii?Q?93y7H0KdQeN27mWLWxa4zuqfkL5BrPIuFhqGWhix49cKRLHaeyAbeCtlKLIa?=
+ =?us-ascii?Q?I7dH16Scdpocqag4pMdp0fK1zmFrzGG/W1Hzsri/DlxYfTqyOg+ZGOKR12kD?=
+ =?us-ascii?Q?qPLWhdHzhW48JidEaNYNgfg=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700021); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?fjt5avQKPGYLJCYZMh6ledbV2TjE1b62ZXRL5iplKLDf9hmnnrE9/ftIpg+5?=
+ =?us-ascii?Q?Vfgehp5+lOmHmwmgXfooRmfRVW2AvYjwWloFHmNOpoYmi2iVj9c1D8qyWor0?=
+ =?us-ascii?Q?OfD+aQ+8QANnOnyNL7SbJweLILpN7b+TYfXXjgFi2mYFAQcQiDgnnXHY65Hh?=
+ =?us-ascii?Q?uOi8Nlp2kkCO1FBB9r8MSY6YPKwcyVYz+zYPYkooFXZkFN6RYlvo2EL8cmyJ?=
+ =?us-ascii?Q?xWp/eQ3kWTnnO8DU03sMt/WwPVLJ7P8eI0ZX0x4JuGAbf1C9yLRP45tm+t6M?=
+ =?us-ascii?Q?Wg3CqEJIqSDpB/aC88vhLMoNOb4BW6Odmab2fCDL03CTbxVA3fopF4WIxmR6?=
+ =?us-ascii?Q?dUYmKxRsGc2WpDgZv16TBqNsAFbGhHj3jRqCjXio2HfcYUCo2EKT0nwpvEaW?=
+ =?us-ascii?Q?awqPlQhQf1DuKFx5oi4XZxdwlHamYAvBGRvk46b4mCLdriJcbGlWsETtASdY?=
+ =?us-ascii?Q?qa49k+FRLrl31hh3bHhNhEF6CSSiNsNQnj0pQysCb1tzZPNdshPS2Rq9Fg4v?=
+ =?us-ascii?Q?L5ofxAc8lTg9eZIhM1U3kOG5dxxqnE3mMkrwzHT82nR2ozQnmOF1Dd798ROh?=
+ =?us-ascii?Q?FxB1+shU4eMJ2/xvR/EkRmnSQJWXLdQGX7pmxrllVtmuxP2l/XsJ8+P7OzwD?=
+ =?us-ascii?Q?6Ahes9ddsCHcMIPUr/FPumQKfSJoDV3uWWgn0Phrh/dv5TM7JiZZDZ+pTnp/?=
+ =?us-ascii?Q?0oenoI+f03STs6G/WH2Ru8k265j1noVpO+wYYJY97mwqqua7sUvNNEnDtQ/r?=
+ =?us-ascii?Q?QgW9CfUUW6AnTRsSme3kpxGKJFpvQfDbOR1dYSQf4Rw0WW0spQLueP/jqmew?=
+ =?us-ascii?Q?mKN9Q3JBMICilPM5fp4F/uiqjpB4vHX5j5XhSZHS7ToZCRblhFMkSgRd5/Ne?=
+ =?us-ascii?Q?zq946M8Z0xBZ6aVYBZoMm07aj2aCC9vXdgT/grBTfUEDbP1adYNbjgFNQSgY?=
+ =?us-ascii?Q?xIA6jtSEDnY4M+Mc30fG/+Hqq7yClGVfcCuL4KAOPFA9lXfSCAMPi7nX69Bx?=
+ =?us-ascii?Q?DFqLfSvzCMjCJfOkuOI2mwFagePh6fLYewRhMsgYe5fKFMp51KfpHm+LHvkA?=
+ =?us-ascii?Q?TktdQV5obMGno71okK5fa6UBHU7oFKfQfuosvw2HtYId4S64kcrTNMdx4Zgv?=
+ =?us-ascii?Q?FfnJ+w6w1sXv0X8vSB0u1BCLyi+8uZUQwDgk1+VQV80A9n8VUDn/Kc17mLzX?=
+ =?us-ascii?Q?kjtanDuVT3KACkmJgV4ijWpDR2JCdPEaTDyBUFXXlvIzhS0rY4dg9JDPM+l7?=
+ =?us-ascii?Q?Js1ZNYoeXd2erHE694JnLeBedgSNEUOSUU6V9OcM3BBM/1K70OVPRgs+GFOr?=
+ =?us-ascii?Q?NmacwRQhHvMi0J8CctycB4OkOeqpcZ908C6PgmoHyEzAB70/GUxH65vYPLeb?=
+ =?us-ascii?Q?wspqvMo0xeHpdwE8HGufZhGnQxVqVg0ixIS15iL/YgzUfhw3UJO345HHhbMk?=
+ =?us-ascii?Q?BsYF+ME/Zeot+bqR7aieHU9SSRD58Q4EKgJqM3pcaWmvpTrrIs7869XeF4vP?=
+ =?us-ascii?Q?XLJEfqXO4SAqjwCHa1aTKopMaB6zpImbYxqxQTjN3CfwHInGmJ6VkZKIiKVZ?=
+ =?us-ascii?Q?XlUyKNtQ4Y4n7Seyd4SZqak+XUbyqvtGvnOv2zvm45oxUMd7RHcNjKRuyUT4?=
+ =?us-ascii?Q?3uD8GSyITSWnxUKQW5TzfsvTXJevo6qawn3O+0bAy6ntx5N9UtMqomgu6/L+?=
+ =?us-ascii?Q?rXOX6DDb1GmYIB42OPEmHDc1iBtNNeoBwVJGDzHb3mkwTUx63fXBcuVajhd6?=
+ =?us-ascii?Q?UWPI+x2U6g=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 12536228-e806-473c-f138-08de640a9ca1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2026 16:29:47.2388 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YKmK3NDs75xU/jxdQgdxSCWsCW1QzyY5QoJ6uI+GgeNEoCcFrzhJkluOrikTNoz2WfnIJeJgz55T9C9+q2CMwkk5ooUTvqpHt/Mz6oUYczU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4926
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1770219877; x=1801755877;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=OA7YBST+ChqQeXkJf5U12UWy57MshL8mMIrA8YW0jwA=;
- b=UqT3ljVQ0lArQddvcXNBNhtdhB3G3Vb7PLjik/WI0Ic8lvQUmJXDhWr3
- GGB5x7EU4GdhzErbg7PqxWafzOrpTyYuxx7Rcfc+8CsdN6ZSyeZsoLFsh
- X/8phonWXyb6csnJlfcZHCucK9iRiegaAyPSlYGEtFk0anD8d8oiKRrx9
- Z9JWMzmP3AHo3F9PHKFGvBE6uaq4Q0NwMscdYw+TOWNUBR3GMD7TMX9sZ
- kkn7VzaAUn99BaYNS4bFnMqCyFkHHEGzDJkJv051ihOqKnrlDvgq5LdiM
- y4iknEgZ5wtYlyVkS2Av0iufsNPhoR5ZGoUJiH2U1hd/uS1iU6P3bfY81
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1770222593; x=1801758593;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=M/jfj6Xqh+sNfVLyNv34ps8pxTK+kV6ldZE5d3LtWL8=;
+ b=cgNgijp0SmYYqASkdhv4fDrGhPWiJFheB342s3enQ3LavlGjieC8B1VV
+ ZPyRKwfGt6Igg/3dzdQo1bkFbMNn3I1ovqEFHYhSEqyBKOABGwU2+cMfX
+ M4PnJOo/Ks/LWeQP7DbyhhHg0l+grF1rzVal74xSfH5+ULGqOS+o41Z15
+ c1n2TGTsXlad+NSMHES9n4vrnTqOxbCn2deRrkVPNlxuNe8L0XayyEX35
+ wJaxTDHVdCrRaMC+/8C+/5dgv3efg59XyWg4FSg7xQUt98u8Mv9vIZZ/S
+ Bji4jGZCJdXO/ROza3dVzxD1eKAZytf3ltQy2OZx7yvXAcd6/kXC5dAJs
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=UqT3ljVQ
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 7/7] ice: in VEB,
- prevent "cross-vlan" traffic from hitting loopback
+ header.a=rsa-sha256 header.s=Intel header.b=cgNgijp0
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH] ice: fix race condition in TX
+ timestamp ring cleanup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,336 +235,148 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
+X-Spamd-Result: default: False [0.29 / 15.00];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,intel.com:mid,intel.com:email];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	HAS_ORG_HEADER(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:kmta1236@gmail.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
+	FREEMAIL_TO(0.00)[gmail.com,intel.com];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jakub.slepecki@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_FIVE(0.00)[5];
+	RCVD_COUNT_TWELVE(0.00)[14];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[8];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 63EE6E94A9
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:email,osuosl.org:dkim,intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns]
+X-Rspamd-Queue-Id: 097E8EA3DA
 X-Rspamd-Action: no action
 
-In Virtual Ethernet Bridge (VEB) mode, we use MAC filters to forward
-traffic between two VFs.  We also use VLAN filters to prune potential
-destinations, so that they don't cross VLANs.  In case a VF in VLAN X
-sends a packet to a MAC address matching another VF but in VLAN Y, both
-these filters will be hit.  Packet will be sent to loopback-only to VF
-in VLAN Y, but VLAN filter will prune its VSI from the destination list
-leaving the packet stranded in the internal switch and thus dropped.
 
-Since there is no destination for the packet in the VLAN X, it should
-instead be sent to the wire.
 
-To fix this, we introduce MAC,VLAN filters in place of MAC-only filters
-if VSI is part of any VLAN.  We consider VSI part of a VLAN if it has a
-PVID set, or if it has a specific VLAN filter and does not have a VLAN
-0 filter.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Keita Morisaki
+> Sent: Wednesday, February 4, 2026 5:48 AM
+> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
+> Przemyslaw <przemyslaw.kitszel@intel.com>
+> Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Keita
+> Morisaki <kmta1236@gmail.com>
+> Subject: [Intel-wired-lan] [PATCH] ice: fix race condition in TX
+> timestamp ring cleanup
+>=20
+> Fix a race condition between ice_free_tx_tstamp_ring() and
+> ice_tx_map() that can cause a NULL pointer dereference.
+>=20
+> ice_free_tx_tstamp_ring currently clears the ICE_TX_FLAGS_TXTIME flag
+> after NULLing the tstamp_ring. This could allow a concurrent
+> ice_tx_map call on another CPU to dereference the tstamp_ring, which
+> could lead to a NULL pointer dereference.
+>=20
+>   CPU A:ice_free_tx_tstamp_ring() | CPU B:ice_tx_map()
+>   --------------------------------|---------------------------------
+>   tx_ring->tstamp_ring =3D NULL     |
+>                                   | ice_is_txtime_cfg() -> true
+>                                   | tstamp_ring =3D tx_ring->tstamp_ring
+>                                   | tstamp_ring->count  // NULL deref!
+>   flags &=3D ~ICE_TX_FLAGS_TXTIME   |
+>=20
+> Fix by
+> 1. ice_free_tx_tstamp_ring: Clear the flag before NULLing the pointer.
+>    Use WRITE_ONCE() to prevent store tearing, and smp_wmb() to
+>    prevent re-ordering.
+> 2. ice_tx_map: Add smp_rmb() after the flag check to order the flag
+>    read before the pointer read, use READ_ONCE() for the pointer, and
+>    add a NULL check. If tstamp_ring is NULL, fall through to the
+>    regular TX ring kick to avoid leaving packets stuck in the ring.
+>=20
+> Fixes: ccde82e90946 ("ice: add E830 Earliest TxTime First Offload
+> support")
+> Signed-off-by: Keita Morisaki <kmta1236@gmail.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_txrx.c | 19 ++++++++++++++-----
+>  1 file changed, 14 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c
+> b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> index ad76768a42323..d48740f2b626a 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> @@ -190,9 +190,10 @@ void ice_free_tstamp_ring(struct ice_tx_ring
+> *tx_ring)  void ice_free_tx_tstamp_ring(struct ice_tx_ring *tx_ring)
+> {
+>  	ice_free_tstamp_ring(tx_ring);
+> +	WRITE_ONCE(tx_ring->flags, tx_ring->flags &
+> ~ICE_TX_FLAGS_TXTIME);
+> +	smp_wmb();	/* order flag clear before pointer NULL; pairs
+> with ice_tx_map() */
+>  	kfree_rcu(tx_ring->tstamp_ring, rcu);
+> -	tx_ring->tstamp_ring =3D NULL;
+> -	tx_ring->flags &=3D ~ICE_TX_FLAGS_TXTIME;
+> +	WRITE_ONCE(tx_ring->tstamp_ring, NULL);
+>  }
+>=20
+>  /**
+> @@ -1519,13 +1520,20 @@ ice_tx_map(struct ice_tx_ring *tx_ring, struct
+> ice_tx_buf *first,
+>  		return;
+>=20
+>  	if (ice_is_txtime_cfg(tx_ring)) {
+> -		struct ice_tstamp_ring *tstamp_ring =3D tx_ring-
+> >tstamp_ring;
+> -		u32 tstamp_count =3D tstamp_ring->count;
+> -		u32 j =3D tstamp_ring->next_to_use;
+> +		struct ice_tstamp_ring *tstamp_ring;
+> +		u32 tstamp_count, j;
+>  		struct ice_ts_desc *ts_desc;
+>  		struct timespec64 ts;
+>  		u32 tstamp;
+>=20
+> +		smp_rmb();	/* order flag read before pointer read */
+> +		tstamp_ring =3D READ_ONCE(tx_ring->tstamp_ring);
+> +		if (unlikely(!tstamp_ring))
+> +			goto ring_kick;
+> +
+> +		tstamp_count =3D tstamp_ring->count;
+> +		j =3D tstamp_ring->next_to_use;
+> +
+>  		ts =3D ktime_to_timespec64(first->skb->tstamp);
+>  		tstamp =3D ts.tv_nsec >> ICE_TXTIME_CTX_RESOLUTION_128NS;
+>=20
+> @@ -1553,6 +1561,7 @@ ice_tx_map(struct ice_tx_ring *tx_ring, struct
+> ice_tx_buf *first,
+>  		tstamp_ring->next_to_use =3D j;
+>  		writel_relaxed(j, tstamp_ring->tail);
+>  	} else {
+> +ring_kick:
+>  		writel_relaxed(i, tx_ring->tail);
+>  	}
+>  	return;
+>=20
+> base-commit: 18f7fcd5e69a04df57b563360b88be72471d6b62
+> --
+> 2.34.1
 
-This approach does not attempt to fix interactions with upper devices.
-If an upper vlan device requests a separate MAC address filter resulting
-in a call to __dev_uc_sync, the VSI will start receiving all packets
-destined for this MAC and not just within the VLAN.  I don't see a
-straight-forward way to resolve this: information about MAC and VLAN
-filters coming from kernel to driver is disconnected from one another
-and from the device that requests it.  It could be worked around by,
-for example, tracking all upper devices with netdev notifications and
-adjusting the filters there.  Hence, the scope is limited to VF traffic.
+Please use proper bitops for concurrent flag updates (e.g., clear_bit()),
+or show that tx_ring->flags is not modified concurrently.
 
-Following situations were considered for VLAN filters additions, removal,
-or changes:
-
-1. ice changes VF's vlan
-2. VF is reset and rebuilt
-3. vlan device attaches above a PF or a VF
-
-And same for MAC filters:
-
-4. PF's MAC is changed
-5. PF changes MAC of a VF
-6. VF's MAC is changed
-7. ndo_set_rx_mode et al
-
-When VLAN is assigned to a VF in (1), the affected VF is reset and
-rebuild.  This makes (1) the same as (2).  We end up with two cases
-where VLAN filters are added: (2) and (3).
-
-To correctly handle (1-2), we move the VLAN filters initialization
-before the MAC filters initialization, since MAC filters now depend
-on VLAN filters presence.  These two handle PVID (or lack of thereof)
-and because they are always associated with a reset, we don't need to
-consider updating MAC and MAC,VLAN filters afterwards.
-
-In (3), we will always have a lower device that is expected to receive
-all packets for its MAC regardless of VLAN tag.  Because of the caveat
-described above, we will do the same for each MAC address associated with
-the interface regardless of VLANs.  The result is we only have MAC-only
-filters in this case.
-
-When we create MAC filters in (4-7) we now check for existing VLAN
-filters and depending on PVID and VLAN 0 presence we decide to create,
-respectively, a MAC and MAC,VLAN filter pair, or a MAC filter.  This is
-done implicitly when requesting to remove old MAC and add new MAC,
-so no change is required to this flow.
-
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Jakub Slepecki <jakub.slepecki@intel.com>
-
----
-Note the /a.s. dead/ branch in ice_fltr.c.  I decided to make it explicit,
-but it can be merged into VLAN 0 branch as well (with or without a
-comment), because their final effect is exactly the same.
-
-No changes in v4.
-No changes in v3.
-No changes in v2.
----
- drivers/net/ethernet/intel/ice/ice_fltr.c   | 71 +++++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_fltr.h   |  6 +-
- drivers/net/ethernet/intel/ice/ice_main.c   |  8 +--
- drivers/net/ethernet/intel/ice/ice_switch.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_switch.h |  2 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.c |  8 +--
- 6 files changed, 83 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.c b/drivers/net/ethernet/intel/ice/ice_fltr.c
-index 96a4e4b1b3fc..c0fc1bced167 100644
---- a/drivers/net/ethernet/intel/ice/ice_fltr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_fltr.c
-@@ -3,6 +3,7 @@
- 
- #include "ice.h"
- #include "ice_fltr.h"
-+#include "ice_lib.h"
- 
- /**
-  * ice_fltr_free_list - free filter lists helper
-@@ -221,10 +222,12 @@ void ice_fltr_remove_all(struct ice_vsi *vsi)
-  * @list: list to add filter info to
-  * @mac: MAC address to add
-  * @action: filter action
-+ * @external: force the filter to enable lan destination
-  */
- int
- ice_fltr_add_mac_to_list(struct ice_vsi *vsi, struct list_head *list,
--			 const u8 *mac, enum ice_sw_fwd_act_type action)
-+			 const u8 *mac, enum ice_sw_fwd_act_type action,
-+			 bool external)
- {
- 	struct ice_fltr_info info = { 0 };
- 
-@@ -233,6 +236,10 @@ ice_fltr_add_mac_to_list(struct ice_vsi *vsi, struct list_head *list,
- 	info.lkup_type = ICE_SW_LKUP_MAC;
- 	info.fltr_act = action;
- 	info.vsi_handle = vsi->idx;
-+	if (external) {
-+		info.lb_en = ICE_FLTR_INFO_LB_LAN_FORCE_ENABLED;
-+		info.lan_en = ICE_FLTR_INFO_LB_LAN_FORCE_ENABLED;
-+	}
- 
- 	ether_addr_copy(info.l_data.mac.mac_addr, mac);
- 
-@@ -273,6 +280,62 @@ ice_fltr_add_mac_vlan_to_list(struct ice_vsi *vsi, struct list_head *list,
- 					  list);
- }
- 
-+/**
-+ * ice_fltr_add_macs_to_list - add MAC and MAC,VLAN filters info to an existing
-+ * list
-+ * @vsi: pointer to VSI struct
-+ * @list: list to add filter info to
-+ * @mac: MAC address to add
-+ * @action: filter action
-+ *
-+ * Return:
-+ * * 0 on success, or
-+ * * %-ENOMEM if entry for filter could not be allocated.
-+ */
-+int
-+ice_fltr_add_macs_to_list(struct ice_vsi *vsi, struct list_head *list,
-+			  const u8 *mac, enum ice_sw_fwd_act_type action)
-+{
-+	if (is_multicast_ether_addr(mac)) {
-+		/* There is no point in doing the same gymnastics as below
-+		 * because multicast addresses are sent to both lan and lb then
-+		 * pruned as necessary.
-+		 */
-+		return ice_fltr_add_mac_to_list(vsi, list, mac, action, false);
-+	} else if (ice_vsi_has_pvid(vsi)) {
-+		u16 pvid = ice_vsi_pvid(vsi);
-+		int ret;
-+
-+		ret = ice_fltr_add_mac_to_list(vsi, list, mac, action, true);
-+		if (ret)
-+			return ret;
-+
-+		return ice_fltr_add_mac_vlan_to_list(vsi, list, mac, pvid,
-+						     action);
-+	} else if (vsi->num_vlan != ice_vsi_num_non_zero_vlans(vsi)) {
-+		/* If VSI has VLAN 0 filters, then the interface is prepared to
-+		 * receive untagged packets. As of now, we simply don't have
-+		 * heuristics to decide which MAC is and is not part of which
-+		 * VLAN so we put them all in the same bucket.
-+		 */
-+		return ice_fltr_add_mac_to_list(vsi, list, mac, action, false);
-+	}
-+
-+	/* This branch is a.s. dead. There are three cases that may happen:
-+	 *
-+	 * - no vlans in sight; this is the VLAN 0 branch,
-+	 * - VF is assigned PVID; this is ice_vsi_has_pvid branch,
-+	 * - PF or VF is under vlan device; this is the VLAN 0 branch.
-+	 *
-+	 * This is where you would implement support for multiple VLANs but
-+	 * without the VLAN 0. This could happen if vlan upper device is
-+	 * assigned a MAC that is unique compared to lower ice device that is
-+	 * forced to accept any VLAN. This would imply MAC-only filter for one
-+	 * MAC address (PF) and MAC,VLAN+MAC filters for another (vlan).
-+	 */
-+	return ice_fltr_add_mac_to_list(vsi, list, mac, action, false);
-+}
-+
- /**
-  * ice_fltr_add_vlan_to_list - add VLAN filter info to exsisting list
-  * @vsi: pointer to VSI struct
-@@ -343,7 +406,7 @@ ice_fltr_prepare_mac(struct ice_vsi *vsi, const u8 *mac,
- 	LIST_HEAD(tmp_list);
- 	int result;
- 
--	if (ice_fltr_add_mac_to_list(vsi, &tmp_list, mac, action)) {
-+	if (ice_fltr_add_macs_to_list(vsi, &tmp_list, mac, action)) {
- 		ice_fltr_free_list(ice_pf_to_dev(vsi->back), &tmp_list);
- 		return -ENOMEM;
- 	}
-@@ -371,8 +434,8 @@ ice_fltr_prepare_mac_and_broadcast(struct ice_vsi *vsi, const u8 *mac,
- 	int result;
- 
- 	eth_broadcast_addr(broadcast);
--	if (ice_fltr_add_mac_to_list(vsi, &tmp_list, mac, action) ||
--	    ice_fltr_add_mac_to_list(vsi, &tmp_list, broadcast, action)) {
-+	if (ice_fltr_add_macs_to_list(vsi, &tmp_list, mac, action) ||
-+	    ice_fltr_add_macs_to_list(vsi, &tmp_list, broadcast, action)) {
- 		ice_fltr_free_list(ice_pf_to_dev(vsi->back), &tmp_list);
- 		return -ENOMEM;
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_fltr.h b/drivers/net/ethernet/intel/ice/ice_fltr.h
-index fb9ffb39be50..ed3371b0a71f 100644
---- a/drivers/net/ethernet/intel/ice/ice_fltr.h
-+++ b/drivers/net/ethernet/intel/ice/ice_fltr.h
-@@ -21,12 +21,16 @@ ice_fltr_set_vsi_promisc(struct ice_hw *hw, u16 vsi_handle, u8 promisc_mask,
- 			 u16 vid);
- int
- ice_fltr_add_mac_to_list(struct ice_vsi *vsi, struct list_head *list,
--			 const u8 *mac, enum ice_sw_fwd_act_type action);
-+			 const u8 *mac, enum ice_sw_fwd_act_type action,
-+			 bool external);
- int
- ice_fltr_add_mac_vlan_to_list(struct ice_vsi *vsi, struct list_head *list,
- 			      const u8 *mac, u16 vlan_id,
- 			      enum ice_sw_fwd_act_type action);
- int
-+ice_fltr_add_macs_to_list(struct ice_vsi *vsi, struct list_head *list,
-+			  const u8 *mac, enum ice_sw_fwd_act_type action);
-+int
- ice_fltr_add_mac(struct ice_vsi *vsi, const u8 *mac,
- 		 enum ice_sw_fwd_act_type action);
- int
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 7b3ab69b8300..b712e0c29fc2 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -212,8 +212,8 @@ static int ice_add_mac_to_sync_list(struct net_device *netdev, const u8 *addr)
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_vsi *vsi = np->vsi;
- 
--	if (ice_fltr_add_mac_to_list(vsi, &vsi->tmp_sync_list, addr,
--				     ICE_FWD_TO_VSI))
-+	if (ice_fltr_add_macs_to_list(vsi, &vsi->tmp_sync_list, addr,
-+				      ICE_FWD_TO_VSI))
- 		return -EINVAL;
- 
- 	return 0;
-@@ -242,8 +242,8 @@ static int ice_add_mac_to_unsync_list(struct net_device *netdev, const u8 *addr)
- 	if (ether_addr_equal(addr, netdev->dev_addr))
- 		return 0;
- 
--	if (ice_fltr_add_mac_to_list(vsi, &vsi->tmp_unsync_list, addr,
--				     ICE_FWD_TO_VSI))
-+	if (ice_fltr_add_macs_to_list(vsi, &vsi->tmp_unsync_list, addr,
-+				      ICE_FWD_TO_VSI))
- 		return -EINVAL;
- 
- 	return 0;
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 3b526383b8ed..13dd3448aec6 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -4018,7 +4018,7 @@ ice_cfg_dflt_vsi(struct ice_port_info *pi, u16 vsi_handle, bool set,
-  * @fm_entry: filter entry to inspect
-  * @vsi_handle: VSI handle to compare with filter info
-  */
--static bool
-+bool
- ice_vsi_uses_fltr(struct ice_fltr_mgmt_list_entry *fm_entry, u16 vsi_handle)
- {
- 	return ((fm_entry->fltr_info.fltr_act == ICE_FWD_TO_VSI &&
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index b442db4a2ce5..a295130e96f3 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -346,6 +346,8 @@ ice_update_vsi(struct ice_hw *hw, u16 vsi_handle, struct ice_vsi_ctx *vsi_ctx,
- bool ice_is_vsi_valid(struct ice_hw *hw, u16 vsi_handle);
- struct ice_vsi_ctx *ice_get_vsi_ctx(struct ice_hw *hw, u16 vsi_handle);
- void ice_clear_all_vsi_ctx(struct ice_hw *hw);
-+bool ice_vsi_uses_fltr(struct ice_fltr_mgmt_list_entry *fm_entry,
-+		       u16 vsi_handle);
- /* Switch config */
- int ice_get_initial_sw_cfg(struct ice_hw *hw);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index de9e81ccee66..1031ce20bb60 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -501,14 +501,14 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
- 
- 	ice_vf_set_host_trust_cfg(vf);
- 
--	if (ice_vf_rebuild_host_mac_cfg(vf))
--		dev_err(dev, "failed to rebuild default MAC configuration for VF %d\n",
--			vf->vf_id);
--
- 	if (ice_vf_rebuild_host_vlan_cfg(vf, vsi))
- 		dev_err(dev, "failed to rebuild VLAN configuration for VF %u\n",
- 			vf->vf_id);
- 
-+	if (ice_vf_rebuild_host_mac_cfg(vf))
-+		dev_err(dev, "failed to rebuild default MAC configuration for VF %d\n",
-+			vf->vf_id);
-+
- 	if (ice_vf_rebuild_host_tx_rate_cfg(vf))
- 		dev_err(dev, "failed to rebuild Tx rate limiting configuration for VF %u\n",
- 			vf->vf_id);
--- 
-2.43.0
-
