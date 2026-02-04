@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8E88C3Vcg2mJlQMAu9opvQ
+	id MBlPJi5mg2nSmQMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 15:49:25 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:30:54 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E98AE7674
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 15:49:24 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A7842E8BF0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Feb 2026 16:30:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 47B1A60D84;
-	Wed,  4 Feb 2026 14:49:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4592060DB9;
+	Wed,  4 Feb 2026 15:30:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F92I1RDoy0_s; Wed,  4 Feb 2026 14:49:22 +0000 (UTC)
+ id SItrjMXgGLT7; Wed,  4 Feb 2026 15:30:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 70FF160D66
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 75F3F60DAA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770216562;
-	bh=6GGzvVi7/MoGKecYwgnZ4vfBdoYJ7BD2ohz6T5kGtys=;
+	s=default; t=1770219051;
+	bh=nSg6iWYacstPOCBbx9abXkax6U/R3jgtiYjbyOmOyVI=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=TMQcPODBxqHM/L7E0Xhk8aUoD7HbuHOSuYbVQfTFCzvOb4sXB+47UB0NG4qXhUNAS
-	 be/i4jAIsi2FHYgngwq88IqjKpGxwSSArXZlUGdbOpvSgx2RwV1FKTH2G1T4W3teG2
-	 2L/a4i34S4OE5Oxk8xg0kAjsPw7YtjgKoQ1UI1gxbN/lFlKEH2C4izz0agaJGCOLPz
-	 kL2YBv6SGzTl+3/d8/ZrQU3uY/6y9OnmAFSqbT6J3kR9lelf03FfFSqcPBgJOAOFpe
-	 7pyHqMX3iUdy4Oc71gBgQWCMXGxQkDeKVgngFdhzFEA/6icu/X/J9+KYS67aPlpeTz
-	 NZPsq3AZz035g==
+	b=vT1Ks6QqsThJTbmoHeRx48CBSuGm+xWXmOIVbO4mXcVuCTu54nN9VhIBC3CEgJmIo
+	 V2kY27ltZwwYFyMqMYG2sE6m2eSKrQHl4Wzx/vKkcLELklXtxym6KU+9OjkB35z2yE
+	 yY4bFjm2kStPScklZd4bhJjztWUUfVx7cpvE37ykgxo+0U9owaqpxcoda5KcBPY0gU
+	 fmhHB2jPWcSVO/9lS+V4La1uBinrE8M/DeVZ5yTPqRIM5ZEzp2djXrS8tegX9xJqO6
+	 h5aHb7pwyGF7+GSejvxA3XjOFChuV/Dp7Aw2LoxvN7gmD1DfeTRBd8XHPP3smxiKbX
+	 FZdxseH6CGhjQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70FF160D66;
-	Wed,  4 Feb 2026 14:49:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 75F3F60DAA;
+	Wed,  4 Feb 2026 15:30:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id F1E61173
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 14:49:19 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id C4455F4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:30:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DD18040824
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 14:49:19 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B241C60DA5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:30:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PhZFiIefUhQq for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Feb 2026 14:49:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2zOA2s_5NGLu for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Feb 2026 15:30:49 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=gregkh@linuxfoundation.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 03B43407F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03B43407F9
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 03B43407F9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 14:49:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B99F660D7E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B99F660D7E
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B99F660D7E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Feb 2026 15:30:48 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 334EC4427E;
- Wed,  4 Feb 2026 14:49:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90373C4CEF7;
- Wed,  4 Feb 2026 14:49:17 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id A024C6013B;
+ Wed,  4 Feb 2026 15:30:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6C30C19423;
+ Wed,  4 Feb 2026 15:30:46 +0000 (UTC)
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: stable@vger.kernel.org
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, patches@lists.linux.dev,
@@ -68,11 +68,11 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, patches@lists.linux.dev,
  IWL <intel-wired-lan@lists.osuosl.org>,
  Jesse Brandeburg <jbrandeburg@cloudflare.com>,
  Sasha Levin <sashal@kernel.org>
-Date: Wed,  4 Feb 2026 15:39:46 +0100
-Message-ID: <20260204143856.170523056@linuxfoundation.org>
+Date: Wed,  4 Feb 2026 15:40:06 +0100
+Message-ID: <20260204143852.734559013@linuxfoundation.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260204143851.755002596@linuxfoundation.org>
-References: <20260204143851.755002596@linuxfoundation.org>
+In-Reply-To: <20260204143851.857060534@linuxfoundation.org>
+References: <20260204143851.857060534@linuxfoundation.org>
 User-Agent: quilt/0.69
 X-stable: review
 X-Patchwork-Hint: ignore
@@ -80,20 +80,20 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=linuxfoundation.org; 
- s=korg; t=1770216558;
- bh=z49r8F/N9pYXEvHtwTDjEobAwH73W5KPNVK7lGJgDLQ=;
+ s=korg; t=1770219047;
+ bh=ncWHsbe55fScPBoRp/erwYQt5J0YUH+Z5gwLVy/iP+I=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=IxMQvx8SlR5il+rxRBqHZpMneJxzNDdwLhNZ/rIZWsBK/EZhRvA7s7jbV8Xb/2dB/
- V19HCKsYklkB9BXURkdkDEkWBsZDiV8n3duVAqUf1WC1zjiZsw3ej5WcAexeeBHIJ6
- MbW/0K/E4kt9QRYcBQcWVpEoMvp2NSVLc/sLWkNw=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=wVrixGAB5qTV2Ann1ZklrFxLu2LtvVuo7SWXWBpAf+u6s9Y44t5doUSBYlz2AFTle
+ ZhBCqpmNoKEi9whkef9PgTRUawzSW27xut8aoIUWqEa/Sk97HtBHYnYEFMqvEo2P08
+ sukDlijLJO5yVp2XBnfEigdjCTT26gW0Pb02h+MU=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linuxfoundation.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org
- header.a=rsa-sha256 header.s=korg header.b=IxMQvx8S
-Subject: [Intel-wired-lan] [PATCH 5.10 123/161] ice: stop counting UDP csum
+ header.a=rsa-sha256 header.s=korg header.b=wVrixGAB
+Subject: [Intel-wired-lan] [PATCH 6.18 024/122] ice: stop counting UDP csum
  mismatch as rx_errors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -110,32 +110,31 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.21 / 15.00];
+X-Spamd-Result: default: False [-0.11 / 15.00];
 	R_MISSING_CHARSET(0.50)[];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[linuxfoundation.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[linuxfoundation.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
 	FORGED_RECIPIENTS(0.00)[m:stable@vger.kernel.org,m:gregkh@linuxfoundation.org,m:patches@lists.linux.dev,m:anthony.l.nguyen@intel.com,m:jacob.e.keller@intel.com,m:jbrandeburg@cloudflare.com,m:sashal@kernel.org,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[gregkh@linuxfoundation.org,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER(0.00)[gregkh@linuxfoundation.org,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[cloudflare.com:email,osuosl.org:email,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,linuxfoundation.org:mid,intel.com:url,intel.com:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linuxfoundation.org:mid,cloudflare.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:url,intel.com:email,osuosl.org:email,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[gregkh@linuxfoundation.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
@@ -143,10 +142,10 @@ X-Spamd-Result: default: False [-0.21 / 15.00];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCPT_COUNT_SEVEN(0.00)[8];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 9E98AE7674
+X-Rspamd-Queue-Id: A7842E8BF0
 X-Rspamd-Action: no action
 
-5.10-stable review patch.  If anyone has any objections, please let me know.
+6.18-stable review patch.  If anyone has any objections, please let me know.
 
 ------------------
 
@@ -193,12 +192,12 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 deletion(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index a337a6826a845..b3ae457b4db6b 100644
+index fc284802e2bcd..b5ebfcdc9d434 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5441,7 +5441,6 @@ void ice_update_vsi_stats(struct ice_vsi *vsi)
+@@ -6993,7 +6993,6 @@ void ice_update_vsi_stats(struct ice_vsi *vsi)
+ 		cur_ns->rx_errors = pf->stats.crc_errors +
  				    pf->stats.illegal_bytes +
- 				    pf->stats.rx_len_errors +
  				    pf->stats.rx_undersize +
 -				    pf->hw_csum_rx_error +
  				    pf->stats.rx_jabber +
