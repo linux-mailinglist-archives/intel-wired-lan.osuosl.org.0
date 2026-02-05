@@ -2,106 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MB8AM4uFhGl43QMAu9opvQ
+	id wEY8COuFhGl43QMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 12:56:59 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 12:58:35 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3A6E3F21DE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 12:56:59 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8FE0EF222F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 12:58:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D01C560728;
-	Thu,  5 Feb 2026 11:56:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0AE3D60811;
+	Thu,  5 Feb 2026 11:58:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1set0Y3lysdc; Thu,  5 Feb 2026 11:56:57 +0000 (UTC)
+ id 611Fr0QX-KRp; Thu,  5 Feb 2026 11:58:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F28560777
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6C82D6083C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770292617;
-	bh=YWd1t7s8OVCzkHAhm4N5l/L4ZD0CWDELd1TJlLAt68U=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1770292712;
+	bh=FaY+zcPJsv44lhmYeTzy0QXccJoXnwqwWFDyKJTpeRc=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=o6gEqUxxzS7Kx4ngS8/r0bmlGp7pOx+WwNuBDlfzfCP1dbVc0fZNvGTLQ95+8/kUP
-	 4qwBfimVsHEmXBP0DTFwSVhMTxJMiZ2XKgtd8uuW404phJ/xuWSjHA8nf0w4uNDEOx
-	 rAmwsXpVQ3KDMylMMvub6SJ4O5spvIe31z5zuqRxx++xFy6iej09h8ZUDW/2do7RQ2
-	 trfd/ma66HT97n2k6lZGDoyUFV8G1xIQZ4yPeC+eaanetk5bxZgxa9ApjhMFt0PYA0
-	 AzEKebUWw+VCf8daRi2rKKFWsUlbZj9Jcxwhcab5iDcBb2ppSOWog802ryxs+AMejC
-	 DRhGlEGbR4zPA==
+	b=hRV8iDJUsDinTPC3abLqFNlQ8MXVEVqrnJAzlbwxvm4aF0DrRYudK3YXXgtBP4Rn/
+	 aI/rqq4kLp8nb7jCaFGDLPJGooB2oK01N/RihokcATMye3HxhqukYlc4qgzCMTQaGO
+	 /N7eLCtGb3NyQlrYdaE0RoqmCMMZi9hWXlNgTv6fNVujzuqXUGJz3HVUnjJv3Y4ogu
+	 1NiAlGkMSUI1D7LDTovvrI4We0rpxPCYIs+1r2VKHH+Voi+xS8h/qVBqljIM3yape2
+	 e8jKomKDbsBxrrzuUsogE3+UrJ3Rjp56YlhbLg4PYgPPaLX5dJwkJ7PsRTAzsoUVmc
+	 KmYJteuFtX6BA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F28560777;
-	Thu,  5 Feb 2026 11:56:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6C82D6083C;
+	Thu,  5 Feb 2026 11:58:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E9ADAF5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:56:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 861FF17A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:58:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D6E3A40789
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:56:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6AD4141177
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:58:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XWsFNj0JN8_q for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Feb 2026 11:56:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=91.218.175.181;
- helo=out-181.mta0.migadu.com; envelope-from=vadim.fedorenko@linux.dev;
+ id dm8jZRA6qOb7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Feb 2026 11:58:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E2B334075C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2B334075C
-Received: from out-181.mta0.migadu.com (out-181.mta0.migadu.com
- [91.218.175.181])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E2B334075C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:56:52 +0000 (UTC)
-Message-ID: <6a0f4cbb-e8b3-4f0e-b7f1-7f9ca5cba97d@linux.dev>
-Date: Thu, 5 Feb 2026 11:56:44 +0000
-MIME-Version: 1.0
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Kurt Kanzenbach <kurt@linutronix.de>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- Paul Menzel <pmenzel@molgen.mpg.de>,
- "Gomes, Vinicius" <vinicius.gomes@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Richard Cochran <richardcochran@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Keller, Jacob E" <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org ADD044114F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ADD044114F
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id ADD044114F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 11:58:29 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Nguyen, Anthony
+ L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, Vadim Fedorenko
+ <vadim.fedorenko@linux.dev>, "Gomes, Vinicius" <vinicius.gomes@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, Richard Cochran
+ <richardcochran@gmail.com>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, Eric
+ Dumazet <edumazet@google.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "Keller, Jacob E"
+ <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>, Sebastian
+ Andrzej Siewior <bigeasy@linutronix.de>
+In-Reply-To: <IA3PR11MB898652699383BA265C5747A5E599A@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20260205-igb_irq_ts-v3-1-2efc7bc4b885@linutronix.de>
  <IA3PR11MB898652699383BA265C5747A5E599A@IA3PR11MB8986.namprd11.prod.outlook.com>
- <20260205100347.ssTBDAI_@linutronix.de>
- <IA3PR11MB89865B46DCBEB496BE28703BE599A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Content-Language: en-US
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <IA3PR11MB89865B46DCBEB496BE28703BE599A@IA3PR11MB8986.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Migadu-Flow: FLOW_OUT
+Date: Thu, 05 Feb 2026 12:58:24 +0100
+Message-ID: <87ikcbwgf3.fsf@jax.kurt.home>
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1770292608;
+ d=linutronix.de; s=2020; t=1770292706;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YWd1t7s8OVCzkHAhm4N5l/L4ZD0CWDELd1TJlLAt68U=;
- b=tWjgK1GYjSewCFxQBoXE6X/4NUyrFwcikDUcmUkvHi15VclE2tLCZgaKnKapRe007LcxlF
- rm4ZcLBv9tiWAxt/q8yJrSc/tXpDJ7+1c6SmxIi2i5CsKS61MjwsAs6V72ZT/x00fGNgWn
- ep18WFCopxHrV2i7BZD7AffQdCzj9to=
+ bh=FaY+zcPJsv44lhmYeTzy0QXccJoXnwqwWFDyKJTpeRc=;
+ b=vN4rmS3QaOHC0G2Y7Vyl87abmG6X+AMgvf7NovoT/aTYnlc6qAXMxaUQ49STghr8zEkt/E
+ rHU3dPC1LkzlC6I5GJFLtiHfzI2o5el4AKztHm/DDXbcCD4NvOIWPJECN3eDVUfRo4PgLs
+ mYL1jRViE/RJTWfsJE8ITrfcqNfK/wg5qPt3hyBAygA6T+c9aVsSV9WGpumf+LSmKcTh6k
+ ZmWb+ub3339Bc1SD2NLyNEOlKQnU0XFBpmdY9FUksX9Aagcm9QqY5xKkKDDaZu5gdIc4IS
+ 1L/A2ffInttIkqRVAl5aurEE7+QVG9CE5dwgza3gp/9vcv+fN3m0v4pdE31cMw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1770292706;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FaY+zcPJsv44lhmYeTzy0QXccJoXnwqwWFDyKJTpeRc=;
+ b=6+ZmsWrQWpPklOV8aRq2FmT4SM82M6hCiQyG9ciE6tr66UcF4kwMHiaKRiSy+Y4bp+KmzW
+ C7u56BbNeEl8UCCQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linux.dev
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=tWjgK1GY
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=vN4rmS3Q; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=6+ZmsWrQ
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] igb: Retrieve Tx
  timestamp directly from interrupt for i210
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -119,91 +120,102 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [-0.81 / 15.00];
+	SIGNED_PGP(-2.00)[];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[linux.dev : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	MIME_GOOD(-0.10)[text/plain];
+	MIME_GOOD(-0.20)[multipart/signed,text/plain];
+	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[linutronix.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:bigeasy@linutronix.de,m:kurt@linutronix.de,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:pmenzel@molgen.mpg.de,m:vinicius.gomes@intel.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[vadim.fedorenko@linux.dev,intel-wired-lan-bounces@osuosl.org];
 	RCPT_COUNT_TWELVE(0.00)[17];
-	FREEMAIL_CC(0.00)[linutronix.de,intel.com,molgen.mpg.de,vger.kernel.org,gmail.com,lunn.ch,google.com,lists.osuosl.org,kernel.org,redhat.com,davemloft.net];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:pmenzel@molgen.mpg.de,m:vadim.fedorenko@linux.dev,m:vinicius.gomes@intel.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:bigeasy@linutronix.de,m:andrew@lunn.ch,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FREEMAIL_CC(0.00)[molgen.mpg.de,linux.dev,intel.com,vger.kernel.org,gmail.com,lunn.ch,google.com,lists.osuosl.org,kernel.org,redhat.com,davemloft.net,linutronix.de];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	MISSING_XM_UA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[bootlin.com:url,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,linutronix.de:email];
+	ARC_NA(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[vadim.fedorenko@linux.dev,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,jax.kurt.home:mid];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[7]
-X-Rspamd-Queue-Id: 3A6E3F21DE
+X-Rspamd-Queue-Id: 8FE0EF222F
 X-Rspamd-Action: no action
 
-On 05/02/2026 10:37, Loktionov, Aleksandr wrote:
-> 
-> 
->> -----Original Message-----
->> From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
->> Sent: Thursday, February 5, 2026 11:04 AM
->> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
->> Cc: Kurt Kanzenbach <kurt@linutronix.de>; Nguyen, Anthony L
->> <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
->> <przemyslaw.kitszel@intel.com>; Paul Menzel <pmenzel@molgen.mpg.de>;
->> Vadim Fedorenko <vadim.fedorenko@linux.dev>; Gomes, Vinicius
->> <vinicius.gomes@intel.com>; netdev@vger.kernel.org; Richard Cochran
->> <richardcochran@gmail.com>; linux-kernel@vger.kernel.org; Andrew Lunn
->> <andrew+netdev@lunn.ch>; Eric Dumazet <edumazet@google.com>; intel-
->> wired-lan@lists.osuosl.org; Keller, Jacob E
->> <jacob.e.keller@intel.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
->> Abeni <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>
->> Subject: Re: RE: [Intel-wired-lan] [PATCH iwl-next v3] igb: Retrieve
->> Tx timestamp directly from interrupt for i210
->>
->> On 2026-02-05 09:47:14 [+0000], Loktionov, Aleksandr wrote:
->> …
->>>> --- a/drivers/net/ethernet/intel/igb/igb_ptp.c
->>>> +++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
->>>> @@ -796,6 +796,28 @@ static int igb_ptp_verify_pin(struct
->> …
->>>> +	igb_ptp_tx_hwtstamp(adapter); <-Calls existing function
->> designed for work queue!
->>>
->>> skb_tstamp_tx() can sleep
->>> Smells like sleep-in-atomic isn't it?
->>
->> How or where can it sleep?
->>
->> Sebastian
-> 
-> igb_ptp_tx_hwtstamp() -> https://elixir.bootlin.com/linux/v6.19-rc5/C/ident/skb_tstamp_tx -> https://elixir.bootlin.com/linux/v6.19-rc5/C/ident/__skb_complete_tx_timestamp -> https://elixir.bootlin.com/linux/v6.19-rc5/C/ident/sock_queue_err_skb -> https://elixir.bootlin.com/linux/v6.19-rc5/C/ident/skb_queue_tail -> https://elixir.bootlin.com/linux/v6.19-rc5/source/net/core/skbuff.c#L4075
-> 
+--=-=-=
+Content-Type: text/plain
+
+On Thu Feb 05 2026, Loktionov, Aleksandr wrote:
+>> +/**
+>> + * igb_ptp_tx_tstamp_event
+>> + * @adapter: pointer to igb adapter
+>> + *
+>> + * This function checks the TSYNCTXCTL valid bit and stores the Tx
+>> +hardware
+>> + * timestamp at the current skb.
+>> + **/
+>> +void igb_ptp_tx_tstamp_event(struct igb_adapter *adapter) {
+>> +	struct e1000_hw *hw = &adapter->hw;
+>> +	u32 tsynctxctl;
+>> +
+>> +	if (!adapter->ptp_tx_skb)
+>> +		return;
+>> +
+>> +	tsynctxctl = rd32(E1000_TSYNCTXCTL);
+>> +	if (WARN_ON_ONCE(!(tsynctxctl & E1000_TSYNCTXCTL_VALID)))
+>> +		return;
+>> +
+>> +	igb_ptp_tx_hwtstamp(adapter); <-Calls existing function designed for work queue!
+>
+> skb_tstamp_tx() can sleep
+> Smells like sleep-in-atomic isn't it?
+
+AFAICS skb_tstamp_tx() is safe to call here.
+
 > spin_lock_irqsave(&wq_head->lock, flags);  <- RT mutex can sleep
 
-Hmm... that actually means we have some drivers broken for RT kernels if
-they are processing TX timestamps within a single irq vector:
-- hisilicon/hns3
-- intel/i40e (and ice probably)
-- marvell/mvpp2
+In case you're worried about PREEMPT_RT: On -RT the IRQ runs a dedicated
+thread. BTW I've tested this with and without -RT and with
+CONFIG_DEBUG_ATOMIC_SLEEP.
 
-For igb/igc/i40e it's still OK to process TX timestamps directly in
-MSI-X configuration, as ring processing has separate vector, right?
+Thanks,
+Kurt
 
-But in general skb_tstamp_tx should be moved to BH processing (NAPI poll
-callback).
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmmEheATHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgpSIEACp5OFasb0yP4xndC0NnYoFS2pJFu4A
+kYJaT8KZ+Om5qTpruFYi+RAz4eGL97eqg0+sOJTyx5QhQhl2glDe7OJMOyG3+k7u
+LLOwCnIfldZI/7MatML3r5RmU5McpyN5lm4pLINEUPhRtfHzX9nH59mOQbrJsD7r
+sSFxVvyd0IobQyJOhfS5rgxlNWnPAPHiv7iXglR5+fwWGIDXxYeZ82WeV9GhcIe5
+hXOCrQcPqfodbNhuC+8g0q4N0tbTF/IINpv/s+O9F+9mCMmbteSEZIr02BGI4GbJ
+dwUGLzj8vJYw0Cpz3lZDKesBYGz+qrKSbEdCUFDswlxyjFk2NlYjEP5pU+E9ssE6
+ExDotEp/WgCj5AVTC2O0f4SuYs2EPwWBIfa0L4zcs8KHmRzwP9MoQ+ZK6tjlPCd5
+FzAVdrLFgNgABUOD6GuvU4tUYjNQY/W1lGeYKrDL/KSeBBtpIAMSXsd6aOIGkKp7
+AsZ0eNwLFfnWCuAFGqvn5PJfCJzbPmeIXDz2ZxFaH8GPwhDdEjrOMSR4djmtcleC
+txcUduxQaBZlF2SyaJGHI96qs8D5aM2AQs0Pi7M2SvaSxXZXjTaYTgleRLZELmqs
+QyqkwOa4pLUGIlBzupzo6n9BxCJ1WM74zOwoZIvcCUAMTrCsrojMxJNOfDlOawNA
+wd2tjTxoKKz/7w==
+=R2Ag
+-----END PGP SIGNATURE-----
+--=-=-=--
