@@ -2,126 +2,117 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MFKDO+oDhGmHwwMAu9opvQ
+	id 4NhaDwpPhGkE2gMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 03:43:54 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 09:04:26 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3CEA5EE136
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 03:43:54 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 51E7CEFB46
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 09:04:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D869281649;
-	Thu,  5 Feb 2026 02:43:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D3AEF84036;
+	Thu,  5 Feb 2026 08:04:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Jo8LeRKgesi7; Thu,  5 Feb 2026 02:43:50 +0000 (UTC)
+ id A4-BctFQCCbe; Thu,  5 Feb 2026 08:04:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DFE681E0E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D86C68403A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770259430;
-	bh=Uq//eKnU0VIy+iDlWT3coRvXqAavfDjJ0UDudhoedEQ=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=bBFO5EUXFNcGdxyovCJE909KRwkC7odCNYLmdkzggvH7HbCUyyz58NXSTBCY6z7Nc
-	 pwUr3+s8IEwc+ZxWPctGf08gBiWB1uoUrd0SK9xtEVo8emZtbsMB7LZmx3Ht9+RxJ1
-	 CnrzOdq6qSZZgau+UpH06CtMP/TMei3tshIQHylG21BX7+svRYxUrW4NEcmPZtMUlf
-	 jx76agEs3plMtFeynCK1B6vkZe8gWawcYxjxcZ60J4t41ny/EgftD0IcH4wdo5IJoR
-	 XQZO0I9DBBiO8Zo9fxu5EomtDVySIiB3l67+2Snj9pc4oLg4kI0gJoi2pu5FA115D7
-	 46CXX1QkHcpLQ==
+	s=default; t=1770278662;
+	bh=YI75SligFceTjZw1yfKwWA/UrX3Yc7oaVqN88ExO2XQ=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=XKWFZu2Wzdrfffobbi8NbJJPtbbeKXVf1n3lgbbZWkUbNoRQaM7cDCq7GAeca4Lpe
+	 3ZMVHauSh19pkH8grjn013y/DjwMvKR8H/ZQGhXBEoUXLshXAwDdHXWPbhnqILC2vm
+	 T5WUU7TAbCeqWQCf0S29zW4qv2BbSFsu6XrbFbXv80T/mmc0lmx2evG/jknkKBGCR5
+	 m06x6k/uUkmzRP0iKKx1jSb0HA7yA7V6P98p+e6R/OIDJ/BV6rZ/Ze8wnvyHmejuja
+	 VK+dRHUacBiewIYbZ6akJfT+cPiaVZOGIVHzA1oR2ndY1dY2A3EZ2c1esGBGiFYGyi
+	 ZKu3FOstznHhg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0DFE681E0E;
-	Thu,  5 Feb 2026 02:43:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D86C68403A;
+	Thu,  5 Feb 2026 08:04:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id DD52E17A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 02:43:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 89CF8173
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 08:04:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CAE894048F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 02:43:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6A8606086A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 08:04:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1N7Ve3QCeUzv for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Feb 2026 02:43:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62e; helo=mail-pl1-x62e.google.com;
- envelope-from=kmta1236@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1DFE440422
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DFE440422
-Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com
- [IPv6:2607:f8b0:4864:20::62e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1DFE440422
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 02:43:46 +0000 (UTC)
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2a9042df9a2so2523945ad.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Feb 2026 18:43:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770259426; x=1770864226;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Uq//eKnU0VIy+iDlWT3coRvXqAavfDjJ0UDudhoedEQ=;
- b=mu6t8sz87riEQmQppUPW4mCTrHEpH/BcHmCyaqYUkIJQHnM6PsFC61m1evhKQOx5+q
- 8KT15LA3vaswd4BVvMPSNiMeln6lXhleosUlCxu2J6SA9dmBDEvvMCF9T4D0ynW3HL6k
- 4rtlnGwOFpx+zG4UK439FcYWZB4T3Y8OIrb6h7kXykRLBokj70f/xbuKlKiO7WUmkjNR
- DnRdf+13ll+u5TCZlJoLxHcnVqLwiiIYpt1kbAlMiMBBUJo2AIkIqJ27TBrnEkZNhWNt
- M0+yazJuSk4hJZsN5fPInrQ/PKU2Lbd4NonvH7ExZ+rQfKCldwOyfz2ZJxJ7G+wR7BjX
- W/tQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWd48y2rV38zfAM9UY3IFZ93vf352KrfiP4I947nUnpv2yNWFRRyoArW2wic2xtbGmRCe7oXXtbDXYhePDGYQw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyiYOeFayUHNCrBYmKYXwGXojIDor+YmEQAl/52/CeBun9xkKRa
- czBLB/RVoaP6ViMPv53S85PUkFMEX9PZQ67TV2l1VS6qaYzKN0qSMYDA
-X-Gm-Gg: AZuq6aKOTdUcyLe0Ps1QUaPsUjcCbGJKUaMXleavlIDEV0t5v+z9CkmgvE7GLKuMuXi
- CMfn5XhJua6nuZ/5n7eAVyz+rvSAZPXnnnLPXGBbNryei67B6Km7MOKkVYeXiWX9q3ttpLD7/SS
- 7reAmBoYGdolIiIvnMmCOAIwj+bbJnJe985SmTmJW1eJI74lWeyjboGCPybvVnUjdGjfADXQSJu
- aSnRioyKMu+yvKlxoPHxVT80v5NkOSjiGEwI+8rCp3jjBKgc9jE2bFNLmtsQrSfqdcqNPnrQdtz
- +Ph/0TWXfnlYE67IAxdebt+1sMn51g+szqIAecQ0Do4CXjeLAjh9AnWqJvVKwAgZNTkLU/8oxB6
- bitxiTemya52dDMKYSn+rRtcXNKw9tSJ614ihea9Uoj/KHBmGfgpPtj9cdh+2rvWKm9IvB4YWkK
- oqsS8wL2BaqcvZ2lBwyu+PQ+e2lVdFrihxgV1uskFhOn1gvkx+mfd75S2zZNmDexoA2XQzvC3h0
- t8cAf3NjU8=
-X-Received: by 2002:a17:903:4b0d:b0:2a7:f369:4de8 with SMTP id
- d9443c01a7336-2a933fddab3mr51965225ad.42.1770259426114; 
- Wed, 04 Feb 2026 18:43:46 -0800 (PST)
-Received: from dpc2500057.. (fsb6a9315e.tkyc502.ap.nuro.jp. [182.169.49.94])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a9338acfe8sm36559315ad.42.2026.02.04.18.43.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Feb 2026 18:43:45 -0800 (PST)
-From: Keita Morisaki <kmta1236@gmail.com>
-To: tony.nguyen@intel.com,
-	przemyslaw.kitszel@intel.com
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, paul.greenwalt@intel.com,
- maciej.fijalkowski@intel.com, aleksandr.loktionov@intel.com,
- alice.michael@intel.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, Keita Morisaki <kmta1236@gmail.com>
-Date: Thu,  5 Feb 2026 11:43:27 +0900
-Message-Id: <20260205024327.233346-1-kmta1236@gmail.com>
-X-Mailer: git-send-email 2.34.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MgfZXiXlCV9q for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Feb 2026 08:04:19 +0000 (UTC)
+X-Greylist: delayed 572 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 05 Feb 2026 08:04:19 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 26B6C610C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26B6C610C4
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ receiver=<UNKNOWN> 
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 26B6C610C4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 08:04:18 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+Date: Thu, 05 Feb 2026 08:54:34 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260205-igb_irq_ts-v3-1-2efc7bc4b885@linutronix.de>
+X-B4-Tracking: v=1; b=H4sIALlMhGkC/12N0Q6CIBhGX8VxHQ1+NFxXvUdrDhH13xwWENmc7
+ x5jXViXZ9/O+VbijUPjyblYiTMRPc42gTgURI/KDoZil5gAg4rVXFAc2gbdowmecqWk1Fq2pW5
+ JEu7O9Ljk2JXga6LWLIHc0jKiD7N755fI8/4NVvtg5JTTWp96zUQlSoDLhPYZ3GxxOXYmpyLsd
+ IAfHZLOlRaSyVpJVf7r27Z9AIW5aenxAAAA
+X-Change-ID: 20250813-igb_irq_ts-1aa77cc7b4cb
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3568; i=kurt@linutronix.de;
+ h=from:subject:message-id; bh=YqkYuVD6B8ingjypZapGuxYX1HIAg0y6MvAOvzuLs6Q=;
+ b=owEBbQKS/ZANAwAKAcGT0fKqRnOCAcsmYgBphEzCiI2A689V5++B//pI9fgMWXXaArRkMXPVj
+ 3VH4/bTuOSJAjMEAAEKAB0WIQS8ub+yyMN909/bWZLBk9HyqkZzggUCaYRMwgAKCRDBk9HyqkZz
+ gv4NEACQ8pejkbuLsnYEsrckwAJrabuIvthZIhfNOAGJFgcxq2XB3D+WnwgSGtxtjbDFvop5FZ4
+ aNrhHqoM7AkxSkFppXvtlsp1Z+RDC71rEp58uKSP0b5P+HHpfyC9Neo7VwJVoJAqC6pv/WJK9ra
+ aKjpTFEZutyMuvWYKfPSPl5H4RB9vVjSdKE4cLUTONX9N5rB9VjqXIm4b+11+nvTp/wBJ9ehlI/
+ tKLB25Mvw0DMt3lNzAa0wM3L+T7tm7iRPkyT6NmfMrNnFFJ+6A/+We8sO/22QzSCvLCoFKw37DS
+ iBYOkCHzGrXDwrygPNwdut+mJXLr9tvVYmrrcxlfea2tblWIbNZbuzZXB+UkJ4wCAAidP8y8N19
+ Gr5vbfWSls3j0d0Zg0tFsgAGlyC9gzGoLRSOkDRXkMt+ovFuUWu0Qdab1oDBF4FW7nP4zRkF3s1
+ r6PuMNppUDp41oBlIc/DqjhO/IJcUNeG65oGnl9u9bnC7BlXz2fq7k88GDuiFsPOzLBEhMrk+ww
+ ys+rmbPl8yk3JYI1F8o6Q7Ez1XJe7Wz/k04fmKf2cucxkZ+pAWmSaxkWUR+pDl3OCydwTrjXOry
+ g/a7KtPYNBtW9Op/w6xzG0AvWgJsgvyjqpZP4S0Nf4+Uhagg/NyBw2a/5KZU989w20uT1VwEzdQ
+ ArarhMmXOyR1OKA==
+X-Developer-Key: i=kurt@linutronix.de; a=openpgp;
+ fpr=BCB9BFB2C8C37DD3DFDB5992C193D1F2AA467382
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770259426; x=1770864226; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Uq//eKnU0VIy+iDlWT3coRvXqAavfDjJ0UDudhoedEQ=;
- b=m7yA+buncSiJjbtKATxW/GmDt21b0micy2kc5A9MGb5FROhjqN8+Y81t6amqg6YvSl
- cPrEzNKofVcwk/Aq9vZ6u2TGf0F/lRB6Nl+sVutMFzW+SRVENq/ttJncD3UUsvNwdVBK
- 3/xZyx2XkHp2BzuL6bxC4O6xFvMfrhWXYXj8V4aDsZHPnjlwHlWrHUlrJkZJfa41Z0bz
- BqbOlFmxQkzUQ6RtlqZPMAN2t0p/YLMCD7e1Kb/H/9wHqcm4gohxbLWAoE7o5x8wcPdK
- bva9vjZlCzWAWiZiQvtxzJxVMMUHPuMd40A0eT2d7OkE7LzjZAVa1ApQeu85Lz6MBiA9
- AtfQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=linutronix.de; s=2020; t=1770278083;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=YI75SligFceTjZw1yfKwWA/UrX3Yc7oaVqN88ExO2XQ=;
+ b=EqIPxl8NJcb5hBz/DrlS9vH/GYZnvDZ4UuLxFpgZmJXi78iJ5zTXXuP/N8LOB6IXh38Qem
+ s5Y9jb70GBj5gVpIzGTfPg+jyVNNsLj8GDTx3u9SUeO2BcmHlzlu2CSTnUmIveV1c7T4i3
+ LGBtGFply5RZr7HhM2NOSSUEaiRv9i+6rmhwgNgGe/pESLNFE8OOfqHehgvkwn2cLWbyjS
+ HjjjXjzoxGIqLLNPiF1oVzOoiSRbB2H/ze1XvxHGgpVslBcu1DHqpJDHfpNxwa0LUcE81S
+ 5jqS3bWbPm4kr25462KHT57ZpkiH0m9sqZ7evn5jNKPn6AA3ZeVl7oRXL8sXfw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1770278083;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=YI75SligFceTjZw1yfKwWA/UrX3Yc7oaVqN88ExO2XQ=;
+ b=D5m16N4jsfXnocitENkWPThOOadmmtN+AyrVSy44krWO7h37RMVVyhUV//WSMLwW2bVnkq
+ BEpQN3NlKu5dZmCg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=m7yA+bun
-Subject: [Intel-wired-lan] [PATCH v2] ice: fix race condition in TX
- timestamp ring cleanup
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=EqIPxl8N; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=D5m16N4j
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] igb: Retrieve Tx timestamp
+ directly from interrupt for i210
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -134,256 +125,150 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>, netdev@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>, linux-kernel@vger.kernel.org,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.39 / 15.00];
+X-Spamd-Result: default: False [0.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[linutronix.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FREEMAIL_FROM(0.00)[gmail.com];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[14];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:tony.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:paul.greenwalt@intel.com,m:maciej.fijalkowski@intel.com,m:aleksandr.loktionov@intel.com,m:alice.michael@intel.com,m:netdev@vger.kernel.org,m:kmta1236@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:pmenzel@molgen.mpg.de,m:vadim.fedorenko@linux.dev,m:vinicius.gomes@intel.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:kurt@linutronix.de,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:bigeasy@linutronix.de,m:andrew@lunn.ch,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
-	FREEMAIL_CC(0.00)[lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,intel.com,lists.osuosl.org,vger.kernel.org,gmail.com];
-	FORGED_SENDER(0.00)[kmta1236@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[17];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_CC(0.00)[molgen.mpg.de,linux.dev,intel.com,vger.kernel.org,gmail.com,linutronix.de,lunn.ch,google.com,lists.osuosl.org,kernel.org,redhat.com,davemloft.net];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kmta1236@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 3CEA5EE136
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[7]
+X-Rspamd-Queue-Id: 51E7CEFB46
 X-Rspamd-Action: no action
 
-Fix a race condition between ice_free_tx_tstamp_ring() and ice_tx_map()
-that can cause a NULL pointer dereference.
+Retrieve Tx timestamp directly from interrupt handler for i210.
 
-ice_free_tx_tstamp_ring currently clears the ICE_TX_FLAGS_TXTIME flag
-after NULLing the tstamp_ring. This could allow a concurrent ice_tx_map
-call on another CPU to dereference the tstamp_ring, which could lead to
-a NULL pointer dereference.
+The current implementation uses schedule_work() which is executed by the
+system work queue to retrieve Tx timestamps. This increases latency and can
+lead to timeouts in case of heavy system load. i210 is often used in
+industrial systems, where timestamp timeouts can be fatal.
 
-  CPU A:ice_free_tx_tstamp_ring() | CPU B:ice_tx_map()
-  --------------------------------|---------------------------------
-  tx_ring->tstamp_ring = NULL     |
-                                  | ice_is_txtime_cfg() -> true
-                                  | tstamp_ring = tx_ring->tstamp_ring
-                                  | tstamp_ring->count  // NULL deref!
-  flags &= ~ICE_TX_FLAGS_TXTIME   |
+Therefore, fetch the timestamp directly from the interrupt handler.
 
-Fix by:
-1. Reordering ice_free_tx_tstamp_ring() to clear the flag before
-   NULLing the pointer, with smp_wmb() to ensure proper ordering.
-2. Adding smp_rmb() in ice_tx_map() after the flag check to order the
-   flag read before the pointer read, using READ_ONCE() for the
-   pointer, and adding a NULL check as a safety net.
-3. Converting tx_ring->flags from u8 to DECLARE_BITMAP() and using
-   atomic bitops (set_bit(), clear_bit(), test_bit()) for all flag
-   operations throughout the driver:
-   - ICE_TX_RING_FLAGS_XDP
-   - ICE_TX_RING_FLAGS_VLAN_L2TAG1
-   - ICE_TX_RING_FLAGS_VLAN_L2TAG2
-   - ICE_TX_RING_FLAGS_TXTIME
+The work queue code stays for all other NICs supported by igb.
 
-Fixes: ccde82e909467 ("ice: add E830 Earliest TxTime First Offload support")
-Signed-off-by: Keita Morisaki <kmta1236@gmail.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Tested on Intel i210 and i350.
+
+Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
+Changes in v3:
+- Switch back to IRQ, but for i210 only
+- Keep kworker for all other NICs like i350 (Miroslav)
+- Link to v2: https://lore.kernel.org/r/20250822-igb_irq_ts-v2-1-1ac37078a7a4@linutronix.de
+
 Changes in v2:
-- Convert tx_ring->flags from u8 to DECLARE_BITMAP() and use atomic
-  bitops (set_bit(), clear_bit(), test_bit()) for all flag operations
-  instead of WRITE_ONCE() for flag updates
-- Rename flags from ICE_TX_FLAGS_RING_* to ICE_TX_RING_FLAGS_* to
-  distinguish from per-packet flags (ICE_TX_FLAGS_*)
+- Switch from IRQ to PTP aux worker due to NTP performance regression (Miroslav)
+- Link to v1: https://lore.kernel.org/r/20250815-igb_irq_ts-v1-1-8c6fc0353422@linutronix.de
+---
+ drivers/net/ethernet/intel/igb/igb.h      |  1 +
+ drivers/net/ethernet/intel/igb/igb_main.c |  5 ++++-
+ drivers/net/ethernet/intel/igb/igb_ptp.c  | 22 ++++++++++++++++++++++
+ 3 files changed, 27 insertions(+), 1 deletion(-)
 
- drivers/net/ethernet/intel/ice/ice.h         |  4 ++--
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_lib.c     |  4 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c    | 23 ++++++++++++++------
- drivers/net/ethernet/intel/ice/ice_txrx.h    | 16 +++++++++-----
- 5 files changed, 31 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 00f75d87c73f9..5baeca824cd99 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -753,7 +753,7 @@ static inline bool ice_is_xdp_ena_vsi(struct ice_vsi *vsi)
+diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet/intel/igb/igb.h
+index 0fff1df81b7b..1de29670784e 100644
+--- a/drivers/net/ethernet/intel/igb/igb.h
++++ b/drivers/net/ethernet/intel/igb/igb.h
+@@ -776,6 +776,7 @@ int igb_ptp_hwtstamp_get(struct net_device *netdev,
+ int igb_ptp_hwtstamp_set(struct net_device *netdev,
+ 			 struct kernel_hwtstamp_config *config,
+ 			 struct netlink_ext_ack *extack);
++void igb_ptp_tx_tstamp_event(struct igb_adapter *adapter);
+ void igb_set_flag_queue_pairs(struct igb_adapter *, const u32);
+ unsigned int igb_get_max_rss_queues(struct igb_adapter *);
+ #ifdef CONFIG_IGB_HWMON
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index dbea37269d2c..d0d9245e6d72 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -7078,7 +7078,10 @@ static void igb_tsync_interrupt(struct igb_adapter *adapter)
  
- static inline void ice_set_ring_xdp(struct ice_tx_ring *ring)
- {
--	ring->flags |= ICE_TX_FLAGS_RING_XDP;
-+	set_bit(ICE_TX_RING_FLAGS_XDP, ring->flags);
- }
- 
- /**
-@@ -778,7 +778,7 @@ static inline bool ice_is_txtime_ena(const struct ice_tx_ring *ring)
-  */
- static inline bool ice_is_txtime_cfg(const struct ice_tx_ring *ring)
- {
--	return !!(ring->flags & ICE_TX_FLAGS_TXTIME);
-+	return test_bit(ICE_TX_RING_FLAGS_TXTIME, ring->flags);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index 9fc8681cc58ea..bd74344271f3f 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -943,7 +943,7 @@ ice_tx_prepare_vlan_flags_dcb(struct ice_tx_ring *tx_ring,
- 		/* if this is not already set it means a VLAN 0 + priority needs
- 		 * to be offloaded
- 		 */
--		if (tx_ring->flags & ICE_TX_FLAGS_RING_VLAN_L2TAG2)
-+		if (test_bit(ICE_TX_RING_FLAGS_VLAN_L2TAG2, tx_ring->flags))
- 			first->tx_flags |= ICE_TX_FLAGS_HW_OUTER_SINGLE_VLAN;
- 		else
- 			first->tx_flags |= ICE_TX_FLAGS_HW_VLAN;
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index d47af94f31a99..55ff0708d136e 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1412,9 +1412,9 @@ static int ice_vsi_alloc_rings(struct ice_vsi *vsi)
- 		ring->count = vsi->num_tx_desc;
- 		ring->txq_teid = ICE_INVAL_TEID;
- 		if (dvm_ena)
--			ring->flags |= ICE_TX_FLAGS_RING_VLAN_L2TAG2;
-+			set_bit(ICE_TX_RING_FLAGS_VLAN_L2TAG2, ring->flags);
- 		else
--			ring->flags |= ICE_TX_FLAGS_RING_VLAN_L2TAG1;
-+			set_bit(ICE_TX_RING_FLAGS_VLAN_L2TAG1, ring->flags);
- 		WRITE_ONCE(vsi->tx_rings[i], ring);
+ 	if (tsicr & E1000_TSICR_TXTS) {
+ 		/* retrieve hardware timestamp */
+-		schedule_work(&adapter->ptp_tx_work);
++		if (hw->mac.type == e1000_i210)
++			igb_ptp_tx_tstamp_event(adapter);
++		else
++			schedule_work(&adapter->ptp_tx_work);
  	}
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index ad76768a42323..564e4e33ecbc3 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -190,9 +190,10 @@ void ice_free_tstamp_ring(struct ice_tx_ring *tx_ring)
- void ice_free_tx_tstamp_ring(struct ice_tx_ring *tx_ring)
- {
- 	ice_free_tstamp_ring(tx_ring);
-+	clear_bit(ICE_TX_RING_FLAGS_TXTIME, tx_ring->flags);
-+	smp_wmb();	/* order flag clear before pointer NULL */
- 	kfree_rcu(tx_ring->tstamp_ring, rcu);
--	tx_ring->tstamp_ring = NULL;
--	tx_ring->flags &= ~ICE_TX_FLAGS_TXTIME;
-+	WRITE_ONCE(tx_ring->tstamp_ring, NULL);
- }
- 
- /**
-@@ -405,7 +406,7 @@ static int ice_alloc_tstamp_ring(struct ice_tx_ring *tx_ring)
- 	tx_ring->tstamp_ring = tstamp_ring;
- 	tstamp_ring->desc = NULL;
- 	tstamp_ring->count = ice_calc_ts_ring_count(tx_ring);
--	tx_ring->flags |= ICE_TX_FLAGS_TXTIME;
-+	set_bit(ICE_TX_RING_FLAGS_TXTIME, tx_ring->flags);
+ 	if (tsicr & TSINTR_TT0)
+diff --git a/drivers/net/ethernet/intel/igb/igb_ptp.c b/drivers/net/ethernet/intel/igb/igb_ptp.c
+index bd85d02ecadd..8c8f2b8615f7 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ptp.c
++++ b/drivers/net/ethernet/intel/igb/igb_ptp.c
+@@ -796,6 +796,28 @@ static int igb_ptp_verify_pin(struct ptp_clock_info *ptp, unsigned int pin,
  	return 0;
  }
  
-@@ -1519,13 +1520,20 @@ ice_tx_map(struct ice_tx_ring *tx_ring, struct ice_tx_buf *first,
- 		return;
- 
- 	if (ice_is_txtime_cfg(tx_ring)) {
--		struct ice_tstamp_ring *tstamp_ring = tx_ring->tstamp_ring;
--		u32 tstamp_count = tstamp_ring->count;
--		u32 j = tstamp_ring->next_to_use;
-+		struct ice_tstamp_ring *tstamp_ring;
-+		u32 tstamp_count, j;
- 		struct ice_ts_desc *ts_desc;
- 		struct timespec64 ts;
- 		u32 tstamp;
- 
-+		smp_rmb();	/* order flag read before pointer read */
-+		tstamp_ring = READ_ONCE(tx_ring->tstamp_ring);
-+		if (unlikely(!tstamp_ring))
-+			goto ring_kick;
++/**
++ * igb_ptp_tx_tstamp_event
++ * @adapter: pointer to igb adapter
++ *
++ * This function checks the TSYNCTXCTL valid bit and stores the Tx hardware
++ * timestamp at the current skb.
++ **/
++void igb_ptp_tx_tstamp_event(struct igb_adapter *adapter)
++{
++	struct e1000_hw *hw = &adapter->hw;
++	u32 tsynctxctl;
 +
-+		tstamp_count = tstamp_ring->count;
-+		j = tstamp_ring->next_to_use;
++	if (!adapter->ptp_tx_skb)
++		return;
 +
- 		ts = ktime_to_timespec64(first->skb->tstamp);
- 		tstamp = ts.tv_nsec >> ICE_TXTIME_CTX_RESOLUTION_128NS;
- 
-@@ -1553,6 +1561,7 @@ ice_tx_map(struct ice_tx_ring *tx_ring, struct ice_tx_buf *first,
- 		tstamp_ring->next_to_use = j;
- 		writel_relaxed(j, tstamp_ring->tail);
- 	} else {
-+ring_kick:
- 		writel_relaxed(i, tx_ring->tail);
- 	}
- 	return;
-@@ -1812,7 +1821,7 @@ ice_tx_prepare_vlan_flags(struct ice_tx_ring *tx_ring, struct ice_tx_buf *first)
- 	 */
- 	if (skb_vlan_tag_present(skb)) {
- 		first->vid = skb_vlan_tag_get(skb);
--		if (tx_ring->flags & ICE_TX_FLAGS_RING_VLAN_L2TAG2)
-+		if (test_bit(ICE_TX_RING_FLAGS_VLAN_L2TAG2, tx_ring->flags))
- 			first->tx_flags |= ICE_TX_FLAGS_HW_OUTER_SINGLE_VLAN;
- 		else
- 			first->tx_flags |= ICE_TX_FLAGS_HW_VLAN;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index e440c55d9e9f0..d35ffdc3dc84d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -181,6 +181,14 @@ enum ice_rx_dtype {
- 	ICE_RX_DTYPE_SPLIT_ALWAYS	= 2,
- };
- 
-+enum ice_tx_ring_flags {
-+	ICE_TX_RING_FLAGS_XDP,
-+	ICE_TX_RING_FLAGS_VLAN_L2TAG1,
-+	ICE_TX_RING_FLAGS_VLAN_L2TAG2,
-+	ICE_TX_RING_FLAGS_TXTIME,
-+	ICE_TX_RING_FLAGS_NBITS,
-+};
++	tsynctxctl = rd32(E1000_TSYNCTXCTL);
++	if (WARN_ON_ONCE(!(tsynctxctl & E1000_TSYNCTXCTL_VALID)))
++		return;
 +
- struct ice_pkt_ctx {
- 	u64 cached_phctime;
- 	__be16 vlan_proto;
-@@ -333,11 +341,7 @@ struct ice_tx_ring {
- 	u32 txq_teid;			/* Added Tx queue TEID */
- 	/* CL4 - 4th cacheline starts here */
- 	struct ice_tstamp_ring *tstamp_ring;
--#define ICE_TX_FLAGS_RING_XDP		BIT(0)
--#define ICE_TX_FLAGS_RING_VLAN_L2TAG1	BIT(1)
--#define ICE_TX_FLAGS_RING_VLAN_L2TAG2	BIT(2)
--#define ICE_TX_FLAGS_TXTIME		BIT(3)
--	u8 flags;
-+	DECLARE_BITMAP(flags, ICE_TX_RING_FLAGS_NBITS);
- 	u8 dcb_tc;			/* Traffic class of ring */
- 	u16 quanta_prof_id;
- } ____cacheline_internodealigned_in_smp;
-@@ -349,7 +353,7 @@ static inline bool ice_ring_ch_enabled(struct ice_tx_ring *ring)
- 
- static inline bool ice_ring_is_xdp(struct ice_tx_ring *ring)
- {
--	return !!(ring->flags & ICE_TX_FLAGS_RING_XDP);
-+	return test_bit(ICE_TX_RING_FLAGS_XDP, ring->flags);
- }
- 
- enum ice_container_type {
++	igb_ptp_tx_hwtstamp(adapter);
++}
++
+ /**
+  * igb_ptp_tx_work
+  * @work: pointer to work struct
 
-base-commit: 18f7fcd5e69a04df57b563360b88be72471d6b62
--- 
-2.34.1
+---
+base-commit: e07d0d30939990da377672ef49ca09763b4fbc79
+change-id: 20250813-igb_irq_ts-1aa77cc7b4cb
+
+Best regards,
+--  
+Kurt Kanzenbach <kurt@linutronix.de>
 
