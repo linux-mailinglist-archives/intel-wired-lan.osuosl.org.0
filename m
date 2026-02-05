@@ -2,151 +2,220 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 4BmOHSiMhGl43QMAu9opvQ
+	id GHdxCVWNhGl43QMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 13:25:12 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 13:30:13 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF0A5F26AD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 13:25:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 78740F280B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 05 Feb 2026 13:30:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5C7E4610E4;
-	Thu,  5 Feb 2026 12:25:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 23C0160B1A;
+	Thu,  5 Feb 2026 12:30:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6vQ43yzcfAaw; Thu,  5 Feb 2026 12:25:09 +0000 (UTC)
+ id R5GSz-Y62njQ; Thu,  5 Feb 2026 12:30:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5B18E60DD0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5BDBA60DD0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770294309;
-	bh=kTs2P/KtHhQBrqRutC9oA5UVOjBir3xmipR3YfrBtSo=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1770294610;
+	bh=75yYusQdvCFJr0kyvBlGJkUDXhpUvje7WrzZO83KY9I=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=b09EOFr6nyx9Hd6P51C6uPY4jyklw2jqs7CBKw7RFMPLJgTtrCUUnyWQhRJHkINOA
-	 jYzZ4H5mJfJZlreCQF2IQhm4kPUl1WyuabE6ZOX+6hRJOc1qdu/UG++E2ThUvRFOIb
-	 zXByxTTPFr4TMBJ7UoPpsj8r2iJZ8IWC93rDDdo+/EbJQFvJrIRilDktuXJV55ycjF
-	 ShNZsF7NwhtN9hM+WXL7ON15cGOHVvPxt0tdvDAcuVi8jInxj0p61R5RiNSg+m4jei
-	 raAlA5WK/rmer1x6TFnr8ixEHtRHx81D09nse0chyZmMqZ2rArQAr2+LqsjFoUeLNR
-	 7u9ma7Tb52tDw==
+	b=nd/mQRyuIdhMnqpAWRjP9sw7I2UbwdIyF83Llo3F1FAzpZpI1hmOgi+V86h6gWfNT
+	 b5h0Um0gg82mVNo8LqHrS2I3sM86G8qzbTO0hSrmOTfOl+htE49rJQtEXUU3V2I8Wf
+	 BAh34Sar9EEp5xeKe5KAygQuVG/EZfCGDisujNc0C3tDRXbBjRf5t9mBWd7AzNX07N
+	 qF567p0AJBuG9dc3pqvxhtGxSLDANASIn7Mk/zh2zFcmL0eZQ3DacyxAe4x0YARvsK
+	 YFLsABBKlf1pLoy0oytb6G4WZQgynKB+Lv5Gq4U7ciamQiPuqoTHUmS+u+IYLxPHEC
+	 4+hv20gGhiEAw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5B18E60DD0;
-	Thu,  5 Feb 2026 12:25:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5BDBA60DD0;
+	Thu,  5 Feb 2026 12:30:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 66929173
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:25:07 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 1342B17A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:30:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 47FEC407C8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:25:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 00EA0407C8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:30:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dkTMu1UyIaRK for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Feb 2026 12:25:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 23202400CB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 23202400CB
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 23202400CB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:25:05 +0000 (UTC)
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-108-VwDS5OIVNxa5F_6hgNAqVg-1; Thu, 05 Feb 2026 07:25:01 -0500
-X-MC-Unique: VwDS5OIVNxa5F_6hgNAqVg-1
-X-Mimecast-MFC-AGG-ID: VwDS5OIVNxa5F_6hgNAqVg_1770294300
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-b801784f406so73503466b.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 05 Feb 2026 04:25:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770294300; x=1770899100;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kTs2P/KtHhQBrqRutC9oA5UVOjBir3xmipR3YfrBtSo=;
- b=jp0hzWGFjjPrKe/XkALKIQi8Hf7zUYKcg8FGy8rCzpEcxJAltHf/chJ+OrdUXxkyuf
- MDcD6J4eS16zUSeEvgoZC3RdRtQ0w41CvaBawV8Ivj3++UOKgmxXQR2fkO45H3FXkdyi
- TdTj8GtVrNIBF0NISZN3IZUfIEkbcEyjl78A44jnfkfJzdmlcIu5PEya6LhUaNzgPneB
- 2owTW/c2gTdt+hyuXjMRJye8ffH8coRMMVGvjn/fClQ0Dxg+0oOU+ABZ3HWLQoeutNsc
- 9ONetmAU6E8THSWiP2o855HY+A+mljBNlxvKJJruNwRMoTZfsYVIM21LJOxpO0kj812q
- BGMQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU5MENyfwiHkur9Eqiq7yaAxny9iqJ/MT+zZ9XS2c9OseMvPWfoEh6vXPlz9RX8eqkCM5CDusPdgq6RQOT8JjU=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxNGT8qG2OeRe3W3UNv9Z3eIbdVkQPKE30785evpW1cmf1cU7U1
- mRQrgc4HHccADAb0/9Uh9Ry0Qu42IeQYaDlW5ZBsFRwkbXaHY2ySeVQUqSo0FmP0YmhobpnqKfq
- qqT29P3ejgHMUGLEwc0rpzhn0IV6cauzeDQKmLNP14PupoIHH2phCONASh5/2x3M+wYmginY=
-X-Gm-Gg: AZuq6aKzB9Js8NFN47HPoWxPoUIF9rUxF9itC4l7lSaF6UfnKeXlapmgfwJfBNHPtNt
- +rowe2sFpxG1Bxe21t3P6HqC3u+1Y7mXX1sWokBVPSASVgNUjafQtuQqw56HGZxtKZU1GqHdcgr
- xVRD27ejVA7JW3oEPhU/ub4/3nM+s3KmDuOo5pv+pPsUUCZ4fVGMfWqFrbrerIljNPZhBT/Zrj1
- e+6b32mNgmGO2ZMKvNX/of82j6SB5lqCe8j6Yz7qaS50+5DBIiB1q6Wi3mGhUlWF8TtTsfbdF8W
- gfvSrN0YFw6eGQyo8cDRUcqc+J4i/6WoIXevoAUoXnlMAj0u1cNrZWgiTLC/77oqtpQ1nIdBKUq
- Gg7vBUeeS
-X-Received: by 2002:a17:907:d78b:b0:b8e:8874:8366 with SMTP id
- a640c23a62f3a-b8e9ef31395mr437994666b.5.1770294299690; 
- Thu, 05 Feb 2026 04:24:59 -0800 (PST)
-X-Received: by 2002:a17:907:d78b:b0:b8e:8874:8366 with SMTP id
- a640c23a62f3a-b8e9ef31395mr437990866b.5.1770294299088; 
- Thu, 05 Feb 2026 04:24:59 -0800 (PST)
-Received: from [192.168.2.83] ([46.175.183.46])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8ea0045574sm222051166b.59.2026.02.05.04.24.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 05 Feb 2026 04:24:58 -0800 (PST)
-Message-ID: <07755837-fb92-40ce-bf99-7d941076ee62@redhat.com>
-Date: Thu, 5 Feb 2026 13:24:56 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jacob Keller <jacob.e.keller@intel.com>,
+ id LI9ZEkQVkoEf for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Feb 2026 12:30:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.69.43;
+ helo=am0pr83cu005.outbound.protection.outlook.com;
+ envelope-from=vladimir.oltean@nxp.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 199AC400CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 199AC400CB
+Received: from AM0PR83CU005.outbound.protection.outlook.com
+ (mail-westeuropeazon11010043.outbound.protection.outlook.com [52.101.69.43])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 199AC400CB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Feb 2026 12:30:05 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=pxPt5DKPkLe7fnlhqD6DNH3eRPqjxMTFrn/cbjeHsRD25pkEd6jorSeE7sc2FchdpbFt2pgNduBQe8RumJBNIUldoCGxiFIp7il6SblgxzvZ9RcRs+xXAAMmu7SeL4iKDfDhiswmQtExKCA+pTVsRNPRU7JY9PnsVqMOjY2jlWARiRzVd174sXMlrpz3h1AeVXj1E+/MBocyy6mcbvQIe5X8wVIB4ZKm51YkCkZ4PPXzY1ccMbmkOYZi17VUCCRCJy0ePlJ+weKPHAU/WQy44e9FkxwA6PTz5nvTS+4V3a/vmgtPCDR+zXPKjFT/sZl2X6jnz4QliERbmuVanlGUiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=75yYusQdvCFJr0kyvBlGJkUDXhpUvje7WrzZO83KY9I=;
+ b=LWKPfdWCqh9aH+SkUem4e6u66/qyprg7OsodljebxEKmMj1dumz0gDdTLra6xxswtmbaGtCEHj7aB8inmDdC6Ejnj+zwkCMHNgFTQTlH+4RmYdTREKl/aVDs8CQ/pqiLXyrEitgJwznWYC78c+eOo0k99ER/BaV51KEbuBZ0o7xtMI4bn5fGTh9rATtymhJct1v/OxzSm+GWe+++N8A0lXYxFi+04S/2PbqF1wSIzDoWU6GY8ry0WjzBnRviRSOdNgfj+MFjtt1YidJ7PYWLBfK0pKc+hUyXdQelsqRa5WMWd54tGWZ7iHhEyroQtl/S0XTILnyYBOILSVgJYXVhww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by AM8PR04MB8049.eurprd04.prod.outlook.com (2603:10a6:20b:24c::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.16; Thu, 5 Feb
+ 2026 12:29:59 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9564.016; Thu, 5 Feb 2026
+ 12:29:59 +0000
+Date: Thu, 5 Feb 2026 14:29:53 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Larysa Zaremba <larysa.zaremba@intel.com>, bpf@vger.kernel.org,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Wei Fang <wei.fang@nxp.com>, Clark Wang <xiaoning.wang@nxp.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jakub Kicinski <kuba@kernel.org>
-Cc: ivecera@redhat.com, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
- Stanislav Fomichev <sdf@fomichev.me>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-References: <20260202084820.260033-1-poros@redhat.com>
- <20260202155813.3f8fbc27@kernel.org>
- <b064ca33-1d94-4c7e-b0d0-78430d8cd0ac@intel.com>
- <14cb0b22-ec39-43e4-a35b-22ad558b2e34@redhat.com>
- <7907d42e-4805-48bc-aaf6-16cbe46eb1d2@intel.com>
- <db1723e3-294d-46b7-aa4c-11a21b0da82f@redhat.com>
- <79960c2a-26ea-4472-bebb-4657fcca2255@intel.com>
- <0e17cadc-5cab-44f2-8998-67ecde033a06@intel.com>
- <fd06e5b3-c4cb-4725-a04d-dbc4839e88ea@intel.com>
-From: Petr Oros <poros@redhat.com>
-In-Reply-To: <fd06e5b3-c4cb-4725-a04d-dbc4839e88ea@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -VioLN5TlR0fjF5eF-RX1SXvQa5DND4ToOs38mE1iVo_1770294300
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Andrii Nakryiko <andrii@kernel.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>,
+ Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Simon Horman <horms@kernel.org>,
+ Shuah Khan <shuah@kernel.org>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ "Bastien Curutchet (eBPF Foundation)" <bastien.curutchet@bootlin.com>,
+ Tushar Vyavahare <tushar.vyavahare@intel.com>,
+ Jason Xing <kernelxing@tencent.com>,
+ Ricardo =?utf-8?B?Qi4gTWFybGniiJrCrnJl?= <rbm@suse.com>,
+ Eelco Chaudron <echaudro@redhat.com>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Toke Hoiland-Jorgensen <toke@redhat.com>, imx@lists.linux.dev,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <20260205122953.lscemcctayrvszdu@skbuf>
+References: <20260203105417.2302672-1-larysa.zaremba@intel.com>
+ <20260203105417.2302672-7-larysa.zaremba@intel.com>
+ <20260205005901.gnju3zmqimtgeu2b@skbuf>
+ <20260204173401.282899d0@kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260204173401.282899d0@kernel.org>
+X-ClientProxiedBy: VI1PR08CA0246.eurprd08.prod.outlook.com
+ (2603:10a6:803:dc::19) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AM8PR04MB8049:EE_
+X-MS-Office365-Filtering-Correlation-Id: deb5711e-4c4f-46ec-2ae7-08de64b246b8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|19092799006|376014|7416014|366016|10070799003|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?muKJjtnYJ2XleOSj+sbHT2gyRdQHmigNBxXKgyaPqCIbLa4Lw73EZM99u55G?=
+ =?us-ascii?Q?OScPyinZ9MFUxo5j6VrxsTEzKlStt2xzhzpGixoGSoPKRBUmZJW0PX9o45hx?=
+ =?us-ascii?Q?GgzNk2gx4CBJYsKrNb6R7908cr5CGOTzkGti1F8SEzpesSG70N/9WYNSliRW?=
+ =?us-ascii?Q?2okCz26aJrZ+SUodJDYB9Mcuu9Fk1CIjNXIOUr8YWs50iUXigmSNCcRL1ASB?=
+ =?us-ascii?Q?8X04xUWiJZxTCv4iefls/6+SZLKB2Mw8oiwjkCwY+WS86kwG0xPvxvtnHiVL?=
+ =?us-ascii?Q?GXpreJQ8wRnCOD30w7ZjivNuFKt9Ao8E3+cvEtR6wXbf7mLSakEYrUxWBtN4?=
+ =?us-ascii?Q?qprxcsbyGNrcrGIaZTSktUUS5MP4/dopkAE841v8A9zTZwv6JDhlwW6Q52b/?=
+ =?us-ascii?Q?76ac1I0Rnr8ziKs7NCe8/HEusGJ/VfNL2kjaanPVENrGSWCcYCRrHgbN58yn?=
+ =?us-ascii?Q?ffsMilBi8FfF8YinW8evhKwFIc7fhqrhqNzOHnWN0JAuYfXG3A+M/M6qISUz?=
+ =?us-ascii?Q?UM985DZjEq+xTZSSCuAaJ9SMEcPMoYE36WOPL0je0zlAEyL/csOAQmnDk/bS?=
+ =?us-ascii?Q?X+Y/4IqX/fvfG1MI501PEZRRdFEsqH8WrIYMVEdW2PrXMsSuK0mkI1XNR+7r?=
+ =?us-ascii?Q?RClUT4KqHByKBh0cD3KUloCkb21FUKw9jy0T4NuDFvyKljpp78hN3rRNzGfm?=
+ =?us-ascii?Q?a3sdPrm4PO7Tio9pVSoXZTfBa/tqVX2YEOeA9Ppb2BBmkB67zZvkpi5EAdVn?=
+ =?us-ascii?Q?x/IiYcLqlbbH8iA8QsjtIlBSzKm1lsuEnRlkkDOWnDjIXbef8Fn1B3fwZ0y5?=
+ =?us-ascii?Q?peA4nrI+oBQLSUZ0V3AtiAIr9hfWnpQKjcBF3UxiLNMuP4HlwJIYxhn9p7pe?=
+ =?us-ascii?Q?mPFKyxNzS9S/7I+Cv8jbM8eyJJEIH+c3aeZy6s5qExAi+zQi2I7Mpbg8JcmA?=
+ =?us-ascii?Q?yej7B/Z5hEsBqJN1ErMtvjNlxTRKgW8JNdvu1EwgESwjk3l7PSECF1K3643N?=
+ =?us-ascii?Q?p8Rb0Ak17qmp2rzijPYbBKFrzOJGlk23ntV65HeN7xjBAIVsQQSOHeV39Fy8?=
+ =?us-ascii?Q?XvAQkpAIKDnRVrkDM3fAVS1PG1JiJ7m/dpm/+YCMVmc9KZMoZDeBSMF11Ypi?=
+ =?us-ascii?Q?UBPIBrfrHooyN+BRloE5hCMFz/zbwc6FM1V5tgkoHz3w2fudYtQFsS/gJ2Xr?=
+ =?us-ascii?Q?0tsSoG26MKMUZYfjxN7cwEWEtRvfnm9b4eoXyD5t2nv+1FNdpMJmue3f9db9?=
+ =?us-ascii?Q?H+hQOgfFeeeORsstEPmqJaBoEFwgf4ibq0UeON2uB0Kiq0Lw5ZgJQRhQqnGn?=
+ =?us-ascii?Q?LAOxWNuDT60eLJGrTNCfFYP/t73nu6JDHKKChUNxzOAibmcpkHBClN1/7NCG?=
+ =?us-ascii?Q?GWXyb8fz3qhUX+hwY5e1LO7ydoe3KqRBWxF5ZB307ey4ZHL/W8TaNjc4Af5n?=
+ =?us-ascii?Q?J13TABO6HCsAMf7uSAwsJ18hdop2oBjqL+YZ/Dn5o85DqbEjAvI3bDcwoBYD?=
+ =?us-ascii?Q?yKRgSbdYp2bnCfPxPhUqa8l/+YKCXm9dN0OJFMEEf5Hp5CxGB5AkZjs2Zli/?=
+ =?us-ascii?Q?g+MqGpMBnlSmSb5tfzE=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM9PR04MB8585.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(19092799006)(376014)(7416014)(366016)(10070799003)(1800799024);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TdSz5nAHf93i4v02QINRGa2fk7HrJHyv0WH6Kv1Mo7haFfX+eKvyrpaygJhj?=
+ =?us-ascii?Q?OCS3haGwZnzvR2Vaw9vBUaoMExXP/0NJvmIjFoKF2cTTmh+7rzNQyFTOKYTf?=
+ =?us-ascii?Q?/WcefDEdFu3MW5upQEUGqqBOo4EkkRRU71LQbv7KOUJdDchQytz/8QHhBM5J?=
+ =?us-ascii?Q?tOYxuRnoZ51B8u/Q/pEGpG3szEoBGXXtA/D4v2/GvWjFtMWXRjxQwSS5Z/wj?=
+ =?us-ascii?Q?neTe1umE33++BB2l+o1Bbuuv9RBzSt1jplBrxryFVrXV3xnblib8IhfyRFwu?=
+ =?us-ascii?Q?WblemQvcqAu8hP/QoFiWCDU9y0ugPFBIGWOtUtLQokobGl7yEUn7UeHQksNb?=
+ =?us-ascii?Q?xfbwWTiQ8QaQMjeQU669jevMPjX8OoPgzZWkGGgoyvbpcwmt9ilPuMZdfcbw?=
+ =?us-ascii?Q?PkV9Hl3X7feNcrfOlh45hjUu7LXyyw3ZuCaGym+lYMWme4YfSiO33Qz03TVO?=
+ =?us-ascii?Q?FwIRcYjucn+b7jFxsS94KKhN8Nh6Y+FEIgm2+DeNc6//Z2hWtRbxWjb4nRpQ?=
+ =?us-ascii?Q?s9QlSzJ525rQ/MF9sXGPyn+NQOL5OE76gRZV3v/ebg1mOkxr4/PyAeQQPv5T?=
+ =?us-ascii?Q?IFEzkawJUnJAmgFQerlW07estUvPxWfigKnrGSD0je28m29tzhKkrYoajaIt?=
+ =?us-ascii?Q?ZqQPNhK2u/ULXJXfzxw1YmWYyPqrtbhCFDYKGx7VC4404aJXDxLlbS7n5F7f?=
+ =?us-ascii?Q?e7a1/Z6+bQedLWKilgsdXORyJVPiPduFE79VUi5DNq4VujPeo9sCosQDCCHy?=
+ =?us-ascii?Q?frKqqaX+gQIWgSbyrL3v4PjIJsMfqx/+ZC9l4xPXSjSNA8jFDanf6jyGRjTG?=
+ =?us-ascii?Q?f+UCnGSV+G/6SrT/Kl5KlLAbSJ1gFKCyZKqR31qYa1UfqLbuIslgB+chnfVZ?=
+ =?us-ascii?Q?ENu67Z0LyL5xaRd83lWUOJqm5jbpHC4Ij8fLIpQ9GAUdwbcuZTfWUsS/+ZB0?=
+ =?us-ascii?Q?DG1fhW2naoMWGzx8oz23jOXN9iLJiffIkOSm5/fxWPuj6KXZZThp076caUl/?=
+ =?us-ascii?Q?I9vO8nNmDpBnuhjt8SC/YVUNAnlBWapXDYyjR4w7rh4LjqUABm8NQ6DnTIAW?=
+ =?us-ascii?Q?a3KbchP3N6ulH6VY7aQMFPF5nruyRSi9Leo5RJlJww5Ounoyj69CAZeV3e73?=
+ =?us-ascii?Q?ZTiH2fndOHINY9fhs7L305WQ+PEXpUJxlwBUISmbiQhTW8T7zECzD0zUVn26?=
+ =?us-ascii?Q?OLm2PrraKhSMmNQdbibmDkW+n1MQXnG5veWS9K1K04wmFGh32Q7FBt0Psm7Q?=
+ =?us-ascii?Q?iqCZBy+lpdZhqFjYmMrBuAVWhtgIYn0dyLPparBqcPqWlhiTUHWjGalhWHqc?=
+ =?us-ascii?Q?3qKhK4WaN80+CM5ZWz2hz4wX5YcCanR9bu1YvwSsFncNH6YyfpULdthoaHQU?=
+ =?us-ascii?Q?/XOGHPqqMtMplRl+2yMu1kGXsyYdllQNoLB0jLzz+LpH8+2VX6Q+PfltZk8W?=
+ =?us-ascii?Q?+dsLHCvKYpkc/L7BIUsSPutI56ulZZJaEA6RFgVmkF1cV+ecrpyP3bJh1ZaZ?=
+ =?us-ascii?Q?Hy1XXxbefU4/CBmZ8G/ELCqHA4k5/mRUW1dHfXfBeDmQV4dXscSbycBA9A2w?=
+ =?us-ascii?Q?vfnTexBRviw5R/HrWN5TPvh5DzeVYJIfJ/E4hDs/ktQlnFzQI6WeSYy75S5B?=
+ =?us-ascii?Q?JS9NKuoQ9b2whDEMlUO2ykErao39Q6aOE39XLSZJHeS623ieYuMSsUG+Z7d2?=
+ =?us-ascii?Q?B5bElgbC8PLPDwsgUHdtVE2/pWKdl6X7nFtI3oJQQZMRBc9GnXc84uS1go+p?=
+ =?us-ascii?Q?EzrrOdggEGMIEraBTXTqs1MRUtPaRjy1Hz5bn744qj9BdKZAvzqkyGSt/hDz?=
+X-MS-Exchange-AntiSpam-MessageData-1: chMYX4JM2yeYMBH8Hvw0GZ1xtc+NZDyZ1aQ=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: deb5711e-4c4f-46ec-2ae7-08de64b246b8
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Feb 2026 12:29:58.9934 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Q5HMyxDzKn4uoQ7GXNYg/Un5791lr2LKXTsykBEsgbHGsPGjJENju7WvhnoQeCWy8LjqLcCL450gj3ASkgnBeA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB8049
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1770294304;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kTs2P/KtHhQBrqRutC9oA5UVOjBir3xmipR3YfrBtSo=;
- b=IfznJjxhniiGhR0fNpJ+QdCaDibTH9mdWmBd55SA1Fpz3UCjPRlRRfENa/QdKyXl53IEx3
- 9NHHEJ07BlOXWXXhrLQaYIRjUXeMx4xZ/ZlRBnAkiddDJDvAlA6/qmxaYvmcWdgiAGsQ8/
- 4AzjdQ6VlE03Fgcxd/KXT3GtmwaFf8Q=
+ d=nxp.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=75yYusQdvCFJr0kyvBlGJkUDXhpUvje7WrzZO83KY9I=;
+ b=Qf+z7Q7BgdoRYVjAr3po3BPb9Reu/Btt+iFSXLo2SyWkCmRgXf53rNUIfnFskOgmr8jGz865NpQOUxNqs0Y1a4nF5jfBxF7fYdfwDVfGITSnk8cV9udx01Hirpiy5LEEeuk1Q2D+KayxxQSP98fK0dEmksNLY5yTOH2gAiYaNCMQjv+66HTM4DjzYXRvil6ajkGF7OQ+5ePnXBKcLc9yAZiU+Uy8afKY4KR+VG5An3iqMD57pKVmnfyJgTun7FYCIu0gAS99nx2xneuKpOd8gMpsreptxbzJrnfD48k6oT8o0yM2x3w7d6QMUdBwANk+aleyej5qnDhG5p/coxQpFg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
+ dmarc=pass (p=none dis=none)
+ header.from=nxp.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=IfznJjxh
-Subject: Re: [Intel-wired-lan] [PATCH net] iavf: fix deadlock in reset
- handling
+ dkim=pass (2048-bit key,
+ unprotected) header.d=nxp.com header.i=@nxp.com header.a=rsa-sha256
+ header.s=selector1 header.b=Qf+z7Q7B
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Subject: Re: [Intel-wired-lan] [PATCH bpf 6/6] net: enetc: use truesize as
+ XDP RxQ info frag_size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -162,213 +231,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+	MID_RHS_NOT_FQDN(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	DMARC_POLICY_SOFTFAIL(0.10)[nxp.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:przemyslaw.kitszel@intel.com,m:kuba@kernel.org,m:ivecera@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:sdf@fomichev.me,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[42];
+	FORGED_SENDER(0.00)[vladimir.oltean@nxp.com,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:kuba@kernel.org,m:larysa.zaremba@intel.com,m:bpf@vger.kernel.org,m:claudiu.manoil@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:horms@kernel.org,m:shuah@kernel.org,m:aleksander.lobakin@intel.com,m:maciej.fijalkowski@intel.com,m:bastien.curutchet@bootlin.com,m:tushar.vyavahare@intel.com,m:kernelxing@tencent.com,m:rbm@suse.com,m:echaudro@redhat.com,m:lorenzo@kernel.org,m:toke@redhat.com,m:imx@lists.linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:andrew@lunn.
+ ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim];
+	FREEMAIL_CC(0.00)[intel.com,vger.kernel.org,nxp.com,lunn.ch,davemloft.net,google.com,redhat.com,kernel.org,iogearbox.net,gmail.com,fomichev.me,linux.dev,bootlin.com,tencent.com,suse.com,lists.linux.dev,lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[vladimir.oltean@nxp.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: CF0A5F26AD
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 78740F280B
 X-Rspamd-Action: no action
 
+On Wed, Feb 04, 2026 at 05:34:01PM -0800, Jakub Kicinski wrote:
+> On Thu, 5 Feb 2026 02:59:01 +0200 Vladimir Oltean wrote:
+> > Thanks! This is an extremely subtle corner case. I appreciate the patch
+> > and explanation.
+> > 
+> > I did run tests on the blamed commit (which I still have), but to catch
+> > a real issue in a meaningful way it would have been required to have a
+> > program which calls bpf_xdp_adjust_tail() with a very large offset.
+> > I'm noting that I'm seeing the WARN_ON() much easier after your fix, but
+> > before, it was mostly inconsequential for practical cases.
+> > 
+> > Namely, the ENETC truesize is 2048, and XDP_PACKET_HEADROOM is 256.
+> > First buffers also contain the skb_shared_info (320 bytes), while
+> > subsequent buffers don't.
+> 
+> I can't wrap my head around this series, hope you can tell me where I'm
+> going wrong. AFAICT enetc splits the page into two halves for small MTU.
+> 
+> So we have 
+> 
+>  |                 2k          |             2k              |
+>   ----------------------------- ----------------------------- 
+>  | hroom | data | troom/shinfo | hroom | data | troom/shinfo |
+>   ----------------------------- ----------------------------- 
+> 
+> If we attach the second chunk as frag well have:
+>   offset = 2k + hroom
+>   size = data.len
+> But we use
+>   truesize / frag_size = 2k
+> so
+>   tailroom = rxq->frag_size - skb_frag_size(frag) - skb_frag_off(frag);
+>   tailroom = 2k - data.len - 2k
+>   tailroom = -data.len
+>   WARN(tailroom < 0) -> yes
+> 
+> The frag_size thing is unusable for any driver that doesn't hand out
+> full pages to frags?
 
-On 2/4/26 20:25, Jacob Keller wrote:
->
->
-> On 2/3/2026 10:12 PM, Przemek Kitszel wrote:
->>
->> [...]
->>
->>>> If dropping the lock is a no-go, the only viable path forward is to 
->>>> split the
->>>> reset_task so that the waiting portion is decoupled from the 
->>>> netdev_lock
->>>> critical section.
->>>>
->>> We used to do this back before the netdev shaper ops. We didn't 
->>> acquire either netdev lock or RTNL during reset.
->>>
->>> I thought we had some code in the past that would handle netdev 
->>> stuff outside of reset.. but I don't really know and git blame is 
->>> not making it easy to find this information.
->>
->> IIRC it was iavf_config_task that is used to complete stuff requested
->> under RTNL but later
->>
->>>
->>> Perhaps we don't actually need to hold the netdev lock over the 
->>> reset task.. except Przemek's refactor to remove the critical lock 
->>> now makes us fully dependent on the netdev lock in this case for 
->>> reset :(
->>>
->>>> The fact remains that MTU configuration and ring parameter changes are
->>>> currently broken in iavf. Changing the MTU on a Virtual Function is a
->>>> fundamental configuration not an obscure edge case that can remain 
->>>> non- functional.
->>>>
->>>
->>> Agreed. This needs a resolution. It is just very tricky to figure 
->>> out what the solution should be.
->>>
->>> We need to hold the netdev lock during reset, and we need to have 
->>> our handlers wait for reset to complete in order to be certain their 
->>> task is done... but reset is a separate thread so we can't really 
->>> communicate to it that we're holding the lock, and attempts to do 
->>> that would be a huge problem.
->>>
->>> We don't want to go back to the critical lock and all of its 
->>> horrible problems either. The commit that removed it is here: 
->>> 120f28a6f314 ("iavf: get rid of the crit lock")
->>>
->>>> I would appreciate any further guidance on how you would prefer...
->>>>
->>>
->>> I wish I had some better ideas..
->>>
->>> Bad ideas I've thought about so far:
->>>
->>> 1) this patch with its drop lock and wait, which we discussed as 
->>> problematic before. It creates a lot of issues since it means the 
->>> operations are no longer atomic and we could potentially get stuck 
->>> with some other operation in the event of another thread starting 
->>> some core netdev task. No good.
->>>
->>> 2) not holding netdev_lock in reset, which is now a nogo since we 
->>> removed the crit_lock, and apparently we held netdev_lock prior to 
->>> that too anyways...
->>>
->>> 3) we could maybe do some sort of ref counting dance where we take 
->>> some reference in threads that queue a reset, and the reset task 
->>> would know if that reference was non-zero then another driver thread 
->>> is holding netdev_lock so its safe to go into reset without 
->>> locking... but this feels extremely ugly and error prone to me...
->>>
->>> 4) convert reset handling to a separate function that depends on the 
->>> netdev_lock, and call that directly from within the threads that 
->>> currently "wait for reset" while holding the netdev lock. Thus, we 
->>> basically move this entire call chain into the thread already 
->>> holding the lock, and call it from the context of the function like 
->>> the MTU change, etc. 
->>
->> reset_thread() {
->>      while (!stopped) {
->>          netdev_lock();
->>          reset_step();
->>          netdev_unlock();
->>      }
->> }
->>
->> looks cool, IIRC I did something similar with the "after crit lock
->> removal refactor continuation", but I've put it on hold
->> https://github.com/pkitszel/linux/commits/undeadlock/
->> The linked code went even further and merged all of our admin-worker 
->> threads into one and the whole was protected by the netdev_lock :)
->>
->
-> That is a lot of patches and doesn't feel like a minimal fix.
->
->> This feels like its also a huge issue, and could
->>> potentially lead to some sort of issue where we need to still block 
->>> the reset thread from going if we reset at the end of the 
->>> netdev_lock thread..
->>
->> that should queue on the "do later stuff queue", which we don't have
->> right now (and keep some of such stuff in the state machine), but would
->> be useful for many other actions too (like virtchnl messages, for which
->> we have queue-of-1 right now
->>
->
-> I think we need to lay out what we need and maybe that will help 
-> figure out a solution.
->
->
-> 1) several NDO operations need to perform tasks that require AVF 
-> hardware to reset, and which need to be certain that happens before 
-> they return.
->
-> 2) reset is handled by a separate workqueue task
->
-> 3) reset also requires the netdev lock
->
->
-> We can't make the ndo operations avoid the netdev lock
->
-> We pretty much can't make reset not require the netdev lock, 
-> especially since we are now using it as effectively the main driver 
-> lock now.
->
-> I am not certain we can move all of the reset code to work from the 
-> ndo thread context, as we still also have to wait for hardware 
-> notification that reset happened, which seems like a pretty massive 
-> refactor to get right.
->
-> We can't drop the waiting in the ndo operation because we need to be 
-> sure that the operation applied properly, otherwise we get errors 
-> elsewhere.
->
-> So that leaves me without any solution so far, certainly not one that 
-> can be completed quickly... which means we're stuck with a guaranteed 
-> deadlock anytime the MTU is changed?
+This is an excellent question.
 
-I’ve been looking at the code on GitHub, and in my opinion, the fastest 
-and most straightforward solution is to use a slightly modified approach 
-based on patch 8c90ca2 ("iavf: split out body of reset task").
+Yes, you're right, bpf_xdp_frags_increase_tail() only has a 50% chance
+of working - the paged data has to be in the first half of the page,
+otherwise the tailroom calculations are not correct due to rxq->frag_size,
+and the WARN_ON() will trigger.
 
-Since that patch refactors iavf_reset_task into iavf_reset_step and 
-removes all netdev_lock acquisitions from its internal logic, we can 
-resolve the deadlock by calling it directly.
+The reason why I didn't notice this during my testing is stupid. I was
+attaching the BPF program to the interface and then detaching it after
+each test, and each test was sending less than the RX ring size (2048)
+worth of packets. So all multi-buffer frames were using buffers which
+were fresh out of enetc_setup_rxbdr() -> ... -> enetc_new_page() (first
+halves) and never out of flipped pages (enetc_bulk_flip_buff()).
 
-In places where we currently wait (MTU, channels, ringparam), we should 
-replace the asynchronous scheduling and waiting with a synchronous call. 
-This avoids the deadlock by executing the reset in the thread that 
-already holds the netdev_lock:
-
-         if (netif_running(netdev)) {
--               iavf_schedule_reset(adapter, IAVF_FLAG_RESET_NEEDED);
--               ret = iavf_wait_for_reset(adapter);
--               if (ret < 0)
--                       netdev_warn(netdev, "MTU change interrupted 
-waiting for reset");
--               else if (ret)
--                       netdev_warn(netdev, "MTU change timed out 
-waiting for reset");
-+               adapter->flags |= IAVF_FLAG_RESET_NEEDED;
-+               iavf_reset_step(adapter);
-         }
-What do you think about this?
-
-
->
->>>
->>> I don't really like any of these solutions, even if (3) and (4) 
->>> aren't fully ruled out as completely broken... they probably have 
->>> all kinds of issues...
->
-
+This seems to be a good reason to convert this driver to use page pool,
+which I can look into. I'm not sure that there's anything that can be
+done to make the rxq->frag_size mechanism compatible with the current
+buffer allocation scheme.
