@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 6HPxL1Jpi2k1UQAAu9opvQ
+	id oKbMAFVpi2k1UQAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Feb 2026 18:22:26 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Feb 2026 18:22:29 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 68E8511DD7B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Feb 2026 18:22:26 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69BA511DD84
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Feb 2026 18:22:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4604440CC2;
-	Tue, 10 Feb 2026 17:22:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7E5C5407A2;
+	Tue, 10 Feb 2026 17:22:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wB_PdY4SKPY2; Tue, 10 Feb 2026 17:22:15 +0000 (UTC)
+ id jS8rozlbTDLb; Tue, 10 Feb 2026 17:22:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9578A40B5F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2ACC54112B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770744135;
-	bh=j2Mmo/iFuVeGSi7gq7SJjfJK3uISDo7ZPgQxebltNCA=;
+	s=default; t=1770744139;
+	bh=f6qeMxE2bD/CZngsGJEaPhASkEv2qf1GdAL/ecG+f7I=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wjgmybpAae+VoY76i10U+HPechVD7LYDEYvDoDztPIDBY4YZNe30ychqwCIkjXu0L
-	 NiFSOAGJCNFF++pr8LMy3GpRXnNnDshA8NYi8Ir/DrjfXgWLoENRXmgKGwhN1W7sR+
-	 A/C2L+R1mvaWCZlRLqPkduEnShPUjVnS6rLN5YHN+ctdRPBMkvLb5u8MlhbHTANpD1
-	 E4tjwZ6gX2s24dFzcjKFv+lHSV8wCmyDTHhA6F+eHo3v36pVJIIpdyW03w54949grp
-	 AvSS/WsxTksvaNT6mH+4XAG7xCCc5DAOg/tvWE8hN4+WMKF9pDrqB0GBTBSNvlDsWE
-	 1TXooUntCBM7Q==
+	b=JF9Q5+9SaTueKhycVQ5rrKMo56wlf1tb2vbENuIwWH5UaFALhzoPDIAnWHCpdYrY/
+	 vdOppDfd/cCPuYWsDghsGAvlVsY5ydPjcd7t4u2JiOw17fgarAme2hdLCHKSDwit+8
+	 ZQlIkScZcRI8tvaD05EQvzGBz7bN/+C2tOfsSWZjYx6aDOceapmcO/YzYQnRQbXiKj
+	 z7PnONgNbJtMqClThqq1VZNkVjP11ymAO29gmBZ7devzDQKwZ1U5NgX5S04s3IkxPi
+	 4UZRGphteLNOXQNOjplrWjcQBaPQhFiiCR4dyTHYR3rJKQ8kIWUu93ZEZHKxqobGO9
+	 D4/hPKDpORNWA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9578A40B5F;
-	Tue, 10 Feb 2026 17:22:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2ACC54112B;
+	Tue, 10 Feb 2026 17:22:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id EB5AAF2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C62EDF2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D93E74068D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:13 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B78FA4068D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ojBMU-6fpYJi for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Feb 2026 17:22:13 +0000 (UTC)
+ id ZsMluiZ4lEcK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Feb 2026 17:22:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2E2614008D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E2614008D
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2E2614008D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9FEF94008D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FEF94008D
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9FEF94008D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Feb 2026 17:22:16 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id BF820444FE;
- Tue, 10 Feb 2026 17:22:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E99CC116C6;
- Tue, 10 Feb 2026 17:22:12 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id ABE7660130;
+ Tue, 10 Feb 2026 17:22:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6D85C116C6;
+ Tue, 10 Feb 2026 17:22:14 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Tue, 10 Feb 2026 18:21:49 +0100
+Date: Tue, 10 Feb 2026 18:21:50 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260210-bpf-xdp-meta-rxcksum-v1-3-e5d55caa0541@kernel.org>
+Message-Id: <20260210-bpf-xdp-meta-rxcksum-v1-4-e5d55caa0541@kernel.org>
 References: <20260210-bpf-xdp-meta-rxcksum-v1-0-e5d55caa0541@kernel.org>
 In-Reply-To: <20260210-bpf-xdp-meta-rxcksum-v1-0-e5d55caa0541@kernel.org>
 To: Donald Hunter <donald.hunter@gmail.com>, 
@@ -91,23 +91,23 @@ Cc: Jakub Sitnicki <jakub@cloudflare.com>, netdev@vger.kernel.org,
  linux-kselftest@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1770744132;
- bh=FxdfMw+g8bV/+mi1gEn6PcMcwLF8o84NpFvSpfO8nks=;
+ d=kernel.org; s=k20201202; t=1770744135;
+ bh=yBBOEuRACrTrU3mNxgRQgQe/fJ3wQzfx+UORh+ruz5Q=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=ZafEBYqMK7jxSLHdT+g8Y37K7F9OMM1MbxPpT5vurL3t3cao8yYn02RV2i3l0x1Ml
- lnXfdupBb8mkX+fqIn5Z2g5jxQlKzxa8NM5oZhZOFs/u9F8vH1wAQROymeqvGLxbFf
- PLfEfLAXEk6L4hqPPtT8mSbNT+pDIEwYGCez/pAHr33EBTTiejr6+sM8KWd15G8b5v
- TwtL6PpbFYMIufDBDPEKr2fpK9zKnc77KfrqTflFPJ7EYc+1PSTZoSKQheUkxbetrj
- v1qpRlzcQCK3yp7xX1tiHrTXGvGd0MBz59fFoklxb2+mYeTseD4U+bVOTfQTulu4wJ
- lrYVVjukt0mNA==
+ b=XrzHLwudb2DoS4C0sUx7B1zOK7yZVOGy4Q0fDvuOPuKQUamX08/FnoVPX0+5zt2rt
+ w2q+LDjKAmVqoiVomGvk5ILg1gJI0lB+AelHBiD/Zrp9zGx8w1FJdLxNYffey/bKTx
+ 31LCzPfqhIn+fvUubkD4s0jUIHJwzvcCRTa4tGYilSrQUiuzqoQ3vJtrXohL2oRlMl
+ dQmxuPMFNny6xKOojrYsmh90yG3LbQsN7ORNbVERpVjUjZ8VRuAxfFo0KXuuvcygwU
+ LpAVjFkc0sTHxL2lAh1YJ7ABRPjVA2nvIaJmzMzqrz3CHkbDUhDlWbl8MaxtmuII8U
+ rpUlfDnoCuZ5g==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=ZafEBYqM
-Subject: [Intel-wired-lan] [PATCH bpf-next 3/5] net: ice: Add
- xmo_rx_checksum callback
+ header.a=rsa-sha256 header.s=k20201202 header.b=XrzHLwud
+Subject: [Intel-wired-lan] [PATCH bpf-next 4/5] selftests/bpf: Add selftest
+ support for bpf_xdp_metadata_rx_checksum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -150,197 +150,86 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 68E8511DD7B
+X-Rspamd-Queue-Id: 69BA511DD84
 X-Rspamd-Action: no action
 
-Implement xmo_rx_checksum callback in ice driver to report RX checksum
-result to the eBPF program bounded to the NIC.
-Introduce ice_get_rx_csum utility routine in order to rx cksum codebase
-available in ice_rx_csum().
+Introduce support to xdp_metadata selftest for bpf_xdp_metadata_rx_checksum
+kfunc.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 114 +++++++++++++++++---------
- 1 file changed, 74 insertions(+), 40 deletions(-)
+ tools/testing/selftests/bpf/prog_tests/xdp_metadata.c | 7 +++++++
+ tools/testing/selftests/bpf/progs/xdp_metadata.c      | 1 +
+ tools/testing/selftests/bpf/xdp_metadata.h            | 9 +++++++++
+ 3 files changed, 17 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 956da38d63b0032db238325dcff818bbd99478e9..508ef4b07a3b3a9816be760c08c81c3f569456a3 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -81,69 +81,45 @@ ice_rx_hash_to_skb(const struct ice_rx_ring *rx_ring,
- 		libeth_rx_pt_set_hash(skb, hash, decoded);
- }
+diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+index 19f92affc2daa23fdd869554e7a0475b86350a4f..707c98e664745763b01b638a537a797211ded4e1 100644
+--- a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
++++ b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
+@@ -258,6 +258,7 @@ static void refill_rx(struct xsk *xsk, __u64 addr)
  
--/**
-- * ice_rx_gcs - Set generic checksum in skb
-- * @skb: skb currently being received and modified
-- * @rx_desc: receive descriptor
-- */
--static void ice_rx_gcs(struct sk_buff *skb,
--		       const union ice_32b_rx_flex_desc *rx_desc)
--{
--	const struct ice_32b_rx_flex_desc_nic *desc;
--	u16 csum;
--
--	desc = (struct ice_32b_rx_flex_desc_nic *)rx_desc;
--	skb->ip_summed = CHECKSUM_COMPLETE;
--	csum = (__force u16)desc->raw_csum;
--	skb->csum = csum_unfold((__force __sum16)swab16(csum));
--}
--
--/**
-- * ice_rx_csum - Indicate in skb if checksum is good
-- * @ring: the ring we care about
-- * @skb: skb currently being received and modified
-- * @rx_desc: the receive descriptor
-- * @ptype: the packet type decoded by hardware
-- *
-- * skb->protocol must be set before this function is called
-- */
- static void
--ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
--	    union ice_32b_rx_flex_desc *rx_desc, u16 ptype)
-+ice_get_rx_csum(const union ice_32b_rx_flex_desc *rx_desc, u16 ptype,
-+		struct ice_rx_ring *ring, enum xdp_checksum *ip_summed,
-+		u32 *cksum_meta)
+ static int verify_xsk_metadata(struct xsk *xsk, bool sent_from_af_xdp)
  {
--	struct libeth_rx_pt decoded;
-+	struct libeth_rx_pt decoded = libie_rx_pt_parse(ptype);
- 	u16 rx_status0, rx_status1;
- 	bool ipv4, ipv6;
++	__u8 ip_summed = sent_from_af_xdp ? XDP_CHECKSUM_NONE : XDP_CHECKSUM_PARTIAL;
+ 	const struct xdp_desc *rx_desc;
+ 	struct pollfd fds = {};
+ 	struct xdp_meta *meta;
+@@ -310,6 +311,12 @@ static int verify_xsk_metadata(struct xsk *xsk, bool sent_from_af_xdp)
+ 	if (!ASSERT_NEQ(meta->rx_hash, 0, "rx_hash"))
+ 		return -1;
  
--	/* Start with CHECKSUM_NONE and by default csum_level = 0 */
--	skb->ip_summed = CHECKSUM_NONE;
--
--	decoded = libie_rx_pt_parse(ptype);
- 	if (!libeth_rx_pt_has_checksum(ring->netdev, decoded))
--		return;
-+		goto checksum_none;
- 
- 	rx_status0 = le16_to_cpu(rx_desc->wb.status_error0);
- 	rx_status1 = le16_to_cpu(rx_desc->wb.status_error1);
--
- 	if ((ring->flags & ICE_RX_FLAGS_RING_GCS) &&
- 	    rx_desc->wb.rxdid == ICE_RXDID_FLEX_NIC &&
- 	    (decoded.inner_prot == LIBETH_RX_PT_INNER_TCP ||
- 	     decoded.inner_prot == LIBETH_RX_PT_INNER_UDP ||
- 	     decoded.inner_prot == LIBETH_RX_PT_INNER_ICMP)) {
--		ice_rx_gcs(skb, rx_desc);
-+		const struct ice_32b_rx_flex_desc_nic *desc;
-+		u16 csum;
++	if (!ASSERT_EQ(meta->ip_summed, ip_summed, "rx_ip_summed"))
++		return -1;
 +
-+		desc = (struct ice_32b_rx_flex_desc_nic *)rx_desc;
-+		*ip_summed = XDP_CHECKSUM_COMPLETE;
-+		csum = (__force u16)desc->raw_csum;
-+		*cksum_meta = csum_unfold((__force __sum16)swab16(csum));
- 		return;
- 	}
- 
- 	/* check if HW has decoded the packet and checksum */
- 	if (!(rx_status0 & BIT(ICE_RX_FLEX_DESC_STATUS0_L3L4P_S)))
--		return;
-+		goto checksum_none;
- 
- 	ipv4 = libeth_rx_pt_get_ip_ver(decoded) == LIBETH_RX_PT_OUTER_IPV4;
- 	ipv6 = libeth_rx_pt_get_ip_ver(decoded) == LIBETH_RX_PT_OUTER_IPV6;
- 
- 	if (ipv4 && (rx_status0 & (BIT(ICE_RX_FLEX_DESC_STATUS0_XSUM_EIPE_S)))) {
- 		ring->vsi->back->hw_rx_eipe_error++;
--		return;
-+		goto checksum_none;
- 	}
- 
- 	if (ipv4 && (rx_status0 & (BIT(ICE_RX_FLEX_DESC_STATUS0_XSUM_IPE_S))))
-@@ -168,13 +144,46 @@ ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
- 	 * we are indicating we validated the inner checksum.
- 	 */
- 	if (decoded.tunnel_type >= LIBETH_RX_PT_TUNNEL_IP_GRENAT)
--		skb->csum_level = 1;
-+		*cksum_meta = 1;
- 
--	skb->ip_summed = CHECKSUM_UNNECESSARY;
-+	*ip_summed = XDP_CHECKSUM_UNNECESSARY;
- 	return;
- 
- checksum_fail:
- 	ring->vsi->back->hw_csum_rx_error++;
-+checksum_none:
-+	*ip_summed = XDP_CHECKSUM_NONE;
-+	*cksum_meta = 0;
-+}
++	if (!ASSERT_EQ(meta->cksum_meta, 0, "rx_cksum_meta"))
++		return -1;
 +
-+/**
-+ * ice_rx_csum - Indicate in skb if checksum is good
-+ * @ring: the ring we care about
-+ * @skb: skb currently being received and modified
-+ * @rx_desc: the receive descriptor
-+ * @ptype: the packet type decoded by hardware
-+ *
-+ * skb->protocol must be set before this function is called
-+ */
-+static void
-+ice_rx_csum(struct ice_rx_ring *ring, struct sk_buff *skb,
-+	    union ice_32b_rx_flex_desc *rx_desc, u16 ptype)
-+{
-+	enum xdp_checksum ip_summed;
-+	u32 cksum_meta;
-+
-+	ice_get_rx_csum(rx_desc, ptype, ring, &ip_summed, &cksum_meta);
-+	switch (ip_summed) {
-+	case XDP_CHECKSUM_UNNECESSARY:
-+		skb->csum_level = cksum_meta;
-+		break;
-+	case XDP_CHECKSUM_COMPLETE:
-+		skb->csum = cksum_meta;
-+		break;
-+	default:
-+		break;
-+	}
-+	skb->ip_summed = ip_summed;
+ 	if (!sent_from_af_xdp) {
+ 		if (!ASSERT_NEQ(meta->rx_hash_type & XDP_RSS_TYPE_L4, 0, "rx_hash_type"))
+ 			return -1;
+diff --git a/tools/testing/selftests/bpf/progs/xdp_metadata.c b/tools/testing/selftests/bpf/progs/xdp_metadata.c
+index 09bb8a038d528cf26c5b314cc927915ac2796bf0..ef6a5584a1876a3c47440f21dca927ec783469dc 100644
+--- a/tools/testing/selftests/bpf/progs/xdp_metadata.c
++++ b/tools/testing/selftests/bpf/progs/xdp_metadata.c
+@@ -98,6 +98,7 @@ int rx(struct xdp_md *ctx)
+ 	bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash, &meta->rx_hash_type);
+ 	bpf_xdp_metadata_rx_vlan_tag(ctx, &meta->rx_vlan_proto,
+ 				     &meta->rx_vlan_tci);
++	bpf_xdp_metadata_rx_checksum(ctx, &meta->ip_summed, &meta->cksum_meta);
+ 
+ 	return bpf_redirect_map(&xsk, ctx->rx_queue_index, XDP_PASS);
  }
+diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
+index 87318ad1117a1d677af121f11778178532e2a562..a16f71488a34e6df23fec6dd7dde7b7989774618 100644
+--- a/tools/testing/selftests/bpf/xdp_metadata.h
++++ b/tools/testing/selftests/bpf/xdp_metadata.h
+@@ -30,6 +30,11 @@ enum xdp_meta_field {
+ 	XDP_META_FIELD_VLAN_TAG	= BIT(2),
+ };
  
- /**
-@@ -569,6 +578,30 @@ static int ice_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 	return 0;
- }
- 
-+/**
-+ * ice_xdp_rx_checksum - RX checksum XDP hint handler
-+ * @ctx: XDP buff pointer
-+ * @ip_summed: RX checksum result destination address
-+ * @cksum_meta: XDP RX checksum metadata destination address
-+ *
-+ * Copy RX checksum result (if available) and its metadata to the
-+ * destination address.
-+ */
-+static int ice_xdp_rx_checksum(const struct xdp_md *ctx,
-+			       enum xdp_checksum *ip_summed,
-+			       u32 *cksum_meta)
-+{
-+	const struct libeth_xdp_buff *xdp_ext = (void *)ctx;
-+	const union ice_32b_rx_flex_desc *rx_desc = xdp_ext->desc;
-+	struct ice_rx_ring *ring;
++#define XDP_CHECKSUM_NONE		0
++#define XDP_CHECKSUM_UNNECESSARY	1
++#define XDP_CHECKSUM_COMPLETE		2
++#define XDP_CHECKSUM_PARTIAL		3
 +
-+	ring = libeth_xdp_buff_to_rq(xdp_ext, typeof(*ring), xdp_rxq);
-+	ice_get_rx_csum(rx_desc, ice_get_ptype(rx_desc), ring, ip_summed,
-+			cksum_meta);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_xdp_rx_vlan_tag - VLAN tag XDP hint handler
-  * @ctx: XDP buff pointer
-@@ -601,4 +634,5 @@ const struct xdp_metadata_ops ice_xdp_md_ops = {
- 	.xmo_rx_timestamp		= ice_xdp_rx_hw_ts,
- 	.xmo_rx_hash			= ice_xdp_rx_hash,
- 	.xmo_rx_vlan_tag		= ice_xdp_rx_vlan_tag,
-+	.xmo_rx_checksum		= ice_xdp_rx_checksum,
+ struct xdp_meta {
+ 	union {
+ 		__u64 rx_timestamp;
+@@ -48,5 +53,9 @@ struct xdp_meta {
+ 		};
+ 		__s32 rx_vlan_tag_err;
+ 	};
++	struct {
++		__u8 ip_summed;
++		__u32 cksum_meta;
++	};
+ 	enum xdp_meta_field hint_valid;
  };
 
 -- 
