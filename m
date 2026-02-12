@@ -2,115 +2,114 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wO+sAiuajWnU5AAAu9opvQ
+	id yIQWAWGijWlh5gAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 10:15:23 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 10:50:25 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D1E1E12BCB4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 10:15:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 59A7412C069
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 10:50:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 685C541D6A;
-	Thu, 12 Feb 2026 09:15:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6D6E061218;
+	Thu, 12 Feb 2026 09:50:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id H3BPKgwPYR1H; Thu, 12 Feb 2026 09:15:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pSFf-Q0ZRAMk; Thu, 12 Feb 2026 09:50:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 922FE41D61
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDC2361213
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770887717;
-	bh=NBQ0um2OOklXClR8+J1qD5vX1aCXhThrgaK/pCpwCg8=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1770889821;
+	bh=GaRWbtuwRVGSt6f9Jbj4P3CmD5ia9A95Bv3HROx3vSo=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=fQxSqzNna1OlFobzLPtwRYbeMJ3l+3Rvc/W64Y0vxENXIRsR9d2/Fc4uLTMPyDanl
-	 iU7llWvCac6iiRWJTAHoTM2m19uEv2TGMmJ75yg4RBnxYl/01OuPSBpn+2OOkBLkdU
-	 heVM/hdG6lZASp7f972Ox2grWPk0eLxirNPFMYDZQnb93q+lnFonjnq3LgrGN2LI3S
-	 3Pl+pcateToghsb2x4t2LA87SVuX4DTu4u2VimSRkHdzcEUtARTAG3GQQZb8Bz0zgJ
-	 YaXn5mO9b+Kf3SpBG5q8vB+p18sXzwXIJzq0nkOmgAWGIBJfjBsvxBghWpcQt2Es5w
-	 DBzj5t1b1seGw==
+	b=HDb8VTii29eHu6yIAkA4e4uQIHjYJ6VtQflwyMJJAFCxiF6rqRmvD+EohEcmkuPVj
+	 4vU2PXktqE/fi1i60DTLhMsZ1SNBNPMjxKOG0Auw7p0DQYZPNmAhFfbOF4DzzwvTv6
+	 ni7mtqpVTqtGWrtSm+IE2yH/Dw46PlEQ7bC1T6UuuQXDxG42WPO1O6mGr3SepkYrp7
+	 pPReBvpZh0mpJCY1NTumGTF+GUyDi/06/kSRJ1HPySXnUTWcbZSknZbEF5sowBVwmE
+	 AAiZGtOrhJF3dsm9jsieobusPrPjLHQAK0ZLOdFn7yWz/WKilX+CULemQ3FgEzRCfy
+	 sGLBH85WncmKQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 922FE41D61;
-	Thu, 12 Feb 2026 09:15:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDC2361213;
+	Thu, 12 Feb 2026 09:50:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 092B6BE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:15:16 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 43D2F23D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:50:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DD74941D5B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:15:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3E09281063
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:50:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id njbHqDJNuCpz for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Feb 2026 09:15:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.167.52;
- helo=mail-lf1-f52.google.com; envelope-from=timo.teras@gmail.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iDQJHCPX-mEn for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Feb 2026 09:50:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5329341D32
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5329341D32
-Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com
- [209.85.167.52])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5329341D32
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:15:14 +0000 (UTC)
-Received: by mail-lf1-f52.google.com with SMTP id
- 2adb3069b0e04-59e62834439so1530872e87.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 01:15:14 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770887712; x=1771492512;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=NBQ0um2OOklXClR8+J1qD5vX1aCXhThrgaK/pCpwCg8=;
- b=evneUA5x0u00qck8/bkOGXPTngYMcDrW76m/EgnlUCEpl4GNrhfWnhbfy3h7NEuwTV
- OdWtu2EXp3XFIG2ypfMuv02v5Zb+2QO0NEAToopPGEGpoB5RiCuuBDO0MK/IS8l5ptYt
- EtuWye254AZhGF2NHGMv7DYx1d7rzifk8pwRALIedCm7/UIr1nLeOYCiOOQiunf+fQJ6
- 1F8Dj6y7sgXdelebANJ8vd9SfPUb9RKSKwzodursapIcYAXYfnSNapblOEv5mGHsfn24
- vHiKIVr169x4OXct3TvJfLR9gl603W7FWNpXalNI4kOwsLs6rIKRha+SXLSMpTAAwwTm
- JHPA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVRKdDQDhBk6ZEfrJu6l8sJSxCMPgM2IOzJZ3Hk1AD2AZT0iB+v2Lnk26f39PKSiZkTPCRRuuHVuxj1nJQ0WyA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzdTvx7iGHKV/wDQ5LpfOITA6fSz3CqzhcH7JCL8NFRvIRAn664
- PUz+516VGitR781kvc09g05VmPqK/df9wEZQKD6Ab5c+kv8b7BrQHuah
-X-Gm-Gg: AZuq6aLule6IWePZlMaD8+voENg9wBrEdqMmIFuhRRAVuDR5TveB7FS5Vxu/WxKxnoW
- z4Dz1H4d8rOlS6hrzviBSYsiyLkAiQT5RvCzWDo/rgLFg+i9kzMdawbmDtqEPEyCGId/DLnUV5Z
- gCP6vcaP8d9WaC5P68Izlk5TligNlulHH4r38cNEo1FTmg4KK0psDEa8h1obCVXnS2uMasqXmRh
- 3sA55u3Y0y5btxLR1BKcNCPq7m9R3GcsKNbJ8G39nTEIb4tTiiWgP43E+jvt7rKvJSyRcDaFdqI
- 2dF/OsMK+9CTX4a1sUEsYgqZ6WXbIWRAPbASDDpVHF2bfQJZOCEqgs+t2NNJMym/6Ps4UwqFTic
- Bzjuq6FTQ8967vNipXiV3YwmHT4aychwfT6mYL1VjndzPjPoFFmOHxuQmbOiqHHomPkO0ddBxua
- olxFO/rNSm8OXUIXslvj2U3Eb7STS1/wF1yNgPdKHfRkYbWSpvwpa79ZVJSDuc1fFOfUM8Nrc=
-X-Received: by 2002:a05:6512:ad5:b0:59e:56f3:6c8e with SMTP id
- 2adb3069b0e04-59e64011da2mr764476e87.11.1770887711569; 
- Thu, 12 Feb 2026 01:15:11 -0800 (PST)
-Received: from onyx.my.domain (n5eie63pn7902kdzuba-1.v6.elisa-mobile.fi.
- [2001:999:500:839e:5994:7818:d9ee:a136])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-59e5f5a50c2sm847173e87.45.2026.02.12.01.15.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Feb 2026 01:15:11 -0800 (PST)
-Date: Thu, 12 Feb 2026 11:15:06 +0200
-From: Timo Teras <timo.teras@iki.fi>
-To: "Ruinskiy, Dima" <dima.ruinskiy@intel.com>
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>, Todd Brandt
- <todd.e.brandt@intel.com>, David Box <david.e.box@linux.intel.com>, Len
- Brown <lenb@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <marmarek@invisiblethingslab.com>, <jeremie.wenger@edu.ge.ch>
-Message-ID: <20260212111506.16bc402a@onyx.my.domain>
-In-Reply-To: <745b1cd3-3e02-4d50-b1cb-0463ae6a9dd3@intel.com>
-References: <20260202103257.1972097-1-vitaly.lifshits@intel.com>
- <20260210131158.1055ad48@onyx.my.domain>
- <745b1cd3-3e02-4d50-b1cb-0463ae6a9dd3@intel.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-alpine-linux-musl)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7264A81045
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7264A81045
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7264A81045
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 09:50:19 +0000 (UTC)
+X-CSE-ConnectionGUID: b3wRcCWPSRSmRrHdxzMPUw==
+X-CSE-MsgGUID: N/U4Z+UgSVmgzwidpCCwNQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11698"; a="82782878"
+X-IronPort-AV: E=Sophos;i="6.21,286,1763452800"; d="scan'208";a="82782878"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Feb 2026 01:50:19 -0800
+X-CSE-ConnectionGUID: khGUbtBfQzOmjeG1/MJmHw==
+X-CSE-MsgGUID: tYbxTNxvSGuPd92sVt40hg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,286,1763452800"; d="scan'208";a="216708934"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Feb 2026 01:50:15 -0800
+Date: Thu, 12 Feb 2026 10:47:11 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Petr Oros <poros@redhat.com>
+Cc: netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>,
+ Simon Horman <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org
+Message-ID: <aY2hnyXFM9wplF3i@mev-dev.igk.intel.com>
+References: <cover.1770882260.git.poros@redhat.com>
+ <a76096058dd9b6d0cccaa5c2c699458351d02cec.1770882260.git.poros@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a76096058dd9b6d0cccaa5c2c699458351d02cec.1770882260.git.poros@redhat.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1770889819; x=1802425819;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=uqYHV6WHUvhDsOBpe5pUyJM0Yd06seajXeuYOQbHbXI=;
+ b=fDHiFy8K9aPFSwW4cpYx8sb5QPWHZgahAj5mIrs2sPwsnoOJvxntepHG
+ T9o02/z1avK3/khZtCIafIWQBfHtS1YhN855fAVqwpUwHEVra6PT8ocyJ
+ NMvq32htb8R+mVzCySPGoWxMI9IcOwFS8VYDa1Ay9C9WtjXr4czP6Xaa0
+ k2QsI5tnQ7yv6GHeqDK0L+9X5Izj5eehQ+xmchr3k3VvJMXPEaJD6PR27
+ vNLcoBBsHPrfqhgD4Pno137D/zhbo9k/PYuaa3AaEi9e07apZBiasxUek
+ aSABWceG2G35HMsijOAIWFl7vDjRONlMXDnjQ4zOddH3/CKBTxZyPGdog
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=iki.fi
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: reconfigure
- PLL clock gate value and re-enable K1 on Meteor Lake
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=fDHiFy8K
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 1/2] ice: fix inverted ready
+ check for VF representors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -126,133 +125,78 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.71 / 15.00];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:dima.ruinskiy@intel.com,m:vitaly.lifshits@intel.com,m:todd.e.brandt@intel.com,m:david.e.box@linux.intel.com,m:lenb@kernel.org,m:marmarek@invisiblethingslab.com,m:jeremie.wenger@edu.ge.ch,s:lists@lfdr.de];
-	DMARC_NA(0.00)[iki.fi];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[timo.teras@iki.fi,intel-wired-lan-bounces@osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,onyx.my.domain:mid,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[14];
 	MIME_TRACE(0.00)[0:+];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:poros@redhat.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:michal.swiatkowski@linux.intel.com,m:wojciech.drewek@intel.com,m:horms@kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[michal.swiatkowski@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[timo.teras@iki.fi,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	ARC_NA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,mev-dev.igk.intel.com:mid,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[michal.swiatkowski@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[8];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D1E1E12BCB4
+X-Rspamd-Queue-Id: 59A7412C069
 X-Rspamd-Action: no action
 
-On Wed, 11 Feb 2026 15:11:58 +0200
-"Ruinskiy, Dima" <dima.ruinskiy@intel.com> wrote:
+On Thu, Feb 12, 2026 at 08:53:10AM +0100, Petr Oros wrote:
+> Commit 0f00a897c9fcbd ("ice: check if SF is ready in ethtool ops")
+> refactored the VF readiness check into a generic repr->ops.ready()
+> callback but implemented ice_repr_ready_vf() with inverted logic:
+> 
+>   return !ice_check_vf_ready_for_cfg(repr->vf);
+> 
+> ice_check_vf_ready_for_cfg() returns 0 on success, so the negation
+> makes ready() return non-zero when the VF is ready. All callers treat
+> non-zero as "not ready, skip", causing ndo_get_stats64, get_drvinfo,
+> get_strings and get_ethtool_stats to always bail out in switchdev mode.
+> 
+> Remove the erroneous negation. The SF variant ice_repr_ready_sf() is
+> already correct (returns !active, i.e. non-zero when not active).
+> 
+> Fixes: 0f00a897c9fcbd ("ice: check if SF is ready in ethtool ops")
+> Signed-off-by: Petr Oros <poros@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_repr.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+> index cb08746556a670..2a84f656405828 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_repr.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+> @@ -315,7 +315,7 @@ ice_repr_reg_netdev(struct net_device *netdev, const struct net_device_ops *ops)
+>  
+>  static int ice_repr_ready_vf(struct ice_repr *repr)
+>  {
+> -	return !ice_check_vf_ready_for_cfg(repr->vf);
+> +	return ice_check_vf_ready_for_cfg(repr->vf);
+>  }
+>  
+>  static int ice_repr_ready_sf(struct ice_repr *repr)
+> -- 
+> 2.52.0
+> 
 
-> On 10/02/2026 13:11, Timo Teras wrote:
-> >=20
-> > This seems to retrigger the malfunction on a Dell Pro 16 Plus PB16250 l=
-aptop.
-> >=20
-> > CPU Interl Core Ultra 5 235U
-> > CPU family 6 model 181 stepping 0
-> >=20
-> > On Mon,  2 Feb 2026 12:32:57 +0200
-> > Vitaly Lifshits <vitaly.lifshits@intel.com> wrote:
-> >  =20
-> >> Commit 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
-> >> disabled K1 by default on Meteor Lake and newer systems due to packet
-> >> loss observed on various platforms. However, disabling K1 caused an
-> >> increase in power consumption due to blocking PC10 state.
-> >>
-> >> To mitigate this, reconfigure the PLL clock gate value so that K1 can
-> >> remain enabled without incurring the additional power consumption.
-> >>
-> >> Link: https://bugzilla.kernel.org/show_bug.cgi?id=3D220954
-> >> Fixes: 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
-> >> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> >> ---
->=20
-> We do not currently have exactly such a setup as you mentioned. I will=20
-> see if I can procure one for testing.
->=20
-> The PLL timeout change proposed in this patch successfully resolved the=20
-> original issue on a couple of systems in our lab that were previously=20
-> experiencing it, while keeping K1 enabled.
-
-Is there other PLL timeout value to test?
-
-> With this patch, and manually disabling K1 via the private flag, does=20
-> the issue on your Dell laptop disappear? I expect it would.
-
-Yes, it disappears in this case.
-
-> We are aware that there are some systems in the field, for which we are=20
-> unable to fully solve the Rx packet performance issue with K1 active.
->=20
-> On the other hand, disabling it exposes us to a power penalty more=20
-> significant that the K1 itself - blocking PC10 affects the power usage=20
-> of the entire system, which, in turn, may prevent compliance with=20
-> various regulations, such as Energy Star.
->
-> At the moment we do not have a configuration that allows us to achieve=20
-> optimal performance and optimal power settings on 100% of the systems,=20
-> so the K1 control flag has to stay. The only question here is that of=20
-> the default value.
->=20
-> The PLL change further reduces the percentage of systems suffering from=20
-> Rx packet drop. Choosing between a default value that blocks PC10 in all=
-=20
-> situations, versus one that deteriorates LAN connectivity in a small %=20
-> of cases, the latter seems the better way.
-
-If you look at the earlier issues, the regression happened on numerous
-devices. You have been able to verify one or two devices? I was able to
-report that one is still broken. Changes are that there are also other
-devices that will regress with this change.
-
-This patch has two changes:
- - configure PLL timeout
- - change K1 default mode for specific models
-
-The PLL timeout change is independent and good to go.
-
-The K1 default mode changing is wide. Perhaps the change could be
-scoped to SOCs that are known to be good?
-
-Alternatively, the original change that caused this in the first place
-is commit efaaf344 "e1000e: change k1 configuration on MTP and later platfo=
-rms"
-is the K1 exit timeout changed there something that could be tuned
-differently?
-
-There was also never reply to the question on how likely / large issue
-the potential Rx packet drop is? How many units it may affect?
-
-=46rom the earlier discussion we know that the "network does not work
-after cable unplug/plug" issue this causes is affecting multiple different
-vendors and is a *major* problem.
-
-Thanks for considering and on the continued assistance on determining
-the root cause why these devices are affected.
-
-If you end up changing K1 default, please add a mechanism to add
-quirks on how to disable it on affected systems without needing user
-space configuration. I find it unacceptable that userspace needs to
-be modified to fix kernel driver behavior on known bad devices.
-
-Timo
-
-
+Thanks for fixing
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
