@@ -2,104 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CIi/MgCHjWkZ3wAAu9opvQ
+	id oN+ZOwKHjWkZ3wAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 08:53:36 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 08:53:39 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8FAE812B092
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 08:53:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C12C912B099
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Feb 2026 08:53:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB1B341D28;
-	Thu, 12 Feb 2026 07:53:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E1B0D41D34;
+	Thu, 12 Feb 2026 07:53:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Qfehq4Wn6s5F; Thu, 12 Feb 2026 07:53:31 +0000 (UTC)
+ id E8wqT5klU9R7; Thu, 12 Feb 2026 07:53:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56AB441D24
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D5B341D2E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770882811;
-	bh=l0/e9zeYXG8z/u3O4hC/oU1DdGHJKYlimLvsT/jtTTU=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=nZzHzSeWBIfDykHLYWqizdk3HR7dNVV/wWo57ZRDCRPsl9EY9HTd7/ta+stlmRdNk
-	 45YxTk1ZXqbkxj4JsZiQOZrh24/prDBTxlKFJEJHLXDmc5p+70QU2nevE3ZabtTdwB
-	 gKjGYdewfddnYZPkaHyjFP5E1ZopRljciqYAEMJZxTHKAF53ylyCMrQ+SX98QGnHOO
-	 JveQTt2lHKgyaP7MXrIk9Bwo8C0bvMLTmxUAC8pElvX+aiGwfLRU+p3D2H214juC9h
-	 pnpMZ/s3tllJm52p9mG6wN/wprvu6EGNsMFnd3Ti61aaGavU0Mndi72ZBhpw9Inbo8
-	 tioBXiaDwn6nw==
+	s=default; t=1770882813;
+	bh=Ut8Fsw1R4tT50gfU2dQi99Xi0AipmBKvrl6DGwx0NTU=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=hMKfTGZO0/29QzrITYygzO5IdWDIMoCkykKDcQ2zFJFxzBimih9E9B9lsyhyZMsMt
+	 2tetq1T1F/ZFlMg8VWjBFaoIgct1gvPRwbvIocnB6HfKPpWWtgheIRBApnlYT+Zlv7
+	 mAt7p6sfOyTL3z2iklaDB/6JOb8QlB1bEm68XgfvwU2svWcavIFdP/6bKGWwA4LPkK
+	 Efp+t6NqgRD0Amo4K6San0gsnG3Od87AYN0/T0ExwhhjgF9LHEQhSldVum3cDBy+fB
+	 chUQx/8947MwLc8OO3QzhrkGbcPdHEuiwVVy062RLea+2CAdK2TVzaJk9+TfOy53ta
+	 8rcVeXB1K8F6w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 56AB441D24;
-	Thu, 12 Feb 2026 07:53:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D5B341D2E;
+	Thu, 12 Feb 2026 07:53:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2537123D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3F0951F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 13E0384255
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2D813611F0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HD22PHm60GJx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Feb 2026 07:53:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id x00nmGofPxhE for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Feb 2026 07:53:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 046E281111
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 046E281111
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 20440608DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20440608DC
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 046E281111
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:26 +0000 (UTC)
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 20440608DC
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Feb 2026 07:53:29 +0000 (UTC)
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-324-h8SiWTshP5Wb4tDvq4HgUA-1; Thu,
- 12 Feb 2026 02:53:22 -0500
-X-MC-Unique: h8SiWTshP5Wb4tDvq4HgUA-1
-X-Mimecast-MFC-AGG-ID: h8SiWTshP5Wb4tDvq4HgUA_1770882800
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-g6NO0SaEPuKom6REr-TJUA-1; Thu,
+ 12 Feb 2026 02:53:27 -0500
+X-MC-Unique: g6NO0SaEPuKom6REr-TJUA-1
+X-Mimecast-MFC-AGG-ID: g6NO0SaEPuKom6REr-TJUA_1770882805
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BC7B71955D88; Thu, 12 Feb 2026 07:53:19 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C2DE118003F5; Thu, 12 Feb 2026 07:53:24 +0000 (UTC)
 Received: from ShadowPeak.redhat.com (unknown [10.44.32.184])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4EF281956095; Thu, 12 Feb 2026 07:53:15 +0000 (UTC)
+ id 2B34A1956095; Thu, 12 Feb 2026 07:53:19 +0000 (UTC)
 From: Petr Oros <poros@redhat.com>
 To: netdev@vger.kernel.org
-Date: Thu, 12 Feb 2026 08:53:09 +0100
-Message-ID: <cover.1770882260.git.poros@redhat.com>
+Date: Thu, 12 Feb 2026 08:53:10 +0100
+Message-ID: <a76096058dd9b6d0cccaa5c2c699458351d02cec.1770882260.git.poros@redhat.com>
+In-Reply-To: <cover.1770882260.git.poros@redhat.com>
+References: <cover.1770882260.git.poros@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: od2Jf-Bi8UCjgbp8TqjjjPcM4EpeiNTFhM61JBkoHjs_1770882800
+X-Mimecast-MFC-PROC-ID: lu8gutjcY3xA_ZS3zCVxAmOoQoO2b21umPJ9dntdDyk_1770882805
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1770882805;
+ s=mimecast20190719; t=1770882808;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=l0/e9zeYXG8z/u3O4hC/oU1DdGHJKYlimLvsT/jtTTU=;
- b=UWp0sjje5uXoE45nnBvBFQiqVPapgAEJrzfC1WwqZGcSkVxfFxXHc/bi62S/BgXZSO6Ooa
- lmISSwHKoZjBQITmaMTHBZDXk3xiUgZJ5GtNrRNglMUj12J6smjsqrt6qdpVbzPwq+LnUn
- 9TrjrPWzIZ6VTEymfJNao8Ifp/wYkEA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ut8Fsw1R4tT50gfU2dQi99Xi0AipmBKvrl6DGwx0NTU=;
+ b=i5ypynOdd3aP1k3ZOyM0/1XQaCv9RkbiTVGdG2udoa4YEQm9JpSpfRlfpcrt6kI4AXC32C
+ hDEakIQDa8UmrbfCNKREXG159PtVF93eZ70+c2GzPs7FMgRrJsXxFYsidyuT6T8RjK6g89
+ D92ChDj7l8dNIf4+Yu5cszKKjBfISWE=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=UWp0sjje
-Subject: [Intel-wired-lan] [PATCH iwl-net 0/2] ice: fix representor stats in
- switchdev mode
+ header.s=mimecast20190719 header.b=i5ypynOd
+Subject: [Intel-wired-lan] [PATCH iwl-net 1/2] ice: fix inverted ready check
+ for VF representors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,14 +132,14 @@ X-Spamd-Result: default: False [3.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MID_CONTAINS_FROM(1.00)[];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
 	RCPT_COUNT_TWELVE(0.00)[13];
 	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:wojciech.drewek@intel.com,m:przemyslaw.kitszel@intel.com,m:edumazet@google.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:horms@kernel.org,m:michal.swiatkowski@linux.intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
@@ -153,33 +157,42 @@ X-Spamd-Result: default: False [3.29 / 15.00];
 	MISSING_XM_UA(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 8FAE812B092
+X-Rspamd-Queue-Id: C12C912B099
 X-Rspamd-Action: no action
 
-Port representor statistics in switchdev mode are completely broken due
-to two independent bugs:
+Commit 0f00a897c9fcbd ("ice: check if SF is ready in ethtool ops")
+refactored the VF readiness check into a generic repr->ops.ready()
+callback but implemented ice_repr_ready_vf() with inverted logic:
 
-1) ice_repr_ready_vf() has inverted logic — it returns "not ready" when
-   the VF is actually ready, causing all ethtool and ndo_get_stats64
-   callbacks to bail out early.
+  return !ice_check_vf_ready_for_cfg(repr->vf);
 
-2) Even with the readiness check fixed, ice_update_vsi_stats() always
-   returns early for VF VSIs because ICE_VSI_DOWN is permanently set.
-   The stats counters are never updated from hardware.
+ice_check_vf_ready_for_cfg() returns 0 on success, so the negation
+makes ready() return non-zero when the VF is ready. All callers treat
+non-zero as "not ready, skip", causing ndo_get_stats64, get_drvinfo,
+get_strings and get_ethtool_stats to always bail out in switchdev mode.
 
-Patch 1 fixes the inverted readiness check.
-Patch 2 switches to ice_update_eth_stats() which reads the GLV_*
-hardware counters directly, matching what ice_get_vf_stats() already
-does for VF stats in legacy mode.
+Remove the erroneous negation. The SF variant ice_repr_ready_sf() is
+already correct (returns !active, i.e. non-zero when not active).
 
-Petr Oros (2):
-  ice: fix inverted ready check for VF representors
-  ice: use ice_update_eth_stats() for representor stats
+Fixes: 0f00a897c9fcbd ("ice: check if SF is ready in ethtool ops")
+Signed-off-by: Petr Oros <poros@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_repr.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 14 +++++++++++---
- drivers/net/ethernet/intel/ice/ice_repr.c    |  5 +++--
- 2 files changed, 14 insertions(+), 5 deletions(-)
-
---
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+index cb08746556a670..2a84f656405828 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.c
++++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+@@ -315,7 +315,7 @@ ice_repr_reg_netdev(struct net_device *netdev, const struct net_device_ops *ops)
+ 
+ static int ice_repr_ready_vf(struct ice_repr *repr)
+ {
+-	return !ice_check_vf_ready_for_cfg(repr->vf);
++	return ice_check_vf_ready_for_cfg(repr->vf);
+ }
+ 
+ static int ice_repr_ready_sf(struct ice_repr *repr)
+-- 
 2.52.0
 
