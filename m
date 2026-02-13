@@ -2,70 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id IMFZKdRCj2k5OgEAu9opvQ
+	id KM1gDtdCj2k5OgEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:27:16 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:27:19 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 690CE13784D
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:27:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2628137854
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:27:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 103DF41CED;
-	Fri, 13 Feb 2026 15:27:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9964F41CDD;
+	Fri, 13 Feb 2026 15:27:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vX8kWeA1m9xH; Fri, 13 Feb 2026 15:27:14 +0000 (UTC)
+ id yH338CV-EXpt; Fri, 13 Feb 2026 15:27:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7F49741D2F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 135F141D2F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770996434;
-	bh=Vcvx7U3p/OjFbsOEFnBtEZQ7VQzldF522h8byCOUXRk=;
+	s=default; t=1770996437;
+	bh=Yt6EV0+y/jmvszkv4uFcyLbzewEUCwx1Zv9/Y3Eviog=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=oePI0PmNYFpgG2Vb0A2CjXV7z1rPXfHsVe1PwbHRTMzSlQeApBCdXbdPG2Wo558J8
-	 rAguzp243zdSf7zQOZMunlKlA0R9xeTJbxY1eTF05jovZAeV9QRooBSncFaEogIrg9
-	 8wE/azWt0xmXvn1p3flRhbCrG24pmpkTn+TD4WmWwtA0UoHkfLCYE6ZC/Cjr7tIkgT
-	 EaLh0+ErNJaOAaF7sIH5N1h1m7wyGttWEULceHcjI/ycqa+ojPmSi2ftEr05UpQSU8
-	 iOadD9ORIpPmM/ie9ZtQ0bw9WyvQV0tLK8ilWT4NWtUeJ2kJIAjC8bQC4cULTZ8aFt
-	 ZDJCEfMIEKxqw==
+	b=1iRzaqbKjoVrqGtGoEJBIVE4z0dAOacArCH2EfZXHxdhB4XqBxzkac9uYCz3Nb8wC
+	 yjvvPOeNjFaQfvDlXDl7CZcpwt7+iIj2Wj8Xp974EBQOaOsEdDYhOIa+xEqgS8yzNq
+	 kg9lW+6NThS8A2PyHtqiZ8Uvz29KRltrzEtbLg98760GBKo1Utu+vlolfYh2DTbSzt
+	 isRQWQ3pexWmoNR+tG8Z7cRIl/XSzRJKMVLNs1l3a6oQrQbox9w3HgAp0nw8Ds6+R5
+	 Ajin+f8M1cw67bnx4k8vCyPODXmPigqyeJYXBP0/3B9lKwK1ARSrcOa3WFQxlW2G+r
+	 AumcyBvaR7RMQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7F49741D2F;
-	Fri, 13 Feb 2026 15:27:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 135F141D2F;
+	Fri, 13 Feb 2026 15:27:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 0D04CEC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8B2F7255
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EF68740672
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6D044400B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WtZJ1oY437GR for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Feb 2026 15:27:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EE0B141CCC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE0B141CCC
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EE0B141CCC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1gt0hnLMjMSJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Feb 2026 15:27:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=lorenzo@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CA32B400A0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA32B400A0
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CA32B400A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:27:13 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 281BE6132F;
- Fri, 13 Feb 2026 15:27:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5691FC116C6;
- Fri, 13 Feb 2026 15:27:10 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id 710724190A;
+ Fri, 13 Feb 2026 15:27:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6D90C116C6;
+ Fri, 13 Feb 2026 15:27:12 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Fri, 13 Feb 2026 16:26:23 +0100
+Date: Fri, 13 Feb 2026 16:26:24 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260213-bpf-xdp-meta-rxcksum-v2-4-a82c4802afbe@kernel.org>
+Message-Id: <20260213-bpf-xdp-meta-rxcksum-v2-5-a82c4802afbe@kernel.org>
 References: <20260213-bpf-xdp-meta-rxcksum-v2-0-a82c4802afbe@kernel.org>
 In-Reply-To: <20260213-bpf-xdp-meta-rxcksum-v2-0-a82c4802afbe@kernel.org>
 To: Donald Hunter <donald.hunter@gmail.com>, 
@@ -88,28 +87,26 @@ To: Donald Hunter <donald.hunter@gmail.com>,
  Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 Cc: Jakub Sitnicki <jakub@cloudflare.com>, netdev@vger.kernel.org, 
  bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org, 
- linux-kselftest@vger.kernel.org, 
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>, 
- Lorenzo Bianconi <lorenzo@kernel.org>
+ linux-kselftest@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>
 X-Mailer: b4 0.14.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1770996430;
- bh=mKthyc040X79lx7Eqzqvw7OHAw5r1zFGOUFmnRtV5Fk=;
+ d=kernel.org; s=k20201202; t=1770996433;
+ bh=acetSvAvAvzBxJaNnQ3tpe8HbAc79uV5aOOQPwduvU8=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=BNFAb0eDvmrqihxgZwCoRz2YrE4jYk5+baj170bG82X+zs3qncofXSMuUcuQAPhpa
- m13KUApzBSUIVz1MxD2W6GfLbCdDCKBt2jIdqn9hxN8ZLMShgn90gF63cfC7y/oQTb
- UnC3sN/xIReR8VO2eAlb+HBprXXrmfL7PWWJF5hQ90gQamV+v25JJvcsVQg7nnYuRA
- Gn2RTh2wwhM/92OGN/ZOVMGW4O6bohMiBets/vFuITEJ+r0fYwGOlRm+t1hNaMFQ+6
- TwasBx6cp8DaGNNnpC6jFHzMJshTIpvw4zs8y0chHLurEHExXTMV+8dOrLwcI1frja
- NK5vurvcSQETA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=rhmvs5HcdHRLVvCRXOhvkQzztYVsf1mQ5PV2KmhzNomhd/3o6z+TEALGL5fu668wC
+ NvHl4r/BwkRZIFTP+BzwD2ueV0xT+rxKYLAuY3K5UzSeHumQ2KSbpRtNW8EbQwgxEE
+ JXLraf7UJUVbdrdlbQpNrscno0cBIC9/5wDiT5OTbTHc1uwkKon4577hbywiu160sZ
+ Yfz+5oX1Cnzzwz3ph/8Y/lyF+bpJxk3ZnB77qsMz2iYvgLmibHmwwDvgnP+eBxopDd
+ JPXS79BfgE8f8RAWJ6WCBIRVAygd8TsGT6OlMKhotVw83hFZhCDOrKPIlI06QvachC
+ asZLN/ONQXzrQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=BNFAb0eD
-Subject: [Intel-wired-lan] [PATCH bpf-next v2 4/5] selftests/bpf: Add
- selftest support for bpf_xdp_metadata_rx_checksum
+ header.a=rsa-sha256 header.s=k20201202 header.b=rhmvs5Hc
+Subject: [Intel-wired-lan] [PATCH bpf-next v2 5/5] selftests/bpf: Add
+ bpf_xdp_metadata_rx_checksum support to xdp_hw_metadat prog
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -135,15 +132,15 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	HAS_LIST_UNSUB(-0.01)[];
 	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[32];
+	RCPT_COUNT_TWELVE(0.00)[31];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:lorenzo@kernel.org,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:lorenzo@kernel.org,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FREEMAIL_TO(0.00)[gmail.com,kernel.org,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email,osuosl.org:dkim];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
@@ -157,74 +154,114 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 690CE13784D
+X-Rspamd-Queue-Id: F2628137854
 X-Rspamd-Action: no action
 
-Introduce support to xdp_metadata selftest for bpf_xdp_metadata_rx_checksum
-kfunc.
+Introduce the capability to dump HW rx checksum in xdp_hw_metadata
+program via bpf_xdp_metadata_rx_checksum() kfunc.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- tools/testing/selftests/bpf/prog_tests/xdp_metadata.c | 6 ++++++
- tools/testing/selftests/bpf/progs/xdp_metadata.c      | 3 +++
- tools/testing/selftests/bpf/xdp_metadata.h            | 8 ++++++++
- 3 files changed, 17 insertions(+)
+ .../testing/selftests/bpf/progs/xdp_hw_metadata.c  |  8 +++++++
+ tools/testing/selftests/bpf/xdp_hw_metadata.c      | 25 ++++++++++++++++++++++
+ tools/testing/selftests/bpf/xdp_metadata.h         | 10 ++++++---
+ 3 files changed, 40 insertions(+), 3 deletions(-)
 
-diff --git a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
-index 19f92affc2daa23fdd869554e7a0475b86350a4f..31f3629eb0681be656fa0af74fc0d419a3d135fc 100644
---- a/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
-+++ b/tools/testing/selftests/bpf/prog_tests/xdp_metadata.c
-@@ -310,6 +310,12 @@ static int verify_xsk_metadata(struct xsk *xsk, bool sent_from_af_xdp)
- 	if (!ASSERT_NEQ(meta->rx_hash, 0, "rx_hash"))
- 		return -1;
+diff --git a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+index 330ece2eabdb454da2bb2cbd297d2b2dd6efddc0..9113288fce54bb39dbb6b38e1f6badd0a8ef4cde 100644
+--- a/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
++++ b/tools/testing/selftests/bpf/progs/xdp_hw_metadata.c
+@@ -110,6 +110,14 @@ int rx(struct xdp_md *ctx)
+ 	else
+ 		meta->hint_valid |= XDP_META_FIELD_VLAN_TAG;
  
-+	if (!ASSERT_EQ(meta->ip_summed, XDP_CHECKSUM_NONE, "rx_ip_summed"))
-+		return -1;
++	err = bpf_xdp_metadata_rx_checksum(ctx,
++			(enum xdp_checksum *)&meta->ip_summed,
++			&meta->cksum_meta);
++	if (err)
++		meta->rx_cksum_err = err;
++	else
++		meta->hint_valid |= XDP_META_FIELD_CHECKSUM;
 +
-+	if (!ASSERT_EQ(meta->cksum_meta, 0, "rx_cksum_meta"))
-+		return -1;
-+
- 	if (!sent_from_af_xdp) {
- 		if (!ASSERT_NEQ(meta->rx_hash_type & XDP_RSS_TYPE_L4, 0, "rx_hash_type"))
- 			return -1;
-diff --git a/tools/testing/selftests/bpf/progs/xdp_metadata.c b/tools/testing/selftests/bpf/progs/xdp_metadata.c
-index 09bb8a038d528cf26c5b314cc927915ac2796bf0..72f69c5c659592cca1f04a512868f2101aa2e962 100644
---- a/tools/testing/selftests/bpf/progs/xdp_metadata.c
-+++ b/tools/testing/selftests/bpf/progs/xdp_metadata.c
-@@ -98,6 +98,9 @@ int rx(struct xdp_md *ctx)
- 	bpf_xdp_metadata_rx_hash(ctx, &meta->rx_hash, &meta->rx_hash_type);
- 	bpf_xdp_metadata_rx_vlan_tag(ctx, &meta->rx_vlan_proto,
- 				     &meta->rx_vlan_tci);
-+	bpf_xdp_metadata_rx_checksum(ctx,
-+				     (enum xdp_checksum *)&meta->ip_summed,
-+				     &meta->cksum_meta);
- 
+ 	__sync_add_and_fetch(&pkts_redir, 1);
  	return bpf_redirect_map(&xsk, ctx->rx_queue_index, XDP_PASS);
  }
+diff --git a/tools/testing/selftests/bpf/xdp_hw_metadata.c b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+index 3d8de0d4c96a7afdf5f60b2fdff73c22b876ce54..f1cf8490cc497b5dd75b8d839918fb85c2a0684d 100644
+--- a/tools/testing/selftests/bpf/xdp_hw_metadata.c
++++ b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+@@ -8,6 +8,7 @@
+  * - Metadata verified:
+  *   - rx_timestamp
+  *   - rx_hash
++ *   - rx_checksum
+  *
+  * TX:
+  * - UDP 9091 packets trigger TX reply
+@@ -219,6 +220,25 @@ static void print_vlan_tci(__u16 tag)
+ 	printf("PCP=%u, DEI=%d, VID=0x%X\n", pcp, dei, vlan_id);
+ }
+ 
++static void print_rx_cksum(__u8 ip_summed, __u32 cksum_meta)
++{
++	const char *cksum = "CHECKSUM_NONE";
++
++	switch (ip_summed) {
++	case XDP_CHECKSUM_UNNECESSARY:
++		cksum = "CHECKSUM_UNNECESSARY";
++		break;
++	case XDP_CHECKSUM_COMPLETE:
++		cksum = "CHECKSUM_COMPLETE";
++		break;
++	case XDP_CHECKSUM_NONE:
++	default:
++		break;
++	}
++
++	printf("rx-cksum: %s, csum_meta=0x%x\n", cksum, cksum_meta);
++}
++
+ static void verify_xdp_metadata(void *data, clockid_t clock_id)
+ {
+ 	struct xdp_meta *meta;
+@@ -254,6 +274,11 @@ static void verify_xdp_metadata(void *data, clockid_t clock_id)
+ 		printf("No rx_vlan_tci or rx_vlan_proto, err=%d\n",
+ 		       meta->rx_vlan_tag_err);
+ 	}
++
++	if (meta->hint_valid & XDP_META_FIELD_CHECKSUM)
++		print_rx_cksum(meta->ip_summed, meta->cksum_meta);
++	else
++		printf("No rx_cksum, err=%d\n", meta->rx_cksum_err);
+ }
+ 
+ static void verify_skb_metadata(int fd)
 diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
-index 87318ad1117a1d677af121f11778178532e2a562..837cd1efe6b5aebd0f62bae4c49d5bfd77db64bc 100644
+index 837cd1efe6b5aebd0f62bae4c49d5bfd77db64bc..822e34390582b3d3660a25e725c9a622edbf635c 100644
 --- a/tools/testing/selftests/bpf/xdp_metadata.h
 +++ b/tools/testing/selftests/bpf/xdp_metadata.h
-@@ -30,6 +30,10 @@ enum xdp_meta_field {
+@@ -28,6 +28,7 @@ enum xdp_meta_field {
+ 	XDP_META_FIELD_TS	= BIT(0),
+ 	XDP_META_FIELD_RSS	= BIT(1),
  	XDP_META_FIELD_VLAN_TAG	= BIT(2),
++	XDP_META_FIELD_CHECKSUM = BIT(3),
  };
  
-+#define XDP_CHECKSUM_NONE		0
-+#define XDP_CHECKSUM_UNNECESSARY	1
-+#define XDP_CHECKSUM_COMPLETE		2
-+
- struct xdp_meta {
- 	union {
- 		__u64 rx_timestamp;
-@@ -48,5 +52,9 @@ struct xdp_meta {
+ #define XDP_CHECKSUM_NONE		0
+@@ -52,9 +53,12 @@ struct xdp_meta {
  		};
  		__s32 rx_vlan_tag_err;
  	};
-+	struct {
-+		__u8 ip_summed;
-+		__u32 cksum_meta;
-+	};
+-	struct {
+-		__u8 ip_summed;
+-		__u32 cksum_meta;
++	union {
++		struct {
++			__u8 ip_summed;
++			__u32 cksum_meta;
++		};
++		__s32 rx_cksum_err;
+ 	};
  	enum xdp_meta_field hint_valid;
  };
 
