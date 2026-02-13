@@ -2,95 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aNzCDMA/j2lXOQEAu9opvQ
+	id oIy3IO5Aj2nqOQEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:14:08 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:19:10 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33C381376F8
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:14:07 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F61A137737
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Feb 2026 16:19:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BFCF241CCA;
-	Fri, 13 Feb 2026 15:14:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D6B3B41CBB;
+	Fri, 13 Feb 2026 15:19:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AuBE0W6E2xd7; Fri, 13 Feb 2026 15:14:03 +0000 (UTC)
+ id wHygtDssWFNw; Fri, 13 Feb 2026 15:19:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1535B41CBD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1AEA641D2C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1770995643;
-	bh=aFFEPcTusdmKMcB1BD0CaAYJ7BU1C0I7jO7XrI4yo8c=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1770995947;
+	bh=/LNKPP/noVL2x639mYZIbbv4oooOLrxUd5SsoTpgRSY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=1Khal4/lA8pjvi6/AhJCBRThTBQh43vnDX5oHRP7cMMmKlAWfmPY1AUBkKRZAD4rH
-	 +08znj0TTcTuImOWsYiqKOx1abCwB3FHCXNjac8rtd5cgmRvfq0ItoR1tJcBTwMv6b
-	 pecaCw1SWISRwQCpX5Dmk74mqjD37ThHNK77KPd1BXj4VO3oNvJAtvACIME38HUJco
-	 nftprNN2F4bUM5cW3Jy3UVSHlYOvshZZB0dH0Nen9uPQpqSIt8qfDmzfYCV5TmW3pb
-	 C1mvA2Hn6aOYwS7/5btjqOufvHYdJzXWsVgL8Qd+M+yI19nySpQuj17trytRHSVEqF
-	 QDvDq8O+oEf3A==
+	 Cc:From;
+	b=20sfiB8cpQBLzlxzCYRzyUeECG1ZU/GVATWadFPDV/T6Onis6yNRE8hELgFQM5qNx
+	 NKtC/mD3vEof+8MIPDx4CMG5Xiv9hSESwVMIRZQb43EzTDJujE4piNQx2l8JFL9RPg
+	 dEbNFJQzii1VTt3z08w7q48TCWvXLwsu0yBZ+PImp33Q7rCuKNwWF9NecFYB+I++Ra
+	 tjPrIPCdiVXBzXzwsVyz8M+C1CIS18r8fdLwAjdxs72lFMKgDo68LJqnJ/sUWuzjrh
+	 VP8TpWST68/HUi7VNwtT93hHzBmUP+b/ecqNTleKnGiUPlEkzXP5Hgm+RX1CUOsZbJ
+	 KBep2KNOBfZ/A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1535B41CBD;
-	Fri, 13 Feb 2026 15:14:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1AEA641D2C;
+	Fri, 13 Feb 2026 15:19:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 7BDE0EC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:14:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E9842EC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:19:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5E3B1607BB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:14:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CE64D611FB
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:19:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7GaHyyDrcN3A for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Feb 2026 15:14:00 +0000 (UTC)
+ id gSIx7q1lbqbx for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Feb 2026 15:19:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 785D46074E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 785D46074E
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 785D46074E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:14:00 +0000 (UTC)
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E1CC1607CF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1CC1607CF
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E1CC1607CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Feb 2026 15:19:04 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 4E8B16001A;
- Fri, 13 Feb 2026 15:13:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F38EC116C6;
- Fri, 13 Feb 2026 15:13:57 +0000 (UTC)
-From: Simon Horman <horms@kernel.org>
-To: aleksandr.loktionov@intel.com
-Cc: Simon Horman <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
- jedrzej.jagielski@intel.com, anthony.l.nguyen@intel.com,
- pmenzel@molgen.mpg.de, netdev@vger.kernel.org
-Date: Fri, 13 Feb 2026 15:13:44 +0000
-Message-ID: <20260213151344.2513857-1-horms@kernel.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260213030940.1809797-1-aleksandr.loktionov@intel.com>
-References: <20260213030940.1809797-1-aleksandr.loktionov@intel.com>
+ by sea.source.kernel.org (Postfix) with ESMTP id 781B442A1F;
+ Fri, 13 Feb 2026 15:19:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF7CDC116C6;
+ Fri, 13 Feb 2026 15:19:03 +0000 (UTC)
+Date: Fri, 13 Feb 2026 16:19:01 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Stanislav Fomichev <stfomichev@gmail.com>
+Message-ID: <aY9A5QiTKuu7Kypp@lore-desk>
+References: <20250925-bpf-xdp-meta-rxcksum-v2-0-6b3fe987ce91@kernel.org>
+ <20250925-bpf-xdp-meta-rxcksum-v2-1-6b3fe987ce91@kernel.org>
+ <aNYUqdaIJV1cvFCb@mini-arch>
+ <e03d6d69-73ea-46dc-b632-149ef5831f85@kernel.org>
+ <aNcZdfCivLR2slFw@mini-arch> <aYtqKfv0F0l2-hgy@lore-desk>
+ <aY0zd4Esewxa-8hw@mini-arch> <aY4FB_Gf31V-VYiF@lore-desk>
+ <aY6zxmRcBSt4ju86@mini-arch>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="9b/WtXUSgY2WwYsX"
+Content-Disposition: inline
+In-Reply-To: <aY6zxmRcBSt4ju86@mini-arch>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1770995639;
- bh=3bq173aJ5nk+kZXQK+mYY1RtdGNP6XtLgOFXb3IkeiY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=s4jSZ0ILRX0h9SzisEh1YWZmn6dTUbhxn2kagXrzEJlHs7/l1XLroPzUajfE8Dw3F
- eoPNIOVD6pf0UdhzOtAc/4bZSRGsBPw3laI2Xj9galB9mpQpShnOBCboLhGcLLzoNM
- VUC9HFi5hPF1HcJp1sv9jjrL8njpJneBPn1o7PY+foR4dflBfIbmnu9NG1s455Gcy6
- M5XKP1Kio32x62BeloRXu8oMABUeGeKmctAPBIA2u6VvqMUaXM9AC2QRYtC2pAO/hi
- 8o7C94D0KdLTSgNWFsvd9HJVK0Li5htJpdyJXTFVOtse1+LsI/Qe9sfm3/K95JT+s0
- VknEvxTBTlATw==
+ d=kernel.org; s=k20201202; t=1770995944;
+ bh=eiw7P98b9Y19G0mrHqahDozgDK96ClCh7LOvVh3Wd/4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=MnCx3SDciUicyMSx7uOIbiKMefwb0JIgH3zrqfC6qFxFxnqqcBXWlN+DoROrCcjaP
+ KfzTRgaMb5mWo9LnAMquz1SDZEiXyIDiQ7T/jGtyAIE0NZ1Z9XP5PSe8K49ZTrnvTN
+ 2E4xn3fG6heTFD9davXyPrRLiotB2fDEbaH1SRGzr0EnU9TiGiYOpAgGUz7RRPdrbq
+ YXZM6QIjQzlNKlqXr8BwCzb29vx044mnJthpe+cwiiPTX6joUOPip6JluCU/Yuhm4j
+ KrbFk/Oaga1oshLL8//hTJpbMjZOXyVC/yylilnEQk0pYzAbmbZejQS7ca0vf5X7cC
+ EG7AvxYceljIQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=s4jSZ0IL
-Subject: Re: [Intel-wired-lan] [iwl-next,
- v3] ixgbe: fix unaligned u32 access in ixgbe_update_flash_X550()
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=MnCx3SDc
+Subject: Re: [Intel-wired-lan] [PATCH RFC bpf-next v2 1/5] netlink: specs:
+ Add XDP RX checksum capability to XDP metadata specs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,94 +106,194 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: linux-kselftest@vger.kernel.org, Alexei Starovoitov <ast@kernel.org>,
+ Song Liu <song@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Yonghong Song <yonghong.song@linux.dev>, Shuah Khan <shuah@kernel.org>,
+ Jiri Olsa <jolsa@kernel.org>, Donald Hunter <donald.hunter@gmail.com>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, KP Singh <kpsingh@kernel.org>,
+ Hao Luo <haoluo@google.com>, netdev@vger.kernel.org,
+ Eduard Zingerman <eddyz87@gmail.com>, Simon Horman <horms@kernel.org>,
+ bpf@vger.kernel.org, Martin KaFai Lau <martin.lau@linux.dev>,
+ "David S. Miller" <davem@davemloft.net>, Andrew Lunn <andrew+netdev@lunn.ch>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [0.69 / 15.00];
+	SIGNED_PGP(-2.00)[];
+	SUSPICIOUS_RECIPS(1.50)[];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MID_RHS_NOT_FQDN(0.50)[];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MIME_GOOD(-0.20)[multipart/signed,text/plain];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:horms@kernel.org,m:jedrzej.jagielski@intel.com,m:anthony.l.nguyen@intel.com,m:pmenzel@molgen.mpg.de,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[30];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:stfomichev@gmail.com,m:linux-kselftest@vger.kernel.org,m:ast@kernel.org,m:song@kernel.org,m:edumazet@google.com,m:anthony.l.nguyen@intel.com,m:yonghong.song@linux.dev,m:shuah@kernel.org,m:jolsa@kernel.org,m:donald.hunter@gmail.com,m:daniel@iogearbox.net,m:aleksander.lobakin@intel.com,m:przemyslaw.kitszel@intel.com,m:john.fastabend@gmail.com,m:andrii@kernel.org,m:sdf@fomichev.me,m:kuba@kernel.org,m:pabeni@redhat.com,m:maciej.fijalkowski@intel.com,m:hawk@kernel.org,m:kpsingh@kernel.org,m:haoluo@google.com,m:netdev@vger.kernel.org,m:eddyz87@gmail.com,m:horms@kernel.org,m:bpf@vger.kernel.org,m:martin.lau@linux.dev,m:davem@davemloft.net,m:andrew+netdev@lunn.ch,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:url,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	FREEMAIL_TO(0.00)[gmail.com];
+	FREEMAIL_CC(0.00)[vger.kernel.org,kernel.org,google.com,intel.com,linux.dev,gmail.com,iogearbox.net,fomichev.me,lists.osuosl.org,redhat.com,davemloft.net,lunn.ch];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[7];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	TO_DN_SOME(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 33C381376F8
+X-Rspamd-Queue-Id: 7F61A137737
 X-Rspamd-Action: no action
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
 
-For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
----
-ixgbe: fix unaligned u32 access in ixgbe_update_flash_X550()
+--9b/WtXUSgY2WwYsX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-This commit adds a u32 member to union ixgbe_hic_hdr2 to ensure 4-byte
-alignment on the stack, preventing unaligned 32-bit accesses when
-ixgbe_host_interface_command() treats the buffer as a u32 array.
+On Feb 12, Stanislav Fomichev wrote:
+> On 02/12, Lorenzo Bianconi wrote:
+> > > On 02/10, Lorenzo Bianconi wrote:
+> > > > > On 09/26, Jesper Dangaard Brouer wrote:
+> > > > > >=20
+> > > > > >=20
+> > > > > > On 26/09/2025 06.20, Stanislav Fomichev wrote:
+> > > > > > > On 09/25, Lorenzo Bianconi wrote:
+> > > > > > > > Introduce XDP RX checksum capability to XDP metadata specs.=
+ XDP RX
+> > > > > > > > checksum will be use by devices capable of exposing receive=
+ checksum
+> > > > > > > > result via bpf_xdp_metadata_rx_checksum().
+> > > > > > > > Moreover, introduce xmo_rx_checksum netdev callback in orde=
+r allow the
+> > > > > > > > eBPF program bounded to the device to retrieve the RX check=
+sum result
+> > > > > > > > computed by the hw NIC.
+> > > > > > > >=20
+> > > > > > > > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > > > > > > > ---
+> > > > > > > >   Documentation/netlink/specs/netdev.yaml |  5 +++++
+> > > > > > > >   include/net/xdp.h                       | 14 ++++++++++++=
+++
+> > > > > > > >   net/core/xdp.c                          | 29 ++++++++++++=
++++++++++++++++++
+> > > > > > > >   3 files changed, 48 insertions(+)
+> > > > > > > >=20
+> > > > > > > > diff --git a/Documentation/netlink/specs/netdev.yaml b/Docu=
+mentation/netlink/specs/netdev.yaml
+> > > > > > > > index e00d3fa1c152d7165e9485d6d383a2cc9cef7cfd..00699bf4a7f=
+db67c6b9ee3548098b0c933fd39a4 100644
+> > > > > > > > --- a/Documentation/netlink/specs/netdev.yaml
+> > > > > > > > +++ b/Documentation/netlink/specs/netdev.yaml
+> > > > > > > > @@ -61,6 +61,11 @@ definitions:
+> > > > > > > >           doc: |
+> > > > > > > >             Device is capable of exposing receive packet VL=
+AN tag via
+> > > > > > > >             bpf_xdp_metadata_rx_vlan_tag().
+> > > > > > > > +      -
+> > > > > > > > +        name: checksum
+> > > > > > > > +        doc: |
+> > > > > > > > +          Device is capable of exposing receive checksum r=
+esult via
+> > > > > > > > +          bpf_xdp_metadata_rx_checksum().
+> > > > > > > >     -
+> > > > > > > >       type: flags
+> > > > > > > >       name: xsk-flags
+> > > > > > > > diff --git a/include/net/xdp.h b/include/net/xdp.h
+> > > > > > > > index aa742f413c358575396530879af4570dc3fc18de..9ab9ac10ae2=
+074b70618a9d4f32544d8b9a30b63 100644
+> > > > > > > > --- a/include/net/xdp.h
+> > > > > > > > +++ b/include/net/xdp.h
+> > > > > > > > @@ -586,6 +586,10 @@ void xdp_attachment_setup(struct xdp_a=
+ttachment_info *info,
+> > > > > > > >   			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
+> > > > > > > >   			   bpf_xdp_metadata_rx_vlan_tag, \
+> > > > > > > >   			   xmo_rx_vlan_tag) \
+> > > > > > > > +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
+> > > > > > > > +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
+> > > > > > > > +			   bpf_xdp_metadata_rx_checksum, \
+> > > > > > > > +			   xmo_rx_checksum)
+> > > > > > > >   enum xdp_rx_metadata {
+> > > > > > > >   #define XDP_METADATA_KFUNC(name, _, __, ___) name,
+> > > > > > > > @@ -643,12 +647,22 @@ enum xdp_rss_hash_type {
+> > > > > > > >   	XDP_RSS_TYPE_L4_IPV6_SCTP_EX =3D XDP_RSS_TYPE_L4_IPV6_SC=
+TP | XDP_RSS_L3_DYNHDR,
+> > > > > > > >   };
+> > > > > > > > +enum xdp_checksum {
+> > > > > > > > +	XDP_CHECKSUM_NONE		=3D CHECKSUM_NONE,
+> > > > > > > > +	XDP_CHECKSUM_UNNECESSARY	=3D CHECKSUM_UNNECESSARY,
+> > > > > > > > +	XDP_CHECKSUM_COMPLETE		=3D CHECKSUM_COMPLETE,
+> > > > > > > > +	XDP_CHECKSUM_PARTIAL		=3D CHECKSUM_PARTIAL,
+> > > > > > > > +};
+> > > > > > >=20
+> > > > > > > Btw, might be worth mentioning, awhile ago we had settled on =
+a smaller set of
+> > > > > > > exposed types:
+> > > > > > >=20
+> > > > > > > https://lore.kernel.org/netdev/20230811161509.19722-13-larysa=
+=2Ezaremba@intel.com/
+> > > > > > >=20
+> > > > > > > Maybe go through the previous postings and check if the argum=
+ents are
+> > > > > > > still relevant? (or explain why we want more checksum now)
+> > > > > >=20
+> > > > > > IHMO the linked proposal reduced the types too much.
+> > > > >=20
+> > > > > IIRC, PARTIAL was removed because it's mostly (or only) a TX feat=
+ure?
+> > > > > So no real need to expose it as an rx hint. And I think empty xdp=
+_csum_status
+> > > > > in that proposal might have indicated NONE?
+> > > >=20
+> > > > Sorry for the (very) late reply. According to [0] CHECKSUM_PARTIAL =
+can be used
+> > > > even on Rx side, right?
+> > >=20
+> > > So is this for virtio (which I don't think you need)? Or something el=
+se?
+> >=20
+> > I forgot to mention before CHECKSUM_PARTIAL is used for the veth use-ca=
+se
+> > when the packet is coming from the networking stack.
+>=20
+> But what do you do with that partial state in BPF? I doubt you're
+> calculating/verifying it? Can we treat/export it as NONE/UNNECESSARY for =
+now?
 
-> ixgbe: fix unaligned u32 access in ixgbe_update_flash_X550()
->
-> ixgbe_host_interface_command() treats its buffer as a u32 array. The
-> local buffer we pass in was a union of byte-sized fields, which gives
-> it 1-byte alignment on the stack. On strict-align architectures this
-> can cause unaligned 32-bit accesses.
->
-> Add a u32 member to union ixgbe_hic_hdr2 so the object is 4-byte
-> aligned, and pass the u32 member when calling
-> ixgbe_host_interface_command().
->
-> No functional change on x86; prevents unaligned accesses on
-> architectures that enforce natural alignment.
->
-> Fixes: 49425dfc7451 ("ixgbe: Add support for x550em_a 10G MAC type")
+actually I guess we can get rid of XDP_CHECKSUM_PARTIAL and threat it as
+XDP_CHECKSUM_NONE for the veth case. I will fix it in v2.
 
-Does this Fixes tag point to the correct commit? The alignment issue
-appears to have been introduced by commit 6a14ee0cfb19 ("ixgbe: Add X550
-support function pointers") from 2014-12-05, which introduced both the
-union ixgbe_hic_hdr2 without a u32 member for proper alignment and the
-ixgbe_update_flash_X550() function that passes this buffer to
-ixgbe_host_interface_command().
+Regards,
+Lorenzo
 
-Commit 49425dfc7451 from 2016-04-01 only added support for the x550em_a
-MAC type and did not introduce the alignment bug.
+--9b/WtXUSgY2WwYsX
+Content-Type: application/pgp-signature; name=signature.asc
 
-Should the Fixes tag be:
-Fixes: 6a14ee0cfb19 ("ixgbe: Add X550 support function pointers")
+-----BEGIN PGP SIGNATURE-----
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> index 61f2ef67defd..eb5bf3b6bbb5 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-> @@ -2798,6 +2798,7 @@ struct ixgbe_hic_hdr2_rsp {
->  };
->
->  union ixgbe_hic_hdr2 {
-> +	u32 buf[1];
->  	struct ixgbe_hic_hdr2_req req;
->  	struct ixgbe_hic_hdr2_rsp rsp;
->  };
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaY9A5QAKCRA6cBh0uS2t
+rKh1AP91nCOFfR1O8ToCLIB00RY8q43IM5a8fg8TFjvQVtKNCwEAl1d1VGfd5rN+
+jesX7vIacybDs4i1SG/WmD3CH/hWeAQ=
+=yFYG
+-----END PGP SIGNATURE-----
 
-[ ... ]
+--9b/WtXUSgY2WwYsX--
