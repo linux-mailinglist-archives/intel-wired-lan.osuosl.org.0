@@ -2,97 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id jFJNOxSDkGkJagEAu9opvQ
+	id qHD4NODJkGnbcwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Feb 2026 15:13:40 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Feb 2026 20:15:44 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A8DD613C2C8
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Feb 2026 15:13:39 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C51A513D021
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Feb 2026 20:15:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 67748822AE;
-	Sat, 14 Feb 2026 14:13:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EE51A40793;
+	Sat, 14 Feb 2026 19:15:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XoIwJzCYQnJ3; Sat, 14 Feb 2026 14:13:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mIVenphVfB6D; Sat, 14 Feb 2026 19:15:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8CDF4822B7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A3CF4078E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771078416;
-	bh=hHps6B5gXWvFujwO3m1mVcjyh56uV7AEDJqK9KmARCM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1771096541;
+	bh=3tuBNW7MlsXilikpV8VmhY8TrLvBWcUFtWlZqhCYla0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=gKvn8oGXl3VLhvRx9Qkjf5T06k8X47Qp5pwHnRNYTqqoE4kix6RyybI6IXAiQYofl
-	 A5OMlhjcTsLXsTFv+QjJ0o1+C+tf6kqBIacCUYHqzq3YM6Anx4ZQJ/J3kKIsrr69Xf
-	 yd/yBXWYwKeHdNlKyDKo/TBMrlyL4LLt7X0XArA3Keowebsi0xEw9WezqX9iSMyZqA
-	 zesGGZs5mRwYKSPGE9BprZooZKsMqvqFDNzE8S5SOjx3NNwYrYWwikr4t8hu1e4nq8
-	 GrTnBb9w+LlHsAhMjE358JDsnnGMnWBW8qWppobJVSOV7u0+HGscIgZ0ZwLsbaNtdQ
-	 es8pfS3KxDPAA==
+	b=poT7QFL35uHqBP4FZfisKnMpe/4X+3Jir01Zgjyc75Fgbdvsp0AWsYDZJ+HWAm0aG
+	 j0WZsBSZrOMUUL6Y49EGXgTh2O5giUqqWaE3mZVxO9zIqXG9BKY186SqnAz8XYzOO4
+	 BlKs1/wPjIeCjM/wXjH8lmYSx/PMOGlIdXt5UmA27wudbDOD4CwyxiLjYvEfgEfLd8
+	 n40//aMRwSBkqn/YuY2jwuAaPY/QjTOIvMTiSOm50aO28HkHw+g4T0S1EG0H++chWg
+	 4hJYGTagTsq3jeJiUXFMr4+o6GzrqEPZJBPfaR4EoctrhPlH4ZMAZs4IoZYywhVqY+
+	 nrla8qGuxPw9w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8CDF4822B7;
-	Sat, 14 Feb 2026 14:13:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5A3CF4078E;
+	Sat, 14 Feb 2026 19:15:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id C8BD069
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 14:13:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 95BF0270
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 19:15:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AD4BF4007B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 14:13:34 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8390940485
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 19:15:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3GuKVXE_dQy8 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Feb 2026 14:13:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 447314005C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 447314005C
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 447314005C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 14:13:32 +0000 (UTC)
-X-CSE-ConnectionGUID: e2tng65uRE6Zp1in0FWYFQ==
-X-CSE-MsgGUID: 2TRmo4hOQMS5S1mtC/zzpg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11701"; a="72142664"
-X-IronPort-AV: E=Sophos;i="6.21,290,1763452800"; d="scan'208";a="72142664"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Feb 2026 06:13:32 -0800
-X-CSE-ConnectionGUID: cOWSQPbNT6aXiOdonhn/3Q==
-X-CSE-MsgGUID: 98h+fPQDQK68SB2AKW0gNw==
-X-ExtLoop1: 1
-Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
- by fmviesa003.fm.intel.com with ESMTP; 14 Feb 2026 06:13:31 -0800
-Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1vrGOm-00000000wby-3gIR;
- Sat, 14 Feb 2026 14:13:28 +0000
-Date: Sat, 14 Feb 2026 22:12:49 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202602142241.RYvBbwYf-lkp@intel.com>
-User-Agent: s-nail v14.9.25
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1771078414; x=1802614414;
- h=date:from:to:subject:message-id;
- bh=BPJUCafFXMYfFhD7UCHzlpZYYoYaLVFO2ZGjAmSYLh0=;
- b=hTlwUUBylTM1CiAGDzpip6IyYzwmA5mqwNzyD/sgVAjKz6rzxB7Hg9lS
- uNMgqaIOUrZltzZELYp2CQjaGKXJk3mPlxGAcnJlDEfqq0QxPxhZxEyJZ
- mDcriicR8jLO+6rr/nrD6u7yN8V/qs9Rf4V4bG/Q5/SCIUhRCOufKwYSY
- lKIRL1uU9X5V0P2x/8Y3zwsG/HKm9OptlccZS/hiaxw5kRjYU+58o+dC7
- X1JBjTRgxFowNpAjZoBVPre5abZFKvnLEt8tmOP6W19CsjafKEE1Xvb5l
- 9RQt2x1CiMnVW/RaQfEfCiZpKVUAO4JrUVTAk9ZwPt/pLcgKHsOPW3ODS
- A==;
+ id 4qBZ2GmF8pfb for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Feb 2026 19:15:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
+ helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4788740484
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4788740484
+Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4788740484
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Feb 2026 19:15:37 +0000 (UTC)
+Received: from ms-a2 (211.4.31.150.dy.iij4u.or.jp [150.31.4.211])
+ (authenticated bits=0)
+ by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 61EJF37h055530
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sun, 15 Feb 2026 04:15:03 +0900 (JST) (envelope-from kohei@enjuk.jp)
+From: Kohei Enju <kohei@enjuk.jp>
+To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Witold Fijalkowski <witoldx.fijalkowski@intel.com>,
+ Przemyslaw Patynowski <przemyslawx.patynowski@intel.com>,
+ kohei.enju@gmail.com, Kohei Enju <kohei@enjuk.jp>
+Date: Sat, 14 Feb 2026 19:14:25 +0000
+Message-ID: <20260214191502.267670-1-kohei@enjuk.jp>
+X-Mailer: git-send-email 2.51.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
+ bh=3tuBNW7MlsXilikpV8VmhY8TrLvBWcUFtWlZqhCYla0=; 
+ c=relaxed/relaxed; d=enjuk.jp;
+ h=From:To:Subject:Date:Message-ID;
+ s=rs20251215; t=1771096504; v=1;
+ b=P/SylkNaygaNL0FXfhhe9fMfsfZP3/TEPY7/vRIeiSxlc5CT/beDopeVrYg+RdY/
+ xduJecF5e/0Ml5e0cl73CKirQRLAcihWoDSQ3/kbUacWMDdvtQWxGvCpleH7bzLg
+ eotmZIxXY4PqG/69Aq7bpLW+a76UXFSkdAx21Jyh34YRkO/7ez9m8iAcZ35N7L5Z
+ 6JT+aJyvfEOTpxVxTmcVPUGZDN7qYPnrGvr3q1gpHMZl84x38daOhFzD7Ebts5ho
+ YeW/5l1+KzueFlNvmImkhbWiFGOBmr7ZfJ4vAB/dsA2FTomGzKdaH9PSb9b5lCdq
+ nInglUDRnXUji5DItQwQTw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=enjuk.jp
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=hTlwUUBy
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 8137e3db7f1c02548b11fd905bdc2cfd5255f6c7
+ unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
+ header.s=rs20251215 header.b=P/SylkNa
+Subject: [Intel-wired-lan] [PATCH v1 iwl-net] iavf: fix out-of-bounds writes
+ in iavf_get_ethtool_stats()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,213 +110,177 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_ALL(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	MIME_TRACE(0.00)[0:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_TWELVE(0.00)[15];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,gmail.com,enjuk.jp];
+	ARC_NA(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[enjuk.jp:mid,enjuk.jp:email,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: A8DD613C2C8
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[8]
+X-Rspamd-Queue-Id: C51A513D021
 X-Rspamd-Action: no action
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 8137e3db7f1c02548b11fd905bdc2cfd5255f6c7  ice: use ice_update_eth_stats() for representor stats
+iavf incorrectly uses real_num_tx_queues for ETH_SS_STATS. Since the
+value could change in runtime, we should use num_tx_queues instead.
 
-elapsed time: 920m
+Moreover iavf_get_ethtool_stats() uses num_active_queues while
+iavf_get_sset_count() and iavf_get_stat_strings() use
+real_num_tx_queues, which triggers out-of-bounds writes when we do
+"ethtool -L" and "ethtool -S" simultaneously [1].
 
-configs tested: 167
-configs skipped: 3
+For example when we change channels from 1 to 8, Thread 3 could be
+scheduled before Thread 2, and out-of-bounds writes could be triggered
+in Thread 3:
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Thread 1 (ethtool -L)       Thread 2 (work)        Thread 3 (ethtool -S)
+iavf_set_channels()
+...
+iavf_alloc_queues()
+-> num_active_queues = 8
+iavf_schedule_finish_config()
+                                                   iavf_get_sset_count()
+                                                   real_num_tx_queues: 1
+                                                   -> buffer for 1 queue
+                                                   iavf_get_ethtool_stats()
+                                                   num_active_queues: 8
+                                                   -> out-of-bounds!
+                            iavf_finish_config()
+                            -> real_num_tx_queues = 8
 
-tested configs:
-alpha                             allnoconfig    gcc-15.2.0
-alpha                            allyesconfig    gcc-15.2.0
-alpha                               defconfig    gcc-15.2.0
-arc                              allmodconfig    gcc-15.2.0
-arc                               allnoconfig    gcc-15.2.0
-arc                              allyesconfig    gcc-15.2.0
-arc                                 defconfig    gcc-15.2.0
-arc                         haps_hs_defconfig    gcc-15.2.0
-arc                   randconfig-001-20260214    gcc-13.4.0
-arc                   randconfig-002-20260214    gcc-9.5.0
-arm                               allnoconfig    clang-22
-arm                              allyesconfig    gcc-15.2.0
-arm                          collie_defconfig    gcc-15.2.0
-arm                                 defconfig    clang-22
-arm                   randconfig-001-20260214    gcc-13.4.0
-arm                   randconfig-002-20260214    clang-22
-arm                   randconfig-003-20260214    clang-22
-arm                   randconfig-004-20260214    gcc-8.5.0
-arm                        shmobile_defconfig    gcc-15.2.0
-arm64                            allmodconfig    clang-19
-arm64                             allnoconfig    gcc-15.2.0
-arm64                               defconfig    gcc-15.2.0
-arm64                 randconfig-001-20260214    clang-22
-arm64                 randconfig-002-20260214    gcc-8.5.0
-arm64                 randconfig-003-20260214    gcc-14.3.0
-arm64                 randconfig-004-20260214    gcc-14.3.0
-csky                             allmodconfig    gcc-15.2.0
-csky                              allnoconfig    gcc-15.2.0
-csky                                defconfig    gcc-15.2.0
-csky                  randconfig-001-20260214    gcc-12.5.0
-csky                  randconfig-002-20260214    gcc-14.3.0
-hexagon                          allmodconfig    clang-17
-hexagon                           allnoconfig    clang-22
-hexagon                             defconfig    clang-22
-hexagon               randconfig-001-20260214    clang-22
-hexagon               randconfig-002-20260214    clang-22
-i386                             allmodconfig    gcc-14
-i386                              allnoconfig    gcc-14
-i386                             allyesconfig    gcc-14
-i386        buildonly-randconfig-001-20260214    clang-20
-i386        buildonly-randconfig-002-20260214    clang-20
-i386        buildonly-randconfig-003-20260214    clang-20
-i386        buildonly-randconfig-004-20260214    clang-20
-i386        buildonly-randconfig-005-20260214    clang-20
-i386        buildonly-randconfig-006-20260214    clang-20
-i386                                defconfig    clang-20
-i386                  randconfig-001-20260214    clang-20
-i386                  randconfig-002-20260214    clang-20
-i386                  randconfig-003-20260214    clang-20
-i386                  randconfig-004-20260214    gcc-14
-i386                  randconfig-005-20260214    clang-20
-i386                  randconfig-006-20260214    gcc-14
-i386                  randconfig-007-20260214    gcc-14
-i386                  randconfig-011-20260214    gcc-14
-i386                  randconfig-012-20260214    gcc-14
-i386                  randconfig-013-20260214    gcc-14
-i386                  randconfig-014-20260214    gcc-14
-i386                  randconfig-015-20260214    clang-20
-i386                  randconfig-016-20260214    clang-20
-i386                  randconfig-017-20260214    clang-20
-loongarch                        allmodconfig    clang-19
-loongarch                         allnoconfig    clang-22
-loongarch                           defconfig    clang-19
-loongarch             randconfig-001-20260214    gcc-14.3.0
-loongarch             randconfig-002-20260214    clang-22
-m68k                             allmodconfig    gcc-15.2.0
-m68k                              allnoconfig    gcc-15.2.0
-m68k                             allyesconfig    gcc-15.2.0
-m68k                                defconfig    gcc-15.2.0
-microblaze                        allnoconfig    gcc-15.2.0
-microblaze                       allyesconfig    gcc-15.2.0
-microblaze                          defconfig    gcc-15.2.0
-mips                             allmodconfig    gcc-15.2.0
-mips                              allnoconfig    gcc-15.2.0
-mips                             allyesconfig    gcc-15.2.0
-mips                          ath25_defconfig    clang-22
-mips                malta_qemu_32r6_defconfig    gcc-15.2.0
-nios2                            allmodconfig    gcc-11.5.0
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    gcc-11.5.0
-nios2                 randconfig-001-20260214    gcc-10.5.0
-nios2                 randconfig-002-20260214    gcc-8.5.0
-openrisc                         allmodconfig    gcc-15.2.0
-openrisc                          allnoconfig    gcc-15.2.0
-openrisc                            defconfig    gcc-15.2.0
-parisc                           allmodconfig    gcc-15.2.0
-parisc                            allnoconfig    gcc-15.2.0
-parisc                           allyesconfig    gcc-15.2.0
-parisc                              defconfig    gcc-15.2.0
-parisc                randconfig-001-20260214    gcc-9.5.0
-parisc                randconfig-002-20260214    gcc-15.2.0
-parisc64                            defconfig    gcc-15.2.0
-powerpc                          allmodconfig    gcc-15.2.0
-powerpc                           allnoconfig    gcc-15.2.0
-powerpc               randconfig-001-20260214    clang-18
-powerpc               randconfig-002-20260214    clang-22
-powerpc                    socrates_defconfig    gcc-15.2.0
-powerpc                     tqm8560_defconfig    gcc-15.2.0
-powerpc64             randconfig-001-20260214    clang-22
-powerpc64             randconfig-002-20260214    clang-22
-riscv                            allmodconfig    clang-22
-riscv                             allnoconfig    gcc-15.2.0
-riscv                            allyesconfig    clang-16
-riscv                               defconfig    clang-22
-riscv                 randconfig-001-20260214    gcc-8.5.0
-riscv                 randconfig-002-20260214    gcc-14.3.0
-s390                             allmodconfig    clang-18
-s390                              allnoconfig    clang-22
-s390                             allyesconfig    gcc-15.2.0
-s390                                defconfig    clang-22
-s390                  randconfig-001-20260214    clang-20
-s390                  randconfig-002-20260214    gcc-9.5.0
-sh                               allmodconfig    gcc-15.2.0
-sh                                allnoconfig    gcc-15.2.0
-sh                               allyesconfig    gcc-15.2.0
-sh                                  defconfig    gcc-15.2.0
-sh                         ecovec24_defconfig    gcc-15.2.0
-sh                    randconfig-001-20260214    gcc-10.5.0
-sh                    randconfig-002-20260214    gcc-15.2.0
-sparc                             allnoconfig    gcc-15.2.0
-sparc                               defconfig    gcc-15.2.0
-sparc                 randconfig-001-20260214    gcc-8.5.0
-sparc                 randconfig-002-20260214    gcc-14.3.0
-sparc64                          allmodconfig    clang-22
-sparc64                             defconfig    clang-20
-sparc64               randconfig-001-20260214    gcc-9.5.0
-sparc64               randconfig-002-20260214    gcc-8.5.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-22
-um                               allyesconfig    gcc-14
-um                                  defconfig    clang-22
-um                             i386_defconfig    gcc-14
-um                    randconfig-001-20260214    gcc-14
-um                    randconfig-002-20260214    clang-22
-um                           x86_64_defconfig    clang-22
-x86_64                           allmodconfig    clang-20
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20260214    gcc-13
-x86_64      buildonly-randconfig-002-20260214    gcc-14
-x86_64      buildonly-randconfig-003-20260214    clang-20
-x86_64      buildonly-randconfig-004-20260214    clang-20
-x86_64      buildonly-randconfig-005-20260214    clang-20
-x86_64      buildonly-randconfig-006-20260214    gcc-14
-x86_64                              defconfig    gcc-14
-x86_64                randconfig-001-20260214    clang-20
-x86_64                randconfig-002-20260214    gcc-14
-x86_64                randconfig-003-20260214    gcc-14
-x86_64                randconfig-004-20260214    gcc-14
-x86_64                randconfig-005-20260214    clang-20
-x86_64                randconfig-006-20260214    gcc-14
-x86_64                randconfig-011-20260214    clang-20
-x86_64                randconfig-012-20260214    gcc-14
-x86_64                randconfig-013-20260214    gcc-14
-x86_64                randconfig-014-20260214    clang-20
-x86_64                randconfig-015-20260214    gcc-14
-x86_64                randconfig-016-20260214    gcc-14
-x86_64                randconfig-071-20260214    clang-20
-x86_64                randconfig-072-20260214    clang-20
-x86_64                randconfig-073-20260214    clang-20
-x86_64                randconfig-074-20260214    clang-20
-x86_64                randconfig-075-20260214    gcc-14
-x86_64                randconfig-076-20260214    clang-20
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    gcc-15.2.0
-xtensa                randconfig-001-20260214    gcc-15.2.0
-xtensa                randconfig-002-20260214    gcc-14.3.0
+Use immutable num_tx_queues in all related functions to avoid the issue.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+[1]
+ BUG: KASAN: vmalloc-out-of-bounds in iavf_add_one_ethtool_stat+0x200/0x270
+ Write of size 8 at addr ffffc900031c9080 by task ethtool/5800
+
+ CPU: 1 UID: 0 PID: 5800 Comm: ethtool Not tainted 6.19.0-enjuk-08403-g8137e3db7f1c #241 PREEMPT(full)
+ Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+ Call Trace:
+  <TASK>
+  dump_stack_lvl+0x6f/0xb0
+  print_report+0x170/0x4f3
+  kasan_report+0xe1/0x180
+  iavf_add_one_ethtool_stat+0x200/0x270
+  iavf_get_ethtool_stats+0x14c/0x2e0
+  __dev_ethtool+0x3d0c/0x5830
+  dev_ethtool+0x12d/0x270
+  dev_ioctl+0x53c/0xe30
+  sock_do_ioctl+0x1a9/0x270
+  sock_ioctl+0x3d4/0x5e0
+  __x64_sys_ioctl+0x137/0x1c0
+  do_syscall_64+0xf3/0x690
+  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+ RIP: 0033:0x7f7da0e6e36d
+ ...
+  </TASK>
+
+ The buggy address belongs to a 1-page vmalloc region starting at 0xffffc900031c9000 allocated at __dev_ethtool+0x3cc9/0x5830
+ The buggy address belongs to the physical page: page: refcount:1 mapcount:0 mapping:0000000000000000
+ index:0xffff88813a013de0 pfn:0x13a013
+ flags: 0x200000000000000(node=0|zone=2)
+ raw: 0200000000000000 0000000000000000 dead000000000122 0000000000000000
+ raw: ffff88813a013de0 0000000000000000 00000001ffffffff 0000000000000000
+ page dumped because: kasan: bad access detected
+
+ Memory state around the buggy address:
+  ffffc900031c8f80: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffffc900031c9000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ >ffffc900031c9080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+                    ^
+  ffffc900031c9100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffffc900031c9180: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+
+Fixes: 64430f70ba6f ("iavf: Fix displaying queue statistics shown by ethtool")
+Signed-off-by: Kohei Enju <kohei@enjuk.jp>
+---
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    | 31 +++++++++----------
+ 1 file changed, 15 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 6ff3842a1ff1..98bec3afc200 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -313,14 +313,13 @@ static int iavf_get_sset_count(struct net_device *netdev, int sset)
+ {
+ 	/* Report the maximum number queues, even if not every queue is
+ 	 * currently configured. Since allocation of queues is in pairs,
+-	 * use netdev->real_num_tx_queues * 2. The real_num_tx_queues is set
+-	 * at device creation and never changes.
++	 * use netdev->num_tx_queues * 2. The num_tx_queues is set at
++	 * device creation and never changes.
+ 	 */
+ 
+ 	if (sset == ETH_SS_STATS)
+ 		return IAVF_STATS_LEN +
+-			(IAVF_QUEUE_STATS_LEN * 2 *
+-			 netdev->real_num_tx_queues);
++		       (IAVF_QUEUE_STATS_LEN * 2 * netdev->num_tx_queues);
+ 	else
+ 		return -EINVAL;
+ }
+@@ -345,19 +344,19 @@ static void iavf_get_ethtool_stats(struct net_device *netdev,
+ 	iavf_add_ethtool_stats(&data, adapter, iavf_gstrings_stats);
+ 
+ 	rcu_read_lock();
+-	/* As num_active_queues describe both tx and rx queues, we can use
+-	 * it to iterate over rings' stats.
++	/* Use num_tx_queues to report stats for the maximum number of queues.
++	 * Queues beyond num_active_queues will report zero.
+ 	 */
+-	for (i = 0; i < adapter->num_active_queues; i++) {
+-		struct iavf_ring *ring;
++	for (i = 0; i < netdev->num_tx_queues; i++) {
++		struct iavf_ring *tx_ring = NULL, *rx_ring = NULL;
+ 
+-		/* Tx rings stats */
+-		ring = &adapter->tx_rings[i];
+-		iavf_add_queue_stats(&data, ring);
++		if (i < adapter->num_active_queues) {
++			tx_ring = &adapter->tx_rings[i];
++			rx_ring = &adapter->rx_rings[i];
++		}
+ 
+-		/* Rx rings stats */
+-		ring = &adapter->rx_rings[i];
+-		iavf_add_queue_stats(&data, ring);
++		iavf_add_queue_stats(&data, tx_ring);
++		iavf_add_queue_stats(&data, rx_ring);
+ 	}
+ 	rcu_read_unlock();
+ }
+@@ -376,9 +375,9 @@ static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
+ 	iavf_add_stat_strings(&data, iavf_gstrings_stats);
+ 
+ 	/* Queues are always allocated in pairs, so we just use
+-	 * real_num_tx_queues for both Tx and Rx queues.
++	 * num_tx_queues for both Tx and Rx queues.
+ 	 */
+-	for (i = 0; i < netdev->real_num_tx_queues; i++) {
++	for (i = 0; i < netdev->num_tx_queues; i++) {
+ 		iavf_add_stat_strings(&data, iavf_gstrings_queue_stats,
+ 				      "tx", i);
+ 		iavf_add_stat_strings(&data, iavf_gstrings_queue_stats,
+-- 
+2.51.0
+
