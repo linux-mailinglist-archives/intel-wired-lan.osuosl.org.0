@@ -2,103 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id qFItLUYylGkNAgIAu9opvQ
+	id gIqeKZJmlGkFDgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 10:17:58 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 14:01:06 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 20D3114A4B9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 10:17:57 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C588714C416
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 14:00:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 949F760EC8;
-	Tue, 17 Feb 2026 09:17:54 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 16C3481EA9;
+	Tue, 17 Feb 2026 13:00:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h-qDpC1lQpLc; Tue, 17 Feb 2026 09:17:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oWVB7X-OizfH; Tue, 17 Feb 2026 13:00:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7C9A60EB8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 691FA81EAB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771319873;
-	bh=oIPOfVE6rGYik7uwxJxYi5ddN5nDD55QRwQSnKzQRiw=;
-	h=In-Reply-To:References:From:To:Cc:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=EWUxDKJZcKIyP6ahKyO5L9oZqPmfeNeDbs28T4muSTYwKmxQqgUXTsNA8mI8UmUcV
-	 yH8mb+TbaZnT5hzAzOGNPHTGIGRrU5q1VY1y8TCKFF+0LIFFerYPL0ORWWc+Om9Uei
-	 ZanLQ7PXfywI/uf92sAPvckJkbzKIv7XKG6ZdzMl8iwhvjOaKuVsi79EJKdXvx9vwv
-	 /3/5JseRB6xAu7pdbunPEFJlgg9W9SIYNVl+pc3yRFE4xMnkVjumZxZ/V3BsPnQjH4
-	 AqG6RUxFnxXPrI1WVvPHWkItNI+MIN4ZztAukKalW3sOsYUF3i38rqlXqR6CIdeEed
-	 v5RzOWrX7U8mg==
+	s=default; t=1771333246;
+	bh=9K45mUTti+ZgXRVNz1MIJ1/ahkqTWJhhwXD3zELEFC0=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1wyG8AM3z7Q/VP/WZgMN+uzhsTgGY9MVMh6OB775gBD3J39Udj8mjibgWLI7ejpsk
+	 H0D5sSQT8XDOOXrv2CQd7Ksg9RCAOgk7KrrsTA9OmG/ojSP2kAPEjWxfjWrzeDy2xB
+	 Yu/0jKpEF9ocU9Uc6WFs/WUSpJI27oLNj8G6lehrK9tqzeRsuAzqQcgztmRCF2eoUG
+	 zEaL7ICKiJu566Kbwec85+79xkiu6DwQb7E4yZfQGXfq1w9QO5ddJb+hNyFN9S9E/+
+	 E6X2Nwws876muPC2cb6t8RZ6jwppaTqbBMBye/ezGc/YG/rlGN1xLekuCcOaRItHhX
+	 Rt7sBtsDknQUg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D7C9A60EB8;
-	Tue, 17 Feb 2026 09:17:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 691FA81EAB;
+	Tue, 17 Feb 2026 13:00:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 018D5206
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 09:17:51 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 6D19E206
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:00:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D1A0260AF9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 09:17:51 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6757B81C2F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:00:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7dPV17T2C7VI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Feb 2026 09:17:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=bot+bpf-ci@kernel.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SDHUeML94jQx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Feb 2026 13:00:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DBAFB60AB7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DBAFB60AB7
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DBAFB60AB7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 09:17:49 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id E4E4460128;
- Tue, 17 Feb 2026 09:17:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 167F4C4CEF7;
- Tue, 17 Feb 2026 09:17:48 +0000 (UTC)
-Content-Type: multipart/mixed; boundary="===============2605647824317503671=="
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8482581B10
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8482581B10
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8482581B10
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:00:43 +0000 (UTC)
+X-CSE-ConnectionGUID: /MtUTK0dRqG1+sZLbBAWIg==
+X-CSE-MsgGUID: ZTPQF9unQyS0n1rxZu4Q4g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11703"; a="76021991"
+X-IronPort-AV: E=Sophos;i="6.21,296,1763452800"; d="scan'208";a="76021991"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Feb 2026 05:00:42 -0800
+X-CSE-ConnectionGUID: NafDHaqOTK2nH9w672EwLw==
+X-CSE-MsgGUID: 4oaL9CVXRQOasj5pkDdpoQ==
+X-ExtLoop1: 1
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmviesa003.fm.intel.com with ESMTP; 17 Feb 2026 05:00:41 -0800
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Cc: netdev@vger.kernel.org
+Date: Tue, 17 Feb 2026 14:00:39 +0100
+Message-ID: <20260217130039.1802805-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Message-Id: <2f8cd0a2da03a180287cb70d1f399cfaf80f8c32983605f1716806bf3fe83e7e@mail.kernel.org>
-In-Reply-To: <20260217-bpf-xdp-meta-rxcksum-v3-4-30024c50ba71@kernel.org>
-References: <20260217-bpf-xdp-meta-rxcksum-v3-4-30024c50ba71@kernel.org>
-From: bot+bpf-ci@kernel.org
-To: lorenzo@kernel.org, donald.hunter@gmail.com, kuba@kernel.org,
- davem@davemloft.net, edumazet@google.com, pabeni@redhat.com, horms@kernel.org,
- ast@kernel.org, daniel@iogearbox.net, hawk@kernel.org,
- john.fastabend@gmail.com, sdf@fomichev.me, andrew+netdev@lunn.ch,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- aleksander.lobakin@intel.com, andrii@kernel.org, martin.lau@linux.dev,
- eddyz87@gmail.com, song@kernel.org, yonghong.song@linux.dev,
- kpsingh@kernel.org, haoluo@google.com, jolsa@kernel.org, shuah@kernel.org,
- maciej.fijalkowski@intel.com
-Cc: jakub@cloudflare.com, netdev@vger.kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
- aleksandr.loktionov@intel.com, lorenzo@kernel.org, ast@kernel.org,
- andrii@kernel.org, daniel@iogearbox.net, martin.lau@kernel.org,
- eddyz87@gmail.com, yonghong.song@linux.dev, clm@meta.com,
- ihor.solodrai@linux.dev
-Date: Tue, 17 Feb 2026 09:17:48 +0000 (UTC)
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1771319868;
- bh=VD1W6Yh8O0HczIuc809B8SdiqAX3gxVye/bDQIHDEYA=;
- h=In-Reply-To:References:Subject:From:To:Cc:Date:From;
- b=NilVoq0jUGjdtQEohI0ld8tCcQ66gDq2r5k2x1mVbRJpyBy9oDH6Jc9zv4NhD0KxC
- s6kYqYc8OelFCQstpcUQ27bT3Vi7NJNobzFjqX/XOAKNqIdFGr80Q+WucTsiMvuJR8
- fe5hSGXxnUZVOCrk3f3cDwPrkpwDLPPeuYPp10PbjGc0/kkn4Zj5d76g/plSpGUJvP
- E9/ce1tZeGWhbjOqvUkKISPqRIZgS3vqF3Mudue/KOpkJfZk6JHrRbUt/Jt38If4np
- Aumit0zQTm6LwUOxapKsyp+gBoHcP/uHEn9MPYBjTC/tEk9nalkYKiBs0aRjsL+zlQ
- zuBpKBRm4bdkw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=NilVoq0j
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 4/5] selftests/bpf: Add
- selftest support for bpf_xdp_metadata_rx_checksum
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1771333243; x=1802869243;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=st2ZcirQgBmImzpLEHqlId9omyCr1JIg0L8y81+wvEA=;
+ b=Fq1EW9oyhT2a/zubDAvD3DeLXMv84OtRbYP5uJIOEPXYUbCbgtWpEZLh
+ yhlAO8uHB+clLvUG3AfS+VmqK4IqPrN7JE4jZyHxwiRUwd/rVt5F/u6Mw
+ mScc1BntV9mThANC4JCXyZk7lNQHUwnyPI++bS02hzvAOFZQUp4yF9erg
+ vQGqD6dUydFnoOVvytF6fvYqMRyOzgVo1VsO9DRwZFXrjoQAWh1IDM1wp
+ 3LLMCJsgzSWA/W+26GkeFmzUcava/YIDlvlDLTXEZDMC1mn6ytzRdPMMq
+ TPd8igGCgdrfNSRd+Tqh8vhI5/rvDHY6M8+iD+Kzv4z713WFMwr9QmfGZ
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Fq1EW9oy
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: implement symmetric RSS
+ hash configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,102 +111,194 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [3.29 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	SUSPICIOUS_RECIPS(1.50)[];
-	CTYPE_MIXED_BOGUS(1.00)[];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MIME_GOOD(-0.10)[multipart/mixed,text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	TAGGED_FROM(0.00)[bpf-ci];
 	RCVD_TLS_LAST(0.00)[];
-	FREEMAIL_TO(0.00)[kernel.org,gmail.com,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev];
-	FREEMAIL_CC(0.00)[cloudflare.com,vger.kernel.org,lists.osuosl.org,intel.com,kernel.org,iogearbox.net,gmail.com,linux.dev,meta.com];
-	MIME_TRACE(0.00)[0:+,1:+];
-	RCPT_COUNT_TWELVE(0.00)[41];
-	FORGED_RECIPIENTS(0.00)[m:lorenzo@kernel.org,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:martin.lau@kernel.org,m:clm@meta.com,m:ihor.solodrai@linux.dev,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER(0.00)[bot@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[bot@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	RSPAMD_URIBL_FAIL(0.00)[intel.com:query timed out];
+	ASN_FAIL(0.00)[8.3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.3.0.8.c.b.5.0.6.2.asn6.rspamd.com:query timed out];
+	MIME_TRACE(0.00)[0:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	FROM_NO_DN(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	MISSING_XM_UA(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 20D3114A4B9
+	RCPT_COUNT_THREE(0.00)[4];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	TO_DN_NONE(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RSPAMD_EMAILBL_FAIL(0.00)[aleksandr.loktionov.intel.com:query timed out];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:mid,intel.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns]
+X-Rspamd-Queue-Id: C588714C416
 X-Rspamd-Action: no action
 
---===============2605647824317503671==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+The driver advertises symmetric RSS support via supported_input_xfrm
+but ice_set_rxfh() ignored the input_xfrm parameter, making it
+impossible to configure symmetric hashing.
 
-> diff --git a/tools/testing/selftests/bpf/xdp_metadata.h b/tools/testing/selftests/bpf/xdp_metadata.h
-> --- a/tools/testing/selftests/bpf/xdp_metadata.h
-> +++ b/tools/testing/selftests/bpf/xdp_metadata.h
+Fix ice_set_rxfh() to check rxfh->input_xfrm and call
+ice_set_rss_hfunc() with ICE_AQ_VSI_Q_OPT_RSS_HASH_SYM_TPLZ when
+RXH_XFRM_SYM_XOR is requested.
 
-[ ... ]
+Modify ice_set_rss_vsi_ctx() to use vsi->rss_hfunc instead of
+hardcoding ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ, and export it for
+use by ice_set_rxfh().
 
-> +	struct {
-> +		__u8 ip_summed;
-> +		__u32 cksum_meta;
-> +	};
+The kernel requires get_rxfh_fields() to report symmetric hash
+configurations when symmetric transforms are supported. Update
+ice_get_rxfh_fields() to return symmetric field configuration
+(src+dst IP and ports) for all flow types.
 
-The ip_summed field is __u8 (1 byte), but bpf_xdp_metadata_rx_checksum()
-takes an enum xdp_checksum * argument, which is 4 bytes.
+Tested with tools/testing/selftests/drivers/net/hw/rss_input_xfrm.py
 
-In the BPF program:
-
-> diff --git a/tools/testing/selftests/bpf/progs/xdp_metadata.c b/tools/testing/selftests/bpf/progs/xdp_metadata.c
-> --- a/tools/testing/selftests/bpf/progs/xdp_metadata.c
-> +++ b/tools/testing/selftests/bpf/progs/xdp_metadata.c
-
-[ ... ]
-
-> +	bpf_xdp_metadata_rx_checksum(ctx,
-> +				     (enum xdp_checksum *)&meta->ip_summed,
-> +				     &meta->cksum_meta);
-
-The cast here passes a pointer to a 1-byte field where the kfunc will
-perform a 4-byte store.  On little-endian this happens to work because
-the value lands in the low byte and the remaining 3 bytes go into struct
-padding.
-
-On big-endian, the value would be stored in the high byte, so reading
-back ip_summed as __u8 would yield 0 for any checksum result.
-
-For comparison, the other metadata fields match their kfunc argument
-sizes: rx_hash is __u32 matching u32 *, and rx_hash_type is __u32
-matching enum xdp_rss_hash_type *.
-
-Should ip_summed be __u32 (or enum xdp_checksum) to match the kfunc
-signature and avoid the cast?
-
-
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
-AI reviewed your patch. Please fix the bug or email reply why it's not a bug.
-See: https://github.com/kernel-patches/vmtest/blob/master/ci/claude/README.md
+v1 -> v2 preserve valid symmetric RSS fields.
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 45 ++++++++++++++++----
+ drivers/net/ethernet/intel/ice/ice_lib.c     |  7 +--
+ drivers/net/ethernet/intel/ice/ice_lib.h     |  1 +
+ 3 files changed, 41 insertions(+), 12 deletions(-)
 
-CI run summary: https://github.com/kernel-patches/bpf/actions/runs/22091902298
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index c6bc29c..27c97ca 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -3008,14 +3008,18 @@ ice_set_rxfh_fields(struct net_device *netdev,
+ 	return 0;
+ }
+ 
++#define ICE_RSS_ALLOWED_FIELDS	(RXH_IP_SRC | RXH_IP_DST | RXH_L4_B_0_1 | RXH_L4_B_2_3)
++#define ICE_RSS_L3_PAIR		(RXH_IP_SRC | RXH_IP_DST)
++#define ICE_RSS_L4_PAIR		(RXH_L4_B_0_1 | RXH_L4_B_2_3)
++
+ static int
+ ice_get_rxfh_fields(struct net_device *netdev, struct ethtool_rxfh_fields *nfc)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
++	u64 l3, l4, hash_flds;
+ 	struct device *dev;
+-	u64 hash_flds;
+ 	bool symm;
+ 	u32 hdrs;
+ 
+@@ -3037,8 +3041,10 @@ ice_get_rxfh_fields(struct net_device *netdev, struct ethtool_rxfh_fields *nfc)
+ 
+ 	hash_flds = ice_get_rss_cfg(&pf->hw, vsi->idx, hdrs, &symm);
+ 	if (hash_flds == ICE_HASH_INVALID) {
+-		dev_dbg(dev, "No hash fields found for the given header type, vsi num = %d\n",
++		/* Provide default symmetric hash fields when no config exists */
++		dev_dbg(dev, "No RSS config for this flow, using symmetric defaults, vsi num = %d\n",
+ 			vsi->vsi_num);
++		nfc->data = RXH_IP_SRC | RXH_IP_DST | RXH_L4_B_0_1 | RXH_L4_B_2_3;
+ 		return 0;
+ 	}
+ 
+@@ -3067,6 +3073,13 @@ ice_get_rxfh_fields(struct net_device *netdev, struct ethtool_rxfh_fields *nfc)
+ 	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_DWN_TEID)
+ 		nfc->data |= (u64)RXH_GTP_TEID;
+ 
++	nfc->data &= ICE_RSS_ALLOWED_FIELDS;
++	l3 = nfc->data & ICE_RSS_L3_PAIR;
++	l4 = nfc->data & ICE_RSS_L4_PAIR;
++	if (!nfc->data ||
++	    (l3 && l3 != ICE_RSS_L3_PAIR) ||
++	    (l4 && l4 != ICE_RSS_L4_PAIR))
++		nfc->data = ICE_RSS_ALLOWED_FIELDS;
+ 	return 0;
+ }
+ 
+@@ -3667,7 +3680,6 @@ ice_set_rxfh(struct net_device *netdev, struct ethtool_rxfh_param *rxfh,
+ 	     struct netlink_ext_ack *extack)
+ {
+ 	struct ice_netdev_priv *np = netdev_priv(netdev);
+-	u8 hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ;
+ 	struct ice_vsi *vsi = np->vsi;
+ 	struct ice_pf *pf = vsi->back;
+ 	struct device *dev;
+@@ -3689,13 +3701,28 @@ ice_set_rxfh(struct net_device *netdev, struct ethtool_rxfh_param *rxfh,
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	/* Update the VSI's hash function */
+-	if (rxfh->input_xfrm & RXH_XFRM_SYM_XOR)
+-		hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_SYM_TPLZ;
++	/* Handle RSS symmetric hash transformation */
++	if (rxfh->input_xfrm != RXH_XFRM_NO_CHANGE) {
++		u8 new_hfunc;
+ 
+-	err = ice_set_rss_hfunc(vsi, hfunc);
+-	if (err)
+-		return err;
++		if (rxfh->input_xfrm == RXH_XFRM_SYM_XOR)
++			new_hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_SYM_TPLZ;
++		else if (!rxfh->input_xfrm)
++			new_hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ;
++		else
++			return -EOPNOTSUPP;
++
++		if (new_hfunc != vsi->rss_hfunc) {
++			err = ice_set_rss_hfunc(vsi, new_hfunc);
++			if (err) {
++				netdev_err(netdev, "Failed to set RSS hash function\n");
++				return err;
++			}
++			netdev_dbg(netdev, "RSS hash function: %sToeplitz\n",
++				    new_hfunc == ICE_AQ_VSI_Q_OPT_RSS_HASH_SYM_TPLZ ?
++				    "Symmetric " : "");
++		}
++	}
+ 
+ 	if (rxfh->key) {
+ 		if (!vsi->rss_hkey_user) {
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index d921269..5b1934b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1155,7 +1155,7 @@ static void ice_set_fd_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+  * @ctxt: the VSI context being set
+  * @vsi: the VSI being configured
+  */
+-static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
++void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ {
+ 	u8 lut_type, hash_type;
+ 	struct device *dev;
+@@ -1181,8 +1181,9 @@ static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ 		return;
+ 	}
+ 
+-	hash_type = ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ;
+-	vsi->rss_hfunc = hash_type;
++	if (!vsi->rss_hfunc)
++		vsi->rss_hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ;
++	hash_type = vsi->rss_hfunc;
+ 
+ 	ctxt->info.q_opt_rss =
+ 		FIELD_PREP(ICE_AQ_VSI_Q_OPT_RSS_LUT_M, lut_type) |
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
+index 49454d98..29ba335 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+@@ -46,6 +46,7 @@ void ice_vsi_delete(struct ice_vsi *vsi);
+ int ice_vsi_cfg_tc(struct ice_vsi *vsi, u8 ena_tc);
+ 
+ int ice_vsi_cfg_rss_lut_key(struct ice_vsi *vsi);
++void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi);
+ 
+ void ice_vsi_cfg_netdev_tc(struct ice_vsi *vsi, u8 ena_tc);
+ 
+-- 
+2.52.0
 
-AI-authorship-score: low
-AI-authorship-explanation: Code and commit message follow established kernel selftest patterns consistent with a known contributor, and the type choice reflects human engineering judgment.
-issues-found: 1
-issue-severity-score: low
-issue-severity-explanation: Type size mismatch in selftest code where a __u8 field is cast to enum xdp_checksum * (4 bytes) for a kfunc call, causing incorrect behavior on big-endian architectures.
-
---===============2605647824317503671==--
