@@ -2,128 +2,241 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iE3FIz5zlGnVDwIAu9opvQ
+	id GF+dLPCDlGlBFQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 14:55:10 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 16:06:24 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7DBE14CCEB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 14:55:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9861714D648
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Feb 2026 16:06:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7BA6F40AAD;
-	Tue, 17 Feb 2026 13:55:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 08A674081A;
+	Tue, 17 Feb 2026 15:06:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WPNao71uBCb1; Tue, 17 Feb 2026 13:55:07 +0000 (UTC)
+ id na3YcFS8vxKH; Tue, 17 Feb 2026 15:06:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AAFE240B08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59BF8407D8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771336507;
-	bh=Hkc+aMmdSCQbinpWl+I5zPELxjREuXyzuN5bniHDSmQ=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1771340781;
+	bh=k6aem1H6npaPxWjgdnyCMGHCJZIxwr8N4OropbvoHsw=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=juRb/TJGAOm5NlceTswctMbHz8mVL7kiDsN9hJRD7XDKBhUJwEJm7qLa6OIAMOR8S
-	 Fw5R+GrSJIJbE81Px5XADk9Htq9NXcyQaXyETO4WRTXY1bdLf9DB4seLaCDlE4kmeo
-	 xBXxIhN+63kJrVdiTFCThfpWVfS8aWCG8CCZo3kIMZVY8IwxWXPFDLU4VIlckKTAcI
-	 GZvLHRoduaRbfIHW8ART4OUGjR1IKPkt1Uxl2yhMcrwVy1jfDkIzfhtAUrlvz9WA5U
-	 /Q9wLOs64OCS3Bc6n7bAUru/JJew53zLIIA3rXGtZ+yRFzDupDgyNif/ng8QPovgYR
-	 sjiGNQoRCcYfQ==
+	b=oxzf9bgh/V7RmEvcXXOiObHrlgYwXOhME4wLi3Cq9Pp8OLgbCdMJZhunr+VwQ/jeC
+	 JkO+2nqlEtRCt6rO4MRrBHSqSIJ2ytYxVh2tuMMyzYJv+4QRlkpfYaKF2cpGTmFy2n
+	 fqNJKGwyALcClCKbmbehirW4XPYRgNH5sF5VU4610oQNYVkt8eH4dm7Su/qRNQ0+qX
+	 SjpXl8Q5btfYYp71V+v7s6AKITpYyN+xzshI4PTdbkctHkNIlIPpU67P9JbXg9/UXp
+	 +2Tri2C0NUf/HB25QYnYmq1cJttgVBQwryauqCNl8bygpuHZELVM3XdR0NkdZ96r5B
+	 qrLVhSe2ekLow==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AAFE240B08;
-	Tue, 17 Feb 2026 13:55:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 59BF8407D8;
+	Tue, 17 Feb 2026 15:06:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id CFCE61EB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:55:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id CE46A1EB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 15:06:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BDEE440A91
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:55:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BC5DB4076D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 15:06:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UMgLsz0YQ1UC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Feb 2026 13:55:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
+ id DC9v7eKNfNAN for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Feb 2026 15:06:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9A00940A9A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A00940A9A
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9A00940A9A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 13:55:05 +0000 (UTC)
-X-CSE-ConnectionGUID: uuUjnfIPRSmFsg95wsqPLQ==
-X-CSE-MsgGUID: K7L6RfWlSimtDjFCqU5DGA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11703"; a="72470547"
-X-IronPort-AV: E=Sophos;i="6.21,296,1763452800"; d="scan'208";a="72470547"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Feb 2026 05:55:05 -0800
-X-CSE-ConnectionGUID: McvEJOwdRVyWWokjnxn1vA==
-X-CSE-MsgGUID: GnTaJH0OS/WfbqRKhldZQg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D57B3406BC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D57B3406BC
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D57B3406BC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Feb 2026 15:06:18 +0000 (UTC)
+X-CSE-ConnectionGUID: /UpprDZ7S/K941TrEa3V5g==
+X-CSE-MsgGUID: pdd5/VsISD+Vqna3rJmf8A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11703"; a="59975232"
+X-IronPort-AV: E=Sophos;i="6.21,296,1763452800"; d="scan'208";a="59975232"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Feb 2026 07:06:18 -0800
+X-CSE-ConnectionGUID: oIptXFPlSu2IGHfs3f/G6w==
+X-CSE-MsgGUID: 1bVCFsDIQ/uBHTOfYUa8dw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,296,1763452800"; d="scan'208";a="213904726"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa008.jf.intel.com with ESMTP; 17 Feb 2026 05:54:56 -0800
-Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id E2F5128795;
- Tue, 17 Feb 2026 13:54:52 +0000 (GMT)
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: bpf@vger.kernel.org
-Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
- Claudiu Manoil <claudiu.manoil@nxp.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>,
- Clark Wang <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Stanislav Fomichev <sdf@fomichev.me>, Andrii Nakryiko <andrii@kernel.org>,
- Martin KaFai Lau <martin.lau@linux.dev>,
- Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
- Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>,
- Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>,
- Simon Horman <horms@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- "Bastien Curutchet (eBPF Foundation)" <bastien.curutchet@bootlin.com>,
- Tushar Vyavahare <tushar.vyavahare@intel.com>,
- Jason Xing <kernelxing@tencent.com>,
- =?UTF-8?q?Ricardo=20B=2E=20Marli=C3=A8re?= <rbm@suse.com>,
- Eelco Chaudron <echaudro@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Toke Hoiland-Jorgensen <toke@redhat.com>, imx@lists.linux.dev,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Dragos Tatulea <dtatulea@nvidia.com>,
- Martin KaFai Lau <martin.lau@kernel.org>
-Date: Tue, 17 Feb 2026 14:24:47 +0100
-Message-ID: <20260217132450.1936200-10-larysa.zaremba@intel.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260217132450.1936200-1-larysa.zaremba@intel.com>
+X-IronPort-AV: E=Sophos;i="6.21,296,1763452800"; d="scan'208";a="244497013"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+ by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Feb 2026 07:06:18 -0800
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Tue, 17 Feb 2026 07:06:17 -0800
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35 via Frontend Transport; Tue, 17 Feb 2026 07:06:17 -0800
+Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.40)
+ by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.35; Tue, 17 Feb 2026 07:06:17 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Th2dhI3v6nypQIdM9WWvZXhORKtqnYUi+Qc7xCztNGZ7oBaLoRvKs9+iRXDtbKyjVX5nWip+6n6T2rPlWL2wsXpiDdWUk6PBHO9axY2vmy4zTRdmYoo7y1h1D3Qj2P+uXtMFzDRyk9pn1MesfR8jv+a/I2nZCbrFI1W7WpfJa5K4pqHa8Zvk9y4yQN3reCFjBO460t3rrcHM9tzM0K723/Q+58D1vH4v2BqUURv+hig9EvsfrGp+KFwP2k2+7W+CCY9MwafntUXOHuFo/KaocZQd0BVh3XAPNo4rf4s7kfDclzVHP1AWwLylJ6uDMq9X9ZuZ0beH6HBMfPkP7HDVZA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=k6aem1H6npaPxWjgdnyCMGHCJZIxwr8N4OropbvoHsw=;
+ b=SoJhgH9CkMCoCHYNCoCyBlfNKpVHHRPAEddbgoWYIQcovy2kjCos3y1Wf79DWW/nwEBRPuZfjNE9681arX+ccJ0ed9xID34uT006jXn/VXqm+Ge9eyu1uU11+1zAiiBfuAQ1GEyfYnqSdV7x/SQOCQyVKeNqGMQJMD5Omj+tOQszZVUKPD6mKgg8dlhmwukc47IBs1/oNJkN4WiquiBDOogKwqYs687/8AsGrXLtOIAKRmZkc/yX35SupaNdYD6nmB2Md+dQCXZhbE/G3McYCvXW+yy6aAzy4dCaUYNlZefJuxLcw2wbCmdIEfqPptAqA4zDqL7XRYf3gVfx8jFH4Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by SA1PR11MB6685.namprd11.prod.outlook.com (2603:10b6:806:258::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9632.13; Tue, 17 Feb
+ 2026 15:06:13 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9611.008; Tue, 17 Feb 2026
+ 15:06:13 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: "Zaremba, Larysa" <larysa.zaremba@intel.com>, "bpf@vger.kernel.org"
+ <bpf@vger.kernel.org>
+CC: Claudiu Manoil <claudiu.manoil@nxp.com>, Vladimir Oltean
+ <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>, Clark Wang
+ <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Alexei Starovoitov <ast@kernel.org>, "Daniel
+ Borkmann" <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>, Stanislav Fomichev
+ <sdf@fomichev.me>, Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau
+ <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>, Song Liu
+ <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>, KP Singh
+ <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>, Jiri Olsa
+ <jolsa@kernel.org>, Simon Horman <horms@kernel.org>, Shuah Khan
+ <shuah@kernel.org>, "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+ "Fijalkowski, Maciej" <maciej.fijalkowski@intel.com>, "Bastien Curutchet
+ (eBPF Foundation)" <bastien.curutchet@bootlin.com>, "Vyavahare, Tushar"
+ <tushar.vyavahare@intel.com>, Jason Xing <kernelxing@tencent.com>,
+ =?iso-8859-1?Q?Ricardo_B=2E_Marli=E8re?= <rbm@suse.com>, Eelco Chaudron
+ <echaudro@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "Toke
+ Hoiland-Jorgensen" <toke@redhat.com>, "imx@lists.linux.dev"
+ <imx@lists.linux.dev>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>, "Dragos
+ Tatulea" <dtatulea@nvidia.com>
+Thread-Topic: [PATCH bpf v3 7/9] libeth, idpf: use truesize as XDP RxQ info
+ frag_size
+Thread-Index: AQHcoBUFQ/lEUbNxA0yExtYj5JXe3bWG/XYw
+Date: Tue, 17 Feb 2026 15:06:13 +0000
+Message-ID: <IA3PR11MB8986D2F18F6FEE4356C08D05E56DA@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20260217132450.1936200-1-larysa.zaremba@intel.com>
+ <20260217132450.1936200-8-larysa.zaremba@intel.com>
+In-Reply-To: <20260217132450.1936200-8-larysa.zaremba@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SA1PR11MB6685:EE_
+x-ms-office365-filtering-correlation-id: c307ef20-04cd-48b4-7883-08de6e3617b3
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|366016|1800799024|7053199007|38070700021; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?Yk0Gxui67mRZ4adyRQDQvofuGN2T4SdDyhs0vXycQK/P1QqJPLaaY7lHqF?=
+ =?iso-8859-1?Q?Lp6q80ce/vMI8/0u7gNs/VVpiA9gp+j12qimYg2KyHVPrhjDhrmEiI2GSu?=
+ =?iso-8859-1?Q?6T/V9CVdmuuj2Mc0HNoS/KduqFMgqG/Y/6qpfh7dVn6TDEOfu9tQ0CMaDd?=
+ =?iso-8859-1?Q?JQA29Ty83P9w3wHR8Gy84JF8UGB20LV9mxHN9WqQeS8fxhc07Nvm2vxK9l?=
+ =?iso-8859-1?Q?p97dm5EpJA549gnlftmuAlK1S8DpMhAgQfjafpdqWXxvWQrgUS44Y5CT0E?=
+ =?iso-8859-1?Q?iSo07rsDxRq7Cicc2cg9yO1iXFN1gRjSjdNivNWjl/jAfp7mnm9zD+FbDE?=
+ =?iso-8859-1?Q?oTlFYvKFDpO0R9aqtYoz/gDhjV390Hdwp+NoZIXx7xVRESftN02jaQPyWD?=
+ =?iso-8859-1?Q?aHOwmr8ipzjVNSpVUb0+f+I0BMls8c++yzxAWSo5+dGiofkSlq1KRUjElS?=
+ =?iso-8859-1?Q?GjKeKPU+FZwefyFbbnmjC5oPEGUwcZYkNk244H12Dys7AliBwPGVXWXILj?=
+ =?iso-8859-1?Q?h+hy0xFZzYWFGkH/Vk9jeEza8yYZJwiykmx0AgVleb3VC99XAVoVQR9uiu?=
+ =?iso-8859-1?Q?N3otq5pzcaghcDXcx4Dedu4vc5jdileG9xivge28Ann4ktMzlIVy0edait?=
+ =?iso-8859-1?Q?8i2v80GSTt/tG+0flz3zjHg5pxamHCgX4jp+Kt9Qrtu6qKef9EP/oSaP3V?=
+ =?iso-8859-1?Q?aQktK+FBC3J3rcPTMLJFd6SX7sADcGVaGRn0OWkM7KRLtGkTfnx6Lh3jbl?=
+ =?iso-8859-1?Q?QOEWXGfa93rJRrLVtMpqAZnimyNtwcC157XarHOntsqsn4MEp5SC7Y9QvL?=
+ =?iso-8859-1?Q?3Mhrn+u7A/1Ftj4l3u5j2LB9/49LcrufPHWd0cSb6sKydirqUr/AUnqGeO?=
+ =?iso-8859-1?Q?WO+3eIxMV4/A7zoCoews0ZWuJc+7hkwxXGqFICe+JmTUWgBXSY3RQZO1eA?=
+ =?iso-8859-1?Q?7P55ha4hvmAlovp4llJTxP6oDmto5AmN+4+4liuSvFCN4Feh3mQcgaiRIl?=
+ =?iso-8859-1?Q?EgYFF4FGcbC5Bn2HZZAkV11KDVLtf+0o+8OI7ZQFoQvvGKRlPwiETWjURL?=
+ =?iso-8859-1?Q?2Fjo6k78YvohXtzpCIku8r49nSrss3SP2sEfTCnnN26No0w1vqEH95+rGG?=
+ =?iso-8859-1?Q?KdPRVOeq9F5+Jn3L2Zkbi6iizPu0cmqpCQPswmd/kO8q80YB555PZ2Jy4D?=
+ =?iso-8859-1?Q?GTPoByGEJfnTOret0tfrGH0SXyyGPAYsNz0EGZxLl5GKqgPOsUH/GMnV1t?=
+ =?iso-8859-1?Q?V56CLoNcVLLbBV7JUXodNeyW6noO6jnWYLarZLndXgwTJ3Dby/XXsYzN0/?=
+ =?iso-8859-1?Q?aWst4jk383omBlHQFoUtkcenBzJtYRPdUfNdAXQqgxUoTps4rFcLTa3NZX?=
+ =?iso-8859-1?Q?kma/vF9bsj87WXOcjUfAq6XXyjNSCTAE7QkUIXj7Gx89gOyZKt0NomlOe1?=
+ =?iso-8859-1?Q?D6SK0JI9UmUETgEHs42PZfn7dcDBgeD6ZiIOxcZ4Fyxo4VOKXNTSufzKvc?=
+ =?iso-8859-1?Q?CLF/UnmXvKIgjlZq7WmNCio2deC3qP9yUPAF6cZuAr3ZxAibmw+buiTwLp?=
+ =?iso-8859-1?Q?/L+fnLQ+i87ila5k/6fv7YutlGL6+pTBWYGLIL2tt1LMdWdYB32W9VOm8r?=
+ =?iso-8859-1?Q?H6kHRx+8/5iz4BBKeuRMBpkx2c+OZO1j1JBy7ELtc1RpUZS1i6HWYT0FQC?=
+ =?iso-8859-1?Q?Z0bo1FYhF2qod6NOsco=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024)(7053199007)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?v7sKGBbjutez0qR6Po0di8MZcR9P+GP4TrQUmAFKAPA0xPiOrWrRyr8Pl4?=
+ =?iso-8859-1?Q?Jafbvy+Y1JRok/ccnIV7NnGGjVwwmKdG1NzmNtDnVv15vHC4+/Xr2XghwV?=
+ =?iso-8859-1?Q?OtaBDpv8EqBp/uPhvzpueKGkwEjP+TfE7FAgzxu+mEB5UynTbHaCu7SDki?=
+ =?iso-8859-1?Q?voc1gxxv2XuGy3l6YUMVEvgG5h0ms1w1i85WG+C+ucb9h0enTIkZatlSY/?=
+ =?iso-8859-1?Q?f2gGEJWk8S/dcfOryvz3vFJ82fSaEGFiQL9CQmvleEBD5rJMUFDPj/BNGB?=
+ =?iso-8859-1?Q?iiFQQytQt8JrjcKXQmSH8m5lZD1PBxcHmnRYo26dTr1PzcDW+vYf9jPND1?=
+ =?iso-8859-1?Q?8LbxIwLTChfUCkzgBB5HnodL7OX4K4nVEqIfJfuBZ+UA7CGW/Zx5Am+1L4?=
+ =?iso-8859-1?Q?uiJixqehiropm2OptA689MCoS8e8A/hDTROossiPuAej0nHHfhi7W8eCVm?=
+ =?iso-8859-1?Q?R4WqPDfD3TBhPu9GreAgY01KiB4JcQp/eu0CTY1LLWmI53rN/mrztMS+Tt?=
+ =?iso-8859-1?Q?4enLTEaEzTAtviVzmTiCh/hyo58/TKsmI6T7YGxfghF/v4vtAeLMoTvDKu?=
+ =?iso-8859-1?Q?TOWSAyrv9Edjf7zVTZzDYV21d/xRiRiamYwuGQ5/L1p/fABycgKMYoHS6F?=
+ =?iso-8859-1?Q?K68/gx++zBqZLRzcoemqcCfNaEyeIyfWxqpkKFGqVssYpEovOFJ+rf3Ioy?=
+ =?iso-8859-1?Q?GbF5NHHtGduKyTrtuW4WBOsCJZhQgnYn0wMkfO2J+tYPNdH1zBMVctuMkx?=
+ =?iso-8859-1?Q?lnCVufmbvBd/fCltkjM3LpCUuD6QJrY2gjaQ3maVMbBR+3tap8HSr4DWlv?=
+ =?iso-8859-1?Q?0xkv3KqD0cvShE6y4DDlgi6If/vDroSLniwFU29ZZQDj0eveNCS8rgMpKd?=
+ =?iso-8859-1?Q?Vu77xNGyQ6zNQapCN14OzWX8Rf9u/SZfAj0Fibv3nCHYUvGV+NhkBsno5U?=
+ =?iso-8859-1?Q?l7D3uDFZ1cLu/1vS2hCibwHbYv4d62hdoOZ/SLXvpeWaqMVLgzBsa/uGeE?=
+ =?iso-8859-1?Q?sCpOBQf6QAep2mFv4XXU/tiPwZj+w2xfEHG1LZUheh8Z51ZV+EMRjDT0Y6?=
+ =?iso-8859-1?Q?iDadqX+z6F9SQj3OAQvNRhqiR0zM6cYlyV49bxnTH2LC6k5T1nPYCO3yBO?=
+ =?iso-8859-1?Q?eQ1f+T+mIN7D+5Av8NExMxRjnOAMPejPuGv4eivbrF6rLmGk6WQDstL6HU?=
+ =?iso-8859-1?Q?Ny6hTZwUP5Q33ce9w/GZIGQtSnD5nHco66D8LDQhSm4k1nDXbAeZdIrmTm?=
+ =?iso-8859-1?Q?6YMjCX2eKpMGLGeANh6bE2MHiBiYXmpQMdK+XsFZorH8+fFNEFFewFF0ip?=
+ =?iso-8859-1?Q?EVJ3lrxbgvkvHApOqRUBmz2pZf9GfsXr3kB8jQv6J/hVRAViWRjRityBwF?=
+ =?iso-8859-1?Q?f0eLG9jZqKv99lFUl6AcTmSC4z7P3GA4Qe3Ah47TGnE3wgP64HPWNBDuay?=
+ =?iso-8859-1?Q?ZT9OotB46w4P3tlYcAbV4/FWhC2QSxspw7U5XuE6zPkUoxig/lENNy0ZxT?=
+ =?iso-8859-1?Q?Tfb64kGA7MlXk5I4ClcPOpJ+kVzHT46vNzneSXUBJVXjpDOBFsLsJI6QVM?=
+ =?iso-8859-1?Q?CYcJAkfJcmcaG86ws8+vlAeSEldisr4M/u3Iu/glboLW3mbisKqz97K2PN?=
+ =?iso-8859-1?Q?BpwFX7t8hF48faZfu+4QLI7LQkNLBztqhFClNMw0N9TxEuGsRFg9kzuT6T?=
+ =?iso-8859-1?Q?GhhrJfpehweu5GOWyk0Rmn20SNerUyMAiUNY3uOPR0IJKI+XPZ/el8E6T3?=
+ =?iso-8859-1?Q?p7RNuK7XeZ3XsE7lPGnCUqm468EwJph7EyJmBLNWhpP+qFvdoG3xk+XBez?=
+ =?iso-8859-1?Q?bc0xKdXCEksk3a2KnjOPAvUtTbvi+VE=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c307ef20-04cd-48b4-7883-08de6e3617b3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Feb 2026 15:06:13.7548 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: qLR/eP/S/RooDN+xbu6WkYvxt+H18Ph6F4bExJW0ZFkYEykFVUkvgG8kEHpNZypFe2s2ISQ/W45GkmTUsv2KVCptbcSa9undgsMvPZ+iWdk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6685
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1771336506; x=1802872506;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ge7gIG8IIRQWGUGHw6qwZgqeXDldxXzM/a5Ov/Y7Rr4=;
- b=GCGtgM/FmyQ3VvGHeRqti8T5m744PEpJGb2MUlVu/QL3FMlK4IFgconr
- tOhwXJWIM60K9xG6tlCrltLMdLghfVUFO8xBjyg25cHoPt2knEeH5RMvI
- ILLFfMfvNR1+l1p/dx4rqLox/bM1tXbsv0ETE+T74FnAvfnsVUt5IewGq
- CCeyBshvSuf0DT4whbuCbi69VHEOE81draCDN8AyTHvTdWSib8/hlaFzM
- ofE2orlCUkpkPb3nfeo7qt/qkCmya+RvwNeZU9orpWrtN9UnsfOxzswFZ
- ce1kBZCfr9g1zG7Q1Cssb3TB0jhkGtCY1c8NYMV9NpUxNMeTj5h8reuPr
+ t=1771340779; x=1802876779;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=uVhEmux/Dv4OIuWGz8x2ziwMnjQjD4sAWPvYMbYmCk8=;
+ b=Aqyaw3/6J29UbI6+zI3vgkkvuAJI98GNuXm7EYrreVSiupjPoRP8elxw
+ eVy9Z33Z07DbTUTQIJzLFmpuXofp87NreYaYdb0NpkLemEcc4lY/xuqua
+ c31AJtCmSM4MN2Q1Z9hZeQmTc/oHmg1L33TDdu+mfI/MXSW7pnGtlf8GA
+ USpf+vPFUWtj9Tik4QBFgKogv6O+SbgHd6KQjlze1E9zUNXDmFYTNhDhq
+ 7UK7XsoLxRKLPl1Ut+gEOCTZqLsAYdfUNVCk8uXlA/ecbV1BH5EqO6I3h
+ R0C169pvZ19SGzQ78CkAHDaDB0c7Q7d6jf9HVi6xOUfC9iUbgffxMZHrX
  A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -131,9 +244,11 @@ X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GCGtgM/F
-Subject: [Intel-wired-lan] [PATCH bpf v3 9/9] xdp: produce a warning when
- calculated tailroom is negative
+ header.s=Intel header.b=Aqyaw3/6
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH bpf v3 7/9] libeth,
+ idpf: use truesize as XDP RxQ info frag_size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -151,155 +266,172 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [1.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[45];
 	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:bpf@vger.kernel.org,m:larysa.zaremba@intel.com,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:horms@kernel.org,m:shuah@kernel.org,m:aleksander.lobakin@intel.com,m:maciej.fijalkowski@intel.com,m:bastien.curutchet@bootlin.com,m:tushar.vyavahare@intel.com,m:kernelxing@tencent.com,m:rbm@suse.com,m:echaudro@redhat.com,m:lorenzo@kernel.org,m:toke@redhat.com,m:imx@lists.linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktiono
- v@intel.com,m:dtatulea@nvidia.com,m:martin.lau@kernel.org,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:larysa.zaremba@intel.com,m:bpf@vger.kernel.org,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:horms@kernel.org,m:shuah@kernel.org,m:aleksander.lobakin@intel.com,m:maciej.fijalkowski@intel.com,m:bastien.curutchet@bootlin.com,m:tushar.vyavahare@intel.com,m:kernelxing@tencent.com,m:rbm@suse.com,m:echaudro@redhat.com,m:lorenzo@kernel.org,m:toke@redhat.com,m:imx@lists.linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:dtatulea@nvidia.co
+ m,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FREEMAIL_CC(0.00)[nxp.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,intel.com,iogearbox.net,gmail.com,fomichev.me,linux.dev,bootlin.com,tencent.com,suse.com,lists.linux.dev,vger.kernel.org,lists.osuosl.org,nvidia.com];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[43];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,nxp.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,gmail.com,fomichev.me,linux.dev,bootlin.com,tencent.com,suse.com,lists.linux.dev,vger.kernel.org,lists.osuosl.org,nvidia.com];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MISSING_XM_UA(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: D7DBE14CCEB
+	TO_DN_SOME(0.00)[]
+X-Rspamd-Queue-Id: 9861714D648
 X-Rspamd-Action: no action
 
-Many ethernet drivers report xdp Rx queue frag size as being the same as
-DMA write size. However, the only user of this field, namely
-bpf_xdp_frags_increase_tail(), clearly expects a truesize.
 
-Such difference leads to unspecific memory corruption issues under certain
-circumstances, e.g. in ixgbevf maximum DMA write size is 3 KB, so when
-running xskxceiver's XDP_ADJUST_TAIL_GROW_MULTI_BUFF, 6K packet fully uses
-all DMA-writable space in 2 buffers. This would be fine, if only
-rxq->frag_size was properly set to 4K, but value of 3K results in a
-negative tailroom, because there is a non-zero page offset.
 
-We are supposed to return -EINVAL and be done with it in such case, but due
-to tailroom being stored as an unsigned int, it is reported to be somewhere
-near UINT_MAX, resulting in a tail being grown, even if the requested
-offset is too much (it is around 2K in the abovementioned test). This later
-leads to all kinds of unspecific calltraces.
+> -----Original Message-----
+> From: Zaremba, Larysa <larysa.zaremba@intel.com>
+> Sent: Tuesday, February 17, 2026 2:25 PM
+> To: bpf@vger.kernel.org
+> Cc: Zaremba, Larysa <larysa.zaremba@intel.com>; Claudiu Manoil
+> <claudiu.manoil@nxp.com>; Vladimir Oltean <vladimir.oltean@nxp.com>;
+> Wei Fang <wei.fang@nxp.com>; Clark Wang <xiaoning.wang@nxp.com>;
+> Andrew Lunn <andrew+netdev@lunn.ch>; David S. Miller
+> <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub
+> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Nguyen,
+> Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Alexei Starovoitov <ast@kernel.org>;
+> Daniel Borkmann <daniel@iogearbox.net>; Jesper Dangaard Brouer
+> <hawk@kernel.org>; John Fastabend <john.fastabend@gmail.com>;
+> Stanislav Fomichev <sdf@fomichev.me>; Andrii Nakryiko
+> <andrii@kernel.org>; Martin KaFai Lau <martin.lau@linux.dev>; Eduard
+> Zingerman <eddyz87@gmail.com>; Song Liu <song@kernel.org>; Yonghong
+> Song <yonghong.song@linux.dev>; KP Singh <kpsingh@kernel.org>; Hao Luo
+> <haoluo@google.com>; Jiri Olsa <jolsa@kernel.org>; Simon Horman
+> <horms@kernel.org>; Shuah Khan <shuah@kernel.org>; Lobakin, Aleksander
+> <aleksander.lobakin@intel.com>; Fijalkowski, Maciej
+> <maciej.fijalkowski@intel.com>; Bastien Curutchet (eBPF Foundation)
+> <bastien.curutchet@bootlin.com>; Vyavahare, Tushar
+> <tushar.vyavahare@intel.com>; Jason Xing <kernelxing@tencent.com>;
+> Ricardo B. Marli=E8re <rbm@suse.com>; Eelco Chaudron
+> <echaudro@redhat.com>; Lorenzo Bianconi <lorenzo@kernel.org>; Toke
+> Hoiland-Jorgensen <toke@redhat.com>; imx@lists.linux.dev;
+> netdev@vger.kernel.org; linux-kernel@vger.kernel.org; intel-wired-
+> lan@lists.osuosl.org; linux-kselftest@vger.kernel.org; Loktionov,
+> Aleksandr <aleksandr.loktionov@intel.com>; Dragos Tatulea
+> <dtatulea@nvidia.com>
+> Subject: [PATCH bpf v3 7/9] libeth, idpf: use truesize as XDP RxQ info
+> frag_size
+>=20
+> The only user of frag_size field in XDP RxQ info is
+> bpf_xdp_frags_increase_tail(). It clearly expects whole buffer size
+> instead of DMA write size. Different assumptions in idpf driver
+> configuration lead to negative tailroom.
+>=20
+> To make it worse, buffer sizes are not actually uniform in idpf when
+> splitq is enabled, as there are several buffer queues, so rxq-
+> >rx_buf_size is meaningless in this case.
+>=20
+> Use truesize of the first bufq in AF_XDP ZC, as there is only one.
+> Disable growinf tail for regular splitq.
 
-[ 7340.337579] xskxceiver[1440]: segfault at 1da718 ip 00007f4161aeac9d sp 00007f41615a6a00 error 6
-[ 7340.338040] xskxceiver[1441]: segfault at 7f410000000b ip 00000000004042b5 sp 00007f415bffecf0 error 4
-[ 7340.338179]  in libc.so.6[61c9d,7f4161aaf000+160000]
-[ 7340.339230]  in xskxceiver[42b5,400000+69000]
-[ 7340.340300]  likely on CPU 6 (core 0, socket 6)
-[ 7340.340302] Code: ff ff 01 e9 f4 fe ff ff 0f 1f 44 00 00 4c 39 f0 74 73 31 c0 ba 01 00 00 00 f0 0f b1 17 0f 85 ba 00 00 00 49 8b 87 88 00 00 00 <4c> 89 70 08 eb cc 0f 1f 44 00 00 48 8d bd f0 fe ff ff 89 85 ec fe
-[ 7340.340888]  likely on CPU 3 (core 0, socket 3)
-[ 7340.345088] Code: 00 00 00 ba 00 00 00 00 be 00 00 00 00 89 c7 e8 31 ca ff ff 89 45 ec 8b 45 ec 85 c0 78 07 b8 00 00 00 00 eb 46 e8 0b c8 ff ff <8b> 00 83 f8 69 74 24 e8 ff c7 ff ff 8b 00 83 f8 0b 74 18 e8 f3 c7
-[ 7340.404334] Oops: general protection fault, probably for non-canonical address 0x6d255010bdffc: 0000 [#1] SMP NOPTI
-[ 7340.405972] CPU: 7 UID: 0 PID: 1439 Comm: xskxceiver Not tainted 6.19.0-rc1+ #21 PREEMPT(lazy)
-[ 7340.408006] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS 1.17.0-5.fc42 04/01/2014
-[ 7340.409716] RIP: 0010:lookup_swap_cgroup_id+0x44/0x80
-[ 7340.410455] Code: 83 f8 1c 73 39 48 ba ff ff ff ff ff ff ff 03 48 8b 04 c5 20 55 fa bd 48 21 d1 48 89 ca 83 e1 01 48 d1 ea c1 e1 04 48 8d 04 90 <8b> 00 48 83 c4 10 d3 e8 c3 cc cc cc cc 31 c0 e9 98 b7 dd 00 48 89
-[ 7340.412787] RSP: 0018:ffffcc5c04f7f6d0 EFLAGS: 00010202
-[ 7340.413494] RAX: 0006d255010bdffc RBX: ffff891f477895a8 RCX: 0000000000000010
-[ 7340.414431] RDX: 0001c17e3fffffff RSI: 00fa070000000000 RDI: 000382fc7fffffff
-[ 7340.415354] RBP: 00fa070000000000 R08: ffffcc5c04f7f8f8 R09: ffffcc5c04f7f7d0
-[ 7340.416283] R10: ffff891f4c1a7000 R11: ffffcc5c04f7f9c8 R12: ffffcc5c04f7f7d0
-[ 7340.417218] R13: 03ffffffffffffff R14: 00fa06fffffffe00 R15: ffff891f47789500
-[ 7340.418229] FS:  0000000000000000(0000) GS:ffff891ffdfaa000(0000) knlGS:0000000000000000
-[ 7340.419489] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[ 7340.420286] CR2: 00007f415bfffd58 CR3: 0000000103f03002 CR4: 0000000000772ef0
-[ 7340.421237] PKRU: 55555554
-[ 7340.421623] Call Trace:
-[ 7340.421987]  <TASK>
-[ 7340.422309]  ? softleaf_from_pte+0x77/0xa0
-[ 7340.422855]  swap_pte_batch+0xa7/0x290
-[ 7340.423363]  zap_nonpresent_ptes.constprop.0.isra.0+0xd1/0x270
-[ 7340.424102]  zap_pte_range+0x281/0x580
-[ 7340.424607]  zap_pmd_range.isra.0+0xc9/0x240
-[ 7340.425177]  unmap_page_range+0x24d/0x420
-[ 7340.425714]  unmap_vmas+0xa1/0x180
-[ 7340.426185]  exit_mmap+0xe1/0x3b0
-[ 7340.426644]  __mmput+0x41/0x150
-[ 7340.427098]  exit_mm+0xb1/0x110
-[ 7340.427539]  do_exit+0x1b2/0x460
-[ 7340.427992]  do_group_exit+0x2d/0xc0
-[ 7340.428477]  get_signal+0x79d/0x7e0
-[ 7340.428957]  arch_do_signal_or_restart+0x34/0x100
-[ 7340.429571]  exit_to_user_mode_loop+0x8e/0x4c0
-[ 7340.430159]  do_syscall_64+0x188/0x6b0
-[ 7340.430672]  ? __do_sys_clone3+0xd9/0x120
-[ 7340.431212]  ? switch_fpu_return+0x4e/0xd0
-[ 7340.431761]  ? arch_exit_to_user_mode_prepare.isra.0+0xa1/0xc0
-[ 7340.432498]  ? do_syscall_64+0xbb/0x6b0
-[ 7340.433015]  ? __handle_mm_fault+0x445/0x690
-[ 7340.433582]  ? count_memcg_events+0xd6/0x210
-[ 7340.434151]  ? handle_mm_fault+0x212/0x340
-[ 7340.434697]  ? do_user_addr_fault+0x2b4/0x7b0
-[ 7340.435271]  ? clear_bhb_loop+0x30/0x80
-[ 7340.435788]  ? clear_bhb_loop+0x30/0x80
-[ 7340.436299]  ? clear_bhb_loop+0x30/0x80
-[ 7340.436812]  ? clear_bhb_loop+0x30/0x80
-[ 7340.437323]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-[ 7340.437973] RIP: 0033:0x7f4161b14169
-[ 7340.438468] Code: Unable to access opcode bytes at 0x7f4161b1413f.
-[ 7340.439242] RSP: 002b:00007ffc6ebfa770 EFLAGS: 00000246 ORIG_RAX: 00000000000000ca
-[ 7340.440173] RAX: fffffffffffffe00 RBX: 00000000000005a1 RCX: 00007f4161b14169
-[ 7340.441061] RDX: 00000000000005a1 RSI: 0000000000000109 RDI: 00007f415bfff990
-[ 7340.441943] RBP: 00007ffc6ebfa7a0 R08: 0000000000000000 R09: 00000000ffffffff
-[ 7340.442824] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
-[ 7340.443707] R13: 0000000000000000 R14: 00007f415bfff990 R15: 00007f415bfff6c0
-[ 7340.444586]  </TASK>
-[ 7340.444922] Modules linked in: rfkill intel_rapl_msr intel_rapl_common intel_uncore_frequency_common skx_edac_common nfit libnvdimm kvm_intel vfat fat kvm snd_pcm irqbypass rapl iTCO_wdt snd_timer intel_pmc_bxt iTCO_vendor_support snd ixgbevf virtio_net soundcore i2c_i801 pcspkr libeth_xdp net_failover i2c_smbus lpc_ich failover libeth virtio_balloon joydev 9p fuse loop zram lz4hc_compress lz4_compress 9pnet_virtio 9pnet netfs ghash_clmulni_intel serio_raw qemu_fw_cfg
-[ 7340.449650] ---[ end trace 0000000000000000 ]---
+"growing" -> " growing" ?=20
 
-The issue can be fixed in all in-tree drivers, but we cannot just trust OOT
-drivers to not do this. Therefore, make tailroom a signed int and produce a
-warning when it is negative to prevent such mistakes in the future.
-
-Fixes: bf25146a5595 ("bpf: add frags support to the bpf_xdp_adjust_tail() API")
+Otherwise fine
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Toke Høiland-Jørgensen <toke@redhat.com>
-Acked-by: Martin KaFai Lau <martin.lau@kernel.org>
-Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
----
- net/core/filter.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/net/core/filter.c b/net/core/filter.c
-index 5f5489665c58..e93d9dc0471a 100644
---- a/net/core/filter.c
-+++ b/net/core/filter.c
-@@ -4151,13 +4151,14 @@ static int bpf_xdp_frags_increase_tail(struct xdp_buff *xdp, int offset)
- 	struct skb_shared_info *sinfo = xdp_get_shared_info_from_buff(xdp);
- 	skb_frag_t *frag = &sinfo->frags[sinfo->nr_frags - 1];
- 	struct xdp_rxq_info *rxq = xdp->rxq;
--	unsigned int tailroom;
-+	int tailroom;
- 
- 	if (!rxq->frag_size || rxq->frag_size > xdp->frame_sz)
- 		return -EOPNOTSUPP;
- 
- 	tailroom = rxq->frag_size - skb_frag_size(frag) -
- 		   skb_frag_off(frag) % rxq->frag_size;
-+	WARN_ON_ONCE(tailroom < 0);
- 	if (unlikely(offset > tailroom))
- 		return -EINVAL;
- 
--- 
-2.52.0
+>=20
+> Fixes: ac8a861f632e ("idpf: prepare structures to support XDP")
+> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> ---
+>  drivers/net/ethernet/intel/idpf/xdp.c   | 6 +++++-
+>  drivers/net/ethernet/intel/idpf/xsk.c   | 1 +
+>  drivers/net/ethernet/intel/libeth/xsk.c | 1 +
+>  include/net/libeth/xsk.h                | 3 +++
+>  4 files changed, 10 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/idpf/xdp.c
+> b/drivers/net/ethernet/intel/idpf/xdp.c
+> index 958d16f87424..7d91f21174de 100644
+> --- a/drivers/net/ethernet/intel/idpf/xdp.c
+> +++ b/drivers/net/ethernet/intel/idpf/xdp.c
+> @@ -46,11 +46,15 @@ static int __idpf_xdp_rxq_info_init(struct
+> idpf_rx_queue *rxq, void *arg)  {
+>  	const struct idpf_vport *vport =3D rxq->q_vector->vport;
+>  	bool split =3D idpf_is_queue_model_split(vport->rxq_model);
+> +	u32 frag_size =3D 0;
+>  	int err;
+>=20
+> +	if (idpf_queue_has(XSK, rxq))
+> +		frag_size =3D rxq->bufq_sets[0].bufq.truesize;
+> +
+>  	err =3D __xdp_rxq_info_reg(&rxq->xdp_rxq, vport->netdev, rxq-
+> >idx,
+>  				 rxq->q_vector->napi.napi_id,
+> -				 rxq->rx_buf_size);
+> +				 frag_size);
+>  	if (err)
+>  		return err;
+>=20
+> diff --git a/drivers/net/ethernet/intel/idpf/xsk.c
+> b/drivers/net/ethernet/intel/idpf/xsk.c
+> index fd2cc43ab43c..95a665cb2f33 100644
+> --- a/drivers/net/ethernet/intel/idpf/xsk.c
+> +++ b/drivers/net/ethernet/intel/idpf/xsk.c
+> @@ -401,6 +401,7 @@ int idpf_xskfq_init(struct idpf_buf_queue *bufq)
+>  	bufq->pending =3D fq.pending;
+>  	bufq->thresh =3D fq.thresh;
+>  	bufq->rx_buf_size =3D fq.buf_len;
+> +	bufq->truesize =3D fq.truesize;
+>=20
+>  	if (!idpf_xskfq_refill(bufq))
+>  		netdev_err(bufq->pool->netdev,
+> diff --git a/drivers/net/ethernet/intel/libeth/xsk.c
+> b/drivers/net/ethernet/intel/libeth/xsk.c
+> index 846e902e31b6..4882951d5c9c 100644
+> --- a/drivers/net/ethernet/intel/libeth/xsk.c
+> +++ b/drivers/net/ethernet/intel/libeth/xsk.c
+> @@ -167,6 +167,7 @@ int libeth_xskfq_create(struct libeth_xskfq *fq)
+>  	fq->pending =3D fq->count;
+>  	fq->thresh =3D libeth_xdp_queue_threshold(fq->count);
+>  	fq->buf_len =3D xsk_pool_get_rx_frame_size(fq->pool);
+> +	fq->truesize =3D xsk_pool_get_rx_frag_step(fq->pool);
+>=20
+>  	return 0;
+>  }
+> diff --git a/include/net/libeth/xsk.h b/include/net/libeth/xsk.h index
+> 481a7b28e6f2..82b5d21aae87 100644
+> --- a/include/net/libeth/xsk.h
+> +++ b/include/net/libeth/xsk.h
+> @@ -597,6 +597,7 @@ __libeth_xsk_run_pass(struct libeth_xdp_buff *xdp,
+>   * @pending: current number of XSkFQEs to refill
+>   * @thresh: threshold below which the queue is refilled
+>   * @buf_len: HW-writeable length per each buffer
+> + * @truesize: step between consecutive buffers, 0 if none exists
+>   * @nid: ID of the closest NUMA node with memory
+>   */
+>  struct libeth_xskfq {
+> @@ -614,6 +615,8 @@ struct libeth_xskfq {
+>  	u32			thresh;
+>=20
+>  	u32			buf_len;
+> +	u32			truesize;
+> +
+>  	int			nid;
+>  };
+>=20
+> --
+> 2.52.0
 
