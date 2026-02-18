@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id IBHEI9SQlWn1SQIAu9opvQ
+	id ALJAIdCQlWn1SQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:40 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:36 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 535001552B3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:40 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C0107406EF;
-	Wed, 18 Feb 2026 10:13:32 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4RPcbLQc3MLD; Wed, 18 Feb 2026 10:13:32 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0468B40755
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771409612;
-	bh=CD09W1Cs/CKxtTlaYQEjSUVqXi90SvD+QSCwnQD/cGQ=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Nal78OrlITTbk3959lh1gWVRVfi9r1lrsEF15jOhf9ZviDrfKlN9mbIfyywQyBZxU
-	 t0B0xyDOPcLzuq08mCXYcZxXdZf8ZPjIAiu+jJvQKrMgzBOx5cANZtN1aXXENjuGE6
-	 XWyXG8/ztNUahznXSRBwrVncqOmCTa7qNgC80CO7xbzBKVhw3M7iI54C4cUUonZwt8
-	 c8BGnIvmVKfTMnTzSVgO8icosKeYjirlPaQCybYVY+RF9nxlFqHSCXEP1rRxJDjtH7
-	 C2k//PjEwdUgyWEgEoGCuoQ+A4fqKABz6ZzClnroLmsdFaNP/sRzS99TWFr+Gd4Ynr
-	 Bkx2jlPqq7e1A==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0468B40755;
-	Wed, 18 Feb 2026 10:13:32 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 17FAE206
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49B0115528B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A01B78108F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 059B6810A8;
+	Wed, 18 Feb 2026 10:13:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1RiXCknZ_SiR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Feb 2026 10:13:23 +0000 (UTC)
+ id w2BSJFpVmUGl; Wed, 18 Feb 2026 10:13:31 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 732FC810AA
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1771409611;
+	bh=Ci2P0snVWG6yqqUvHKCgueJDIFrv4s9ClHU5R3mYXT8=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=r6aPSAedAYF2TBMt0+HCsz81FufWtNEW2GiqLF21rW4yyPwPJ1+idCS0cLHzdo5Wd
+	 W2edJVMrk/7SxMIQIC844psIO5I1PLXnz5usCXlSVwYZlQDcPWuX6qXpJ1D20iErWI
+	 gUqk2P1SvPm5hlRcKHgdDkwFZz3PPGFjYL5n+exbE06/qWlBOQr3bgVDHQLiWzMcwe
+	 Z8b5LBLgGT1TqknEhWgnvwHmtfi+DLI0p4hO2Hh1vUxVsbXnFIVBNrSp7WW/rZ02qJ
+	 qfd4rJgf1kuHVV+Z8IjysIHlnoAeW/KRoCkqv0DPOPR83ubJ7P3qU5J3JLuhI6GGDs
+	 q5mEEajhFncmw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 732FC810AA;
+	Wed, 18 Feb 2026 10:13:31 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 34728438
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 937C281091
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:24 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XLAenB1QhHek for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Feb 2026 10:13:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AA1EF81096
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA1EF81096
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1064D8108B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1064D8108B
 Received: from sea.source.kernel.org (sea.source.kernel.org
  [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AA1EF81096
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1064D8108B
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:23 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 6259041B6F;
+ by sea.source.kernel.org (Postfix) with ESMTP id CAA0E44562;
  Wed, 18 Feb 2026 10:13:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46342C2BCAF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB684C2BC86;
  Wed, 18 Feb 2026 10:13:23 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vseYb-00000000Lc3-2Hp4; Wed, 18 Feb 2026 11:13:21 +0100
+ id 1vseYb-00000000LdF-46Fo; Wed, 18 Feb 2026 11:13:21 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -71,8 +71,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Wed, 18 Feb 2026 11:12:45 +0100
-Message-ID: <eba972628cc478ab977d0403716029e9190ef9da.1771408406.git.mchehab+huawei@kernel.org>
+Date: Wed, 18 Feb 2026 11:12:46 +0100
+Message-ID: <497fbbcd66ab400c323c8840f917a8552fa801f3.1771408406.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1771408406.git.mchehab+huawei@kernel.org>
 References: <cover.1771408406.git.mchehab+huawei@kernel.org>
@@ -81,22 +81,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1771409603;
- bh=2s+fzq6gQbWuB1ApycJQ9BmmsdbPbLOVTREB5x1uqxI=;
+ bh=KU0YswEvwG2VkW3AG45CjZ2okRV/mwbS3lMGf4DpG8U=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=NXzlsSSLNhbbqZv4lPRJrQvqahR3ZaCkRyRkFGnD6lg7Sy60W5BiePskmESRP/Cty
- Al/DpzbA4GpxnY4SYtJWZ5vowF3oLv4OTEQPtc6+J+5sNphAgmrH07REMm3xP2LJxH
- Ium9012IyjZQcYf/hl6TSD66MGlgCs6Bnz85TBnTW+as9GhtZUTi0G08kF9Fpa3EXJ
- mBSpw2KqNuN2kTo+wpsEjT7i+F74cTLDQwLWrdUt/8pwmxnouST8eJtr7jlRkuO6Za
- vGLJoV+iuj2C99MfdyjGtV5OW5J7Q8M9CtNXH3gjF6rtgHQATdS2nIuxVU7tMRyo4y
- zXJjPqeaV7j4w==
+ b=AjCHRstYcLRm3u4c4fawaisKaLhZHmBhWg1udI9djeLJzP+35BeRm04ViNsvVOyD0
+ 70qhKifzCF6HrgWSr4hOtipPfZCZaNRUU7aqN1IncQgLe+2n/Tw3X+SD3urp81/ePC
+ YPgVS8R1DVFQh3bvniBmgDDJhr3Nvw/IWOgTEbgf1vRfmgd3c20bSQej5CgOJVUU2e
+ iQF4d1sN+7KFL3RjyHWrn6Xx3QxAJkvJOGhHnG6vTd0kgQZFpB0CRavnDHQOy6PVtm
+ zCfrnRzDgiIQRXoZeRCysOMYeNVQPwGsZ7pMzX/mRSvdXRUcUo11ZVxiWa+FtsfkAl
+ z3Iqswua2f2vA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=NXzlsSSL
-Subject: [Intel-wired-lan] [PATCH 15/38] docs: kdoc_re: properly handle
- strings and escape chars on it
+ header.a=rsa-sha256 header.s=k20201202 header.b=AjCHRstY
+Subject: [Intel-wired-lan] [PATCH 16/38] docs: kdoc_re: better show KernRe()
+ at documentation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,7 +130,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,intel.com:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,intel.com:email];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
@@ -139,62 +139,59 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCPT_COUNT_SEVEN(0.00)[9];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 535001552B3
+X-Rspamd-Queue-Id: 49B0115528B
 X-Rspamd-Action: no action
 
-The logic inside NestedMatch currently doesn't consider that
-function arguments may have chars and strings, which may
-eventually contain delimiters.
+the __repr__() function is used by autodoc to document macro
+initialization.
 
-Add logic to handle strings and escape characters on them.
+Add a better representation for them.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- tools/lib/python/kdoc/kdoc_re.py | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ tools/lib/python/kdoc/kdoc_re.py | 23 ++++++++++++++++++++++-
+ 1 file changed, 22 insertions(+), 1 deletion(-)
 
 diff --git a/tools/lib/python/kdoc/kdoc_re.py b/tools/lib/python/kdoc/kdoc_re.py
-index 6c44fcce0415..420cb8879ba3 100644
+index 420cb8879ba3..0a7f12616f9f 100644
 --- a/tools/lib/python/kdoc/kdoc_re.py
 +++ b/tools/lib/python/kdoc/kdoc_re.py
-@@ -195,6 +195,8 @@ class NestedMatch:
-         for match_re in regex.finditer(line):
-             start = match_re.start()
-             offset = match_re.end()
-+            string_char = None
-+            escape = False
+@@ -52,7 +52,28 @@ class KernRe:
+         return self.regex.pattern
  
-             d = line[offset - 1]
-             if d not in self.DELIMITER_PAIRS:
-@@ -208,6 +210,22 @@ class NestedMatch:
+     def __repr__(self):
+-        return f're.compile("{self.regex.pattern}")'
++        """
++        Returns a displayable version of the class init.
++        """
++
++        flag_map = {
++            re.IGNORECASE: "re.I",
++            re.MULTILINE: "re.M",
++            re.DOTALL: "re.S",
++            re.VERBOSE: "re.X",
++        }
++
++        flags = []
++        for flag, name in flag_map.items():
++            if self.regex.flags & flag:
++                flags.append(name)
++
++        flags_name = " | ".join(flags)
++
++        if flags_name:
++            return f'KernRe("{self.regex.pattern}", {flags_name})'
++        else:
++            return f'KernRe("{self.regex.pattern}")'
  
-                 d = line[pos]
- 
-+                if escape:
-+                    escape = False
-+                    continue
-+
-+                if string_char:
-+                    if d == '\\':
-+                        escape = True
-+                    elif d == string_char:
-+                        string_char = None
-+
-+                    continue
-+
-+                if d in ('"', "'"):
-+                    string_char = d
-+                    continue
-+
-                 if d in self.DELIMITER_PAIRS:
-                     end = self.DELIMITER_PAIRS[d]
- 
+     def __add__(self, other):
+         """
 -- 
 2.52.0
 
