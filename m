@@ -2,100 +2,115 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 2OXyNeKQlWn1SQIAu9opvQ
+	id yIi6K32blWmsSgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:54 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:59:09 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DFD215532F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:54 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B8938155B9B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:59:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 364D140811;
-	Wed, 18 Feb 2026 10:13:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DFE0C407F7;
+	Wed, 18 Feb 2026 10:59:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xeNZxN0dQLRy; Wed, 18 Feb 2026 10:13:46 +0000 (UTC)
+ id XWqipbMbxZpi; Wed, 18 Feb 2026 10:59:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9DE704080D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10BF3407F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771409626;
-	bh=ZhnMdpvdD7eQXxsKozueTcDL2WcNNZQ9NJGZVbIYRwI=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1771412346;
+	bh=t/6M88dbIV7OSKBxBmhf0ljkNz+Mo2OaZj5JzHwSKsI=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=aBDj0TTqzNcMuK6V6Ho4gc3TzpTtBl60UkH+fsKxmiX2DJSKWlwGq/r2Qt3Y8dc6H
-	 B3NlXy3oPTB/Ho7M+KDFHVGEF206B1S8F62QuW1MEaGy5nd8nGGJdpL06Xc5BDiqSr
-	 0VcRBPL39QGUKoxRmRWD7ZL2WiNnrJBRZsDR57FZurgpdIzpRPO0rpOcLMUdWcGwjD
-	 Iiaoh9TvejFoCJV+JL7uuaqBZUt5gzKO9IQy5VtQgpPWj2TqsKwlcjrNmFMvkVfn4a
-	 aCsUFZLFr/u1DVgrwh5xlHh6yAVQcLysKLFz1sCbQRaNdpRj8y4KI1hIwSFwcGsy4x
-	 3c8zCOMRtixHQ==
+	b=MEy+49rEi/DzOwqzVFmvCt+90v5SXCvBuLo574+Mo8hlcXOmWNyWLbGs7e2ydp+Wu
+	 xjwhf3QkLXTuk9QdQhoHrJ4xNuZVudwKnP8mV5+6K1/IGotIlTFUy/6i9kaiLKxrSa
+	 k1jsnVzTndg1YK3T55wnh0eaTwg0GEzPnMAcL3M+15e2oOrwjXQchNh3n86MPI62/U
+	 6Xy4ab4mymrejle3sD+TsOvSa3Bkk4LAjtIabw07SV/Dfoyy9AwoaXi7Mzgvf1ckSQ
+	 rRLhbdHKSAnMdVZkh6kTxNdH2xi60l2fPtSiwt82sV0lLvD/sxKMMI8rsWfUTYLcmb
+	 JC6IKQeBNHDdA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9DE704080D;
-	Wed, 18 Feb 2026 10:13:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 10BF3407F9;
+	Wed, 18 Feb 2026 10:59:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 75B5035B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:35 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id CABFE1CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:59:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5B90040078
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:35 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B041A810CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:59:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qJglcJd4ij5h for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Feb 2026 10:13:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7HYJ5DiAkhcO for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Feb 2026 10:59:02 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3A8384009A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A8384009A
+ helo=sea.source.kernel.org; envelope-from=hawk@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AAE9B810CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AAE9B810CA
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3A8384009A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AAE9B810CA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:59:02 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 00EE44459B;
- Wed, 18 Feb 2026 10:13:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D708EC2BC9E;
- Wed, 18 Feb 2026 10:13:33 +0000 (UTC)
-Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1vseYm-00000000M4p-0GPz; Wed, 18 Feb 2026 11:13:32 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Jonathan Corbet <corbet@lwn.net>,
- Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- Shuah Khan <skhan@linuxfoundation.org>
-Date: Wed, 18 Feb 2026 11:13:08 +0100
-Message-ID: <45159d8100d22567a592a90769a71a5335f0a085.1771408406.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <cover.1771408406.git.mchehab+huawei@kernel.org>
-References: <cover.1771408406.git.mchehab+huawei@kernel.org>
+ by sea.source.kernel.org (Postfix) with ESMTP id F00B34359D;
+ Wed, 18 Feb 2026 10:59:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7038CC19423;
+ Wed, 18 Feb 2026 10:58:54 +0000 (UTC)
+Message-ID: <cd3d6e59-c103-4279-8e01-8792a78981c3@kernel.org>
+Date: Wed, 18 Feb 2026 11:58:52 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Stanislav Fomichev <stfomichev@gmail.com>,
+ Jesse Brandeburg <jbrandeburg@cloudflare.com>,
+ Arthur Fabre <arthur@arthurfabre.com>
+Cc: Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski
+ <kuba@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Andrii Nakryiko <andrii@kernel.org>, Martin KaFai Lau
+ <martin.lau@linux.dev>, Eduard Zingerman <eddyz87@gmail.com>,
+ Song Liu <song@kernel.org>, Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jakub Sitnicki <jakub@cloudflare.com>, netdev@vger.kernel.org,
+ bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kselftest@vger.kernel.org, kernel-team <kernel-team@cloudflare.com>,
+ Willem Ferguson <wferguson@cloudflare.com>
+References: <20260217-bpf-xdp-meta-rxcksum-v3-0-30024c50ba71@kernel.org>
+ <20260217-bpf-xdp-meta-rxcksum-v3-1-30024c50ba71@kernel.org>
+ <aZUPUwYMRNXSg-eI@mini-arch>
+Content-Language: en-US
+From: Jesper Dangaard Brouer <hawk@kernel.org>
+In-Reply-To: <aZUPUwYMRNXSg-eI@mini-arch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1771409613;
- bh=fvMjJpvYeiR5dsEmac23+IArGmOBOLOmIiyyzQVBvqE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=XCXs+vDn55NbKpqXTFsPi7CJOEdjC9jxLinK6EHOS/f1g9uf/z3PDR5iM8HgJvv2N
- mw6006xk6eMPrrhZWZ3gUeQXlVDshIklV6mSZyA2lgJ13YDwgHo2gn2K8nzXG/bpJP
- n39uFySI2zwLYiZOkjEYdwgNtOW2LtrKhR7rgIWrEZRbzr7rC8K23c/KG2zdDUwpV5
- UOBj0eJUJmFgIO08ARmNG+Siz2Z6OmI5KuPjSBDbx9dowDPlrvTK01Sir9ICF4Ut/c
- aEvWGuUJcbwKyygGrOWVxR2JEgz6iA8qCHMFu5BmbAekRIl1Bf2Y2UDdWBfrOFHzN+
- 45IuDdYQRZx+A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1771412341;
+ bh=ExYM4GllfmADUjEjQoM2UYVUP6BlZRRL6bd+IQoD24U=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=oZpUFL7UbeSg9oxx+5ocBW10Hez4rK8Ywn1GTIJvuvO1VAfuPqKCtELpHKDIxBncs
+ KJ4vtX2edWTa0l5u7iBN93TrkRXf6dVi4M1aAAmJnDiBDDV/QPWh/5YrDIHwGGYx2r
+ aF5bVrkGvkBprxjVeOIVYmgcqx/6TafGUQPuVHur18V6fBZGyu1f6djmo9C2MlaUfv
+ oTZQDU1HbZIQ3syH4WHyc+pQHNJIZu0X/gUbwVmj61uun+juAMQcirK2NsKP4R7B16
+ /BaCu41DMGuoBBTKJk5s3lRe60sThdtIeJJBB1p1XVErSA0FAMGwCIwWqFhihIKxh1
+ E8R3wRzIaiePg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=XCXs+vDn
-Subject: [Intel-wired-lan] [PATCH 38/38] docs: kdoc_output: pick a better
- default for modulename
+ header.a=rsa-sha256 header.s=k20201202 header.b=oZpUFL7U
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 1/5] netlink: specs: Add
+ XDP RX checksum capability to XDP metadata specs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,185 +129,178 @@ X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TAGGED_FROM(0.00)[huawei];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:corbet@lwn.net,m:linux-doc@vger.kernel.org,m:mchehab@kernel.org,m:mchehab+huawei@kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:skhan@linuxfoundation.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[35];
+	ARC_NA(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FREEMAIL_TO(0.00)[gmail.com,cloudflare.com,arthurfabre.com];
+	FORGED_RECIPIENTS(0.00)[m:stfomichev@gmail.com,m:jbrandeburg@cloudflare.com,m:arthur@arthurfabre.com,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:lorenzo@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:kernel-team@cloudflare.com,m:wferguson@cloudflare.com,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[hawk@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FREEMAIL_CC(0.00)[gmail.com,kernel.org,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev,cloudflare.com,vger.kernel.org,lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,self.data:url];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[cloudflare.com:url];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[hawk@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCPT_COUNT_SEVEN(0.00)[9];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 9DFD215532F
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: B8938155B9B
 X-Rspamd-Action: no action
 
-Instead of placing the same data for modulename for all generated
-man pages, use the directory from the filename used to produce
-kernel docs as basis.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- tools/docs/kernel-doc                |  1 -
- tools/lib/python/kdoc/kdoc_output.py | 41 +++++++++++++++++-----------
- 2 files changed, 25 insertions(+), 17 deletions(-)
 
-diff --git a/tools/docs/kernel-doc b/tools/docs/kernel-doc
-index aed09f9a54dd..3a932f95bdf5 100755
---- a/tools/docs/kernel-doc
-+++ b/tools/docs/kernel-doc
-@@ -210,7 +210,6 @@ def main():
-                         help="Enable debug messages")
- 
-     parser.add_argument("-M", "-modulename", "--modulename",
--                        default="Kernel API",
-                         help="Allow setting a module name at the output.")
- 
-     parser.add_argument("-l", "-enable-lineno", "--enable_lineno",
-diff --git a/tools/lib/python/kdoc/kdoc_output.py b/tools/lib/python/kdoc/kdoc_output.py
-index 1e3dc47bc696..44e40a6e8ca6 100644
---- a/tools/lib/python/kdoc/kdoc_output.py
-+++ b/tools/lib/python/kdoc/kdoc_output.py
-@@ -589,7 +589,8 @@ class ManFormat(OutputFormat):
-     ``modulename``
-         Defines the module name to be used at the troff ``.TH`` output.
- 
--        This argument is mandatory.
-+        This argument is optional. If not specified, it will be filled
-+        with the directory which contains the documented file.
- 
-     ``section``
-         Usually a numeric value from 0 to 9, but man pages also accept
-@@ -634,14 +635,21 @@ class ManFormat(OutputFormat):
-         "%m %d %Y",
-     ]
- 
--    def emit_th(self, name):
-+    def emit_th(self, name, args):
-         """Emit a title header line."""
--        name = name.strip()
-+        title = name.strip()
-+        module = self.modulename(args)
- 
--        self.data += f'.TH "{name}" {self.section} "{self.date}" '
--        self.data += f' "{self.modulename}" "{self.manual}"\n'
-+        self.data += f'.TH "{title}" {self.section} "{self.date}" '
-+        self.data += f' "{module}" "{self.manual}"\n'
- 
--    def __init__(self, modulename, section="9", manual="Kernel API Manual"):
-+    def modulename(self, args):
-+        if self._modulename:
-+            return self._modulename
-+
-+        return os.path.dirname(args.fname)
-+
-+    def __init__(self, modulename=None, section="9", manual="Kernel API Manual"):
-         """
-         Creates class variables.
- 
-@@ -651,7 +659,7 @@ class ManFormat(OutputFormat):
- 
-         super().__init__()
- 
--        self.modulename = modulename
-+        self._modulename = modulename
-         self.section = section
-         self.manual = manual
- 
-@@ -685,7 +693,8 @@ class ManFormat(OutputFormat):
-         dtype = args.type
- 
-         if dtype == "doc":
--            return self.modulename
-+            return name
-+#            return os.path.basename(self.modulename(args))
- 
-         if dtype in ["function", "typedef"]:
-             return name
-@@ -762,7 +771,7 @@ class ManFormat(OutputFormat):
- 
-         out_name = self.arg_name(args, name)
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         for section, text in args.sections.items():
-             self.data += f'.SH "{section}"' + "\n"
-@@ -772,7 +781,7 @@ class ManFormat(OutputFormat):
- 
-         out_name = self.arg_name(args, name)
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         self.data += ".SH NAME\n"
-         self.data += f"{name} \\- {args['purpose']}\n"
-@@ -818,7 +827,7 @@ class ManFormat(OutputFormat):
-     def out_enum(self, fname, name, args):
-         out_name = self.arg_name(args, name)
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         self.data += ".SH NAME\n"
-         self.data += f"enum {name} \\- {args['purpose']}\n"
-@@ -851,7 +860,7 @@ class ManFormat(OutputFormat):
-         out_name = self.arg_name(args, name)
-         full_proto = args.other_stuff["full_proto"]
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         self.data += ".SH NAME\n"
-         self.data += f"{name} \\- {args['purpose']}\n"
-@@ -868,11 +877,11 @@ class ManFormat(OutputFormat):
-             self.output_highlight(text)
- 
-     def out_typedef(self, fname, name, args):
--        module = self.modulename
-+        module = self.modulename(args)
-         purpose = args.get('purpose')
-         out_name = self.arg_name(args, name)
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         self.data += ".SH NAME\n"
-         self.data += f"typedef {name} \\- {purpose}\n"
-@@ -882,12 +891,12 @@ class ManFormat(OutputFormat):
-             self.output_highlight(text)
- 
-     def out_struct(self, fname, name, args):
--        module = self.modulename
-+        module = self.modulename(args)
-         purpose = args.get('purpose')
-         definition = args.get('definition')
-         out_name = self.arg_name(args, name)
- 
--        self.emit_th(out_name)
-+        self.emit_th(out_name, args)
- 
-         self.data += ".SH NAME\n"
-         self.data += f"{args.type} {name} \\- {purpose}\n"
--- 
-2.52.0
+On 18/02/2026 02.01, Stanislav Fomichev wrote:
+> On 02/17, Lorenzo Bianconi wrote:
+>> Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
+>> checksum will be use by devices capable of exposing receive checksum
+>> result via bpf_xdp_metadata_rx_checksum().
+>> Moreover, introduce xmo_rx_checksum netdev callback in order to allow
+>> the eBPF program bound to the device to retrieve the RX checksum result
+>> computed by the hw NIC.
+>>
+>> Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+>> ---
+>>   Documentation/netlink/specs/netdev.yaml |  5 +++++
+>>   include/net/xdp.h                       | 13 +++++++++++++
+>>   include/uapi/linux/netdev.h             |  3 +++
+>>   net/core/xdp.c                          | 28 ++++++++++++++++++++++++++++
+>>   tools/include/uapi/linux/netdev.h       |  3 +++
+>>   5 files changed, 52 insertions(+)
+>>
+>> diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/netlink/specs/netdev.yaml
+>> index 596c306ce52b8303b20680ff0cd34d4fd9db0e48..58eda634668a07860447a65d9fc2284839af6244 100644
+>> --- a/Documentation/netlink/specs/netdev.yaml
+>> +++ b/Documentation/netlink/specs/netdev.yaml
+>> @@ -61,6 +61,11 @@ definitions:
+>>           doc: |
+>>             Device is capable of exposing receive packet VLAN tag via
+>>             bpf_xdp_metadata_rx_vlan_tag().
+>> +      -
+>> +        name: checksum
+>> +        doc: |
+>> +          Device is capable of exposing receive checksum result via
+>> +          bpf_xdp_metadata_rx_checksum().
+>>     -
+>>       type: flags
+>>       name: xsk-flags
+>> diff --git a/include/net/xdp.h b/include/net/xdp.h
+>> index aa742f413c358575396530879af4570dc3fc18de..00abb2e1e85514b4080d0e4e6e3b8f5f67f73b61 100644
+>> --- a/include/net/xdp.h
+>> +++ b/include/net/xdp.h
+>> @@ -586,6 +586,10 @@ void xdp_attachment_setup(struct xdp_attachment_info *info,
+>>   			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
+>>   			   bpf_xdp_metadata_rx_vlan_tag, \
+>>   			   xmo_rx_vlan_tag) \
+>> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
+>> +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
+>> +			   bpf_xdp_metadata_rx_checksum, \
+>> +			   xmo_rx_checksum)
+>>   
+>>   enum xdp_rx_metadata {
+>>   #define XDP_METADATA_KFUNC(name, _, __, ___) name,
+>> @@ -643,12 +647,21 @@ enum xdp_rss_hash_type {
+>>   	XDP_RSS_TYPE_L4_IPV6_SCTP_EX = XDP_RSS_TYPE_L4_IPV6_SCTP | XDP_RSS_L3_DYNHDR,
+>>   };
+>>   
+>> +enum xdp_checksum {
+>> +	XDP_CHECKSUM_NONE		= CHECKSUM_NONE,
+>> +	XDP_CHECKSUM_UNNECESSARY	= CHECKSUM_UNNECESSARY,
+>> +	XDP_CHECKSUM_COMPLETE		= CHECKSUM_COMPLETE,
+>> +};
+>> +
+>>   struct xdp_metadata_ops {
+>>   	int	(*xmo_rx_timestamp)(const struct xdp_md *ctx, u64 *timestamp);
+>>   	int	(*xmo_rx_hash)(const struct xdp_md *ctx, u32 *hash,
+>>   			       enum xdp_rss_hash_type *rss_type);
+>>   	int	(*xmo_rx_vlan_tag)(const struct xdp_md *ctx, __be16 *vlan_proto,
+>>   				   u16 *vlan_tci);
+>> +	int	(*xmo_rx_checksum)(const struct xdp_md *ctx,
+>> +				   enum xdp_checksum *ip_summed,
+>> +				   u32 *cksum_meta);
+>>   };
+>>   
+>>   #ifdef CONFIG_NET
+>> diff --git a/include/uapi/linux/netdev.h b/include/uapi/linux/netdev.h
+>> index e0b579a1df4f2126acec6c44c299e97bbbefe640..d20da430cfd57bc26b5ea2f406c27b48d8a81693 100644
+>> --- a/include/uapi/linux/netdev.h
+>> +++ b/include/uapi/linux/netdev.h
+>> @@ -47,11 +47,14 @@ enum netdev_xdp_act {
+>>    *   hash via bpf_xdp_metadata_rx_hash().
+>>    * @NETDEV_XDP_RX_METADATA_VLAN_TAG: Device is capable of exposing receive
+>>    *   packet VLAN tag via bpf_xdp_metadata_rx_vlan_tag().
+>> + * @NETDEV_XDP_RX_METADATA_CHECKSUM: Device is capable of exposing receive
+>> + *   checksum result via bpf_xdp_metadata_rx_checksum().
+>>    */
+>>   enum netdev_xdp_rx_metadata {
+>>   	NETDEV_XDP_RX_METADATA_TIMESTAMP = 1,
+>>   	NETDEV_XDP_RX_METADATA_HASH = 2,
+>>   	NETDEV_XDP_RX_METADATA_VLAN_TAG = 4,
+>> +	NETDEV_XDP_RX_METADATA_CHECKSUM = 8,
+>>   };
+>>   
+>>   /**
+>> diff --git a/net/core/xdp.c b/net/core/xdp.c
+>> index fee6d080ee85fc2d278bfdddfd1365633058ec06..7d1e08d8ab4151ab42c91203def2afafc66d3149 100644
+>> --- a/net/core/xdp.c
+>> +++ b/net/core/xdp.c
+>> @@ -961,6 +961,34 @@ __bpf_kfunc int bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx,
+>>   	return -EOPNOTSUPP;
+>>   }
+>>   
+>> +/**
+>> + * bpf_xdp_metadata_rx_checksum - Read XDP frame RX checksum.
+>> + * @ctx: XDP context pointer.
+>> + * @ip_summed: Return value pointer indicating checksum result.
+>> + * @cksum_meta: Return value pointer indicating checksum result metadata.
+>> + *
+>> + * In case of success, ``ip_summed`` is set to the RX checksum result. Possible
+>> + * values are:
+>> + * ``XDP_CHECKSUM_NONE``
+>> + * ``XDP_CHECKSUM_UNNECESSARY``
+>> + * ``XDP_CHECKSUM_COMPLETE``
+>> + *
+>> + * In case of success, ``cksum_meta`` contains the hw computed checksum value
+>> + * for ``XDP_CHECKSUM_COMPLETE`` or the ``csum_level`` for
+>> + * ``XDP_CHECKSUM_UNNECESSARY``. It is set to 0 for ``XDP_CHECKSUM_NONE``
+> 
+> The only thing I'm still not sure about is the csum_level and whether
+> we need to export it or just start with csum_level=0 and extend later
+> when needed. The rest looks good.
+> 
+> Jesper, Lorenzo mentioned that you might need it? Can you clarify?
+
+At Cloudflare our load-balancer Unimog[1] does GUE (Generic UDP
+Encapsulation) when XDP_TX'ing packets to neighboring servers.
+Thus, I assume we want to know the csum_level, as this is for
+encapsulated packets, right?
+
+Cc Jesse, as he knows more about the hardware and csum_level. To Jesse,
+we need to test how hardware handles our GUE packet format (which is
+slightly modified).
+
+Cc Arthur + Willem, as they knows the details around how Unimog
+currently have to recalc packet checksums in software.  Hopefully this
+patchset can help us avoid doing this in some cases.
+
+--Jesper
+
+  [1] 
+https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/#encapsulation
+  [Patch-0/5] 
+https://lore.kernel.org/all/20260217-bpf-xdp-meta-rxcksum-v3-0-30024c50ba71@kernel.org/
 
