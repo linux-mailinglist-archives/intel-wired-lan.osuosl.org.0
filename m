@@ -2,66 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id EEW3NMqQlWnoSQIAu9opvQ
+	id 6FYBAdCQlWnoSQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:30 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:36 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54B0815524E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:30 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E0D4155284
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Feb 2026 11:13:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9AFF060785;
-	Wed, 18 Feb 2026 10:13:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ui2Vkj9uN-Fg; Wed, 18 Feb 2026 10:13:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A10760767
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771409606;
-	bh=HNxpPsBG1uSxsmaMz1flKr7qwp/l8iK/cH22mfq2uyE=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=KYjSnH4L6Z8VvxrdCgWuk9D7YCipK88BB6IzT8MzO2/T7UnDhzQgKoIE0VwO+cGzp
-	 bDLAZPEl5+ztrOt2V5gIXI5OqxeBHLmLsDyPjh+AP+954B78Cb6ACgb6ckG+2eMACc
-	 n7CCvKqAryIbpHqEL9t05R6HcW/V230Fywjqfbrlsjt+LlFXOTT8Evy/0vLeA2ADke
-	 AFBI78E1VuqMbE3GGFlK9QtI0D62gWH1ZXr/dYRbKbjgjNqc3qUFGy35g6ZOpBLx9d
-	 VuUkaL+rTHGs0mCQGy8ZQHfBvEYBCB7R+hsF+Bscm14VewZGDRu92xpL4kL5IuLjK4
-	 MxdcvE0HF9nAg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3A10760767;
-	Wed, 18 Feb 2026 10:13:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 740C4206
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:22 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 59DFF40757
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F3690407E7;
+	Wed, 18 Feb 2026 10:13:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rntT5P_rsOxW for <intel-wired-lan@lists.osuosl.org>;
+ id MJwBYIOOVZb8; Wed, 18 Feb 2026 10:13:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76B8940755
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1771409608;
+	bh=K2MZ9Mdl5uBgJYO6GWAelelMTHvc+499gC9kY5J6w78=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=HTTg1x66/Ij1lARlLxnZY3CgasdUUNZrtXkGOsw+xmeagEPvKMtfatpdArlwi890K
+	 uugUI7+uXkIYmFmhfx2FUMSl19mLnLzaQbPmDwmK6Cg9tff//GnNzXyi0TV61iXCvl
+	 7jcU7D0Rv4ucUz7KcXmcy2KHojkfJqonJZjpYUgpGfH75IMuadsYmZtEDsCS3kQvKV
+	 LezvMANEzVYX5Nxtx01JwBkc8EfXirSO05qX2Z3DFeAbe0f4doaavRa/D+CaZLXV8f
+	 sKrK6y47ZF9r9vsFEm8mcHOJ29pF870B6TsZfAyYfkiVkfcxa0mGp6kyc9kpM8ZiTd
+	 bhKDg0HpHP50w==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 76B8940755;
+	Wed, 18 Feb 2026 10:13:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 80931206
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:23 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4143A605E9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9kafZO7oPRxo for <intel-wired-lan@lists.osuosl.org>;
  Wed, 18 Feb 2026 10:13:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 70E65406EF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70E65406EF
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 70E65406EF
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=mchehab+huawei@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B0E1F605D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0E1F605D1
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B0E1F605D1
  for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Feb 2026 10:13:21 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 2F40444560;
+ by sea.source.kernel.org (Postfix) with ESMTP id 759024456F;
  Wed, 18 Feb 2026 10:13:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F8EFC19423;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57C01C2BC87;
  Wed, 18 Feb 2026 10:13:21 +0000 (UTC)
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.1)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1vseYZ-00000000LUY-1NFu; Wed, 18 Feb 2026 11:13:19 +0100
+ id 1vseYZ-00000000LW4-2dI7; Wed, 18 Feb 2026 11:13:19 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Jonathan Corbet <corbet@lwn.net>,
  Linux Doc Mailing List <linux-doc@vger.kernel.org>
@@ -70,8 +71,8 @@ Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Randy Dunlap <rdunlap@infradead.org>
-Date: Wed, 18 Feb 2026 11:12:39 +0100
-Message-ID: <4d6cac070e812ba030474b2b814d31b3cdffa0da.1771408406.git.mchehab+huawei@kernel.org>
+Date: Wed, 18 Feb 2026 11:12:40 +0100
+Message-ID: <b283bdb3073ad6396345dda5875571bc47dd6215.1771408406.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <cover.1771408406.git.mchehab+huawei@kernel.org>
 References: <cover.1771408406.git.mchehab+huawei@kernel.org>
@@ -80,22 +81,22 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=kernel.org; s=k20201202; t=1771409601;
- bh=JTYFcIXcwV7BhIZmDYUhOQPoY48Bf1qGF/RzTiHfnbA=;
+ bh=4U9S92uLRAA+mWktHmpbTnn1LtPaRCq0xSK6dVoNpwE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Sj254GgIyuBcb5XoikRrAgXbHGdZGs3odN22SIFqNLjd/14wf0z+iI7mVYs8rxoDs
- +cU85qUL3oHalhO35vgqdhYAgstD9Ptn+OhFqzui/HZcAhInoCK+UnjcdYx64Z6x/M
- TjWdCWjcTbAkhRyyFxoALGSHORs/7zdYIz2mFB+WNWDewvr6OZ5Ymbi7nL4bJfdlYo
- mK8oL/oDwlOxAomY+ZTtYqUwRg0Vm7lk5NUeFmlICVcvaGvjdlAtf/MJNrDAD1pHhL
- xjOmNqBFf7wNzhZHtEHT4oQb/0rXTu5OF6jmpdVNY4GyGxaAzJMPLl0q0BRadB+2yO
- TMZlNX8QAyjiQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=rUD/rytUPezekhvGG4gguYlNKlT0NYLFimevTVRcd45FYlndGdTYGxw8bTV6Jdi2J
+ Mt/PB5/+kNrEnS8Exwz5EhrewWnsXSmeWQl0YqWEnFaT++QZSgWXoQmi0G8KhzgeI3
+ DRQavt8OfkLpJcZzzPPI6IrctkL0RM/8oqgVQHsrsAKv45NyjKZoi+OB9Ic/DoixTv
+ LNl0/2H/4zpAIIq2w3y7cp7+j9JPs1Wr5ZDlHt4BGhbGWrG47oAqeilMOEaUyfHEFP
+ ssHavLBu0u3s+iKiw2MMrbxl6KfBR9N9UmAtvdJTKgKgrLinVnjS0pp7TQ78wLgG9Y
+ tIKQeBIymGc9w==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Sj254GgI
-Subject: [Intel-wired-lan] [PATCH 09/38] docs: kdoc_parser: add some debug
- for variable parsing
+ header.a=rsa-sha256 header.s=k20201202 header.b=rUD/rytU
+Subject: [Intel-wired-lan] [PATCH 10/38] docs: kdoc_parser: don't exclude
+ defaults from prototype
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,13 +112,12 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	TAGGED_FROM(0.00)[huawei];
@@ -130,7 +130,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,infradead.org:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,infradead.org:email,intel.com:email];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
@@ -139,59 +139,36 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCPT_COUNT_SEVEN(0.00)[9];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,huawei];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 54B0815524E
+X-Rspamd-Queue-Id: 4E0D4155284
 X-Rspamd-Action: no action
 
-This is a new parser that we're still fine-tuning. Add some
-extra debug messages to help addressing issues over there.
+If we do that, the defaults won't be parsed.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Acked-by: Randy Dunlap <rdunlap@infradead.org>
 Tested-by: Randy Dunlap <rdunlap@infradead.org>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- tools/lib/python/kdoc/kdoc_parser.py | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ tools/lib/python/kdoc/kdoc_parser.py | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/tools/lib/python/kdoc/kdoc_parser.py b/tools/lib/python/kdoc/kdoc_parser.py
-index abfa693051cb..9559cbfd5e4c 100644
+index 9559cbfd5e4c..d8e96c6c4ebc 100644
 --- a/tools/lib/python/kdoc/kdoc_parser.py
 +++ b/tools/lib/python/kdoc/kdoc_parser.py
-@@ -1034,11 +1034,19 @@ class KernelDoc:
-                 declaration_name = r.group(1)
+@@ -208,7 +208,6 @@ var_xforms = [
+     (KernRe(r"(?://.*)$"), ""),
+     (KernRe(r"(?:/\*.*\*/)"), ""),
+     (KernRe(r";$"), ""),
+-    (KernRe(r"=.*"), ""),
+ ]
  
-             default_val = r.group(2)
-+
-+            self.config.log.debug("Variable proto parser: %s from '%s'",
-+                                  r.groups(), proto)
-+
-         else:
-             r= KernRe(OPTIONAL_VAR_ATTR + r"(?:[\w_]*)?\s+(?:\*+)?(?:[\w_]+)\s*[\d\]\[]*\s*(=.*)?")
- 
-             if r.match(proto):
-                 default_val = r.group(1)
-+
-+        if default_val:
-+            self.config.log.debug("default: '%s'", default_val)
-+
-         if not declaration_name:
-            self.emit_msg(ln,f"{proto}: can't parse variable")
-            return
-@@ -1046,6 +1054,9 @@ class KernelDoc:
-         if default_val:
-             default_val = default_val.lstrip("=").strip()
- 
-+        self.config.log.debug("'%s' variable prototype: '%s', default: %s",
-+                              declaration_name, proto, default_val)
-+
-         self.output_declaration("var", declaration_name,
-                                 full_proto=full_proto,
-                                 default_val=default_val,
+ #
 -- 
 2.52.0
 
