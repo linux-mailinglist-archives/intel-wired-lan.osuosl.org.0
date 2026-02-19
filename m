@@ -2,237 +2,241 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id AOZbIhjvlmngrAIAu9opvQ
+	id cOorLqv7lmkXtQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Feb 2026 12:08:08 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Feb 2026 13:01:47 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 886BD15E2AE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Feb 2026 12:08:03 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CC59C821D8;
-	Thu, 19 Feb 2026 11:08:01 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mQloRZKNoP8J; Thu, 19 Feb 2026 11:08:01 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23383821DA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771499281;
-	bh=0KVR6pmndfmgv+anhJqDZynHSvpKT3UD/+o9guUjTpQ=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ou33QCrB2F0bwbS2pbg+Asn/IUTNBsCqJIGXAWgQvxo6SSB/FQc5UaRNdLOV13qNj
-	 B1zJIQaE/TcJZhfC+JnZ1zMme+7f03mZaSA0v5+C1AuyKG48RzRzuITysodObM9o4j
-	 ik0QTakdEgGkPCEz3I45Wnnd7by0y6q4x1Hnw6yPfezDxxkFy2QRFjkBUjnvoBKhRv
-	 Wdn2QilhUVOpBCTGzFTayM7ghPnEQNwPdVVEjDGuhNXVRcX+ZB47pIoxlQIl4gqWmC
-	 hysk4ZacmNDOCNEYKm0fAkmZiX/+QZp8tC9c2DuSTRDsy4q597JChPzHQ520iwT2a4
-	 6reVgUTU220mw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23383821DA;
-	Thu, 19 Feb 2026 11:08:01 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id A409F206
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 11:07:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9C3515E78D
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Feb 2026 13:01:35 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9570B60D4B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 11:07:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1546160D67;
+	Thu, 19 Feb 2026 12:01:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3f91HVF4Iw23 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Feb 2026 11:07:58 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
+ id zNmCShZqAPQv; Thu, 19 Feb 2026 12:01:33 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 659B260D6E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1771502493;
+	bh=wp7aHvjVulRpovi+Yq3HXeOcFOjSrE+xJk2DfXMwZ/E=;
+	h=Date:From:To:CC:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=9FbUjWb9G2cEzCgb7whB4X2DQuCUDfN7mcawRVCjYwPKwwErlMT7KlfgHhRlu5lHB
+	 3RBSaMZCAZU/opSbws3SFjmK2em6XxRSl1YxnkrBUB1al8spft7yA26mQDOywpnilF
+	 Cih8wCqsH23dBB8SQAi6XFcrK+54aK7UPjTHO2kYSW6HkQnWG+yEk/B1MHBpbyZXw8
+	 tmnAg+drIgiF+dw6OMjEaMgCTPQGZ0BNKTQ+LnDujbiS3prru0dCLmfa5GO7CW3S+m
+	 /+byOdV0koDLE+311prlF1yAvVMlKLKDJqvfzx0at5Da8a70YbpGkvEpMXMB/O9miO
+	 BtIQEze4pNAUg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 659B260D6E;
+	Thu, 19 Feb 2026 12:01:33 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id B5354183
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 12:01:31 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9A91D60C1E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 12:01:31 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2QhodkfGD-J0 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Feb 2026 12:01:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8ABD860C1E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8ABD860C1E
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8ABD860C1E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 11:07:58 +0000 (UTC)
-X-CSE-ConnectionGUID: Damp4FgsSk6E3/k5r+ZVLg==
-X-CSE-MsgGUID: /BoyApUBRMyRC6JtvOTYHA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11705"; a="84032470"
-X-IronPort-AV: E=Sophos;i="6.21,299,1763452800"; d="scan'208,217";a="84032470"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2026 03:07:58 -0800
-X-CSE-ConnectionGUID: 7HDPfN7kRdSglcSWH59Eeg==
-X-CSE-MsgGUID: 0vBE9885Q3+XQN3CPkoh/A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4D49B60C01
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D49B60C01
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4D49B60C01
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Feb 2026 12:01:30 +0000 (UTC)
+X-CSE-ConnectionGUID: undAW47YS2GsoRds+3Zn8w==
+X-CSE-MsgGUID: BwRZ29o5SviS0YjV+91DTw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11705"; a="72682273"
+X-IronPort-AV: E=Sophos;i="6.21,299,1763452800"; d="scan'208";a="72682273"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2026 04:01:29 -0800
+X-CSE-ConnectionGUID: tJmlvT2HRJSJE+ti5jhGRw==
+X-CSE-MsgGUID: A3zq4szqQEWwuWtgQ4yaqQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,299,1763452800"; 
- d="scan'208,217";a="214590185"
-Received: from fmsmsx901.amr.corp.intel.com ([10.18.126.90])
- by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2026 03:07:57 -0800
-Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
- fmsmsx901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.21,299,1763452800"; d="scan'208";a="219021707"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+ by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2026 04:01:28 -0800
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Thu, 19 Feb 2026 03:07:56 -0800
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.2.2562.35; Thu, 19 Feb 2026 04:00:59 -0800
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35 via Frontend Transport; Thu, 19 Feb 2026 03:07:56 -0800
-Received: from PH0PR06CU001.outbound.protection.outlook.com (40.107.208.50) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ 15.2.2562.35 via Frontend Transport; Thu, 19 Feb 2026 04:00:59 -0800
+Received: from PH7PR06CU001.outbound.protection.outlook.com (52.101.201.21) by
+ edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Thu, 19 Feb 2026 03:07:56 -0800
+ 15.2.2562.35; Thu, 19 Feb 2026 04:00:31 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=J5iJCpAia8nzHktoN2UMoZhTl6PmP+9lUp0yw6ypkTMANhDDcguSh3T8YUZy3leM0srjDzMZohSmIw0Yie1eTqQB9+F43ZQL0pYSQwwLxzzcHlqLVV5VBBXCWOSFbkXYtjCYbC/PMK9UxwUpPAWHiris3e1YUoa7s/7186sQSDM5BmgvarOaNh2/a1oOs+JpVrufK+6B85E0s21VaEhC9B9oqrZqcm0Xk4c2tv9Zi+g+3c+dXlcMQ815zhQpchjLW/o3sRLEA6cSDpKBaEO6hj83XpTpWMRQ0IhDQmOk/E3xYsznAYOK4AJzPe2wFJfCJK7r4bZXfKIZnXAyphIuxg==
+ b=I/9tzArZiPZV04CFuT90OQN54tzaUHz3iUp8Q1XBQ7XWTAZT8py4JFVQHcnRL4bj7CT1vly3VdMVqitJOeCMLkiB9o4GuaCwhHG39TBHlRAlvwNfCtb052LAk6eu8xNTXsEfpLSDTE5MWM4NMIyFh4acV9hhJb9Z5VA7YDKC8pI9ZnuuHHncKMtHmiAHmaS1mMf6EM57wjbcq9ikC3Wtp6rcqGZgljucxOKNbbEFLugA3FohPAQSxyLlYauv+nhkNTi07C7Q1b9CcepeIngAFn8v5f+i0rfyRiPtsR8uwj+//IBhyh+zUh2KOYU28MoFljoMhfxcoPy/aTx/RjZmTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0KVR6pmndfmgv+anhJqDZynHSvpKT3UD/+o9guUjTpQ=;
- b=LDVp3s1RNnk903ytvNoGCf1ew9hZxGNIoYDg3/LwW2F/YoENTCs7YXI8ubpIf6y7uqBJznJyoLYp/Yx5FEWptifx/KpbFNZp/4Nx+J9yssnSI+mZj0ABMQKLS6ucctCFpQG+/FBChKmW9CHYrz5r2MORgcFgeK6/cjtt0/u/shMtGssTPJvlc7uXt2Wnk1XjseZgF5sViJRHwpO1fuxS4JAGTvYv+O+UO1iBOtuq66YbTWpJV20KrTx6P9Ens9XrcRyqEWoi0hwrEMbvUPb+ndGaikPLp0I4hhsc6tQ4UpeTTbat387ZRcvza8f3Ap5zXYwlQ3lFUrCrK4zgfVGoBg==
+ bh=wp7aHvjVulRpovi+Yq3HXeOcFOjSrE+xJk2DfXMwZ/E=;
+ b=jCqz8Qh/Ftgo5EZSyM4YHTchMxgnsEWo+iMcpRnS9zl6ZOZoSLKpzWafEwkSX3IYGvsVqhcmEPSwbHDIOx+IDmy1pR6kZ58VpTa6ko4clsSIytVeVOr3CfPUNBbF0nmIg4slWmlhJJPiPaCq3KzCBETvcrOqhLhaHzVtLKnQDhWtNrFK1TMi4Dr+GU7QV6REgm+CEXxvyznz6zzu3D9Nkw1z8XPGXaLtEJNZHzepH1CL7QzIkTVa05132TEnGvcjP4MUD6F4oy5vmWCPKKWKZTBpdiiJAL9w5EyWhjk3DA+5oFdM8wPFh4gKDo1uCERaFzQsuSMK+ndyVSfEKXZOtA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from PH7PR11MB5983.namprd11.prod.outlook.com (2603:10b6:510:1e2::13)
- by IA4PR11MB8962.namprd11.prod.outlook.com (2603:10b6:208:565::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9611.14; Thu, 19 Feb
- 2026 11:07:48 +0000
-Received: from PH7PR11MB5983.namprd11.prod.outlook.com
- ([fe80::4d6a:a025:2e8b:b240]) by PH7PR11MB5983.namprd11.prod.outlook.com
- ([fe80::4d6a:a025:2e8b:b240%4]) with mapi id 15.20.9611.013; Thu, 19 Feb 2026
- 11:07:48 +0000
-From: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
-To: "Oros, Petr" <poros@redhat.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-CC: "Vecera, Ivan" <ivecera@redhat.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, Eric Dumazet <edumazet@google.com>,
- "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- Simon Horman <horms@kernel.org>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, Jakub Kicinski <kuba@kernel.org>, "Paolo
- Abeni" <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net] ice: fix missing dpll
- notification for SW pins
-Thread-Index: AQHcoRu+SWSeDCtdHkmFvH04qxOUw7WJ2aM7
-Date: Thu, 19 Feb 2026 11:07:47 +0000
-Message-ID: <PH7PR11MB59837A2FD52D1DC607352A2CF36BA@PH7PR11MB5983.namprd11.prod.outlook.com>
-References: <20260218211414.1411163-1-poros@redhat.com>
-In-Reply-To: <20260218211414.1411163-1-poros@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH7PR11MB5983:EE_|IA4PR11MB8962:EE_
-x-ms-office365-filtering-correlation-id: cfa22e8f-34a4-4c8b-b16a-08de6fa71d96
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7416014|8096899003|38070700021|7053199007;
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?2b2ow39/QZf7TahoO73jG4NMVQp3CLeGlLJstZKcSH7QeaIbi1+mfbQSDg?=
- =?iso-8859-1?Q?K12hsH/O/f02G5SGBGxOrKw/cJcLISgHt3tJz+Ex8BHOpViz1vfeejkWtV?=
- =?iso-8859-1?Q?9m4tP3bcVSULQfdBSgHHbRf9a8hEIALA2KgrFpNAlpbmnRWuA/83qPFtsN?=
- =?iso-8859-1?Q?gPM72U6SFkG6lL2I+an387VUIHkItIhvaYCsNhZkMExKbf4U5NbhGKirJU?=
- =?iso-8859-1?Q?WIB3QKIa2ZKgaRNw5SaX3FeuloZ/jfwUMBD75uS8MbZo5nvNKNtilc9Skz?=
- =?iso-8859-1?Q?S7Qd377tM8+CkRHD5jWbC8+Plq84uUETkw11Hc7lDZVN/dHNHc8118TDVF?=
- =?iso-8859-1?Q?k4Q68PGvJl0inW87hopQjRl4h+T7se6zyCIUs6+Sxr53BFBXYyUnA99hvz?=
- =?iso-8859-1?Q?MIpjnuBrt3dY9S1StoegNdr35JqkjUw1SH5cBBnvMdlZDC1Ad4p/tonpS6?=
- =?iso-8859-1?Q?XvUAjZoqf213oeMBNZT07nJzA3oHy8Jpw97Emlbf7soIe8iN4lOKlbBMsq?=
- =?iso-8859-1?Q?M3b17xG2ESCGY3QgNCo2nRx39tZixJ5PWal7yo99Qc/xzIlgegMViewK7j?=
- =?iso-8859-1?Q?0AguRfGNy0UfcDu7IfDfsr0WwtNZqBYIN2AvaKA9sPVaJuHreLy7xwmoUX?=
- =?iso-8859-1?Q?qKnhV7YLRx1xCOOjaisTYrfLiYoSaZZVuotjhV5fOrTMPImTGUtzp8aNQQ?=
- =?iso-8859-1?Q?E3sXTa2YUW5e16fsFx+SnEPRx6VtHu66DafT25Pp9Pv70HHt+Dk51Pi/6N?=
- =?iso-8859-1?Q?hodP1sbNhm/PuPyKXMgAhA5MGHps9730QKBCqWQZ+ope11qja+dxfDZeVc?=
- =?iso-8859-1?Q?5mcFukkstM2Idewj8A5LhhUCQo7JrkzBFuVc3HMj8RGO5NxaRAwTGOPPsb?=
- =?iso-8859-1?Q?P+Oda/pUY+dSmix9PG7tPLmWROnQWAb9ZRiT5YCQ+Icd1gonCby+5kwwbV?=
- =?iso-8859-1?Q?cwWCwB4P0nFNfWddVgC2/1bEsMB9+pq76zeeLrJrSZni4nWRk6Zw/7ChBd?=
- =?iso-8859-1?Q?cHzYNsVjNVdF3oo4QWvnLu+ChXCmoC36uVm+3q8yOG/GI6XawYlT5g4HyW?=
- =?iso-8859-1?Q?MabKIaDe98v/QLOqf4okaderDXUsCqzLqm0VNEeS1bYkX8zfCt3Op4oQks?=
- =?iso-8859-1?Q?tsoAA+ZxvzQ6YhK+0ekNFWQGBRkfQ7V1VZXjL4xmlJV5MMY6u80gG00aPC?=
- =?iso-8859-1?Q?wGCJydEOXs+y1qomdndLVC6KKL5R/7uqEuEsFlXtLdSd2bx2sjdVGrP5it?=
- =?iso-8859-1?Q?pKYoeaAl4egNptFpXQ6G1/7szmpTXvSLtrG/P/8gdiEiqLKOWfJpcmXHfE?=
- =?iso-8859-1?Q?LWxWyrkDEZkcmItQrc3BK5tmzPpTn3R9ibpUVirDptv39A8HG2UFnb3Ikw?=
- =?iso-8859-1?Q?Vr11pm6wV0g0gtwxAEOcsaP5cyjA99a1sfc4PcWHtI3+7ET7eQElF2T1lo?=
- =?iso-8859-1?Q?CBqXEPgmVBsHbXcvM2SZSJSkaxK5/e2+KAx9+sjzrSlajrk4rZGW5JvE9N?=
- =?iso-8859-1?Q?jkAAh1K6IIebVTmHrlGjNlwb/7S5RrpxURmPaK9ZAKn12ZG9iCpl4GJoeZ?=
- =?iso-8859-1?Q?PVmFSO2RSDl/f9CgGLuokESvwdBu0i1I28uEXDCVmmePiThs4o0BQ+6f9V?=
- =?iso-8859-1?Q?Vy2+kSCcHcwiLhOuf0UT/xI/pqWmiD3ypRDizd46+K9sEDCtjZ2JDlUnuK?=
- =?iso-8859-1?Q?bUa6MTwY6PI6OUI8Qpo=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH7PR11MB5983.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7416014)(8096899003)(38070700021)(7053199007);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?PlCER7XUoxxBqo9YW8Les6ZcGk1LlHP32kDlo5YTKpjlnH77b92MAgfM2L?=
- =?iso-8859-1?Q?E/QfSIiwm2o30uZ1h/TZy5s7O+ec7JI6ItdzvbpEBXJuJ7EiLaCTZ6wBC8?=
- =?iso-8859-1?Q?n/AY8AQDxkOF1LWBYHDGeGTZrdnrzdQWIZhbJubM5VzhanP4z+C6Ts9MeZ?=
- =?iso-8859-1?Q?P+7g51Pxu0lZofNoL0Z0f0DHCH9irZTOHoJW0dfloIsERdmEYdW/+rwuko?=
- =?iso-8859-1?Q?yA1iHD4a+8e1klH9LLbcL7LLkd7kp0XdT98njUWNn2UOImwLIbgBfhRpzy?=
- =?iso-8859-1?Q?6UfoCKCd2/1iS9VBpCxtrDTvc17qJTDeP931gM+j9Lw+7KllCOKyB8Kyxh?=
- =?iso-8859-1?Q?j8f8XT9hGWVBmRDRsAD6c48sO7qB5KxO6/DwL3Sv27WEWMU+NgM1p7kNvT?=
- =?iso-8859-1?Q?oJuvqtqWBciy73MqOYpA1uwXRytu/Y5vIFuxBirRXGWNWr3NHO6yDbBekC?=
- =?iso-8859-1?Q?QULFx5Oxm8MV4UrEAxXsY83aESEVxb6Ti4sktLWmmUKdmZ5mtxvBQtlQ+c?=
- =?iso-8859-1?Q?aD+yDUZU4hkVf7ugy6gdsEVGJCu/qg/JfQVBM8smR4hG9fdhL1CbLgpVlw?=
- =?iso-8859-1?Q?zcBN8w+MQ0Lm2HPfkQGCxB4/sNYtwv/XNai0sD8F31KSxhlL1Cd5X6FVFh?=
- =?iso-8859-1?Q?2lOMgtiThlOc+QiKgWD/l8Kyr/57VtBgQ3kaaPD6SS7Ua8pq7hHAWo0UeK?=
- =?iso-8859-1?Q?pbkPznpPwU/4bfoxcXImpirOLFg8U4TGgDUZM7DEcf3vNdgkGXuTMRLFfS?=
- =?iso-8859-1?Q?+1tHGwsPKOU5SWMTxlBHrZh4dg8PhpunKCxHKGACixUdpJZDJvUXOMWSfR?=
- =?iso-8859-1?Q?fo1LDGqStP/LhcGbTQ6sm1Hk87L5uk4FETB7zpVtoYmzupf6Lak2EP1sKD?=
- =?iso-8859-1?Q?bIUf2le5MmcHib53m7LXkniqq+MzIl4pD4CTNua5mXaltk85TCtJTAvDLC?=
- =?iso-8859-1?Q?zDIP4ezpvmWSWWCMUZkq1ibl8vfh6vCFGeR5EKawWgPIhDDP4zaADlVV2d?=
- =?iso-8859-1?Q?dQk+mcuupJg/Hm39yv5DueqRSdwm3nqmdLHX15UNLN1Z6Ca+vtXDcBhb73?=
- =?iso-8859-1?Q?m2FC+Xucvc5pR/cnE1WgvlOS4ajbka/KHqfsD4ZUq9duhMZZc2oP2Blem/?=
- =?iso-8859-1?Q?+fDhR/4smMNX2H3HAnsrq58JlI2YSYJlxAbdS53LGO4/vAycEh7GOnV3PP?=
- =?iso-8859-1?Q?uxgGn47FZ4Wk/IIrtFbILnK84iCUbagy0CLQxw7Zexlt0aYK1OTTpWc/jm?=
- =?iso-8859-1?Q?68a4SPTMu2FVi1bvH88plnyAtuKZ0sQX7LwMdm9ZJYE7ZKtqrD11DaIUPA?=
- =?iso-8859-1?Q?S+4Xoq0R36KVRKkyfV1s5415v8u9mo8O1AdwIsc/x7LeWlp/7rGdia+sLI?=
- =?iso-8859-1?Q?q7gKYxb7e+8JBnkcNfKDHZx5A1sVEhmu7TSSo7dtLd6NoJTC3yZMkVsjgM?=
- =?iso-8859-1?Q?jFXUK8L8J7cxbrVahSXfZxiouQf5laDSDjFdIqTx0sBN80aPIxQIk4RC0r?=
- =?iso-8859-1?Q?16GBnsv2dhC2818l1xB4vW2MDcjk7Qt5RAS17phbMnotrGcLpOQ8anr2cs?=
- =?iso-8859-1?Q?LbgyfNOnvMDDECqZrCP5p7i8Y3UaGTCBbxuvEJ3p23tBl3Qr5fXPbV92kc?=
- =?iso-8859-1?Q?1X9wzv27F48+eWeJEJ3RQSp2UyRZU/hRPHLQi5ED4phf8ANb+ZQ1loneON?=
- =?iso-8859-1?Q?Elb6GvjHdFkp1u/GysmG3pRIjp6NNkjzZFEjfzrpAZz47s3YTyR+/EnDz0?=
- =?iso-8859-1?Q?oyDbqT8rcQcT4RXMbS5Oai+mglPJymt9d0DHxQ0NWR+PHDdqWD4OkozpEv?=
- =?iso-8859-1?Q?jtXK2y+BHQ=3D=3D?=
-Content-Type: multipart/alternative;
- boundary="_000_PH7PR11MB59837A2FD52D1DC607352A2CF36BAPH7PR11MB5983namp_"
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ IA1PR11MB7776.namprd11.prod.outlook.com (2603:10b6:208:3f9::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9632.14; Thu, 19 Feb
+ 2026 12:00:28 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d9b3:e942:2686:3cdd]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d9b3:e942:2686:3cdd%6]) with mapi id 15.20.9632.010; Thu, 19 Feb 2026
+ 12:00:26 +0000
+Date: Thu, 19 Feb 2026 13:00:05 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Larysa Zaremba <larysa.zaremba@intel.com>
+CC: <bpf@vger.kernel.org>, Claudiu Manoil <claudiu.manoil@nxp.com>, "Vladimir
+ Oltean" <vladimir.oltean@nxp.com>, Wei Fang <wei.fang@nxp.com>, Clark Wang
+ <xiaoning.wang@nxp.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
+ Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
+ <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@fomichev.me>, "Andrii
+ Nakryiko" <andrii@kernel.org>, Martin KaFai Lau <martin.lau@linux.dev>,
+ "Eduard Zingerman" <eddyz87@gmail.com>, Song Liu <song@kernel.org>, Yonghong
+ Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, Hao Luo
+ <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, Simon Horman
+ <horms@kernel.org>, Shuah Khan <shuah@kernel.org>, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, "Bastien Curutchet (eBPF Foundation)"
+ <bastien.curutchet@bootlin.com>, Tushar Vyavahare
+ <tushar.vyavahare@intel.com>, Jason Xing <kernelxing@tencent.com>, Ricardo
+ =?iso-8859-1?Q?B=2E_Marli=E8re?= <rbm@suse.com>, Eelco Chaudron
+ <echaudro@redhat.com>, Lorenzo Bianconi <lorenzo@kernel.org>, "Toke
+ Hoiland-Jorgensen" <toke@redhat.com>, <imx@lists.linux.dev>,
+ <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <intel-wired-lan@lists.osuosl.org>, <linux-kselftest@vger.kernel.org>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, Dragos Tatulea
+ <dtatulea@nvidia.com>
+Message-ID: <aZb7RZMA+7bxcmrL@boxer>
+References: <20260217132450.1936200-1-larysa.zaremba@intel.com>
+ <20260217132450.1936200-6-larysa.zaremba@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20260217132450.1936200-6-larysa.zaremba@intel.com>
+X-ClientProxiedBy: TL2P290CA0029.ISRP290.PROD.OUTLOOK.COM
+ (2603:1096:950:3::19) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|IA1PR11MB7776:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6204e43a-e1af-469c-1172-08de6fae77d9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?a0Ktb0+1qNZLaRQDM9D5j6TrfUdoBKv2TEh4sAKxij/8Qh0MAIF634qw1Rlu?=
+ =?us-ascii?Q?6yldDEhH5cpl1fKi9TQWc2MA8FhEFmocnMx4ZeVFUTqC/bYOMhrYuHSHAokG?=
+ =?us-ascii?Q?SADwb+Jc5cRVMXvzEUNTzNFJsrIyBEj0TEMZJtwMwYeY36bIisE018dn0vdi?=
+ =?us-ascii?Q?+F5gmAYTAKIaOY2CKBGPftJCoBQ8b81uMTGS38KIh/iX0CZ0fRRkRy73nOVG?=
+ =?us-ascii?Q?947kgohcAHR1MfaoJtLSKwszsUyp494LvvKGE/B8xrDN18jkKCl0n6B+u558?=
+ =?us-ascii?Q?952cH3lhvuLiYCUuG14R1mhJgEXJrVgWtIe3qRa9ZgpxcnVIUeNwBBeLF2+C?=
+ =?us-ascii?Q?R/GVctaqsbQpwIveBwS4AorxDd3l5KTYUC3ouLBgZiRqcahadZuaDXqjsmXp?=
+ =?us-ascii?Q?VvGhv/Xg4a51yD1MQEHeQs/bYViBEnWKhuF77KshV9ho1pbblAObfBgh4orQ?=
+ =?us-ascii?Q?fnOwUJWVQVjs+LZAphfSlXsCRl3EawZoq2omyQFtvbzhmgO15LoAlpsRFZ5v?=
+ =?us-ascii?Q?jHOqXdnb9wyVU6YDLX6Mq2GTjUvDDY10NjxLT6siHu4HQdQ8X8BeiRKnhgMe?=
+ =?us-ascii?Q?MNQOuDgsNJobKUkopa1USyCVH9V2Ymk1HBYsgh24/+HnYAawSxfL8+mclurr?=
+ =?us-ascii?Q?Wgpu3huudMNeSKnnE94iUz1NvP1MPJTdAWo4TwhL6uXxhvHx0lyekz+t5FfA?=
+ =?us-ascii?Q?bWDWsv8hCqFj90bHbQ4GZ0ClXBQPqhqRAKyB56n0X57TW9UIrD2OLq52D/9X?=
+ =?us-ascii?Q?3+++/0NFTlIvGipJAsFGBwe4gQXoTO3MFQvOGa5O8q87pVTNce3OHxlGMnc8?=
+ =?us-ascii?Q?lhR0ypn50cmiwiuFXjuqqDbwWga8TvEn4jJEZE4KrXUegeeC3Y0N+ARqGGep?=
+ =?us-ascii?Q?YLup7mJaRJPFBSPXWZA5yrqYOxHX2j8Urpj0d8gC4OZMgU0l/dJIVUPq+Nzc?=
+ =?us-ascii?Q?7Ic/gzQ18D8RWHaLEGr6eFgy2Dt+BUjahXTq9745isb86TCBnWAQFXpeaOiN?=
+ =?us-ascii?Q?ELmjgmkFA26ZLwzDXMXyFiTKHLEbcxvN+DAZVF808inEjfkeG4DYtO1MyFlq?=
+ =?us-ascii?Q?StlJhfrXOgg6P0SSBJe1QqGlVZVvIYAIklKNfxeMDWTfra4hWY2Mtb3rkhr2?=
+ =?us-ascii?Q?YnzBYEeH/1sexC0xidMXZCxKk/2wJwYnqvgHr8YWyK208MrQVpguDxk0NEr9?=
+ =?us-ascii?Q?zlMDwWKRe28LaDpzoUs8CoM2u0n+5OUzrCxSrHwVid6FVkrh4Of3J73twwMY?=
+ =?us-ascii?Q?QI1OCkZ00Pi1mEgYxUF8t020GmzvA5wazrVJHBG97q8letbeMeudC3vAB2mo?=
+ =?us-ascii?Q?8203eQanZzn8g1bSsxrVcxdEUQQ6cjbC35Z3GiZ0OtDE75MFRRnDB8AcAqzj?=
+ =?us-ascii?Q?QLuY4qIvcs3RypZcm2n4soTfVeRP9/4oMlwO4Lshka7Z7/giB4tnSy3Vj0vu?=
+ =?us-ascii?Q?TI3MwLy4UkFuYXZWI7vaXRmV+7yayj6+efuX8y4y8SSqLqOJG6rwcNT+8pBJ?=
+ =?us-ascii?Q?3e9SESE2AFgkS2+qzntiWHEg7T5LYBGOLb9IyblDP7RyNR4BoKTX64DY+fQC?=
+ =?us-ascii?Q?ZSuyc2RyFVvA4f6sHi4=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IU+LgFBRqM1kMC9EETvGTLzsBJZP+kJur78LaPJyRvOEd/q7Ftd3+/lRZJtb?=
+ =?us-ascii?Q?Kz1Y7OgoJtKc/qpP2/7wmKoxBcT9Nb1unEbyjsciknQzAw7TRejhzbWSo8v/?=
+ =?us-ascii?Q?55GYum+O8DR19gWb3k5C3UEM+YyEEzOJN2QnxscN/q6Yq1IofGH+2pMUHXen?=
+ =?us-ascii?Q?Vmaub/8RrBU/sz6tVdRGQRiaRyydSIvwWldhQG6PZgeaIBRQYE8o9jGLYyJE?=
+ =?us-ascii?Q?NAFLBwAz4hRf3zXjaDz/KLXGInZv1hxubEvdZQPMglPWzizeQWkQ7utvhB/j?=
+ =?us-ascii?Q?MOsDRzeLlk6HQg9voRG3UOOo98eeMbFWd9koqpQgkOpjuYMOVZtaKhTCQ+Dn?=
+ =?us-ascii?Q?3MWrg5P78sACiOQFm1V7TvR9/5QmKDI2Dy3pggE86GX5SM00wpocZ5qCM57y?=
+ =?us-ascii?Q?oBXh3EqEXmWMt5imA1NuTNdOUDa2N7Z+gZZNArbi8yJ4epWTZI8QCA/vs8xz?=
+ =?us-ascii?Q?GWRnCICMD6MyF/ggXVfKdmKIff4vvHpI1xzUmr8pdWYecZiOTYRTuEuQ2khQ?=
+ =?us-ascii?Q?zL2JP2jSKSlgnc3ATG9mwU6R94qR4JmPV2Cx9etxQf6JVyRymjbdFb/76AZa?=
+ =?us-ascii?Q?RtH+I14v5eWcImQVJXEOJbCkq1AT3NUMpFH/gljt0KRWzh7MNUKk7zvn7V9n?=
+ =?us-ascii?Q?788/EhGPT1Ic7gHxuB/IwTsWE0ZnmvXXQdY22yUCD8h/8EncW3W61c/3XJo3?=
+ =?us-ascii?Q?L1kqulDnA3vhq3bVwQbLWWPcBfnh4mbaoJszxC6T7KBWCOAs9nTWIfKa5TgU?=
+ =?us-ascii?Q?Pry3ygvRsvjhxJfyqQFWUDHuuMqc2ojYWaurnvy4autW3h0VyizNYV1GiI1w?=
+ =?us-ascii?Q?LKFpm5S0ckRpCbDZ79YnlYOvVkAJJHW+o0grv6Uy1ficgaTnFY0rrbCzE/YI?=
+ =?us-ascii?Q?qehdAut4sl36Ael0forCVRxuHX63/lyqEIK3SmVr/HkRASQCpPdO7HwYT0Fg?=
+ =?us-ascii?Q?gxB8Ahmtbyrwi2CnG2xVkFBU0APd4pZHbE54OaoT+EwlHMUsl2Y67MzsaLf4?=
+ =?us-ascii?Q?lw3GaUNwruIGDf+UgmbKG9KcP1uaSq2KTF2hCFRSb7olboWiQ9DbohKbNIQr?=
+ =?us-ascii?Q?f6KL17o7dpEiVjlwCUth31ncgWYS9HQtMhWKLnm1WoAIvAqFWX9n6jg7vkTH?=
+ =?us-ascii?Q?J9jhvkUHP4MiBO5oDlN8A7X8myATe6hqAgtgfWwTmYIiMyTziLabM83xaQ1M?=
+ =?us-ascii?Q?LEecGe1ktzniTAySQgXNn0e1Qp+B6D+1tYML1lPfZ33tsT67L249BvcTh8WS?=
+ =?us-ascii?Q?zpk8WCjCtR5GyOyupessiw5nJgckPa99cNNuXXVyH1FHT2miL5BqiEkE/9tV?=
+ =?us-ascii?Q?F4K408+jpooFGukdrE93Zu5oE3/Odas1G/Oaid4c8Uj8KxgFw4ujVlGQ7JV7?=
+ =?us-ascii?Q?eyNLEx5ib5V8Pvbv75inXjtKV5YYQJzYbjiJMesJsY6LzBJQPQGzORODFk05?=
+ =?us-ascii?Q?6bXScpK3FnaIhgV0BTKu/7s2LqIIhNnWFZUJJoGq7ZayqwdVfOjBC8Vu65em?=
+ =?us-ascii?Q?yFZGL2Tv/FZ0o9gIsp8uxXSkNNsGcoZMft0dWQ7MjHjl60DlZmUD3N5etgg9?=
+ =?us-ascii?Q?csx+PQRe3BCYT+H1JC75blTjhvv4KydzDy3khSLWXCPY1Px0ZFDKiaYPvSl+?=
+ =?us-ascii?Q?tc/VgfSWMzh4pf+0N0pyEPeShxI2DAjgne8Mucvfu8ELswuUClc2GsAvJX77?=
+ =?us-ascii?Q?jcK6/9bnGJ+5uKd4eMvFEtf2eWgM7fu6yHk2Ga0y3o29JUsB1GJNdWvRRMah?=
+ =?us-ascii?Q?xjOLyjORZJSGADwglqlcbKvw+KHISro=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6204e43a-e1af-469c-1172-08de6fae77d9
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB5983.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cfa22e8f-34a4-4c8b-b16a-08de6fa71d96
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Feb 2026 11:07:47.9517 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: pBZo8ekobBsfuKaejZxZwizOzbKY9lZUeCMR7txcTZH8j+JofTbLb8TptmOuM7iEbPVBmoiLTuIuYvUS/zwiXXHkTjecmhCLo8Ex4NSMSnM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA4PR11MB8962
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Feb 2026 12:00:26.1636 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: us3ojojYXaPVbYOw6ZqfKzOmGAavwu0YD88nsq5HC30v389sCvUhiM2lVGSTSwgf9HyBpzOj8n7+Fni5zMZX00L1jWy0JZCm7bpqle5wQ8M=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7776
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1771499279; x=1803035279;
- h=from:to:cc:subject:date:message-id:references:
+ t=1771502490; x=1803038490;
+ h=date:from:to:cc:subject:message-id:references:
  in-reply-to:mime-version;
- bh=J7e5YuhK/u9IKR993NCpBkoi4G0PPNYrzWXixnxhs9k=;
- b=KSlDP780zZ7PxGD9UdxTTQKHhxObw3/LdeBZNdSCUUa3aRhdghBAPvbc
- HykXs59rch1mXOsJiIe6oOXZ7j6dc0ryppLMds2xJGpqSTu7zI+to/z24
- F5eLK/Gy+gtV9+09Jfaf/qjyryJwgHCJTyiLQLPLXCrk5wHfAzSRFSFlA
- VC+bnSHIC4ZSHKN7RUDfgzFEABFk9Vy6OPAIOD63hA74tcTHMgdPAqtcc
- N9Ak7hLzzSxA0QMFkD/pufXfoDq8iuZLJKc7my++EslwjnpfS/4FEpQq0
- 3Lv8YSeL58XHl4Ajn/AKusHnU+PwRbm6wQRfv88JELi4lKeSZ6s1oFuyx
- g==;
+ bh=Dkg+jBgGdC84eGuSl15d7awjOHER9bWIrquzPKc/UIE=;
+ b=W+avh9iM3zhVbMjFFWqCyBqqhJR1lQU7hpAC0xW8jBnS3CaEKu2BWVnu
+ CXTxiilGRt2CO/3/p9BT+ITJywc52wyLbgRiZ1XR3wYh82Ta4qzREwEj/
+ kq+LcuqOtd6NhdfC9Xpov9XmVfzjNnJxEJlh7cJP6eBlgF49wr5/AXSuW
+ oDUnj/DjrLMZW9afAyVuUHht5AD0b0VgMbKMSio6cD2nmIUUxHGPQdpgj
+ MPXysq0LYILLG02URqFraFhptUP7WBFzI+Vhw3S0lx329H6jLI8wXnsTR
+ HKTfn38qQ/d29l4psrES3ES4VGd05+RZJwAQ62TExZNptruwCnhps01q+
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KSlDP780
+ header.s=Intel header.b=W+avh9iM
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix missing dpll
- notification for SW pins
+Subject: Re: [Intel-wired-lan] [PATCH bpf v3 5/9] i40e: fix registering XDP
+ RxQ info
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -248,324 +252,189 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.11 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_ALLOW(-1.00)[microsoft.com:s=arcselector10001:i=1];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+	MID_RHS_NOT_FQDN(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	MIME_GOOD(-0.10)[multipart/alternative,text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS(0.00)[m:larysa.zaremba@intel.com,m:bpf@vger.kernel.org,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:horms@kernel.org,m:shuah@kernel.org,m:aleksander.lobakin@intel.com,m:bastien.curutchet@bootlin.com,m:tushar.vyavahare@intel.com,m:kernelxing@tencent.com,m:rbm@suse.com,m:echaudro@redhat.com,m:lorenzo@kernel.org,m:toke@redhat.com,m:imx@lists.linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:dtatulea@nvidia.c
+ om,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:poros@redhat.com,m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:przemyslaw.kitszel@intel.com,m:edumazet@google.com,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:horms@kernel.org,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	RSPAMD_URIBL_FAIL(0.00)[osuosl.org:query timed out];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[piotr.kwapulinski@intel.com,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[14];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RCPT_COUNT_TWELVE(0.00)[43];
+	FORGED_SENDER(0.00)[maciej.fijalkowski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	FROM_NEQ_ENVFROM(0.00)[piotr.kwapulinski@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FREEMAIL_CC(0.00)[vger.kernel.org,nxp.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,intel.com,iogearbox.net,gmail.com,fomichev.me,linux.dev,bootlin.com,tencent.com,suse.com,lists.linux.dev,lists.osuosl.org,nvidia.com];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	NEURAL_HAM(-0.00)[-0.997];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[maciej.fijalkowski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	NEURAL_HAM(-0.00)[-0.993];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:email,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns]
-X-Rspamd-Queue-Id: 886BD15E2AE
+	RSPAMD_EMAILBL_FAIL(0.00)[larysa.zaremba.intel.com:query timed out];
+	MISSING_XM_UA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns]
+X-Rspamd-Queue-Id: A9C3515E78D
 X-Rspamd-Action: no action
 
---_000_PH7PR11MB59837A2FD52D1DC607352A2CF36BAPH7PR11MB5983namp_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+On Tue, Feb 17, 2026 at 02:24:43PM +0100, Larysa Zaremba wrote:
+> Current way of handling XDP RxQ info in i40e has following problems:
+> * when xsk_buff_pool is detached, memory model is not unregistered before
+>   registering a new one, this leads to a dangling xsk_buff_pool in the
+>   memory model table
 
->From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> on behalf of Pe=
-tr Oros <poros@redhat.com>
->Sent: Wednesday, February 18, 2026 10:14 PM
->To: netdev@vger.kernel.org <netdev@vger.kernel.org>
->Cc: Vecera, Ivan <ivecera@redhat.com>; Kitszel, Przemyslaw <przemyslaw.kit=
-szel@intel.com>; Eric Dumazet <edumazet@google.com>; Kubalewski, Arkadiusz =
-<arkadiusz.kubalewski@intel.com>; Andrew Lunn <andrew+netdev@lunn.ch>; Nguy=
-en, Anthony L <anthony.l.nguyen@intel.com>; Simon Horman <horms@kernel.org>=
-; intel-wired-lan@lists.osuosl.org <intel-wired-lan@lists.osuosl.org>; Jaku=
-b Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Mil=
-ler <davem@davemloft.net>; linux-kernel@vger.kernel.org <linux-kernel@vger.=
-kernel.org>
->Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix missing dpll notificat=
-ion for SW pins
->
->ice_dpll_notify_changes() sends dpll_pin_change_ntf() only for the
->direct CGU input pin stored in d->active_input. Software-controlled
->pins (SMA/U.FL) are separate dpll_pin objects that wrap a backing CGU
->input, but they never receive a change notification. As a result,
->userspace consumers such as synce4l that monitor SMA pins via dpll
->netlink never learn when the pin state transitions (e.g. from
->SELECTABLE to CONNECTED), even though 'dpll pin show' reports the
->correct state on demand.
->
->
->When the active input changes, also send dpll_pin_change_ntf() for any
->registered SMA/U.FL input pin whose backing CGU input matches the old
->or new active input.
->
->
->Fixes: 2dd5d03c77e2 ("ice: redesign dpll sma/u.fl pins control")
->Signed-off-by: Petr Oros <poros@redhat.com>
->---
-> drivers/net/ethernet/intel/ice/ice_dpll.c | 18 ++++++++++++++++++
-> 1 file changed, 18 insertions(+)
->
->
->diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ether=
-net/intel/ice/ice_dpll.c
->index c2ad39bfe177db..6f855fe4c78d62 100644
->--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
->+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
->@@ -2470,13 +2470,17 @@ static u64 ice_generate_clock_id(struct ice_pf *pf=
-)
->  */
-> static void ice_dpll_notify_changes(struct ice_dpll *d)
-> {
->+       struct ice_dplls *dplls =3D &d->pf->dplls;
->         bool pin_notified =3D false;
->+       int i;
+What is 'memory model table' in this context?
 
-Please declare within a loop itself
-Piotr
+I believe you are referring to a case where XDP prog is kept alive on
+interface put you close one socket and then bind the other one?
 
---_000_PH7PR11MB59837A2FD52D1DC607352A2CF36BAPH7PR11MB5983namp_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+> * frag_size is not updated when xsk_buff_pool is detached or when MTU is
+>   changed, this leads to growing tail always failing for multi-buffer
+>   packets.
 
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-siz=
-e: 12pt;"></span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;From:&nbsp;Intel-wired-lan &lt;intel-wir=
-ed-lan-bounces@osuosl.org&gt; on behalf of Petr Oros &lt;poros@redhat.com&g=
-t;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;Sent:&nbsp;Wednesday, February 18, 2026 =
-10:14 PM</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;To:&nbsp;netdev@vger.kernel.org &lt;netd=
-ev@vger.kernel.org&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;Cc:&nbsp;Vecera, Ivan &lt;ivecera@redhat=
-.com&gt;; Kitszel, Przemyslaw &lt;przemyslaw.kitszel@intel.com&gt;; Eric Du=
-mazet &lt;edumazet@google.com&gt;; Kubalewski, Arkadiusz &lt;arkadiusz.kuba=
-lewski@intel.com&gt;; Andrew Lunn &lt;andrew+netdev@lunn.ch&gt;; Nguyen,
- Anthony L &lt;anthony.l.nguyen@intel.com&gt;; Simon Horman &lt;horms@kerne=
-l.org&gt;; intel-wired-lan@lists.osuosl.org &lt;intel-wired-lan@lists.osuos=
-l.org&gt;; Jakub Kicinski &lt;kuba@kernel.org&gt;; Paolo Abeni &lt;pabeni@r=
-edhat.com&gt;; David S. Miller &lt;davem@davemloft.net&gt;; linux-kernel@vg=
-er.kernel.org
- &lt;linux-kernel@vger.kernel.org&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;Subject:&nbsp;[Intel-wired-lan] [PATCH i=
-wl-net] ice: fix missing dpll notification for SW pins</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;ice_dpll_notify_changes() sends dpll_pin=
-_change_ntf() only for the</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;direct CGU input pin stored in d-&gt;act=
-ive_input. Software-controlled</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;pins (SMA/U.FL) are separate dpll_pin ob=
-jects that wrap a backing CGU</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;input, but they never receive a change n=
-otification. As a result,</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;userspace consumers such as synce4l that=
- monitor SMA pins via dpll</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;netlink never learn when the pin state t=
-ransitions (e.g. from</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;SELECTABLE to CONNECTED), even though 'd=
-pll pin show' reports the</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;correct state on demand.</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;When the active input changes, also send=
- dpll_pin_change_ntf() for any</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;registered SMA/U.FL input pin whose back=
-ing CGU input matches the old</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;or new active input.</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;Fixes: 2dd5d03c77e2 (&quot;ice: redesign=
- dpll sma/u.fl pins control&quot;)</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;Signed-off-by: Petr Oros &lt;poros@redha=
-t.com&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;---</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp;drivers/net/ethernet/intel/ice/ice=
-_dpll.c | 18 ++++++++++++++++++</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp;1 file changed, 18 insertions(+)</=
-span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;diff --git a/drivers/net/ethernet/intel/=
-ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;index c2ad39bfe177db..6f855fe4c78d62 100=
-644</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;--- a/drivers/net/ethernet/intel/ice/ice=
-_dpll.c</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;+++ b/drivers/net/ethernet/intel/ice/ice=
-_dpll.c</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;@@ -2470,13 +2470,17 @@ static u64 ice_g=
-enerate_clock_id(struct ice_pf *pf)</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp; */</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp;static void ice_dpll_notify_change=
-s(struct ice_dpll *d)</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp;{</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; st=
-ruct ice_dplls *dplls =3D &amp;d-&gt;pf-&gt;dplls;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
-p;&nbsp; bool pin_notified =3D false;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">&gt;+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; in=
-t i;</span></div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<br>
-</div>
-<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
-Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
-s=3D"elementToProof">
-<span class=3D"elementToProof">Please declare within a loop itself</span></=
-div>
-<div style=3D"font-size: 11pt;" class=3D"elementToProof"><span style=3D"fon=
-t-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, Calibri, Helvetic=
-a, sans-serif; color: rgb(0, 0, 0);" class=3D"elementToProof">Piotr</span>
-<br>
-</div>
-</body>
-</html>
+Good catch, i now see that i40e_change_mtu() only does the link flap and
+i40e_free_rx_resources() is not called in this path.
 
---_000_PH7PR11MB59837A2FD52D1DC607352A2CF36BAPH7PR11MB5983namp_--
+> 
+> Couple XDP RxQ info registering with buffer allocations and unregistering
+> with cleaning the ring.
+> 
+> Fixes: a045d2f2d03d ("i40e: set xdp_rxq_info::frag_size")
+> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 34 ++++++++++++---------
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c |  5 +--
+>  2 files changed, 22 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index d3bc3207054f..eaa5b65e6daf 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -3577,18 +3577,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  	if (ring->vsi->type != I40E_VSI_MAIN)
+>  		goto skip;
+>  
+> -	if (!xdp_rxq_info_is_reg(&ring->xdp_rxq)) {
+> -		err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+> -					 ring->queue_index,
+> -					 ring->q_vector->napi.napi_id,
+> -					 ring->rx_buf_len);
+> -		if (err)
+> -			return err;
+> -	}
+> -
+>  	ring->xsk_pool = i40e_xsk_pool(ring);
+>  	if (ring->xsk_pool) {
+> -		xdp_rxq_info_unreg(&ring->xdp_rxq);
+>  		ring->rx_buf_len = xsk_pool_get_rx_frame_size(ring->xsk_pool);
+>  		err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+>  					 ring->queue_index,
+> @@ -3600,17 +3590,23 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  						 MEM_TYPE_XSK_BUFF_POOL,
+>  						 NULL);
+>  		if (err)
+> -			return err;
+> +			goto unreg_xdp;
+>  		dev_info(&vsi->back->pdev->dev,
+>  			 "Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring %d\n",
+>  			 ring->queue_index);
+>  
+>  	} else {
+> +		err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+> +					 ring->queue_index,
+> +					 ring->q_vector->napi.napi_id,
+> +					 ring->rx_buf_len);
+> +		if (err)
+> +			return err;
+>  		err = xdp_rxq_info_reg_mem_model(&ring->xdp_rxq,
+>  						 MEM_TYPE_PAGE_SHARED,
+>  						 NULL);
+>  		if (err)
+> -			return err;
+> +			goto unreg_xdp;
+>  	}
+>  
+>  skip:
+> @@ -3648,7 +3644,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  		dev_info(&vsi->back->pdev->dev,
+>  			 "Failed to clear LAN Rx queue context on Rx ring %d (pf_q %d), error: %d\n",
+>  			 ring->queue_index, pf_q, err);
+> -		return -ENOMEM;
+> +		err = -ENOMEM;
+> +		goto unreg_xdp;
+>  	}
+>  
+>  	/* set the context in the HMC */
+> @@ -3657,7 +3654,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  		dev_info(&vsi->back->pdev->dev,
+>  			 "Failed to set LAN Rx queue context on Rx ring %d (pf_q %d), error: %d\n",
+>  			 ring->queue_index, pf_q, err);
+> -		return -ENOMEM;
+> +		err = -ENOMEM;
+> +		goto unreg_xdp;
+>  	}
+>  
+>  	/* configure Rx buffer alignment */
+> @@ -3665,7 +3663,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  		if (I40E_2K_TOO_SMALL_WITH_PADDING) {
+>  			dev_info(&vsi->back->pdev->dev,
+>  				 "2k Rx buffer is too small to fit standard MTU and skb_shared_info\n");
+> -			return -EOPNOTSUPP;
+> +			err = -EOPNOTSUPP;
+> +			goto unreg_xdp;
+>  		}
+>  		clear_ring_build_skb_enabled(ring);
+>  	} else {
+> @@ -3695,6 +3694,11 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>  	}
+>  
+>  	return 0;
+> +unreg_xdp:
+> +	if (ring->vsi->type == I40E_VSI_MAIN)
+> +		xdp_rxq_info_unreg(&ring->xdp_rxq);
+> +
+> +	return err;
+>  }
+>  
+>  /**
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> index cc0b9efc2637..816179c7e271 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> @@ -1470,6 +1470,9 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
+>  	if (!rx_ring->rx_bi)
+>  		return;
+>  
+> +	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
+> +		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+> +
+>  	if (rx_ring->xsk_pool) {
+>  		i40e_xsk_clean_rx_ring(rx_ring);
+>  		goto skip_free;
+> @@ -1527,8 +1530,6 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
+>  void i40e_free_rx_resources(struct i40e_ring *rx_ring)
+>  {
+>  	i40e_clean_rx_ring(rx_ring);
+> -	if (rx_ring->vsi->type == I40E_VSI_MAIN)
+> -		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+>  	rx_ring->xdp_prog = NULL;
+>  	kfree(rx_ring->rx_bi);
+>  	rx_ring->rx_bi = NULL;
+> -- 
+> 2.52.0
+> 
