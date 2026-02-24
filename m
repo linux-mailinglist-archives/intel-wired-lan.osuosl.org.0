@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id QK3sL1ATnml+TQQAu9opvQ
+	id gO5eI2cTnml+TQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 22:08:32 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 22:08:55 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C3FC18C984
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 22:08:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2572C18C994
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 22:08:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E5654845AB;
-	Tue, 24 Feb 2026 21:08:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9B7A6845B1;
+	Tue, 24 Feb 2026 21:08:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eBah-5Q3XdF6; Tue, 24 Feb 2026 21:08:29 +0000 (UTC)
+ id s_2m8RuxEKXC; Tue, 24 Feb 2026 21:08:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6AA928228D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1AE5D8228D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771967309;
-	bh=LOPgYoP26GoGh4RTj0T66BhDNOSe1m7SVuI74TlDlr4=;
+	s=default; t=1771967333;
+	bh=YWKOEY4/b8YlFZx8gm+pqM2QTtVFquwY26TX8gM22Do=;
 	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=GNz36kM8D2y9Sr+rfcMzwgl/lihUug2C87wzxNGenNn6kemS/YZxpUbnmORciqcKW
-	 2+IYp3g3fmO6BCHE3jiXekJFI1oObvg/ubDL58DxLbNKRtJPBum5XWzYWO/wMlNdMw
-	 9vkUKsNVdRSjUDtkt/Jg67x2F0QXXquKRwnbcvdSWjU7QjTGTo+UL9U+IQTVSX2S5h
-	 zFSWgTe2jnZjbBhQ19fqFLkrdE68PYs1lbtEKo+mrss1mnDpIT04Xl59tMXbA3SINf
-	 tfFJsGvARM4ZblvmVgAGln4QNnpYKykgmT4eyRnYb4WzGa+rqjPk/U5PgXX99FMrGY
-	 GdV56pJgqh2VQ==
+	b=kOJn8E+En5VdMR+nAuz7q1JOQQJHYdnxBXg2MQb55/APZG4SE2hYzRah+Of9zKzD9
+	 zE0oXznmriGDcCu7eWRCifm27h0qnARpg4SVPHRAyTA88L9Wjo08vajt8zaQJ4NUG2
+	 zLKBiTca5hRbouEU5+n6oIYvDHVzyi5upGyFg11XTT/i0wICnQJAxj6NdApoJ47bZ9
+	 V2KwLWbmBQtRnIWtgtBIKkwT9mj+QekO4cBthKEaKQZc61ctOUKtumyLc4xwX4pM3H
+	 sG8cjpT+yqiuxrLdRMA41oKE9npc1xFxXCidOvM+c72lyRGfgQwT5vs6qI1+FpKSMg
+	 VrbAm7VghPpbw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6AA928228D;
-	Tue, 24 Feb 2026 21:08:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1AE5D8228D;
+	Tue, 24 Feb 2026 21:08:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id B7A9D1B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 402CA1B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D88741E0F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 25FF58224D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2qMz120U1rDw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Feb 2026 21:08:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zKI8hGVyo2ZZ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Feb 2026 21:08:51 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org ED17741DF4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED17741DF4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 23B658221A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 23B658221A
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id ED17741DF4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:26 +0000 (UTC)
-X-CSE-ConnectionGUID: 73TBB/U4S3G0vUs36lkyBg==
-X-CSE-MsgGUID: eQZ7TAGBQtCHQorbvFHdVw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="72967954"
-X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="72967954"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 23B658221A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 21:08:50 +0000 (UTC)
+X-CSE-ConnectionGUID: ADO7eA/aTW2Tm+sxNPUHFg==
+X-CSE-MsgGUID: 2f/uCg8aRB+vxdpVrNTcFA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="72967988"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="72967988"
 Received: from fmviesa009.fm.intel.com ([10.60.135.149])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2026 13:08:26 -0800
-X-CSE-ConnectionGUID: hFqcFEXrRYqb6ew2ymxhvw==
-X-CSE-MsgGUID: qXrn6hXuQXiWMqxckTAqtA==
+ 24 Feb 2026 13:08:50 -0800
+X-CSE-ConnectionGUID: BBVJnObmTf6dX3BrMB6C6A==
+X-CSE-MsgGUID: /P93JMUTRVaUi63HmbNT1A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="213224711"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="213224721"
 Received: from vcostago-desk1.jf.intel.com (HELO vcostago-desk1)
  ([10.88.27.144])
  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2026 13:08:25 -0800
+ 24 Feb 2026 13:08:50 -0800
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: Mika Westerberg <mika.westerberg@linux.intel.com>,
  linux-pci@vger.kernel.org
@@ -83,34 +83,35 @@ Cc: intel-wired-lan@lists.osuosl.org, Bjorn Helgaas <bhelgaas@google.com>,
  Vitaly Lifshits <vitaly.lifshits@intel.com>, Ilpo =?utf-8?Q?J=C3=A4rvinen?=
  <ilpo.jarvinen@linux.intel.com>, Dima Ruinskiy <dima.ruinskiy@intel.com>,
  Mika Westerberg <mika.westerberg@linux.intel.com>
-In-Reply-To: <20260224111044.3487873-3-mika.westerberg@linux.intel.com>
+In-Reply-To: <20260224111044.3487873-4-mika.westerberg@linux.intel.com>
 References: <20260224111044.3487873-1-mika.westerberg@linux.intel.com>
- <20260224111044.3487873-3-mika.westerberg@linux.intel.com>
-Date: Tue, 24 Feb 2026 13:08:25 -0800
-Message-ID: <87pl5t7sty.fsf@intel.com>
+ <20260224111044.3487873-4-mika.westerberg@linux.intel.com>
+Date: Tue, 24 Feb 2026 13:08:49 -0800
+Message-ID: <87ldgh7sta.fsf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1771967307; x=1803503307;
+ t=1771967331; x=1803503331;
  h=from:to:cc:subject:in-reply-to:references:date:
  message-id:mime-version;
- bh=AQXanRAmXg0HtIipy0nniHzibAhiwalzJZWGFknrYJY=;
- b=jmnRGHO0f1oqD77Yl3aeEbmr27KrAeOfEy1RszuV2C/SZ/7u2ztRlqYF
- 5oZ1nMs420j7+UuOaLZfoFuFMJsJYiELtUS0XnFEycT42EzcNQrm9Jf3u
- rfmBUS4N5FL2Mkm7jNjPSomnhrx/JvFNc98a0dxr3zHQOyuFecG4rpOAX
- Vqufv/TN1OxlGdaEFKvkkAmR4ElnNq/MikZln8UWHyvJ/KhLA9K/6mh/H
- 6nYYrfK5mlQkc9asncbMbQIXjgDv2Pp/QCZsCIwnizibpacfREWzjgiPC
- iqYooCtHYvjieDnTIsJ59OzP/eRJxl+jN+WekfKrJ5lkxJIXUoPEynXch
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=yZVE3IFGLgSzwdJm/9yVkBOGWvu/M2sKhlEwe2Wr6m0=;
+ b=MfUtpisbAQxtgqIkFAkVLRp4Vs5ahk6e2jvFeYrsf6l6rtYCRqcSkQXm
+ KwgYafyR6RNS8uJ0Y77MdGQ0IcJadAV1l1bi8utBtjAsGtpVuugls7/+e
+ l35GIgM3l1gJEDO98EUYJkAzgtfa597DqYYolqgZfBuEze4sQxCiEiUvh
+ JSFhK5lwTXQPbLdRqagFPJHsYzNmZNxLCd0YB+UlaaF5JaSLMC6bGL08U
+ 5e7cbhyB4NN/I15u8opgeSpiU3uR26oU96hh38IKWJvz9ildgp81p4vKB
+ ETkN1Diju/Sb/ZcOaDhjJEyzZAf73lRg1eG+nVlzS7DYQyTynjuGucxgx
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jmnRGHO0
-Subject: Re: [Intel-wired-lan] [PATCH 2/5] igc: Let the PCI core deal with
- the PM resume flow
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=MfUtpisb
+Subject: Re: [Intel-wired-lan] [PATCH 3/5] igc: Don't reset the hardware on
+ suspend path
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -154,28 +155,33 @@ X-Spamd-Result: default: False [1.29 / 15.00];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[vinicius.gomes@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.946];
+	NEURAL_HAM(-0.00)[-0.959];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 4C3FC18C984
+X-Rspamd-Queue-Id: 2572C18C994
 X-Rspamd-Action: no action
 
 Mika Westerberg <mika.westerberg@linux.intel.com> writes:
 
-> Currently igc driver calls pci_set_power_state() and pci_restore_state()
-> and the like to bring the device back from low power states. However,
-> PCI core handles all this on behalf of the driver. Furthermore with PTM
-> enabled the PCI core re-enables it on resume but the driver calls
-> pci_restore_state() which ends up disabling it again.
+> Commit c01163dbd1b8 ("PCI/PM: Always disable PTM for all devices during
+> suspend") made the PCI core to suspend (disable) PTM before driver
+> suspend hooks are called. In case of igc what happens is that on suspend
+> path PCI core calls pci_suspend_ptm() then igc suspend hook that calls
+> igc_down() that ends up calling igc_ptp_reset() (which according to the
+> comment is actually needed for re-enabling the device). Anyways that
+> function also poll IGC_PTM_STAT that will end up timing out because PTM
+> is already disabled:
 >
-> For this reason let the PCI core handle the common PM resume flow.
+>   [  160.716119] igc 0000:03:00.0 enp3s0: Timeout reading IGC_PTM_STAT register
+>
+> There should be no reason resetting the hardware on suspend path so fix
+> this by avoiding the reset.
 >
 > Signed-off-by: Mika Westerberg <mika.westerberg@linux.intel.com>
-> Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
 > ---
 
 Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
