@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iGSKBkaHnWnBQQQAu9opvQ
+	id cC2JLkyHnWnBQQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 12:11:02 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 12:11:08 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 874E5185EA8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 12:11:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 49757185EC0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 12:11:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AA49D41BFE;
-	Tue, 24 Feb 2026 11:10:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9C5CB41C89;
+	Tue, 24 Feb 2026 11:11:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ihqdkpuawQAJ; Tue, 24 Feb 2026 11:10:55 +0000 (UTC)
+ id mqK-CoqTxuii; Tue, 24 Feb 2026 11:10:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C48F841C03
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C809E41C8A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771931455;
-	bh=BOZoNURdojCWNqQouRo1fktb60unT+XnMWA9Ov8f8dA=;
+	s=default; t=1771931459;
+	bh=l7p5UPPOSrNDIxlBHSX4/hAAd/Wjzwd/FOq7KnYJIrA=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=lv7O8slEWzhU+OV8aFMq3qG03/UnsftZ1x6zP9wCIq0WvBLnGRIjIMnZdHbkliOer
-	 HeZsH2XD0AgQyDb/Me4iDkUdp/7GLxd2hxTp5SLZIr+36tBr7m51mfBJZkGLhaqpOw
-	 SmAzXr8jeE1knXaZ2Tl97K5wOfCGo9xji6v8nGzhWrPhRTZUzRlSfjWofymvXPR/Pq
-	 YyeJeHnlC0UHc9EiIg19qhu73rUy0nzl7pN4/H8LNvW6V032vKXxsIjq+iF1yaCF3N
-	 tPYMxmepL+lzI+kRKMOuTZNxQCuZMnwhneUIEMCkPMJtIcatVMBviVIw9Y9xQduFzv
-	 CQgPfqfJj/MpA==
+	b=oOVWotfcsn6/xa0Cq7flCN8VmUnD6W41o9QXkcfGkVG/FzMbJD2sdFQNYtbApCn+3
+	 M+/2pWtVEET5xyf6KiKBdkJmmpXFcDP8Z/o5GmO3YsuahmGeZhtdPpzhg6ajB4Cst0
+	 mvgo/GAs6Veyen37JeA+pniFAi5g45P3WLmJ5OIyD6B+y/1yDC3HIuSkB9FFCl+i9/
+	 qJ1oAlpVd8qbuZ1aeWla3C987E54hQ0MQyALkb8Je0gSgbRqPwvQMF5433kcKSahpj
+	 dzwXf4vsuAB2XYkO1Th2GU2grbgjZefpvUDqWvg+4RT8Q4xHdqY3Th67SbZtUymYR9
+	 rS0b2neJhL1UQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C48F841C03;
-	Tue, 24 Feb 2026 11:10:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C809E41C8A;
+	Tue, 24 Feb 2026 11:10:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 1B371249
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:54 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 14669249
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A0DB541BE9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 8D91F41BF5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CkVRVSUw1kq1 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Feb 2026 11:10:52 +0000 (UTC)
+ id F3wYk2zFQipv for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Feb 2026 11:10:55 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=mika.westerberg@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D9C6B41BED
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D9C6B41BED
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 745CB41BFE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 745CB41BFE
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D9C6B41BED
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:51 +0000 (UTC)
-X-CSE-ConnectionGUID: hmHM0PJ+QRyxHuwR5vfA3w==
-X-CSE-MsgGUID: 6+GNdRIoTjateviodP9+EA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11710"; a="71974271"
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; d="scan'208";a="71974271"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 745CB41BFE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 11:10:55 +0000 (UTC)
+X-CSE-ConnectionGUID: K6uoOOXJTfqKdVQZc9d6Ag==
+X-CSE-MsgGUID: 5IJqYomdSuii62izf0AQ3A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11710"; a="71974283"
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; d="scan'208";a="71974283"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2026 03:10:51 -0800
-X-CSE-ConnectionGUID: EvVGT46fTLGP6NSmhSxlbg==
-X-CSE-MsgGUID: yMJFeygtSkalUPvVEKcnxQ==
+ 24 Feb 2026 03:10:55 -0800
+X-CSE-ConnectionGUID: s1nPANqzQyykN4lynBSZJA==
+X-CSE-MsgGUID: jVhs4F/jSFK92aVLDpzhPg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; d="scan'208";a="216037802"
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; d="scan'208";a="216037820"
 Received: from black.igk.intel.com ([10.91.253.5])
- by orviesa007.jf.intel.com with ESMTP; 24 Feb 2026 03:10:46 -0800
+ by orviesa007.jf.intel.com with ESMTP; 24 Feb 2026 03:10:50 -0800
 Received: by black.igk.intel.com (Postfix, from userid 1001)
- id 25D989E; Tue, 24 Feb 2026 12:10:44 +0100 (CET)
+ id 2989DA1; Tue, 24 Feb 2026 12:10:44 +0100 (CET)
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 To: linux-pci@vger.kernel.org
 Cc: intel-wired-lan@lists.osuosl.org, Bjorn Helgaas <bhelgaas@google.com>,
@@ -86,8 +86,8 @@ Cc: intel-wired-lan@lists.osuosl.org, Bjorn Helgaas <bhelgaas@google.com>,
  Vinicius Costa Gomes <vinicius.gomes@intel.com>,
  Dima Ruinskiy <dima.ruinskiy@intel.com>,
  Mika Westerberg <mika.westerberg@linux.intel.com>
-Date: Tue, 24 Feb 2026 12:10:43 +0100
-Message-ID: <20260224111044.3487873-5-mika.westerberg@linux.intel.com>
+Date: Tue, 24 Feb 2026 12:10:44 +0100
+Message-ID: <20260224111044.3487873-6-mika.westerberg@linux.intel.com>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260224111044.3487873-1-mika.westerberg@linux.intel.com>
 References: <20260224111044.3487873-1-mika.westerberg@linux.intel.com>
@@ -95,25 +95,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1771931452; x=1803467452;
+ t=1771931455; x=1803467455;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=QKZD5okm1xqkM8oQst752FNnt6DZN162fiSZYKIDKYE=;
- b=TDEPcHYdIYNuSIwuf31CTSj28S7yrRst/T0esvuXNml1CYX6eneb21C3
- sc+3Rv8cDvjO9bHyJG80tNeE606DcNVYipOVkvw5E907TX8A4q8Qz7aWS
- ARZ/G1U0xClfFUANRsDoTTzMUPqSiZTh18FShWOJfeHcZ8ubg8zqNgDwx
- unL0KXLNurwBDVU9Riwl909ii/GhEFh+juYhhprRxOUFCiSFN+8rWW140
- xnDO8O1GAu9+Jn57zh5LQVkm/HgWjUNXUz+nXV/3ksDoqwkEFgO+cIPaY
- gzTqQf9E4+EFLNSVpGiXkJgEMnHGo4H7IHuPWBfj78sASqo6sF7NGhTIW
+ bh=Nx43f3p0wM+lMNlN3Kkqeor3DPzX52qzSrgORMn8EsU=;
+ b=nfPJ64NaequjHTuGGQltkN6V0IUFrj1Zj7xhePkduRCXNDszlJJVpj6q
+ VBPY3xKef0KywQhNsA4wn9W4rBuaPUMln+hSe2QM0VR6YqTxTMQ3pVPuG
+ mab398eE0mAXp/x5AvP+rUgrUCt50Wc8Rx5YWaZZhraVhvaSVQQGFme2T
+ B5oCh+Ze6RCOZ16hd72jOV/zSNC7vfpyeDykLsQQ5TQ0cFbZmWmD9RhB9
+ V45AaD9a+y3lK053Z+lGxwifh2Wk/mJmT2F0uUXk3mLDFgP4bw/5z2wGS
+ ugCUcqfcQMmRQn/3inJmy1/0dUctJG+wuCrsi+0mrhfqO2V6M2pjJgeNF
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TDEPcHYd
-Subject: [Intel-wired-lan] [PATCH 4/5] PCI/PTM: Drop granularity parameter
- from pci_enable_ptm()
+ header.a=rsa-sha256 header.s=Intel header.b=nfPJ64Na
+Subject: [Intel-wired-lan] [PATCH 5/5] PCI/PTM: Do not enable PTM
+ automatically for Root and Switch Upstream Ports
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -151,145 +151,220 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,linux.intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[mika.westerberg@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	NEURAL_HAM(-0.00)[-0.872];
+	NEURAL_HAM(-0.00)[-0.877];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 874E5185EA8
+X-Rspamd-Queue-Id: 49757185EC0
 X-Rspamd-Action: no action
 
-This is not used by any of the existing callers so we can simplify the
-function slightly and get rid of that.
+Currently we enable PTM automatically for Root and Switch Upstream Ports
+if the advertised capabilities support the relevant role. However, there
+are few issues with this. First of all if there is no Endpoint that
+actually needs the PTM functionality, this is just wasting link
+bandwidth. There are just a couple of drivers calling pci_ptm_enable()
+in the tree.
+
+Secondly we do the enablement in pci_ptm_init() that is called pretty
+early for the Switch Upstream Port before Downstream Ports are even
+enumerated. Since the Upstream Port configuration affects the whole
+Switch enabling it this early might cause the PTM requests to be sent
+already. We actually do see effect of this:
+
+  pcieport 0000:00:07.1: pciehp: Slot(6-1): Card present
+  pcieport 0000:00:07.1: pciehp: Slot(6-1): Link Up
+  pci 0000:2c:00.0: [8086:5786] type 01 class 0x060400 PCIe Switch Upstream Port
+  pci 0000:2c:00.0: PCI bridge to [bus 00]
+  pci 0000:2c:00.0:   bridge window [io  0x0000-0x0fff]
+  pci 0000:2c:00.0:   bridge window [mem 0x00000000-0x000fffff]
+  pci 0000:2c:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+  ...
+  pci 0000:2c:00.0: PME# supported from D0 D1 D2 D3hot D3cold
+  pci 0000:2c:00.0: PTM enabled, 4ns granularity
+
+At this point we have only enumerated the Switch Upstream Port and now
+PTM got enabled which immediately triggers flood of these:
+
+  pcieport 0000:00:07.1: AER: Multiple Uncorrectable (Non-Fatal) error message received from 0000:00:07.1
+  pcieport 0000:00:07.1: PCIe Bus Error: severity=Uncorrectable (Non-Fatal), type=Transaction Layer, (Receiver ID)
+  pcieport 0000:00:07.1:   device [8086:d44f] error status/mask=00200000/00000000
+  pcieport 0000:00:07.1:    [21] ACSViol                (First)
+  pcieport 0000:00:07.1: AER:   TLP Header: 0x34000000 0x00000052 0x00000000 0x00000000
+  pcieport 0000:00:07.1: AER: device recovery successful
+  pcieport 0000:00:07.1: AER: Uncorrectable (Non-Fatal) error message received from 0000:00:07.1
+
+In the above TLP Header the Requester ID is 0 which rightfully triggers
+an error as we have ACS Source Validation enabled.
+
+For this reason change the PTM enablement to happen at the time
+pci_enable_ptm() is called. It will try to enable PTM first for upstream
+devices before enabling for the Endpoint itself. For disable path we
+need to keep count of how many times PTM has been enabled and disable
+only on the last so change the dev->ptm_enabled to a counter (and rename
+it to dev->ptm_enable_cnt analogous to dev->pci_enable_cnt).
 
 Signed-off-by: Mika Westerberg <mika.westerberg@linux.intel.com>
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c      |  2 +-
- drivers/net/ethernet/intel/idpf/idpf_main.c    |  2 +-
- drivers/net/ethernet/intel/igc/igc_main.c      |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/main.c |  2 +-
- drivers/pci/pcie/ptm.c                         | 11 +++--------
- include/linux/pci.h                            |  4 ++--
- 6 files changed, 9 insertions(+), 14 deletions(-)
+ drivers/pci/pcie/ptm.c | 68 ++++++++++++++++++++++++------------------
+ include/linux/pci.h    |  2 +-
+ 2 files changed, 40 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index ebf48feffb30..b35c4e4ecd2a 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5028,7 +5028,7 @@ static int ice_init(struct ice_pf *pf)
- 	}
- 
- 	if (pf->hw.mac_type == ICE_MAC_E830) {
--		err = pci_enable_ptm(pf->pdev, NULL);
-+		err = pci_enable_ptm(pf->pdev);
- 		if (err)
- 			dev_dbg(dev, "PCIe PTM not supported by PCIe bus/controller\n");
- 	}
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index 0dd741dcfcdb..ab3c409e587b 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -257,7 +257,7 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_free;
- 	}
- 
--	err = pci_enable_ptm(pdev, NULL);
-+	err = pci_enable_ptm(pdev);
- 	if (err)
- 		pci_dbg(pdev, "PCIe PTM is not supported by PCIe bus/controller\n");
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 84f5d92c81cc..291222b06915 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7124,7 +7124,7 @@ static int igc_probe(struct pci_dev *pdev,
- 	if (err)
- 		goto err_pci_reg;
- 
--	err = pci_enable_ptm(pdev, NULL);
-+	err = pci_enable_ptm(pdev);
- 	if (err < 0)
- 		dev_info(&pdev->dev, "PCIe PTM not supported by PCIe bus/controller\n");
- 
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/main.c b/drivers/net/ethernet/mellanox/mlx5/core/main.c
-index fdc3ba20912e..0b94d4ed0ef6 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/main.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/main.c
-@@ -960,7 +960,7 @@ static int mlx5_pci_init(struct mlx5_core_dev *dev, struct pci_dev *pdev,
- 
- 	mlx5_pci_vsc_init(dev);
- 
--	pci_enable_ptm(pdev, NULL);
-+	pci_enable_ptm(pdev);
- 
- 	return 0;
- 
 diff --git a/drivers/pci/pcie/ptm.c b/drivers/pci/pcie/ptm.c
-index 91a598ed534c..2c848ae4f15f 100644
+index 2c848ae4f15f..a41ffd1914de 100644
 --- a/drivers/pci/pcie/ptm.c
 +++ b/drivers/pci/pcie/ptm.c
-@@ -88,7 +88,7 @@ void pci_ptm_init(struct pci_dev *dev)
+@@ -52,6 +52,7 @@ void pci_ptm_init(struct pci_dev *dev)
+ 		return;
  
- 	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
- 	    pci_pcie_type(dev) == PCI_EXP_TYPE_UPSTREAM)
--		pci_enable_ptm(dev, NULL);
-+		pci_enable_ptm(dev);
+ 	dev->ptm_cap = ptm;
++	atomic_set(&dev->ptm_enable_cnt, 0);
+ 	pci_add_ext_cap_save_buffer(dev, PCI_EXT_CAP_ID_PTM, sizeof(u32));
+ 
+ 	pci_read_config_dword(dev, ptm + PCI_PTM_CAP, &cap);
+@@ -85,10 +86,6 @@ void pci_ptm_init(struct pci_dev *dev)
+ 		dev->ptm_responder = 1;
+ 	if (cap & PCI_PTM_CAP_REQ)
+ 		dev->ptm_requester = 1;
+-
+-	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
+-	    pci_pcie_type(dev) == PCI_EXP_TYPE_UPSTREAM)
+-		pci_enable_ptm(dev);
  }
  
  void pci_save_ptm_state(struct pci_dev *dev)
-@@ -182,15 +182,13 @@ static int __pci_enable_ptm(struct pci_dev *dev)
- /**
-  * pci_enable_ptm() - Enable Precision Time Measurement
-  * @dev: PCI device
-- * @granularity: pointer to return granularity
-  *
-- * Enable Precision Time Measurement for @dev.  If successful and
-- * @granularity is non-NULL, return the Effective Granularity.
-+ * Enable Precision Time Measurement for @dev.
-  *
-  * Return: zero if successful, or -EINVAL if @dev lacks a PTM Capability or
-  * is not a PTM Root and lacks an upstream path of PTM-enabled devices.
-  */
--int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
-+int pci_enable_ptm(struct pci_dev *dev)
+@@ -129,26 +126,11 @@ void pci_restore_ptm_state(struct pci_dev *dev)
+ static int __pci_enable_ptm(struct pci_dev *dev)
  {
+ 	u16 ptm = dev->ptm_cap;
+-	struct pci_dev *ups;
+ 	u32 ctrl;
+ 
+ 	if (!ptm)
+ 		return -EINVAL;
+ 
+-	/*
+-	 * A device uses local PTM Messages to request time information
+-	 * from a PTM Root that's farther upstream.  Every device along the
+-	 * path must support PTM and have it enabled so it can handle the
+-	 * messages.  Therefore, if this device is not a PTM Root, the
+-	 * upstream link partner must have PTM enabled before we can enable
+-	 * PTM.
+-	 */
+-	if (!dev->ptm_root) {
+-		ups = pci_upstream_ptm(dev);
+-		if (!ups || !ups->ptm_enabled)
+-			return -EINVAL;
+-	}
+-
+ 	switch (pci_pcie_type(dev)) {
+ 	case PCI_EXP_TYPE_ROOT_PORT:
+ 		if (!dev->ptm_root)
+@@ -193,11 +175,35 @@ int pci_enable_ptm(struct pci_dev *dev)
  	int rc;
  	char clock_desc[8];
-@@ -201,9 +199,6 @@ int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
  
- 	dev->ptm_enabled = 1;
- 
--	if (granularity)
--		*granularity = dev->ptm_granularity;
++	/*
++	 * A device uses local PTM Messages to request time information
++	 * from a PTM Root that's farther upstream. Every device along
++	 * the path must support PTM and have it enabled so it can
++	 * handle the messages. Therefore, if this device is not a PTM
++	 * Root, the upstream link partner must have PTM enabled before
++	 * we can enable PTM.
++	 */
++	if (!dev->ptm_root) {
++		struct pci_dev *parent;
++
++		parent = pci_upstream_ptm(dev);
++		if (!parent)
++			return -EINVAL;
++		/* Enable PTM for the parent */
++		rc = pci_enable_ptm(parent);
++		if (rc)
++			return rc;
++	}
++
++	/* Already enabled? */
++	if (atomic_inc_return(&dev->ptm_enable_cnt) > 1)
++		return 0;
++
+ 	rc = __pci_enable_ptm(dev);
+-	if (rc)
++	if (rc) {
++		atomic_dec(&dev->ptm_enable_cnt);
+ 		return rc;
 -
+-	dev->ptm_enabled = 1;
++	}
+ 
  	switch (dev->ptm_granularity) {
  	case 0:
- 		snprintf(clock_desc, sizeof(clock_desc), "unknown");
+@@ -239,27 +245,31 @@ static void __pci_disable_ptm(struct pci_dev *dev)
+  */
+ void pci_disable_ptm(struct pci_dev *dev)
+ {
+-	if (dev->ptm_enabled) {
++	struct pci_dev *parent;
++
++	if (atomic_dec_and_test(&dev->ptm_enable_cnt))
+ 		__pci_disable_ptm(dev);
+-		dev->ptm_enabled = 0;
+-	}
++
++	parent = pci_upstream_ptm(dev);
++	if (parent)
++		pci_disable_ptm(parent);
+ }
+ EXPORT_SYMBOL(pci_disable_ptm);
+ 
+ /*
+- * Disable PTM, but preserve dev->ptm_enabled so we silently re-enable it on
++ * Disable PTM, but preserve dev->ptm_enable_cnt so we silently re-enable it on
+  * resume if necessary.
+  */
+ void pci_suspend_ptm(struct pci_dev *dev)
+ {
+-	if (dev->ptm_enabled)
++	if (atomic_read(&dev->ptm_enable_cnt))
+ 		__pci_disable_ptm(dev);
+ }
+ 
+ /* If PTM was enabled before suspend, re-enable it when resuming */
+ void pci_resume_ptm(struct pci_dev *dev)
+ {
+-	if (dev->ptm_enabled)
++	if (atomic_read(&dev->ptm_enable_cnt))
+ 		__pci_enable_ptm(dev);
+ }
+ 
+@@ -268,7 +278,7 @@ bool pcie_ptm_enabled(struct pci_dev *dev)
+ 	if (!dev)
+ 		return false;
+ 
+-	return dev->ptm_enabled;
++	return atomic_read(&dev->ptm_enable_cnt);
+ }
+ EXPORT_SYMBOL(pcie_ptm_enabled);
+ 
 diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 1c270f1d5123..8aaa72dcb164 100644
+index 8aaa72dcb164..7e49d35d81a5 100644
 --- a/include/linux/pci.h
 +++ b/include/linux/pci.h
-@@ -1975,11 +1975,11 @@ struct pci_ptm_debugfs {
- };
- 
- #ifdef CONFIG_PCIE_PTM
--int pci_enable_ptm(struct pci_dev *dev, u8 *granularity);
-+int pci_enable_ptm(struct pci_dev *dev);
- void pci_disable_ptm(struct pci_dev *dev);
- bool pcie_ptm_enabled(struct pci_dev *dev);
- #else
--static inline int pci_enable_ptm(struct pci_dev *dev, u8 *granularity)
-+static inline int pci_enable_ptm(struct pci_dev *dev)
- { return -EINVAL; }
- static inline void pci_disable_ptm(struct pci_dev *dev) { }
- static inline bool pcie_ptm_enabled(struct pci_dev *dev)
+@@ -518,7 +518,7 @@ struct pci_dev {
+ 	unsigned int	ptm_root:1;
+ 	unsigned int	ptm_responder:1;
+ 	unsigned int	ptm_requester:1;
+-	unsigned int	ptm_enabled:1;
++	atomic_t	ptm_enable_cnt;		/* pci_enable_ptm() has been called */
+ 	u8		ptm_granularity;
+ #endif
+ #ifdef CONFIG_PCI_MSI
 -- 
 2.50.1
 
