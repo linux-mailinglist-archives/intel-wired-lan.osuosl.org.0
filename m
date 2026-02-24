@@ -2,106 +2,109 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id gGFzGdrjnWnpSQQAu9opvQ
+	id GMZrLp/knWnpSQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:46:02 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:19 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D669918AB21
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:46:01 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 322AF18AB7D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 019464091B;
-	Tue, 24 Feb 2026 17:46:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A801B40AB8;
+	Tue, 24 Feb 2026 17:49:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WbI93zEK60uM; Tue, 24 Feb 2026 17:45:59 +0000 (UTC)
+ id nYBlF4q3Jeol; Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 705BB40AA2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CB76940ABB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771955159;
-	bh=dUv9O9np9kOMO29aaqyHQxJmi3HQI5bDnO+hPFX64H0=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=spKRnHVh3ybnemqYgJgOmuJjX2edUW18MDRXgsEOdJsWIqAiZ/xbotjvouK6Z91Mb
-	 aCCnJYAnhaICZ7vNmsOUyiR8ZkQ0ULDpW5KzY3PfdkDagfttsHdNLilreAiaVDtYP9
-	 DzgHwc/I0Nrj1VaDJP+YfITxCh18MAFkvOPMIdDXdebKZazs2xGzNh/6iNbyQCMc7L
-	 f2T9ledDssia+JIIkpcakmigy3yNBV7/01QknnFseTJKUppBhMKZ+ikYyceGyGMnor
-	 BUAUy2Q2NuCoyTcxGw3XMemw3L+rvwX76Wb3mEFu8ogLOw20k3sbVUggQdLXAwzrEF
-	 KVQ5C1awv0how==
+	s=default; t=1771955356;
+	bh=mB9O0Fhm2js0HGCs5/NTI/zVMfqHv3cgj4dK76wV6M4=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=4UPbFrRqzJu+iOU0Gm44gx36mU6ACB83ZIJhiYAMgI/G0KugtXp8NT8DXHIqm4f/n
+	 h5KkZ4pFmo0w7z4qPhrnMa0G9Yu7WEQCpQyUzwQT5fQlBjhHycJmF6/1klqggonHyn
+	 Z7kCchag+A2Jo/PssKdMOd9JId90eLwNf58w2+WvaWJJ1TzlNqw1kKJo2FTHMQ55EH
+	 vVFpaM0rOKo109l0Tq5ydqMvpQeJAqkHwDIelywNvy7bOkibdU6qFClTvKmjoSk7Bk
+	 W0JExXAg09hTzpTGO4MzLWZwxczxrEw/5mfHZajftEj5toAjSbRKjldH4hkHRdBsVw
+	 l4VvGrEundvrw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 705BB40AA2;
-	Tue, 24 Feb 2026 17:45:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB76940ABB;
+	Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 9114E237
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:45:58 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 3B2BE237
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 829F460893
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:45:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2D79360DD4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j6swmPkbV793 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Feb 2026 17:45:58 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ id eB7yy_Cf-ZtM for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C19CD60876
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C19CD60876
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C19CD60876
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:45:57 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id A7A7E60053;
- Tue, 24 Feb 2026 17:45:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF172C116D0;
- Tue, 24 Feb 2026 17:45:52 +0000 (UTC)
-Date: Tue, 24 Feb 2026 17:45:50 +0000
-From: Simon Horman <horms@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 527FB60DFE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 527FB60DFE
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 527FB60DFE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
+X-CSE-ConnectionGUID: BEFUmKomTbeDBRH/EEUrBg==
+X-CSE-MsgGUID: lhGRHtM/RxayjG0+VF+NwA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="98444495"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="98444495"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Feb 2026 09:49:06 -0800
+X-CSE-ConnectionGUID: cgKAUa66Tuy3HwMMfh0Yuw==
+X-CSE-MsgGUID: x8yiX51ISMWPVFsT1j4Llw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="220088494"
+Received: from newjersey.igk.intel.com ([10.102.20.203])
+ by orviesa003.jf.intel.com with ESMTP; 24 Feb 2026 09:49:02 -0800
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  Andrew Lunn <andrew+netdev@lunn.ch>,
  "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Stanislav Fomichev <sdf@fomichev.me>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
+ Kohei Enju <kohei@enjuk.jp>, Jacob Keller <jacob.e.keller@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Natalia Wochtman <natalia.wochtman@intel.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-Message-ID: <aZ3jzpKs7VcVi-mL@horms.kernel.org>
-References: <20260223095222.3205363-1-larysa.zaremba@intel.com>
- <20260223095222.3205363-4-larysa.zaremba@intel.com>
+ nxne.cnse.osdt.itp.upstreaming@intel.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Tue, 24 Feb 2026 18:46:13 +0100
+Message-ID: <20260224174618.2780516-1-aleksander.lobakin@intel.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260223095222.3205363-4-larysa.zaremba@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1771955156;
- bh=fsV5OtmQB3MCcvqHSs0f1XcawGCHuZ+36al1QPuGjBs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=RtH4k/hE7nEZnU15GOAtp9wp/KmTvWE7qaI5tjRV7a8nRnVZ+X1IjTYIkXdLTybEM
- XV4BW+Dm44O4QMuZfJ5jpAygzMC0QkEJrHcunM/qTlct0GoYCpaxi+08OaQ7g569/i
- h1ywD//a+WKtwOCIwdcd7rM61MKB4DJB+vyFBzf7CdFwCfEYn8vuMcwJd2Hni2VduB
- UxOPjJI0rhih49yRI2cpTA8QIwWSSeqkuw76rlRBlZgwNAqotw8qJWPlyrbnvg4Ei1
- VvCTeVlEe6cN1QXn6QjwSEre9OhQY5lWmbRfBnCaWikfWlND+4qAU5K0ie6cDA/jkT
- p8dp1FlYQYL3A==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1771955354; x=1803491354;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=u4IRNFH9va3OeQ5nrZg8gWMVIxl5+G7rTkHNbJnhzAA=;
+ b=ZtAdMPtvyH+bUFplZXPcj2tdlyRpfaiDsJTmLpKRzeS4EJd87e6qYfiQ
+ 1VuIPI2eERb8utA5z9CndeCswpI3TT+zvt8TfxkUQ9n8/RmRSYwdVkHW5
+ paALcvkX7CpNITWO8sYdflCORcDDRDsDUmug1YNuCrclYGwzMWwjsB9mt
+ OzewJ8AYAENdJ0eZI0FEqigblsR/urgF6P6w2GLuHcIxjT/P5vy8orm5D
+ GPwSH4nQwdfNCeBeY5owCkPYykeOdxmZwUl+sJ9yYn7VLkPnDAG0m2qeB
+ jzzkVc22s8rQHOoAAioG9H17+s1+yR7QuH/P7VDKRkpS1+HmJyHVJqFhU
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=RtH4k/hE
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 03/10] ixgbevf: use libeth in
- Rx processing
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=ZtAdMPtv
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/5] ice: add support for
+ devmem/io_uring Rx and Tx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,131 +120,95 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.29 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	URIBL_MULTI_FAIL(0.00)[intel.com:server fail,horms.kernel.org:server fail,osuosl.org:server fail,smtp4.osuosl.org:server fail];
-	RCVD_TLS_LAST(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,lists.osuosl.org,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,gmail.com,fomichev.me,vger.kernel.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,horms.kernel.org:mid,intel.com:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	FORGED_RECIPIENTS(0.00)[m:larysa.zaremba@intel.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksander.lobakin@intel.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:aleksandr.loktionov@intel.com,m:natalia.wochtman@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:bpf@vger.kernel.org,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_TWELVE(0.00)[16];
+	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.980];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,devmem.py:url];
+	FROM_NEQ_ENVFROM(0.00)[aleksander.lobakin@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	NEURAL_HAM(-0.00)[-0.981];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D669918AB21
+X-Rspamd-Queue-Id: 322AF18AB7D
 X-Rspamd-Action: no action
 
-On Mon, Feb 23, 2026 at 10:52:10AM +0100, Larysa Zaremba wrote:
-> Use page_pool buffers by the means of libeth in the Rx queues, this
-> significantly reduces code complexity of the driver itself.
-> 
-> Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Now that ice uses libeth for managing Rx buffers and supports
+configurable header split, it's ready to get support for sending
+and receiving packets with unreadable (to the kernel) frags.
 
-...
+Extend libeth just a little bit to allow creating PPs with custom
+memory providers and make sure ice works correctly with the netdev
+ops locking. Then add the full set of queue_mgmt_ops and don't
+unmap unreadable frags on Tx completion.
+No perf regressions for the regular flows and no code duplication
+implied.
 
-> @@ -3257,12 +3133,26 @@ static int ixgbevf_setup_all_tx_resources(struct ixgbevf_adapter *adapter)
->  int ixgbevf_setup_rx_resources(struct ixgbevf_adapter *adapter,
->  			       struct ixgbevf_ring *rx_ring)
->  {
-> -	int size;
-> +	struct libeth_fq fq = {
-> +		.count		= rx_ring->count,
-> +		.nid		= NUMA_NO_NODE,
-> +		.type		= LIBETH_FQE_MTU,
-> +		.xdp		= !!rx_ring->xdp_prog,
-> +		.idx		= rx_ring->queue_index,
-> +		.buf_len	= IXGBEVF_RX_PAGE_LEN(rx_ring->xdp_prog ?
-> +						      LIBETH_XDP_HEADROOM :
-> +						      LIBETH_SKB_HEADROOM),
-> +	};
-> +	int ret;
->  
-> -	size = sizeof(struct ixgbevf_rx_buffer) * rx_ring->count;
-> -	rx_ring->rx_buffer_info = vmalloc(size);
-> -	if (!rx_ring->rx_buffer_info)
-> -		goto err;
-> +	ret = libeth_rx_fq_create(&fq, &rx_ring->q_vector->napi);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rx_ring->pp = fq.pp;
-> +	rx_ring->rx_fqes = fq.fqes;
-> +	rx_ring->truesize = fq.truesize;
-> +	rx_ring->rx_buf_len = fq.buf_len;
->  
->  	u64_stats_init(&rx_ring->syncp);
->  
-> @@ -3270,25 +3160,29 @@ int ixgbevf_setup_rx_resources(struct ixgbevf_adapter *adapter,
->  	rx_ring->size = rx_ring->count * sizeof(union ixgbe_adv_rx_desc);
->  	rx_ring->size = ALIGN(rx_ring->size, 4096);
->  
-> -	rx_ring->desc = dma_alloc_coherent(rx_ring->dev, rx_ring->size,
-> +	rx_ring->desc = dma_alloc_coherent(fq.pp->p.dev, rx_ring->size,
->  					   &rx_ring->dma, GFP_KERNEL);
->  
->  	if (!rx_ring->desc)
+Credits to the fbnic developers, which's code helped me understand
+the memory providers and queue_mgmt_ops logics and served as
+a reference.
 
-Hi Larysa,
+Alexander Lobakin (5):
+  libeth: pass Rx queue index to PP when creating a fill queue
+  libeth: handle creating pools with unreadable buffers
+  ice: migrate to netdev ops lock
+  ice: implement Rx queue management ops
+  ice: add support for transmitting unreadable frags
 
-Prior to this patch, if this error condition was met,
-then function would return -ENOMEM. But now it will return 0.
-This does not seem intentional.
+ drivers/net/ethernet/intel/ice/ice_base.h    |   2 +
+ drivers/net/ethernet/intel/ice/ice_lib.h     |  15 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.h    |   2 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h  |   2 +
+ include/net/libeth/rx.h                      |   2 +
+ include/net/libeth/tx.h                      |   2 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c  |   1 +
+ drivers/net/ethernet/intel/ice/ice_base.c    | 259 ++++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  15 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c |   1 +
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 183 ++++++++++---
+ drivers/net/ethernet/intel/ice/ice_main.c    |  70 ++---
+ drivers/net/ethernet/intel/ice/ice_sf_eth.c  |   4 +
+ drivers/net/ethernet/intel/ice/ice_txrx.c    |  43 ++-
+ drivers/net/ethernet/intel/ice/ice_xsk.c     |   4 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c  |  13 +
+ drivers/net/ethernet/intel/libeth/rx.c       |  43 +++
+ 17 files changed, 509 insertions(+), 152 deletions(-)
 
-Flagged by Smatch.
+---
+From v2[0]:
+* rebase on top of net-next-7.0;
+* 3/5: fix [hopefully] all inconsistent locking (Jakub, Tony);
+* 4/5: pick a hotfix from Kohei.
 
->  		goto err;
->  
->  	/* XDP RX-queue info */
-> -	if (xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
-> -			     rx_ring->queue_index, 0) < 0)
-> +	ret = __xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
-> +				 rx_ring->queue_index, 0, rx_ring->truesize);
-> +	if (ret)
->  		goto err;
->  
-> +	xdp_rxq_info_attach_page_pool(&rx_ring->xdp_rxq, fq.pp);
-> +
->  	rx_ring->xdp_prog = adapter->xdp_prog;
->  
->  	return 0;
->  err:
-> -	vfree(rx_ring->rx_buffer_info);
-> -	rx_ring->rx_buffer_info = NULL;
-> +	libeth_rx_fq_destroy(&fq);
-> +	rx_ring->rx_fqes = NULL;
-> +	rx_ring->pp = NULL;
->  	dev_err(rx_ring->dev, "Unable to allocate memory for the Rx descriptor ring\n");
-> -	return -ENOMEM;
-> +	return ret;
->  }
->  
->  /**
+From v1[1]:
+* rebase on top of the latest next-queue;
+* fix a typo 'rxq_ixd' -> 'rxq_idx' (Tony).
 
-...
+Testing hints:
+* regular Rx and Tx for regressions;
+* <kernel root>/tools/testing/selftests/drivers/net/hw/ contains
+  scripts for testing netmem Rx and Tx, namely devmem.py and
+  iou-zcrx.py (read the documentation first).
+
+[0] https://lore.kernel.org/intel-wired-lan/20251204155133.2437621-1-aleksander.lobakin@intel.com
+[1] https://lore.kernel.org/intel-wired-lan/20251125173603.3834486-1-aleksander.lobakin@intel.com
+-- 
+2.53.0
+
