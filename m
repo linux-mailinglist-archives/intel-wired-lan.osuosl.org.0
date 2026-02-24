@@ -2,71 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 4G+GFZ/knWnpSQQAu9opvQ
+	id SPnKIKbknWnpSQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:19 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:26 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77D1918AB7C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E0FB518AB99
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 18:49:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E679060EB4;
-	Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5A14860F1F;
+	Tue, 24 Feb 2026 17:49:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JCis_v1zCxYd; Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
+ id UxNWpAWMakBh; Tue, 24 Feb 2026 17:49:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5234460E17
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C2B0E60ED9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771955356;
-	bh=/C8LEeKvz+WVvl7+48A3N22LOy3NH1jqAsw162gVuz8=;
+	s=default; t=1771955359;
+	bh=INYvMaoLiOhniBfUCXkBpSOwWIudXsMBn4ffkS7ZbVU=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=COGYhk18h2Scma9APw9t6nws+45Ur6c5geSDbXSxrQrRt2yu/8l+3zYF9m6rik2xW
-	 Nz//R9DRjJKpZb4MFDcVBZTSOunlPUUQ8TxXRNcDWNwjDVDevctxIw+QWjum0NOzpW
-	 H9oeVRCIQXa4WUETpd7+liBAhYiWL3xaDkbRFF9px3xvX9W532aT1xraHEppJDENr6
-	 jur/VfT9sW1TXcS7u76d1yiEcvnTmB+XNIwtj8sGHpqGGPvkTj/z/d0fdCC9swqhy0
-	 9PeMWa/2KNEWJV3rqcqyV8u3POiTeMY9NE6fbvbJNid1azo0hvHbjoylQbG6VXWDgi
-	 Cqz+4dxzy5dJw==
+	b=Lcrs1Zfrk6SqA4KkPnbzEq/ucJFlf00DuaOsqXwUAc+P84EFPwrEi22d0rvC+MMlI
+	 KjLMxUwN8SKcHSY59v68WxBA6yrWTcE+k/28QIVqDy8lUsThsxyTAj01FeNpJbjtvV
+	 7gv3mGwXdi5JCBWlMEGmEW7LgUptqch8EwVUeDkNRK2BCEGZs2bDXksx4DSO7TL4rE
+	 KTjgHHPiT/MIe1UoYyETRv1uAOUAoWrLS3Ef67mYwyJaT2KwjzN1eKK9XcKzhhnYMt
+	 G2YfS4cQi61/30iP+AIeNwsRFCfsXRCvvtSaRhGw1Y9FTByWEgffxvLizXkyw0xsWA
+	 HGrN+LwbCAJ5A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5234460E17;
-	Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C2B0E60ED9;
+	Tue, 24 Feb 2026 17:49:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id D605B249
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0EBCC249
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D37F360E17
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5FBEE60DD4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CGrtFOQAm4EE for <intel-wired-lan@lists.osuosl.org>;
+ id 06vwrAENjxH9 for <intel-wired-lan@lists.osuosl.org>;
  Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EA04760DD4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EA04760DD4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A8DA960E03
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A8DA960E03
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EA04760DD4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:13 +0000 (UTC)
-X-CSE-ConnectionGUID: qaifq6m3Sse3+iFEVLfJLg==
-X-CSE-MsgGUID: otP/VaiUQfmenB22zHHFLw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="98444508"
-X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="98444508"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A8DA960E03
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 17:49:14 +0000 (UTC)
+X-CSE-ConnectionGUID: vLb42qm2QqSLbdmMOCWUbA==
+X-CSE-MsgGUID: xMCEqUYhS5aaotZWqgXO2A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="98444525"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="98444525"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Feb 2026 09:49:10 -0800
-X-CSE-ConnectionGUID: RbB2iYdJQHm19K+bCzlcMA==
-X-CSE-MsgGUID: BCoLnusBQcKblh/pZXhz2g==
+ 24 Feb 2026 09:49:14 -0800
+X-CSE-ConnectionGUID: wlcf4D5URwuHL4h1OFyvPg==
+X-CSE-MsgGUID: HMk6XLcnSQayD+v5jryM7g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="220088507"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; d="scan'208";a="220088525"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa003.jf.intel.com with ESMTP; 24 Feb 2026 09:49:06 -0800
+ by orviesa003.jf.intel.com with ESMTP; 24 Feb 2026 09:49:10 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
@@ -80,8 +80,8 @@ Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  nxne.cnse.osdt.itp.upstreaming@intel.com, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Date: Tue, 24 Feb 2026 18:46:14 +0100
-Message-ID: <20260224174618.2780516-2-aleksander.lobakin@intel.com>
+Date: Tue, 24 Feb 2026 18:46:15 +0100
+Message-ID: <20260224174618.2780516-3-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260224174618.2780516-1-aleksander.lobakin@intel.com>
 References: <20260224174618.2780516-1-aleksander.lobakin@intel.com>
@@ -92,23 +92,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1771955354; x=1803491354;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=v81pqgfqLoKxRRvZY6YNw/vEXD12/vAS0CkEOZl6RjU=;
- b=MqlrkldsuZn2ELls83Bn/7pBFZqwx5lVxIvAw9RZrJs0p7OnASAZZXka
- XbfukDwic3I/vprcyoS63NkIPDwKdxN6FG+lDyNWIIA4RdW/YNsjfKtb9
- nKN+0daaPufhR8ADJZPn/u+IdujLf0c55sTX2aClXVffTMbkc8KiOiDUy
- K5Z9Mn86+ndjRB1hCXlAvdIY01cibJJ673QqjzhJ2wfM2EUoNtyUzpt5k
- F0KO+DhGXcjZk1d3t1Ws+SNw3iWlMz3tCFOtQBVUCzN3OjKovOxc4moU+
- xf6WHD2zdyhBXv5d/GV6ybTBTLwYPECCQtMx4Ny5GCToASZNrCyoPPmB9
+ bh=dbnQ/MMu1E+QSK5rCsf9tW1qv5XIaaGwExNh2lKHdx4=;
+ b=I9pcqqRpr3KFpAH5FD7gyiBHsMguGLV8snX8bDecybvi3hU14rmGXyD4
+ jiGC1J0B6akJEt0PK0aDiHlldfIQX52vgfjSR3E5iP1s9G+1nzgja/5bX
+ JnlI+ASe/P2+OGsDXTSzsFpVLTJt+E+sKZX+iURillSk7p44ze5FuDc2k
+ KH2dqNlaCKxUAsc8W8Db1rkbm3JzCulJ0DXg4hzPTcnz8K/J2cboWnQZQ
+ 4lezMJ8CyFBz5F1OFo3bwlTDGwTXCpoSblj6GBOm+1Y45oiushdjQvzB1
+ 6OdGk8C6QwibgQeOWRAmhlp07Q88efFbe0/OhrhLYJFasG4n7z7af3pnn
  w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Mqlrklds
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/5] libeth: pass Rx queue
- index to PP when creating a fill queue
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=I9pcqqRp
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 2/5] libeth: handle creating
+ pools with unreadable buffers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -129,7 +128,7 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
@@ -142,170 +141,123 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:mid,intel.com:email];
 	FROM_NEQ_ENVFROM(0.00)[aleksander.lobakin@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	NEURAL_HAM(-0.00)[-0.988];
+	NEURAL_HAM(-0.00)[-0.987];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 77D1918AB7C
+X-Rspamd-Queue-Id: E0FB518AB99
 X-Rspamd-Action: no action
 
-Since recently, page_pool_create() accepts optional stack index of
-the Rx queue which the pool will be created for. It can then be
-used on control path for stuff like memory providers.
-Add the same field to libeth_fq and pass the index from all the
-drivers using libeth for managing Rx to simplify implementing MP
-support later.
-idpf has one libeth_fq per buffer/fill queue and each Rx queue has
-two fill queues, but since fill queues can never be shared, we can
-store the corresponding Rx queue index there during the
-initialization to pass it to libeth.
+libeth uses netmems for quite some time already, so in order to
+support unreadable frags / memory providers, it only needs to set
+PP_FLAG_ALLOW_UNREADABLE_NETMEM when needed.
+Also add a couple sanity checks to make sure the driver didn't mess
+up the configuration options and, in case when an MP is installed,
+return the truesize always equal to PAGE_SIZE, so that
+libeth_rx_alloc() will never try to allocate frags. Memory providers
+manage buffers on their own and expect 1:1 buffer / HW Rx descriptor
+association.
+
+Bonus: mention in the libeth_sqe_type description that
+LIBETH_SQE_EMPTY should also be used for netmem Tx SQEs -- they
+don't need DMA unmapping.
 
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  2 ++
- include/net/libeth/rx.h                     |  2 ++
- drivers/net/ethernet/intel/iavf/iavf_txrx.c |  1 +
- drivers/net/ethernet/intel/ice/ice_base.c   |  2 ++
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 13 +++++++++++++
- drivers/net/ethernet/intel/libeth/rx.c      |  1 +
- 6 files changed, 21 insertions(+)
+ include/net/libeth/tx.h                |  2 +-
+ drivers/net/ethernet/intel/libeth/rx.c | 42 ++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 4be5b3b6d3ed..a0d92adf11c4 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -748,6 +748,7 @@ libeth_cacheline_set_assert(struct idpf_tx_queue, 64,
-  * @size: Length of descriptor ring in bytes
-  * @dma: Physical address of ring
-  * @q_vector: Backreference to associated vector
-+ * @rxq_idx: stack index of the corresponding Rx queue
-  * @rx_buffer_low_watermark: RX buffer low watermark
-  * @rx_hbuf_size: Header buffer size
-  * @rx_buf_size: Buffer size
-@@ -791,6 +792,7 @@ struct idpf_buf_queue {
- 	dma_addr_t dma;
+diff --git a/include/net/libeth/tx.h b/include/net/libeth/tx.h
+index c3db5c6f1641..a66fc2b3a114 100644
+--- a/include/net/libeth/tx.h
++++ b/include/net/libeth/tx.h
+@@ -12,7 +12,7 @@
  
- 	struct idpf_q_vector *q_vector;
-+	u16 rxq_idx;
- 
- 	u16 rx_buffer_low_watermark;
- 	u16 rx_hbuf_size;
-diff --git a/include/net/libeth/rx.h b/include/net/libeth/rx.h
-index 5d991404845e..3b3d7acd13c9 100644
---- a/include/net/libeth/rx.h
-+++ b/include/net/libeth/rx.h
-@@ -71,6 +71,7 @@ enum libeth_fqe_type {
-  * @xdp: flag indicating whether XDP is enabled
-  * @buf_len: HW-writeable length per each buffer
-  * @nid: ID of the closest NUMA node with memory
-+ * @idx: stack index of the corresponding Rx queue
-  */
- struct libeth_fq {
- 	struct_group_tagged(libeth_fq_fp, fp,
-@@ -88,6 +89,7 @@ struct libeth_fq {
- 
- 	u32			buf_len;
- 	int			nid;
-+	u32			idx;
- };
- 
- int libeth_rx_fq_create(struct libeth_fq *fq, struct napi_struct *napi);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 363c42bf3dcf..d3c68659162b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -771,6 +771,7 @@ int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
- 		.count		= rx_ring->count,
- 		.buf_len	= LIBIE_MAX_RX_BUF_LEN,
- 		.nid		= NUMA_NO_NODE,
-+		.idx		= rx_ring->queue_index,
- 	};
- 	int ret;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index afbff8aa9ceb..1b7d10fad4f2 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -607,6 +607,7 @@ static int ice_rxq_pp_create(struct ice_rx_ring *rq)
- 	struct libeth_fq fq = {
- 		.count		= rq->count,
- 		.nid		= NUMA_NO_NODE,
-+		.idx		= rq->q_index,
- 		.hsplit		= rq->vsi->hsplit,
- 		.xdp		= ice_is_xdp_ena_vsi(rq->vsi),
- 		.buf_len	= LIBIE_MAX_RX_BUF_LEN,
-@@ -629,6 +630,7 @@ static int ice_rxq_pp_create(struct ice_rx_ring *rq)
- 		.count		= rq->count,
- 		.type		= LIBETH_FQE_HDR,
- 		.nid		= NUMA_NO_NODE,
-+		.idx		= rq->q_index,
- 		.xdp		= ice_is_xdp_ena_vsi(rq->vsi),
- 	};
- 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 376050308b06..36e2050dbb04 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -558,6 +558,7 @@ static int idpf_rx_hdr_buf_alloc_all(struct idpf_buf_queue *bufq)
- 		.type	= LIBETH_FQE_HDR,
- 		.xdp	= idpf_xdp_enabled(bufq->q_vector->vport),
- 		.nid	= idpf_q_vector_to_mem(bufq->q_vector),
-+		.idx	= bufq->rxq_idx,
- 	};
- 	int ret;
- 
-@@ -700,6 +701,7 @@ static int idpf_rx_bufs_init_singleq(struct idpf_rx_queue *rxq)
- 		.type		= LIBETH_FQE_MTU,
- 		.buf_len	= IDPF_RX_MAX_BUF_SZ,
- 		.nid		= idpf_q_vector_to_mem(rxq->q_vector),
-+		.idx		= rxq->idx,
- 	};
- 	int ret;
- 
-@@ -760,6 +762,7 @@ static int idpf_rx_bufs_init(struct idpf_buf_queue *bufq,
- 		.hsplit		= idpf_queue_has(HSPLIT_EN, bufq),
- 		.xdp		= idpf_xdp_enabled(bufq->q_vector->vport),
- 		.nid		= idpf_q_vector_to_mem(bufq->q_vector),
-+		.idx		= bufq->rxq_idx,
- 	};
- 	int ret;
- 
-@@ -1919,6 +1922,16 @@ static int idpf_rxq_group_alloc(struct idpf_vport *vport,
- 							LIBETH_RX_LL_LEN;
- 			idpf_rxq_set_descids(rsrc, q);
- 		}
-+
-+		if (!idpf_is_queue_model_split(rsrc->rxq_model))
-+			continue;
-+
-+		for (u32 j = 0; j < rsrc->num_bufqs_per_qgrp; j++) {
-+			struct idpf_buf_queue *bufq;
-+
-+			bufq = &rx_qgrp->splitq.bufq_sets[j].bufq;
-+			bufq->rxq_idx = rx_qgrp->splitq.rxq_sets[0]->rxq.idx;
-+		}
- 	}
- 
- err_alloc:
+ /**
+  * enum libeth_sqe_type - type of &libeth_sqe to act on Tx completion
+- * @LIBETH_SQE_EMPTY: unused/empty OR XDP_TX/XSk frame, no action required
++ * @LIBETH_SQE_EMPTY: empty OR netmem/XDP_TX/XSk frame, no action required
+  * @LIBETH_SQE_CTX: context descriptor with empty SQE, no action required
+  * @LIBETH_SQE_SLAB: kmalloc-allocated buffer, unmap and kfree()
+  * @LIBETH_SQE_FRAG: mapped skb frag, only unmap DMA
 diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/ethernet/intel/libeth/rx.c
-index 62521a1f4ec9..8874b714cdcc 100644
+index 8874b714cdcc..11e6e8f353ef 100644
 --- a/drivers/net/ethernet/intel/libeth/rx.c
 +++ b/drivers/net/ethernet/intel/libeth/rx.c
-@@ -156,6 +156,7 @@ int libeth_rx_fq_create(struct libeth_fq *fq, struct napi_struct *napi)
- 		.order		= LIBETH_RX_PAGE_ORDER,
- 		.pool_size	= fq->count,
- 		.nid		= fq->nid,
-+		.queue_idx	= fq->idx,
- 		.dev		= napi->dev->dev.parent,
- 		.netdev		= napi->dev,
- 		.napi		= napi,
+@@ -6,6 +6,7 @@
+ #include <linux/export.h>
+ 
+ #include <net/libeth/rx.h>
++#include <net/netdev_queues.h>
+ 
+ /* Rx buffer management */
+ 
+@@ -139,9 +140,47 @@ static bool libeth_rx_page_pool_params_zc(struct libeth_fq *fq,
+ 	fq->buf_len = clamp(mtu, LIBETH_RX_BUF_STRIDE, max);
+ 	fq->truesize = fq->buf_len;
+ 
++	/*
++	 * Allow frags only for kernel pages. `fq->truesize == pp->max_len`
++	 * will always fall back to regular page_pool_alloc_netmems()
++	 * regardless of the MTU / FQ buffer size.
++	 */
++	if (pp->flags & PP_FLAG_ALLOW_UNREADABLE_NETMEM)
++		fq->truesize = pp->max_len;
++
+ 	return true;
+ }
+ 
++/**
++ * libeth_rx_page_pool_check_unread - check input params for unreadable MPs
++ * @fq: buffer queue to check
++ * @pp: &page_pool_params for the queue
++ *
++ * Make sure we don't create an invalid pool with full-frame unreadable
++ * buffers, bidirectional unreadable buffers or so, and configure the
++ * ZC payload pool accordingly.
++ *
++ * Return: true on success, false on invalid input params.
++ */
++static bool libeth_rx_page_pool_check_unread(const struct libeth_fq *fq,
++					     struct page_pool_params *pp)
++{
++	if (!netif_rxq_has_unreadable_mp(pp->netdev, pp->queue_idx))
++		return true;
++
++	/* For now, the core stack doesn't allow XDP with unreadable frags */
++	if (fq->xdp)
++		return false;
++
++	/* It should be either a header pool or a ZC payload pool */
++	if (fq->type == LIBETH_FQE_HDR)
++		return !fq->hsplit;
++
++	pp->flags |= PP_FLAG_ALLOW_UNREADABLE_NETMEM;
++
++	return fq->hsplit;
++}
++
+ /**
+  * libeth_rx_fq_create - create a PP with the default libeth settings
+  * @fq: buffer queue struct to fill
+@@ -165,6 +204,9 @@ int libeth_rx_fq_create(struct libeth_fq *fq, struct napi_struct *napi)
+ 	struct page_pool *pool;
+ 	int ret;
+ 
++	if (!libeth_rx_page_pool_check_unread(fq, &pp))
++		return -EINVAL;
++
+ 	pp.dma_dir = fq->xdp ? DMA_BIDIRECTIONAL : DMA_FROM_DEVICE;
+ 
+ 	if (!fq->hsplit)
 -- 
 2.53.0
 
