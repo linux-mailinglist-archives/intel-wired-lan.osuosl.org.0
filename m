@@ -2,91 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 2PaDDANynWmAQAQAu9opvQ
+	id CIcuJMB3nWmAQAQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 10:40:19 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 11:04:48 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F585184C8D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 10:40:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9E604185172
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Feb 2026 11:04:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 70A27819ED;
-	Tue, 24 Feb 2026 09:40:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4561E80AE5;
+	Tue, 24 Feb 2026 10:04:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0KsdSOYvsR3G; Tue, 24 Feb 2026 09:40:15 +0000 (UTC)
+ id lOoKswdsQ6FD; Tue, 24 Feb 2026 10:04:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E6BA281A15
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 968F680AFE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1771926015;
-	bh=Naygvq3JDcsoh9FJZcKiSGe7AYZ8AZKBcLvgdvR6bG4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1771927485;
+	bh=7D+1B4zQS79C36wfIjPgPWrlSj6bWsrO0JD2uPIj0TM=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=8T6XAzgHPgfkk6Kz03A+6lDOvIhphxrPzrqh5/sHKVnuhoKAzD6PZEF9ZETaDZ3u6
-	 jzm9GmpS0kt37Mf5J31VZpCE+GgzLd4AuEW/sJM6VAuwNX4ABWIRrj+zcd2574S2QT
-	 BowgnlOCE5siE3PjEf/8zB5EpCgis0nL+hSBwtMBKnOI7SO8MBas0ANAJ8poN567Ez
-	 jDTnAHJUL9de4StgcY0Ss3wi36mbWwlC4Rpg7p+gTGQvN+p+Wvrh/PoYfzJqQ80vSm
-	 WgUdjnCYuJJe8w7pFtaVaU5a8f7ai7VKMdKn+i93m6TNmnwkc9Lx6MjVjkFsM8gffx
-	 TViEn2/KaHAaA==
+	b=mQsJjkMzrRDuRWLoXApudanoSUAHiPn/mW3P2W7+Oh2MKSlQH3LFqyttliXC7gIfW
+	 hAcj5xfopRcozxwCvlbW1rwdhDHgtUlQdeeMKey1lMgWq2R1xfRsdRApmF9anmpD2C
+	 pLNcj8RlE5/AIe2xfJh5TLBQ85Az1U9StvYAOE2qGlAhiJPzGZuZ8gudGJD9+FwsDA
+	 hTJPYiU+s3DrgbM6j7MWKHZOgsimIbUvrDDr2pA0EHbDK/Q5VahUR7x3hiy9nf0LV6
+	 tIPQgOA5vd74tFHImCjX6TtA2ksv49ZUw3CZSVvs+XiHLn6v1ODrYQDuSUfxxeVTBf
+	 worXLyMfDpCeA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E6BA281A15;
-	Tue, 24 Feb 2026 09:40:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 968F680AFE;
+	Tue, 24 Feb 2026 10:04:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 017CE1B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 09:40:13 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id ECF931B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 10:04:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F344040656
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 09:40:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DE15041C29
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 10:04:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IaKFkj5kCfUW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Feb 2026 09:40:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4D1FF40654
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4D1FF40654
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4D1FF40654
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 09:40:12 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 605C36057A;
- Tue, 24 Feb 2026 09:40:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E778C116D0;
- Tue, 24 Feb 2026 09:40:08 +0000 (UTC)
-Date: Tue, 24 Feb 2026 09:40:07 +0000
-From: Simon Horman <horms@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id C4rkwsVLmUDv for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Feb 2026 10:04:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D8B6F41C24
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8B6F41C24
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D8B6F41C24
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Feb 2026 10:04:41 +0000 (UTC)
+Received: from [141.14.13.172] (g427.RadioFreeInternet.molgen.mpg.de
+ [141.14.13.172])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id A685C4C28871A7;
+ Tue, 24 Feb 2026 11:03:47 +0100 (CET)
+Message-ID: <15d16cb1-4b7e-48ff-97d2-7d1064ebfa42@molgen.mpg.de>
+Date: Tue, 24 Feb 2026 11:03:47 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <aZ1x9zwU77RJlKti@horms.kernel.org>
 References: <20260223125157.819135-1-michal.swiatkowski@linux.intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
 In-Reply-To: <20260223125157.819135-1-michal.swiatkowski@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1771926010;
- bh=N+5C2uHwaPX2zVBtOgRhnM8WpLXGYOlGRM6SIgx9wSo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=sBIdAcUOm+bfeBzKoSv7NA/F/la9TlpbClXLBOW/ATSmAvlto5kt4A9aoEXACaWXY
- i5nreYarSPqMwpKtIwAe94at5ItkbJxmXTbowPGnyK3D03b/y8pf1b0NbDPbkU9O3w
- Q0fvNr68kLjVaHLVA3gRqgUpcIH+N7Hu0++ISO3dfO0ih2PsUtbDebe4154ZtWdH2U
- UAKaqAff4/yM1QBvMUyXDbDon3ypUp4qlislzDBpFvsmU/bMr/tE3uUf2ejN/RzFXL
- +pQ9WxunOShKf0vj05ArkNQgyGC+OavjriP+snTS3NyovHyCyUaw7yYomqM43fEWnq
- /ez5ayFDJGZow==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=sBIdAcUO
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ice: set max queues in
  alloc_etherdev_mqs()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -104,42 +94,46 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [-0.71 / 15.00];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[horms.kernel.org:mid,intel.com:email,osuosl.org:dkim];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,molgen.mpg.de:mid];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:michal.swiatkowski@linux.intel.com,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,s:lists@lfdr.de];
+	RCVD_TLS_LAST(0.00)[];
+	DMARC_NA(0.00)[mpg.de];
+	FORGED_SENDER(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:michal.swiatkowski@linux.intel.com,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,s:lists@lfdr.de];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_THREE(0.00)[4];
-	MISSING_XM_UA(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.997];
+	RCPT_COUNT_THREE(0.00)[4];
+	NEURAL_HAM(-0.00)[-0.999];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 2F585184C8D
+	RCVD_COUNT_SEVEN(0.00)[8]
+X-Rspamd-Queue-Id: 9E604185172
 X-Rspamd-Action: no action
 
-On Mon, Feb 23, 2026 at 01:51:57PM +0100, Michal Swiatkowski wrote:
+Dear Michal,
+
+
+Thank you for the patch.
+
+Am 23.02.26 um 13:51 schrieb Michal Swiatkowski:
 > When allocating netdevice using alloc_etherdev_mqs() the maximum
 > supported queues number should be passed. The vsi->alloc_txq/rxq is
 > storing current number of queues, not the maximum ones.
@@ -168,6 +162,100 @@ On Mon, Feb 23, 2026 at 01:51:57PM +0100, Michal Swiatkowski wrote:
 > Fixes: ee13aa1a2c5a ("ice: use netif_get_num_default_rss_queues()")
 > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice.h         | 22 ++++++++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_ethtool.c | 18 ----------------
+>   drivers/net/ethernet/intel/ice/ice_main.c    |  4 ++--
+>   3 files changed, 24 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index f6a56a864459..725b130dd3a2 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -839,6 +839,28 @@ static inline void ice_tx_xsk_pool(struct ice_vsi *vsi, u16 qid)
+>   	WRITE_ONCE(ring->xsk_pool, ice_get_xp_from_qid(vsi, qid));
+>   }
+>   
+> +/**
+> + * ice_get_max_txq - return the maximum number of Tx queues for in a PF
+> + * @pf: PF structure
+> + *
+> + * Return: maximum number of Tx queues
+> + */
+> +static inline int ice_get_max_txq(struct ice_pf *pf)
+> +{
+> +	return min(num_online_cpus(), pf->hw.func_caps.common_cap.num_txq);
+> +}
+> +
+> +/**
+> + * ice_get_max_rxq - return the maximum number of Rx queues for in a PF
+> + * @pf: PF structure
+> + *
+> + * Return: maximum number of Rx queues
+> + */
+> +static inline int ice_get_max_rxq(struct ice_pf *pf)
+> +{
+> +	return min(num_online_cpus(), pf->hw.func_caps.common_cap.num_rxq);
+> +}
+> +
+>   /**
+>    * ice_get_main_vsi - Get the PF VSI
+>    * @pf: PF instance
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index a897a6b22495..a0b0416f5aea 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -3780,24 +3780,6 @@ ice_get_ts_info(struct net_device *dev, struct kernel_ethtool_ts_info *info)
+>   	return 0;
+>   }
+>   
+> -/**
+> - * ice_get_max_txq - return the maximum number of Tx queues for in a PF
+> - * @pf: PF structure
+> - */
+> -static int ice_get_max_txq(struct ice_pf *pf)
+> -{
+> -	return min(num_online_cpus(), pf->hw.func_caps.common_cap.num_txq);
+> -}
+> -
+> -/**
+> - * ice_get_max_rxq - return the maximum number of Rx queues for in a PF
+> - * @pf: PF structure
+> - */
+> -static int ice_get_max_rxq(struct ice_pf *pf)
+> -{
+> -	return min(num_online_cpus(), pf->hw.func_caps.common_cap.num_rxq);
+> -}
+> -
+>   /**
+>    * ice_get_combined_cnt - return the current number of combined channels
+>    * @vsi: PF VSI pointer
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index fa4095037be5..863ac81eebce 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -4699,8 +4699,8 @@ static int ice_cfg_netdev(struct ice_vsi *vsi)
+>   	struct net_device *netdev;
+>   	u8 mac_addr[ETH_ALEN];
+>   
+> -	netdev = alloc_etherdev_mqs(sizeof(*np), vsi->alloc_txq,
+> -				    vsi->alloc_rxq);
+> +	netdev = alloc_etherdev_mqs(sizeof(*np), ice_get_max_txq(vsi->back),
+> +				    ice_get_max_rxq(vsi->back));
+>   	if (!netdev)
+>   		return -ENOMEM;
+>   
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Should also some checks be added to `ethnl_set_channels()` to avoid crashes?
 
+The commit looks good:
+
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+I am missing the mentioning of the crash in commit message 
+title/summary, but I do not have a better suggestion right now.
+
+
+Kind regards,
+
+Paul
