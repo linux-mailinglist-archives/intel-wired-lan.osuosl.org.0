@@ -2,99 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SKT6CcC9nmnYXAQAu9opvQ
+	id ANohLArJnmm0XQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Feb 2026 10:15:44 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Feb 2026 11:03:54 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 11AED194BED
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Feb 2026 10:15:42 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2912519575A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Feb 2026 11:03:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EF60E84674;
-	Wed, 25 Feb 2026 09:15:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9ACAA60FA9;
+	Wed, 25 Feb 2026 10:03:52 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QLhJ1QNoCyOD; Wed, 25 Feb 2026 10:03:51 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDFF960F91
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1772013831;
+	bh=vbj4RSQJDuRYZ5fTpF5eYkTEyvzPIP9uBuxY7VVzDmM=;
+	h=Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
+	b=vTrOHNZBwuAuIV+HHzWud7sMOrBCqRu4+8uNaZRsSLZIleWdehW9DaBYpGQZBRdLj
+	 9fiLDLyExvnSi3ssmCnUdfqty7wxiCAszfJhUp+fEp+yybHb99uj14GAZ7oCrPaW04
+	 xsSkb4YiFhVl4dnt51jYRdtF2VcBi/RgBXjFTqgjEXToPAEGAJAEp7lmqAhQvJqV59
+	 vCxEFnPMPUNuTlL8JD24PL76gqgklImSXFWOZJxIhiK9JF6HDINjGq76y8fjB+oUHY
+	 YLB7K4R6vEgyDjc1Z1t5MiOGeQpXyVzdt7KOB7uk+eL5UMcFRN7TtZuL7L1vl+ppm9
+	 wqLECu2TYrDzg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id CDFF960F91;
+	Wed, 25 Feb 2026 10:03:51 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9436023D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 10:03:49 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 855B3817D3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 10:03:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7OP8dtbZnlEj; Wed, 25 Feb 2026 09:15:40 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 66A1184676
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772010940;
-	bh=SMDV+D/bjWKLFdm96Dm3Ic4vYniOwPLUPHhTwT+Cf/k=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=hQQvN+5MnJoGWz4ehHz1c17f+7QiXkMZEfeHSnOOPCAapURWTuHJrLEy9F4adKFfa
-	 igU9G0e+yObyvq499HOk0a9/NA58PQ2xUf8H3acVitwfUNIqEwv93ImtOCNcAH8pJ4
-	 CG7TGhcvOjLup/C6jadWINkFU+9StJ7m/tN3UapOwKS8PgNBf97yyXfncySdb4GD/5
-	 Sg230rVw/M8iNlZlJP++ydURS6niwTYwaY0d+wlpnhQrcFVVdwRCNjlehUV1si7wqs
-	 IFa26ZXjXiRZT1YJ/2qkh7rsMmn80vDeB8HxygOx0WkcRf02sO7/b8TEoOTEngX6R2
-	 oVCZ+Q3J3ykSw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 66A1184676;
-	Wed, 25 Feb 2026 09:15:40 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id ED5D6204
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 09:15:37 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DEE614137E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 09:15:37 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XdGnfZ92LgmK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Feb 2026 09:15:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=natalia.wochtman@intel.com;
+ id YBB-UQx-VdDB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Feb 2026 10:03:48 +0000 (UTC)
+X-Greylist: delayed 304 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 25 Feb 2026 10:03:46 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8EB44817A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8EB44817A9
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.225;
+ helo=mta-64-225.siemens.flowmailer.net;
+ envelope-from=fm-1328595-20260225095838b7b532bd6600020707-wpf3en@rts-flowmailer.siemens.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 118924137D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 118924137D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 118924137D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 09:15:36 +0000 (UTC)
-X-CSE-ConnectionGUID: SMVmQsQpTfmh6p64ZGrDdQ==
-X-CSE-MsgGUID: HGfdUHidRiSOaWVLS0TBZw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="72081449"
-X-IronPort-AV: E=Sophos;i="6.21,310,1763452800"; d="scan'208";a="72081449"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Feb 2026 01:15:36 -0800
-X-CSE-ConnectionGUID: zozFFWJDSU6sxOWJBMEAcg==
-X-CSE-MsgGUID: cZhlqmQSQdKOi91W/j+4qw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,310,1763452800"; d="scan'208";a="220774531"
-Received: from korred.igk.intel.com ([10.237.113.2])
- by fmviesa005.fm.intel.com with ESMTP; 25 Feb 2026 01:15:34 -0800
-From: Natalia Wochtman <natalia.wochtman@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 25 Feb 2026 10:02:36 +0100
-Message-ID: <20260225090236.187255-1-natalia.wochtman@intel.com>
-X-Mailer: git-send-email 2.49.0
+Received: from mta-64-225.siemens.flowmailer.net
+ (mta-64-225.siemens.flowmailer.net [185.136.64.225])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8EB44817A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Feb 2026 10:03:46 +0000 (UTC)
+Received: by mta-64-225.siemens.flowmailer.net with ESMTPSA id
+ 20260225095838b7b532bd6600020707
+ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Feb 2026 10:58:39 +0100
+Date: Wed, 25 Feb 2026 10:58:29 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1772010937; x=1803546937;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=DKAG1wPJpFmlhcmR96WVsVojidnrTLm5pSaQ3dE9lmc=;
- b=ll7KPv3ZiuKCbVmRqe3H1NF0EsQ2RvP8TjaPceWLApGt5umkS+/GPkCC
- WeniPTjzRQ5cJmlsb+ROi7kWrJL5rrQS88tXWq4ooULX2HHZrBXODzduP
- xd5na2dzK1XOeNHb5/syyQ3t/91j5FeBKbmji9ljVdFzo6xd/3L/IALiq
- tlj5BJ62vjgyi3vNY3+kaalYbVSLjb2ryuP7i7ePYGWSqgNl98xUF8xcE
- tynjGdhph4AypRRaDZNCXWbVyr2PCkvhjBA6rvj6aQvSThIRSc6p9+H3E
- 301UM0OAmQjxBH33wmGslje6dbxnG8xxR8xkX5JIe+jMFbSY36BjSbx1l
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260225-igc-fix-xdp-tx-tstamp-pagefault-v2-1-bf797ec20f3b@siemens.com>
+X-B4-Tracking: v=1; b=H4sIAMTHnmkC/4WNyw6CMBBFf4XM2jF05KGu/A/DopYBJhHatJVgC
+ P9uJe5dnpubc1YI7IUDXLMVPM8SxE4J6JCBGfTUM0qbGCinKidFKL3BThZcWodxwRiiHh063XO
+ nX8+IptCPlovydK4IksV5Tve9cG8SDxKi9e89OKvv+nNT8dc9K1RYm5ou3FWKubwF4ZGncDR2h
+ Gbbtg9mcT600AAAAA==
+X-Change-ID: 20260212-igc-fix-xdp-tx-tstamp-pagefault-c4abde453862
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, 
+ Stanislav Fomichev <sdf@fomichev.me>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Song Yoong Siang <yoong.siang.song@intel.com>, 
+ Lai Peter Jun Ann <jun.ann.lai@intel.com>
+Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>, 
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, bpf@vger.kernel.org, 
+ Florian Bezdeka <florian.bezdeka@siemens.com>, 
+ Zdenek Bouska <zdenek.bouska@siemens.com>
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-1328595:519-21489:flowmailer
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; s=fm2; 
+ d=siemens.com; i=zdenek.bouska@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc;
+ bh=vbj4RSQJDuRYZ5fTpF5eYkTEyvzPIP9uBuxY7VVzDmM=;
+ b=POAQ8MaPlX4fuojo9+xfcFWxUf97NiISPsrBO2/DpPm093KQwl0AJglgbNtaQJzz0iIFp6
+ AAfPsLjNAV/eE+cPiN9/yvtya0J9mNc6iJ5qioKDKLoiR5g7yarF7s1+VCCEo147aipwwrX+
+ HcrlK5Qk4F9EkN6ApiPnnM4FY++3CqEznsh0cfOzSBHXah68oViZ3s45liPWlE572HgU5+yX
+ 1CsbEiUgOOOWzfz3fLxb6sxQ+L9vFRqXJjhr3+fJQtDOrUTqUdlnML7rYV273MOF1eWSc2pR
+ +PE0TVizaznqZI94VNSYZeneQ1VUIEGxhZCUhbsQnyZ7sPwoJZ+OIZUQ==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=siemens.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ll7KPv3Z
-Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: remove redundant checks
- from PTP init
+ unprotected) header.d=siemens.com header.i=zdenek.bouska@siemens.com
+ header.a=rsa-sha256 header.s=fm2 header.b=POAQ8MaP
+Subject: [Intel-wired-lan] [PATCH v2] igc: fix page fault in XDP TX
+ timestamps handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,88 +121,165 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: aleksandr.loktionov@intel.com, netdev@vger.kernel.org,
- Natalia Wochtman <natalia.wochtman@intel.com>, przemyslaw.kitszel@intel.com
+From: Zdenek Bouska via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Zdenek Bouska <zdenek.bouska@siemens.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [0.19 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MAILLIST(-0.20)[mailman];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:richardcochran@gmail.com,m:yoong.siang.song@intel.com,m:jun.ann.lai@intel.com,m:vinicius.gomes@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:bpf@vger.kernel.org,m:florian.bezdeka@siemens.com,m:zdenek.bouska@siemens.com,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[siemens.com:mid,siemens.com:email,siemens.com:replyto,osuosl.org:dkim];
 	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
-	FROM_NEQ_ENVFROM(0.00)[natalia.wochtman@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FREEMAIL_TO(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,gmail.com,fomichev.me];
+	RCPT_COUNT_TWELVE(0.00)[22];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
+	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
+	HAS_REPLYTO(0.00)[zdenek.bouska@siemens.com];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	NEURAL_HAM(-0.00)[-0.999];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	NEURAL_HAM(-0.00)[-0.996];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 11AED194BED
+	RCVD_COUNT_SEVEN(0.00)[8]
+X-Rspamd-Queue-Id: 2912519575A
 X-Rspamd-Action: no action
 
-Remove unnecessary condition checks in
-ice_ptp_setup_adapter() and ice_ptp_init().
-They are duplicated in ice_pf_src_tmr_owned().
+If an XDP application that requested TX timestamping is shutting down
+while the link of the interface in use is still up the following kernel
+splat is reported:
 
-Change ice_ptp_setup_adapter() to return void.
+[  883.803618] [   T1554] BUG: unable to handle page fault for address: ffffcfb6200fd008
+...
+[  883.803650] [   T1554] Call Trace:
+[  883.803652] [   T1554]  <TASK>
+[  883.803654] [   T1554]  igc_ptp_tx_tstamp_event+0xdf/0x160 [igc]
+[  883.803660] [   T1554]  igc_tsync_interrupt+0x2d5/0x300 [igc]
+...
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Natalia Wochtman <natalia.wochtman@intel.com>
+During shutdown of the TX ring the xsk_meta pointers are left behind, so
+that the IRQ handler is trying to touch them.
+
+This issue is now being fixed by cleaning up the stale xsk meta data on
+TX shutdown. TX timestamps on other queues remain unaffected.
+
+Fixes: 15fd021bc427 ("igc: Add Tx hardware timestamp request for AF_XDP zero-copy packet")
+Signed-off-by: Zdenek Bouska <zdenek.bouska@siemens.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+Changes in v2:
+- Moved 'adapter' variable declaration into the if block (Vinicius)
+- Link to v1: https://lore.kernel.org/r/20260224-igc-fix-xdp-tx-tstamp-pagefault-v1-1-7c729ef61ee5@siemens.com
+---
+ drivers/net/ethernet/intel/igc/igc.h      |  2 ++
+ drivers/net/ethernet/intel/igc/igc_main.c |  7 +++++++
+ drivers/net/ethernet/intel/igc/igc_ptp.c  | 33 +++++++++++++++++++++++++++++++
+ 3 files changed, 42 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index d8fd01fa617b..2b26024de888 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -3065,14 +3065,9 @@ void ice_ptp_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	dev_err(ice_pf_to_dev(pf), "PTP reset failed %d\n", err);
- }
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index a427f05814c1ae7330c6f7034cd0f2b40b74dab6..17236813965d334f14eba928affbd4f91b96ecd4 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -781,6 +781,8 @@ int igc_ptp_hwtstamp_set(struct net_device *netdev,
+ 			 struct kernel_hwtstamp_config *config,
+ 			 struct netlink_ext_ack *extack);
+ void igc_ptp_tx_hang(struct igc_adapter *adapter);
++void igc_ptp_clear_xsk_tx_tstamp_queue(struct igc_adapter *adapter,
++				       u16 queue_id);
+ void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts);
+ void igc_ptp_tx_tstamp_event(struct igc_adapter *adapter);
  
--static int ice_ptp_setup_adapter(struct ice_pf *pf)
-+static void ice_ptp_setup_adapter(struct ice_pf *pf)
- {
--	if (!ice_pf_src_tmr_owned(pf) || !ice_is_primary(&pf->hw))
--		return -EPERM;
--
- 	pf->adapter->ctrl_pf = pf;
--
--	return 0;
- }
- 
- static int ice_ptp_setup_pf(struct ice_pf *pf)
-@@ -3315,10 +3310,9 @@ void ice_ptp_init(struct ice_pf *pf)
- 	/* If this function owns the clock hardware, it must allocate and
- 	 * configure the PTP clock device to represent it.
- 	 */
--	if (ice_pf_src_tmr_owned(pf) && ice_is_primary(hw)) {
--		err = ice_ptp_setup_adapter(pf);
--		if (err)
--			goto err_exit;
-+	if (ice_pf_src_tmr_owned(pf)) {
-+		ice_ptp_setup_adapter(pf);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 89a321a344d263ace5c66f7ade782b40cc482566..1931fcb659354d5009e0ea02316bf3a47b66b04d 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -264,6 +264,13 @@ static void igc_clean_tx_ring(struct igc_ring *tx_ring)
+ 	/* reset next_to_use and next_to_clean */
+ 	tx_ring->next_to_use = 0;
+ 	tx_ring->next_to_clean = 0;
 +
- 		err = ice_ptp_init_owner(pf);
- 		if (err)
- 			goto err_exit;
++	/* Clear any lingering XSK TX timestamp requests */
++	if (test_bit(IGC_RING_FLAG_TX_HWTSTAMP, &tx_ring->flags)) {
++		struct igc_adapter *adapter = netdev_priv(tx_ring->netdev);
++
++		igc_ptp_clear_xsk_tx_tstamp_queue(adapter, tx_ring->queue_index);
++	}
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 7aae83c108fd7611b00bf075592f93a902b83422..98491346d21b80925ce42ba276d851d4318e66b7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -576,6 +576,39 @@ static void igc_ptp_clear_tx_tstamp(struct igc_adapter *adapter)
+ 	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
+ }
+ 
++/**
++ * igc_ptp_clear_xsk_tx_tstamp_queue - Clear pending XSK TX timestamps for a queue
++ * @adapter: Board private structure
++ * @queue_id: TX queue index to clear timestamps for
++ *
++ * Iterates over all TX timestamp registers and releases any pending
++ * timestamp requests associated with the given TX queue. This is
++ * called when an XDP pool is being disabled to ensure no stale
++ * timestamp references remain.
++ */
++void igc_ptp_clear_xsk_tx_tstamp_queue(struct igc_adapter *adapter, u16 queue_id)
++{
++	unsigned long flags;
++	int i;
++
++	spin_lock_irqsave(&adapter->ptp_tx_lock, flags);
++
++	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
++		struct igc_tx_timestamp_request *tstamp = &adapter->tx_tstamp[i];
++
++		if (tstamp->buffer_type != IGC_TX_BUFFER_TYPE_XSK)
++			continue;
++		if (tstamp->xsk_queue_index != queue_id)
++			continue;
++		if (!tstamp->xsk_tx_buffer)
++			continue;
++
++		igc_ptp_free_tx_buffer(adapter, tstamp);
++	}
++
++	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
++}
++
+ static void igc_ptp_disable_tx_timestamp(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+
+---
+base-commit: 05f7e89ab9731565d8a62e3b5d1ec206485eeb0b
+change-id: 20260212-igc-fix-xdp-tx-tstamp-pagefault-c4abde453862
+
+Best regards,
 -- 
-2.49.0
+Zdenek Bouska
+
+Siemens, s.r.o.
+Foundational Technologies
 
