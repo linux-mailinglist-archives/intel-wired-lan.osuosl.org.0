@@ -2,119 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sK1mBInYoml06AQAu9opvQ
+	id yEz5N0aWo2l7HQUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Feb 2026 12:59:05 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 01 Mar 2026 02:28:38 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F13811C2B20
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Feb 2026 12:59:03 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D98481CABAC
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 01 Mar 2026 02:28:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EFBEA41863;
-	Sat, 28 Feb 2026 11:59:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DFE998403B;
+	Sun,  1 Mar 2026 01:28:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0MOK5Z-3qbFo; Sat, 28 Feb 2026 11:59:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8ts-i0WpxL99; Sun,  1 Mar 2026 01:28:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08E4D418C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0F06E84037
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772279940;
-	bh=/PtUfVrsqDoReT1Tcw6qktujo46XwI7/Ej7DUD04/2o=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=XO4A8jvqmhpNF8e01zhAeVfswGbEXPLEHMtZl4iX4W1q/gGchqvedPs5flUZLx9wb
-	 b8cKD0sBZ93Ef7cPtO5lQXYfLe+0HmfCzKQG/+CmR5CkzOMdaE9Cn5sOkaWrBMp9o9
-	 inTCnvihlTd3sfM7X2JgWogGZ92XmetTCdiWlSMg6wr2smx680Y66OhVgZjRpZImjP
-	 IaP4NKZGq51jPFoRkU+0FZL6ZTorU5NgPCozt9hCgaIJFX4Co82i2Bdn/U8k+It+N4
-	 JRd5HZ5VgIfog/j/djyA31gSXmRdg7hinIGZX9S5oT2ZgpBfH6T2Uusd/MDrxkGy2i
-	 ZHKQ+9LqI49RQ==
+	s=default; t=1772328515;
+	bh=Qj9kZ8wRFt/8kE7AV7nFBJoS3Fhh4ZS6ddJEhtcB1Uo=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=3XrstW1X6vjbPpmAWtReiFregVtzyVASZgJ9lqjPmsxxGjz7GDlsrmRFOQtkA3pkW
+	 Z9bdx6PfLRs51/0+SoYa8fLQGdKAwSyxUpP3IueIaIm0L5qPbWnpyI78igylczgOM8
+	 P9MutiG9XB6+b7hQ/b1mUoP4gxMbBLWUy/oNwbkwKmQhwMFW444d95MDYMT6sIIfrW
+	 Se/xL8cWP2S/6E8QHHuvMvVezbe/LnrqBMpC0Vs32zZAik//m2H0Zcr0b09t4++aDJ
+	 Ieu2PAymMnfD4vnsa24S/slugyO/CCAYCOPGuaykA6/O92eWAb6FFzgJtrNArmCuaU
+	 JzGm+J9V0jzWg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 08E4D418C4;
-	Sat, 28 Feb 2026 11:59:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F06E84037;
+	Sun,  1 Mar 2026 01:28:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5386018D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Feb 2026 11:58:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 49FB624E
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  1 Mar 2026 01:28:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 391A3418B2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Feb 2026 11:58:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3BA7C40E76
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  1 Mar 2026 01:28:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1RjShhVoASGF for <intel-wired-lan@lists.osuosl.org>;
- Sat, 28 Feb 2026 11:58:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id C8eiaXfBWLTk for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  1 Mar 2026 01:28:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8434D418A9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8434D418A9
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8434D418A9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Feb 2026 11:58:57 +0000 (UTC)
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 522E1403D0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 522E1403D0
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 522E1403D0
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  1 Mar 2026 01:28:33 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 57A34401AA;
- Sat, 28 Feb 2026 11:58:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B19DAC116D0;
- Sat, 28 Feb 2026 11:58:55 +0000 (UTC)
-Date: Sat, 28 Feb 2026 12:58:53 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: Donald Hunter <donald.hunter@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Stanislav Fomichev <sdf@fomichev.me>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Andrii Nakryiko <andrii@kernel.org>,
- Martin KaFai Lau <martin.lau@linux.dev>,
- Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
- Yonghong Song <yonghong.song@linux.dev>,
- KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
- Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, netdev@vger.kernel.org,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kselftest@vger.kernel.org
-Message-ID: <aaLYfWnuuf_ne72u@lore-desk>
-References: <20260217-bpf-xdp-meta-rxcksum-v3-0-30024c50ba71@kernel.org>
- <20260217-bpf-xdp-meta-rxcksum-v3-1-30024c50ba71@kernel.org>
- <20260218174742.62a4074f@kernel.org> <aZbuWBnmh_SQJyVf@lore-desk>
- <20260219091344.1d8517f3@kernel.org> <aZyKWoxnywXKWth9@lore-desk>
- <20260223151845.06db43b0@kernel.org> <aaGaaExy63bGa7Or@lore-desk>
- <20260227153231.78d16b69@kernel.org>
+ by tor.source.kernel.org (Postfix) with ESMTP id A5E2460008;
+ Sun,  1 Mar 2026 01:28:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A743C19421;
+ Sun,  1 Mar 2026 01:28:30 +0000 (UTC)
+From: Sasha Levin <sashal@kernel.org>
+To: stable@vger.kernel.org,
+	enelsonmoore@gmail.com
+Cc: Johannes Berg <johannes@sipsolutions.net>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-wireless@vger.kernel.org
+Date: Sat, 28 Feb 2026 20:28:29 -0500
+Message-ID: <20260301012829.1686242-1-sashal@kernel.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="zJe+viDHT4x8TgXE"
-Content-Disposition: inline
-In-Reply-To: <20260227153231.78d16b69@kernel.org>
+X-Patchwork-Hint: ignore
+X-stable: review
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1772279936;
- bh=SA4eviJ/yZpyCZ7RPvowxWRJiO91Y0GTqAPs96rzHJg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fz3ojnSEYFMcEgZJjq4mQUrWrDU3Tq7qRuMBtK0kB6Rt/zxOJel2Gu9YaosO6Ug6F
- 8C8YvGmh+ZSlAKQb2mILbGWXAUW4ufmFh+fOsdtbbo5yStug7IZ6K3Yb1EKcPEYmEw
- FNFeGHA0YghHdjL48ZxJ7A8rk9Wk471f7TxTMEsiS7IwtvHtDN95LVNIpc5sx7258p
- 5CD8U8wHZK+CFn7wViJEB/MA7QvNxhfBAdhA4cp1zY3rl4LY5mYmOXgOHnj0V8ZxoB
- CQ7Qkh3Lmfw81RRL6gVP4oSHtB2WR33hCgei/6GU08EPMPY9PFkvpyLNLGC1O3BAYe
- A2r8i7UILNcxw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1772328511;
+ bh=Q5DiCW9on0G/BrAWD39bQXl0ueMsoCMGKvy2MK32ZI8=;
+ h=From:To:Cc:Subject:Date:From;
+ b=bvydk6QKBibZ1IeyOi1o/at42rVPsvpUDpmmZjzczeFPII1egbKENfVG21FUqq7mE
+ 5JtVxGBOFNCVTVfjdzCpPFPBeYwMpxMIeTOB5oRl4HqNm/VykugMTTcnq9cxZPAyuF
+ xt6jxeWVXWhCXjb5ulIp7CWUA2MgTzsaFHQuwTTDwvqo8Qa1GNMSHp10Ah//gyjCOm
+ PHp1E346hF8OmgMYZoWD9S9CqEPVoiQgIXmf0UfE9fMSNN2gNs+m95Iq0TE91jAq4I
+ 23KmNb2WJE2LTSxbbm1Un9k4+op0i8HZeQDHUp+p0E4fEoZGFsXOWxXMl3JNbqw9wh
+ iWkxtXFeV6dgg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=fz3ojnSE
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v3 1/5] netlink: specs: Add
- XDP RX checksum capability to XDP metadata specs
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=bvydk6QK
+Subject: [Intel-wired-lan] FAILED: Patch "net: intel: fix PCI device ID
+ conflict between i40e and ipw2200" failed to apply to 6.12-stable tree
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,125 +106,118 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.69 / 15.00];
-	SIGNED_PGP(-2.00)[];
-	SUSPICIOUS_RECIPS(1.50)[];
+X-Spamd-Result: default: False [2.19 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_RHS_NOT_FQDN(0.50)[];
-	MIME_GOOD(-0.20)[multipart/signed,text/plain];
-	MAILLIST(-0.20)[mailman];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_CC(0.00)[gmail.com,davemloft.net,google.com,redhat.com,kernel.org,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev,cloudflare.com,vger.kernel.org,lists.osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[30];
-	FORGED_RECIPIENTS(0.00)[m:kuba@kernel.org,m:donald.hunter@gmail.com,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:stable@vger.kernel.org,m:enelsonmoore@gmail.com,m:johannes@sipsolutions.net,m:aleksandr.loktionov@intel.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:linux-wireless@vger.kernel.org,s:lists@lfdr.de];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FREEMAIL_TO(0.00)[vger.kernel.org,gmail.com];
+	FORGED_SENDER(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	MISSING_XM_UA(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[msgid.link:url,intel.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_SEVEN(0.00)[8];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: F13811C2B20
+X-Rspamd-Queue-Id: D98481CABAC
 X-Rspamd-Action: no action
 
+The patch below does not apply to the 6.12-stable tree.
+If someone wants it applied there, or to any other stable or longterm
+tree, then please email the backport, including the original git commit
+id to <stable@vger.kernel.org>.
 
---zJe+viDHT4x8TgXE
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Thanks,
+Sasha
 
-> On Fri, 27 Feb 2026 14:21:44 +0100 Lorenzo Bianconi wrote:
-> > > > At the moment there is no way to store the csum value we got running
-> > > > bpf_xdp_metadata_rx_checksum() in order to be consumed during
-> > > > xdp_buff/xdp_frame to skb conversion (this info can just be consume=
-d in the
-> > > > ebpf program bound to the NIC) but =20
-> > >=20
-> > > I think the scope here is much narrower than the xdp_buf to xdp_frame
-> > > to skb conversion. We are just pass information between the program a=
-nd
-> > > driver which owns xdp_buff. Very similar to your new xmo.
-> > >=20
-> > > We could either tell the driver to discard the csum complete or even
-> > > add a helper to "adjust" the the csum value. Similar to the helper
-> > > we have to adjust the csum in TC / skb context. =20
-> >=20
-> > IIUC, for the CSUM_COMPLETE case, we want to add a kfunc used to update=
- (or
-> > invalidate) the checksum value (if the packet has been modified by the =
-eBPF
-> > program bounded to the NIC) and report the updated checksum to the driv=
-er if
-> > the XDP verdict is XDP_PASS. Correct?
-> >=20
-> > I guess we could have two approaches here:
-> > - Write the new checksum value into the xdp_metadata area (if available)
-> >   where the driver can load it and update the checksum value before
-> >   allocating the skb.
-> >   The main downside of this approach is we need modify each driver.
-> > - Add a new xmo callback used to set the checksum value and report it
-> >   from the eBPF program into a specific memory area provided by the dri=
-ver
-> >   (e.g. DMA descriptor) that is used to build the skb.
-> > =20
-> > What do you think?
->=20
-> Exactly. The invalidation is easier 'cause using a single bit in the
-> flags should be uncontroversial. If we want to be able to repair /
-> provide the csum complete then we have to pick one of the two options
-> you outlined. As you may suspect from previous discussions I favor=20
-> the latter. But we'd probably have to have a PoC with either one and
-> see where the consensus falls.
+------------------ original commit in Linus's tree ------------------
 
-ack, I will work on a PoC.
+From d03e094473ecdeb68d853752ba467abe13e1de44 Mon Sep 17 00:00:00 2001
+From: Ethan Nelson-Moore <enelsonmoore@gmail.com>
+Date: Mon, 9 Feb 2026 18:12:34 -0800
+Subject: [PATCH] net: intel: fix PCI device ID conflict between i40e and
+ ipw2200
 
->=20
-> Actually, thinking about it more, I guess this is not just a
-> CSUM_COMPLETE issue. XDP_PASS will also risk reporting invalid
-> UNNECESSARY to the stack (e.g. when XDP stripped a UDP tunnel
-> which which the NIC compute the UNNECESSARY but the packet inside
-> the tunnel has an invalid csum).
->=20
-> > Moreover, since we already have this issue upstream, do you think
-> > this new feature must be part this series or can we do it with a
-> > follow-up patch/series?
->=20
-> We don't have to add the kfunc to adjust / invalidate the csum.
-> But we should document how the drivers are expected to behave until
-> such kfunc exists and we should add a selftest that checks the
-> documented expectation.
+The ID 8086:104f is matched by both i40e and ipw2200. The same device
+ID should not be in more than one driver, because in that case, which
+driver is used is unpredictable. Fix this by taking advantage of the
+fact that i40e devices use PCI_CLASS_NETWORK_ETHERNET and ipw2200
+devices use PCI_CLASS_NETWORK_OTHER to differentiate the devices.
 
-I will add the required documentation and kselftest in the next iteration.
+Fixes: 2e45d3f4677a ("i40e: Add support for X710 B/P & SFP+ cards")
+Cc: stable@vger.kernel.org
+Acked-by: Johannes Berg <johannes@sipsolutions.net>
+Signed-off-by: Ethan Nelson-Moore <enelsonmoore@gmail.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Link: https://patch.msgid.link/20260210021235.16315-1-enelsonmoore@gmail.com
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c  | 8 +++++++-
+ drivers/net/wireless/intel/ipw2x00/ipw2200.c | 8 +++++++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
 
-Regards,
-Lorenzo
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index d3bc3207054f9..02de186dcc8f5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -75,7 +75,13 @@ static const struct pci_device_id i40e_pci_tbl[] = {
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_BASE_T4), 0},
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_BASE_T_BC), 0},
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_SFP), 0},
+-	{PCI_VDEVICE(INTEL, I40E_DEV_ID_10G_B), 0},
++	/*
++	 * This ID conflicts with ipw2200, but the devices can be differentiated
++	 * because i40e devices use PCI_CLASS_NETWORK_ETHERNET and ipw2200
++	 * devices use PCI_CLASS_NETWORK_OTHER.
++	 */
++	{PCI_DEVICE(PCI_VENDOR_ID_INTEL, I40E_DEV_ID_10G_B),
++		PCI_CLASS_NETWORK_ETHERNET << 8, 0xffff00, 0},
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_KX_X722), 0},
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_QSFP_X722), 0},
+ 	{PCI_VDEVICE(INTEL, I40E_DEV_ID_SFP_X722), 0},
+diff --git a/drivers/net/wireless/intel/ipw2x00/ipw2200.c b/drivers/net/wireless/intel/ipw2x00/ipw2200.c
+index 09035a77e775f..b0e769da94156 100644
+--- a/drivers/net/wireless/intel/ipw2x00/ipw2200.c
++++ b/drivers/net/wireless/intel/ipw2x00/ipw2200.c
+@@ -11387,7 +11387,13 @@ static const struct pci_device_id card_ids[] = {
+ 	{PCI_VENDOR_ID_INTEL, 0x1043, 0x8086, 0x2754, 0, 0, 0},
+ 	{PCI_VENDOR_ID_INTEL, 0x1043, 0x8086, 0x2761, 0, 0, 0},
+ 	{PCI_VENDOR_ID_INTEL, 0x1043, 0x8086, 0x2762, 0, 0, 0},
+-	{PCI_VDEVICE(INTEL, 0x104f), 0},
++	/*
++	 * This ID conflicts with i40e, but the devices can be differentiated
++	 * because i40e devices use PCI_CLASS_NETWORK_ETHERNET and ipw2200
++	 * devices use PCI_CLASS_NETWORK_OTHER.
++	 */
++	{PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x104f),
++		PCI_CLASS_NETWORK_OTHER << 8, 0xffff00, 0},
+ 	{PCI_VDEVICE(INTEL, 0x4220), 0},	/* BG */
+ 	{PCI_VDEVICE(INTEL, 0x4221), 0},	/* BG */
+ 	{PCI_VDEVICE(INTEL, 0x4223), 0},	/* ABG */
+-- 
+2.51.0
 
 
---zJe+viDHT4x8TgXE
-Content-Type: application/pgp-signature; name=signature.asc
 
------BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaaLYfQAKCRA6cBh0uS2t
-rK8NAQCa3BtPt0r6O4Rd1WSKMud4jYbuc+yFGRH5iD2pYIy4DQEAjp1slS4Z4kQg
-Efic0WsT4AYh9Xf0lUF6VupLvRIrWAE=
-=4fhS
------END PGP SIGNATURE-----
-
---zJe+viDHT4x8TgXE--
