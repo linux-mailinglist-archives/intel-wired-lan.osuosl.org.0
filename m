@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id YESuNJq/pWkyFgAAu9opvQ
+	id KLY7O52/pWknFgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Mar 2026 17:49:30 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Mar 2026 17:49:33 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E5681DD386
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Mar 2026 17:49:30 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 49C801DD38D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 02 Mar 2026 17:49:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AA1FC41CFA;
-	Mon,  2 Mar 2026 16:49:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 01E7241CFB;
+	Mon,  2 Mar 2026 16:49:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Dg9lDu0PlkZO; Mon,  2 Mar 2026 16:49:28 +0000 (UTC)
+ id fY3tfaOq7rvJ; Mon,  2 Mar 2026 16:49:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD9F241D00
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A7DD41D04
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772470167;
-	bh=mRGxRtbYubkoz0FZkhqDthZQ9yqs0gRPrwZ3TSX1+yM=;
+	s=default; t=1772470171;
+	bh=/to3/CLBMsu6We2BgufAhbzT8gqA6mipuTtV5ud+EaA=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wmCWgGSIAxTl4OqmEKMtgbUDdnh6B3+U7PCzuASqJxW8lM5R24Az9o0tLGE55Y0CD
-	 Qjnc71XpofMW82K6aXUyVWK12S+NAXJPLJsUQZgoSu/YMrR+gmHJ6pZ5TNYWjGMVNh
-	 O+kKtbpwx1eckfAn1uBdiJI8rT6zPWBza0Qs4tQL8dh7sl0EtGqiMgfAS9PJXVpnWW
-	 NDAxzeX2/UTRKOMK7+zrPmRlPDK4tnDyf1lpbs4m0C2NHy+ooB1qRkool8ZkKW2KyN
-	 KUs9c0mRpHB9o5tPX9raWCLDUeHg5aYIKQgtXNkyOigh5KnMLly8n7gpK9Bs5hJiHL
-	 kPh+WAMSPL4ig==
+	b=cQMq8GQUQAuDNC8qNTnzrgOtxOZ3SMnZVpOzTFCEBHkqVfPwHi5n/SlKFkUoqocjH
+	 k3dAOzN8RoURX/sbvAb+LApe1/O9wuzMUeRnnOVnXN5likCTRgzCcFdu19ArVmoCjZ
+	 dAGqw9/urhovRIOaFKLr3KsQOST691TdAECFdIrv6u647iiVd757LXUh7YlELfAQj0
+	 xOviWy4qBxQRYriOcyNLYWFmigw9OgaPT+VGPSypTJVIJ4CFqlutfWLfKCIdaQ9rxF
+	 lErSHvjfsLncr2aIfsQBKl9Axu9uEbd5gK7f8uLda1RIIc6MCtIuDmZZUNAjUtnTw3
+	 IgrLy35CxX5OA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD9F241D00;
-	Mon,  2 Mar 2026 16:49:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5A7DD41D04;
+	Mon,  2 Mar 2026 16:49:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id A2D51231
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:26 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 068AA1EB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A0AD3612AC
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E082D6129A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 840w_54tiMX3 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Mar 2026 16:49:25 +0000 (UTC)
+ id 1cTTTc2bmfP1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Mar 2026 16:49:28 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9ED2A612AB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9ED2A612AB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E7AB560FBA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E7AB560FBA
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9ED2A612AB
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:24 +0000 (UTC)
-X-CSE-ConnectionGUID: 2C7FLnHhRg+6E/ssPQWbYw==
-X-CSE-MsgGUID: wF73NfHBRoSKcZx5SIxKRQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11717"; a="73450707"
-X-IronPort-AV: E=Sophos;i="6.21,320,1763452800"; d="scan'208";a="73450707"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E7AB560FBA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Mar 2026 16:49:27 +0000 (UTC)
+X-CSE-ConnectionGUID: d8m/fNM2Ro2+YBDJ7hTgKA==
+X-CSE-MsgGUID: 3hwDaOBuQm64pM19Wcop3Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11717"; a="73450730"
+X-IronPort-AV: E=Sophos;i="6.21,320,1763452800"; d="scan'208";a="73450730"
 Received: from orviesa009.jf.intel.com ([10.64.159.149])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2026 08:49:24 -0800
-X-CSE-ConnectionGUID: qvFv5wDqSAevRIVBjxxDPA==
-X-CSE-MsgGUID: L5DBzFGBT0W3XqROsqRkYg==
+ 02 Mar 2026 08:49:28 -0800
+X-CSE-ConnectionGUID: 8Um5qbDhQWCds9WkdWLs/w==
+X-CSE-MsgGUID: i7JfX0AiSneiW+a0K69bAw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,320,1763452800"; d="scan'208";a="217620792"
+X-IronPort-AV: E=Sophos;i="6.21,320,1763452800"; d="scan'208";a="217620805"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa009.jf.intel.com with ESMTP; 02 Mar 2026 08:49:15 -0800
+ by orviesa009.jf.intel.com with ESMTP; 02 Mar 2026 08:49:20 -0800
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 4778F312C7;
- Mon,  2 Mar 2026 16:49:12 +0000 (GMT)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id EE9FD312CB;
+ Mon,  2 Mar 2026 16:49:16 +0000 (GMT)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: bpf@vger.kernel.org
 Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
@@ -103,8 +103,8 @@ Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
  intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Dragos Tatulea <dtatulea@nvidia.com>
-Date: Mon,  2 Mar 2026 17:17:14 +0100
-Message-ID: <20260302161723.858616-2-larysa.zaremba@intel.com>
+Date: Mon,  2 Mar 2026 17:17:15 +0100
+Message-ID: <20260302161723.858616-3-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260302161723.858616-1-larysa.zaremba@intel.com>
 References: <20260302161723.858616-1-larysa.zaremba@intel.com>
@@ -112,26 +112,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1772470165; x=1804006165;
+ t=1772470168; x=1804006168;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=I8LeZNgeuqgDpbXs60sxkQ/Vovn1rVcrBzDtzH6nvI0=;
- b=RjPlfPSDD0QkDzFf30lxUouqw+fYYy9QGM3SxvkL/pwQhGQ65WLqXDhr
- apzRiClxff/R+nBMufgeTmVDN5PgeH3+FdP59DYTsUnXQzryVm9u+CcW/
- bOm1bh9oCBNYfiIYkqtvt+EdqAKTBpmBazqi30iwZE9UfSoWntP6Fq2OV
- huyTZDOxArNxDoYPj1pmw+4nGRjzoOfl56lqCYPulGVxKNwUJOc0xExYZ
- zwFb/7LnzPipMSxzJO87eKHefpcO9+VRXb6RsPBQ6DE9JV3sZFq5nRz3p
- ssGzeswV6MzQux3q5rHnGIDTxOYak+cWwKQrJYZdYGcaK+EaZRifAEmmu
- A==;
+ bh=VyI9tznp8tu429E89NaR4hulwef2E9ypuAT+OFDs/OQ=;
+ b=gwKQEsCtja1fA1ruyFcbORriT2qSLY71EZ6Mse+gfbuCINM0v9KM9lrA
+ yjlsgGjuy+K+/ekU+zIv0+MBIsWWKGQjiuk8p8NBetIhrhi7JgGdZBXql
+ eej0dqnAyLYTXlEHDgieDK32i3z2xqXlsnZB8GHJ8QN9+U5+KhLzt/LkA
+ /Tif95kaftvgpxTzGgRrCwv9bjhBeTtNi2nHB2GdPLGuY/c3z/b5cen3w
+ oWRWpGjGZMOsWqgagttorstsaNgbSdkoexdy26ayC6uopEaSXUMC0bLPs
+ r5mXoX/avom8h8GvbDbIiSzO8+h+0qehJsX4UJNqd5E28Lz5XOAn/9xu2
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=RjPlfPSD
-Subject: [Intel-wired-lan] [PATCH bpf v4 1/9] xdp: use modulo operation to
- calculate XDP frag tailroom
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=gwKQEsCt
+Subject: [Intel-wired-lan] [PATCH bpf v4 2/9] xsk: introduce helper to
+ determine rxq->frag_size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -146,7 +145,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 0E5681DD386
+X-Rspamd-Queue-Id: 49C801DD38D
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -178,61 +177,52 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-The current formula for calculating XDP tailroom in mbuf packets works only
-if each frag has its own page (if rxq->frag_size is PAGE_SIZE), this
-defeats the purpose of the parameter overall and without any indication
-leads to negative calculated tailroom on at least half of frags, if shared
-pages are used.
+rxq->frag_size is basically a step between consecutive strictly aligned
+frames. In ZC mode, chunk size fits exactly, but if chunks are unaligned,
+there is no safe way to determine accessible space to grow tailroom.
 
-There are not many drivers that set rxq->frag_size. Among them:
-* i40e and enetc always split page uniformly between frags, use shared
-  pages
-* ice uses page_pool frags via libeth, those are power-of-2 and uniformly
-  distributed across page
-* idpf has variable frag_size with XDP on, so current API is not applicable
-* mlx5, mtk and mvneta use PAGE_SIZE or 0 as frag_size for page_pool
+Report frag_size to be zero, if chunks are unaligned, chunk_size otherwise.
 
-As for AF_XDP ZC, only ice, i40e and idpf declare frag_size for it. Modulo
-operation yields good results for aligned chunks, they are all power-of-2,
-between 2K and PAGE_SIZE. Formula without modulo fails when chunk_size is
-2K. Buffers in unaligned mode are not distributed uniformly, so modulo
-operation would not work.
-
-To accommodate unaligned buffers, we could define frag_size as
-data + tailroom, and hence do not subtract offset when calculating
-tailroom, but this would necessitate more changes in the drivers.
-
-Define rxq->frag_size as an even portion of a page that fully belongs to a
-single frag. When calculating tailroom, locate the data start within such
-portion by performing a modulo operation on page offset.
-
-Fixes: bf25146a5595 ("bpf: add frags support to the bpf_xdp_adjust_tail() API")
-Acked-by: Jakub Kicinski <kuba@kernel.org>
+Fixes: 24ea50127ecf ("xsk: support mbuf on ZC RX")
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- net/core/filter.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/net/xdp_sock_drv.h | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/net/core/filter.c b/net/core/filter.c
-index 0d5d5a17acb2..d6fafb3633b0 100644
---- a/net/core/filter.c
-+++ b/net/core/filter.c
-@@ -4155,7 +4155,8 @@ static int bpf_xdp_frags_increase_tail(struct xdp_buff *xdp, int offset)
- 	if (!rxq->frag_size || rxq->frag_size > xdp->frame_sz)
- 		return -EOPNOTSUPP;
+diff --git a/include/net/xdp_sock_drv.h b/include/net/xdp_sock_drv.h
+index 242e34f771cc..09d972f4bd60 100644
+--- a/include/net/xdp_sock_drv.h
++++ b/include/net/xdp_sock_drv.h
+@@ -51,6 +51,11 @@ static inline u32 xsk_pool_get_rx_frame_size(struct xsk_buff_pool *pool)
+ 	return xsk_pool_get_chunk_size(pool) - xsk_pool_get_headroom(pool);
+ }
  
--	tailroom = rxq->frag_size - skb_frag_size(frag) - skb_frag_off(frag);
-+	tailroom = rxq->frag_size - skb_frag_size(frag) -
-+		   skb_frag_off(frag) % rxq->frag_size;
- 	if (unlikely(offset > tailroom))
- 		return -EINVAL;
++static inline u32 xsk_pool_get_rx_frag_step(struct xsk_buff_pool *pool)
++{
++	return pool->unaligned ? 0 : xsk_pool_get_chunk_size(pool);
++}
++
+ static inline void xsk_pool_set_rxq_info(struct xsk_buff_pool *pool,
+ 					 struct xdp_rxq_info *rxq)
+ {
+@@ -337,6 +342,11 @@ static inline u32 xsk_pool_get_rx_frame_size(struct xsk_buff_pool *pool)
+ 	return 0;
+ }
  
++static inline u32 xsk_pool_get_rx_frag_step(struct xsk_buff_pool *pool)
++{
++	return 0;
++}
++
+ static inline void xsk_pool_set_rxq_info(struct xsk_buff_pool *pool,
+ 					 struct xdp_rxq_info *rxq)
+ {
 -- 
 2.52.0
 
