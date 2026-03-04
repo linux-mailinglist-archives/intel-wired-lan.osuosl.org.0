@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8PIENohfqGmduAAAu9opvQ
+	id COOcHYpfqGmduAAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 17:36:24 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 17:36:26 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F1F4204673
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 17:36:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4700F20467A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 17:36:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BAECD8136D;
-	Wed,  4 Mar 2026 16:36:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B782813B0;
+	Wed,  4 Mar 2026 16:36:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KLxt9AjRG3Mj; Wed,  4 Mar 2026 16:36:17 +0000 (UTC)
+ id iaqKjcbHVWlf; Wed,  4 Mar 2026 16:36:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F33381326
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9FFB38132E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772642177;
-	bh=xH3Zmcd576nlLcKjE9auZk0MqMBeH8c5vtdU1xpyRXM=;
+	s=default; t=1772642178;
+	bh=/KCNSrI38Kvpa9Ekv7MohsZg2V5yozSNTh42CygIqK8=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=wdNPrTqD2jzuF9lBH219BPjGCuPN40RCyB3hkxGVLTCMUEgQMFM2bTfGfzo2x90HE
-	 f0fG2wQZcL3o+EPY7GdomcHUCc3a7I2Jwl0Ru16wGQNwSbX2puEFdtoGqwBcGWw8yv
-	 iTW3bYnbIXu9nLhrxMXRps71GPhIO+F87zlD7uVOjAiWtVutnSNlPK7QAte/ptStVn
-	 r9ymCMh3HhhNkn6Aua/xSGA3zb+CfAelXPyCcsATCRZpLbDKIyBFevzb6y1cy/en0Q
-	 94RmdrCsR9+enUbquNLr5bj95OsSL9stZGA/5YbF9jojl4EyhzbYFTzS7vJ5JZ3LsM
-	 jK9IJTjhoTvQw==
+	b=pRZ8XrNqOv67zF+AP/OLH/DQMHAQwgskAQv7/3kw75VnKqP0mcASmELZVugtsM1wu
+	 pJTqocmWNtbiTQh36d80vNV2d1/Y/pE5EwROQZTRr/NwfSUf/sHcMt6zlipfNRcxCe
+	 TZ+7BS4mzOURTka6Qffhds30/zBocwiunBityqy6/9EJsVjVO4NeimiSPjwiHyDBY3
+	 R9b/NQqfivV4thqp5mqvvYYzFKAuJ08lhe57j0G17fhk7ySNEUuvCeIqccrHEYXivf
+	 sRWvrfoZe0hHicOjZ5rtnNQ2rg/nwNFvenrdBaqp16AIFIixSpHD4dbuwOPOkXxMSc
+	 VYJ+70T9edoug==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1F33381326;
-	Wed,  4 Mar 2026 16:36:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9FFB38132E;
+	Wed,  4 Mar 2026 16:36:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 7C58E1EB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 202BE231
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 630E86086F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 129DB6086F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rR7IG4x08BL2 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Mar 2026 16:36:14 +0000 (UTC)
+ id XOk8A-oORW3u for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Mar 2026 16:36:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
  helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 66F866086D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 66F866086D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 18AF06086D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 18AF06086D
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 66F866086D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:14 +0000 (UTC)
-X-CSE-ConnectionGUID: K3+g2riCRsOR3Q+gQmjF5w==
-X-CSE-MsgGUID: 0nDMAuBTTmSFBUj1xyaA2A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11719"; a="72906446"
-X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; d="scan'208";a="72906446"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 18AF06086D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 16:36:16 +0000 (UTC)
+X-CSE-ConnectionGUID: LtyG/zclR32P3A7xgJvHrQ==
+X-CSE-MsgGUID: XjUA+CwaTIiknQ3ptWKVag==
+X-IronPort-AV: E=McAfee;i="6800,10657,11719"; a="72906464"
+X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; d="scan'208";a="72906464"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Mar 2026 08:36:14 -0800
-X-CSE-ConnectionGUID: bmMhBjZnRnaC4vLQ7HpYNw==
-X-CSE-MsgGUID: xBt0cTI1Sr6BaAXFry3wFQ==
+ 04 Mar 2026 08:36:15 -0800
+X-CSE-ConnectionGUID: 7wkR9efNR9uyL5ijqtiN3Q==
+X-CSE-MsgGUID: 1fYrwHwiR7qWLIM1XMTJOw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; d="scan'208";a="241405028"
+X-IronPort-AV: E=Sophos;i="6.21,324,1763452800"; d="scan'208";a="241405043"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa002.fm.intel.com with ESMTP; 04 Mar 2026 08:36:10 -0800
+ by fmviesa002.fm.intel.com with ESMTP; 04 Mar 2026 08:36:11 -0800
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 2E7DE312CA;
- Wed,  4 Mar 2026 16:36:08 +0000 (GMT)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 109DB312CB;
+ Wed,  4 Mar 2026 16:36:10 +0000 (GMT)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
 Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
@@ -87,8 +87,8 @@ Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Natalia Wochtman <natalia.wochtman@intel.com>, netdev@vger.kernel.org,
  linux-kernel@vger.kernel.org, bpf@vger.kernel.org
-Date: Wed,  4 Mar 2026 17:03:41 +0100
-Message-ID: <20260304160345.1340940-10-larysa.zaremba@intel.com>
+Date: Wed,  4 Mar 2026 17:03:42 +0100
+Message-ID: <20260304160345.1340940-11-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260304160345.1340940-1-larysa.zaremba@intel.com>
 References: <20260304160345.1340940-1-larysa.zaremba@intel.com>
@@ -96,25 +96,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1772642174; x=1804178174;
+ t=1772642176; x=1804178176;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=dFgFR9mD8Y+SNY8Jnfeggcz+/V/svBglT97OuTyNgW4=;
- b=V5jWMGhCTqDnkZ2PxQEQCbuJIpZ/FvWIg40KuU98QX3/K4re74nwj9gi
- WwPA/Ch+mdaq4SCGCuGOEObqxWDwGzTz0WTfOMhULJPXJwA4EzLjoqruS
- CT2nDBQa79rAmmtprXrc8clgSFA9JxH2cNUFZbjiRax4V72uJPuxjMnlj
- 7i6OiU1MO0lR7OTzHySspKeLrP7E1QynDaFBeISywL3XnaCeruZ6xWx6B
- r3VI/pXRJxlc3LX7Vc1jEPUbxqmpraJ6Zm8h/snYg3MNl4Va48YYBYtnH
- 00IucbzSVZigj0vBcvKH2jJ74mDFoxg0x2dX4D+H15mxwZFjWO1P2Hvo3
- w==;
+ bh=xSoRegfDOP/5IirhtXxj8ro8oytZUXfZQIPbEnLhFj0=;
+ b=W1fvYWFHPWDTUvwr+a6TUurNqZ/eK7OHMrVTvsKdUEegMXpoVQChGinI
+ 1GjOKr9JJyANH+TkqeLaIy7z8KeEknOgV7czEtfVZblp22HWnCKF4We/g
+ VEkABcEN9q4fTOvQNPj3c3XGMF/C1osDQszLCwJRSO+rtHvAFNtFI8PbM
+ MJO/Y8rILcbXS55L2/tdTyhMl9N4aPT2SMxwqgffyb9vsX9Sy73HmV9Aa
+ doxQ4cs5T7pVkB3H4nqrcQnoJJR7G5A+Pf4WiyaEsgDvw3M6tmABDP/zm
+ wuVfRasade6sYtJu49yel6SvrB0c1CpihF/4Y0oDibNst+nr3f+5ke/gz
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=V5jWMGhC
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 09/10] ixgbevf: reconfigure
- page pool when reallocating buffers
+ header.a=rsa-sha256 header.s=Intel header.b=W1fvYWFH
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 10/10] ixgbevf: allow changing
+ MTU when XDP program is attached
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -129,7 +129,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5F1F4204673
+X-Rspamd-Queue-Id: 4700F20467A
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -167,161 +167,104 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-Currently, when MTU is changed, page pool is not reconfigured, which leads
-to usage of suboptimal buffer sizes.
+xskxceiver attempts to change MTU after attaching XDP program,
+ixgbevf rejects the request leading to test being failed.
 
-Always destroy page pool when cleaning the ring up and create it anew when
-we first allocate Rx buffers.
+Support MTU change operation even when XDP program is already attached,
+perform the same frame size check as when attaching a program.
 
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c | 69 +++++++++----------
- 1 file changed, 33 insertions(+), 36 deletions(-)
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c | 37 ++++++++++++++-----
+ 1 file changed, 27 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index d00d3b307a8f..196e51eb516a 100644
+index 196e51eb516a..08ea2ae45cea 100644
 --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
 +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -1662,6 +1662,14 @@ static void ixgbevf_rx_destroy_pp(struct ixgbevf_ring *rx_ring)
- 		.fqes	= rx_ring->rx_fqes,
+@@ -569,8 +569,8 @@ static void ixgbevf_alloc_rx_buffers(struct ixgbevf_ring *rx_ring,
  	};
+ 	u16 ntu = rx_ring->next_to_use;
  
-+	if (!fq.pp)
-+		return;
-+
-+	if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq)) {
-+		xdp_rxq_info_detach_mem_model(&rx_ring->xdp_rxq);
-+		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
-+	}
-+
- 	libeth_rx_fq_destroy(&fq);
- 	rx_ring->rx_fqes = NULL;
- 	rx_ring->pp = NULL;
-@@ -1712,6 +1720,14 @@ static int ixgbevf_rx_create_pp(struct ixgbevf_ring *rx_ring)
- 	rx_ring->truesize = fq.truesize;
- 	rx_ring->rx_buf_len = fq.buf_len;
+-	/* nothing to do or no valid netdev defined */
+-	if (unlikely(!cleaned_count || !rx_ring->netdev))
++	/* nothing to do or page pool is not present */
++	if (unlikely(!cleaned_count || !fq.pp))
+ 		return;
  
-+	/* XDP RX-queue info */
-+	ret = __xdp_rxq_info_reg(&rx_ring->xdp_rxq, rx_ring->netdev,
-+				 rx_ring->queue_index, 0, rx_ring->truesize);
-+	if (ret)
-+		goto err;
-+
-+	xdp_rxq_info_attach_page_pool(&rx_ring->xdp_rxq, rx_ring->pp);
-+
- 	if (!fq.hsplit)
- 		return 0;
+ 	rx_desc = IXGBEVF_RX_DESC(rx_ring, ntu);
+@@ -1764,6 +1764,7 @@ static void ixgbevf_configure_rx_ring(struct ixgbevf_adapter *adapter,
+ 	bool rlpml_valid = false;
+ 	u64 rdba = ring->dma;
+ 	u32 rxdctl;
++	int err;
  
-@@ -1781,6 +1797,8 @@ static void ixgbevf_configure_rx_ring(struct ixgbevf_adapter *adapter,
+ 	/* disable queue to avoid issues while updating state */
+ 	rxdctl = IXGBE_READ_REG(hw, IXGBE_VFRXDCTL(reg_idx));
+@@ -1797,7 +1798,13 @@ static void ixgbevf_configure_rx_ring(struct ixgbevf_adapter *adapter,
  	ring->next_to_clean = 0;
  	ring->next_to_use = 0;
  
-+	ixgbevf_rx_create_pp(ring);
-+
+-	ixgbevf_rx_create_pp(ring);
++	err = ixgbevf_rx_create_pp(ring);
++	if (err) {
++		netdev_err(ring->netdev,
++			   "Failed to create Page Pool for buffer allocation: (%pe), RxQ %d is disabled, driver reload may be needed\n",
++			   ERR_PTR(err), ring->queue_index);
++		return;
++	}
+ 
  	/* RXDCTL.RLPML does not work on 82599 */
  	if (adapter->hw.mac.type != ixgbe_mac_82599_vf) {
- 		u32 pkt_len =
-@@ -2273,8 +2291,10 @@ static void ixgbevf_clean_all_rx_rings(struct ixgbevf_adapter *adapter)
- {
- 	int i;
- 
--	for (i = 0; i < adapter->num_rx_queues; i++)
-+	for (i = 0; i < adapter->num_rx_queues; i++) {
- 		ixgbevf_clean_rx_ring(adapter->rx_ring[i]);
-+		ixgbevf_rx_destroy_pp(adapter->rx_ring[i]);
-+	}
+@@ -4082,6 +4089,18 @@ static int ixgbevf_set_mac(struct net_device *netdev, void *p)
+ 	return 0;
  }
  
- /**
-@@ -3295,6 +3315,11 @@ static int ixgbevf_setup_all_tx_resources(struct ixgbevf_adapter *adapter)
- 	return err;
- }
- 
-+static struct device *ixgbevf_dma_dev_from_ring(struct ixgbevf_ring *ring)
++static bool ixgbevf_xdp_mtu_ok(const struct ixgbevf_adapter *adapter,
++			       const struct bpf_prog *prog, unsigned int mtu)
 +{
-+	return &ring->q_vector->adapter->pdev->dev;
++	u32 frame_size = mtu + LIBETH_RX_LL_LEN;
++	bool requires_mbuf;
++
++	requires_mbuf = frame_size > IXGBEVF_RX_PAGE_LEN(LIBETH_XDP_HEADROOM) ||
++			adapter->flags & IXGBEVF_FLAG_HSPLIT;
++
++	return prog->aux->xdp_has_frags || !requires_mbuf;
 +}
 +
  /**
-  * ixgbevf_setup_rx_resources - allocate Rx resources
-  * @adapter: board private structure
-@@ -3305,43 +3330,25 @@ static int ixgbevf_setup_all_tx_resources(struct ixgbevf_adapter *adapter)
- int ixgbevf_setup_rx_resources(struct ixgbevf_adapter *adapter,
- 			       struct ixgbevf_ring *rx_ring)
- {
--	int ret;
--
--	ret = ixgbevf_rx_create_pp(rx_ring);
--	if (ret)
--		return ret;
--
- 	u64_stats_init(&rx_ring->syncp);
+  * ixgbevf_change_mtu - Change the Maximum Transfer Unit
+  * @netdev: network interface device structure
+@@ -4097,8 +4116,10 @@ static int ixgbevf_change_mtu(struct net_device *netdev, int new_mtu)
+ 	int ret;
  
- 	/* Round up to nearest 4K */
- 	rx_ring->dma_size = rx_ring->count * sizeof(union ixgbe_adv_rx_desc);
- 	rx_ring->dma_size = ALIGN(rx_ring->dma_size, 4096);
- 
--	rx_ring->desc = dma_alloc_coherent(rx_ring->pp->p.dev,
-+	rx_ring->desc = dma_alloc_coherent(ixgbevf_dma_dev_from_ring(rx_ring),
- 					   rx_ring->dma_size,
- 					   &rx_ring->dma, GFP_KERNEL);
- 
- 	if (!rx_ring->desc) {
--		ret = -ENOMEM;
--		goto err;
-+		dev_err(rx_ring->dev,
-+			"Unable to allocate memory for the Rx descriptor ring\n");
-+		return -ENOMEM;
+ 	/* prevent MTU being changed to a size unsupported by XDP */
+-	if (adapter->xdp_prog) {
+-		dev_warn(&adapter->pdev->dev, "MTU cannot be changed while XDP program is loaded\n");
++	if (adapter->xdp_prog &&
++	    !ixgbevf_xdp_mtu_ok(adapter, adapter->xdp_prog, new_mtu)) {
++		netdev_warn(netdev,
++			    "MTU value provided cannot be set while current XDP program is attached\n");
+ 		return -EPERM;
  	}
  
--	/* XDP RX-queue info */
--	ret = __xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
--				 rx_ring->queue_index, 0, rx_ring->truesize);
--	if (ret)
--		goto err;
--
--	xdp_rxq_info_attach_page_pool(&rx_ring->xdp_rxq, rx_ring->pp);
--
- 	rx_ring->xdp_prog = adapter->xdp_prog;
- 
- 	return 0;
--err:
--	ixgbevf_rx_destroy_pp(rx_ring);
--	dev_err(rx_ring->dev, "Unable to allocate memory for the Rx descriptor ring\n");
--
--	return ret;
- }
- 
- /**
-@@ -3382,24 +3389,14 @@ static int ixgbevf_setup_all_rx_resources(struct ixgbevf_adapter *adapter)
-  **/
- void ixgbevf_free_rx_resources(struct ixgbevf_ring *rx_ring)
+@@ -4261,14 +4282,10 @@ ixgbevf_features_check(struct sk_buff *skb, struct net_device *dev,
+ static int ixgbevf_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
+ 			     struct netlink_ext_ack *extack)
  {
--	struct libeth_fq fq = {
--		.fqes	= rx_ring->rx_fqes,
--		.pp	= rx_ring->pp,
--	};
--
- 	ixgbevf_clean_rx_ring(rx_ring);
--
-+	ixgbevf_rx_destroy_pp(rx_ring);
- 	rx_ring->xdp_prog = NULL;
--	xdp_rxq_info_detach_mem_model(&rx_ring->xdp_rxq);
--	xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+-	u32 frame_size = READ_ONCE(dev->mtu) + LIBETH_RX_LL_LEN;
+ 	struct ixgbevf_adapter *adapter = netdev_priv(dev);
+ 	struct bpf_prog *old_prog;
+-	bool requires_mbuf;
  
--	dma_free_coherent(fq.pp->p.dev, rx_ring->dma_size, rx_ring->desc,
-+	dma_free_coherent(ixgbevf_dma_dev_from_ring(rx_ring),
-+			  rx_ring->dma_size, rx_ring->desc,
- 			  rx_ring->dma);
- 	rx_ring->desc = NULL;
--
--	libeth_rx_fq_destroy(&fq);
--	rx_ring->rx_fqes = NULL;
--	rx_ring->pp = NULL;
- }
- 
- /**
+-	requires_mbuf = frame_size > IXGBEVF_RX_PAGE_LEN(LIBETH_XDP_HEADROOM) ||
+-			adapter->flags & IXGBEVF_FLAG_HSPLIT;
+-	if (prog && !prog->aux->xdp_has_frags && requires_mbuf) {
++	if (prog && !ixgbevf_xdp_mtu_ok(adapter, prog, READ_ONCE(dev->mtu))) {
+ 		NL_SET_ERR_MSG_MOD(extack,
+ 				   "Configured MTU or HW limitations require non-linear frames and XDP prog does not support frags");
+ 		return -EOPNOTSUPP;
 -- 
 2.52.0
 
