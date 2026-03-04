@@ -2,108 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8JkoL+MaqGmgnwAAu9opvQ
+	id 0EKjOoojqGl3ogAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 12:43:31 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 13:20:26 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF40C1FF2F3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 12:43:30 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 24E8D1FF9DE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 04 Mar 2026 13:20:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8A9868126A;
-	Wed,  4 Mar 2026 11:43:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3FF76607C8;
+	Wed,  4 Mar 2026 12:20:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Eyxn-9aEZSsS; Wed,  4 Mar 2026 11:43:29 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nhUdk3V6ugLM; Wed,  4 Mar 2026 12:20:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1597D8129E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96FF8607CC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772624609;
-	bh=DTcZCdONX3KmlChow/JbVOTEHm3osMmIN3MSgKchrkw=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1772626818;
+	bh=q3OLhhPpaFZZDGaiPghN0BdEty+YAByaYVxPtN3eJsU=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=NiGsrUp8fP60ELJS+m2i7lRqtwW/FUYPNZG42iELXNaUNVu8PpzK7GSdmFh+8lvu6
-	 fKqVv7UD4PhJA5Jx5rfXWZxqTiueEwakd1p/4pM8v8mTvkpyftcvzwAounkKi3gb4g
-	 3sbfYbkZi9N30+hQgoDfZQH8oBqtV02kWCaDqTulCqkCO/zrslAnLDaSnfo1yi3Ln0
-	 m2XNIuhF0fb1AOXaolMqSrp5fGDk2aOiHJV0ABh/FkH1AaiULYphWlEtAj6XY8i50k
-	 CjcMgfQ4BqxuBVLvVktIDMGeIe7ED7VfYWW3VpGJG4JwWzAhN+0COLNUpwkvJp4TAN
-	 aV3smZ9B/rG8A==
+	b=tbbz6mxAV0HfbIi1Kj4Y35x3k9pZoqMEh+CetKunlHcxV8lbwESSrGC7hDzkZYXna
+	 nlN+dzQS30C+7vWyyjX63a+nBjzpiEJjq02iccmIJYzHdlxfr7UKwBdO90272NcfKN
+	 kNVNwTYi36MOh+ltdnbJ1rP31DtlspG0yhM/RUaZ+9gKDR8dLX2dG+hikOjsWB27le
+	 3Z48Rv9USfKnKYacCo+bzptNH5Nwr0cTVvKVkB/9WmSAVTALvmEHPTAGoJlTf0EtBc
+	 injchsUDL/cQR2dWwyNZOLxgeE9c7VkHKnnClybaerlinB83be2hG3IXTpPl6ghcxR
+	 o7D7RFKXy+8XA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1597D8129E;
-	Wed,  4 Mar 2026 11:43:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 96FF8607CC;
+	Wed,  4 Mar 2026 12:20:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2A5751EB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 11:43:28 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 663C025B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 12:20:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 27D778126A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 11:43:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4AB24607BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 12:20:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TnjbrKQcVS-f for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Mar 2026 11:43:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 89ED68125B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89ED68125B
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 89ED68125B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 11:43:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XUSELxVRcOPs for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Mar 2026 12:20:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=mchehab+huawei@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8C3FB6075E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C3FB6075E
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8C3FB6075E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Mar 2026 12:20:15 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 84F9343627;
- Wed,  4 Mar 2026 11:43:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BC93C19423;
- Wed,  4 Mar 2026 11:43:22 +0000 (UTC)
-Date: Wed, 4 Mar 2026 11:43:19 +0000
-From: Simon Horman <horms@kernel.org>
-To: Yury Norov <ynorov@nvidia.com>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Thomas =?utf-8?Q?Hellstr=C3=B6m?= <thomas.hellstrom@linux.intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Andrew Morton <akpm@linux-foundation.org>,
- David Airlie <airlied@gmail.com>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthew Brost <matthew.brost@intel.com>,
- Paolo Abeni <pabeni@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Simona Vetter <simona@ffwll.ch>, Yury Norov <yury.norov@gmail.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- David Laight <david.laight.linux@gmail.com>
-Message-ID: <20260304114319.GI71509@kernel.org>
-References: <20260302011159.61778-1-ynorov@nvidia.com>
- <20260302011159.61778-5-ynorov@nvidia.com>
+ by sea.source.kernel.org (Postfix) with ESMTP id ECA8F43AB0;
+ Wed,  4 Mar 2026 12:20:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C382BC19423;
+ Wed,  4 Mar 2026 12:20:14 +0000 (UTC)
+Received: from localhost ([::1]) by mail.kernel.org with esmtp (Exim 4.99.1)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1vxlD2-0000000BmbB-2bXO; Wed, 04 Mar 2026 13:20:12 +0100
+Date: Wed, 4 Mar 2026 13:20:11 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jani Nikula <jani.nikula@linux.intel.com>
+Cc: Jonathan Corbet <corbet@lwn.net>, Alexander Lobakin
+ <aleksander.lobakin@intel.com>, Kees Cook <kees@kernel.org>, Mauro Carvalho
+ Chehab <mchehab@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ linux-doc@vger.kernel.org, linux-hardening@vger.kernel.org,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org, "Gustavo A. R. Silva"
+ <gustavoars@kernel.org>, Aleksandr Loktionov
+ <aleksandr.loktionov@intel.com>, Randy Dunlap <rdunlap@infradead.org>,
+ Shuah Khan <skhan@linuxfoundation.org>
+Message-ID: <20260304132011.1a9567b7@localhost>
+In-Reply-To: <352c3f9f8ffd2d031c86a476e532a8ea6ffcf1ed@intel.com>
+References: <cover.1771408406.git.mchehab+huawei@kernel.org>
+ <33d214091909b9a060637f56f81fb8f525cf433b@intel.com>
+ <878qcj8pvw.fsf@trenco.lwn.net>
+ <352c3f9f8ffd2d031c86a476e532a8ea6ffcf1ed@intel.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260302011159.61778-5-ynorov@nvidia.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1772624606;
- bh=RdeQxpM446a30snr6DksUquAKJ3HbafVGgNp+XRn85U=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SXOmIPJbVZrOiDQdxxHApj/MW4tElG/4y1VDKOns6EUYefWrdr3Nr/hORg0FG/nKl
- sf1jwiYbcTZbeo7mP4eRySpZJ31b4r6vFlDZoXwGsaYxUbLpzcmLCpyPBnaQMF2w6D
- zSU46tKdc/tDIq/9Axq5QIFsmPRUOfKWlu4Ek0SCjV2XwQQi5WJbOW0k2GOs11f74U
- HNyTzaWEX5p6CpRYLaPACt5i/fuBO1I2z9ZS7nlX24pj9dCw8AZa5ERaK5bSsLmVrP
- zWxfSaQ2ripq1cTH+j0Ox0ed/JrZaAKczpFk/forHoP1khftNCM5CvekS5OYqimc8h
- OnrLrF99lt4nw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1772626814;
+ bh=WnoeAiH2zeYFOAvm4hMpg8jxN72aiERbJc4YfUHDZDQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=CsaHi6sBwsPfp+NPjbz2Ilf7H2PfoN78U0IiIBUR7ZEsgvy/StYpQiCXoCbsVjdVh
+ uIajtSgfMOWXoR5kBOMZgxml5ZKxV8s4pVAs1I9rDpqJnu4cYOvuJneB/aLBPwECrH
+ FjWIvg1nw7NqJdX9gDc3RWowg5IRaYCCywN7nBxuZLSbYT7npvOGy713OjEla6wbf1
+ caFy362tRt7y/cuxjfFkh7Ur+qpOjZ54lm7TjUcdH4Km4lTEPbzyTPJSeAa00bBy5h
+ eLhgctkNXLFCEeRs6EgEflzgOR+9ThZEI1kmWEvK/daxZ2qRS5JJb115fYSW+VQ8Eg
+ 8TwoXf5+SjXLQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=SXOmIPJb
-Subject: Re: [Intel-wired-lan] [PATCH v2 4/4] drm/xe: switch
- xe_pagefault_queue_init() to using bitmap_weighted_or()
+ header.a=rsa-sha256 header.s=k20201202 header.b=CsaHi6sB
+Subject: Re: [Intel-wired-lan] [PATCH 00/38] docs: several improvements to
+ kernel-doc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,58 +115,122 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: DF40C1FF2F3
+X-Rspamd-Queue-Id: 24E8D1FF9DE
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
+X-Spamd-Result: default: False [1.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	MID_RHS_NOT_FQDN(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,davemloft.net,linux.intel.com,lunn.ch,linux-foundation.org,gmail.com,google.com,kernel.org,redhat.com,ffwll.ch,rasmusvillemoes.dk,lists.freedesktop.org,vger.kernel.org,lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:ynorov@nvidia.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:thomas.hellstrom@linux.intel.com,m:andrew+netdev@lunn.ch,m:akpm@linux-foundation.org,m:airlied@gmail.com,m:edumazet@google.com,m:kuba@kernel.org,m:matthew.brost@intel.com,m:pabeni@redhat.com,m:przemyslaw.kitszel@intel.com,m:rodrigo.vivi@intel.com,m:simona@ffwll.ch,m:yury.norov@gmail.com,m:linux@rasmusvillemoes.dk,m:dri-devel@lists.freedesktop.org,m:intel-xe@lists.freedesktop.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:david.laight.linux@gmail.com,m:andrew@lunn.ch,m:yurynorov@gmail.com,m:davidlaightlinux@gmail.com,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[nvidia.com:email];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[22];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[14];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:jani.nikula@linux.intel.com,m:corbet@lwn.net,m:aleksander.lobakin@intel.com,m:kees@kernel.org,m:mchehab@kernel.org,m:linux-doc@vger.kernel.org,m:linux-hardening@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:gustavoars@kernel.org,m:aleksandr.loktionov@intel.com,m:rdunlap@infradead.org,m:skhan@linuxfoundation.org,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
+	TAGGED_FROM(0.00)[huawei];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[lwn.net:email,intel.com:email,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mchehab@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-1.000];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-On Sun, Mar 01, 2026 at 08:11:58PM -0500, Yury Norov wrote:
-> The function calls bitmap_or() immediately followed by bitmap_weight().
-> Switch to using the dedicated bitmap_weighted_or() and save one bitmap
-> traverse.
+
+On Wed, 04 Mar 2026 12:07:45 +0200
+Jani Nikula <jani.nikula@linux.intel.com> wrote:
+
+> On Mon, 23 Feb 2026, Jonathan Corbet <corbet@lwn.net> wrote:
+> > Jani Nikula <jani.nikula@linux.intel.com> writes:
+> >  
+> >> There's always the question, if you're putting a lot of effort into
+> >> making kernel-doc closer to an actual C parser, why not put all that
+> >> effort into using and adapting to, you know, an actual C parser?  
+> >
+> > Not speaking to the current effort but ... in the past, when I have
+> > contemplated this (using, say, tree-sitter), the real problem is that
+> > those parsers simply strip out the comments.  Kerneldoc without comments
+> > ... doesn't work very well.  If there were a parser without those
+> > problems, and which could be made to do the right thing with all of our
+> > weird macro usage, it would certainly be worth considering.  
 > 
-> Signed-off-by: Yury Norov <ynorov@nvidia.com>
+> I think e.g. libclang and its Python bindings can be made to work. The
+> main problems with that are passing proper compiler options (because
+> it'll need to include stuff to know about types etc. because it is a
+> proper parser), preprocessing everything is going to take time, you need
+> to invest a bunch into it to know how slow exactly compared to the
+> current thing and whether it's prohitive, and it introduces an extra
+> dependency.
 
-It's not entirely clear to me why this patch is included in a patchset
-for the ice driver.
+It is not just that. Assume we're parsing something like this:
 
-And it's also not clear to me why, but allmodconfigs - fo4 at least x86_32
-and x86_64 - fail with this patch applied to net-next [1].
+	static __always_inline int _raw_read_trylock(rwlock_t *lock)
+		__cond_acquires_shared(true, lock);
 
-ERROR: modpost: "__bitmap_weighted_or" [drivers/gpu/drm/xe/xe.ko] undefined!
 
-[1] 2b12ffb66955 ("net: mana: Trigger VF reset/recovery on health check failure due to HWC timeout")
+using a cpp (or libclang). We would need to define/undefine 3 symbols:
+
+	#if defined(WARN_CONTEXT_ANALYSIS) && !defined(__CHECKER__) && !defined(__GENKSYMS__)
+
+(in this particular case, the default is OK, but on others, it may not
+be)
+
+This is by far more complex than just writing a logic that would
+convert the above into:
+
+	static int _raw_read_trylock(rwlock_t *lock);
+
+which is the current kernel-doc approach.
+
+-
+
+Using a C preprocessor, we might have a very big prototype - and even have
+arch-specific defines affecting it, as some includes may be inside 
+arch/*/include.
+
+So, we would need a kernel-doc ".config" file with a set of defines
+that can be hard to maintain.
+
+> So yeah, there are definitely tradeoffs there. But it's not like this
+> constant patching of kernel-doc is exactly burden free either. I don't
+> know, is it just me, but I'd like to think as a profession we'd be past
+> writing ad hoc C parsers by now.
+
+I'd say that the binding logic and the ".config" kernel-doc defines will
+be complex to maintain. Maybe more complex than kernel-doc patching and
+a simple C parser, like the one on my test.
+
+> > On Mon, 23 Feb 2026 15:47:00 +0200
+> > Jani Nikula <jani.nikula@linux.intel.com> wrote:  
+> >> There's always the question, if you're putting a lot of effort into
+> >> making kernel-doc closer to an actual C parser, why not put all that
+> >> effort into using and adapting to, you know, an actual C parser?  
+> >
+> > Playing with this idea, it is not that hard to write an actual C
+> > parser - or at least a tokenizer.  
+> 
+> Just for the record, I suggested using an existing parser, not going all
+> NIH and writing your own.
+
+I know, but I suspect that a simple tokenizer similar to my example might
+do the job without any major impact, but yeah, tests are needed.
+
+
+-- 
+Thanks,
+Mauro
