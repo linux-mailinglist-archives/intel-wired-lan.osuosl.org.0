@@ -2,213 +2,143 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8DGHKffCqmlXWQEAu9opvQ
+	id sECeFsXSqmn3XQEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 06 Mar 2026 13:05:11 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 06 Mar 2026 14:12:37 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90D0F22013B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 06 Mar 2026 13:05:10 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39F4641D5B;
-	Fri,  6 Mar 2026 12:05:09 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kZ8D-NQh4bn5; Fri,  6 Mar 2026 12:05:07 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C617741D54
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1772798707;
-	bh=CqswgUwgBqG+FThcUHfSE3hJk1zUeOKzCxIc2qdgz8w=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=2D0k9g4gxASDPyU2X6mWWsuMW5jzzCCocn5jbvV6PyPR+Oov2dnvrzEWUVNu6+Dtj
-	 7rUnwO33wJuRWpx86zcYtiig7I8QctIHVRHBYaujCVFZE2YI2802dGYdr1cGM+CVIV
-	 PFKN6igI8aj4ofY1aYQz/ot6DpL8Zu1EpunNTvGx3adXE4+YMqNVbZTrSHy5/tYHiu
-	 Z398q1+mMRxDSHQDk0Sty1QSnsfOWFgFY1BdGe6VA3iVOvDy7HQozg6FXkRKHW4tMZ
-	 fb88WC4PX6qZOgdmMEO5gP37lcrrzHpspqJe/adRpec+csVsGm1fkHJyImKrF6gkJX
-	 rTV9c2ByAKs7g==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C617741D54;
-	Fri,  6 Mar 2026 12:05:07 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 90F0F339
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 12:05:05 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CCFF2216F8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 06 Mar 2026 14:12:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 81FC481E0A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 12:05:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A432681E95;
+	Fri,  6 Mar 2026 13:12:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LQILTwo1OOn2 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Mar 2026 12:05:01 +0000 (UTC)
-Received-SPF: Temperror (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+ id IyXy5_nOq_eL; Fri,  6 Mar 2026 13:12:32 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD58B81E28
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1772802752;
+	bh=dXD46sZBbQ0HinTPPSaWF5tUOxdfFWBYFR/OarMz7d8=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=pbNxKdVTw64rzeXZcyj1LM0hB070/m4GxWLAzXmy8RpZyz+wnD1ctq01US4qKlnnM
+	 UF6OP7lgWuz90GVM8dpCSXalxwU1CGZp/CwD1bHqwe5sWE9gUscliNHm2yNJWZ8ddu
+	 73Hbne9dCIMvbRYfaP3ivBoIUdm7zNKzzFX/Z1haRT98UJQ2xw1E+UNTDj7ENKoShM
+	 VPMc1gxRGsqDGa2JwPdZDylH7N3xc68VYcMXnYlnPzUj7Qh5C1x1MGRDVf4SDgIfOp
+	 EpAVkFnPGxo3y6X/QfGALJnft6wiEeJpNzZ1J19bNrMP7BB5vnSbzmXqJzveJKEmKg
+	 LzqNkcGpz3P8Q==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD58B81E28;
+	Fri,  6 Mar 2026 13:12:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id E30CF339
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 13:12:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D488340605
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 13:12:30 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vMHHeyMB9zbd for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Mar 2026 13:12:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A30C183BC9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A30C183BC9
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A30C183BC9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 12:04:09 +0000 (UTC)
-X-CSE-ConnectionGUID: u4htJug/Tau6i8/DRRGhIw==
-X-CSE-MsgGUID: yevrnhx8TQaKcyhNsD8lGg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11720"; a="99375086"
-X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="99375086"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2026 03:59:33 -0800
-X-CSE-ConnectionGUID: C2XCljhYQsG6hGz73nb8cA==
-X-CSE-MsgGUID: V/GdV/TWT4SfF46vQxbzzQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,104,1770624000"; d="scan'208";a="218982808"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
- by orviesa008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2026 03:59:33 -0800
-Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 6 Mar 2026 03:59:32 -0800
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Fri, 6 Mar 2026 03:59:32 -0800
-Received: from DM1PR04CU001.outbound.protection.outlook.com (52.101.61.3) by
- edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 6 Mar 2026 03:59:32 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JRo7T5vAy4XceEdxx4C0TBlRXycQ0nysXLre7sUteOuWScA3aQco7WzpFBp15UUSChG8gSBt2x8ryIUQRRhZLFNopKxban4cikNf+jgNQx0hj7GQdUzKXMvhCB0NlHJ0c+ILiaZTGoqX1TFwR5uZ8SlE4zRM/qqEFB/NR9mojpsVF1tCvmnX5LWwrUQGqpKmUe07Fi60zb8RSkzQUomUn6AGYdX8npkPtHczEydoYT3Ki1A2G8scCQPhJPjj3KJ7Xv6z0s7cHOeln5K0AbmfMD6Uf4Nw0RiksR1LXwJL7zEtUzzAaJ1KIWJFHWZPnjbrD9jgcjlD93WOjyTTT+t/PA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CqswgUwgBqG+FThcUHfSE3hJk1zUeOKzCxIc2qdgz8w=;
- b=o3M6h7cF8ywl1aoyCNJEs0X7JIroBi+qRur6AbbkZ5IkKUEO1Mh8jGmopf8LAKLB67zDiH4lR9YyYHxh8EsJB3ZFd+NTB3xMxooOHhbK7IK+IoclI914he4LDMYk0GNLMX+nfcDA1ZA5hjegMQdyXm4blc90SPf4R9YkmWRBH/VQ021xhSPx/M8I0hjIuki6KMyyR9hTqBGXbG3zfzE2weigoU0hyF3r6hzq9BUCuzRVGeMsAh+WRRicMISsnmMVBAUyqZfwAqrY/dsxFMXKp2xPvMn8umKLnie6PfIh6BwaCrcieI5q2YaRf24OtuTEmOPIyjicwExPInv3C3Jwpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by IA1PR11MB7920.namprd11.prod.outlook.com (2603:10b6:208:3fc::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.5; Fri, 6 Mar
- 2026 11:59:24 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::6aa:411d:4bfa:619c]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::6aa:411d:4bfa:619c%5]) with mapi id 15.20.9700.003; Fri, 6 Mar 2026
- 11:59:24 +0000
-Message-ID: <45e3ed53-bd42-4c29-abac-1d9fe74ad539@intel.com>
-Date: Fri, 6 Mar 2026 12:57:50 +0100
-User-Agent: Mozilla Thunderbird
-To: "Tantilov, Emil S" <emil.s.tantilov@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-CC: Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman
- <horms@kernel.org>, Kohei Enju <kohei@enjuk.jp>, Jacob Keller
- <jacob.e.keller@intel.com>, Aleksandr Loktionov
- <aleksandr.loktionov@intel.com>, <nxne.cnse.osdt.itp.upstreaming@intel.com>,
- <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>
-References: <20260224174618.2780516-1-aleksander.lobakin@intel.com>
- <20260224174618.2780516-3-aleksander.lobakin@intel.com>
- <b21bbcdc-ec87-4f83-8449-e627b6353281@intel.com>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-Content-Language: en-US
-In-Reply-To: <b21bbcdc-ec87-4f83-8449-e627b6353281@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: DBBPR09CA0039.eurprd09.prod.outlook.com
- (2603:10a6:10:d4::27) To DS0PR11MB8718.namprd11.prod.outlook.com
- (2603:10b6:8:1b9::20)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B6DF0404EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B6DF0404EF
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B6DF0404EF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Mar 2026 13:12:28 +0000 (UTC)
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-504-0lSQtUYCMmyX_xKEYCiUkw-1; Fri, 06 Mar 2026 08:12:26 -0500
+X-MC-Unique: 0lSQtUYCMmyX_xKEYCiUkw-1
+X-Mimecast-MFC-AGG-ID: 0lSQtUYCMmyX_xKEYCiUkw_1772802745
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4832c4621c2so99914145e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 06 Mar 2026 05:12:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1772802745; x=1773407545;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dXD46sZBbQ0HinTPPSaWF5tUOxdfFWBYFR/OarMz7d8=;
+ b=MAGiZ7smJ35I9AmBrS4P7D4bUxYFQy3/3b/n1ryMcn/rSBt/yTi4XMrmLdBIyRH+wD
+ zRviDZNF6rJ+sLSR1VW16eadUuVxp6njEc1XkwJhSXcHJMJizWT5QsLeYJX5xYuXu9Nv
+ bPKSAdG9Eb/CWprRLPkwLDPVf5c9Ic7t2nrrvE0n+SXqov8Gknuhn0Q3ewCBZhKpH6zF
+ 82aoG6u0U0ZMmuZF7a3jMyjdqhobtNi6JnsyPKHpSamVVIImYD/GWNbomF1PhQQsn9fX
+ rmIF7wurcYKYKFaAQ0NifZU0FJzRgXHgRZLBsNngVy+FvJke47ck50kQZJpW6s8xvYQM
+ BfaQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWU5DrwalE7kJSmJ/OFo3Msg1Avzjnvb1G7YfydWMHEwM4NW94UmZfJ7BHc31FwPBf/pLquSmJjMlEMTyrAQDc=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxBiUVkwOiophN2Ow98ORmgTLj5xdl/iN3haluB7/HzF0LShke6
+ RcmY4gP2EMzXO6PCnvjWFsWn3AB6+CCA6yZ6YxXXVQ7zPFxSFHSFZ7SH5r63UaSn1M4vi0ARrQb
+ aVtom0q3YI4Z5ytgaJJFwmu5w6DA0op7N5qHbggHBips1v4ps/esTpMI6mqWmgWhup9lFXwI=
+X-Gm-Gg: ATEYQzwUD8L7UUs7PI/DVIv7Mwk9C9e88faJfkoFsQAiCc5DY82APfI16iJQVZEMqeU
+ V8Uxf2VJQhuD5I49AdJ1nxSbTpip1PU3wk96MeRMR0oI5wNZ5/kH0JpNsBLnUyAtfp3sxonfYnb
+ ZuQ9IwiCOxHbAS6IINNWZWoVBLNkr9w1+gQ26oKAKTDBveZ/DFBZAVGFPVA7v+MmtZDj0i4Odgy
+ y5ac8OTJR2V3HzipYD0G2EEm9AB6Ta1xvtYUxu4mLvcHYIhBZb0Fx4s6RO60ZwzfsYeNrv1Qm9V
+ rQjRfDh5gyofT/U1SVifSCzXdULQD9D8ezopdVI2PIQxzKJV4YfrgdcgZNUG45xKE6Vh+sD/GRu
+ 5HxjCXjqfeJQvBMrAotJd
+X-Received: by 2002:a05:600c:c4a5:b0:477:63b5:7148 with SMTP id
+ 5b1f17b1804b1-485269199a2mr31101345e9.6.1772802744868; 
+ Fri, 06 Mar 2026 05:12:24 -0800 (PST)
+X-Received: by 2002:a05:600c:c4a5:b0:477:63b5:7148 with SMTP id
+ 5b1f17b1804b1-485269199a2mr31100855e9.6.1772802744373; 
+ Fri, 06 Mar 2026 05:12:24 -0800 (PST)
+Received: from [192.168.2.83] ([46.175.183.46])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4851fae00absm110527045e9.4.2026.03.06.05.12.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Mar 2026 05:12:23 -0800 (PST)
+Message-ID: <76331edf-2963-4527-9f01-80fed3f6d49b@redhat.com>
+Date: Fri, 6 Mar 2026 14:12:22 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|IA1PR11MB7920:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4e60eff4-25bf-47de-4005-08de7b77cf36
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: qkdlnijIe3O0XlnOr/1Tboy015z/IMW5Eou/FpRCu3/pJgPWrd2fu3kUUl5W1s5EEMI/gBkOuorRE7lpUta3qzKmzCf6XWyDGNfNNAcFBvdn+vcY8SW42mCKg1KQt+xyKmfJUMLLWdLXOPBaeRAK5wXLJGIzsgrAwu9r7Q4pDjo9kViFwHCG3dJY/ng/6l2QcwMNRpwyI6Fgh14a2oOUBslcZfiAvHBbupsEdXF3R5xtQBf55Wyt00/Du+L9+AwqR4M7Xu/LZ5iH9jnWxA2aYvDPMVNxG4CGgQRvE8wO8WbbcwqujW8ci4EqCIQK5UKFgJLwbhEsQXkNHafjc5ikSZanwu7Hq7YkcEiJW14nPOhlHNyonHXPmix7xakUYPW8cfIMBUwYPcmkWk11kMuyqKUHSENSXGVwOf7mxOvrgBi2b+vAYuOezHhIwLhHTVO6CshWc9n2sbsR3UY3hbLSCEjbf6CtW9tpzSWFIR1zN6Mx4ytPMM16THlDSc+yJMhV8BlBMJQ3/m6TSKTfQFJKDb8hYGwpZnE33e16G8Z44ATOUJR8E6a7js1NKAYpCovILCdcFsNk3lt9fZ9M+8wTbETNa6dujSpCcP+v95kZDmB+hBqsHJPkyO6t377A0F2DOg44Yt5YzEwX/emoIzYbwluGoXR9OgbjUxvj40jS0hvvIugMFC6aMoUaS0vJgLT6HpCA6q7/kuQr5MDxpviHmXGgo5fFixGaIK7cKI+dr5I=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dGg0VXp5OTYvVC92RzNYZVpzMEVWWEpTS2RndTNkQUs1R3cvcnRRQThNQ0gz?=
- =?utf-8?B?TU9QZ3p3NUFKMkRtL1IrKzRKcXFGSWthVkYzd3ZQTUtaeWpSb3NQMUZlc2xn?=
- =?utf-8?B?N0VQWDg3UHA2WXdITHlQYXljaGg1L1J2ZHBUV01heGRGNU5FbnhkT3NiUVZG?=
- =?utf-8?B?c3dYTDUwSzBkQkpCdU9NSmZjcnIrejBwaC9tcEd5OVRadVZUZXJLRlZkbEQw?=
- =?utf-8?B?KzVjT1cyVitYeEJQSUpjWVdxRGZubzR3SE9KM0FRa2NiMmg3OGk5bk5aOVZJ?=
- =?utf-8?B?S1NLSmhVdWgrZDhERnZHNGFDRlRrS3lVcTRqL3NzRjkxNUpONjB2dU9xa1Zk?=
- =?utf-8?B?WXpMQXZWYzIxYkMxMnRXY1NyYWZqZ3o1eWgyM0xIOHQ0aCtYVUh6czlXQm00?=
- =?utf-8?B?a0JwbExXY1VmYklURm9Zc3NYc0FjeU4weUNzUEorZ1VQenIySXpGaTQ5andT?=
- =?utf-8?B?SzZ5aEJJb1VRUUYxOUJ4UFBCN0JUcGI4ei9wZG8vY1RsZmdOMXU3NkIzeGlE?=
- =?utf-8?B?bW02UkR3bG5rOU1ISUI5eXAwcGNJRWpsdTU4OFZDaGlBUS9QWDFwU3E3Y1dN?=
- =?utf-8?B?T1lKV2xQaU9UbW05UEI0N0xJR1NPOXE5UUlJTXFQREFoL09XUDBFd3IxVEhk?=
- =?utf-8?B?YnIyN01WQTRKMFBXRURpV3hCVkpSQjJWd21qREJpdDV2akpYWEVFT0ZUUmNW?=
- =?utf-8?B?UDg1TlhURkwwYXRINnRrMUNicmhuYTR3ckJjSkJLSCtpdHc3RUY4NnRNZStC?=
- =?utf-8?B?d1FLTjdDQ3hnMWJCOFZzQ2ZzL2ZzSFcyVXd3N25UMmRFdWh5OGRJSFZwL0hK?=
- =?utf-8?B?dmE1YUhDcGJzT25XZ0tFMkFCcjR2cEt5bGk3eE9pNFp1clpFQTdZa1NQdm5J?=
- =?utf-8?B?ZnJHbW01ODUwN1Y0NU94VG1QNDJjZHl3cGpIV0VJZlZyOWNtdmx4dmlWbTh0?=
- =?utf-8?B?dDViSmo4QVN3TWQxQ3NyTjQ2N0YzS1NhK0JsdWQ2dmN6VlZweGo4bzJwZi9n?=
- =?utf-8?B?YzI0N3EvaDAwVzBXMzRhQ0ZxZWtHRjdyckRGMEhaNDd1S0FqRHFJVENpS2FM?=
- =?utf-8?B?MFAxUkRiQzRFYjNJWHE2VkZmaktXcXozUDlGS1V0YkJqUWZ1ZEVPdHFFMWxi?=
- =?utf-8?B?UEp2WGFKdTVBdVhpRGxuYnQ5K3BHaWtNWjZhY1lFaGhJRVBGVDA5NFpZVGEx?=
- =?utf-8?B?TVpGaUhSWTRIYThSVXdLZmpGU1ZLY0NYREVKWVJSV3J6bGo2dnE1cnBHbW93?=
- =?utf-8?B?bUdZMEhwZFY2d240WmNtSTdDV0NKSzNDZWtDclJKM3o4M2FSS2RSdjlOempo?=
- =?utf-8?B?UCtZb3dSZmtYN0FUNk5MZWxIa0FiMlAwT25pTm1SRmlUanRvT1FDSDBxWDE4?=
- =?utf-8?B?ckx1MVhnSjBYNXZwZW1WMUNkcEk5SnVWbEVOTVppNXh2VmVNaG9XUHg0SXdK?=
- =?utf-8?B?MTVsZVJwTi8yVXRaLzhHV3lRVEJwcWN6eG5IVjJSVE1teldIRnFhV0tYcHlV?=
- =?utf-8?B?cTcrcU5wRHhaMzRtWmpQbkZVamVvZnRBczJOdTJDU1dYbk5BZTNJSEJ2TlYv?=
- =?utf-8?B?RTRyQnEySW4weXRraFU3cmxQeU9qKzJQNXNwMUJaY2ZUaU8yZHFiMzJkWEc4?=
- =?utf-8?B?bEVNYjVYTUdwNHlIYU1IMmo0eHRHM3g2anE5SmlILzFJMjFmYTlta2h0YVJZ?=
- =?utf-8?B?aFZQZi94Nk44MkRKK0k4RWgvcVcvTXI2ZVU4eG04aHUxK09YWUQwSWJKVzhh?=
- =?utf-8?B?WTdkY2VGd3FVT2ppbCt6RGpRUEc0SHpmS3NMQUpiOUFYQVZOOXZFSGkxVjNS?=
- =?utf-8?B?ZWcyYjByR2RVNk1laE1oVUQ4akNYdTY2Q2lNbkxZbE5uWG9YRFEvOVZ3d1g5?=
- =?utf-8?B?RkJXU2pLaUhib3JPcWR2RlZaTEphVXZPUnpRMDFPdlg4WXptcHlROXVzY05P?=
- =?utf-8?B?L3VmQUh6eC9veXpjakN0a2F3V3cxOS9vL1dseEZJU1dMWFl5djlBZFlIQy9r?=
- =?utf-8?B?eThteDlYUUJuSnFROHdoNjJzOUE2T01hdm1hS1JiK3ZZQVFYLzk1eElIdk90?=
- =?utf-8?B?NXc0UXBaUU1OcTNrZ0VPcW5xZ1FKUmRqNzA4NmRGN1ZGQWw3VzNOc1ZDME11?=
- =?utf-8?B?ZDRobU84R1lpUWQ5YnlUemJaWm53OVE0ZmN0Z09jQm5mWWI0aldMOXNWZVAr?=
- =?utf-8?B?NWw1V05qcVZJd05BUGNOblpYT0JsNldXSVNHQ0N2SWhuQ1piYVZkMUQyL3Fw?=
- =?utf-8?B?TXF1RHNzTkpuMEE1ZVVQU2NuVEdOTmd3OXk3QTB1OS9zTlJ5Ym9aTXJ2cC96?=
- =?utf-8?B?WUxqZldRalhRR3d2ejZiWHNOR1dWVWxrcWhpVU5wbnhhTllTOU5mRE5LdDZJ?=
- =?utf-8?Q?1nu3Jzn27bBgW/Wg=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4e60eff4-25bf-47de-4005-08de7b77cf36
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2026 11:59:24.3669 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cHc001Ry1eJjKa3kjDt/GyzTz6MAkAMTt1PYOtCmS+3xD8TKi1vyk+oaeSTPbZBjgZpM2QW6htMK9y69VmJt2OHiUYc2+zBrry1n0HiY2N0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB7920
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1772798697; x=1804334697;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=ez0sFH+fHP6SkEQg3lkG0OQL+JP4GdD63C9rPOtolWw=;
- b=PLFcoLG+hq/qTNb69TyMA5bVJcfUy/UAhgm8Zj+ImH1yoKOV2LKSlCAo
- N2ahpITfxZFsL/C63iOgM0X6ZsU3K2f8kqDALh5kIihEZilOMx38LvNrV
- hl0aO2Bc+f/MvXqVyGYy0vZEBV9WiRKAbi+rLU6mifGgA+5TICqDzIXzB
- 5OdRmYiliaDM7uoGyGiFsnoPhvEaTOQeSfsMDbqn5ukR79HNaEl+zphrp
- JZE12daxH+4cWbvMABBSOrqGHVIy9oHlMnSuVoK6OeLsMMo/hUCUL9AyT
- QDqFCoXrEaXw6zjN/OGGN9hRK7JbVeF4Njx9HXfO6+/LHh2egLdrfMAIM
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=PLFcoLG+
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 2/5] libeth: handle
- creating pools with unreadable buffers
+User-Agent: Mozilla Thunderbird
+To: netdev@vger.kernel.org
+Cc: jacob.e.keller@intel.com, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+References: <20260302114025.1017985-1-poros@redhat.com>
+From: Petr Oros <poros@redhat.com>
+In-Reply-To: <20260302114025.1017985-1-poros@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: cNIOuWtbmnjn1Mai58GDf9FWg2cTd9HTcZ_1tTQgI1M_1772802745
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1772802747;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dXD46sZBbQ0HinTPPSaWF5tUOxdfFWBYFR/OarMz7d8=;
+ b=WVVsHr8x783y4Ens2t9RSHUjxyVpzb9KoNliaChV8pDiGDVQLBTC/2p/sgbRXq8S5uTMZQ
+ 8iqfiW+EgfWtDvekA+PcyAmSiNY+D71kGWkI/6L1KPV8LR/mwSsnwxff0P3R/hcKcZQgUS
+ btlIacv8RTXFjPYouNC0zzCgxHUMpGc=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=WVVsHr8x
+Subject: Re: [Intel-wired-lan] [PATCH RFC iwl-next 0/4] iavf: fix VLAN
+ filter state machine races
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -223,192 +153,231 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 90D0F22013B
+X-Rspamd-Queue-Id: 1CCFF2216F8
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.89 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:emil.s.tantilov@intel.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:horms@kernel.org,m:kohei@enjuk.jp,m:jacob.e.keller@intel.com,m:aleksandr.loktionov@intel.com,m:nxne.cnse.osdt.itp.upstreaming@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[aleksander.lobakin@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[16];
-	MIME_TRACE(0.00)[0:+];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[aleksander.lobakin@intel.com,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
+	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:jacob.e.keller@intel.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo]
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-From: Tantilov, Emil S <emil.s.tantilov@intel.com>
-Date: Thu, 5 Mar 2026 14:04:52 -0800
+I leveraged Claude Opus 4.6 to develop a stress-test suite with a
+primary 'break-it' objective targeting VF stability. The suite focuses
+on aggressive edge cases, specifically cyclic VF migration between
+network namespaces while VLAN filtering is active a sequence known
+to trigger state machine regressions. The following output
+demonstrates the failure state on an unpatched iavf driver (prior to
+the 'fix VLAN filter state machine races' patch):
 
-> 
-> 
-> On 2/24/2026 9:46 AM, Alexander Lobakin wrote:
->> libeth uses netmems for quite some time already, so in order to
->> support unreadable frags / memory providers, it only needs to set
->> PP_FLAG_ALLOW_UNREADABLE_NETMEM when needed.
->> Also add a couple sanity checks to make sure the driver didn't mess
->> up the configuration options and, in case when an MP is installed,
->> return the truesize always equal to PAGE_SIZE, so that
->> libeth_rx_alloc() will never try to allocate frags. Memory providers
->> manage buffers on their own and expect 1:1 buffer / HW Rx descriptor
->> association.
->>
->> Bonus: mention in the libeth_sqe_type description that
->> LIBETH_SQE_EMPTY should also be used for netmem Tx SQEs -- they
->> don't need DMA unmapping.
->>
->> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
->> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
->> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
->> ---
->>   include/net/libeth/tx.h                |  2 +-
->>   drivers/net/ethernet/intel/libeth/rx.c | 42 ++++++++++++++++++++++++++
->>   2 files changed, 43 insertions(+), 1 deletion(-)
->>
->> diff --git a/include/net/libeth/tx.h b/include/net/libeth/tx.h
->> index c3db5c6f1641..a66fc2b3a114 100644
->> --- a/include/net/libeth/tx.h
->> +++ b/include/net/libeth/tx.h
->> @@ -12,7 +12,7 @@
->>     /**
->>    * enum libeth_sqe_type - type of &libeth_sqe to act on Tx completion
->> - * @LIBETH_SQE_EMPTY: unused/empty OR XDP_TX/XSk frame, no action
->> required
->> + * @LIBETH_SQE_EMPTY: empty OR netmem/XDP_TX/XSk frame, no action
->> required
->>    * @LIBETH_SQE_CTX: context descriptor with empty SQE, no action
->> required
->>    * @LIBETH_SQE_SLAB: kmalloc-allocated buffer, unmap and kfree()
->>    * @LIBETH_SQE_FRAG: mapped skb frag, only unmap DMA
->> diff --git a/drivers/net/ethernet/intel/libeth/rx.c b/drivers/net/
->> ethernet/intel/libeth/rx.c
->> index 8874b714cdcc..11e6e8f353ef 100644
->> --- a/drivers/net/ethernet/intel/libeth/rx.c
->> +++ b/drivers/net/ethernet/intel/libeth/rx.c
->> @@ -6,6 +6,7 @@
->>   #include <linux/export.h>
->>     #include <net/libeth/rx.h>
->> +#include <net/netdev_queues.h>
->>     /* Rx buffer management */
->>   @@ -139,9 +140,47 @@ static bool
->> libeth_rx_page_pool_params_zc(struct libeth_fq *fq,
->>       fq->buf_len = clamp(mtu, LIBETH_RX_BUF_STRIDE, max);
->>       fq->truesize = fq->buf_len;
->>   +    /*
->> +     * Allow frags only for kernel pages. `fq->truesize == pp->max_len`
->> +     * will always fall back to regular page_pool_alloc_netmems()
->> +     * regardless of the MTU / FQ buffer size.
->> +     */
->> +    if (pp->flags & PP_FLAG_ALLOW_UNREADABLE_NETMEM)
->> +        fq->truesize = pp->max_len;
->> +
->>       return true;
->>   }
->>   +/**
->> + * libeth_rx_page_pool_check_unread - check input params for
->> unreadable MPs
->> + * @fq: buffer queue to check
->> + * @pp: &page_pool_params for the queue
->> + *
->> + * Make sure we don't create an invalid pool with full-frame unreadable
->> + * buffers, bidirectional unreadable buffers or so, and configure the
->> + * ZC payload pool accordingly.
->> + *
->> + * Return: true on success, false on invalid input params.
->> + */
->> +static bool libeth_rx_page_pool_check_unread(const struct libeth_fq *fq,
->> +                         struct page_pool_params *pp)
->> +{
->> +    if (!netif_rxq_has_unreadable_mp(pp->netdev, pp->queue_idx))
->> +        return true;
-> 
-> This is causing a crash on IDPF:
-> 
-> [  420.570632] BUG: kernel NULL pointer dereference, address:
-> 00000000000000e8
-> [  420.570684] #PF: supervisor read access in kernel mode
-> [  420.570712] #PF: error_code(0x0000) - not-present page
-> [  420.570739] PGD 0
-> [  420.570757] Oops: Oops: 0000 [#1] SMP NOPTI
-> [  420.570784] CPU: 35 UID: 0 PID: 1058 Comm: kworker/u258:8 Kdump:
-> loaded Tainted: G S         OE       7.0.0-rc1-next-devq-030526+ #34
-> PREEMPT(full)
-> [  420.570844] Tainted: [S]=CPU_OUT_OF_SPEC, [O]=OOT_MODULE,
-> [E]=UNSIGNED_MODULE
-> [  420.570872] Hardware name: Intel Corporation M50CYP2SBSTD/
-> M50CYP2SBSTD, BIOS SE5C6200.86B.0027.P10.2201070222 01/07/2022
-> [  420.570912] Workqueue: idpf-0000:83:00.0-vc_event idpf_vc_event_task
-> [idpf]
-> [  420.570967] RIP: 0010:netif_rxq_has_unreadable_mp+0xf/0x30
-> [  420.571004] Code: 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90 90
-> 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa 0f 1f 44 00 00 89 f6 48 c1 e6
-> 08 <48> 03 b7 e8 00 00 00 48 83 be c8 00 00 00 00 0f 95 c0 e9 8a 25 2b
-> [  420.571078] RSP: 0018:ff6bf03aa83e7bd8 EFLAGS: 00010246
-> [  420.571109] RAX: ff3579f9888ed0d0 RBX: ff6bf03aa83e7c78 RCX:
-> 0000000000000000
-> [  420.571145] RDX: 0000000000000000 RSI: 0000000000000000 RDI:
-> 0000000000000000
-> [  420.571178] RBP: ff6bf03aa83e7be0 R08: 0000000000000040 R09:
-> 000000004b1a4093
-> [  420.571213] R10: 0000000000000003 R11: ff3579f9bed90ee0 R12:
-> ff3579f9d58c6060
-> [  420.571247] R13: ff6bf03aa83e7d88 R14: 0000000000000001 R15:
-> ff3579f9d58c6050
-> [  420.571281] FS:  0000000000000000(0000) GS:ff357a195e9db000(0000)
-> knlGS:0000000000000000
-> [  420.571320] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> [  420.571350] CR2: 00000000000000e8 CR3: 00000023b2e2a006 CR4:
-> 0000000000773ef0
-> [  420.571384] PKRU: 55555554
-> [  420.571402] Call Trace:
-> [  420.571419]  <TASK>
-> [  420.571436]  libeth_rx_fq_create+0x7c/0x380 [libeth]
-> [  420.571479]  libie_ctlq_init+0x304/0x460 [libie_cp]
-> [  420.571516]  libie_ctlq_xn_init+0x29/0x230 [libie_cp]
-> [  420.571550]  idpf_init_dflt_mbx+0xa7/0x170 [idpf]
-> [  420.571611]  idpf_vc_event_task+0x15d/0x2f0 [idpf]
-> [  420.571655]  process_one_work+0x226/0x730
-> [  420.571699]  worker_thread+0x19e/0x340
-> [  420.571729]  ? __pfx_worker_thread+0x10/0x10
-> [  420.571760]  kthread+0xf4/0x130
-> [  420.571785]  ? __pfx_kthread+0x10/0x10
-> [  420.571813]  ret_from_fork+0x32c/0x410
-> [  420.571844]  ? __pfx_kthread+0x10/0x10
-> [  420.571871]  ret_from_fork_asm+0x1a/0x30
-> [  420.571909]  </TASK>
-> 
-> The driver will call idpf_init_dflt_mbx() before the netdevs are created.
-> 
-> Thanks,
-> Emil
+echo 8 > /sys/class/net/enp65s0f0np0/device/sriov_numvfs
+# ./tools/testing/selftests/drivers/net/iavf_vlan_state.sh
+================================================
+   iavf VLAN state machine test suite
+================================================
+   VF1:  enp65s0f0v0 (0000:41:01.0) -> iavf-t1-6502
+   VF2:  enp65s0f0v1 (0000:41:01.1) -> iavf-t2-6502
+   PF:   enp65s0f0np0 (0000:41:00.0)
+   MAX:  8 user VLANs per VF
+================================================
+   PASS  state: basic add/remove
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  state: 8 VLANs add/remove  (only 7 created)
+   PASS  state: VLAN persists across down/up
+   PASS  state: 5 VLANs persist across down/up
+   PASS  state: rapid add/del same VLAN x100
+   PASS  state: add during remove (REMOVING race)
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   PASS  state: bulk 8 add then remove
+   PASS  state: 20x rapid down/up with VLAN
+   PASS  state: add VLAN while down
+   PASS  state: remove VLAN while down
+   PASS  state: down -> remove -> up
+   PASS  state: add VLANs while down, verify all after up
+   PASS  state: double add same VLAN (idempotent)
+   PASS  state: double remove same VLAN
+   PASS  state: interleaved add/remove different VIDs
+   PASS  state: remove+re-add loop x50
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  state: stress 8 VLANs (fill to max)  (expected 8, got 7)
+   PASS  state: VLAN VID 1 (common edge case)
+   PASS  state: VLAN VID 4094 (max)
+   PASS  state: concurrent VLAN adds (4 parallel)
+   PASS  state: concurrent VLAN deletes (4 parallel)
+   PASS  state: add/del storm (200 ops, 5 VIDs)
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  state: over-limit VLAN rejected, existing survive  (fill: 
+expected 8, got 7)
+   PASS  reset: VLANs recover after VF PCI FLR
+   PASS  reset: 5 VLANs recover after VF PCI FLR
+   PASS  reset: rapid VF resets x5 with VLANs
+   PASS  reset: VLANs survive PF link flap
+   PASS  reset: 5 VLANs survive PF link flap
+   PASS  reset: VLANs survive 3x PF link flap
+   PASS  reset: VLANs survive PF PCI FLR
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  reset: all 8 VLANs recover after VF FLR  (VLAN 107 gone)
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  reset: all 8 VLANs survive PF link flap  (VLAN 107 gone)
+RTNETLINK answers: Input/output error
+Cannot find device "enp65s0f0v0.107"
+Cannot find device "enp65s0f0v0.107"
+   FAIL  reset: all 8 VLANs survive PF PCI FLR  (VLAN 107 gone)
+   PASS  reset: FLR during VLAN add/del (race)
+   PASS  reset: VF driver unbind/bind cycle
+   PASS  ping: basic VLAN traffic
+   PASS  ping: 5 VLANs simultaneously
+   PASS  ping: survives VF down/up
+   PASS  ping: survives 10x rapid VF flap
+   PASS  ping: survives VF PCI FLR
+   PASS  ping: survives PF link flap
+   PASS  ping: survives PF PCI FLR
+   PASS  ping: stable while adding/removing other VLANs
+   PASS  ping: all 3 VLANs work after down/up
+   PASS  ping: parallel VLAN churn from both VFs
+   PASS  ping: VLANs work after rapid add/del churn
+   PASS  ping: VLANs survive repeated NS move cycle
+   PASS  ping: all VLANs survive PF link flap
+   PASS  ping: VLAN isolation (no cross-VLAN leakage)
+   PASS  ping: traffic works with spoofchk enabled
+   PASS  ping: port VLAN (PF-assigned pvid)
+   PASS  dmesg: no call traces / BUGs / stalls
 
-This series is based on top of the latest net-next as the PR will be
-sent soon. net-next doesn't have libie_ctql.
+================================================
+   PASS 46  |  FAIL 6  |  SKIP 0  |  TOTAL 52
+================================================
+   RESULT: FAIL  -- check dmesg
 
-For the tree which contains ixd this will look different as it
-introduces ability to pass a device instead of napi_struct. Once this PR
-is accepted, we'll rebase the next-queue to handle this.
 
-Thanks,
-Olek
+The underlying failures stem from a breakdown in state synchronization
+between the VF and the PF. This desynchronization prevents the driver
+from maintaining a consistent hardware state during rapid configuration
+cycles, leading to the observed issues.
+
+...................
+
+Patched kernel:
+
+# echo 8 > /sys/class/net/enp65s0f0np0/device/sriov_numvfs
+# ./tools/testing/selftests/drivers/net/iavf_vlan_state.sh
+================================================
+   iavf VLAN state machine test suite
+================================================
+   VF1:  enp65s0f0v0 (0000:41:01.0) -> iavf-t1-6573
+   VF2:  enp65s0f0v1 (0000:41:01.1) -> iavf-t2-6573
+   PF:   enp65s0f0np0 (0000:41:00.0)
+   MAX:  8 user VLANs per VF
+================================================
+   PASS  state: basic add/remove
+   PASS  state: 8 VLANs add/remove
+   PASS  state: VLAN persists across down/up
+   PASS  state: 5 VLANs persist across down/up
+   PASS  state: rapid add/del same VLAN x100
+   PASS  state: add during remove (REMOVING race)
+   PASS  state: bulk 8 add then remove
+   PASS  state: 20x rapid down/up with VLAN
+   PASS  state: add VLAN while down
+   PASS  state: remove VLAN while down
+   PASS  state: down -> remove -> up
+   PASS  state: add VLANs while down, verify all after up
+   PASS  state: double add same VLAN (idempotent)
+   PASS  state: double remove same VLAN
+   PASS  state: interleaved add/remove different VIDs
+   PASS  state: remove+re-add loop x50
+   PASS  state: stress 8 VLANs (fill to max)
+   PASS  state: VLAN VID 1 (common edge case)
+   PASS  state: VLAN VID 4094 (max)
+   PASS  state: concurrent VLAN adds (4 parallel)
+   PASS  state: concurrent VLAN deletes (4 parallel)
+   PASS  state: add/del storm (200 ops, 5 VIDs)
+   PASS  state: over-limit VLAN rejected, existing survive
+   PASS  reset: VLANs recover after VF PCI FLR
+   PASS  reset: 5 VLANs recover after VF PCI FLR
+   PASS  reset: rapid VF resets x5 with VLANs
+   PASS  reset: VLANs survive PF link flap
+   PASS  reset: 5 VLANs survive PF link flap
+   PASS  reset: VLANs survive 3x PF link flap
+   PASS  reset: VLANs survive PF PCI FLR
+   PASS  reset: all 8 VLANs recover after VF FLR
+   PASS  reset: all 8 VLANs survive PF link flap
+   PASS  reset: all 8 VLANs survive PF PCI FLR
+   PASS  reset: FLR during VLAN add/del (race)
+   PASS  reset: VF driver unbind/bind cycle
+   PASS  ping: basic VLAN traffic
+   PASS  ping: 5 VLANs simultaneously
+   PASS  ping: survives VF down/up
+   PASS  ping: survives 10x rapid VF flap
+   PASS  ping: survives VF PCI FLR
+   PASS  ping: survives PF link flap
+   PASS  ping: survives PF PCI FLR
+   PASS  ping: stable while adding/removing other VLANs
+   PASS  ping: all 3 VLANs work after down/up
+   PASS  ping: parallel VLAN churn from both VFs
+   PASS  ping: VLANs work after rapid add/del churn
+   PASS  ping: VLANs survive repeated NS move cycle
+   PASS  ping: all VLANs survive PF link flap
+   PASS  ping: VLAN isolation (no cross-VLAN leakage)
+   PASS  ping: traffic works with spoofchk enabled
+   PASS  ping: port VLAN (PF-assigned pvid)
+   PASS  dmesg: no call traces / BUGs / stalls
+
+================================================
+   PASS 52  |  FAIL 0  |  SKIP 0  |  TOTAL 52
+================================================
+   RESULT: OK
+
+Additionally, interface up/down performance with active VLAN
+filtering is significantly improved. The previous bottleneck—a
+synchronous VLAN filtering cycle (VF -> PF -> HW -> PF -> VF)
+utilizing AdminQ for per-VLAN updates introduced substantial
+latency.
+
+Test suite:
+
+https://github.com/torvalds/linux/commit/5c60850c33da80a1c2497fb6bc31f956316197a9 
+
+
+Regards,
+
+Petr
+
+
