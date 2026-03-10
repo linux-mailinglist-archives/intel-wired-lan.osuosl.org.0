@@ -2,71 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 0IVQBFg4sGlbhQIAu9opvQ
+	id ePgwNnE4sGlbhQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:20 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:45 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D717253663
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 48A03253766
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 09B8C4040B;
-	Tue, 10 Mar 2026 15:27:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A730F41C6D;
+	Tue, 10 Mar 2026 15:27:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 386XrQQET7pU; Tue, 10 Mar 2026 15:27:12 +0000 (UTC)
+ id 0ViLQGzMyMGN; Tue, 10 Mar 2026 15:27:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 804C3403A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C932740306
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773156432;
-	bh=1RQt94wsCFG7IJEQyvVRUl8nd2Z953/wokMRXtIM6bI=;
+	s=default; t=1773156453;
+	bh=VeyuMlBSXCUl2HyhMWtK62gNrN2xqJpTn5I2B2Zc2uk=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=QB41ai7fUAVVSwpg50dqIIWhS+u2imIXTt8y6E2LYi55JqNk+0iT1sqcv8s1XUKwa
-	 u1jQWN00KT8NiLvIqVJjuKOkUMIAxh+gUHUDvigsFmcEkmKiWLub0l1xogdMy3kf73
-	 03PUKdEi1znPRjQcGDRNnhAw3A8dgFUxeDNgoQg8rCxaUHhQkHEbwa+LD8xh/OrPv/
-	 ynOnJ6MeoCcLqD29wrfqHkQtHeZ+Q11erk081tNsXQKwx29ZuGLx7f1I5KjybXyien
-	 t9AsyJFVmN0iUMIWMGl6kpK4MTdAcaIhL+WfJWVe4auIoJNzf7xYgsNC4m6Wh6YexY
-	 IsLcgIff/ej3A==
+	b=8876yaYUdpcENTk/p6eWsRG9PVwj/0L7NX0lH0I3YILEMhHQwuz/X+VkyuTZhVu/t
+	 M0RVS/PSHcudS5fjn9k4Gh1kRWmtUP8FxaRIJ1KCthNqap+7q6jOXdiVRE/VJ2Sm8A
+	 Dt82967E4Q6qpweGQc5kHiO/gDoZoR8QOlcEO1PIipiK6A3VrtqDPyg3SnnwZffZRn
+	 jpDtUAYgUcd7jP2O3jD5Zke6scRB2YdWeGlfyb5HzP6tG+AlicrdJIMD6SEzkcnLqj
+	 lIsqpVewBKEnwynvHlfGGBcNILDMTtpBU7ddEMZBH6HQ5RPbNlV1l+A+LBELBwAJOI
+	 lIC2WrdBf1K7g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 804C3403A9;
-	Tue, 10 Mar 2026 15:27:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C932740306;
+	Tue, 10 Mar 2026 15:27:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1C202B2A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3575335C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4D92060B3C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BE91241F18
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wVwZ8jj5O391 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Mar 2026 12:01:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=2001:bf0:244:244::94;
- helo=mail.avm.de; envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 91ACA614D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 91ACA614D7
-Received: from mail.avm.de (mail.avm.de [IPv6:2001:bf0:244:244::94])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 91ACA614D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:19 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uvXzLJrGPiGz for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Mar 2026 12:05:07 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2001:bf0:244:244::120; helo=mail.avm.de;
+ envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0A17041EAF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0A17041EAF
+Received: from mail.avm.de (mail.avm.de [IPv6:2001:bf0:244:244::120])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0A17041EAF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:06 +0000 (UTC)
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
  by mail.avm.de with ESMTP (eXpurgate 4.55.2)
  (envelope-from <phahn-oss@avm.de>)
- id 69b006ad-e21d-7f0000032729-7f000001d9e2-1
- for <multiple-recipients>; Tue, 10 Mar 2026 12:55:25 +0100
+ id 69b006ac-b734-7f0000032729-7f000001c024-1
+ for <multiple-recipients>; Tue, 10 Mar 2026 12:55:24 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de
  [IPv6:2001:bf0:244:244::71]) by mail.avm.de (Postfix) with ESMTPS;
- Tue, 10 Mar 2026 12:55:25 +0100 (CET)
+ Tue, 10 Mar 2026 12:55:24 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:47 +0100
+Date: Tue, 10 Mar 2026 12:48:48 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260310-b4-is_err_or_null-v1-21-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-22-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -96,34 +97,43 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Andrew Morton <akpm@linux-foundation.org>, 
- Luis Chamberlain <mcgrof@kernel.org>, Petr Pavlu <petr.pavlu@suse.com>, 
- Daniel Gomez <da.gomez@kernel.org>, Sami Tolvanen <samitolvanen@google.com>, 
- Aaron Tomlin <atomlin@atomlin.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2236; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=dZgGx+TJ86HynJEVGMrEA5pIsLW37DebkwtATXmSHOI=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAYdDyn9P9EqiNuLjohkPV9X7iASajPgIoE/Y
- Nuv6AjHInyJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGHQAKCRA0LQZT0ays
- 2wT8B/9ExWKAo/Sn9Hy5RU9mMJnGJZfEhSDSh3BrEyzAo8askVVJ9+5gjVv5zubvVRZSl0xsWYD
- ONcBymLUypUnGPDyKoUOhx2btlwnIrxM+A/znjwtFfejlhgahBH8clBf9ppwmWxz+aomfSi8dH0
- gI3DmyyOVIa4OSRnV4I+RdKzJvI1/m5sEwA+61ywfL4pM19NmtFK9XOne0dvmugbwth+SSxAJRb
- vUziX2Dy0AcV+RxD3aCuKKv6tZLzJkBbkKbaQ16k0qyAZb3zbS92hAPdw+yFsGOJMaFjGgEs6OE
- FCCv3wHl+aKzbAwbrH/eK6sw740pLs96xx8NapXtmcrko8Wn
+Cc: Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@kernel.org>, 
+ Mikulas Patocka <mpatocka@redhat.com>, 
+ Benjamin Marzinski <bmarzins@redhat.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1995; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=xBKhBreRFiEpPz9/49OtWlCzYkq81mZihzEqekyK7xA=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAYgLcFKxegL/bQqhgTo4RNQJgrnmxL3YCzsA
+ NwbsOtNPYeJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGIAAKCRA0LQZT0ays
+ 21bACACtmD+JNOZZE2WtYGgZs+OKFUvGXg8BvTcg2nAeuTAfDV15mPSXGDJtr1bOhVuDnL/Nw9l
+ YuHe1nCI3Kb5gMl9oJ6QTc/nxqpUehwIiPaszmCzsqUT9Av4+JV9tbiRExsTnWgWp8/ohC7O/t7
+ 0F2HI97L08/EOhP6er3J/caSpZnOpbWXT+xXd1cfFQmhFO8426W+HbSPnqaYqXoPZvzXs04m+U7
+ Y+HhZZm9gUaVM39bOf2O7FpXKP5lXlaxHXla0Syc5xOdqOCZGHEwLXH/1MeFU5JbVnp/DFE01i8
+ 2gpgUDB/Kr+8ov9qYVC2ZPrR+l2cjmrUojAxw0U8eiSwxKRA
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143725-98670F2F-CE18AF23/0/0
+X-purgate-ID: 149429::1773143724-71DC2A3D-384367F1/0/0
 X-purgate-type: clean
-X-purgate-size: 2238
+X-purgate-size: 1997
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for
  further information)
 X-purgate: clean
 X-Mailman-Approved-At: Tue, 10 Mar 2026 15:27:04 +0000
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=avm.de; s=mail; 
+ t=1773143725; bh=xBKhBreRFiEpPz9/49OtWlCzYkq81mZihzEqekyK7xA=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=helEnKZUDYmuyC7r9itC+dVARlXrRlYpZWzDAaAXEYc5wN1FHoKQsdSjCaomchjhv
+ +41zqDKlH044FWtyvi2VX9TAdQF1rs14U237EegHWJogLxynx4m+2shwi9NDMEzjxe
+ k3vCUFrBTw+1/DCUt/wn8qmUGFq+b5Q0TC9ytTvc=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=avm.de
-Subject: [Intel-wired-lan] [PATCH 21/61] lib/test: Prefer IS_ERR_OR_NULL
- over manual NULL check
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=avm.de header.i=@avm.de header.a=rsa-sha256
+ header.s=mail header.b=helEnKZU
+Subject: [Intel-wired-lan] [PATCH 22/61] md: Prefer IS_ERR_OR_NULL over
+ manual NULL check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -138,7 +148,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 7D717253663
+X-Rspamd-Queue-Id: 48A03253766
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[avm.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
@@ -155,14 +165,14 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_SENDER(0.00)[phahn-oss@avm.de,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.org,m:linux-pm@vger.
- kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:akpm@linux-foundation.org,m:mcgrof@kernel.org,m:petr.pavlu@suse.com,m:da.gomez@kernel.org,m:samitolvanen@google.com,m:atomlin@atomlin.com,s:lists@lfdr.de];
+ kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:agk@redhat.com,m:snitzer@kernel.org,m:mpatocka@redhat.com,m:bmarzins@redhat.com,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	MISSING_XM_UA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_GT_50(0.00)[60];
+	RCPT_COUNT_GT_50(0.00)[58];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[phahn-oss@avm.de,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
@@ -179,55 +189,53 @@ check.
 
 Change generated with coccinelle.
 
-To: Andrew Morton <akpm@linux-foundation.org>
-To: Luis Chamberlain <mcgrof@kernel.org>
-To: Petr Pavlu <petr.pavlu@suse.com>
-To: Daniel Gomez <da.gomez@kernel.org>
-To: Sami Tolvanen <samitolvanen@google.com>
-To: Aaron Tomlin <atomlin@atomlin.com>
+To: Alasdair Kergon <agk@redhat.com>
+To: Mike Snitzer <snitzer@kernel.org>
+To: Mikulas Patocka <mpatocka@redhat.com>
+To: Benjamin Marzinski <bmarzins@redhat.com>
+Cc: dm-devel@lists.linux.dev
 Cc: linux-kernel@vger.kernel.org
-Cc: linux-modules@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- lib/test_firmware.c | 2 +-
- lib/test_kmod.c     | 4 ++--
+ drivers/md/dm-cache-metadata.c | 2 +-
+ drivers/md/dm-crypt.c          | 4 ++--
  2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/lib/test_firmware.c b/lib/test_firmware.c
-index b471d720879a70c0db82e605960abe69de28ab4b..fc3177927a02e2d7849915309048529395ece0f8 100644
---- a/lib/test_firmware.c
-+++ b/lib/test_firmware.c
-@@ -955,7 +955,7 @@ static ssize_t trigger_batched_requests_store(struct device *dev,
- 		init_completion(&req->completion);
- 		req->task = kthread_run(test_fw_run_batch_request, req,
- 					     "%s-%u", KBUILD_MODNAME, req->idx);
--		if (!req->task || IS_ERR(req->task)) {
-+		if (IS_ERR_OR_NULL(req->task)) {
- 			pr_err("Setting up thread %u failed\n", req->idx);
- 			req->task = NULL;
- 			rc = -ENOMEM;
-diff --git a/lib/test_kmod.c b/lib/test_kmod.c
-index f0dd092860ea6f9c69a71e10cb1c8b071b1cd1b7..f44a181f6f1ab53cf95a0a0b598b88cb5f8f369d 100644
---- a/lib/test_kmod.c
-+++ b/lib/test_kmod.c
-@@ -327,7 +327,7 @@ static int try_one_request(struct kmod_test_device *test_dev, unsigned int idx)
- 	info->task_sync = kthread_run(run_request, info, "%s-%u",
- 				      KBUILD_MODNAME, idx);
+diff --git a/drivers/md/dm-cache-metadata.c b/drivers/md/dm-cache-metadata.c
+index 57158c02d096ed38759d563bf27e7f1b3fe58ccc..32f7d25b83a181a30a78c663d48f7882cb97f7b5 100644
+--- a/drivers/md/dm-cache-metadata.c
++++ b/drivers/md/dm-cache-metadata.c
+@@ -1819,7 +1819,7 @@ int dm_cache_metadata_abort(struct dm_cache_metadata *cmd)
+ 	WRITE_UNLOCK(cmd);
+ 	dm_block_manager_destroy(old_bm);
+ out:
+-	if (new_bm && !IS_ERR(new_bm))
++	if (!IS_ERR_OR_NULL(new_bm))
+ 		dm_block_manager_destroy(new_bm);
  
--	if (!info->task_sync || IS_ERR(info->task_sync)) {
-+	if (IS_ERR_OR_NULL(info->task_sync)) {
- 		test_dev->test_is_oom = true;
- 		dev_err(test_dev->dev, "Setting up thread %u failed\n", idx);
- 		info->task_sync = NULL;
-@@ -358,7 +358,7 @@ static void test_dev_kmod_stop_tests(struct kmod_test_device *test_dev)
+ 	return r;
+diff --git a/drivers/md/dm-crypt.c b/drivers/md/dm-crypt.c
+index 54823341c9fda46b2d8e13428cbd51f3edf642d5..05eae3d3c7df6baebd0b7a4219f7b6938f6e7f87 100644
+--- a/drivers/md/dm-crypt.c
++++ b/drivers/md/dm-crypt.c
+@@ -2295,7 +2295,7 @@ static void crypt_free_tfms_aead(struct crypt_config *cc)
+ 	if (!cc->cipher_tfm.tfms_aead)
+ 		return;
  
- 	for (i=0; i < config->num_threads; i++) {
- 		info = &test_dev->info[i];
--		if (info->task_sync && !IS_ERR(info->task_sync)) {
-+		if (!IS_ERR_OR_NULL(info->task_sync)) {
- 			dev_info(test_dev->dev,
- 				 "Stopping still-running thread %i\n", i);
- 			kthread_stop(info->task_sync);
+-	if (cc->cipher_tfm.tfms_aead[0] && !IS_ERR(cc->cipher_tfm.tfms_aead[0])) {
++	if (!IS_ERR_OR_NULL(cc->cipher_tfm.tfms_aead[0])) {
+ 		crypto_free_aead(cc->cipher_tfm.tfms_aead[0]);
+ 		cc->cipher_tfm.tfms_aead[0] = NULL;
+ 	}
+@@ -2312,7 +2312,7 @@ static void crypt_free_tfms_skcipher(struct crypt_config *cc)
+ 		return;
+ 
+ 	for (i = 0; i < cc->tfms_count; i++)
+-		if (cc->cipher_tfm.tfms[i] && !IS_ERR(cc->cipher_tfm.tfms[i])) {
++		if (!IS_ERR_OR_NULL(cc->cipher_tfm.tfms[i])) {
+ 			crypto_free_skcipher(cc->cipher_tfm.tfms[i]);
+ 			cc->cipher_tfm.tfms[i] = NULL;
+ 		}
 
 -- 
 2.43.0
