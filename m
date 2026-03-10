@@ -2,94 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id UDROMpk4sGlbhQIAu9opvQ
+	id sDMxLJk4sGkKhQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:28:25 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57D802537E5
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 552952537E4
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:28:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0E2266064A;
-	Tue, 10 Mar 2026 15:28:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 21DB34043B;
+	Tue, 10 Mar 2026 15:28:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kUBQxS4QsNtL; Tue, 10 Mar 2026 15:28:21 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pydRjsoI7d_V; Tue, 10 Mar 2026 15:28:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 862046060B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9246340C5A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773156501;
-	bh=mm6hm+LHoMGo5Ew01sq1dP9YSITnoqIDxYFDqmtgvh0=;
-	h=Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1773156502;
+	bh=5/adDEbR57gUpYJcJq84OoDVxrrM3xMPFmZCRo0jKXM=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=1FabsSlMs9W4kZl53t29kXO7+yBWt4fSHeN6YMNafjG4RY+7u3uMIAK8gyRUJ51Gx
-	 wxE/qUQGQXU7GwWwyOqMIsrKio8m0Z5qKUByILZiintk7CFK/RI7Jua98gvsQHf4df
-	 VkLCOwObdaBYu1Z1NFDQrF2HGD1GcBXS5vVKNk846Dd/PW2AVkS+5UVAw+VvUmXpDo
-	 7oekbzeWDLeWKq2+horjwBCpWMqNuX6vnYNOdMvlL7wGLAhTISSCY7vstiR7bnl7Kc
-	 sshz/EyjVEuoST7j1ZwudoysucaCWD1W4jaH889alKoauJBs86bQDU92cEVlYk97jS
-	 /hrUDUoojujYw==
+	 From;
+	b=BmVi0xACIC8+RsrVynyA0UribhKBroz2lV6F2GFq3y6fO0CYBwH2IVyy9ueTnAavh
+	 m+vPwjATEP7VpkxXN5QBOsqo/zQ/zaWD/kHuakvS+IsNJN9KZ6xOKALqziM5z62+2j
+	 E1KpXKlHkKAdguQqItae+drCV2H3qz8NRmRQaNTLxMpNLeaodE8+E7ksZOVyQ1Q1BZ
+	 owSIqLaqSW/kw+09oIkEyuktBta1Wg30Bifm5jYBEChsv3UTCfW0ugrDoEC881czQN
+	 Csz16nDIB9sluQKHEj7AW2mvS4TTfAzssNdlfOmrDpPC90dHwc/JWDqv/G8bJ8iSRa
+	 D8i3HVBPtFVAw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 862046060B;
-	Tue, 10 Mar 2026 15:28:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9246340C5A;
+	Tue, 10 Mar 2026 15:28:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 88067201
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:54:09 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2EADDB8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 13:22:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7C38983F0E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:54:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1461E40679
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 13:22:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rQzASimhmZkZ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Mar 2026 12:54:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::634; helo=mail-pl1-x634.google.com;
- envelope-from=praan@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D29FD83F11
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D29FD83F11
-Received: from mail-pl1-x634.google.com (mail-pl1-x634.google.com
- [IPv6:2607:f8b0:4864:20::634])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D29FD83F11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:54:08 +0000 (UTC)
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2aeab6ff148so1475ad.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 05:54:08 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6VzaqE0jZKyg for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Mar 2026 13:22:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=bmasney@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AE96040676
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AE96040676
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AE96040676
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 13:22:08 +0000 (UTC)
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-438-vUbXUQ7yOoupTP29pl8W8A-1; Tue, 10 Mar 2026 09:22:05 -0400
+X-MC-Unique: vUbXUQ7yOoupTP29pl8W8A-1
+X-Mimecast-MFC-AGG-ID: vUbXUQ7yOoupTP29pl8W8A_1773148925
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-8cd81506677so1375229185a.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 06:22:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773147248; x=1773752048;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=mm6hm+LHoMGo5Ew01sq1dP9YSITnoqIDxYFDqmtgvh0=;
- b=gTYJnJCehKvLzhAC3iITgYF5pDzyagLc5c/KISFA21Hywz8tuCNSmMv1Nk2uEQtU3x
- gOebIfd6nWAFXJf0uQmcmQoRHyqxHwZ66rxJfwtHeqFQgZzxQVuJ1S9AokITABCsQOki
- VKkqiTKP0tIRdMxS7FiMLV0KaQEZDUS4gJAmOntTdZThMzcpYDL46bTJqCF7sTyMHVW8
- LITXTvGD4hrztLMv+kqvXrXYqzFsN2+wtnp8gjE6Qq54N3TmaLEzJcg2gL2xnUkDOtoZ
- SSDY25uMO7vFxgP1ld8Z+BrSc3MeTwGK0sRUz/YFsHzUu+ABsU644gOFZsO7Nr8pgT54
- H2Dw==
+ d=1e100.net; s=20230601; t=1773148925; x=1773753725;
+ h=user-agent:in-reply-to:content-disposition:mime-version:references
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=5/adDEbR57gUpYJcJq84OoDVxrrM3xMPFmZCRo0jKXM=;
+ b=TEU1gZbFpE4jO03hR3HLNFIaQkyaJSD1oiUiuMzhtxq6CRJK5JvMkBpZ+lIgN8dviX
+ ch/r1ciD0bvMcWwy14L5jVoE20VgSuAq/VQYY+W/CpliTEq9kQol3wdUuwrHdThMpf6J
+ FaS3NDQCTshLcC5g5FYY7oyXYiSAkkwZjc1JY7+ntS/gOPfrysBJqY4Xz6+i39Io7ibu
+ mAzk1OVng3FSeQwDBwZFEHhRH2SG0aLAytQ7Hrc/OGF65grbiTh+V3A3wxhSHkSvAgpe
+ +yG7vGTwQG+pGwzXVgJ7BCIex9sfvdNU9lGz8Rn0DUIlDrLUx2r+xzIMHlj8gSTIbmIh
+ cmgQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUvp3N3W+87TlA3cQjXfYnT8j6QAdSR2OSQeh3hmih73ag36RvoVi5AYUdkJxkl39Z346BNSPNY83ZVUxfb2Iw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy96AmRENbXNVg83boDXF894AyAgurS73khaig6Gi/zeqnS2rPT
- qet1Zn86EUiMypLc11ZfwfGwi9nUS9gQSaafGL4QrifJZsK5lRxZfIqbeHG0SwgaTQ==
-X-Gm-Gg: ATEYQzyLFjpEGcyI5KE35T4A/7frkwu+57b4JJ1m11a5FO6mlnR4X6zS60VaSkd2vqn
- FvreUg5TpbKg48tiIhPA6dNQbM+Vvga64kbwywHDiNzj7hOTpn88NLu1N1JCzTCzGqHtxa9+jSd
- eZNOUf6avrGPLuCHsS/CRXSCi2et88+p25uQzqzbZOE2daALuVwu7G9EZOFklP7k48BZ2n4RN9X
- kEhOWP1ieJMD8VKMx5pDfOriZLuByq+RlWbhX4koxlA3FWJXfefyLf+Xj+nTBn3MC3Vidj+Vese
- dIhw8xuOHwKw/3cVtX6TCK7qOL9UeDPDDhuS7svuXmS4Wli9wTY/m6P4gjdF2f72T9n6+ErLEgw
- 7BspyJG/5nBCWKUgovgjamm5hJtojtMuDJqF4u3t+gLxtZp1qg97LToUBWN5dMmOu8XtDHhhtMp
- jX/tGoUw1TjGyalvQrhRRqXMiHB178cBpP7fRJGOWbgDId0UVJAlNL7i7b7Q==
-X-Received: by 2002:a17:902:ebd2:b0:2ae:45bb:bc4e with SMTP id
- d9443c01a7336-2aea30ebe48mr3008685ad.24.1773147247400; 
- Tue, 10 Mar 2026 05:54:07 -0700 (PDT)
-Received: from google.com (10.129.124.34.bc.googleusercontent.com.
- [34.124.129.10]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c739e0cb73dsm12445679a12.11.2026.03.10.05.53.57
+ AJvYcCUC+trRCLQjGEuA/UPNvZTvn9mnkxi/jDJWGO3nSqrNYgyLO7NzQ2Qj3EOEVmJaknjANB57ziq5ueX6FnI6GqQ=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyrzImsKEds3EYG0k7iKsGoQxhzo6jnVu3UCiJ53K79NHjsttUq
+ TUM/MeIgNXS8vQZ22QG7+3moLmIDZlWjmqdYvtUw7gKk/mME8wS3j0LwACASkF/+cqMkibDNThe
+ 5xt4EW640/ANlMURZ5D/cGaGeSEg3cG4OPtgNUmoaZCI2MRo50RgFUfAFmAlsCiXROT0ca0Q=
+X-Gm-Gg: ATEYQzx6CvqrcJT49T0ADfoXXiKcBgw1XMjb1aWOMAWQFkdWhThlqdhGxj4WRzdlXaN
+ UpcIcEh9nl4Lbu+gc8U+xbRZM3uWyjc4+cBP+27lgNtv4iRcAilZ5xDSxwuKRgAr/la2qjNkS0u
+ u96Y55IbR75aLkC0Oeiw70vNgnSJH8I9nqlwwRm1UOBjMM7iPXzg4oQ/4ng3xSaSy8SOsp8xofy
+ 7mNlme6Bd3JEbpFoR3ygipDKvSWAalABafXlAjKLQAAGF5UXbyXQ5GK1hXsCcves/n9lR/UzRxl
+ E9jFYHitGyjKuChqdtMYjE100xXLJ38q1WVxxQW5W9t+VqXOybHbiDnixglOlbrtZ/HF60xtVU2
+ Uup//JSpCGA/ssRhZwNvvYQ8ysX1dRdCqsg7HKywgbGjsKUaUAQplU9/i
+X-Received: by 2002:a05:620a:3713:b0:8ca:1240:4991 with SMTP id
+ af79cd13be357-8cd6d4f9469mr1830789685a.45.1773148924775; 
+ Tue, 10 Mar 2026 06:22:04 -0700 (PDT)
+X-Received: by 2002:a05:620a:3713:b0:8ca:1240:4991 with SMTP id
+ af79cd13be357-8cd6d4f9469mr1830766185a.45.1773148922638; 
+ Tue, 10 Mar 2026 06:22:02 -0700 (PDT)
+Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net.
+ [73.183.52.120]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-8cd8576db0esm474754485a.47.2026.03.10.06.21.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Mar 2026 05:54:06 -0700 (PDT)
-Date: Tue, 10 Mar 2026 12:53:54 +0000
+ Tue, 10 Mar 2026 06:22:01 -0700 (PDT)
+Date: Tue, 10 Mar 2026 09:21:58 -0400
+From: Brian Masney <bmasney@redhat.com>
 To: Philipp Hahn <phahn-oss@avm.de>
 Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr,
@@ -117,35 +127,41 @@ Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev,
- Alex Williamson <alex@shazbot.org>
-Message-ID: <abAUYvx6VEdSmInm@google.com>
+ Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Thomas Gleixner <tglx@kernel.org>
+Message-ID: <abAa9vQg4BSxl1BJ@redhat.com>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-46-bd63b656022d@avm.de>
+ <20260310-b4-is_err_or_null-v1-56-bd63b656022d@avm.de>
 MIME-Version: 1.0
+In-Reply-To: <20260310-b4-is_err_or_null-v1-56-bd63b656022d@avm.de>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fvnqDctnCjue5o9079SNZWXZnKLT3O9YYJUdsNggcvk_1773148925
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260310-b4-is_err_or_null-v1-46-bd63b656022d@avm.de>
 X-Mailman-Approved-At: Tue, 10 Mar 2026 15:28:18 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1773147248; x=1773752048; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=mm6hm+LHoMGo5Ew01sq1dP9YSITnoqIDxYFDqmtgvh0=;
- b=xIQdaHpswHSWWYjb1XJYn4f40EWB6DR/Hix6At7mhsuGdgdldBZOFrfWp2P7e/ZHJ+
- h489Grdd/hrEigX+wZdBy5t02fDDY1rjJaK/QMS6R+utpArTgaRtK9bt3aHcCmrY7F+m
- Z1DieTcP7jCLx/zwcz3p5eHuUlH8WVUA4Dc27A8foqANg5if/BglDIn4iVezmpWg+igl
- j+PAbPWPsdGsHnbjBdEPE5b0w3uFrsL7jpPFuir5+RwQWx0OxJpDFsjZGfbE61OxZGYd
- czd+kg0bMEWPQ6Co9Ha9/3MQsb3fmxOp3iXFaisMYSUog05lw4CxYw2mfnJPS5/dwOky
- SSXA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=xIQdaHps
-Subject: Re: [Intel-wired-lan] [PATCH 46/61] vfio: Prefer IS_ERR_OR_NULL
- over manual NULL check
+ d=redhat.com; 
+ s=mimecast20190719; t=1773148926;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=5/adDEbR57gUpYJcJq84OoDVxrrM3xMPFmZCRo0jKXM=;
+ b=ADQQpd+bpcMvyiI6BuK6I/AtlFPVjRaT1jbvm8x0bcg2sn4Mv+l/q+wGsOaa7zGZavpvJL
+ HOw6n0NTrJxN8BVrJlzy+3Oyq/AicE10gafpjzfnHFVMImjvlOy3qRSEO7jpexZVWETsUQ
+ RoRPrXnJkd5ZbUZ0X+x9wM3CIJYSD9c=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=ADQQpd+b
+Subject: Re: [Intel-wired-lan] [PATCH 56/61] clk: Prefer IS_ERR_OR_NULL over
+ manual NULL check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -158,83 +174,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Pranjal Shrivastava via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Pranjal Shrivastava <praan@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 57D802537E5
+X-Rspamd-Queue-Id: 552952537E4
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.29 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	FROM_HAS_DN(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:phahn-oss@avm.de,m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.o
- rg,m:linux-pm@vger.kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:alex@shazbot.org,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[bmasney@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:phahn-oss@avm.de,m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.o
+ rg,m:linux-pm@vger.kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:mturquette@baylibre.com,m:sboyd@kernel.org,m:daniel.lezcano@kernel.org,m:tglx@kernel.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
-	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	HAS_REPLYTO(0.00)[praan@google.com];
-	RCPT_COUNT_GT_50(0.00)[55];
-	NEURAL_HAM(-0.00)[-1.000];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	MISSING_XM_UA(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	FORGED_SENDER_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_GT_50(0.00)[58];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[bmasney@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-On Tue, Mar 10, 2026 at 12:49:12PM +0100, Philipp Hahn wrote:
+On Tue, Mar 10, 2026 at 12:49:22PM +0100, Philipp Hahn wrote:
 > Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
 > check.
 > 
-> Change generated with coccinelle.
+> Semantich change: Previously the code only printed the warning on error,
+
+Semantic ...
+
+> but not when the pointer was NULL. Now the warning is printed in both
+> cases!
 > 
-> To: Alex Williamson <alex@shazbot.org>
-> Cc: kvm@vger.kernel.org
+> Change found with coccinelle.
+> 
+> To: Michael Turquette <mturquette@baylibre.com>
+> To: Stephen Boyd <sboyd@kernel.org>
+> To: Daniel Lezcano <daniel.lezcano@kernel.org>
+> To: Thomas Gleixner <tglx@kernel.org>
+> Cc: linux-clk@vger.kernel.org
 > Cc: linux-kernel@vger.kernel.org
 > Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
-> ---
->  drivers/vfio/vfio_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 742477546b15d4dbaf9ebcfb2e67627db71521e0..d71922dfde5885967398deddec3e9e04b05adfec 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -923,7 +923,7 @@ vfio_ioctl_device_feature_mig_device_state(struct vfio_device *device,
->  
->  	/* Handle the VFIO_DEVICE_FEATURE_SET */
->  	filp = device->mig_ops->migration_set_state(device, mig.device_state);
-> -	if (IS_ERR(filp) || !filp)
-> +	if (IS_ERR_OR_NULL(filp))
->  		goto out_copy;
->  
->  	return vfio_ioct_mig_return_fd(filp, arg, &mig);
-> 
 
-Reviewed-by: Pranjal Shrivastava <praan@google.com>
+With the minor typo addressed:
 
-The cleanup alone looks fine, but I'm not sure if the maintainers would
-be happy about the tree-wide spam, since each patch might go through a
-different tree. I'd wait for Alex's preference/ack on that.
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
-Thanks,
-Praan
