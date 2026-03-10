@@ -2,72 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id EIMSMm84sGlZhQIAu9opvQ
+	id MCfnL104sGkKhQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:43 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:25 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 582E1253752
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:43 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5CB2725369D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BFEB281360;
-	Tue, 10 Mar 2026 15:27:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A85A8811A4;
+	Tue, 10 Mar 2026 15:27:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4oL2Y-ArWTWA; Tue, 10 Mar 2026 15:27:35 +0000 (UTC)
+ id 7YpG9HgRg7qI; Tue, 10 Mar 2026 15:27:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 074A28132C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DCA00810F0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773156455;
-	bh=oVRlrvP2vbgXglr+z2zhizXrLgYYAnk6ZwkJlTNfyBA=;
+	s=default; t=1773156438;
+	bh=zS/lt7IufKQt9b00w4tg0H1pDBP8jbAdIjOpgPRguTw=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=5IMkQERCqvYbtv2NYI+L1BloHm4kMiCLEFl04ooup96hSPsXEDpaxNtS2ScvFwV2i
-	 eNeVA5G1oNHoaB7Hh90fDO/5WX3Qe9w8tmL+YzSaFhAjI0NEiiTQBm9cWOMdJARpIK
-	 d/NPtP2O5zJIQvxiv2ljpuZBv825VDaohn+QFl0YEMC1i3Z+vd2aHdGzJJxfgHFSPk
-	 3uQ7cxBgihwqZJeXoxtejd2uCgLLUKT167mQmjLRV90YPmh58RXJmf1JAo5zCdcVjT
-	 urNPWEDA4NGMgdFgsyDi0HrweGYbP/mPdpJMXi68nbQWSQokutpVKyYMmmcXE2L+3k
-	 KrzD+iZH9cyfw==
+	b=N5Gj7Da3hmkEMjz9C5CWf9vvfbLyQcZClI4fMnXXlNQ7XPl5YYAXcQw+ByN2jMP8M
+	 4komEOO+2jjx4Mk4hz/Zv2MUk45ertR7zdwE4wg4nqIJxS4T7hAuBvqF6k64m0Cug9
+	 cc0ZBqTz9anel9udGcSs8PhiiD5jH0RKJFsNEsnhWBT1+13hzUOFISBRK2QygZKhBn
+	 ZuVlAPsNOvNWt3wZmRB873zuUAB0zpUeYsfIDWDaJTl5ugjrkBneP2MHN7QfggdpiQ
+	 2qkrjbPf0a+cA50fBAy+KAV4vsssLTHcXtIMHq9UPxLGejFPI4zvMeb/9eUkT5xlpS
+	 yJ3vjaSviAK/w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 074A28132C;
-	Tue, 10 Mar 2026 15:27:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DCA00810F0;
+	Tue, 10 Mar 2026 15:27:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 1997C201
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 15D6C201
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1BD0B41EAF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:08 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0B5FA60F2E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bl-RmVMg3Yac for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Mar 2026 12:05:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:bf0:244:244::120; helo=mail.avm.de;
- envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 41B5841EC0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 41B5841EC0
-Received: from mail.avm.de (mail.avm.de [IPv6:2001:bf0:244:244::120])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 41B5841EC0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:07 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hhz53oORUwL1 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Mar 2026 12:01:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.42.244.94;
+ helo=mail.avm.de; envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9259861545
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9259861545
+Received: from mail.avm.de (mail.avm.de [212.42.244.94])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9259861545
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:20 +0000 (UTC)
 Received: from [212.42.244.71] (helo=mail.avm.de)
  by mail.avm.de with ESMTP (eXpurgate 4.55.2)
  (envelope-from <phahn-oss@avm.de>)
- id 69b006ab-b734-7f0000032729-7f000001bfb4-1
- for <multiple-recipients>; Tue, 10 Mar 2026 12:55:23 +0100
+ id 69b006ac-e21d-7f0000032729-7f000001d9ae-1
+ for <multiple-recipients>; Tue, 10 Mar 2026 12:55:24 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
  by mail.avm.de (Postfix) with ESMTPS;
- Tue, 10 Mar 2026 12:55:23 +0100 (CET)
+ Tue, 10 Mar 2026 12:55:24 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:34 +0100
+Date: Tue, 10 Mar 2026 12:48:35 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260310-b4-is_err_or_null-v1-8-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-9-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -97,40 +96,30 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Miklos Szeredi <miklos@szeredi.hu>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=890; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=Z5CcgUmxb8TIHuxVENT8+Rdbeolb2IW3uV9KbiLoZl0=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXxKvlvqCH0DwJSbq+UNs0LTyfOD3vzlRqtT
- 2TRtqiRMXSJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF8QAKCRA0LQZT0ays
- 2xgMCACJUN2JSxzamJUFQvwc92wfvAAIT82LlFBC4CNAPLjUwClhfMFmMBmKAZA8HDz81VrcG/p
- fo2P5eS+rFs83E9iVI/bW+OpSphb7hd9/Pa3DNpSkaQcLQUMHw39s5ltgUYmcwhQdUpEa+pWYW+
- gg+34EAVtKnYkmIuH1aWQKSSPRHXFEEIj8Mu1YI3EnTGvDB+NleQt1zN6UaIksTNUf5+3I2W33b
- Z+hxOEmA2AEpaox3bemtlkSQbWv4qtVtcFYcWHKzhKpkUH0i5WAZ0lUSrDgtHsTI7KM+223fQQ9
- V7CmYp8rYAFlP8Yb8uQbtjIbd9Kw5z3oAZRh0mglz23o1NU6
+Cc: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1617; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=0D7JqCvM2HduGB7jcCjsvL2MgPxSPSMnqWoOW6gFXPg=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAX0gr7ZqouZ6B9Y6l873KDZh87VRkMxmLSVt
+ AItcTzXYr2JATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF9AAKCRA0LQZT0ays
+ 2/XgCACwqNRVP1ceb2sCHMTvH8vznLrrwbRdBid2VGiRwlIoIqclnUBeLwwGZ/n/hBxtkijY1s3
+ NziYVgznq0k9VYxacmvzAvuKhhv5805K9y/+itK+PFXmzL3ZRzqmfWP6ng28fVSUYAufwVEc7CR
+ 9llIbOBq8N4aCpqTBELhb7mwymU8hNLZpMBK934i79wnmNx9OySShuCrTBL+FEQ9g/aUtfHcqTV
+ 4JM/tu/NHEvIwEfZrC8rjS3HwU+8fz/vbF4We+/TjORw4iEGT1m6VfBdB71QF+Wi1viRKTPIkVW
+ Nxf+o86GuJolrkUsNGy4WHdCFW95aUilkAjXyF+7XIpdZkLT
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143723-035C7A3D-B44CD0B6/0/0
+X-purgate-ID: 149429::1773143724-80E01F2F-4A43AD77/0/0
 X-purgate-type: clean
-X-purgate-size: 892
+X-purgate-size: 1619
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for
  further information)
 X-purgate: clean
 X-Mailman-Approved-At: Tue, 10 Mar 2026 15:27:04 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=avm.de; s=mail; 
- t=1773143724; bh=Z5CcgUmxb8TIHuxVENT8+Rdbeolb2IW3uV9KbiLoZl0=;
- h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=HvCb/8oi+QjPTMN2Yg58hVQgISqDho2KSemsYUZ+vy5VD2bnZIm5jRkx5UuokMrry
- Cd/bADEMvLj4WpFiDDooSYtHMuljYAEx/RujmrWNzucIvLCjqd0TnsL6u3xLqdwjKn
- SoUF7kcbAi1lGgdxzJJB8ERoQMMzj0TR7iF4FK9M=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=avm.de
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=avm.de header.i=@avm.de header.a=rsa-sha256
- header.s=mail header.b=HvCb/8oi
-Subject: [Intel-wired-lan] [PATCH 08/61] fuse: Prefer IS_ERR_OR_NULL over
+Subject: [Intel-wired-lan] [PATCH 09/61] ntfs3: Prefer IS_ERR_OR_NULL over
  manual NULL check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -146,7 +135,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 582E1253752
+X-Rspamd-Queue-Id: 5CB2725369D
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.19 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[avm.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
@@ -160,7 +149,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.org,m:linux-pm@vger.
- kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:miklos@szeredi.hu,s:lists@lfdr.de];
+ kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:almaz.alexandrovich@paragon-software.com,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER(0.00)[phahn-oss@avm.de,intel-wired-lan-bounces@osuosl.org];
@@ -188,27 +177,52 @@ check.
 
 Change generated with coccinelle.
 
-To: Miklos Szeredi <miklos@szeredi.hu>
-Cc: linux-fsdevel@vger.kernel.org
+To: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
+Cc: ntfs3@lists.linux.dev
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- fs/fuse/dir.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ fs/ntfs3/fsntfs.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/fs/fuse/dir.c b/fs/fuse/dir.c
-index 7ac6b232ef12323e3afb97b98301f623bce917a4..7b39c013027bd9c4ba6f080bfc9b3ec22bc2dd4a 100644
---- a/fs/fuse/dir.c
-+++ b/fs/fuse/dir.c
-@@ -1599,7 +1599,7 @@ int fuse_reverse_inval_entry(struct fuse_conn *fc, u64 parent_nodeid,
- 		goto put_parent;
- 	while (!entry) {
- 		struct dentry *child = try_lookup_noperm(name, dir);
--		if (!child || IS_ERR(child))
-+		if (IS_ERR_OR_NULL(child))
- 			goto put_parent;
- 		entry = start_removing_dentry(dir, child);
- 		dput(child);
+diff --git a/fs/ntfs3/fsntfs.c b/fs/ntfs3/fsntfs.c
+index 0df2aa81d8845f21bfb571c408bd65b9e1fb8128..3ced4f95c2e95bac1fe5b334f976b8c8a15cf19d 100644
+--- a/fs/ntfs3/fsntfs.c
++++ b/fs/ntfs3/fsntfs.c
+@@ -237,7 +237,7 @@ int ntfs_extend_init(struct ntfs_sb_info *sbi)
+ 
+ 	/* Try to find $ObjId */
+ 	inode2 = dir_search_u(inode, &NAME_OBJID, NULL);
+-	if (inode2 && !IS_ERR(inode2)) {
++	if (!IS_ERR_OR_NULL(inode2)) {
+ 		if (is_bad_inode(inode2)) {
+ 			iput(inode2);
+ 		} else {
+@@ -248,21 +248,21 @@ int ntfs_extend_init(struct ntfs_sb_info *sbi)
+ 
+ 	/* Try to find $Quota */
+ 	inode2 = dir_search_u(inode, &NAME_QUOTA, NULL);
+-	if (inode2 && !IS_ERR(inode2)) {
++	if (!IS_ERR_OR_NULL(inode2)) {
+ 		sbi->quota_no = inode2->i_ino;
+ 		iput(inode2);
+ 	}
+ 
+ 	/* Try to find $Reparse */
+ 	inode2 = dir_search_u(inode, &NAME_REPARSE, NULL);
+-	if (inode2 && !IS_ERR(inode2)) {
++	if (!IS_ERR_OR_NULL(inode2)) {
+ 		sbi->reparse.ni = ntfs_i(inode2);
+ 		sbi->reparse_no = inode2->i_ino;
+ 	}
+ 
+ 	/* Try to find $UsnJrnl */
+ 	inode2 = dir_search_u(inode, &NAME_USNJRNL, NULL);
+-	if (inode2 && !IS_ERR(inode2)) {
++	if (!IS_ERR_OR_NULL(inode2)) {
+ 		sbi->usn_jrnl_no = inode2->i_ino;
+ 		iput(inode2);
+ 	}
 
 -- 
 2.43.0
