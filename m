@@ -2,71 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id cAIiL3c4sGlZhQIAu9opvQ
+	id OBAOIlw4sGkKhQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:51 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:24 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5476D25379F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 46E6C253695
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Mar 2026 16:27:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EF67B41C79;
-	Tue, 10 Mar 2026 15:27:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B6BDD40367;
+	Tue, 10 Mar 2026 15:27:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8l3houm5bhTP; Tue, 10 Mar 2026 15:27:39 +0000 (UTC)
+ id LFL9i3bYqUs1; Tue, 10 Mar 2026 15:27:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 13E5741CAB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0CB640550
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773156459;
-	bh=hW7ZW/AdL6DqQMQ550rS8xJYq7Gaxx6/BDwT0RbjjT0=;
+	s=default; t=1773156436;
+	bh=iY5b+S6DY49d8oUcqDtGLxUKyWGyNfNq5dhmPPuwVI4=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=jANt64fFEkFsgkW/I3zAwQEIzhlguGq8Nc25WQ/LGZXJQ0DbXfbxNtf/NNSUfqWXd
-	 Jqyc3EATLDfjgAjmbOiFDoXl0N9o95msemzcbx3+8oBg5YHvrUb29E8hO+u55N0iHn
-	 8DtDOAWFNwYhow0FrUMX9Q3jzCY1jbBdkLrnDil0bpCJg4sAjAHJHRrYgYBa655rzA
-	 gbaq2K6IvKzW92ClWe+NQPhhbipeM9X6ZNaEZ3heU5ix0skyOhAg5oGCHEDaNO3Clz
-	 hTn4yY7tM6PQsCY4eqHfWn34FGq5iQNocE+EMaJ7aU8/qZ48M7PEp4gNWSFSRC5BZN
-	 6pMSKWpvezAtQ==
+	b=d6EcZ2c0vj/FuqWlaicNQxk0g8AOzH0qeUdDBkzKEnhQK8giWdx7/6o2yfTg/x+9S
+	 PUqourCRYMR8z8hIPwG5ihs18YTwMBUYuY0YQtWEuTq/UcznX+Dz7aRDr0rWF2bvfK
+	 49FpO3cghyji+itRcEQVG5AQA5l3rvlloY4/KB636NVAlQ/kOv6wOKQRTfbt6dapiP
+	 PsiYj0vIZRgb1TN3vqcubY29i+cu87mxtwa0aXI0tojUew1kgGr9060vHTItoaPOvI
+	 19mFgnBpQTE549f/MjYqw1gxNPWmmgZdKZLd4K60fAiCcAiqlAJ58RQDJKho83BsJC
+	 RDwEmWIuQx0hA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 13E5741CAB;
-	Tue, 10 Mar 2026 15:27:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F0CB640550;
+	Tue, 10 Mar 2026 15:27:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 8E6FE201
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:11 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8F04E201
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8D26460B3C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:10 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 9A90440648
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PX_L7n9lIGvM for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Mar 2026 12:05:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.42.244.120;
- helo=mail.avm.de; envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 87A8660B11
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 87A8660B11
-Received: from mail.avm.de (mail.avm.de [212.42.244.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 87A8660B11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:05:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hbXUi7Su-7kY for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Mar 2026 12:01:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2001:bf0:244:244::119; helo=mail.avm.de;
+ envelope-from=phahn-oss@avm.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6C4B6403EE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C4B6403EE
+Received: from mail.avm.de (mail.avm.de [IPv6:2001:bf0:244:244::119])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6C4B6403EE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Mar 2026 12:01:20 +0000 (UTC)
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
  by mail.avm.de with ESMTP (eXpurgate 4.55.2)
  (envelope-from <phahn-oss@avm.de>)
- id 69b006ac-b734-7f0000032729-7f000001c05e-1
- for <multiple-recipients>; Tue, 10 Mar 2026 12:55:24 +0100
+ id 69b006ad-2367-7f0000032729-7f0000019d9a-1
+ for <multiple-recipients>; Tue, 10 Mar 2026 12:55:25 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de
  [IPv6:2001:bf0:244:244::71]) by mail.avm.de (Postfix) with ESMTPS;
- Tue, 10 Mar 2026 12:55:24 +0100 (CET)
+ Tue, 10 Mar 2026 12:55:25 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:54 +0100
+Date: Tue, 10 Mar 2026 12:48:55 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260310-b4-is_err_or_null-v1-28-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-29-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -96,24 +97,24 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Jamal Hadi Salim <jhs@mojatatu.com>, Jiri Pirko <jiri@resnulli.us>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Simon Horman <horms@kernel.org>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1649; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=K9CWTyYKGB0w6Tk2xrcCabYj/9tltesZ0HvDiXE6CGA=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAY0Ab3VO2a9CLyi58wXwo/lqSwdB2G61GV4k
- bTbJSvyEGOJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGNAAKCRA0LQZT0ays
- 24mRB/9btDfW+RDwuaye8LPDtf1ZUJwDncM7Zgyp6SHFDbDBBUCY5jMLThJncFGvw3pVn6MHlrR
- e+vSLwaJsDAVLn6K23Z4PPrutM/glgm9IAew2t89ZwRwFxQzfV+39rXZfBmOC/J16tW6tO1iy8k
- 2C61WhK0hJtogp/FtZ3yHRbCwt8dKoLmF2qlw1QSQLKl8LOMWf3xw4Hzsu7PORnm8NiE+tP0SiT
- 14xuZtoKpdLMjWGJyLVgKFIFQUVZBRep4Y+ogBPonV7uWFQl+T8Y21kTTXl++qp7tP7BH5AxDRw
- qjRRlFGTUp8rPbK2m+WUcf3WaJPpbUCWbYm05Bbm4z30Dms3
+Cc: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>, 
+ Xin Long <lucien.xin@gmail.com>, "David S. Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1169; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=uPgyjK+s+NGMdE+cG5MPshRhc7ZZgUWwr7PoRjCZSpk=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAY4baP8me9X19X7pKru5bhCt+OcLVsbTz9gw
+ 3EXL2x+9HiJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGOAAKCRA0LQZT0ays
+ 20eCB/9R10a8QtWnOE8FDIK68et8w+x4vBIl7DAH3ljWsVvEsJtllIM7WoriXoMKcy69weBfdTt
+ udsIaDDf3FpSbi6d23LNVWvY7/j8StHi4Mb7YRTkDtjVuH7qFkxhMIEkO0P72RZbdjNmUsWZOT+
+ 4yfdZZ4sqiFeE73LKQ05t8sm9/1XHgZKcnk5I6ebEYNeQeVfoiugFSvaTmWSBPUItBis/2y3N1h
+ 19AfztgUerK/fadW7Y/vZ3pDRpIi5ZAslPLWaCgGa6B5OoDoVAvOz5XPc/Ut45LGyZkJYA2qiTr
+ TmaKunQohnKINyK0THlxz9DBNJM47y+p9em5r+zCNMTJFQSn
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143724-025C1A3D-E80041E6/0/0
+X-purgate-ID: 149429::1773143725-73CEFE1F-39E0F1CD/0/0
 X-purgate-type: clean
-X-purgate-size: 1651
+X-purgate-size: 1171
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for
  further information)
@@ -121,18 +122,18 @@ X-purgate: clean
 X-Mailman-Approved-At: Tue, 10 Mar 2026 15:27:04 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=avm.de; s=mail; 
- t=1773143726; bh=K9CWTyYKGB0w6Tk2xrcCabYj/9tltesZ0HvDiXE6CGA=;
+ t=1773143725; bh=uPgyjK+s+NGMdE+cG5MPshRhc7ZZgUWwr7PoRjCZSpk=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=ITpeZZvCuurO6PtLvdRtRS5nd/bZCx1ndt94VbmepmWY6QteCwWswdiO1VbAljY8r
- fKxVkij1nMq0v9Gab/FV6dxJIQZxwXhWwA5TgvQnG1MilGO8jeOzxFRlzhEz0vggaA
- hWfQSJYU7rq79j74Br0/ZAepDgNZ+brN6WE4sbn0=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=EmfqFdXEdiCWqgoXgX8BLevw6sTpNgfg8llLMS9eEaTKVg51Kp8K29SjBZVEdIV/s
+ M7bvI3BPyHpPb6vMRi2BheqpUIfCWQ/6jm+gYuX79PpwCNDjLncHrcFsaokOkzLrgm
+ dBKJjX9bdtP/6DkQEVr2DPx5QPmWYl9+WXcAxUUE=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=avm.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=avm.de header.i=@avm.de header.a=rsa-sha256
- header.s=mail header.b=ITpeZZvC
-Subject: [Intel-wired-lan] [PATCH 28/61] net/sched: Prefer IS_ERR_OR_NULL
+ header.s=mail header.b=EmfqFdXE
+Subject: [Intel-wired-lan] [PATCH 29/61] net/sctp: Prefer IS_ERR_OR_NULL
  over manual NULL check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -148,28 +149,28 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5476D25379F
+X-Rspamd-Queue-Id: 46E6C253695
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[avm.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FROM_HAS_DN(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.org,m:linux-pm@vger.
+ kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:marcelo.leitner@gmail.com,m:lucien.xin@gmail.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:horms@kernel.org,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
 	FORGED_SENDER(0.00)[phahn-oss@avm.de,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.org,m:linux-pm@vger.
- kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:phahn-oss@avm.de,m:jhs@mojatatu.com,m:jiri@resnulli.us,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:horms@kernel.org,s:lists@lfdr.de];
+	FREEMAIL_CC(0.00)[gmail.com,davemloft.net,google.com,kernel.org,redhat.com];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
+	FROM_HAS_DN(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	RCPT_COUNT_GT_50(0.00)[61];
@@ -178,6 +179,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
@@ -189,51 +191,34 @@ check.
 
 Change generated with coccinelle.
 
-To: Jamal Hadi Salim <jhs@mojatatu.com>
-To: Jiri Pirko <jiri@resnulli.us>
+To: Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>
+To: Xin Long <lucien.xin@gmail.com>
 To: "David S. Miller" <davem@davemloft.net>
 To: Eric Dumazet <edumazet@google.com>
 To: Jakub Kicinski <kuba@kernel.org>
 To: Paolo Abeni <pabeni@redhat.com>
 To: Simon Horman <horms@kernel.org>
+Cc: linux-sctp@vger.kernel.org
 Cc: netdev@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- net/sched/cls_api.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ net/sctp/socket.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/sched/cls_api.c b/net/sched/cls_api.c
-index 4829c27446e3369ad2ae9b3fcb285eca47d59933..4208225e7a4acaf0c331096ebf941f68cc2ed992 100644
---- a/net/sched/cls_api.c
-+++ b/net/sched/cls_api.c
-@@ -2444,7 +2444,7 @@ static int tc_new_tfilter(struct sk_buff *skb, struct nlmsghdr *n,
- 		tcf_chain_tp_delete_empty(chain, tp, rtnl_held, NULL);
- errout_tp:
- 	if (chain) {
--		if (tp && !IS_ERR(tp))
-+		if (!IS_ERR_OR_NULL(tp))
- 			tcf_proto_put(tp, rtnl_held, NULL);
- 		if (!tp_created)
- 			tcf_chain_put(chain);
-@@ -2612,7 +2612,7 @@ static int tc_del_tfilter(struct sk_buff *skb, struct nlmsghdr *n,
+diff --git a/net/sctp/socket.c b/net/sctp/socket.c
+index 05fb00c9c33576d1e18ee31c34974d8b76efa768..a0596c94be4ad6afae6be13adb3bce17140264e9 100644
+--- a/net/sctp/socket.c
++++ b/net/sctp/socket.c
+@@ -5349,7 +5349,7 @@ struct sctp_transport *sctp_transport_get_idx(struct net *net,
+ 	if (!pos)
+ 		return SEQ_START_TOKEN;
  
- errout:
- 	if (chain) {
--		if (tp && !IS_ERR(tp))
-+		if (!IS_ERR_OR_NULL(tp))
- 			tcf_proto_put(tp, rtnl_held, NULL);
- 		tcf_chain_put(chain);
- 	}
-@@ -2741,7 +2741,7 @@ static int tc_get_tfilter(struct sk_buff *skb, struct nlmsghdr *n,
- 	tfilter_put(tp, fh);
- errout:
- 	if (chain) {
--		if (tp && !IS_ERR(tp))
-+		if (!IS_ERR_OR_NULL(tp))
- 			tcf_proto_put(tp, rtnl_held, NULL);
- 		tcf_chain_put(chain);
- 	}
+-	while ((t = sctp_transport_get_next(net, iter)) && !IS_ERR(t)) {
++	while (!IS_ERR_OR_NULL((t = sctp_transport_get_next(net, iter)))) {
+ 		if (!--pos)
+ 			break;
+ 		sctp_transport_put(t);
 
 -- 
 2.43.0
