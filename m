@@ -2,94 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aBJCIBmptWmw3AAAu9opvQ
+	id WBuHKCGptWmw3AAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:29:45 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:29:53 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E70C228E755
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:29:44 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C37528E764
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:29:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4028B60BBB;
-	Sat, 14 Mar 2026 18:29:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0915482311;
+	Sat, 14 Mar 2026 18:29:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kK6AdRNAyxPf; Sat, 14 Mar 2026 18:29:42 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UY0Thn68jjic; Sat, 14 Mar 2026 18:29:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9DFA260BEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C9B98230B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773512982;
-	bh=7uJuhFREF46e+3OIYgkRDThTE1W9t/zG8t/Q5Vop1iU=;
+	s=default; t=1773512991;
+	bh=+JSH/0/b9giaRQVQnVF9Hnbf5bM9rYVcnC9nwZ0R2/U=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ghX8gO5+tvw/rw9uNGNkWL2xGsOlsk3Acxhn0lXco88UR8VwLe1DE9JYdWLEjKHp4
-	 CiD77+ptmlxD5u6+h881jqV7SJ8MAPs0NAyFr5sc/cq9a+rOBNKoqnoZQtQvFrHlNP
-	 ARNBvPPwoGLv7yhUQ42cAGzV+HYZsibynOkwcNxnnGuhpsLYKBt8++nt46PsoKrCLE
-	 zypr9b6oarTjW3ay295Vj9dtMWJhKmWWi1HmcH3biiYsohzfkxUxjncdPcGS+HhHiV
-	 sHDKFlToEc0LsLooYrTf8sLNjJoXPwEikF/dYHwl9pcbuZzwz4E4wWM3RUQOJ3IIwh
-	 KbZjesCLIe5Aw==
+	b=gjJqLIAH8P+eeoIbCYVTPVIDtbv7GNJYbA0aPpwpqatkjimO+VwM7N7CWidrcaQr+
+	 VipUETM8v0QonG8AI60b1AOtHmZ7qgYTp+DZJPyPvX404BPsOTbZb8UNbdB3xATKWP
+	 8yCWSHMFil7IbDEcS76JkFXZBPkq+ll5jiSuRNmJ6TcDdpzgiqRdVinHu2zPi9qZ4v
+	 K0NsGC5cOgAejlaiH6aP8wJ0Va3Cq3IfV39yfyl0IRF+iVrqR0Dt0LxQdMt+W4B2l9
+	 hiyiCsFOKE+HNqDbSvXh3NsL1t9r/HVb4WNGKG3mtawVnsHGMIh7KpDCbnK3I59OmO
+	 2OK+wERNDnAZA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9DFA260BEF;
-	Sat, 14 Mar 2026 18:29:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6C9B98230B;
+	Sat, 14 Mar 2026 18:29:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 513F31B2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:40 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id C40741B4
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 42DFD4038E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A9F83413CA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HvF6cTiBn3AW for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Mar 2026 18:29:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Rq4StxLJMmkn for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Mar 2026 18:29:49 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::52e; helo=mail-pg1-x52e.google.com;
+ client-ip=2607:f8b0:4864:20::629; helo=mail-pl1-x629.google.com;
  envelope-from=viswanathiyyappan@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 847074019B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 847074019B
-Received: from mail-pg1-x52e.google.com (mail-pg1-x52e.google.com
- [IPv6:2607:f8b0:4864:20::52e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 847074019B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:39 +0000 (UTC)
-Received: by mail-pg1-x52e.google.com with SMTP id
- 41be03b00d2f7-c73bc3dd25fso1245589a12.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 11:29:39 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0032D40F74
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0032D40F74
+Received: from mail-pl1-x629.google.com (mail-pl1-x629.google.com
+ [IPv6:2607:f8b0:4864:20::629])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0032D40F74
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:29:48 +0000 (UTC)
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2a7a9b8ed69so40184545ad.2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 11:29:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773512979; x=1774117779;
+ d=1e100.net; s=20251104; t=1773512988; x=1774117788;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7uJuhFREF46e+3OIYgkRDThTE1W9t/zG8t/Q5Vop1iU=;
- b=MmJ8lsSGkA0NEjPFJeMV2QDiaWmbTn+8YnkcXGPIzAm/ukoKwP19BoUDbE9e32TpWN
- RkLKMtEYRyNWPHVATgITXvrWiYsrbDzBakiN/2FgZwTD/crvuQGI0UMnT1J2ceCCwr6+
- Iy0KcH7jFBjE+gD3GbI6b0lb2vrwFJ0vxsgSAi6jjtQN/2rhWxeLQWKe4gDB1uF0UmeB
- Ro0lNd8niRsAYgtylM9BFFTwCPSBSXFRXmeRLdde/hkjqlDq5GWVWKXVy17coqqx554P
- boFpI5wv/54M7HUhNAqeiU/v/TcFTv3dJi428YLFdqrDkMWgBl4Xds3B4cwE3IWwiLBg
- Yu2g==
+ bh=+JSH/0/b9giaRQVQnVF9Hnbf5bM9rYVcnC9nwZ0R2/U=;
+ b=KC+uT2yCJk2p4BNqEOIedHe8M5e4Nuh2Q0kA9VAJX2Qu5gD5XEIlbpVXM1t5M3jt4F
+ Ig97wPBSHmbuHOj481BmFlPLN0IxwMLUkQITlD1iSgeQEe3P+C1xig0DWKQTb5qQKcSr
+ fpQFh8iG6YEYe9gB+0f9noLdU38jfcdNuBc+nL94fKbMsN7nx54b7iO1dNy87pCa1lfH
+ rD9KtXtAInkoLBKdURL8+M4atViV1TYzGx+SxXfFhU9LeG1u9mDqbwVdY69W+PbQ5rOZ
+ zVn8jAnsW5kSD0IGY+6a9+Z4T2nubUDe8O3PXlQKWEFqzd3bW7kfU+qOW+BiDMezv02o
+ l/Aw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV1R2Z3SlGb4hL40IYA+P9v0MDiz2M7q7t/QrYBDaKKX8OEGYcxGRNpfXDY1hXw2zcQQGAMNgakiD0eRF29BmM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyRCg0QUOIvnbeGcjhgvUQYaa04RXUuiwMRTWk82mdC6M98e6gw
- 0mv85M/lOvdFSHw4cBzNT7vBlHsW4PU+GmV6Eke8ItMKg1qYMOIRxjps
-X-Gm-Gg: ATEYQzyhVguxTnmUqcbOaezHZPzjsRhHUP12aOdfbLGRkg8FBuLYdqSqMemX3SMGnl9
- EIO7rZbTqeIZde2WD1VEvvyDz35pmMxT8gyA/vSgrVPWD1mwCb7nkn4xe0sxrR96fIs2SZcO+zd
- AszyGGwZgcGPqf1Mcfs/PmfU7PWHO/kej9Aho08ngcRALaSleMG88tise6Xxyj6HnQFcuJ3wjph
- fZyc0CFjVmFjP/5gL5OtO2dvP0+opZVQMilouaIP5rfkC5KtDo69khqzPqY9Yvyi7bw0mRDqlSY
- tdCwGu+1Bu4n6t+vsiGSlM7cBXurZlu/2GnMPXYYIULIT84gUohTPd2gh1ck58rDEHFxnjQPSmg
- vFVyT6WqSZSGuPqf5SokvRcTYUHzq4PyjfALUXTkbC5T3tt0PvthEvaiKiUmAY2eYK2Y4HK6+dI
- WYPPm+h5Jcn1LcWwS+S2tCLWmTGo7ULd/ziCl9x6eUGKdAwsznHSCc8dfWYPmYau1GXSIXGfEtz
- cLw6Q==
-X-Received: by 2002:a17:902:f70a:b0:2ae:5044:8dd4 with SMTP id
- d9443c01a7336-2aeca960929mr72806085ad.19.1773512978654; 
- Sat, 14 Mar 2026 11:29:38 -0700 (PDT)
+ AJvYcCVA8vkQdreoJFupCeQul7I+uiGdsi2f2sneKcHIstg9GDdZkXKegzDFVTFbvofKLNbK7aX8t7okOPbTM93txzg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxkGzfdPraNX7uBpXQuMev3HeWyuLFVhENVyeStvFaI3lqyTHUs
+ SBqgcUtfGlJ6+MsT7GHqvtVP16j4qyB6CpNSRh6s4h9snBbG25S7PxTI
+X-Gm-Gg: ATEYQzyOXRcIGhjYRifBYUrazjPx6w+R82dcHHmRrGcLozSMfeHfw++93MMiMstPbZ3
+ GY/AZXtGDiPWzUzKjZgmi0F1Lwhv0W1r9JAFC7bR4dExRmf7D+tN9NmEbKBH08gxhH1/SZuot4F
+ //1/27a4sgh3mEdH9SXRom7QjAOwRyQjcWCVFlYQnN4DQfI3fm9FH2UEH9T51jSkWn1MAW7mgo7
+ 6TO1XIyTLUJu9IV9S0i3p+fO2NfU951IR8HWyK0F0TfxnGvSuwD9HiNz9Wwj37tlopYmmGmjsPV
+ jUwXkUZtqyOr9z2Tpz4rQz2DPVBCN8K+68X6pfRLbbejBbb7QhIBCs0Qb3/cyPzSFBAzUHdAiRf
+ 5717OrLWIROhZk/fZQkROCVqUHTPhBc5fxQOm6lSK+sc0LT3jXlj6yU3GPY/4gYfwJbxukyG/nZ
+ vFtLcUYbntFHKaXPDXkycQSnhJxyJ5wB+z9XYaUpftOYC+kfvU4RcBMFXZKWryfBjFIoPatXdUJ
+ WRYeQ==
+X-Received: by 2002:a17:903:90f:b0:2ae:59d3:27f8 with SMTP id
+ d9443c01a7336-2aeca999738mr72086855ad.19.1773512988217; 
+ Sat, 14 Mar 2026 11:29:48 -0700 (PDT)
 Received: from localhost.localdomain ([122.168.66.151])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2aece62c581sm77673525ad.33.2026.03.14.11.29.29
+ d9443c01a7336-2aece62c581sm77673525ad.33.2026.03.14.11.29.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 14 Mar 2026 11:29:38 -0700 (PDT)
+ Sat, 14 Mar 2026 11:29:47 -0700 (PDT)
 From: I Viswanath <viswanathiyyappan@gmail.com>
 To: stfomichev@gmail.com, horms@kernel.org, edumazet@google.com,
  pabeni@redhat.com, andrew+netdev@lunn.ch, kuba@kernel.org,
@@ -100,33 +100,32 @@ To: stfomichev@gmail.com, horms@kernel.org, edumazet@google.com,
 Cc: bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org,
  virtualization@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
  linux-kernel@vger.kernel.org, I Viswanath <viswanathiyyappan@gmail.com>
-Date: Sat, 14 Mar 2026 23:58:08 +0530
-Message-ID: <20260314182809.362808-7-viswanathiyyappan@gmail.com>
+Date: Sat, 14 Mar 2026 23:58:09 +0530
+Message-ID: <20260314182809.362808-8-viswanathiyyappan@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260314182809.362808-1-viswanathiyyappan@gmail.com>
 References: <20260314182809.362808-1-viswanathiyyappan@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773512979; x=1774117779; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1773512988; x=1774117788; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7uJuhFREF46e+3OIYgkRDThTE1W9t/zG8t/Q5Vop1iU=;
- b=Mv1LGjqw/FNFKqeu5xd8sxrBMlpD8M10UZ4N6BQq1WES+7ks4NVVNYQt2dD1iVEdhO
- B6eNAM5GHOMrNFVRkfqtP20ovItyJ/fkBtunGWsw2SARZoro1v9naxE4gQDVSpDRnNSG
- 75ETo633eXQ0Ofc/Kt2V1QMffNNwTzKHYwlwrNVZ17UQ09Dn7Yiq2kAAG7hisvNlOGxs
- nBhc3S2zGbKLIqyv3ShU7EalpLNkOn4SIpaL5d831092qqyARGi1Xr/va9wYsKf1N1dj
- IyEbvirvB4UKNyuEdR79tzvTcodWFVe5TsavdwGsLTCzh04rNHVI0q1UU8KdHEMqJgr6
- uIYA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=+JSH/0/b9giaRQVQnVF9Hnbf5bM9rYVcnC9nwZ0R2/U=;
+ b=T0hCsky1jCTCDycz2VYr1LP6+sEncOOXlTPkoR4M5AjwDLu3ejNBd4rei/N2d40jbj
+ Axy4MekB8xOQUdgK7H/SKJxwbm4XUxv6OI2fR3RPSRMUWA+z3d6sS6ewSL6Vq2XHPsgV
+ lffDRutYG3dsf6iLvyaxPFOBUUbULMSGdTJNHeTnQ869D7FhSdp2UoNJCWqWZc9I+h3K
+ qM0iJxEbt5exlu0liSQqtKg7WxXVxKqgMe0jQ0FzYdlTcAlCF0F7xT1Maup7P5AHytfZ
+ Z2Y6/9XkMD8YHjBsCDZ0KH36liDHbMLwD4B3cJ6DCkepYjYeYxgsfAzAoJd5VGwOH5mi
+ a8qQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=Mv1LGjqw
-Subject: [Intel-wired-lan] [PATCH net-next v9 6/7] vmxnet3: Implement
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=T0hCsky1
+Subject: [Intel-wired-lan] [PATCH net-next v9 7/7] pcnet32: Implement
  ndo_set_rx_mode_async callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -149,7 +148,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
@@ -165,7 +164,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
@@ -179,7 +178,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: E70C228E755
+X-Rspamd-Queue-Id: 5C37528E764
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
@@ -189,157 +188,176 @@ the driver to use the snapshot/commit model for RX mode update.
 Signed-off-by: I Viswanath <viswanathiyyappan@gmail.com>
 ---
  
-Call paths involving netif_set_rx_mode in vmxnet3
+There are no calls to netif_set_rx_mode in pcnet32
+ 
+ drivers/net/ethernet/amd/pcnet32.c | 65 ++++++++++++++++++++++++------
+ 1 file changed, 53 insertions(+), 12 deletions(-)
 
-netif_set_rx_mode
-`-- vmxnet3_activate_dev
-    |-- vmxnet3_open (ndo_open, takes lock)
-    |-- vmxnet3_change_mtu (ndo_change_mtu, takes lock)
-    |-- vmxnet3_reset_work (takes lock)
-    |-- vmxnet3_resume (lock added)
-    |-- vmxnet3_set_ringparam (ethtool callback, takes lock)
-    `-- vmxnet3_xdp_set
-        `-- vmxnet3_xdp (ndo_bpf, takes lock)
-
- drivers/net/vmxnet3/vmxnet3_drv.c | 46 +++++++++++++++++++++++--------
- 1 file changed, 35 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/vmxnet3/vmxnet3_drv.c b/drivers/net/vmxnet3/vmxnet3_drv.c
-index 40522afc0532..350e44286c00 100644
---- a/drivers/net/vmxnet3/vmxnet3_drv.c
-+++ b/drivers/net/vmxnet3/vmxnet3_drv.c
-@@ -2775,18 +2775,18 @@ static u8 *
- vmxnet3_copy_mc(struct net_device *netdev)
- {
- 	u8 *buf = NULL;
--	u32 sz = netdev_mc_count(netdev) * ETH_ALEN;
-+	u32 sz = netif_rx_mode_mc_count(netdev) * ETH_ALEN;
-+	char *ha_addr;
-+	int ni;
+diff --git a/drivers/net/ethernet/amd/pcnet32.c b/drivers/net/ethernet/amd/pcnet32.c
+index 911808ab13a7..d5ad96985d68 100644
+--- a/drivers/net/ethernet/amd/pcnet32.c
++++ b/drivers/net/ethernet/amd/pcnet32.c
+@@ -314,8 +314,9 @@ static void pcnet32_tx_timeout(struct net_device *dev, unsigned int txqueue);
+ static irqreturn_t pcnet32_interrupt(int, void *);
+ static int pcnet32_close(struct net_device *);
+ static struct net_device_stats *pcnet32_get_stats(struct net_device *);
+-static void pcnet32_load_multicast(struct net_device *dev);
++static void pcnet32_load_multicast(struct net_device *dev, bool is_open);
+ static void pcnet32_set_multicast_list(struct net_device *);
++static void pcnet32_set_multicast_list_async(struct net_device *);
+ static int pcnet32_ioctl(struct net_device *, struct ifreq *, int);
+ static void pcnet32_watchdog(struct timer_list *);
+ static int mdio_read(struct net_device *dev, int phy_id, int reg_num);
+@@ -1580,6 +1581,7 @@ static const struct net_device_ops pcnet32_netdev_ops = {
+ 	.ndo_tx_timeout		= pcnet32_tx_timeout,
+ 	.ndo_get_stats		= pcnet32_get_stats,
+ 	.ndo_set_rx_mode	= pcnet32_set_multicast_list,
++	.ndo_set_rx_mode_async	= pcnet32_set_multicast_list_async,
+ 	.ndo_eth_ioctl		= pcnet32_ioctl,
+ 	.ndo_set_mac_address 	= eth_mac_addr,
+ 	.ndo_validate_addr	= eth_validate_addr,
+@@ -2260,7 +2262,7 @@ static int pcnet32_open(struct net_device *dev)
  
- 	/* struct Vmxnet3_RxFilterConf.mfTableLen is u16. */
- 	if (sz <= 0xffff) {
- 		/* We may be called with BH disabled */
- 		buf = kmalloc(sz, GFP_ATOMIC);
- 		if (buf) {
--			struct netdev_hw_addr *ha;
- 			int i = 0;
--
--			netdev_for_each_mc_addr(ha, netdev)
--				memcpy(buf + i++ * ETH_ALEN, ha->addr,
-+			netif_rx_mode_for_each_mc_addr(ha_addr, netdev, ni)
-+				memcpy(buf + i++ * ETH_ALEN, ha_addr,
- 				       ETH_ALEN);
- 		}
- 	}
-@@ -2796,8 +2796,23 @@ vmxnet3_copy_mc(struct net_device *netdev)
+ 	lp->init_block->mode =
+ 	    cpu_to_le16((lp->options & PCNET32_PORT_PORTSEL) << 7);
+-	pcnet32_load_multicast(dev);
++	pcnet32_load_multicast(dev, true);
  
- static void
- vmxnet3_set_mc(struct net_device *netdev)
-+{
-+	bool allmulti = !!(netdev->flags & IFF_ALLMULTI);
-+	bool promisc = !!(netdev->flags & IFF_PROMISC);
-+	bool broadcast = !!(netdev->flags & IFF_BROADCAST);
-+
-+	netif_set_rx_mode_flag(netdev, NETIF_RX_MODE_UC_SKIP, true);
-+	netif_set_rx_mode_flag(netdev, NETIF_RX_MODE_MC_SKIP, allmulti);
-+
-+	netif_set_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_ALLMULTI, allmulti);
-+	netif_set_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_PROMISC, promisc);
-+	netif_set_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_BROADCAST, broadcast);
-+}
-+
-+static void vmxnet3_set_mc_async(struct net_device *netdev)
- {
- 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
-+	int mc_count = netif_rx_mode_mc_count(netdev);
- 	unsigned long flags;
- 	struct Vmxnet3_RxFilterConf *rxConf =
- 					&adapter->shared->devRead.rxFilterConf;
-@@ -2806,7 +2821,7 @@ vmxnet3_set_mc(struct net_device *netdev)
- 	bool new_table_pa_valid = false;
- 	u32 new_mode = VMXNET3_RXM_UCAST;
- 
--	if (netdev->flags & IFF_PROMISC) {
-+	if (netif_get_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_PROMISC)) {
- 		u32 *vfTable = adapter->shared->devRead.rxFilterConf.vfTable;
- 		memset(vfTable, 0, VMXNET3_VFT_SIZE * sizeof(*vfTable));
- 
-@@ -2815,16 +2830,16 @@ vmxnet3_set_mc(struct net_device *netdev)
- 		vmxnet3_restore_vlan(adapter);
- 	}
- 
--	if (netdev->flags & IFF_BROADCAST)
-+	if (netif_get_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_BROADCAST))
- 		new_mode |= VMXNET3_RXM_BCAST;
- 
--	if (netdev->flags & IFF_ALLMULTI)
-+	if (netif_get_rx_mode_cfg(netdev, NETIF_RX_MODE_CFG_ALLMULTI))
- 		new_mode |= VMXNET3_RXM_ALL_MULTI;
- 	else
--		if (!netdev_mc_empty(netdev)) {
-+		if (mc_count) {
- 			new_table = vmxnet3_copy_mc(netdev);
- 			if (new_table) {
--				size_t sz = netdev_mc_count(netdev) * ETH_ALEN;
-+				size_t sz = mc_count * ETH_ALEN;
- 
- 				rxConf->mfTableLen = cpu_to_le16(sz);
- 				new_table_pa = dma_map_single(
-@@ -3213,7 +3228,7 @@ vmxnet3_activate_dev(struct vmxnet3_adapter *adapter)
- 	}
- 
- 	/* Apply the rx filter settins last. */
--	vmxnet3_set_mc(adapter->netdev);
-+	netif_set_rx_mode(adapter->netdev);
- 
- 	/*
- 	 * Check link state when first activating device. It will start the
-@@ -3977,6 +3992,7 @@ vmxnet3_probe_device(struct pci_dev *pdev,
- 		.ndo_get_stats64 = vmxnet3_get_stats64,
- 		.ndo_tx_timeout = vmxnet3_tx_timeout,
- 		.ndo_set_rx_mode = vmxnet3_set_mc,
-+		.ndo_set_rx_mode_async = vmxnet3_set_mc_async,
- 		.ndo_vlan_rx_add_vid = vmxnet3_vlan_rx_add_vid,
- 		.ndo_vlan_rx_kill_vid = vmxnet3_vlan_rx_kill_vid,
- #ifdef CONFIG_NET_POLL_CONTROLLER
-@@ -4400,6 +4416,7 @@ static void vmxnet3_shutdown_device(struct pci_dev *pdev)
- 	vmxnet3_disable_all_intrs(adapter);
- 
- 	clear_bit(VMXNET3_STATE_BIT_RESETTING, &adapter->state);
-+	netif_disable_async_ops(netdev);
+ 	if (pcnet32_init_ring(dev)) {
+ 		rc = -ENOMEM;
+@@ -2676,18 +2678,26 @@ static struct net_device_stats *pcnet32_get_stats(struct net_device *dev)
  }
  
+ /* taken from the sunlance driver, which it took from the depca driver */
+-static void pcnet32_load_multicast(struct net_device *dev)
++static void pcnet32_load_multicast(struct net_device *dev, bool is_open)
+ {
+ 	struct pcnet32_private *lp = netdev_priv(dev);
+ 	volatile struct pcnet32_init_block *ib = lp->init_block;
+ 	volatile __le16 *mcast_table = (__le16 *)ib->filter;
+ 	struct netdev_hw_addr *ha;
++	char *ha_addr;
++	bool allmulti;
+ 	unsigned long ioaddr = dev->base_addr;
+-	int i;
++	int i, ni;
+ 	u32 crc;
  
-@@ -4518,6 +4535,7 @@ vmxnet3_suspend(struct device *device)
- 	pci_disable_device(pdev);
- 	pci_set_power_state(pdev, pci_choose_state(pdev, PMSG_SUSPEND));
++	if (is_open)
++		allmulti = dev->flags & IFF_ALLMULTI;
++	else
++		allmulti = netif_get_rx_mode_cfg(dev,
++						 NETIF_RX_MODE_CFG_ALLMULTI);
++
+ 	/* set all multicast bits */
+-	if (dev->flags & IFF_ALLMULTI) {
++	if (allmulti) {
+ 		ib->filter[0] = cpu_to_le32(~0U);
+ 		ib->filter[1] = cpu_to_le32(~0U);
+ 		lp->a->write_csr(ioaddr, PCNET32_MC_FILTER, 0xffff);
+@@ -2701,20 +2711,41 @@ static void pcnet32_load_multicast(struct net_device *dev)
+ 	ib->filter[1] = 0;
  
-+	netif_disable_async_ops(netdev);
+ 	/* Add addresses */
+-	netdev_for_each_mc_addr(ha, dev) {
+-		crc = ether_crc_le(6, ha->addr);
+-		crc = crc >> 26;
+-		mcast_table[crc >> 4] |= cpu_to_le16(1 << (crc & 0xf));
++	if (is_open) {
++		netdev_for_each_mc_addr(ha, dev) {
++			crc = ether_crc_le(6, ha->addr);
++			crc = crc >> 26;
++			mcast_table[crc >> 4] |= cpu_to_le16(1 << (crc & 0xf));
++		}
++	} else {
++		netif_rx_mode_for_each_mc_addr(ha_addr, dev, ni) {
++			crc = ether_crc_le(6, ha_addr);
++			crc = crc >> 26;
++			mcast_table[crc >> 4] |= cpu_to_le16(1 << (crc & 0xf));
++		}
+ 	}
++
+ 	for (i = 0; i < 4; i++)
+ 		lp->a->write_csr(ioaddr, PCNET32_MC_FILTER + i,
+ 				le16_to_cpu(mcast_table[i]));
+ }
+ 
++static void pcnet32_set_multicast_list(struct net_device *dev)
++{
++	bool allmulti = !!(dev->flags & IFF_ALLMULTI);
++	bool promisc = !!(dev->flags & IFF_PROMISC);
++
++	netif_set_rx_mode_flag(dev, NETIF_RX_MODE_UC_SKIP, true);
++	netif_set_rx_mode_flag(dev, NETIF_RX_MODE_MC_SKIP, promisc | allmulti);
++
++	netif_set_rx_mode_cfg(dev, NETIF_RX_MODE_CFG_ALLMULTI, allmulti);
++	netif_set_rx_mode_cfg(dev, NETIF_RX_MODE_CFG_PROMISC, promisc);
++}
++
+ /*
+  * Set or clear the multicast filter for this adaptor.
+  */
+-static void pcnet32_set_multicast_list(struct net_device *dev)
++static void pcnet32_set_multicast_list_async(struct net_device *dev)
+ {
+ 	unsigned long ioaddr = dev->base_addr, flags;
+ 	struct pcnet32_private *lp = netdev_priv(dev);
+@@ -2723,7 +2754,7 @@ static void pcnet32_set_multicast_list(struct net_device *dev)
+ 	spin_lock_irqsave(&lp->lock, flags);
+ 	suspended = pcnet32_suspend(dev, &flags, 0);
+ 	csr15 = lp->a->read_csr(ioaddr, CSR15);
+-	if (dev->flags & IFF_PROMISC) {
++	if (netif_get_rx_mode_cfg(dev, NETIF_RX_MODE_CFG_PROMISC)) {
+ 		/* Log any net taps. */
+ 		netif_info(lp, hw, dev, "Promiscuous mode enabled\n");
+ 		lp->init_block->mode =
+@@ -2734,7 +2765,7 @@ static void pcnet32_set_multicast_list(struct net_device *dev)
+ 		lp->init_block->mode =
+ 		    cpu_to_le16((lp->options & PCNET32_PORT_PORTSEL) << 7);
+ 		lp->a->write_csr(ioaddr, CSR15, csr15 & 0x7fff);
+-		pcnet32_load_multicast(dev);
++		pcnet32_load_multicast(dev, false);
+ 	}
+ 
+ 	if (suspended) {
+@@ -2922,6 +2953,7 @@ static int __maybe_unused pcnet32_pm_suspend(struct device *device_d)
+ 		pcnet32_close(dev);
+ 	}
+ 
++	netif_disable_async_ops(dev);
  	return 0;
  }
  
-@@ -4531,6 +4549,8 @@ vmxnet3_resume(struct device *device)
- 	struct net_device *netdev = pci_get_drvdata(pdev);
- 	struct vmxnet3_adapter *adapter = netdev_priv(netdev);
+@@ -2929,6 +2961,7 @@ static int __maybe_unused pcnet32_pm_resume(struct device *device_d)
+ {
+ 	struct net_device *dev = dev_get_drvdata(device_d);
  
-+	netif_enable_async_ops(netdev);
-+
- 	if (!netif_running(netdev))
- 		return 0;
++	netif_enable_async_ops(dev);
+ 	if (netif_running(dev)) {
+ 		pcnet32_open(dev);
+ 		netif_device_attach(dev);
+@@ -2937,6 +2970,13 @@ static int __maybe_unused pcnet32_pm_resume(struct device *device_d)
+ 	return 0;
+ }
  
-@@ -4559,7 +4579,11 @@ vmxnet3_resume(struct device *device)
- 	vmxnet3_rq_cleanup_all(adapter);
++static void pcnet32_shutdown(struct pci_dev *pdev)
++{
++	struct net_device *dev = pci_get_drvdata(pdev);
++
++	netif_disable_async_ops(dev);
++}
++
+ static void pcnet32_remove_one(struct pci_dev *pdev)
+ {
+ 	struct net_device *dev = pci_get_drvdata(pdev);
+@@ -2964,6 +3004,7 @@ static struct pci_driver pcnet32_driver = {
+ 	.driver = {
+ 		.pm = &pcnet32_pm_ops,
+ 	},
++	.shutdown = pcnet32_shutdown,
+ };
  
- 	vmxnet3_reset_dev(adapter);
-+
-+	rtnl_lock();
- 	err = vmxnet3_activate_dev(adapter);
-+	rtnl_unlock();
-+
- 	if (err != 0) {
- 		netdev_err(netdev,
- 			   "failed to re-activate on resume, error: %d", err);
+ /* An additional parameter that may be passed in... */
 -- 
 2.47.3
 
