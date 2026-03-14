@@ -2,100 +2,128 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oAJ0L1GOtWmX1wAAu9opvQ
+	id cFwTL9+otWmw3AAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 17:35:29 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:28:47 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA45828DED3
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 17:35:28 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F9E028E704
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 14 Mar 2026 19:28:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F4416081C;
-	Sat, 14 Mar 2026 16:35:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3E5BF413D6;
+	Sat, 14 Mar 2026 18:28:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q4IFZSTvrkaJ; Sat, 14 Mar 2026 16:35:25 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IcWH-ramG8YF; Sat, 14 Mar 2026 18:28:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BFE6360845
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 690B6413D0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773506125;
-	bh=L/eakVxCmU6z4MfVX/Tn/gRdChsPQgl7sUT4bvaSUng=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=zHpJmiooHL0h3nJp9uJTkd/y1itASvE0F4rnwRYwl3qu7Sip2Dccjr60aQle/Ui26
-	 NlT1HNUCvpHKNG728t8MMaUDxHs4cqKkR/x/2lhGrcroAZGsuhV6mp16s04q5vhFvG
-	 s/moTvtAdM+seED9u8y/hcXGzlSapmju89aYnOYoW2J0eWMDRqelF+tnKWDYlTxz6O
-	 POabVvy76UW2JD81o4muxcyNHGVrSxlKfGYGPhcSjBUTCX7X6ncLRPMQV9Rtc7N7rF
-	 PLUUzlSb6eS3gqhXNYDAJTJYbJE6qcASMMnKXh1kqVZzQHbU40acRd8KkhPzJeSBDo
-	 59OBzigY1FcDg==
+	s=default; t=1773512922;
+	bh=AzRfjfQpWVZCvzWQMidKmnmIxujMBJECx4zb/GyFV+8=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=4vWjm7g7mtmrkrXxzTV5dxg5xvyLUQoMTH6Wo1i6lPQWYBnn+eRyldDeGEF3ToE+D
+	 rF1bdbGqYvo9b93Xtidj2ZM9FiUwQl6pT+/GqWUtIhS3Gz78tzSvUuF+xNKK6yPThB
+	 fDeW2V17awYgsG/4jAt+04ueaDlzE9EZ5qPt2TwVEePayiiWwHJR1fW/yZPTF5giY9
+	 f8kdlb8h4G663EBDMOda3MPSJBOIYR4FIOZEFKtDXMx5Iv+357OcZLoAzvEe4iXFDm
+	 FRAyPqxYOxNn/Ws0ZA5R43zJ2mG234r6dQBphDrmWK8U83X/fC4IHffO3OFQM6Vuzy
+	 PDaVDc89n66Mw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BFE6360845;
-	Sat, 14 Mar 2026 16:35:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 690B6413D0;
+	Sat, 14 Mar 2026 18:28:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5BC25201
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 16:35:23 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 28C201B4
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:28:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4722A607F7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 16:35:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0E4C0413CA
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:28:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zaRhkqfiusmR for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Mar 2026 16:35:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6EDB8607E5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6EDB8607E5
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6EDB8607E5
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 16:35:22 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 00E5C60008;
- Sat, 14 Mar 2026 16:35:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9EF82C116C6;
- Sat, 14 Mar 2026 16:35:19 +0000 (UTC)
-Date: Sat, 14 Mar 2026 09:35:18 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: netdev@vger.kernel.org
-Cc: =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>, Michael Chan
- <michael.chan@broadcom.com>, Pavan Chebbi <pavan.chebbi@broadcom.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
- <pabeni@redhat.com>, Simon Horman <horms@kernel.org>,
- linux-kselftest@vger.kernel.org, Willem de Bruijn <willemb@google.com>,
- Shuah Khan <shuah@kernel.org>, Maxime Chevallier
- <maxime.chevallier@bootlin.com>, Andrew Lunn <andrew@lunn.ch>,
- intel-wired-lan@lists.osuosl.org, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>
-Message-ID: <20260314093518.43b820b7@kernel.org>
-In-Reply-To: <20260313071322.3489243-1-bjorn@kernel.org>
-References: <20260313071322.3489243-1-bjorn@kernel.org>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JDyneoeYTIXK for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 14 Mar 2026 18:28:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ envelope-from=viswanathiyyappan@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0AB5640F74
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0AB5640F74
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0AB5640F74
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 18:28:39 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2ae88e16485so22672955ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Mar 2026 11:28:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773512919; x=1774117719;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=AzRfjfQpWVZCvzWQMidKmnmIxujMBJECx4zb/GyFV+8=;
+ b=WKQQNWp1KILnNHNVFsMtQjl1nOt+U5DUzkEWSnEaxcVhF3D2AgtSQhWbNusszzRDd3
+ Jyo+q8+1OnqfYcxEupyQ3PI26T402GkAQ6C2nkOQ30e4BHenXkyQVBbTChdaxpRrRFlp
+ A2Go0YA5yoAW8etX55e7kmDwi5/SDnBIbwyyimomNJAYSojJEdKux0hcfRXeoMOhrl8p
+ 64sQAXO7wokdmXcgBXscRBwffRorssAKTk7GZbHulztBoE6jpRux+Lux4aL+tDMcBvmn
+ JrzhNGvG6BR12ZNeRHUwfDHR30hLjby8N2k4GOePjW5vOHt0oYbwe7ld2dENo7nGVMdw
+ z7QQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXla4AwzLl+agYMKI6rLN6X6jJKnileR7G79TKyKNlexA9o/xmJtQtl/NBMxhuuQu73EuVQnq5jkyQQ9ePQKPo=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yyhf2afI7pSkV7cIWI3yEKQufKP8ghhv6u+V5bpfWDlXPMIHAEe
+ aX5JAICFgj5g2KbV8Rbo+7wV2iYFUrZSSbUnmPeG4MJjI469pTNWjRUH
+X-Gm-Gg: ATEYQzxWvQINz4hDTme4lJ5q4Cz6llHd50HtbTgaB/SUclhoCcwfgS1azCxG9esBiKv
+ XuDazjkQ+P/IO+qczuIi2OcBEhsOQC62i9frp/eTD7hFXpmjBTzWhjqOquvdv39Mx9rtONSnQR3
+ gFU1coK9OQyVUv7idx2beH8oBOg+1Qi50ZmGeWYWaUQpa8f4lC0KPtEKfCCB98Z9U2mJJbf8XDt
+ SadBzzsFCBVG+NMIBx+V6DM4lJe07kw2PNLRzXme78o+F/ytCwzWXgbJx7BlpuBgD2mL8GCzkSp
+ wBht/cr1a6/YHHC5Zwfw92Th99okr6T3dISLuWvcqOIpEDXT0PuwmrSbq6zpnBC+OYwID8LM5Qk
+ 5qaucZ5zQYbUay8VvgbPfdCemkGjmt0793qE4b+WRXGEnUojFIZHJpDX67SFXxUPondB627ip+y
+ d3ifDONpQIYYEHQsqu1alGuJZDK4MxaXdHn1pQ5DaN9ZrqZusTNSsdyjcbN0VNlXrXwXxbX10ct
+ 5nb8A==
+X-Received: by 2002:a17:902:ef03:b0:2ae:a429:fc42 with SMTP id
+ d9443c01a7336-2aecac51329mr74086885ad.40.1773512919100; 
+ Sat, 14 Mar 2026 11:28:39 -0700 (PDT)
+Received: from localhost.localdomain ([122.168.66.151])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2aece62c581sm77673525ad.33.2026.03.14.11.28.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 14 Mar 2026 11:28:38 -0700 (PDT)
+From: I Viswanath <viswanathiyyappan@gmail.com>
+To: stfomichev@gmail.com, horms@kernel.org, edumazet@google.com,
+ pabeni@redhat.com, andrew+netdev@lunn.ch, kuba@kernel.org,
+ davem@davemloft.net, eperezma@redhat.com, xuanzhuo@linux.alibaba.com,
+ jasowang@redhat.com, mst@redhat.com, przemyslaw.kitszel@intel.com,
+ anthony.l.nguyen@intel.com, jacob.e.keller@intel.com,
+ ronak.doshi@broadcom.com, pcnet32@frontier.com
+Cc: bcm-kernel-feedback-list@broadcom.com, netdev@vger.kernel.org,
+ virtualization@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, I Viswanath <viswanathiyyappan@gmail.com>
+Date: Sat, 14 Mar 2026 23:58:02 +0530
+Message-ID: <20260314182809.362808-1-viswanathiyyappan@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1773506120;
- bh=L/eakVxCmU6z4MfVX/Tn/gRdChsPQgl7sUT4bvaSUng=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Qjg3QaOwYiWXU5CENRLW0EU8+MysNrtBRN2lvo+qCMxW8LYTl2pHBh9iA9403VxSo
- 5dd8vVB4NmjmecXcm9k3ZqyWASernSVsaMKsS4LoG1EJf9fJ0r2Z9aWWZwd1M2+6eD
- mO6e5RDg2kBMD04bhJtS/FkC+tsPOiWBthQVCt0c7BYi8ENxytga7jlW2ofHhNCl3A
- mOu2WXZoc6VyfBoXP5h43Yp+NOy2yWtLyAr9og2MIkYWzJ66gQDdpYxOKfXKCLAq3C
- i3/TG5kz8TUhyZFL+pmVgsiG0vg7f/ZXhTEhlbe8Iu8M+iUjsRh2NvQMhHhcp8jX5e
- Z9V5Q4/GbV9tA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1773512919; x=1774117719; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=AzRfjfQpWVZCvzWQMidKmnmIxujMBJECx4zb/GyFV+8=;
+ b=aRuu4WwIjICoV/MrDanymQIoO4e3AY7pcHyJTxNUFl/XQi1iH3RTMhEH7Z+5AfHf1D
+ cJsOibmVGYsSplxz98CcE25C5KZ+tVK7HmRQIIsGr0uHAb6jdcMBoXcvR4x32rbzG3XY
+ UM0DN6WmMPBMERPxper1c0MvPyNKTjM/j5FFlG1EBEEXFDBzTX8jMojMhqsdcVLYK4VE
+ vRL/EnvaqpMDd7KDEegivwqkGpo1bIq1VvgxRfRVb89Xgrudh1tZvyZsr3iteFzxQLLS
+ OA9gT57r5pvWdKVj/UL/w1u9MUr/iYH4MmeDw+5KJSRekQC762SujcmpgVEOIJRJD+QM
+ CSpg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Qjg3QaOw
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 0/3] ethtool: Dynamic RSS
- context indirection table resizing
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=aRuu4WwI
+Subject: [Intel-wired-lan] [PATCH net-next v9 0/7] Introduce async callback
+ ndo_set_rx_mode_async
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,72 +138,168 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.19 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_SPF_ALLOW(-0.20)[+mx];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
 	RCVD_TLS_LAST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	FORGED_SENDER(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[16];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:bjorn@kernel.org,m:michael.chan@broadcom.com,m:pavan.chebbi@broadcom.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:linux-kselftest@vger.kernel.org,m:willemb@google.com,m:shuah@kernel.org,m:maxime.chevallier@bootlin.com,m:andrew@lunn.ch,m:przemyslaw.kitszel@intel.com,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:stfomichev@gmail.com,m:horms@kernel.org,m:edumazet@google.com,m:pabeni@redhat.com,m:andrew+netdev@lunn.ch,m:kuba@kernel.org,m:davem@davemloft.net,m:eperezma@redhat.com,m:xuanzhuo@linux.alibaba.com,m:jasowang@redhat.com,m:mst@redhat.com,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:jacob.e.keller@intel.com,m:ronak.doshi@broadcom.com,m:pcnet32@frontier.com,m:bcm-kernel-feedback-list@broadcom.com,m:netdev@vger.kernel.org,m:virtualization@lists.linux.dev,m:linux-kernel@vger.kernel.org,m:viswanathiyyappan@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[viswanathiyyappan@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FREEMAIL_TO(0.00)[gmail.com,kernel.org,google.com,redhat.com,lunn.ch,davemloft.net,linux.alibaba.com,intel.com,broadcom.com,frontier.com];
+	RCPT_COUNT_TWELVE(0.00)[22];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_CC(0.00)[broadcom.com,vger.kernel.org,lists.linux.dev,lists.osuosl.org,gmail.com];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[viswanathiyyappan@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: BA45828DED3
+X-Rspamd-Queue-Id: 9F9E028E704
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, 13 Mar 2026 08:13:12 +0100 Bj=C3=B6rn T=C3=B6pel wrote:
-> Some NICs (e.g. bnxt) change their RSS indirection table size based on
-> the queue count, because the hardware table is a shared resource. The
-> ethtool core locks ctx->indir_size at context creation, so drivers
-> have to reject channel changes when RSS contexts exist.
->=20
-> This series adds resize helpers and wires them up in bnxt.
+This is an implementation of the idea provided by Jakub here
 
-Sorry Bjorn, I was typing the explanation below and I realized that=20
-we may be violating user intent. We should already record the user_size
-from rss_set_prep_indir() as part of the context (and presumably some
-netdev state for the main context?) and don't allow shrinking the
-context below that mark..
+https://lore.kernel.org/netdev/20250923163727.5e97abdb@kernel.org/
 
+The set_rx_mode callback is invoked under the addr_lock spinlock which
+makes it illegal to sleep. This means set_rx_mode is prone to
+sleep-in-atomic bugs as drivers have a tendency to do the I/O directly
+in the callback.
 
-Now for the broader audience - my understanding is that the RSS table
-is a precious resource for most if not all drivers.
-The direction of this work is to allow user to explicitly specify what
-RSS table size they want. The Netlink API for RSS already allows users
-to send tables smaller than what the device reports (Netlink code just
-"replicates" the table). So if the user asks for X entries the driver
-should be able to allocate a table of any size as long as its a
-multiple of X. This series only support "global" resizing but it
-should be simple to add the state for the driver to mark in the context
-what table size it actually allocated. The only reason we haven't added
-the support for that is that it's quite hard to know how to implement
-it without docs for the FW/HW.. fbnic has fixed table sizes so we can't
-even prototype there :S
+This problem can be avoided if set_rx_mode were done in 2 stages: snapshot
+and commit. A handful of drivers implement this idea by implementing the
+rx_mode setting as work and scheduling it in the set_rx_mode callback.
+This series moves that work to net/core by introducing a new async
+netdev op set_rx_mode_async.
 
-Please reply if you'd like to collaborate on adding support for the
-user-defined RSS context sizing.
+In the process of doing this, I encountered problems described in the
+the first patch of the series. In brief, the patch introduces a state
+variable to keep track of the current netdev state. This should be
+useful for async netdev ops in general as nothing about these problems
+was specific to set_rx_mode_async.
+
+The rx_mode refactor has the secondary benefit of preventing RX mode
+update requests from building up as only the most recent request
+(before the work has run) will be committed.
+
+In brief, the new RX mode update flow will look something like:
+
+set_rx_mode():
+    ndo_set_rx_mode();
+    prepare_snapshot();
+
+set_rx_mode_async():
+    fetch_snapshot();
+    ndo_set_rx_mode_async();
+
+ndo_set_rx_mode_async() is called from a work item and the handler
+doesn't hold the netif_addr_lock spin lock during its execution
+making execution sleepable in that part.
+
+This model should work correctly if the following conditions hold:
+
+1. ndo_set_rx_mode_async should use the rx_mode set by the most recent
+   call to prepare_rx_mode() before its execution.
+
+2. If a prepare_snapshot() call happens during execution of the work,
+   the work should be rescheduled.
+
+3. All calls to modify rx_mode should pass through a new helper
+   netif_set_rx_mode (which requires the instance lock or RTNL if the
+   driver doesn't use it).
+
+1 is guaranteed by the implementation and 2 by workqueue properties.
+
+Drivers need to ensure 3.
+
+---
+
+v1:
+Link: https://lore.kernel.org/netdev/20251020134857.5820-1-viswanathiyyappan@gmail.com/
+
+v2:
+- Exported set_and_schedule_rx_config as a symbol for use in modules
+- Fixed incorrect cleanup for the case of rx_work alloc failing in alloc_netdev_mqs
+- Removed the locked version (cp_set_rx_mode) and renamed __cp_set_rx_mode to cp_set_rx_mode
+Link: https://lore.kernel.org/netdev/20251026175445.1519537-1-viswanathiyyappan@gmail.com/
+
+v3:
+- Added RFT tag
+- Corrected mangled patch
+Link: https://lore.kernel.org/netdev/20251028174222.1739954-1-viswanathiyyappan@gmail.com/
+
+v4:
+- Completely reworked the snapshot mechanism as per v3 comments
+- Implemented the callback for virtio-net instead of 8139cp driver
+- Removed RFC tag
+Link: https://lore.kernel.org/netdev/20251118164333.24842-1-viswanathiyyappan@gmail.com/
+
+v5:
+- Fix broken code and titles
+- Remove RFT tag
+Link: https://lore.kernel.org/netdev/20251120141354.355059-1-viswanathiyyappan@gmail.com/
+
+v6:
+- Added struct netif_deferred_work_cleanup and members needs_deferred_cleanup and deferred_work_cleanup in net_device
+- Moved out ctrl bits from netif_rx_mode_config to netif_rx_mode_work_ctx
+Link: https://lore.kernel.org/netdev/20251227174225.699975-1-viswanathiyyappan@gmail.com/
+
+v7:
+- Improved function, enum and struct names
+Link: https://lore.kernel.org/netdev/20260102180530.1559514-1-viswanathiyyappan@gmail.com/
+
+v8:
+- Implemented the callback for drivers e1000, 8139cp, vmxnet3 and pcnet32
+- Moved the rx_mode config set calls (for prom and allmulti) in prepare_rx_mode to the ndo_set_rx_mode callback for consistency
+- Improved commit messages
+Link: https://lore.kernel.org/netdev/20260112181626.20117-1-viswanathiyyappan@gmail.com/
+
+v9:
+- Removed cleanup_work and simplified resource cleanup
+- Added netif_async_ctx (which includes netdev state tracking) for async ndo handling in general
+- Converted netif_schedule_mode_work to a synchronous function netif_set_rx_mode
+- Renamed *_write_rx_mode functions to *_set_rx_mode_async
+
+I Viswanath (7):
+  net: core: Add state tracking for async netdev ops
+  net: core: Introduce callback ndo_set_rx_mode_async
+  virtio-net: Implement ndo_set_rx_mode_async callback
+  e1000: Implement ndo_set_rx_mode_async callback
+  8139cp: Implement ndo_set_rx_mode_async callback
+  vmxnet3: Implement ndo_set_rx_mode_async callback
+  pcnet32: Implement ndo_set_rx_mode_async callback
+
+ drivers/net/ethernet/amd/pcnet32.c            |  65 +++-
+ drivers/net/ethernet/intel/e1000/e1000_main.c |  77 +++-
+ drivers/net/ethernet/realtek/8139cp.c         |  49 ++-
+ drivers/net/virtio_net.c                      |  85 ++---
+ drivers/net/vmxnet3/vmxnet3_drv.c             |  46 ++-
+ include/linux/netdevice.h                     | 123 ++++++-
+ include/net/netdev_lock.h                     |   8 +
+ net/core/dev.c                                | 335 +++++++++++++++++-
+ 8 files changed, 663 insertions(+), 125 deletions(-)
+
+-- 
+2.47.3
+
