@@ -2,94 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id EOiPCcK+umkGbgIAu9opvQ
+	id mAMKLcO+umkGbgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:30 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:31 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C21502BDCC4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:29 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 203F62BDCD1
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CFF7C81E1F;
-	Wed, 18 Mar 2026 15:03:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5E36060A3E;
+	Wed, 18 Mar 2026 15:03:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8lYM9gukpT1b; Wed, 18 Mar 2026 15:03:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AQHHNcAhqJTa; Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 44C8E81EA6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D217460A94
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773846207;
-	bh=ZI1/cLnyDnVOs4qvF1/y00bhWF98dmH7Q3P7jVrTCz8=;
+	s=default; t=1773846208;
+	bh=RnwqqwAxnRG8s2vaRYDrbUdfVznpcDcr1raRDlnvaSE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=vrPXtszwA4FayAqMKr2pg4m/9EjsWzrGY/RSRoGwctsOrsOaVmJKc73yBPl2tmDd3
-	 UYKIb49SVSXw7g//tv0byVoxhSNW+SeU97qnyvuF0Kot+y2/YB83CWjlKVkapPHBmv
-	 EWmHqL/cDDzhgvokNmyn7svpU1LlHJPNKarWQ5UQhNP2l2PotGZLySzH+HsqUGNFG6
-	 wSraDJhfSZrFVXZzNVGjO1m07Alk4sI6K1LSlDo1NpCZsSbXD2scjUOkD2UMCCu10r
-	 WWc849leFtDlR23zhr1gsT4dZf9GD4O1Ew7LtEd3ueYorjpL/RD3ieagvIkeFwV/pr
-	 5vkTvGG5pnQZA==
+	b=EQjSGJNCp82i6HlWcKndfNgM5YsgvV0kemTl7eclV37E1OR3hlK9o1Q6rYJVYSJMo
+	 CfjWZJxEhm2avN24b38ex/C0Wn8kbPARJnlJNwvqO22EddDkvIQ4h0wgXeoPrxybLk
+	 EKbO+7DZid15ybcsFZ+Rw4iBWu912wRpqY+Gi3ALuAln2/ah0HTd5HiCb/9NCSxMo+
+	 N2ToSHXOv/0Z5hkno0kxY5yNntAiuKtX0cCK2dR0CtaEpN4s/oBrPOql/i2FhY01l1
+	 xXgSKgngqHdr2gtd+3Noeq9ebknfOZa/mcIezqmiOd8nkaVSRnS1/F6/1VSDQCwdS9
+	 oalAcK/Bdt4IA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 44C8E81EA6;
-	Wed, 18 Mar 2026 15:03:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D217460A94;
+	Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id A48AE1BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id EC4F31AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8A71E40BA6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:25 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D2E2481E1F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PaRDO96ACNun for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 15:03:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.174;
- helo=mail-dy1-f174.google.com; envelope-from=stfomichev@gmail.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yMRKxDA4QSJt for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.41;
+ helo=mail-dl1-f41.google.com; envelope-from=stfomichev@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2E2840BA5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2E2840BA5
-Received: from mail-dy1-f174.google.com (mail-dy1-f174.google.com
- [74.125.82.174])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D2E2840BA5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:24 +0000 (UTC)
-Received: by mail-dy1-f174.google.com with SMTP id
- 5a478bee46e88-2c0e3a2605fso12438eec.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 08:03:24 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3A64F81DF5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A64F81DF5
+Received: from mail-dl1-f41.google.com (mail-dl1-f41.google.com [74.125.82.41])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3A64F81DF5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
+Received: by mail-dl1-f41.google.com with SMTP id
+ a92af1059eb24-126ea4e9694so2428533c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 08:03:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773846204; x=1774451004;
+ d=1e100.net; s=20251104; t=1773846205; x=1774451005;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZI1/cLnyDnVOs4qvF1/y00bhWF98dmH7Q3P7jVrTCz8=;
- b=N3s0yo+5BMS2f6mYOcgRZOG689gsLQab/PeQzF2HKhu20m0DE1rACNTHKbgT1va1YG
- 34sE40mRvJFiNBAPZAmpNZJ4R96uGwhOZ4pxSXptJYZQI3ADxb68y+IbkWxZTlcKt+ZB
- XKppYxQnP6OqddwcaEZMlNTz9BzVvaV85JASVASmUX6A8dtBQF6tbPLKirHNl/17GvBy
- Su15dv5SVIufgBsM+ScDB8f+aZs3pz/MFL8hyQhbAJFtXOf+yjHi9I0OYLJM7oNCEbkE
- n8RqG5sUPGtT4g4Hlfe/taRag+wgpdBZP2EtBU5hXk/gO36KlRP1s8Eiyk18QLrGsvLp
- kK0A==
+ bh=RnwqqwAxnRG8s2vaRYDrbUdfVznpcDcr1raRDlnvaSE=;
+ b=CXGDKRsw/+z4ET5NxvCXoVMsXpRenbhFnHRsI3f1Vd0LMsNd6D9m2WLVkcAgxa7sdv
+ XtKMqHZytMXz7OVsWGfk8A6K12HzLeoKRkxChSSX/CyCQJ4VdnhlD0Iml4uzXCFoMKvh
+ XcKVlZho8Py2eWqLyeO0ti1VIWsy9Wx7Ne20M3SdX/o+WOgTID7XYd/i+CSW/kDbdGAt
+ KY3UGnpMaZk5upsgJQn/LpJ+L0AfkfKg4L4XLX7kftX/+pjS3433i0bUCDFUwT6ptsJi
+ m5cJUgr82u3wPy21YqMAzNy58fSFKvpntmyZjNVaCpCGmTRW+ovL9uMMTs2hrtbQgnka
+ wF1w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjm/npRwwwUR54H9xwdv0sCgRU+y7xHmpthlzq0sKaKvHzLmZIkrOPHOmVKVOseCr/eA+JMxYVImX/5dXIQ6w=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyxpDsLFzwlQCWF9lxTVplRLg7quD4cVZrAGLZ8CokHLHuo79dQ
- omkiv5PEjLcCh4p1uZMe3TTYKRDPL43Rqm99laA/1fY4cnAdwFtGosk=
-X-Gm-Gg: ATEYQzxgaAjeUtaX+ebLZMsPdmuOeqyCG++JpXbsB3N0SFTItMQK2s88lxMD1AK+Pt2
- Vj8OePjCWizxHQFgQwSkuIacjDESsemtxN0YPm1aTYf3j1ueP1j2NHvuUxibDTJDoMgFYnuAhgK
- +lYs3+vR9Xj3vg0+FcudxNOU2K9rLXIR1ShAxn4mkNUrJYsukZTWSc1gCFQcPBVEqqQ0Fz0MHrN
- hofdxSGgnxdFIlYeoLSiGfiw3vdHwbIEN0ByZjOK+uIIgGRyCGaY9+l7F5fNq+IJokYr1xcYJlb
- jV+Q3kC2yHu1Ls835pAHmjDGlTUY57B1awG4oIz8mz+E91YPngKcDyOJZ60XVN6BiOkTBndzWWS
- ckDPMHo6JgKruxlA/Duwf9YwWg5XlqqrO9ln0AtKdSVIYXWJwRNC3RP/OrlXbXcChFDyzlBI06Y
- DdYh9DwwELH2WmmlTAes9YRTnPfVhnKrHcWwMgZt95IZXPwo1AyMz7Xkjp8FVbUNYatSf3Y3YY1
- Cv+1V8XsSlaB5wddw==
-X-Received: by 2002:a05:7300:3724:b0:2be:126c:e335 with SMTP id
- 5a478bee46e88-2c0e5011ac8mr1873924eec.10.1773846202672; 
- Wed, 18 Mar 2026 08:03:22 -0700 (PDT)
+ AJvYcCUztiKgLInUqlcqA+2eG7Lq9ZxjY1xb8JMaUcQIzsUiR45GFMZYzBOthmg2QB5CNq686M8NHUUVViVEEUrhauM=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yx49nqDbsMxUTHRiylq91j+Z4EvytTGHmzLuOKVfBdHI2b4JYFT
+ TFNBGzdelPBKnttPB/PEzp1JJLUCdnfYtBS4HB842wtgdDEPl96nHNU=
+X-Gm-Gg: ATEYQzy1/JBWW1g1aIVYWic/cmwPf9R86ZZJvoOkH7x2rZ0QCmVLbipK4XRSByoZZlT
+ 8wYK3mQapgT8zTHH4veCEUym9VVXkqyF5BqmYWWBErIXN03GPOb2nLTEREEj4JlBUT5TNuFfPQB
+ ZvO+JYA8kxKBZzWl3Kyf/PF4+L2+F9o4uwL1P4v8yRn++w2C1d9BC6Q7797ojHleYokVpZ6wWbB
+ jDD97PEhSC+k0VgORaCPLXY3UCW/dgUrGZARF10U/2t/52Qi8yxPt/D0elF8BNBlzilGuciFYct
+ 39S1vPtor3tPwBMFSePjLPfr1rJLio/N2sU9QEMb0ICVpqQuQCprpdxsr01pAaqLgjqmmDn0vAf
+ Omj09TTYhpt3AVM/hGn4dEVO2nUh5Rl+WbDek1UW9SLdISqcKxtAlMVAVtaafsSqEFRhcYf9w5s
+ +fM5kX3W//BWmlk/UM/CyfixotE0Gdu1d7Rx/5RmQEoGPrfKaGYL6BWYZNjTvO/1N0dHILq13n1
+ BGqS86vrpSVo4hiL3tthXNw/0cU
+X-Received: by 2002:a05:7022:61a:b0:128:cf5c:5362 with SMTP id
+ a92af1059eb24-129a70e0ccbmr2203458c88.12.1773846204437; 
+ Wed, 18 Mar 2026 08:03:24 -0700 (PDT)
 Received: from localhost (c-76-102-12-149.hsd1.ca.comcast.net. [76.102.12.149])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c0e56062e4sm4123423eec.30.2026.03.18.08.03.22
+ a92af1059eb24-129b3e8d34dsm3689514c88.7.2026.03.18.08.03.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Mar 2026 08:03:22 -0700 (PDT)
+ Wed, 18 Mar 2026 08:03:24 -0700 (PDT)
 From: Stanislav Fomichev <sdf@fomichev.me>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -106,17 +105,17 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kselftest@vger.kernel.org,
  leon@kernel.org
-Date: Wed, 18 Mar 2026 08:03:01 -0700
-Message-ID: <20260318150305.123900-10-sdf@fomichev.me>
+Date: Wed, 18 Mar 2026 08:03:02 -0700
+Message-ID: <20260318150305.123900-11-sdf@fomichev.me>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260318150305.123900-1-sdf@fomichev.me>
 References: <20260318150305.123900-1-sdf@fomichev.me>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=fomichev.me
-Subject: [Intel-wired-lan] [PATCH net-next v2 09/13] iavf: convert to
+Subject: [Intel-wired-lan] [PATCH net-next v2 10/13] netdevsim: convert to
  ndo_set_rx_mode_async
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -159,75 +158,59 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[sdf@fomichev.me,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	NEURAL_HAM(-0.00)[-0.996];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: C21502BDCC4
+X-Rspamd-Queue-Id: 203F62BDCD1
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Convert iavf from ndo_set_rx_mode to ndo_set_rx_mode_async.
-iavf_set_rx_mode now takes explicit uc/mc list parameters and
-uses __hw_addr_sync_dev on the snapshots instead of __dev_uc_sync
-and __dev_mc_sync.
+Convert netdevsim from ndo_set_rx_mode to ndo_set_rx_mode_async.
+The callback is a no-op stub so just update the signature and
+ops struct wiring.
 
-The iavf_configure internal caller passes the real lists directly.
-
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Stanislav Fomichev <sdf@fomichev.me>
 ---
- drivers/net/ethernet/intel/iavf/iavf_main.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
+ drivers/net/netdevsim/netdev.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 7925ee152c76..6632d35ad0fe 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1147,14 +1147,18 @@ bool iavf_promiscuous_mode_changed(struct iavf_adapter *adapter)
- /**
-  * iavf_set_rx_mode - NDO callback to set the netdev filters
-  * @netdev: network interface device structure
-+ * @uc: snapshot of uc address list
-+ * @mc: snapshot of mc address list
-  **/
--static void iavf_set_rx_mode(struct net_device *netdev)
-+static void iavf_set_rx_mode(struct net_device *netdev,
+diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
+index 5ec028a00c62..9c9217792125 100644
+--- a/drivers/net/netdevsim/netdev.c
++++ b/drivers/net/netdevsim/netdev.c
+@@ -182,7 +182,9 @@ static netdev_tx_t nsim_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	return NETDEV_TX_OK;
+ }
+ 
+-static void nsim_set_rx_mode(struct net_device *dev)
++static void nsim_set_rx_mode(struct net_device *dev,
 +			     struct netdev_hw_addr_list *uc,
 +			     struct netdev_hw_addr_list *mc)
  {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
+ }
  
- 	spin_lock_bh(&adapter->mac_vlan_list_lock);
--	__dev_uc_sync(netdev, iavf_addr_sync, iavf_addr_unsync);
--	__dev_mc_sync(netdev, iavf_addr_sync, iavf_addr_unsync);
-+	__hw_addr_sync_dev(uc, netdev, iavf_addr_sync, iavf_addr_unsync);
-+	__hw_addr_sync_dev(mc, netdev, iavf_addr_sync, iavf_addr_unsync);
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
+@@ -641,7 +643,7 @@ static const struct net_shaper_ops nsim_shaper_ops = {
  
- 	spin_lock_bh(&adapter->current_netdev_promisc_flags_lock);
-@@ -1207,7 +1211,7 @@ static void iavf_configure(struct iavf_adapter *adapter)
- 	struct net_device *netdev = adapter->netdev;
- 	int i;
- 
--	iavf_set_rx_mode(netdev);
-+	iavf_set_rx_mode(netdev, &netdev->uc, &netdev->mc);
- 
- 	iavf_configure_tx(adapter);
- 	iavf_configure_rx(adapter);
-@@ -5150,7 +5154,7 @@ static const struct net_device_ops iavf_netdev_ops = {
- 	.ndo_open		= iavf_open,
- 	.ndo_stop		= iavf_close,
- 	.ndo_start_xmit		= iavf_xmit_frame,
--	.ndo_set_rx_mode	= iavf_set_rx_mode,
-+	.ndo_set_rx_mode_async	= iavf_set_rx_mode,
+ static const struct net_device_ops nsim_netdev_ops = {
+ 	.ndo_start_xmit		= nsim_start_xmit,
+-	.ndo_set_rx_mode	= nsim_set_rx_mode,
++	.ndo_set_rx_mode_async	= nsim_set_rx_mode,
+ 	.ndo_set_mac_address	= eth_mac_addr,
  	.ndo_validate_addr	= eth_validate_addr,
- 	.ndo_set_mac_address	= iavf_set_mac,
- 	.ndo_change_mtu		= iavf_change_mtu,
+ 	.ndo_change_mtu		= nsim_change_mtu,
+@@ -664,7 +666,7 @@ static const struct net_device_ops nsim_netdev_ops = {
+ 
+ static const struct net_device_ops nsim_vf_netdev_ops = {
+ 	.ndo_start_xmit		= nsim_start_xmit,
+-	.ndo_set_rx_mode	= nsim_set_rx_mode,
++	.ndo_set_rx_mode_async	= nsim_set_rx_mode,
+ 	.ndo_set_mac_address	= eth_mac_addr,
+ 	.ndo_validate_addr	= eth_validate_addr,
+ 	.ndo_change_mtu		= nsim_change_mtu,
 -- 
 2.53.0
 
