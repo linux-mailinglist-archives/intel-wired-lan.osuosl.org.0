@@ -2,75 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id WMiwC0VsumnRWQIAu9opvQ
+	id cO7RLklsumnRWQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 10:11:33 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 10:11:37 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B6112B8B43
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 10:11:32 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62A292B8B52
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 10:11:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B9CBC40F36;
-	Wed, 18 Mar 2026 09:11:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E492E83C4A;
+	Wed, 18 Mar 2026 09:11:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1c3MAZYr5Xco; Wed, 18 Mar 2026 09:11:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gmgvIMu17WVH; Wed, 18 Mar 2026 09:11:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C037840F4B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B7AA83C3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773825089;
-	bh=bmJlnJn3KvMBkHIpbFvAwMp1A+KmqutX7X6U5qGSaTk=;
+	s=default; t=1773825095;
+	bh=0fM3I6+OikB7+hj88oE9o72YJlLiLOrM9Di0KxaBgcA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Kr0ZtmHxSDtQX3/qvRgQn0Qzgl442n3KQzAKmyw24VjsTnQktR4IG0vIOmjwE83oz
-	 Lv0/Lor+kOf251tN6IicpPH3u34AF9w2MNLoVq7cSWddIVBY16Ah8xY1nBVYFXePxy
-	 DD7hkajyUH5VDF57LA7u6fLeovfMqbGNb4M2beFCcAI7LSYqQEXUnhZGbKHMLMhXlW
-	 e47TWwHJrfUHXXCssVVq2IDVbpcWQbsGactdpjKCMVocuBPafFj0xWnH6hOCOpUZzV
-	 8WyEzRJbD8uqBy9hPC7Q2lrlsKagaFMebO5v8vs599ft1fsLbPwyKJ5DGbQYeH8yFN
-	 a7yuv2MxstS3w==
+	b=5fMBe9AiMssjFglSIfA0sV6dV/iEBK2geRl5+bMPfoXWndwc29wox3XVMt3W/FXYE
+	 0+1m1a4SzbMVqOAmqCPgdyi+nUdRG1lwf3rkwsoUzb5fh0m6uPuTOIBzMyzmfz7/3C
+	 JtUIXIcPIF1XQR7nExAwbuksBknUNEcPZ64o4yCKXM2vYIn9HBFnYaVj4RZnj7GTUC
+	 uxj5QqrKtuKUK99e6CsFKF3j33MkbfHU10cYuVDVXwtWUw7CYxny6+T3iR+rztrE5W
+	 ldvk4M2TsFh2Y4TAKrKPRW6i8OH2qcK8fuSbYF5zxE/cNuXzVXrA9i9brsFviCxWYU
+	 IpKQD6RvrC6pA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C037840F4B;
-	Wed, 18 Mar 2026 09:11:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B7AA83C3E;
+	Wed, 18 Mar 2026 09:11:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 11C741BD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9F85E1AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 03CB040388
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 857B640F75
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TEEuHxJTTWhF for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 09:11:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wB4qxIKcfegN for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2026 09:11:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BD3B340317
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BD3B340317
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 37BC040F4B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 37BC040F4B
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BD3B340317
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:26 +0000 (UTC)
-X-CSE-ConnectionGUID: E6wkw3ILQwq5Kmqgr25SCw==
-X-CSE-MsgGUID: mWT2qOznQaaigSrs94d1UA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="77484444"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="77484444"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 37BC040F4B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 09:11:33 +0000 (UTC)
+X-CSE-ConnectionGUID: /PbVhdhzR0Kw1gU19Qr1rA==
+X-CSE-MsgGUID: D5Geh0LyQECTVFg33jBLDA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="77484469"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="77484469"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 02:11:26 -0700
-X-CSE-ConnectionGUID: X0X2UJvuRU+K6rju6CWLOg==
-X-CSE-MsgGUID: 3vBwSIYyQmK42B2AzKum9g==
+ 18 Mar 2026 02:11:32 -0700
+X-CSE-ConnectionGUID: CEB6PWHbQ4uhzcwTBtYhSw==
+X-CSE-MsgGUID: cgFjaGymTACpa8cjvkBNAw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="226700049"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="226700086"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa003.jf.intel.com with ESMTP; 18 Mar 2026 02:11:22 -0700
+ by orviesa003.jf.intel.com with ESMTP; 18 Mar 2026 02:11:28 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: netdev@vger.kernel.org
-Date: Wed, 18 Mar 2026 10:06:52 +0100
-Message-Id: <20260318090654.611349-7-grzegorz.nitka@intel.com>
+Date: Wed, 18 Mar 2026 10:06:53 +0100
+Message-Id: <20260318090654.611349-8-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20260318090654.611349-1-grzegorz.nitka@intel.com>
 References: <20260318090654.611349-1-grzegorz.nitka@intel.com>
@@ -78,26 +78,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773825086; x=1805361086;
+ t=1773825093; x=1805361093;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=p/nQh0xTztlk5m5qOkhx6aZ3I7n/f5Infn2NHv8FEfE=;
- b=GtJ1aZ4XC77rQdsDPQ+XbseWvboheNcoeAIXRZS2t1Jpn5YFahq4ccoZ
- oteoZq435n/HSxTGeC0zvBzjzzkvAVDiuGcnev+hW9aOdZl5qz+jzoMKz
- 9X8x/lY8FkSezN0nX1PQs/kyAsAPuWx3cPJj4UL+rE8SeETdtwag6nuJe
- 3oNBHwk/H4L7TGaid2ZUgEyxN1rV+Cuwo+BdeltmJ+VUiXnpAZp6iQG+C
- Doq8CZNByUj1Rn1aUyz7GYjKGjpB/f4D4oaLzYfWtKLztftoPYPr9ME1w
- GI6E4hcb3A0Hy30svA7gGLamhftSydsbDO/PRoeiXQCHbfLHCJyOcP+/i
+ bh=2MZHnP/9cS14JCDWx6lZ3RRAkM3yTL2R5Dnn1mrIUqo=;
+ b=Yjq4Rtw4ZjxHv96OL3G3xVa6uSQsORaLDQLmp4WytfOaWE0sWPAAG0Sh
+ OdJTuXbkHa8ljCRz+s1tLQ06K4QlRQl28HivCItnr+QbeVom9VC9+dkbc
+ YjevRqW9fTpsdTFriZF6DDXxwCerLjcI+T4RGWcogzLS/hYd3EPgOcAdb
+ eIOEGssXhLlna0SKb3tUGh0fO0S4jtVWpCcIuIdDMegBHTd7SIqobL/35
+ DhETRl7CpHw3LVPS3lTdXTujZMEv23hzIVTQPubJxPtiBm02H4aTDW0TZ
+ sTTIESE+ncZ1xhy/R7Icgx8kgagUA2qV8ksF8S9aqeWeLvKagLewBqerI
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GtJ1aZ4X
-Subject: [Intel-wired-lan] [PATCH net-next 6/8] ice: implement CPI support
- for E825C
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Yjq4Rtw4
+Subject: [Intel-wired-lan] [PATCH net-next 7/8] ice: add Tx reference clock
+ index handling to AN restart command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -151,487 +150,100 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 2B6112B8B43
+X-Rspamd-Queue-Id: 62A292B8B52
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Add full CPI (Converged PHY Interface) command handling required for
-E825C devices. The CPI interface allows the driver to interact with
-PHY-side control logic through the LM/PHY command registers, including
-enabling/disabling/selection of PHY reference clock.
+Extend the Restart Auto-Negotiation (AN) AdminQ command with a new
+parameter allowing software to specify the Tx reference clock index to
+be used during link restart.
 
-This patch introduces:
- - a new CPI subsystem (ice_cpi.c / ice_cpi.h) implementing the CPI
-   request/acknowledge state machine, including REQ/ACK protocol,
-   command execution, and response handling
- - helper functions for reading/writing PHY registers over Sideband
-   Queue
- - CPI command execution API (ice_cpi_exec) and a helper for enabling or
-   disabling Tx reference clocks (CPI 0xF1 opcode 'Config PHY clocking')
- - addition of the non-posted write opcode (wr_np) to SBQ
- - Makefile integration to build CPI support together with the PTP stack
+This patch:
+ - adds REFCLK field definitions to ice_aqc_restart_an
+ - updates ice_aq_set_link_restart_an() to take a new refclk parameter
+   and properly encode it into the command
+ - keeps legacy behavior by passing REFCLK_NOCHANGE where appropriate
 
-This provides the infrastructure necessary to support PHY-side
-configuration flows on E825C and is required for advanced link control
-and Tx reference clock management.
+This prepares the driver for configurations requiring dynamic selection
+of the Tx reference clock as part of the AN flow.
 
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 ---
- drivers/net/ethernet/intel/ice/Makefile      |   2 +-
- drivers/net/ethernet/intel/ice/ice_cpi.c     | 337 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_cpi.h     |  69 ++++
- drivers/net/ethernet/intel/ice/ice_sbq_cmd.h |   5 +-
- 4 files changed, 410 insertions(+), 3 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.h
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h | 2 ++
+ drivers/net/ethernet/intel/ice/ice_common.c     | 5 ++++-
+ drivers/net/ethernet/intel/ice/ice_common.h     | 2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c        | 3 ++-
+ 4 files changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 5b2c666496e7..38db476ab2ec 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -54,7 +54,7 @@ ice-$(CONFIG_PCI_IOV) +=	\
- 	ice_vf_mbx.o		\
- 	ice_vf_vsi_vlan_ops.o	\
- 	ice_vf_lib.o
--ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o
-+ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o ice_cpi.o
- ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
- ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
- ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
-diff --git a/drivers/net/ethernet/intel/ice/ice_cpi.c b/drivers/net/ethernet/intel/ice/ice_cpi.c
-new file mode 100644
-index 000000000000..6fdd3fcd0c23
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_cpi.c
-@@ -0,0 +1,337 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (C) 2018-2026 Intel Corporation */
-+
-+#include "ice_type.h"
-+#include "ice_common.h"
-+#include "ice_ptp_hw.h"
-+#include "ice_cpi.h"
-+
-+/**
-+ * ice_cpi_get_dest_dev - get destination PHY for given phy index
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ */
-+static enum ice_sbq_dev_id ice_cpi_get_dest_dev(struct ice_hw *hw, u8 phy)
-+{
-+	u8 curr_phy = hw->lane_num / hw->ptp.ports_per_phy;
-+
-+	/* In the driver, lanes 4..7 are in fact 0..3 on a second PHY.
-+	 * On a single complex E825C, PHY 0 is always destination device phy_0
-+	 * and PHY 1 is phy_0_peer.
-+	 * On dual complex E825C, device phy_0 points to PHY on a current
-+	 * complex and phy_0_peer to PHY on a different complex.
-+	 */
-+	if ((!ice_is_dual(hw) && phy) ||
-+	    (ice_is_dual(hw) && phy != curr_phy))
-+		return ice_sbq_dev_phy_0_peer;
-+	else
-+		return ice_sbq_dev_phy_0;
-+}
-+
-+/**
-+ * ice_cpi_write_phy - Write a CPI port register
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @addr: PHY register address
-+ * @val: Value to write
-+ */
-+static int ice_cpi_write_phy(struct ice_hw *hw, u8 phy, u32 addr, u32 val)
-+{
-+	struct ice_sbq_msg_input msg = {
-+		.dest_dev = ice_cpi_get_dest_dev(hw, phy),
-+		.opcode = ice_sbq_msg_wr_np,
-+		.msg_addr_low = lower_16_bits(addr),
-+		.msg_addr_high = upper_16_bits(addr),
-+		.data = val
-+	};
-+	int err;
-+
-+	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
-+	if (err)
-+		ice_debug(hw, ICE_DBG_PTP,
-+			  "Failed to write CPI msg to phy %d, err: %d\n",
-+			  phy, err);
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_cpi_read_phy - Read a CPI port register
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @addr: PHY register address
-+ * @val: storage for register value
-+ */
-+static int ice_cpi_read_phy(struct ice_hw *hw, u8 phy, u32 addr, u32 *val)
-+{
-+	struct ice_sbq_msg_input msg = {
-+		.dest_dev = ice_cpi_get_dest_dev(hw, phy),
-+		.opcode = ice_sbq_msg_rd,
-+		.msg_addr_low = lower_16_bits(addr),
-+		.msg_addr_high = upper_16_bits(addr)
-+	};
-+	int err;
-+
-+	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
-+	if (err) {
-+		ice_debug(hw, ICE_DBG_PTP,
-+			  "Failed to read CPI msg from phy %d, err: %d\n",
-+			  phy, err);
-+		return err;
-+	}
-+
-+	*val = msg.data;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_cpi_wait_req0_ack0 - waits for CPI interface to be available
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ *
-+ * This function checks if CPI interface is ready to use by CPI client.
-+ * It's done by assuring LM.CMD.REQ and PHY.CMD.ACK bit in CPI
-+ * interface registers to be 0.
-+ *
-+ * Returns 0 on success.
-+ */
-+static int ice_cpi_wait_req0_ack0(struct ice_hw *hw, int phy)
-+{
-+	union cpi_reg_phy_cmd_data phy_regs;
-+	union cpi_reg_lm_cmd_data lm_regs;
-+
-+	for (int i = 0; i < CPI_RETRIES_COUNT; i++) {
-+		int err;
-+
-+		/* check if another CPI Client is also accessing CPI */
-+		err = ice_cpi_read_phy(hw, phy, CPI0_LM1_CMD_DATA,
-+				       &lm_regs.val);
-+		if (err)
-+			return err;
-+		if (lm_regs.field.cpi_req)
-+			return -EBUSY;
-+
-+		/* check if PHY.ACK is deasserted */
-+		err = ice_cpi_read_phy(hw, phy, CPI0_PHY1_CMD_DATA,
-+				       &phy_regs.val);
-+		if (err)
-+			return err;
-+		if (phy_regs.field.error)
-+			return -EFAULT;
-+		if (!phy_regs.field.ack)
-+			/* req0 and ack0 at this point - ready to go */
-+			return 0;
-+
-+		msleep(CPI_RETRIES_CADENCE_MS);
-+	}
-+
-+	return -ETIMEDOUT;
-+}
-+
-+/**
-+ * ice_cpi_wait_ack - Waits for the PHY.ACK bit to be asserted/deasserted
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @asserted: desired state of PHY.ACK bit
-+ * @data: pointer to the user data where PHY.data is stored
-+ *
-+ * This function checks if PHY.ACK bit is asserted or deasserted, depending
-+ * on the phase of CPI handshake. If 'asserted' state is required, PHY command
-+ * data is stored in the 'data' storage.
-+ *
-+ * Returns 0 on success.
-+ */
-+static int ice_cpi_wait_ack(struct ice_hw *hw, u8 phy, bool asserted,
-+			    u32 *data)
-+{
-+	union cpi_reg_phy_cmd_data phy_regs;
-+
-+	for (int i = 0; i < CPI_RETRIES_COUNT; i++) {
-+		int err;
-+
-+		err = ice_cpi_read_phy(hw, phy, CPI0_PHY1_CMD_DATA,
-+				       &phy_regs.val);
-+		if (err)
-+			return err;
-+		if (phy_regs.field.error)
-+			return -EFAULT;
-+		if (asserted && phy_regs.field.ack) {
-+			if (data)
-+				*data = phy_regs.val;
-+			return 0;
-+		}
-+		if (!asserted && !phy_regs.field.ack)
-+			return 0;
-+
-+		msleep(CPI_RETRIES_CADENCE_MS);
-+	};
-+
-+	return -ETIMEDOUT;
-+}
-+
-+#define ice_cpi_wait_ack0(hw, port) \
-+	ice_cpi_wait_ack(hw, port, false, NULL)
-+
-+#define ice_cpi_wait_ack1(hw, port, data) \
-+	ice_cpi_wait_ack(hw, port, true, data)
-+
-+/**
-+ * ice_cpi_req0 - deasserts LM.REQ bit
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @data: the command data
-+ *
-+ * Returns 0 on success.
-+ */
-+static int ice_cpi_req0(struct ice_hw *hw, u8 phy, u32 data)
-+{
-+	union cpi_reg_lm_cmd_data *lm_regs;
-+	int err;
-+
-+	lm_regs = (union cpi_reg_lm_cmd_data *)&data;
-+	lm_regs->field.cpi_req = 0;
-+
-+	err = ice_cpi_write_phy(hw, phy, CPI0_LM1_CMD_DATA, lm_regs->val);
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_cpi_exec_cmd - writes command data to CPI interface
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @data: the command data
-+ *
-+ * Returns 0 on success.
-+ */
-+static int ice_cpi_exec_cmd(struct ice_hw *hw, int phy, u32 data)
-+{
-+	return ice_cpi_write_phy(hw, phy, CPI0_LM1_CMD_DATA, data);
-+}
-+
-+/**
-+ * ice_cpi_exec - executes CPI command
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port the CPI action is taken on
-+ * @cmd: pointer to the command struct to execute
-+ * @resp: pointer to user allocated CPI response struct
-+ *
-+ * This function executes CPI request with respect to CPI handshake
-+ * mechanism.
-+ *
-+ * Returns 0 on success.
-+ */
-+int ice_cpi_exec(struct ice_hw *hw, u8 phy,
-+		 const struct ice_cpi_cmd *cmd,
-+		 struct ice_cpi_resp *resp)
-+{
-+	union cpi_reg_phy_cmd_data phy_cmd_data;
-+	union cpi_reg_lm_cmd_data lm_cmd_data;
-+	int err, err1 = 0;
-+
-+	if (!cmd || !resp)
-+		return -EINVAL;
-+
-+	memset(&lm_cmd_data, 0, sizeof(lm_cmd_data));
-+
-+	lm_cmd_data.field.cpi_req = CPI_LM_CMD_REQ;
-+	lm_cmd_data.field.get_set = cmd->set;
-+	lm_cmd_data.field.opcode = cmd->opcode;
-+	lm_cmd_data.field.portlane = cmd->port;
-+	lm_cmd_data.field.data = cmd->data;
-+
-+	/* 1. Try to acquire the bus, PHY ACK should be low before we begin */
-+	err = ice_cpi_wait_req0_ack0(hw, phy);
-+	if (err)
-+		goto cpi_exec_exit;
-+
-+	/* 2. We start the CPI request */
-+	err = ice_cpi_exec_cmd(hw, phy, lm_cmd_data.val);
-+	if (err)
-+		goto cpi_exec_exit;
-+
-+	/*
-+	 * 3. Wait for CPI confirmation, PHY ACK should be asserted and opcode
-+	 *    echoed in the response
-+	 */
-+	err = ice_cpi_wait_ack1(hw, phy, &phy_cmd_data.val);
-+	if (err)
-+		goto cpi_deassert;
-+
-+	if (phy_cmd_data.field.ack &&
-+	    lm_cmd_data.field.opcode != phy_cmd_data.field.opcode) {
-+		err = -EFAULT;
-+		goto cpi_deassert;
-+	}
-+
-+	resp->opcode = phy_cmd_data.field.opcode;
-+	resp->data = phy_cmd_data.field.data;
-+	resp->port = phy_cmd_data.field.portlane;
-+
-+cpi_deassert:
-+	/* 4. We deassert REQ */
-+	err1 = ice_cpi_req0(hw, phy, lm_cmd_data.val);
-+	if (err1)
-+		goto cpi_exec_exit;
-+
-+	/* 5. PHY ACK should be deasserted in response */
-+	err1 = ice_cpi_wait_ack0(hw, phy);
-+
-+cpi_exec_exit:
-+	if (!err)
-+		err = err1;
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_cpi_set_cmd - execute CPI SET command
-+ * @hw: pointer to the HW struct
-+ * @opcode: CPI command opcode
-+ * @phy: phy index CPI command is applied for
-+ * @port_lane: ephy index CPI command is applied for
-+ * @data: CPI opcode context specific data
-+ *
-+ * Return: 0 on success.
-+ */
-+static int ice_cpi_set_cmd(struct ice_hw *hw, u16 opcode, u8 phy, u8 port_lane,
-+			   u16 data)
-+{
-+	struct ice_cpi_resp cpi_resp = {0};
-+	struct ice_cpi_cmd cpi_cmd = {
-+		.opcode = opcode,
-+		.set = true,
-+		.port = port_lane,
-+		.data = data,
-+	};
-+
-+	return ice_cpi_exec(hw, phy, &cpi_cmd, &cpi_resp);
-+}
-+
-+/**
-+ * ice_cpi_ena_dis_clk_ref - enables/disables Tx reference clock on port
-+ * @hw: pointer to the HW struct
-+ * @phy: phy index of port for which Tx reference clock is enabled/disabled
-+ * @clk: Tx reference clock to enable or disable
-+ * @enable: bool value to enable or disable Tx reference clock
-+ *
-+ * This function executes CPI request to enable or disable specific
-+ * Tx reference clock on given PHY.
-+ *
-+ * Return: 0 on success.
-+ */
-+int ice_cpi_ena_dis_clk_ref(struct ice_hw *hw, u8 phy,
-+			    enum ice_e825c_ref_clk clk, bool enable)
-+{
-+	u16 val;
-+
-+	val = FIELD_PREP(CPI_OPCODE_PHY_CLK_PHY_SEL_M, phy) |
-+	      FIELD_PREP(CPI_OPCODE_PHY_CLK_REF_CTRL_M,
-+			 enable ? CPI_OPCODE_PHY_CLK_ENABLE :
-+			 CPI_OPCODE_PHY_CLK_DISABLE) |
-+	      FIELD_PREP(CPI_OPCODE_PHY_CLK_REF_SEL_M, clk);
-+
-+	return ice_cpi_set_cmd(hw, CPI_OPCODE_PHY_CLK, phy, 0, val);
-+}
-+
-diff --git a/drivers/net/ethernet/intel/ice/ice_cpi.h b/drivers/net/ethernet/intel/ice/ice_cpi.h
-new file mode 100644
-index 000000000000..767107fc18e5
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_cpi.h
-@@ -0,0 +1,69 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
-+/* Copyright (C) 2018-2025 Intel Corporation */
-+
-+#ifndef _ICE_CPI_H_
-+#define _ICE_CPI_H_
-+
-+#define CPI0_PHY1_CMD_DATA	0x7FD028
-+#define CPI0_LM1_CMD_DATA	0x7FD024
-+#define CPI_RETRIES_COUNT	10
-+#define CPI_RETRIES_CADENCE_MS	100
-+
-+#define CPI_OPCODE_PHY_CLK			0xF1
-+#define CPI_OPCODE_PHY_CLK_PHY_SEL_M		GENMASK(9, 6)
-+#define CPI_OPCODE_PHY_CLK_REF_CTRL_M		GENMASK(5, 4)
-+#define CPI_OPCODE_PHY_CLK_PORT_SEL		0
-+#define CPI_OPCODE_PHY_CLK_DISABLE		1
-+#define CPI_OPCODE_PHY_CLK_ENABLE		2
-+#define CPI_OPCODE_PHY_CLK_REF_SEL_M		GENMASK(3, 0)
-+
-+#define CPI_OPCODE_PHY_PCS_RESET		0xF0
-+#define CPI_OPCODE_PHY_PCS_ONPI_RESET_VAL	0x3F
-+
-+#define CPI_LM_CMD_REQ		1
-+#define CPI_LM_CMD_SET		1
-+
-+union cpi_reg_phy_cmd_data {
-+	struct {
-+		u16 data;
-+		u16 opcode : 8;
-+		u16 portlane : 3;
-+		u16 reserved_13_11: 3;
-+		u16 error : 1;
-+		u16 ack : 1;
-+	} __packed field;
-+	u32 val;
-+};
-+
-+union cpi_reg_lm_cmd_data {
-+	struct {
-+		u16 data;
-+		u16 opcode : 8;
-+		u16 portlane : 3;
-+		u16 reserved_12_11: 2;
-+		u16 get_set : 1;
-+		u16 cpi_reset : 1;
-+		u16 cpi_req : 1;
-+	} __packed field;
-+	u32 val;
-+};
-+
-+struct ice_cpi_cmd {
-+	u8 port;
-+	u8 opcode;
-+	u16 data;
-+	bool set;
-+};
-+
-+struct ice_cpi_resp {
-+	u8 port;
-+	u8 opcode;
-+	u16 data;
-+};
-+
-+int ice_cpi_exec(struct ice_hw *hw, u8 phy,
-+		 const struct ice_cpi_cmd *cmd,
-+		 struct ice_cpi_resp *resp);
-+int ice_cpi_ena_dis_clk_ref(struct ice_hw *hw, u8 port,
-+			    enum ice_e825c_ref_clk clk, bool enable);
-+#endif /* _ICE_CPI_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
-index 21bb861febbf..226243d32968 100644
---- a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
-@@ -54,8 +54,9 @@ enum ice_sbq_dev_id {
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 859e9c66f3e7..a24a0613d887 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1169,6 +1169,8 @@ struct ice_aqc_restart_an {
+ 	u8 cmd_flags;
+ #define ICE_AQC_RESTART_AN_LINK_RESTART	BIT(1)
+ #define ICE_AQC_RESTART_AN_LINK_ENABLE	BIT(2)
++#define ICE_AQC_RESTART_AN_REFCLK_M	GENMASK(4, 3)
++#define ICE_AQC_RESTART_AN_REFCLK_NOCHANGE 0
+ 	u8 reserved2[13];
  };
  
- enum ice_sbq_msg_opcode {
--	ice_sbq_msg_rd	= 0x00,
--	ice_sbq_msg_wr	= 0x01
-+	ice_sbq_msg_rd		= 0x00,
-+	ice_sbq_msg_wr		= 0x01,
-+	ice_sbq_msg_wr_np	= 0x02
- };
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index ce11fea122d0..de88aec9137c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -4126,12 +4126,13 @@ int ice_get_link_status(struct ice_port_info *pi, bool *link_up)
+  * @pi: pointer to the port information structure
+  * @ena_link: if true: enable link, if false: disable link
+  * @cd: pointer to command details structure or NULL
++ * @refclk: the new TX reference clock, 0 if no change
+  *
+  * Sets up the link and restarts the Auto-Negotiation over the link.
+  */
+ int
+ ice_aq_set_link_restart_an(struct ice_port_info *pi, bool ena_link,
+-			   struct ice_sq_cd *cd)
++			   struct ice_sq_cd *cd,  u8 refclk)
+ {
+ 	struct ice_aqc_restart_an *cmd;
+ 	struct libie_aq_desc desc;
+@@ -4147,6 +4148,8 @@ ice_aq_set_link_restart_an(struct ice_port_info *pi, bool ena_link,
+ 	else
+ 		cmd->cmd_flags &= ~ICE_AQC_RESTART_AN_LINK_ENABLE;
  
- #define ICE_SBQ_MSG_FLAGS	0x40
++	cmd->cmd_flags |= FIELD_PREP(ICE_AQC_RESTART_AN_REFCLK_M, refclk);
++
+ 	return ice_aq_send_cmd(pi->hw, &desc, NULL, 0, cd);
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index e700ac0dc347..9f5344212195 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -215,7 +215,7 @@ ice_cfg_phy_fec(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
+ 		enum ice_fec_mode fec);
+ int
+ ice_aq_set_link_restart_an(struct ice_port_info *pi, bool ena_link,
+-			   struct ice_sq_cd *cd);
++			   struct ice_sq_cd *cd, u8 refclk);
+ int
+ ice_aq_set_mac_cfg(struct ice_hw *hw, u16 max_frame_size, struct ice_sq_cd *cd);
+ int
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 689c6025ea82..c2c7f186bcc7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -3769,7 +3769,8 @@ int ice_set_link(struct ice_vsi *vsi, bool ena)
+ 	if (vsi->type != ICE_VSI_PF)
+ 		return -EINVAL;
+ 
+-	status = ice_aq_set_link_restart_an(pi, ena, NULL);
++	status = ice_aq_set_link_restart_an(pi, ena, NULL,
++					    ICE_AQC_RESTART_AN_REFCLK_NOCHANGE);
+ 
+ 	/* if link is owned by manageability, FW will return LIBIE_AQ_RC_EMODE.
+ 	 * this is not a fatal error, so print a warning message and return
 -- 
 2.39.3
 
