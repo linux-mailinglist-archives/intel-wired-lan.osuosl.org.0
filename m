@@ -2,93 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mAMKLcO+umkGbgIAu9opvQ
+	id UPmKJsS+umkGbgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:31 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:32 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 203F62BDCD1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:31 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 66CCF2BDCD8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 16:03:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5E36060A3E;
+	by smtp4.osuosl.org (Postfix) with ESMTP id F1EE040BC9;
 	Wed, 18 Mar 2026 15:03:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AQHHNcAhqJTa; Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CmwoP13Y0Dw1; Wed, 18 Mar 2026 15:03:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D217460A94
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8003840BD1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773846208;
-	bh=RnwqqwAxnRG8s2vaRYDrbUdfVznpcDcr1raRDlnvaSE=;
+	s=default; t=1773846209;
+	bh=HbyBRqP1dM0VO6fEJ4blZH7JfwL0DV5fAiX12aFZ5no=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=EQjSGJNCp82i6HlWcKndfNgM5YsgvV0kemTl7eclV37E1OR3hlK9o1Q6rYJVYSJMo
-	 CfjWZJxEhm2avN24b38ex/C0Wn8kbPARJnlJNwvqO22EddDkvIQ4h0wgXeoPrxybLk
-	 EKbO+7DZid15ybcsFZ+Rw4iBWu912wRpqY+Gi3ALuAln2/ah0HTd5HiCb/9NCSxMo+
-	 N2ToSHXOv/0Z5hkno0kxY5yNntAiuKtX0cCK2dR0CtaEpN4s/oBrPOql/i2FhY01l1
-	 xXgSKgngqHdr2gtd+3Noeq9ebknfOZa/mcIezqmiOd8nkaVSRnS1/F6/1VSDQCwdS9
-	 oalAcK/Bdt4IA==
+	b=YjiQyxU5mF0Vzc9E+yDK6DCoHKRt1y9+9QoZ2SaGok8JyneupYRb4DktsJYC4qIWv
+	 QiEGdCZxh+Ufv1VrGOtPUrElnufep3Mx2JyBOIIzNE21TGJ0rKw8YhiFjcejqnlSch
+	 NTbDVMBZP9qeAli8BRefr8LdmY+d3w31X9zzm6bGxKGkTs61RZBMFWnovkxR0S63hq
+	 YExTZ6yZKyjcjkcjP0wP5SktzTNglGKXDq1A4wOPxQPS/RNinwq7xHyOgfArZ6jHdc
+	 BoYNmNbF8wW5nbfGKk7Lyzhg3uc7gLgM7ifaVdaSmSJQym7dkkAgbk2nRcT7AVaUiD
+	 cfqXmQxk3kcEg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D217460A94;
-	Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8003840BD1;
+	Wed, 18 Mar 2026 15:03:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id EC4F31AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 52F0D1BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D2E2481E1F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 38F9140407
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yMRKxDA4QSJt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.41;
- helo=mail-dl1-f41.google.com; envelope-from=stfomichev@gmail.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rpKfSVho1ZhA for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2026 15:03:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.50;
+ helo=mail-dl1-f50.google.com; envelope-from=stfomichev@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3A64F81DF5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A64F81DF5
-Received: from mail-dl1-f41.google.com (mail-dl1-f41.google.com [74.125.82.41])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3A64F81DF5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:26 +0000 (UTC)
-Received: by mail-dl1-f41.google.com with SMTP id
- a92af1059eb24-126ea4e9694so2428533c88.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 08:03:26 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 349D7402D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 349D7402D7
+Received: from mail-dl1-f50.google.com (mail-dl1-f50.google.com [74.125.82.50])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 349D7402D7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 15:03:27 +0000 (UTC)
+Received: by mail-dl1-f50.google.com with SMTP id
+ a92af1059eb24-126ea4e9694so2428613c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 08:03:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773846205; x=1774451005;
+ d=1e100.net; s=20251104; t=1773846206; x=1774451006;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=RnwqqwAxnRG8s2vaRYDrbUdfVznpcDcr1raRDlnvaSE=;
- b=CXGDKRsw/+z4ET5NxvCXoVMsXpRenbhFnHRsI3f1Vd0LMsNd6D9m2WLVkcAgxa7sdv
- XtKMqHZytMXz7OVsWGfk8A6K12HzLeoKRkxChSSX/CyCQJ4VdnhlD0Iml4uzXCFoMKvh
- XcKVlZho8Py2eWqLyeO0ti1VIWsy9Wx7Ne20M3SdX/o+WOgTID7XYd/i+CSW/kDbdGAt
- KY3UGnpMaZk5upsgJQn/LpJ+L0AfkfKg4L4XLX7kftX/+pjS3433i0bUCDFUwT6ptsJi
- m5cJUgr82u3wPy21YqMAzNy58fSFKvpntmyZjNVaCpCGmTRW+ovL9uMMTs2hrtbQgnka
- wF1w==
+ bh=HbyBRqP1dM0VO6fEJ4blZH7JfwL0DV5fAiX12aFZ5no=;
+ b=RjnAcwbxlK4Rex0RcDFwD5fcYTpbhudL8dd+ckkFgeY/LuxsNQy5LUc0131G3TCKAf
+ M02ZGkSRojRbGCwZEbLHn8O+Ezgnyx0w7HDUvfvGbmDwNgl09DnLnqcFLxhXqSkcvQF/
+ Uc8FfQF8f+aEI0yOQeniiaggQEiFuh/splWRSnHjY+nq9CiU6Wjalw8cSfOJs7cF6Nhp
+ e435GdB8U9pJ7zf9aCiQkBRTSiKvaWO1V9va8z3ZDGwAZpIFmEqCK6T7afdYIbANKfKu
+ MYzhO+kscJMbLPfabpJfJPB6Y74K6YG147BzhJ1X3kWyvbpr4QF5Cop2JGPo6qsdc0FX
+ QAOQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUztiKgLInUqlcqA+2eG7Lq9ZxjY1xb8JMaUcQIzsUiR45GFMZYzBOthmg2QB5CNq686M8NHUUVViVEEUrhauM=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yx49nqDbsMxUTHRiylq91j+Z4EvytTGHmzLuOKVfBdHI2b4JYFT
- TFNBGzdelPBKnttPB/PEzp1JJLUCdnfYtBS4HB842wtgdDEPl96nHNU=
-X-Gm-Gg: ATEYQzy1/JBWW1g1aIVYWic/cmwPf9R86ZZJvoOkH7x2rZ0QCmVLbipK4XRSByoZZlT
- 8wYK3mQapgT8zTHH4veCEUym9VVXkqyF5BqmYWWBErIXN03GPOb2nLTEREEj4JlBUT5TNuFfPQB
- ZvO+JYA8kxKBZzWl3Kyf/PF4+L2+F9o4uwL1P4v8yRn++w2C1d9BC6Q7797ojHleYokVpZ6wWbB
- jDD97PEhSC+k0VgORaCPLXY3UCW/dgUrGZARF10U/2t/52Qi8yxPt/D0elF8BNBlzilGuciFYct
- 39S1vPtor3tPwBMFSePjLPfr1rJLio/N2sU9QEMb0ICVpqQuQCprpdxsr01pAaqLgjqmmDn0vAf
- Omj09TTYhpt3AVM/hGn4dEVO2nUh5Rl+WbDek1UW9SLdISqcKxtAlMVAVtaafsSqEFRhcYf9w5s
- +fM5kX3W//BWmlk/UM/CyfixotE0Gdu1d7Rx/5RmQEoGPrfKaGYL6BWYZNjTvO/1N0dHILq13n1
- BGqS86vrpSVo4hiL3tthXNw/0cU
-X-Received: by 2002:a05:7022:61a:b0:128:cf5c:5362 with SMTP id
- a92af1059eb24-129a70e0ccbmr2203458c88.12.1773846204437; 
- Wed, 18 Mar 2026 08:03:24 -0700 (PDT)
+ AJvYcCUFkqLOss+x2K5EipbHdQYtYD//avNyLVqaenxtZMx8qMocU3ltOt2629VYhUiWx17KcbLaeCkqOnuQiIcIXK0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yzt5Td6OdJTBiGjrMub0yRcz7735uN1do2bIeEK+x4qG1wK5Ack
+ 3W6ASY2VRd5U3aSEWiDqzZQVNy6E2D6HBjFOlQVRW/HGDGz3fpZtyFw=
+X-Gm-Gg: ATEYQzxMV/yVdBaMhQWF/9i6hDtzLmSReDhxNVSoRDjMcLtqN7PSyZHovgGQFe4msg8
+ ffaEdVn4paloVCmY3WBa2kRGXFavbDy9ZocIzcOw39Ce5QKr0uxg4YQcfE9U/2Wkl3N9cy9rdQr
+ j5DKHcub8Nr8V2wDffecwZdvR2DWvEHrRkRN60shWb6qNYnTwTe5gO+WLPJPth2eC5qI+TkdnDs
+ e2zSSKRYHTH/Toe9kPO3As5nmLEB3zc5ESn5iChdALNGea8VhiM4pCfwFV9IbN3HhmUAnl3HvJE
+ 3DrA9mJlzCVMq2ht/ouUP+pqMKQ+vtTzhStayo4P239jTEwWrQj78mBhRP0axGLMgzQq4LuvSic
+ bO37VqqyfYMIepU7zfKEQ2ZmvSni8Twhoncz1jrHJUcKBfLpSFd8JsroGLpZLnpl+6eRjR7C4Fu
+ dYeXqe4dI3yQ3q/q8aHsC/RsqYiKckycinhga2WxJ9YlVc9QXFryz1S2s/El5o/2pzRxdB3Okfi
+ rg3muWkLTgWTMbeew==
+X-Received: by 2002:a05:7022:b9f:b0:128:d51a:5161 with SMTP id
+ a92af1059eb24-129a715e828mr2027441c88.27.1773846205882; 
+ Wed, 18 Mar 2026 08:03:25 -0700 (PDT)
 Received: from localhost (c-76-102-12-149.hsd1.ca.comcast.net. [76.102.12.149])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-129b3e8d34dsm3689514c88.7.2026.03.18.08.03.23
+ a92af1059eb24-129b41271aasm3384562c88.11.2026.03.18.08.03.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Mar 2026 08:03:24 -0700 (PDT)
+ Wed, 18 Mar 2026 08:03:25 -0700 (PDT)
 From: Stanislav Fomichev <sdf@fomichev.me>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -105,17 +105,17 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kselftest@vger.kernel.org,
  leon@kernel.org
-Date: Wed, 18 Mar 2026 08:03:02 -0700
-Message-ID: <20260318150305.123900-11-sdf@fomichev.me>
+Date: Wed, 18 Mar 2026 08:03:03 -0700
+Message-ID: <20260318150305.123900-12-sdf@fomichev.me>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260318150305.123900-1-sdf@fomichev.me>
 References: <20260318150305.123900-1-sdf@fomichev.me>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=fomichev.me
-Subject: [Intel-wired-lan] [PATCH net-next v2 10/13] netdevsim: convert to
+Subject: [Intel-wired-lan] [PATCH net-next v2 11/13] dummy: convert to
  ndo_set_rx_mode_async
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -158,59 +158,50 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[sdf@fomichev.me,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	NEURAL_HAM(-0.00)[-0.996];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 203F62BDCD1
+X-Rspamd-Queue-Id: 66CCF2BDCD8
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Convert netdevsim from ndo_set_rx_mode to ndo_set_rx_mode_async.
-The callback is a no-op stub so just update the signature and
-ops struct wiring.
+Convert dummy driver from ndo_set_rx_mode to ndo_set_rx_mode_async.
+The dummy driver's set_multicast_list is a no-op, so the conversion
+is straightforward: update the signature and the ops assignment.
 
 Signed-off-by: Stanislav Fomichev <sdf@fomichev.me>
 ---
- drivers/net/netdevsim/netdev.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/net/dummy.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index 5ec028a00c62..9c9217792125 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -182,7 +182,9 @@ static netdev_tx_t nsim_start_xmit(struct sk_buff *skb, struct net_device *dev)
- 	return NETDEV_TX_OK;
- }
+diff --git a/drivers/net/dummy.c b/drivers/net/dummy.c
+index d6bdad4baadd..f8a4eb365c3d 100644
+--- a/drivers/net/dummy.c
++++ b/drivers/net/dummy.c
+@@ -47,7 +47,9 @@
+ static int numdummies = 1;
  
--static void nsim_set_rx_mode(struct net_device *dev)
-+static void nsim_set_rx_mode(struct net_device *dev,
-+			     struct netdev_hw_addr_list *uc,
-+			     struct netdev_hw_addr_list *mc)
+ /* fake multicast ability */
+-static void set_multicast_list(struct net_device *dev)
++static void set_multicast_list(struct net_device *dev,
++			       struct netdev_hw_addr_list *uc,
++			       struct netdev_hw_addr_list *mc)
  {
  }
  
-@@ -641,7 +643,7 @@ static const struct net_shaper_ops nsim_shaper_ops = {
- 
- static const struct net_device_ops nsim_netdev_ops = {
- 	.ndo_start_xmit		= nsim_start_xmit,
--	.ndo_set_rx_mode	= nsim_set_rx_mode,
-+	.ndo_set_rx_mode_async	= nsim_set_rx_mode,
- 	.ndo_set_mac_address	= eth_mac_addr,
+@@ -87,7 +89,7 @@ static const struct net_device_ops dummy_netdev_ops = {
+ 	.ndo_init		= dummy_dev_init,
+ 	.ndo_start_xmit		= dummy_xmit,
  	.ndo_validate_addr	= eth_validate_addr,
- 	.ndo_change_mtu		= nsim_change_mtu,
-@@ -664,7 +666,7 @@ static const struct net_device_ops nsim_netdev_ops = {
- 
- static const struct net_device_ops nsim_vf_netdev_ops = {
- 	.ndo_start_xmit		= nsim_start_xmit,
--	.ndo_set_rx_mode	= nsim_set_rx_mode,
-+	.ndo_set_rx_mode_async	= nsim_set_rx_mode,
+-	.ndo_set_rx_mode	= set_multicast_list,
++	.ndo_set_rx_mode_async	= set_multicast_list,
  	.ndo_set_mac_address	= eth_mac_addr,
- 	.ndo_validate_addr	= eth_validate_addr,
- 	.ndo_change_mtu		= nsim_change_mtu,
+ 	.ndo_get_stats64	= dummy_get_stats64,
+ 	.ndo_change_carrier	= dummy_change_carrier,
 -- 
 2.53.0
 
