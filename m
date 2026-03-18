@@ -2,103 +2,106 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 0OCWHML8uWnZQAIAu9opvQ
+	id sEjTBkJTumm8UQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 02:15:46 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 08:24:50 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 741982B4DF1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 02:15:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D419C2B6E25
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 08:24:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F392161405;
-	Wed, 18 Mar 2026 01:15:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 182D241673;
+	Wed, 18 Mar 2026 07:24:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VNnQOIfl3URk; Wed, 18 Mar 2026 01:15:42 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eOQ7RlIEeZgS; Wed, 18 Mar 2026 07:24:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4A64F6145C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60C37415ED
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773796542;
-	bh=RBoeIRNRQ6bnqCg7pUfQwAkqxcJt+FaPOuVdQN1lDEM=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=zh5kksf0xUjpMtxSdS5/y6+ddHYq5M5FG9sumH4J41AnlWemTLnvWHt0Uh6U/Y8W5
-	 gzNnpj6AZWehYB/UGfVW+Uk4YmuLizhYEnXNE5XDVQJSd/0LUEunpFcSJFK1smLglQ
-	 8wyoYGRY9QLLgPg+UofbcArdRDdvKGWq9idF+0ymxBIAR0/fLmsqgSr46hqBScWmb8
-	 sR/KoFUdKiyiG5uPP9CZGQ07w47xuH0leUk/aHelMWW6RhFrgkpYPrCe5btJchCMJf
-	 YBn6Rw0K3hPedydPkhHsG3B/P6VfyME2AhGMfG0TN8wL3A8uF9/DaXw5wvm2zt+GFD
-	 iUGCFSmYZoF7g==
+	s=default; t=1773818685;
+	bh=GMXojMRx2DusSv/c5foBS++mXTfilxtffy+hvVganPA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=TmB8OvKIof3svtcqIUH5iV95EbHKLxtAPhWNuekFKlIe25f0/t8OLCZOQ6r9EvVbR
+	 O4TYpbWnSrIgpBiaRdD51Vl4JjQmyLFM/Ld9rBXOtUpELhHSUrr/C+rRalQzjp1Nox
+	 OalGTrePRIQAN0iUUJWDVBiY7KJkkKU4YPtBQivgRqStOF9a4JMEV3NCiPKcYPl8R1
+	 0ZNxTMHCYuXaHRerXkX/9LMcgTf7A6bnppw17zJXa/yEbkH+ZXBM6RzSvY+rJUL0/0
+	 5NjuQw/11mhp8nPwgLhz4ukul2g+XTRlevu5qRisu86T7lZQFufb1EaTe9o0wnzIXK
+	 eefu6+n806h/w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4A64F6145C;
-	Wed, 18 Mar 2026 01:15:42 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 60C37415ED;
+	Wed, 18 Mar 2026 07:24:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2CF85D3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 01:15:41 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E5FE7D3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 07:24:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1E631613E3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 01:15:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C73CD608F4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 07:24:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id k3wQcJ3A5mqR for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 01:15:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+ id GrHUB3gx4BoN for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2026 07:24:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=bigeasy@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 541E56134E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 541E56134E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 541E56134E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 01:15:39 +0000 (UTC)
-X-CSE-ConnectionGUID: voPmftNPSc2qL0cQ1RwoTA==
-X-CSE-MsgGUID: Z/sv9CJZTQ+xXsMBqtRkCQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="77454304"
-X-IronPort-AV: E=Sophos;i="6.23,126,1770624000"; d="scan'208";a="77454304"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Mar 2026 18:15:38 -0700
-X-CSE-ConnectionGUID: R0w3j8ZNTka8JCKtuJP+ow==
-X-CSE-MsgGUID: DPDHn4CoT3i6kMZ+2jRzFg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,126,1770624000"; d="scan'208";a="227399796"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by orviesa005.jf.intel.com with ESMTP; 17 Mar 2026 18:15:36 -0700
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, ast@kernel.org, daniel@iogearbox.net,
- hawk@kernel.org, john.fastabend@gmail.com, sdf@fomichev.me,
- bpf@vger.kernel.org, aleksander.lobakin@intel.com, decot@google.com,
- willemb@google.com
-Date: Tue, 17 Mar 2026 18:15:45 -0700
-Message-Id: <20260318011545.12874-1-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773796540; x=1805332540;
- h=from:to:cc:subject:date:message-id;
- bh=em6SO/ENzXNvRZ3dWi95voyC+ziv/4ohmr3+F+lO8SI=;
- b=g1erzp2zSjULYSuaJO+Cg7RJzU3i0BbXeN8ZP/BCXHgyhtuL+41AXoFe
- CMIOLTyyHE0yE+/npOS/j9ZURNjv/QLL46aDvkZUbLvtyiLVEUVrkNsoq
- +inJmKpLsHi5UEsr/jxUp/8gWDZTkmdHzaFSue6/yQy/NaDjzAugMXvFm
- XAW6DQwV9lhkevxyXYX8+uNCjAU/3Gblw8S2eVhFs/YlqoUGWRejLotfZ
- Xp0+L3DWiWI8vDPUjo3KqSK+rOF9RBysNT2AhmqBkmHhnXPO79HoZz01p
- fCTzWy/Wk7X2MI7A2RbglsgPesUzwm0OaLk7iKMuaGK/9MTUxPPRsebVw
- Q==;
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B6BE4608DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B6BE4608DF
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B6BE4608DF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 07:24:42 +0000 (UTC)
+Date: Wed, 18 Mar 2026 08:24:36 +0100
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, aleksandr.loktionov@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, clrkwllms@kernel.org, rostedt@goodmis.org,
+ linux-rt-devel@lists.linux.dev, sgzhang@google.com, boolli@google.com
+Message-ID: <20260318072436.4JmVdDfK@linutronix.de>
+References: <20260316232819.6872-1-emil.s.tantilov@intel.com>
+ <20260317090054.DuPZ6O0O@linutronix.de>
+ <7247024b-fc8d-4a75-ba15-a10399db03bc@intel.com>
+ <20260317143850.BLrnAox8@linutronix.de>
+ <f77ad6b1-1fff-4f3c-a411-5115bb66e31d@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <f77ad6b1-1fff-4f3c-a411-5115bb66e31d@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1773818678;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GMXojMRx2DusSv/c5foBS++mXTfilxtffy+hvVganPA=;
+ b=S7lNnBevReHY99KsphuvNO/RK9P26Ns+4nArqabBAs1aBiuHflX+bv+F5qvBlR4+2ljCsv
+ 4ghLWAw7eXvoyKM4agFSwLDTsQirl6Cb3lYs15mATHR4H9Suz0KRc7xYxnPuwdz/K6v7xt
+ OjyBiWzESZ7awsJbWfKleMx6+RkAYeR3iQK0sATcjWYzoLKnpgtiOdn/MSeJcdEuQmv2j2
+ rzQAbKFWbZDajTEQZPXi3OVDJ7cuhgvblcvgWupHh+1hf99uXLAhv3JkQP+m3pZMcabAdC
+ j3BjhQUMOeqD5xSj5xJt8twr4bWoUUnSx15waNrj2TS6URBSezG/HxHhTSvkPw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1773818678;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=GMXojMRx2DusSv/c5foBS++mXTfilxtffy+hvVganPA=;
+ b=sYJiqZbWtA9QAURWngFUcR85rU8xJ40MigLKGcHADExuVS2kSkbUQ+itgzSefupLqBrc/8
+ N4d7P2Q42WVCnhDw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g1erzp2z
-Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: fix xdp crash in soft reset
- error path
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=S7lNnBev; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=sYJiqZbW
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/3] idpf: virtchnl locking
+ and async fixes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,134 +116,66 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [0.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	DMARC_POLICY_SOFTFAIL(0.10)[linutronix.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS(0.00)[m:emil.s.tantilov@intel.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:aleksandr.loktionov@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:clrkwllms@kernel.org,m:rostedt@goodmis.org,m:linux-rt-devel@lists.linux.dev,m:sgzhang@google.com,m:boolli@google.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[19];
-	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,gmail.com,fomichev.me];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linutronix.de:mid,osuosl.org:dkim];
+	FORGED_SENDER(0.00)[bigeasy@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[16];
 	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	MISSING_XM_UA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[bigeasy@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.998];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-0.999];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 741982B4DF1
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[7]
+X-Rspamd-Queue-Id: D419C2B6E25
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-NULL pointer dereference is reported in cases where idpf_vport_open()
-fails during soft reset:
+On 2026-03-17 12:30:39 [-0700], Tantilov, Emil S wrote:
+> > What would break if you make that lock a spinlock_t?
+> 
+> Right. Scope and risk - these fixes are specifically for the async
+> handler and I did not want to touch the global locking that will
+> impact the entire VC handling. We do have series in flight for -next
+> that refactor that code, while moving it to libie:
+> https://lore.kernel.org/netdev/20251117134912.18566-10-larysa.zaremba@intel.com/
 
-./xdpsock -i <inf> -q -r -N
+Now I understood. You fiddle with the completion's lock. That is
+something that should not have been done.
 
-[ 3179.186687] idpf 0000:83:00.0: Failed to initialize queue ids for vport 0: -12
-[ 3179.276739] BUG: kernel NULL pointer dereference, address: 0000000000000010
-[ 3179.277636] #PF: supervisor read access in kernel mode
-[ 3179.278470] #PF: error_code(0x0000) - not-present page
-[ 3179.279285] PGD 0
-[ 3179.280083] Oops: Oops: 0000 [#1] SMP NOPTI
-...
-[ 3179.283997] Workqueue: events xp_release_deferred
-[ 3179.284770] RIP: 0010:idpf_find_rxq_vec+0x17/0x30 [idpf]
-...
-[ 3179.291937] Call Trace:
-[ 3179.292392]  <TASK>
-[ 3179.292843]  idpf_qp_switch+0x25/0x820 [idpf]
-[ 3179.293325]  idpf_xsk_pool_setup+0x7c/0x520 [idpf]
-[ 3179.293803]  idpf_xdp+0x59/0x240 [idpf]
-[ 3179.294275]  xp_disable_drv_zc+0x62/0xb0
-[ 3179.294743]  xp_clear_dev+0x40/0xb0
-[ 3179.295198]  xp_release_deferred+0x1f/0xa0
-[ 3179.295648]  process_one_work+0x226/0x730
-[ 3179.296106]  worker_thread+0x19e/0x340
-[ 3179.296557]  ? __pfx_worker_thread+0x10/0x10
-[ 3179.297009]  kthread+0xf4/0x130
-[ 3179.297459]  ? __pfx_kthread+0x10/0x10
-[ 3179.297910]  ret_from_fork+0x32c/0x410
-[ 3179.298361]  ? __pfx_kthread+0x10/0x10
-[ 3179.298702]  ret_from_fork_asm+0x1a/0x30
+> ... that also remove the raw spinlock. With that being said, I can look
+> into converting the lock to spinlock_t if that is the preferred approach.
 
-Fix the error handling of the soft reset in idpf_xdp_setup_prog() by
-restoring the vport->xdp_prog to the old value. This avoids referencing
-the orphaned prog that was copied to vport->xdp_prog in the soft reset
-and prevents subsequent false positive by idpf_xdp_enabled().
+The preferred approach is that, if you pick raw_spinlock_t for locking,
+you are aware of all the consequences and you have a solid reason for
+it. The comment in the file says
+| For now, this API is only used from within a workqueue context;
+| - * raw_spin_lock() is enough.
 
-Update the restart check in idpf_xsk_pool_setup() to use IDPF_VPORT_UP bit
-instead of netif_running(). The idpf_vport_stop/start() calls will not
-update the __LINK_STATE_START bit, making this test a false positive
-should the soft reset fail.
+that is not it.
 
-Fixes: 3d57b2c00f09 ("idpf: add XSk pool initialization")
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/idpf/xdp.c | 7 ++++++-
- drivers/net/ethernet/intel/idpf/xsk.c | 4 +++-
- 2 files changed, 9 insertions(+), 2 deletions(-)
+> Thanks,
+> Emil
 
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
-index cbccd4546768..b670f0ea20b3 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/xdp.c
-@@ -488,12 +488,17 @@ static int idpf_xdp_setup_prog(struct idpf_vport *vport,
- 				   "Could not reopen the vport after XDP setup");
- 
- 		cfg->user_config.xdp_prog = old;
--		old = prog;
-+		vport->xdp_prog = old;
-+		if (prog)
-+			bpf_prog_put(prog);
-+
-+		goto out;
- 	}
- 
- 	if (old)
- 		bpf_prog_put(old);
- 
-+out:
- 	libeth_xdp_set_redirect(vport->netdev, vport->xdp_prog);
- 
- 	return ret;
-diff --git a/drivers/net/ethernet/intel/idpf/xsk.c b/drivers/net/ethernet/intel/idpf/xsk.c
-index d95d3efdfd36..b601b6c298c7 100644
---- a/drivers/net/ethernet/intel/idpf/xsk.c
-+++ b/drivers/net/ethernet/intel/idpf/xsk.c
-@@ -553,6 +553,7 @@ int idpf_xskrq_poll(struct idpf_rx_queue *rxq, u32 budget)
- 
- int idpf_xsk_pool_setup(struct idpf_vport *vport, struct netdev_bpf *bpf)
- {
-+	const struct idpf_netdev_priv *np = netdev_priv(vport->netdev);
- 	struct xsk_buff_pool *pool = bpf->xsk.pool;
- 	u32 qid = bpf->xsk.queue_id;
- 	bool restart;
-@@ -568,7 +569,8 @@ int idpf_xsk_pool_setup(struct idpf_vport *vport, struct netdev_bpf *bpf)
- 		return -EINVAL;
- 	}
- 
--	restart = idpf_xdp_enabled(vport) && netif_running(vport->netdev);
-+	restart = idpf_xdp_enabled(vport) &&
-+	       test_bit(IDPF_VPORT_UP, np->state);
- 	if (!restart)
- 		goto pool;
- 
--- 
-2.37.3
-
+Sebastian
