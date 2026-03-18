@@ -2,215 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 6Ho0NmqjummyZwIAu9opvQ
+	id YCx3KTQTu2k3ewIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 14:06:50 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 22:03:48 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 715AA2BBF0F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 14:06:49 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D82602C2CF8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 22:03:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E58F140C1B;
-	Wed, 18 Mar 2026 13:06:45 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Qc9GjsG3DYFw; Wed, 18 Mar 2026 13:06:41 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E8DF40E42
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773839201;
-	bh=YYXJ/vnU+0iBS8v4C5KHG7iGzgWkv+UwPHa6SwKNRy0=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ne4HT/KBg5UrJWbRhm8fAIEe4/cYYNUm6GszDMOTFgkgdakYdbuKI4n0dVyjeXWrP
-	 6rdcrjX4B09ePx6V9cG1CtiJBs+SgOEXj9n2FH4kL9zyMzONi/CMSbqLJkeOQyiqBb
-	 nZhuFb2l53lH+yzPMs0rGgBZEEruMvli77UZPEUUsZ/P4IKol9iTCF/gHJE60pq4dY
-	 nagUKoam+OGHAIIoT4k5FvvGQwixLV+LQi0wHVAn/179lLK5ZzcF5K+husnuKAk24n
-	 UZdJsyfT+EVHEQWmMbbIefQiX7WSeEQ9IK4en0vQxQDez4iQ87GUpS3ahZ2PsSFA7P
-	 0ehI/j1YUFBww==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E8DF40E42;
-	Wed, 18 Mar 2026 13:06:41 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id D93891AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 13:06:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C9F3F60A80
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 13:06:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6B3CF60DD7;
+	Wed, 18 Mar 2026 21:03:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VZJ1uHHuH7bf for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 13:06:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+ id ZOv3DT2S35L4; Wed, 18 Mar 2026 21:03:45 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5F1B60DDC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1773867825;
+	bh=vz8nEVx12vxjqyucT09gFOK5LpmQKcJZtc0FIhR6HvM=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Ut2ccjYZLD0x+iQ1D985IylVWiLp42ozTZJidUk8goTsLWxU3ELq9usqfYz7gOaVi
+	 ru/AOIiRFEltHJaZd5c/+JgF0eGOsOV8KzLTtps5DpU9WReZMM0T+EK1A4x1EghYvn
+	 r7i/qmTMMs9t+M8NCwuT/762Q6jFyiIojQghcM3R8QwnG9ySAmMKm750W7L0er63ZM
+	 CrSez5Zn3Vwilg6MBJQV1GgDP4vgrh+TfnGpUYGFn18cyeiK7qZFxn7l5E2mCN5eU9
+	 DoxZxwfxrItmE3oLn+0HKH4aZkBS2daHb+Zf6F9N1jeUwSsifkKVjLB+HElOJhZHnN
+	 SxCknyQzgoHVg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5F1B60DDC;
+	Wed, 18 Mar 2026 21:03:45 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3B2301B6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 21:03:44 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2C91340575
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 21:03:44 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NTXKPhoR4lZO for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Mar 2026 21:03:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=paul.greenwalt@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C7EF660A7E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C7EF660A7E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C7EF660A7E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 13:06:33 +0000 (UTC)
-X-CSE-ConnectionGUID: /pLCWoSqSDqDjl/IdczpKQ==
-X-CSE-MsgGUID: dfwDqLGaSb2NCzUOKC8NUg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="62454797"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="62454797"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 06:06:32 -0700
-X-CSE-ConnectionGUID: 02iAsLwdSbCLMLdtDHjz5g==
-X-CSE-MsgGUID: OMHu4ZkCQv2f2hP5EJJoXQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3538740573
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3538740573
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3538740573
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 21:03:42 +0000 (UTC)
+X-CSE-ConnectionGUID: TKuDGSk0TnSAR3gbjICj1w==
+X-CSE-MsgGUID: i/GlNy5LQtOE2o3ElZJuWQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="85568016"
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; d="scan'208";a="85568016"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2026 14:03:42 -0700
+X-CSE-ConnectionGUID: GKscBPu6SZmuDiJ0XX5lNg==
+X-CSE-MsgGUID: J3va7b9SQ/u5pXor2QZOow==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="218197020"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 06:06:31 -0700
-Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 18 Mar 2026 06:06:29 -0700
-Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Wed, 18 Mar 2026 06:06:29 -0700
-Received: from DM5PR21CU001.outbound.protection.outlook.com (52.101.62.12) by
- edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 18 Mar 2026 06:06:27 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=d4BMAwvTurSkphr6IBPDgcjea+bk4cEFFAELlQflbXAl30uK+kZn9Tw6vnFZ0eICIO6NN2KaqjhPXKa9JlNh56fPkLIwB2fTLNH9rxKj4wQLLe9GPwZJHLYWsFqkTmS5HGdOBGJktlVzwzaVdHbA3msdgVoAxESMSUgyqx4C5ZAShNfyCPLqLuOoK92YiCfMEeHWdVZMoATy4JUrCirgPn1ppExXQOyBhLhJy4TtN9jb7wZcKYUF7ER4TvxutcInPmyQHb8+G3msL7NGSBktUDamUNZj0cz73CVKN6EbReYHiuWfz4q4JcViJkKvAr6fgEI/J5ufrI0ud+vZUpu+gA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YYXJ/vnU+0iBS8v4C5KHG7iGzgWkv+UwPHa6SwKNRy0=;
- b=W6rpS1TzbNld9i59plbPbPDIOduacF0vPqqU78BVZMpAVuM06TBvd169I22uJeBDhsKxZogVCI3P+pAPcA9Y0S3fKZvVrZ9fYlj5CDMvF7ClZ9TuID2iRIBUBKCXzaYjYOhhLXG0wQ24iyjcwqxEwtzNUYhYOM4syoonGb/y5TeuZvoCOERivTaGWJgUEww8P3FzkLkcMDrj66qfsliBmqya8Qd+T3Zb/lvl0Jnen1pSBBaN78I9QxkJFN9Xl9lXh7by2Wu/+dp7EYLO1ltb7ga2sV1xI2sDlt2RrvvRXteauUEwVd2B8me1lm1fGje/rG/iC4IbKE494KgyOZIDWQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CH0PR11MB8168.namprd11.prod.outlook.com (2603:10b6:610:186::20)
- by DM4PR11MB7206.namprd11.prod.outlook.com (2603:10b6:8:112::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.9; Wed, 18 Mar
- 2026 13:06:23 +0000
-Received: from CH0PR11MB8168.namprd11.prod.outlook.com
- ([fe80::9549:c8e9:6748:12ee]) by CH0PR11MB8168.namprd11.prod.outlook.com
- ([fe80::9549:c8e9:6748:12ee%5]) with mapi id 15.20.9723.018; Wed, 18 Mar 2026
- 13:06:23 +0000
-Message-ID: <3ae6f24e-0c72-4fcf-9bc9-3591fd9340d5@intel.com>
-Date: Wed, 18 Mar 2026 06:06:19 -0700
-User-Agent: Mozilla Thunderbird
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-CC: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
- <anthony.l.nguyen@intel.com>, <aleksandr.loktionov@intel.com>,
- <przemyslaw.kitszel@intel.com>, <andrew+netdev@lunn.ch>,
- <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
- <pabeni@redhat.com>, <clrkwllms@kernel.org>, <rostedt@goodmis.org>,
- <linux-rt-devel@lists.linux.dev>, <sgzhang@google.com>, <boolli@google.com>
-References: <20260316232819.6872-1-emil.s.tantilov@intel.com>
- <20260317090054.DuPZ6O0O@linutronix.de>
- <7247024b-fc8d-4a75-ba15-a10399db03bc@intel.com>
- <20260317143850.BLrnAox8@linutronix.de>
- <f77ad6b1-1fff-4f3c-a411-5115bb66e31d@intel.com>
- <20260318072436.4JmVdDfK@linutronix.de>
-Content-Language: en-US
-From: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
-In-Reply-To: <20260318072436.4JmVdDfK@linutronix.de>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR04CA0056.namprd04.prod.outlook.com
- (2603:10b6:303:6a::31) To CH0PR11MB8168.namprd11.prod.outlook.com
- (2603:10b6:610:186::20)
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; d="scan'208";a="253242975"
+Received: from unknown (HELO fedora.jf.intel.com) ([10.166.5.147])
+ by orviesa002.jf.intel.com with ESMTP; 18 Mar 2026 14:03:42 -0700
+From: Paul Greenwalt <paul.greenwalt@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: Paul Greenwalt <paul.greenwalt@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Wed, 18 Mar 2026 09:23:51 -0400
+Message-ID: <20260318132351.428749-1-paul.greenwalt@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR11MB8168:EE_|DM4PR11MB7206:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8bf0a24c-0c23-4a04-a031-08de84ef2792
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|7416014|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: t1Xz3WqQMGoJFHfb4FeJFjoNfmhfsFeafrGzTcZ+NAkF5Jrw/2O8e74kPosupGgXLR10bf3LRptqXRf7vYgTZ6qV0wYJw021YQoReddc+LGcJVSHVgSDu6qFsIeccfAAXUa32v24wkXgyo8anCOuDuzTMoZMg35HTEcKgycJg8j7cI+V5LlUIwj3sA/d2H1ELCMYm7i/m6/GyWwu8F8ihXm/o/sg4MuQ9rQHfadlHOP4/htg8F+1q6dBnen2yCHoFBzQ/RHvMCT5WWBmeA0RN0xYQfx/DJaGC3ap0X2L+iKz2YefYsSZDr78qk9c9kPdgwATtIJIB/4x9ca6+A+IwhgAOGEutsqd8C6o0/lllwO3R5PZpUqIL8ht8a05AITsbUikxLEEhL/8mJZA4AJbQ+diLEV7uEPSGDeAccE/FHf/Di48JwD/PqO9DN40aA5/UTe3AT0j2tUu8595cZdsT5gXJpnYhhnD65sNWUicXp1HOBAYSQ1dkUX5bX9H16FCKCZr1TexmNdrfC7slZx9v9C6TbKcgUDucyS7J7c/9UsWjPFdGXL/sJu0jwv4HtMOfNiTRbIk3i+9bHmi0OectCv5R9ZvH97/0BSnXPrOtw5yxJaQKGb05qhTUZ8tkQT2oWTIvbvb+zgvL5XOi5ZRZNiktzD9GCwTKGNFjnnQ6rttEgkQmkMeWMQzQJieJXQWjeNXSE4kGgcIQZEAsmEHRy58OWzFA5pw9r9GaPFTs8s=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH0PR11MB8168.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(7416014)(22082099003)(56012099003)(18002099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YzlsL2dWeFZQSjNZcU9VYlpmRDdCbFBUM0Q3ZEhGaUVGQmI0NWJyNGo4TGYr?=
- =?utf-8?B?b01OR3IyYzlnb0IzSE95UEphTGJsSGlVRmFndytnUFQwalJXd2VPckVlQURj?=
- =?utf-8?B?MCsrSWNLcnNOSk9EeWtEL1pNdU5vTTJqc1BMRmdPZlhLcWdUT2Q4eEh0Zkw2?=
- =?utf-8?B?UGhOb0tNbjk1RTNlSXVLWGcxOUU2aWhCeEhNeml1VXIrQUViRjVwU0lsenk5?=
- =?utf-8?B?UzlzOExuM1NqbDNDa3FZYXlRNjJGZHYzZUo0VGlZc2t1cjJUb3VtVkpYMXF6?=
- =?utf-8?B?cGt2NHFEOGh3M3o0bmJoVWRGQVN0VitBWS9HeHBmZlRZUHN5ZCtMYk9hZE9V?=
- =?utf-8?B?Z20zeFF3MjN0ZW8ycHYxS0tMZFdJUkJVZ25hL0MwWU5LWHlyWVpMK0N4ZjRP?=
- =?utf-8?B?QVMxcXFMRnpSM0JSR2xHb2FoNDNzWmpVb29qVzI1K01QMXVKR2VRRDUvazlT?=
- =?utf-8?B?VEhoY3FmNVpSUEZ1Nzk5YUFrUWxrVk42aE1ISHRaQi9LeDNxNUgyS3JYVVZL?=
- =?utf-8?B?YVkrVWhDZm1MNFYvU3N4KzBDOUN6cE56OFgzSnUrUmF2b3NCNzYxWFpzNkpH?=
- =?utf-8?B?aWllNzArY2Vvdk15SHF1dUhXbEFRMGg2Y1RkSGlZOG9VU0JTeDUxNEhZTlBJ?=
- =?utf-8?B?cUxTZDNDL0Q5ZGFrWUhPWGpuMDFUMXpJV0dZL3V5bnpLWUVDcUNSRDZnOFhC?=
- =?utf-8?B?ZU5mZEE1Z1JCdEhTeW9EK2ZHVDdvT254ZldQOGozaU53LzA4MGxZczlEZHc0?=
- =?utf-8?B?QXJWQndzVFBweGU5OGl1bE5vMGN3KzNUcXZSVFVDRlhSZGF0REd1YzlOWEJF?=
- =?utf-8?B?YUhtS1NZSWl2Wld1czFRbHFQR2lzT2cySzNTSHdueUJzTTdzbnJSZzRweUNO?=
- =?utf-8?B?bVljcklJWjRKNTNGL3ZyWVlGNnViZTBvUmNJMEJrUnJLckMyamxiWHR0MUFY?=
- =?utf-8?B?cE5FTFZUQXhhRk1yVjliZjdhYjB4TjVaNGxlc1ZOMGVLYnczanNSelNWcDNn?=
- =?utf-8?B?RTFwTmIya0VJQUo3OU9Mb2hFd0sxVGFTQ1AzZGZ4aUNLOVM3RlM1M2V1TUFQ?=
- =?utf-8?B?MElxc0t2MTlTV1BZMlZEYlcvU204bEtITmNWbzBPb0tBSGt3YTF2OXoveFgx?=
- =?utf-8?B?V011QVA1RVRreWJ1Nzhuam04U0ZJV0VSTnBMV3VFaVdScmRkNkJGVHkzR3JZ?=
- =?utf-8?B?S2poNUdoTVFkbjB3V1NpOC9oZ0ZuRC9CUDU5MDZGVzY2YlRHeHVVVDljRDVr?=
- =?utf-8?B?WDFuNUJJOXpPcjhJbkUwVjFQQkJ3alVMWkVXQlpTYkgxNFcyM0VCZlVEaHEx?=
- =?utf-8?B?bEErYkRubUo0MUlpVGtLQWM1WkNGOU9EcTI2a2VRVXVpK2VqeW8rS245NUN3?=
- =?utf-8?B?bE43V3g2Ri9sWlFITjBMK2lTSkNXQVRza09zTXRHR1F6ZzVONU1FWmw2QU5w?=
- =?utf-8?B?NDhvbFVoTEhwcnRtNUNNOGVqbEJkT1NETWx2RnZlWHFmN2pnMUMvcE85QUJ5?=
- =?utf-8?B?T3Z2MVNjTWxpVFdJQmVBcmV4UTJtRWdoOWpwV2lwSlZRRUFqUjBZRXpWVzZK?=
- =?utf-8?B?a2l2WG9WRjZONHZxZ29OWlN2dFJKUTFVbklORGc2eXd5Vzh3dStsOEUvWlBR?=
- =?utf-8?B?WFFpV2tuQ2hHWElIVEhsSVFDQVd5SEtXSG5JOVVja0REV2RpR1cyN0g0U04x?=
- =?utf-8?B?T2Y4ZklKQy9sKzd2dk5SREovam5YOHFYNFUzTkIzUnZvMTV6dkJ4L1g0TUFB?=
- =?utf-8?B?WFo1NkRtQ2hPWlpCRXg1QnZWRmV2NzR4QzVZemNNd2paZlBWR1M5VFUyK1Yr?=
- =?utf-8?B?WlBEbU11UHdFTE9JSFNycjRRbzBZb1Joc2JRaFF6ZklDTnQ5WFNtdjIwUWtX?=
- =?utf-8?B?clc3amJKUlEvaEwvMjhZUnhUcVg1YzRNUXJ0Sk8vY1dyNFlJVVFNQkM1elhZ?=
- =?utf-8?B?UVNGRXlhVlY0SGNvZVJadWsxam43NU5ycjB5elJlTU5BMjkwUnhoN1dLTjJq?=
- =?utf-8?B?Q0hwV3lXYzhJVGJXbGVwSmd5cGp6MFJtMWNjU1lqbnVhZGUzMmZrK08vUG9a?=
- =?utf-8?B?VnAzc2RxbmtiWkRjaFFITTY5cVZUZFFLZEJ3TjlHQUJBNjVsQTRWZlloMnVU?=
- =?utf-8?B?TFJUN2JtZmhqWnF4WStDN1lOeVpzYWQ4aXQ0djQ2SGlDNEVwTHMxdmp4by96?=
- =?utf-8?B?MGlUZTAyUkhkeVlRZzRpcUhHcjgvZnpwM1JCeEFZeE4xSmJQK1ppZ0ZucXB6?=
- =?utf-8?B?L0hQUGgzU2VKa1creXR1bUh0QitSYXMzQzNtK1JBR3YxNC9lK21kMlIwaVY4?=
- =?utf-8?B?bzd3eXZWb2RzLzdSZ3J4d2JsV3RucVUvRjNYd1d2Vmw2UEVndlBkdz09?=
-X-Exchange-RoutingPolicyChecked: tp0iAOlgnDhkYuHRc366Dd8DjKWv8qMPeZmhMBubOyIujfnZ5T4Tz8E3mIXTa6o6N5L4GpcKocrgoQW3G9M8SLHUeCq/Z3ed1mXT0HvNQBqNlsv/neFSyR1qqCiKBSaIEtrhvNsh0R2aUFDQlaSG+RelaZuyM2KBihjkvkbakQO5tEwS5Cbi4qGL5+vI7Y1dh3vgUiiV9Q3nurBdIufSEanOsS/V/daZB2QRDqcNBAREJpoB1zMm+WCOZUP9C1/2ZYxx/PixW/trQSpepKKDriwVt2EMDh96Dh7lYV47GNh4sVDPBqgmHMPKBTWRN/bpYQaWuktw/eKNwmUM5I5+YA==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8bf0a24c-0c23-4a04-a031-08de84ef2792
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR11MB8168.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2026 13:06:23.1055 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GGU0cHwvEUSCKBd0S5WC9BwkXg9cjW3UdDLcl9cdYE4XaI8Rf8zLbL8OkEWLBSWrAKyKudxArIEw3Yky7jMHqreEUB4srt7NW32ZUWmTBzI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB7206
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773839195; x=1805375195;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=086OD4ATFGr/Ki98hSi/pIK9EorbmGclyXPugi12R0U=;
- b=JOe2WCJuHP8hx6DbwhP37fl16g07f9fB9uueZ3XjHMj6/xfQH1vtdoXL
- gkbmBgMveTtgrbIy9LUmzfuNxE3s9FJNZc6pUeKDaTZliH2TNeh1ONTFQ
- 1aU7boeE/m0pDqCehzTbpp/J63Nd3ksbky99m3tx7GySRGdz580A0s/yF
- A4S+jOpxPf8SIYuZ/wtw5WY0xYKQ8ii2euBFwMWXcO23FhZ5BTDXRHZEQ
- qrWoFS1Gl7r2wU376ZQvcR1Z8pcBInowREc6ccFZEXUhho0cKtvj9YMJo
- 33+KnPJRZOaly3QFjp6EUM/l67o5qitX953OLKwlOicOCY6acTeBIbiFQ
+ t=1773867823; x=1805403823;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=djPEqXEX45keQbn/CZLMon+YslmkUef0cNi3LSj4yjk=;
+ b=eXeYR64/wLovSvhGfW6+/6I+b+Wn3r2n5U9XDuRWj6tLUR2RUTo0o90R
+ hMgPO7wXj7ijFF8CzmsevXz/0M9SsxC52EXVqQaoVLq47Y7yBQZN/s/W5
+ 3WE357NN/FGV8ZjvpxPs6Nlcadv0mn8kzkED5oSqyKm2rfhb6i6PAWjrc
+ OztbbCzAEnpNpmKOO+KBhWFkgoZ1SWjBH5TufOJR4HDU1rBA6bWeO3CwB
+ l933Tk59L+BllqARbL6MegrLxXfc+6qUz7wmF1gIM39xBI+kgsNCwUqLr
+ fVLrSy2hF1NtpR+fzHRL0htg2OY/E1VzwIegKiDOPFE1vTWpnE/MysCJx
  Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JOe2WCJu
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/3] idpf: virtchnl locking
- and async fixes
+ header.s=Intel header.b=eXeYR64/
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix PHY config on media
+ change with link-down-on-close
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -225,68 +111,256 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.89 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:bigeasy@linutronix.de,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:aleksandr.loktionov@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:clrkwllms@kernel.org,m:rostedt@goodmis.org,m:linux-rt-devel@lists.linux.dev,m:sgzhang@google.com,m:boolli@google.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[16];
-	MIME_TRACE(0.00)[0:+];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_THREE(0.00)[3];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	FROM_NEQ_ENVFROM(0.00)[paul.greenwalt@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	NEURAL_HAM(-0.00)[-0.999];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns]
-X-Rspamd-Queue-Id: 715AA2BBF0F
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: D82602C2CF8
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
+Commit 1a3571b5938c ("ice: restore PHY settings on media insertion")
+introduced separate flows for setting PHY configuration on media
+present: ice_configure_phy() when link-down-on-close is disabled, and
+ice_force_phys_link_state() when enabled. The latter incorrectly uses
+the previous configuration even after module change, causing link
+issues such as wrong speed or no link.
 
+Unify PHY configuration into a single ice_phy_cfg() function with a
+link_en parameter, ensuring PHY capabilities are always fetched fresh
+from hardware.
 
-On 3/18/2026 12:24 AM, Sebastian Andrzej Siewior wrote:
-> On 2026-03-17 12:30:39 [-0700], Tantilov, Emil S wrote:
->>> What would break if you make that lock a spinlock_t?
->>
->> Right. Scope and risk - these fixes are specifically for the async
->> handler and I did not want to touch the global locking that will
->> impact the entire VC handling. We do have series in flight for -next
->> that refactor that code, while moving it to libie:
->> https://lore.kernel.org/netdev/20251117134912.18566-10-larysa.zaremba@intel.com/
-> 
-> Now I understood. You fiddle with the completion's lock. That is
-> something that should not have been done.
-> 
->> ... that also remove the raw spinlock. With that being said, I can look
->> into converting the lock to spinlock_t if that is the preferred approach.
-> 
-> The preferred approach is that, if you pick raw_spinlock_t for locking,
-> you are aware of all the consequences and you have a solid reason for
-> it. The comment in the file says
-> | For now, this API is only used from within a workqueue context;
-> | - * raw_spin_lock() is enough.
-> 
-> that is not it.
+Fixes: 1a3571b5938c ("ice: restore PHY settings on media insertion")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 121 +++++-----------------
+ 1 file changed, 27 insertions(+), 94 deletions(-)
 
-Understood. I will convert it in v2.
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ebf48feffb30..512e55e974e2 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1922,82 +1922,6 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 	ice_print_vfs_mdd_events(pf);
+ }
+ 
+-/**
+- * ice_force_phys_link_state - Force the physical link state
+- * @vsi: VSI to force the physical link state to up/down
+- * @link_up: true/false indicates to set the physical link to up/down
+- *
+- * Force the physical link state by getting the current PHY capabilities from
+- * hardware and setting the PHY config based on the determined capabilities. If
+- * link changes a link event will be triggered because both the Enable Automatic
+- * Link Update and LESM Enable bits are set when setting the PHY capabilities.
+- *
+- * Returns 0 on success, negative on failure
+- */
+-static int ice_force_phys_link_state(struct ice_vsi *vsi, bool link_up)
+-{
+-	struct ice_aqc_get_phy_caps_data *pcaps;
+-	struct ice_aqc_set_phy_cfg_data *cfg;
+-	struct ice_port_info *pi;
+-	struct device *dev;
+-	int retcode;
+-
+-	if (!vsi || !vsi->port_info || !vsi->back)
+-		return -EINVAL;
+-	if (vsi->type != ICE_VSI_PF)
+-		return 0;
+-
+-	dev = ice_pf_to_dev(vsi->back);
+-
+-	pi = vsi->port_info;
+-
+-	pcaps = kzalloc_obj(*pcaps);
+-	if (!pcaps)
+-		return -ENOMEM;
+-
+-	retcode = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_ACTIVE_CFG, pcaps,
+-				      NULL);
+-	if (retcode) {
+-		dev_err(dev, "Failed to get phy capabilities, VSI %d error %d\n",
+-			vsi->vsi_num, retcode);
+-		retcode = -EIO;
+-		goto out;
+-	}
+-
+-	/* No change in link */
+-	if (link_up == !!(pcaps->caps & ICE_AQC_PHY_EN_LINK) &&
+-	    link_up == !!(pi->phy.link_info.link_info & ICE_AQ_LINK_UP))
+-		goto out;
+-
+-	/* Use the current user PHY configuration. The current user PHY
+-	 * configuration is initialized during probe from PHY capabilities
+-	 * software mode, and updated on set PHY configuration.
+-	 */
+-	cfg = kmemdup(&pi->phy.curr_user_phy_cfg, sizeof(*cfg), GFP_KERNEL);
+-	if (!cfg) {
+-		retcode = -ENOMEM;
+-		goto out;
+-	}
+-
+-	cfg->caps |= ICE_AQ_PHY_ENA_AUTO_LINK_UPDT;
+-	if (link_up)
+-		cfg->caps |= ICE_AQ_PHY_ENA_LINK;
+-	else
+-		cfg->caps &= ~ICE_AQ_PHY_ENA_LINK;
+-
+-	retcode = ice_aq_set_phy_cfg(&vsi->back->hw, pi, cfg, NULL);
+-	if (retcode) {
+-		dev_err(dev, "Failed to set phy config, VSI %d error %d\n",
+-			vsi->vsi_num, retcode);
+-		retcode = -EIO;
+-	}
+-
+-	kfree(cfg);
+-out:
+-	kfree(pcaps);
+-	return retcode;
+-}
+-
+ /**
+  * ice_init_nvm_phy_type - Initialize the NVM PHY type
+  * @pi: port info structure
+@@ -2066,7 +1990,7 @@ static void ice_init_link_dflt_override(struct ice_port_info *pi)
+  * first time media is available. The ICE_LINK_DEFAULT_OVERRIDE_PENDING state
+  * is used to indicate that the user PHY cfg default override is initialized
+  * and the PHY has not been configured with the default override settings. The
+- * state is set here, and cleared in ice_configure_phy the first time the PHY is
++ * state is set here, and cleared in ice_phy_cfg the first time the PHY is
+  * configured.
+  *
+  * This function should be called only if the FW doesn't support default
+@@ -2172,14 +2096,18 @@ static int ice_init_phy_user_cfg(struct ice_port_info *pi)
+ }
+ 
+ /**
+- * ice_configure_phy - configure PHY
++ * ice_phy_cfg - configure PHY
+  * @vsi: VSI of PHY
++ * @link_en: true/false indicates to set link to enable/disable
+  *
+  * Set the PHY configuration. If the current PHY configuration is the same as
+- * the curr_user_phy_cfg, then do nothing to avoid link flap. Otherwise
+- * configure the based get PHY capabilities for topology with media.
++ * the curr_user_phy_cfg and link_en hasn't changed, then do nothing to avoid
++ * link flap. Otherwise configure the PHY based get PHY capabilities for
++ * topology with media and link_en.
++ *
++ * Return: 0 on success, negative on failure
+  */
+-static int ice_configure_phy(struct ice_vsi *vsi)
++static int ice_phy_cfg(struct ice_vsi *vsi, bool link_en)
+ {
+ 	struct device *dev = ice_pf_to_dev(vsi->back);
+ 	struct ice_port_info *pi = vsi->port_info;
+@@ -2199,9 +2127,6 @@ static int ice_configure_phy(struct ice_vsi *vsi)
+ 	    phy->link_info.topo_media_conflict == ICE_AQ_LINK_TOPO_UNSUPP_MEDIA)
+ 		return -EPERM;
+ 
+-	if (test_bit(ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA, pf->flags))
+-		return ice_force_phys_link_state(vsi, true);
+-
+ 	pcaps = kzalloc_obj(*pcaps);
+ 	if (!pcaps)
+ 		return -ENOMEM;
+@@ -2215,10 +2140,8 @@ static int ice_configure_phy(struct ice_vsi *vsi)
+ 		goto done;
+ 	}
+ 
+-	/* If PHY enable link is configured and configuration has not changed,
+-	 * there's nothing to do
+-	 */
+-	if (pcaps->caps & ICE_AQC_PHY_EN_LINK &&
++	/* Configuration has not changed. There's nothing to do. */
++	if (link_en == !!(pcaps->caps & ICE_AQC_PHY_EN_LINK) &&
+ 	    ice_phy_caps_equals_cfg(pcaps, &phy->curr_user_phy_cfg))
+ 		goto done;
+ 
+@@ -2282,8 +2205,12 @@ static int ice_configure_phy(struct ice_vsi *vsi)
+ 	 */
+ 	ice_cfg_phy_fc(pi, cfg, phy->curr_user_fc_req);
+ 
+-	/* Enable link and link update */
+-	cfg->caps |= ICE_AQ_PHY_ENA_AUTO_LINK_UPDT | ICE_AQ_PHY_ENA_LINK;
++	/* Enable/Disable link and link update */
++	cfg->caps |= ICE_AQ_PHY_ENA_AUTO_LINK_UPDT;
++	if (link_en)
++		cfg->caps |= ICE_AQ_PHY_ENA_LINK;
++	else
++		cfg->caps &= ~ICE_AQ_PHY_ENA_LINK;
+ 
+ 	err = ice_aq_set_phy_cfg(&pf->hw, pi, cfg, NULL);
+ 	if (err)
+@@ -2336,7 +2263,7 @@ static void ice_check_media_subtask(struct ice_pf *pf)
+ 		    test_bit(ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA, vsi->back->flags))
+ 			return;
+ 
+-		err = ice_configure_phy(vsi);
++		err = ice_phy_cfg(vsi, true);
+ 		if (!err)
+ 			clear_bit(ICE_FLAG_NO_MEDIA, pf->flags);
+ 
+@@ -4892,9 +4819,15 @@ static int ice_init_link(struct ice_pf *pf)
+ 
+ 		if (!test_bit(ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA, pf->flags)) {
+ 			struct ice_vsi *vsi = ice_get_main_vsi(pf);
++			struct ice_link_default_override_tlv *ldo;
++			bool link_en;
++
++			ldo = &pf->link_dflt_override;
++			link_en = !(ldo->options &
++				    ICE_LINK_OVERRIDE_AUTO_LINK_DIS);
+ 
+ 			if (vsi)
+-				ice_configure_phy(vsi);
++				ice_phy_cfg(vsi, link_en);
+ 		}
+ 	} else {
+ 		set_bit(ICE_FLAG_NO_MEDIA, pf->flags);
+@@ -9702,7 +9635,7 @@ int ice_open_internal(struct net_device *netdev)
+ 			}
+ 		}
+ 
+-		err = ice_configure_phy(vsi);
++		err = ice_phy_cfg(vsi, true);
+ 		if (err) {
+ 			netdev_err(netdev, "Failed to set physical link up, error %d\n",
+ 				   err);
+@@ -9743,7 +9676,7 @@ int ice_stop(struct net_device *netdev)
+ 	}
+ 
+ 	if (test_bit(ICE_FLAG_LINK_DOWN_ON_CLOSE_ENA, vsi->back->flags)) {
+-		int link_err = ice_force_phys_link_state(vsi, false);
++		int link_err = ice_phy_cfg(vsi, false);
+ 
+ 		if (link_err) {
+ 			if (link_err == -ENOMEDIUM)
+-- 
+2.52.0
 
-Thanks for the feedback!
-Emil
