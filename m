@@ -2,98 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iLpdGagvvGnquAIAu9opvQ
+	id KIAJMHk0vGl3uwIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:28 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:38:01 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D46CE2CFBF4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:27 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CEF372D01E3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:38:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D6E6F61600;
-	Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7BCE440A19;
+	Thu, 19 Mar 2026 17:37:59 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RKD8pyPL8YYB; Thu, 19 Mar 2026 17:37:58 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9851C40A1E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1773941878;
+	bh=sIA0VxEHalwtbwebz3Ub5SoOTN0LXVwz+kEtQHlQMXQ=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=n5P3PGsgp1URomA21cqnoifIQyqXKEMzTEPASfm2UsK1ipym6eStLL/K5VvtPkdoE
+	 ULRs8CzIJSmcEUpIdsAfvFLOldFCqPdR6b5MegFofoeoNcHbCiVL69InLR71LFgm6m
+	 yKxtqTYR69Sa/6zOKWFdPabq2q70t91vk7KL26pSmob9GJGHh6YDyGyIK7fBCqlTXT
+	 A1nQ98AlVRT5+NpiSvZhkM5se3xmIRy+0X0b1azurJfUiUgK0GCqRgZmh8eaZ97f9E
+	 EOoZXBoxE3nDSvGdaooHu7HDcu6xiCkZLqR2nb3TFn4VijWW40bP6QQgK4L5K+ohs1
+	 LoYOkXJj+0qLA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9851C40A1E;
+	Thu, 19 Mar 2026 17:37:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1A34D265
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:37:57 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0B7BB60DB8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:37:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5TXzkbcg7BYE; Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5B0FF61601
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773940643;
-	bh=t7tQWDB599mgzXVu98rsjNCBJh04E4IB3vAFUErTcSE=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=5ceVWcIOl4xtxeM5QErlZGic2OqV672b4SOvX4tupQNTJWLljP2ujjntyGe8/N4oE
-	 0/2kydChcXukJ8YT1r7Faa6RGmdajZ3eHrslogrEuJ2tqssZvQ4J7BnluWzW+C7oy6
-	 nUpR+hpwYm2L1vI6dGHIoVXLsR/RKsmZr3DgML2ay1pJhqF82THzlOyAKsJ526rbkc
-	 a5p27mNa25hMuVfgpyFYvc776MftV9AXNwnOtrxc21Q0kLdDysUr7Rsglt9Y6lh1XA
-	 tjKoKrV6Z5ETAFf3eneGTkBAebA+xREDDR5mvp0bKDX5kHeyj3qz091QGYX4fgnpwI
-	 3QSIK3OtH5aig==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5B0FF61601;
-	Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 1619F265
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:20 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 081B9822B1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nm-32PbsKLbf for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Mar 2026 17:17:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
- helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 41B828229F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 41B828229F
-Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 41B828229F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:18 +0000 (UTC)
-Received: from ms-a2 (122.24.31.150.dy.iij4u.or.jp [150.31.24.122])
- (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62JHH6xw076845
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 20 Mar 2026 02:17:06 +0900 (JST) (envelope-from kohei@enjuk.jp)
-From: Kohei Enju <kohei@enjuk.jp>
-To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, kohei.enju@gmail.com,
- Kohei Enju <kohei@enjuk.jp>
-Date: Thu, 19 Mar 2026 17:16:44 +0000
-Message-ID: <20260319171650.5815-4-kohei@enjuk.jp>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260319171650.5815-1-kohei@enjuk.jp>
-References: <20260319171650.5815-1-kohei@enjuk.jp>
+ id 2moHofJ8jW3P for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Mar 2026 17:37:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3560860D6C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3560860D6C
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3560860D6C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:37:55 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 853A340B2D;
+ Thu, 19 Mar 2026 17:37:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A63A6C19424;
+ Thu, 19 Mar 2026 17:37:51 +0000 (UTC)
+From: Simon Horman <horms@kernel.org>
+To: grzegorz.nitka@intel.com
+Date: Thu, 19 Mar 2026 17:37:34 +0000
+Message-ID: <20260319173734.2004456-1-horms@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260318090654.611349-6-grzegorz.nitka@intel.com>
+References: <20260318090654.611349-6-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=t7tQWDB599mgzXVu98rsjNCBJh04E4IB3vAFUErTcSE=; 
- c=relaxed/relaxed; d=enjuk.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20251215; t=1773940626; v=1;
- b=xEuAmbsWx2tlWHC2vSSvQu8Dm2r5gcipiR6jl9TiDD/9u3VYgSV0WVTOyC//dcRA
- M606VcjKCzGKSPqYbXEzE9ieGyqD7TwTEbadPcX6/Ld04jzG3tmEqbA6drzSWOoc
- gQh8tug2E9afijTz+drxS4Qq6Ze7rIBD38E9+atcDLq/mAnhOW2MkGP2ZlLb7F6Z
- oGAPOZgr93Im+OFpEV2QTKMWsw/htxVxmv4mgIrEiB81cJkafdJSqLFEDkeivAxh
- CH+Q1vWIByoUruJSn4YFcvtw9Fkckl5wTOV2+mJU0wJ5PTqcqsT30qmjcAiyxPCs
- /cjVRaFNtJmSQ8kCI/IBvA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=xEuAmbsW
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 3/3] i40e: add support for
- bpf_xdp_metadata_rx_vlan_tag()
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1773941875;
+ bh=UpJlN5QiJI2YcSqqnnHxI8WchZ3Wjht+c7y2Lbl/boA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=lg3TL/Dy1/XvD51t7OUfcJXnlrxtgNapvFF4OwpNH4QAHK5u5EGkL3dY4QyGxpBxB
+ gG5YQiXM3DLI0XiTciPWS5T7IiXNDj3HoIA9R3mNxU3ynUa+We/PSl7P6/D1wsI4AN
+ rsYbEEUTJ2FZHCwUYOkc+tqu56x5FPzj9hIe8j0Q1LwCo5PtsUSXzLN7cTQIvCS1LT
+ v3j4ZXkSzUsGdUfv735t8stkHzX4dYMlmxURIpxxmYfJC2d+OiFRCxHrIRGJVTk0Tm
+ nQbRN7UJP4RMW65BTnbG0DjvGi/IAEpu7AIuH158FkvpJyX/O1bV3TagEBbtEi+gL5
+ opn0c3/TWXd/g==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=lg3TL/Dy
+Subject: Re: [Intel-wired-lan] [PATCH net-next 5/8] ice: add TX clock (TXC)
+ DPLL interface for E825 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,86 +99,166 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, jiri@resnulli.us,
+ netdev@vger.kernel.org, richardcochran@gmail.com, donald.hunter@gmail.com,
+ linux-kernel@vger.kernel.org, arkadiusz.kubalewski@intel.com,
+ aleksandr.loktionov@intel.com, andrew+netdev@lunn.ch,
+ anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>, kuba@kernel.org,
+ przemyslaw.kitszel@intel.com, Prathosh.Satish@microchip.com, pabeni@redhat.com,
+ davem@davemloft.net, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.39 / 15.00];
+X-Spamd-Result: default: False [3.79 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,gmail.com,enjuk.jp];
-	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:jiri@resnulli.us,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:horms@kernel.org,m:kuba@kernel.org,m:przemyslaw.kitszel@intel.com,m:Prathosh.Satish@microchip.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,linux.dev:url];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
-	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[11];
-	NEURAL_HAM(-0.00)[-0.995];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[19];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FREEMAIL_CC(0.00)[redhat.com,linux.dev,resnulli.us,vger.kernel.org,gmail.com,intel.com,lunn.ch,kernel.org,microchip.com,davemloft.net,lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: D46CE2CFBF4
+	NEURAL_HAM(-0.00)[-0.995];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: CEF372D01E3
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Introduce i40e_xdp_rx_vlan_tag() which takes the same approach as
-i40e_process_skb_fields() to extract the VLAN tag from the RX
-descriptor.
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
 
-Tested with X710 adapter using xdp_hw_metadata, and confirmed that VLAN
-tags match between bpf_xdp_metadata_rx_vlan_tag() and
-skb->vlan_proto/vlan_tci.
-
-Signed-off-by: Kohei Enju <kohei@enjuk.jp>
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ice: add TX clock (TXC) DPLL interface for E825 devices
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 6b7e34b16a8d..3749f32ef95a 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -13610,8 +13610,27 @@ static int i40e_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
- 	return 0;
- }
- 
-+static int i40e_xdp_rx_vlan_tag(const struct xdp_md *_ctx, __be16 *vlan_proto,
-+				u16 *vlan_tci)
-+{
-+	const struct i40e_xdp_buff *ctx = (const void *)_ctx;
-+	const union i40e_rx_desc *desc = ctx->desc;
-+	u64 status;
-+
-+	status = le64_to_cpu(desc->wb.qword1.status_error_len);
-+
-+	if (!(status & BIT(I40E_RX_DESC_STATUS_L2TAG1P_SHIFT)))
-+		return -ENODATA;
-+
-+	*vlan_proto = cpu_to_be16(ETH_P_8021Q);
-+	*vlan_tci = le16_to_cpu(desc->wb.qword0.lo_dword.l2tag1);
-+
-+	return 0;
-+}
-+
- static const struct xdp_metadata_ops i40e_xdp_metadata_ops = {
- 	.xmo_rx_hash		= i40e_xdp_rx_hash,
-+	.xmo_rx_vlan_tag	= i40e_xdp_rx_vlan_tag,
- };
- 
- static const struct net_device_ops i40e_netdev_ops = {
--- 
-2.51.0
+This commit introduces a TX clock DPLL instance and pins for E825-based
+devices. The TXC domain exposes two reference pins: EXT_EREF0 (board
+external electrical reference) and SYNCE (port-derived reference,
+described via fwnode). A new pin type and pin ops are added to support
+TX clock references.
 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+> index 62f75701d652..a1258f2e03a9 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_dpll.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+
+[ ... ]
+
+> @@ -3552,6 +3686,39 @@ ice_dpll_init_fwnode_pins(struct ice_pf *pf, struct ice_dpll_pin *pins,
+>  	return ret;
+>  }
+>
+> +static int ice_dpll_init_txclk_pins(struct ice_pf *pf, int start_idx)
+> +{
+> +	struct ice_dpll_pin *ref_pin = pf->dplls.txclks;
+> +	struct ice_dpll *txc = &pf->dplls.txc;
+> +	int ret = 0;
+> +
+> +	/* configure EXT_EREF0 pin */
+> +	ret = ice_dpll_get_pins(pf, ref_pin, start_idx, 1, pf->dplls.clock_id);
+> +	if (ret)
+> +		return ret;
+> +	ret = dpll_pin_register(txc->dpll, ref_pin->pin, &ice_dpll_txclk_ops,
+> +				ref_pin);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* configure EXT_SYNCE pin which is based on fwnode pin */
+> +	ref_pin++;
+> +	ret = ice_dpll_init_fwnode_pin(ref_pin, ice_dpll_fwnode_ext_synce);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = dpll_pin_register(txc->dpll, ref_pin->pin, &ice_dpll_txclk_ops,
+> +				ref_pin);
+> +	if (ret)
+> +		return ret;
+
+Does ice_dpll_init_txclk_pins leak the EXT_EREF0 pin on error?
+
+If dpll_pin_register for the EXT_SYNCE pin fails, the function returns
+the error without cleaning up the EXT_EREF0 pin that was already
+successfully registered. Looking at the call chain:
+
+ice_dpll_init_pins_e825() calls:
+    ice_dpll_init_txclk_pins()
+        ice_dpll_get_pins() -> acquires pin reference for EXT_EREF0
+        dpll_pin_register() -> registers EXT_EREF0 with TXC DPLL
+        ice_dpll_init_fwnode_pin() -> may fail here
+        dpll_pin_register() -> or may fail here for EXT_SYNCE
+
+If either of the last two steps fail, the function returns the error
+directly without calling dpll_pin_unregister or ice_dpll_release_pins
+for the EXT_EREF0 pin.
+
+The caller ice_dpll_init_pins_e825() also doesn't compensate - on
+txclk init failure it only calls ice_dpll_deinit_rclk_pin() and
+ice_dpll_deinit_fwnode_pins(), neither of which clean up txclk
+resources.
+
+Compare with ice_dpll_init_fwnode_pins() and ice_dpll_get_pins() which
+both have proper error-path rollback using goto labels.
+
+> +
+> +	if (IS_ERR_OR_NULL(ref_pin->pin))
+> +		dev_dbg(ice_pf_to_dev(pf),
+> +			"Tx-clk mux pin not registered yet\n");
+
+Can this cause a NULL pointer dereference?
+
+The IS_ERR_OR_NULL check appears after calling dpll_pin_register with
+ref_pin->pin. Looking at the code flow:
+
+ice_dpll_init_fwnode_pin() returns 0 (success) even when
+fwnode_dpll_pin_find() returns NULL and sets ref_pin->pin = NULL. This
+is the expected case - the commit message states "The SYNCE pin is
+registered when its fwnode becomes available" and the code prints "DPLL
+pin for %pfwp not registered yet".
+
+However, the code unconditionally calls:
+
+    dpll_pin_register(txc->dpll, ref_pin->pin, ...)
+
+where ref_pin->pin is NULL. Looking at dpll_pin_register in
+dpll_core.c:
+
+    int dpll_pin_register(struct dpll_device *dpll, struct dpll_pin *pin, ...)
+    {
+        ...
+        ret = dpll_pin_fwnode_register(dpll, pin, &ice_dpll_txclk_ops, pin_priv);
+        ...
+    }
+
+which then calls code that dereferences pin->fwnode without a NULL
+check, causing a kernel oops.
+
+The IS_ERR_OR_NULL guard at line 3716 was clearly intended to protect
+the dpll_pin_register call but was placed after it instead of before it.
+
+> +
+> +	return 0;
+> +}
+
+[ ... ]
