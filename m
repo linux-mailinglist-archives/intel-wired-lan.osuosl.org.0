@@ -2,68 +2,69 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sEqbMiNnvGnQyAIAu9opvQ
+	id YGPcKCRnvGnQyAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 22:14:11 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 22:14:12 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 584522D28EB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 22:14:11 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CD7B2D28F2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 22:14:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 93A4E61641;
-	Thu, 19 Mar 2026 21:14:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF74C419D6;
+	Thu, 19 Mar 2026 21:14:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id b6Pdesm16ick; Thu, 19 Mar 2026 21:14:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VUTXguDoee1Z; Thu, 19 Mar 2026 21:14:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E277261638
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 091CB419E2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773954848;
-	bh=rRa662bRd57Ppa7krT6RgBkWHkyXQ4jIWhpwK/ywtgw=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=pI3m7U5LJPhjG1rXQ9BjF/0VVctwbowMTFZv6gxmzgMz3RWzoWnOrUSja4L/mcyRU
-	 qfLNVPYo2TiWvJfeZ42ATgVq9zlpiSaK/e+FHLD65K+nyQBsze4gapHXks22cYqxkt
-	 5iNNGrcyxNwdqXichWxHU5hPtlrBgvjfqK+pqLPo0hD0tL01kmL6zRtqwETRhMFDlM
-	 lFYlRKxqZ1JCyFb0gXTjU+QjQFgvGzRvzyIZpB+C48/reYP+rrdfwXWD/mhiaY5LWY
-	 NL5Vc22Wb2NBgHiWigxWI2yKy/lHgGyQbZohtDuz+C53H40eJ+TChsWMW03WEB0k0e
-	 jHWOYM5SM/GAw==
+	s=default; t=1773954850;
+	bh=lMESfybP3WlxeXQN+ZQdsqkpiXq6FgrleGBPKonrxeo=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=oue2QFpnImM3xNEt49poRIp0mA6I/niK1cbF3Z+0ztnoCvEwshwzW2SLqzcMNg62F
+	 lNJu+M9y3j0yGPWVMoupoYaehSrUi5hY3R+QJvoPYjGKyglhi231Wd/DDf2EIQcwhh
+	 ZTUh40aQnaEOVgh14xJWccwZ+wHP0jtXv8hgpJtUrL/xF5KyN37wa0t2r8zRHCxDnZ
+	 vi0+JNauauC3vBzuANskqmrfCP9/4JUU1mfMYFyKoiDbvMtmcVYNTiKwum0pgqqy+T
+	 uctLvApfS/blRJMCWr8BrZlCIS8oauE5sOS57Y3wXwL+HBr6CkuIEypnK0Za1+REgA
+	 III2WYvnUAA3g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E277261638;
-	Thu, 19 Mar 2026 21:14:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 091CB419E2;
+	Thu, 19 Mar 2026 21:14:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4DDEE1B6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:06 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 6A536265
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3088184426
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:05 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3FA9084393
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1fQJ8GdL3gRW for <intel-wired-lan@lists.osuosl.org>;
+ id pIYAHmym9e12 for <intel-wired-lan@lists.osuosl.org>;
  Thu, 19 Mar 2026 21:14:04 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
  helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 09B8684395
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 09B8684395
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B3EBB84422
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B3EBB84422
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 09B8684395
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:03 +0000 (UTC)
-X-CSE-ConnectionGUID: L63ib6guR4Wu+ZrsQwvxbA==
-X-CSE-MsgGUID: 4TypxpSySYGjxtsgzMEnsA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11734"; a="86116358"
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="86116358"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B3EBB84422
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 21:14:04 +0000 (UTC)
+X-CSE-ConnectionGUID: BZZh2IhzQYenFjvayPoKaw==
+X-CSE-MsgGUID: FBIu2RLRRl+dAsuOQoclQg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11734"; a="86116372"
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="86116372"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2026 14:14:02 -0700
-X-CSE-ConnectionGUID: WXM2WaaIS4qrYTicVnNMyQ==
-X-CSE-MsgGUID: YOQskBR4Ryqvkx9OeGomAg==
+ 19 Mar 2026 14:14:03 -0700
+X-CSE-ConnectionGUID: Wxz5GlsfQkCc7Fz6/QQ1Vw==
+X-CSE-MsgGUID: axzZsgLrS6uLUFO4Jvthyw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="227221170"
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="227221172"
 Received: from estantil-desk.jf.intel.com ([10.166.241.24])
  by orviesa003.jf.intel.com with ESMTP; 19 Mar 2026 14:14:02 -0700
 From: Emil Tantilov <emil.s.tantilov@intel.com>
@@ -74,31 +75,33 @@ Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
  kuba@kernel.org, pabeni@redhat.com, bigeasy@linutronix.de,
  clrkwllms@kernel.org, rostedt@goodmis.org, linux-rt-devel@lists.linux.dev,
  sgzhang@google.com, boolli@google.com,
- Emil Tantilov <emil.s.tantilov@intel.com>
-Date: Thu, 19 Mar 2026 14:13:32 -0700
-Message-Id: <20260319211335.23236-1-emil.s.tantilov@intel.com>
+ Emil Tantilov <emil.s.tantilov@intel.com>, stable@vger.kernel.org
+Date: Thu, 19 Mar 2026 14:13:33 -0700
+Message-Id: <20260319211335.23236-2-emil.s.tantilov@intel.com>
 X-Mailer: git-send-email 2.17.2
+In-Reply-To: <20260319211335.23236-1-emil.s.tantilov@intel.com>
+References: <20260319211335.23236-1-emil.s.tantilov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1773954844; x=1805490844;
- h=from:to:cc:subject:date:message-id;
- bh=g6w+7/HUstfdDlcFG0XXPxnCcV+gCuI/3fPis9u3Wso=;
- b=oKc6Gt2a/m140DK1lDd5an1JIQLrYOKtr14tqg06d397v15J4IUhOw2M
- ZrNH40+bWinl1QnqpWinsYtGq4TTGhDpnGydHHBaYsy3Gt6xwJ9p6oh/g
- /ALxSuHMRaIMXdwpCA2zDsAcCKVZ5x2O4EeQKx5NBNVQy22wJTT1KEvjS
- nPKR6zWYknvhPU4vf10o8Im4dsrRAwMcUwe9uE+qOuKjsko8QrgdEo00M
- lxxxBhHwjC85wlTa4WjrS+DA1k4eh8kr23prIux3rGeujvEQkO6YlCTA8
- t1ZWlYFrKtpCbSuykgSzFy6/jrfZK946FNDnHJCotyQcIkaxJ8BfdKaDg
- w==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references;
+ bh=mRP95+w+fhUk8Uwl9cU7Js17s7tnPpW9z6YR7cq7YPA=;
+ b=j5eGdJb1VBwkurEalaggI2VXWwigVw6O0eiEt+zXIW28VZ0jxHz5RJmR
+ zqMde55A8c9RA8k3UcJ+q11MB/yQWkdogqSXJ/LzK5HOs95Wp5AGECS0O
+ j0szxsYNp7zELBdk9IJQXgaLznU5vb8y/e1k+2v33sanQMNHyZLuJmrWd
+ +PTHxYgh8xyWQQBqSUZ9UD5BgR+VqTUPTqgZP05Owq7UZBkvO3aoegYG5
+ 2bDs0ls5TPqEL9wHIKYXXgpAMVdwomX+fnQxOh3JlMqzEnEE3PMz6WBKX
+ LYJgTdZFKLR8g6jfqGpVLbZsS/lZibUVJtmRGjSUgsOgGogXXWRDz3JPp
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=oKc6Gt2a
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 0/3] idpf: virtchnl locking and
- async fixes
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=j5eGdJb1
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/3] idpf: fix PREEMPT_RT
+ raw/bh spinlock nesting for async VC handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,66 +116,156 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[17];
 	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_TWELVE(0.00)[18];
+	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:mid];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,osuosl.org:dkim,linutronix.de:email];
 	FROM_NEQ_ENVFROM(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	NEURAL_HAM(-0.00)[-0.992];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.995];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 584522D28EB
+X-Rspamd-Queue-Id: 1CD7B2D28F2
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-The main change in this series is the introduction of local spinlock_t
-which replaces the previous use of completion's raw spinlock. This allows
-us to make consistent use of the xn_bm_lock when accessing the free_xn_bm
-bitmap, while also avoiding nested raw/bh spinlock issue on PREEMPT_RT
-kernels. Additionally, we ensure that the payload size is set before
-invoking the async handler, to make sure it doesn't error out prematurely
-due to invalid size check.
+Switch from using the completion's raw spinlock to a local lock in the
+idpf_vc_xn struct. The conversion is safe because complete/_all() are
+called outside the lock and there is no reason to share the completion
+lock in the current logic. This avoids invalid wait context reported by
+the kernel due to the async handler taking BH spinlock:
 
-Changelog:
-v1->v2:
-- Avoid the nested raw/bh spinlocks by not using the raw spinlock from
-the completion API. As suggested by Sebastian Andrzej Siewior.
-- With the above change, the ordering of the patches is changed to first
-introduce the local spinlock, then fix the locking around the bitmap and
-finally make sure the payload size is set for the async handler.
+[  805.726977] =============================
+[  805.726991] [ BUG: Invalid wait context ]
+[  805.727006] 7.0.0-rc2-net-devq-031026+ #28 Tainted: G S         OE
+[  805.727026] -----------------------------
+[  805.727038] kworker/u261:0/572 is trying to lock:
+[  805.727051] ff190da6a8dbb6a0 (&vport_config->mac_filter_list_lock){+...}-{3:3}, at: idpf_mac_filter_async_handler+0xe9/0x260 [idpf]
+[  805.727099] other info that might help us debug this:
+[  805.727111] context-{5:5}
+[  805.727119] 3 locks held by kworker/u261:0/572:
+[  805.727132]  #0: ff190da6db3e6148 ((wq_completion)idpf-0000:83:00.0-mbx){+.+.}-{0:0}, at: process_one_work+0x4b5/0x730
+[  805.727163]  #1: ff3c6f0a6131fe50 ((work_completion)(&(&adapter->mbx_task)->work)){+.+.}-{0:0}, at: process_one_work+0x1e5/0x730
+[  805.727191]  #2: ff190da765190020 (&x->wait#34){+.+.}-{2:2}, at: idpf_recv_mb_msg+0xc8/0x710 [idpf]
+[  805.727218] stack backtrace:
+...
+[  805.727238] Workqueue: idpf-0000:83:00.0-mbx idpf_mbx_task [idpf]
+[  805.727247] Call Trace:
+[  805.727249]  <TASK>
+[  805.727251]  dump_stack_lvl+0x77/0xb0
+[  805.727259]  __lock_acquire+0xb3b/0x2290
+[  805.727268]  ? __irq_work_queue_local+0x59/0x130
+[  805.727275]  lock_acquire+0xc6/0x2f0
+[  805.727277]  ? idpf_mac_filter_async_handler+0xe9/0x260 [idpf]
+[  805.727284]  ? _printk+0x5b/0x80
+[  805.727290]  _raw_spin_lock_bh+0x38/0x50
+[  805.727298]  ? idpf_mac_filter_async_handler+0xe9/0x260 [idpf]
+[  805.727303]  idpf_mac_filter_async_handler+0xe9/0x260 [idpf]
+[  805.727310]  idpf_recv_mb_msg+0x1c8/0x710 [idpf]
+[  805.727317]  process_one_work+0x226/0x730
+[  805.727322]  worker_thread+0x19e/0x340
+[  805.727325]  ? __pfx_worker_thread+0x10/0x10
+[  805.727328]  kthread+0xf4/0x130
+[  805.727333]  ? __pfx_kthread+0x10/0x10
+[  805.727336]  ret_from_fork+0x32c/0x410
+[  805.727345]  ? __pfx_kthread+0x10/0x10
+[  805.727347]  ret_from_fork_asm+0x1a/0x30
+[  805.727354]  </TASK>
 
-v1:
-https://lore.kernel.org/netdev/20260316232819.6872-1-emil.s.tantilov@intel.com/
+Fixes: 34c21fa894a1 ("idpf: implement virtchnl transaction manager")
+Cc: stable@vger.kernel.org
+Suggested-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Reported-by: Ray Zhang <sgzhang@google.com>
+Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 14 +++++---------
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.h |  5 +++--
+ 2 files changed, 8 insertions(+), 11 deletions(-)
 
-Emil Tantilov (3):
-  idpf: fix PREEMPT_RT raw/bh spinlock nesting for async VC handling
-  idpf: idpf: improve locking around idpf_vc_xn_push_free()
-  idpf: set the payload size before calling the async handler
-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 20 ++++++++++---------
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |  5 +++--
- 2 files changed, 14 insertions(+), 11 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 113ecfc16dd7..582e0c8e9dc0 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -287,26 +287,21 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, struct idpf_ctlq_info *asq,
+ 	return err;
+ }
+ 
+-/* API for virtchnl "transaction" support ("xn" for short).
+- *
+- * We are reusing the completion lock to serialize the accesses to the
+- * transaction state for simplicity, but it could be its own separate synchro
+- * as well. For now, this API is only used from within a workqueue context;
+- * raw_spin_lock() is enough.
+- */
++/* API for virtchnl "transaction" support ("xn" for short). */
++
+ /**
+  * idpf_vc_xn_lock - Request exclusive access to vc transaction
+  * @xn: struct idpf_vc_xn* to access
+  */
+ #define idpf_vc_xn_lock(xn)			\
+-	raw_spin_lock(&(xn)->completed.wait.lock)
++	spin_lock(&(xn)->lock)
+ 
+ /**
+  * idpf_vc_xn_unlock - Release exclusive access to vc transaction
+  * @xn: struct idpf_vc_xn* to access
+  */
+ #define idpf_vc_xn_unlock(xn)		\
+-	raw_spin_unlock(&(xn)->completed.wait.lock)
++	spin_unlock(&(xn)->lock)
+ 
+ /**
+  * idpf_vc_xn_release_bufs - Release reference to reply buffer(s) and
+@@ -338,6 +333,7 @@ static void idpf_vc_xn_init(struct idpf_vc_xn_manager *vcxn_mngr)
+ 		xn->state = IDPF_VC_XN_IDLE;
+ 		xn->idx = i;
+ 		idpf_vc_xn_release_bufs(xn);
++		spin_lock_init(&xn->lock);
+ 		init_completion(&xn->completed);
+ 	}
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
+index fe065911ad5a..6876e3ed9d1b 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
+@@ -42,8 +42,8 @@ typedef int (*async_vc_cb) (struct idpf_adapter *, struct idpf_vc_xn *,
+  * struct idpf_vc_xn - Data structure representing virtchnl transactions
+  * @completed: virtchnl event loop uses that to signal when a reply is
+  *	       available, uses kernel completion API
+- * @state: virtchnl event loop stores the data below, protected by the
+- *	   completion's lock.
++ * @lock: protects the transaction state fields below
++ * @state: virtchnl event loop stores the data below, protected by @lock
+  * @reply_sz: Original size of reply, may be > reply_buf.iov_len; it will be
+  *	      truncated on its way to the receiver thread according to
+  *	      reply_buf.iov_len.
+@@ -58,6 +58,7 @@ typedef int (*async_vc_cb) (struct idpf_adapter *, struct idpf_vc_xn *,
+  */
+ struct idpf_vc_xn {
+ 	struct completion completed;
++	spinlock_t lock;
+ 	enum idpf_vc_xn_state state;
+ 	size_t reply_sz;
+ 	struct kvec reply;
 -- 
 2.37.3
 
