@@ -2,62 +2,62 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wAdVEKovvGnquAIAu9opvQ
+	id iLpdGagvvGnquAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:30 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:28 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFA412CFBFF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:29 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D46CE2CFBF4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 18:17:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 423D9412D4;
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6E6F61600;
 	Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J3hueeDvyw_3; Thu, 19 Mar 2026 17:17:22 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5TXzkbcg7BYE; Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A8B2D412EC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5B0FF61601
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773940642;
-	bh=H3BlQ+dOv/udM0aaUOjA1M+YqN6bfxaU8xOaQjLz84I=;
+	s=default; t=1773940643;
+	bh=t7tQWDB599mgzXVu98rsjNCBJh04E4IB3vAFUErTcSE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=X5A/wYsqm/J5FhI9fWdgE1KxYO1CmNGZ4vfDmPNspKjBCFUzdZCr8U/mCt6az6TZ/
-	 qWgmaI/aB+yuxzTEd2xkEsIveGMuXwoEuq/P4BQlbqIA8YzsSIjXydKPtXbZwUNOnl
-	 5iVFtWMZj+y/KFfwz8ftVSx6fcIYeUuSo19LI0yQxBD7wlenMHYY2ta0GgKlAWLuex
-	 co85lRqfpBYsP1cCw2QceGED6RR9xbOP7VcsVyEOFygF5K1mgQyWtPJLMmeftx2t0d
-	 0lA4WDH4gNoccVPhh8RX+32+fJr8hr45lVjTEIJHGIlDqF51H4ctijBrOufKcqPvl/
-	 tn+eI1pPhTaVA==
+	b=5ceVWcIOl4xtxeM5QErlZGic2OqV672b4SOvX4tupQNTJWLljP2ujjntyGe8/N4oE
+	 0/2kydChcXukJ8YT1r7Faa6RGmdajZ3eHrslogrEuJ2tqssZvQ4J7BnluWzW+C7oy6
+	 nUpR+hpwYm2L1vI6dGHIoVXLsR/RKsmZr3DgML2ay1pJhqF82THzlOyAKsJ526rbkc
+	 a5p27mNa25hMuVfgpyFYvc776MftV9AXNwnOtrxc21Q0kLdDysUr7Rsglt9Y6lh1XA
+	 tjKoKrV6Z5ETAFf3eneGTkBAebA+xREDDR5mvp0bKDX5kHeyj3qz091QGYX4fgnpwI
+	 3QSIK3OtH5aig==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A8B2D412EC;
-	Thu, 19 Mar 2026 17:17:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B0FF61601;
+	Thu, 19 Mar 2026 17:17:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id CED3A265
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1619F265
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C0B5B40283
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 081B9822B1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TaEnxpONsQju for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Mar 2026 17:17:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id nm-32PbsKLbf for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Mar 2026 17:17:19 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
  helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7F5294015A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7F5294015A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 41B828229F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 41B828229F
 Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7F5294015A
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 41B828229F
  for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 17:17:18 +0000 (UTC)
 Received: from ms-a2 (122.24.31.150.dy.iij4u.or.jp [150.31.24.122])
  (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62JHH2oJ076820
+ by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 62JHH6xw076845
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 20 Mar 2026 02:17:02 +0900 (JST) (envelope-from kohei@enjuk.jp)
+ Fri, 20 Mar 2026 02:17:06 +0900 (JST) (envelope-from kohei@enjuk.jp)
 From: Kohei Enju <kohei@enjuk.jp>
 To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -67,33 +67,33 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, kohei.enju@gmail.com,
  Kohei Enju <kohei@enjuk.jp>
-Date: Thu, 19 Mar 2026 17:16:43 +0000
-Message-ID: <20260319171650.5815-3-kohei@enjuk.jp>
+Date: Thu, 19 Mar 2026 17:16:44 +0000
+Message-ID: <20260319171650.5815-4-kohei@enjuk.jp>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260319171650.5815-1-kohei@enjuk.jp>
 References: <20260319171650.5815-1-kohei@enjuk.jp>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=H3BlQ+dOv/udM0aaUOjA1M+YqN6bfxaU8xOaQjLz84I=; 
+ bh=t7tQWDB599mgzXVu98rsjNCBJh04E4IB3vAFUErTcSE=; 
  c=relaxed/relaxed; d=enjuk.jp;
  h=From:Message-ID:To:Subject:Date;
- s=rs20251215; t=1773940622; v=1;
- b=khPvm4sjbytDE+ryWZb5mvByATeK8ZG5rDM0TLZut7GnUr4dkiJejIBI6FccssNW
- ZvTFm+viZSy5xL9rSnfX5DnFGHNfmoemw6YAlbkuLuxv0k+v6p2Pl8gRUABgMEpH
- axpmLZouQiz05mhQUsvls/oVRKZfYFU8af7eCoa3pX7VoF25NBoJq2zyz/PqsZMt
- VwsBGHcD4RidF+buWK7nBSWQECF2p5sKsGpfvH3l8mPZec2PhrsZYCc3CYbkHnli
- U+qPsyP9HTLSu49T/yBh0E0+I9HO6MvvQvVTGNM4dvfbpItZKT5QXVvn4CRhScgS
- dRPf9Z5CBL3VJh2aGSHXgw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ s=rs20251215; t=1773940626; v=1;
+ b=xEuAmbsWx2tlWHC2vSSvQu8Dm2r5gcipiR6jl9TiDD/9u3VYgSV0WVTOyC//dcRA
+ M606VcjKCzGKSPqYbXEzE9ieGyqD7TwTEbadPcX6/Ld04jzG3tmEqbA6drzSWOoc
+ gQh8tug2E9afijTz+drxS4Qq6Ze7rIBD38E9+atcDLq/mAnhOW2MkGP2ZlLb7F6Z
+ oGAPOZgr93Im+OFpEV2QTKMWsw/htxVxmv4mgIrEiB81cJkafdJSqLFEDkeivAxh
+ CH+Q1vWIByoUruJSn4YFcvtw9Fkckl5wTOV2+mJU0wJ5PTqcqsT30qmjcAiyxPCs
+ /cjVRaFNtJmSQ8kCI/IBvA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=khPvm4sj
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 2/3] i40e: add support for
- bpf_xdp_metadata_rx_hash()
+ header.s=rs20251215 header.b=xEuAmbsW
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 3/3] i40e: add support for
+ bpf_xdp_metadata_rx_vlan_tag()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -125,9 +125,9 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
@@ -137,100 +137,55 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: AFA412CFBFF
+X-Rspamd-Queue-Id: D46CE2CFBF4
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Introduce i40e_xdp_rx_hash() which takes the same approach as
-i40e_rx_hash() to extract the hash from RX descriptors.
+Introduce i40e_xdp_rx_vlan_tag() which takes the same approach as
+i40e_process_skb_fields() to extract the VLAN tag from the RX
+descriptor.
 
-Tested with X710 adapter using xdp_hw_metadata, and verified hash
-consistency between bpf_xdp_metadata_rx_hash() and skb->hash.
+Tested with X710 adapter using xdp_hw_metadata, and confirmed that VLAN
+tags match between bpf_xdp_metadata_rx_vlan_tag() and
+skb->vlan_proto/vlan_tci.
 
 Signed-off-by: Kohei Enju <kohei@enjuk.jp>
 ---
- drivers/net/ethernet/intel/i40e/i40e_main.c | 30 +++++++++++++++++++++
- drivers/net/ethernet/intel/i40e/i40e_type.h |  5 ++++
- 2 files changed, 35 insertions(+)
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 7966d9cb8009..6b7e34b16a8d 100644
+index 6b7e34b16a8d..3749f32ef95a 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -4,6 +4,7 @@
- #include <generated/utsrelease.h>
- #include <linux/crash_dump.h>
- #include <linux/intel/libie/pctype.h>
-+#include <linux/intel/libie/rx.h>
- #include <linux/if_bridge.h>
- #include <linux/if_macvlan.h>
- #include <linux/module.h>
-@@ -13585,6 +13586,34 @@ static int i40e_xdp(struct net_device *dev,
- 	}
+@@ -13610,8 +13610,27 @@ static int i40e_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
+ 	return 0;
  }
  
-+static int i40e_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
-+			    enum xdp_rss_hash_type *rss_type)
++static int i40e_xdp_rx_vlan_tag(const struct xdp_md *_ctx, __be16 *vlan_proto,
++				u16 *vlan_tci)
 +{
 +	const struct i40e_xdp_buff *ctx = (const void *)_ctx;
 +	const union i40e_rx_desc *desc = ctx->desc;
-+	struct libeth_rx_pt rx_ptype;
-+	u8 raw_rx_ptype;
 +	u64 status;
 +
 +	status = le64_to_cpu(desc->wb.qword1.status_error_len);
-+	raw_rx_ptype = FIELD_GET(I40E_RXD_QW1_PTYPE_MASK, status);
-+	rx_ptype = libie_rx_pt_parse(raw_rx_ptype);
 +
-+	if (!libeth_rx_pt_has_hash(ctx->xdp.rxq->dev, rx_ptype) ||
-+	    FIELD_GET(I40E_RX_DESC_STATUS_FLTSTAT_MASK, status) !=
-+		    I40E_RX_DESC_FLTSTAT_RSS_HASH)
++	if (!(status & BIT(I40E_RX_DESC_STATUS_L2TAG1P_SHIFT)))
 +		return -ENODATA;
 +
-+	*hash = le32_to_cpu(desc->wb.qword0.hi_dword.rss);
-+	*rss_type = rx_ptype.hash_type;
++	*vlan_proto = cpu_to_be16(ETH_P_8021Q);
++	*vlan_tci = le16_to_cpu(desc->wb.qword0.lo_dword.l2tag1);
 +
 +	return 0;
 +}
 +
-+static const struct xdp_metadata_ops i40e_xdp_metadata_ops = {
-+	.xmo_rx_hash		= i40e_xdp_rx_hash,
-+};
-+
- static const struct net_device_ops i40e_netdev_ops = {
- 	.ndo_open		= i40e_open,
- 	.ndo_stop		= i40e_close,
-@@ -13788,6 +13817,7 @@ static int i40e_config_netdev(struct i40e_vsi *vsi)
- 	i40e_vsi_config_netdev_tc(vsi, vsi->tc_config.enabled_tc);
- 
- 	netdev->netdev_ops = &i40e_netdev_ops;
-+	netdev->xdp_metadata_ops = &i40e_xdp_metadata_ops;
- 	netdev->watchdog_timeo = 5 * HZ;
- 	i40e_set_ethtool_ops(netdev);
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
-index ed8bbdb586da..16a65c6e5153 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_type.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
-@@ -4,6 +4,7 @@
- #ifndef _I40E_TYPE_H_
- #define _I40E_TYPE_H_
- 
-+#include <linux/bits.h>
- #include <uapi/linux/if_ether.h>
- #include "i40e_adminq.h"
- #include "i40e_hmc.h"
-@@ -699,6 +700,10 @@ enum i40e_rx_desc_status_bits {
- 	I40E_RX_DESC_STATUS_LAST /* this entry must be last!!! */
+ static const struct xdp_metadata_ops i40e_xdp_metadata_ops = {
+ 	.xmo_rx_hash		= i40e_xdp_rx_hash,
++	.xmo_rx_vlan_tag	= i40e_xdp_rx_vlan_tag,
  };
  
-+#define I40E_RX_DESC_STATUS_FLTSTAT_MASK                   \
-+	GENMASK_ULL(I40E_RX_DESC_STATUS_FLTSTAT_SHIFT + 1, \
-+		    I40E_RX_DESC_STATUS_FLTSTAT_SHIFT)
-+
- #define I40E_RXD_QW1_STATUS_SHIFT	0
- #define I40E_RXD_QW1_STATUS_MASK	((BIT(I40E_RX_DESC_STATUS_LAST) - 1) \
- 					 << I40E_RXD_QW1_STATUS_SHIFT)
+ static const struct net_device_ops i40e_netdev_ops = {
 -- 
 2.51.0
 
