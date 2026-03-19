@@ -2,98 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CNzuE9z9uml2eAIAu9opvQ
+	id CEb1Fh99u2k2kwIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 20:32:44 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 05:35:43 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8A1072C2091
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Mar 2026 20:32:43 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 739E02C5E49
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Mar 2026 05:35:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1FA7D408F2;
-	Wed, 18 Mar 2026 19:32:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EB64F8405C;
+	Thu, 19 Mar 2026 04:35:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dEhlDR5TbPsp; Wed, 18 Mar 2026 19:32:41 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iUQEw8bQgQt3; Thu, 19 Mar 2026 04:35:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E85D408FD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E295784059
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773862361;
-	bh=rKHvRsr7J3uvlH5SXeDvUkUE8OhKuEC4gUct4RR8Vl4=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1773894939;
+	bh=k1+Oxnsvv66qpdlUU28H1Nhr38/ljX5q8VnsdwVG4DA=;
+	h=Date:From:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=RjJC+YN4lQVaVG3W9XUyLvs8/8qZaM61pQFawFJgeNVPiTAP1d7sF252Fb58e+1A3
-	 1I5a3w3VCNIDB/xjLr+eIIP9bm0LVNVXp7UiMDrwPQBfIxbL6UMK96jctOx0nRADbj
-	 451p99bbajjAshFJOYDdGAXiOuZR7ySJXBNtQDDQ5gWVfxB4X0N09LhWIno3BVUQIc
-	 0pF+PWtOzQeY7ETOLXqFImRUuO35zYcDhRgtiuAb4soiaHuPFhZdUMSznCPncDBCNx
-	 WMLKlOrwdM//xpdZ0cpIbojzrNqav7w8RVPkJKxXvwJ2T6ssvRbiXah8mDKjloXtKW
-	 X5hGLJzM96eDg==
+	b=S00fnykiqEGQv9yl8VdJvAi+dHnhDIoSEpsHSZzW3G1Uwyzt569l8EHdhQZp2thr3
+	 0dcLVmkp89pDJX3CGdVaTrrtYmSbfvaYg3CMPW/5NZBN/6sOCRsQQud+U4Q8LvPnB4
+	 UMSPv8VkCvmJGnySoJLW0lyU2R7uqj4q3lFwxFUuGZqVJAe2nByNkufAcz1WzYpTCy
+	 5OJ7g1xxUPJ+V1RuYETkocwNSdj0/Pn62yciBiWwQpA6BErkx2wmMqg4zAzR8X/Sl3
+	 OcxVwiJOcQN0w6aU/2iPsDqpOw++cUa4TACNHlSBpIx3ohksgLUylmE6hNtck1a4sb
+	 wdNSeM91LjLxg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3E85D408FD;
-	Wed, 18 Mar 2026 19:32:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E295784059;
+	Thu, 19 Mar 2026 04:35:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E08731B6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 19:32:39 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 339F11B6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 04:35:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C41D7408E1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 19:32:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2556C417ED
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 04:35:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MeUoS2KJ8gUZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Mar 2026 19:32:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ id 618nlyl0bvvY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Mar 2026 04:35:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E504B408D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E504B408D0
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E504B408D0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Mar 2026 19:32:37 +0000 (UTC)
-X-CSE-ConnectionGUID: C3PXKT60TmqweEWK7YxrCQ==
-X-CSE-MsgGUID: XBELsj6/SteVQ6i6KLmGFA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="77536237"
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="77536237"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Mar 2026 12:32:36 -0700
-X-CSE-ConnectionGUID: gzzEBS/zR9KPvoDK15AiNA==
-X-CSE-MsgGUID: XOOnhgOvSCObR/edJhmiIw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CA497417EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA497417EB
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CA497417EB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 04:35:36 +0000 (UTC)
+X-CSE-ConnectionGUID: qf0WKNnxTPyXEg+0Romhwg==
+X-CSE-MsgGUID: amP6qLPjQ3aqsE1INIoXlg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="97573189"
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; d="scan'208";a="97573189"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Mar 2026 21:35:36 -0700
+X-CSE-ConnectionGUID: 2Dmso7VCTMGbxiSdHMLvlg==
+X-CSE-MsgGUID: hCQus919Tu+ZdnyZ5o/PTg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; d="scan'208";a="222698223"
-Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
- by orviesa009.jf.intel.com with ESMTP; 18 Mar 2026 12:32:34 -0700
-Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1w2wd6-000000003J1-1wgC;
- Wed, 18 Mar 2026 19:32:32 +0000
-Date: Thu, 19 Mar 2026 03:32:04 +0800
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; d="scan'208";a="260743839"
+Received: from lkp-server02.sh.intel.com (HELO a51c2a36b9df) ([10.239.97.151])
+ by orviesa001.jf.intel.com with ESMTP; 18 Mar 2026 21:35:33 -0700
+Received: from kbuild by a51c2a36b9df with local (Exim 4.98.2)
+ (envelope-from <lkp@intel.com>) id 1w356Y-000000000JZ-1Qr3;
+ Thu, 19 Mar 2026 04:35:30 +0000
+Date: Thu, 19 Mar 2026 12:34:55 +0800
 From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202603190358.ZXK1XbwQ-lkp@intel.com>
+To: Larysa Zaremba <larysa.zaremba@intel.com>
+Cc: oe-kbuild-all@lists.linux.dev,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Message-ID: <202603191235.t3CNQjw3-lkp@intel.com>
 User-Agent: s-nail v14.9.25
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1773862358; x=1805398358;
- h=date:from:to:subject:message-id;
- bh=L7sL2gREGnddJ9OM86q8tg1RF2jEZExjJa/84khT02M=;
- b=KD4GPEAOmrxNU72OTxs9qFDTc3Ecj3V5Ou7unU7OWZPZ4fz5O4bD7toe
- PIDKKXxjfCENCAKnxHiqFI6p45SZpYUwcv5Jy0WoxnPCcD6gTzwzFIare
- 1l1mt4rlRQ01m2NnW6w+QAsZULB8lEN9mjKzCyi3quXwNm37uxHWgNAI6
- 9fCOi/OQNksJ8xV2oLTPqYemD67bx05Zcb1meEnhcqoxH6rmRXO7jwjaX
- nvkvBE3lSilL6jxmyEnDdWDNzOkJ6xPvmhNuaKI2bQidLwBnUweuaolyn
- ecbHxepOIs5GOS8UVgFFW9llMr58iSBTRfY77SJmWdKuurMHkvAyNXCzA
- Q==;
+ t=1773894937; x=1805430937;
+ h=date:from:to:cc:subject:message-id;
+ bh=XOQJX6DutUN0w2RnNl3UE44VuIbNxrz8DJPJAJHq8/w=;
+ b=WBVfIUV13S0tNoPmmLSimjtVem5oUCdSgNQ7c0nePWn+GYp9/mQAaa+b
+ 18kOf9KKq1maDfAtDP10h2toFR+HjhzhlRJNsWdCycAWmCWMcHyj3Ib2o
+ 88eCAD35K3mxXQfpIZiCyDvxi1NnJke/1LpZjDBBAH6wJz/rTSzQB8Xue
+ Ih8wPu+AAvqSq1yNHgBoEgmpTsIr4DDk6w82Ea+ctlhCCM13Ha577wFum
+ eYwhmzE5h8AlxiD6JooYg3Km31u2/qawObHX9yFNcLnSHT29oL5nrWIII
+ GK2lV2UgVwe+UEbu1DEexOupI6DQYphExoiZQkA4FmoGovxMbWpNZT7VM
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KD4GPEAO
-Subject: [Intel-wired-lan] [tnguy-next-queue:200GbE] BUILD SUCCESS
- 6757bd9aa0d6ad5afb6768f44e73276c46b50f5c
+ header.s=Intel header.b=WBVfIUV1
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 83/97]
+ drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:3178:27: sparse: sparse:
+ incorrect type in assignment (different address spaces)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,271 +114,140 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [0.79 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	MIME_GOOD(-0.10)[text/plain];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	ARC_NA(0.00)[];
-	NEURAL_HAM(-0.00)[-0.999];
-	RCPT_COUNT_ONE(0.00)[1];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	MIME_TRACE(0.00)[0:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_COUNT_SEVEN(0.00)[10];
+	FORGED_SENDER(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:larysa.zaremba@intel.com,m:oe-kbuild-all@lists.linux.dev,m:anthony.l.nguyen@intel.com,m:aleksander.lobakin@intel.com,m:aleksandr.loktionov@intel.com,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TO_DN_SOME(0.00)[];
+	ARC_NA(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
+	RCPT_COUNT_FIVE(0.00)[6];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_ALL(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+]
-X-Rspamd-Queue-Id: 8A1072C2091
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	NEURAL_HAM(-0.00)[-0.999];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[10]
+X-Rspamd-Queue-Id: 739E02C5E49
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 200GbE
-branch HEAD: 6757bd9aa0d6ad5afb6768f44e73276c46b50f5c  ixd: add devlink support
+tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+head:   8cf0b18c0700c55deb424e284912d0161885434b
+commit: 556b0d5d0b19690e7951bf5f6bc584037c4017cf [83/97] ixgbevf: use libeth in Rx processing
+config: alpha-randconfig-r123-20260319 (https://download.01.org/0day-ci/archive/20260319/202603191235.t3CNQjw3-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 8.5.0
+sparse: v0.6.5-rc1
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260319/202603191235.t3CNQjw3-lkp@intel.com/reproduce)
 
-elapsed time: 1250m
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603191235.t3CNQjw3-lkp@intel.com/
 
-configs tested: 223
-configs skipped: 5
+sparse warnings: (new ones prefixed by >>)
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:768:18: sparse: sparse: incorrect type in assignment (different address spaces) @@     expected struct bpf_prog *xdp_prog @@     got struct bpf_prog [noderef] __rcu * @@
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:768:18: sparse:     expected struct bpf_prog *xdp_prog
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:768:18: sparse:     got struct bpf_prog [noderef] __rcu *
+>> drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:3178:27: sparse: sparse: incorrect type in assignment (different address spaces) @@     expected struct bpf_prog [noderef] __rcu *xdp_prog @@     got struct bpf_prog *xdp_prog @@
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:3178:27: sparse:     expected struct bpf_prog [noderef] __rcu *xdp_prog
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:3178:27: sparse:     got struct bpf_prog *xdp_prog
+>> drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:4136:25: sparse: sparse: incorrect type in initializer (different address spaces) @@     expected struct bpf_prog [noderef] __rcu *_x_ @@     got struct bpf_prog *xdp_prog @@
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:4136:25: sparse:     expected struct bpf_prog [noderef] __rcu *_x_
+   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c:4136:25: sparse:     got struct bpf_prog *xdp_prog
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+vim +3178 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
 
-tested configs:
-alpha                             allnoconfig    gcc-15.2.0
-alpha                            allyesconfig    gcc-15.2.0
-arc                              allmodconfig    clang-16
-arc                              allmodconfig    gcc-15.2.0
-arc                               allnoconfig    gcc-15.2.0
-arc                              allyesconfig    clang-23
-arc                              allyesconfig    gcc-15.2.0
-arc                   randconfig-001-20260318    gcc-14.3.0
-arc                   randconfig-001-20260318    gcc-8.5.0
-arc                   randconfig-002-20260318    gcc-14.3.0
-arc                   randconfig-002-20260318    gcc-8.5.0
-arm                               allnoconfig    clang-23
-arm                               allnoconfig    gcc-15.2.0
-arm                              allyesconfig    clang-16
-arm                              allyesconfig    gcc-15.2.0
-arm                   randconfig-001-20260318    clang-23
-arm                   randconfig-001-20260318    gcc-8.5.0
-arm                   randconfig-002-20260318    clang-23
-arm                   randconfig-002-20260318    gcc-8.5.0
-arm                   randconfig-003-20260318    clang-23
-arm                   randconfig-003-20260318    gcc-8.5.0
-arm                   randconfig-004-20260318    gcc-8.5.0
-arm64                            allmodconfig    clang-23
-arm64                             allnoconfig    gcc-15.2.0
-arm64                 randconfig-001-20260318    clang-23
-arm64                 randconfig-001-20260318    gcc-8.5.0
-arm64                 randconfig-002-20260318    clang-23
-arm64                 randconfig-002-20260318    gcc-15.2.0
-arm64                 randconfig-003-20260318    clang-23
-arm64                 randconfig-004-20260318    clang-23
-arm64                 randconfig-004-20260318    gcc-12.5.0
-csky                             allmodconfig    gcc-15.2.0
-csky                              allnoconfig    gcc-15.2.0
-csky                  randconfig-001-20260318    clang-23
-csky                  randconfig-001-20260318    gcc-13.4.0
-csky                  randconfig-002-20260318    clang-23
-csky                  randconfig-002-20260318    gcc-14.3.0
-hexagon                          allmodconfig    clang-17
-hexagon                          allmodconfig    gcc-15.2.0
-hexagon                           allnoconfig    clang-23
-hexagon                           allnoconfig    gcc-15.2.0
-hexagon               randconfig-001-20260318    gcc-8.5.0
-hexagon               randconfig-002-20260318    gcc-8.5.0
-i386                             allmodconfig    clang-20
-i386                             allmodconfig    gcc-14
-i386                              allnoconfig    gcc-14
-i386                              allnoconfig    gcc-15.2.0
-i386                             allyesconfig    clang-20
-i386                             allyesconfig    gcc-14
-i386        buildonly-randconfig-001-20260318    clang-20
-i386        buildonly-randconfig-001-20260318    gcc-14
-i386        buildonly-randconfig-002-20260318    gcc-14
-i386        buildonly-randconfig-003-20260318    clang-20
-i386        buildonly-randconfig-003-20260318    gcc-14
-i386        buildonly-randconfig-004-20260318    gcc-14
-i386        buildonly-randconfig-005-20260318    gcc-14
-i386        buildonly-randconfig-006-20260318    gcc-14
-i386                  randconfig-001-20260318    gcc-14
-i386                  randconfig-002-20260318    gcc-14
-i386                  randconfig-003-20260318    clang-20
-i386                  randconfig-003-20260318    gcc-14
-i386                  randconfig-004-20260318    gcc-14
-i386                  randconfig-005-20260318    clang-20
-i386                  randconfig-005-20260318    gcc-14
-i386                  randconfig-006-20260318    gcc-14
-i386                  randconfig-007-20260318    gcc-14
-i386                  randconfig-011-20260318    clang-20
-i386                  randconfig-011-20260318    gcc-14
-i386                  randconfig-012-20260318    clang-20
-i386                  randconfig-012-20260318    gcc-13
-i386                  randconfig-013-20260318    clang-20
-i386                  randconfig-014-20260318    clang-20
-i386                  randconfig-015-20260318    clang-20
-i386                  randconfig-016-20260318    clang-20
-i386                  randconfig-017-20260318    clang-20
-i386                  randconfig-017-20260318    gcc-14
-loongarch                        allmodconfig    clang-19
-loongarch                        allmodconfig    clang-23
-loongarch                         allnoconfig    clang-23
-loongarch                         allnoconfig    gcc-15.2.0
-loongarch                           defconfig    clang-19
-loongarch             randconfig-001-20260318    gcc-8.5.0
-loongarch             randconfig-002-20260318    gcc-8.5.0
-m68k                             allmodconfig    gcc-15.2.0
-m68k                              allnoconfig    gcc-15.2.0
-m68k                             allyesconfig    clang-16
-m68k                             allyesconfig    gcc-15.2.0
-m68k                                defconfig    clang-19
-m68k                                defconfig    gcc-15.2.0
-microblaze                        allnoconfig    gcc-15.2.0
-microblaze                       allyesconfig    gcc-15.2.0
-microblaze                          defconfig    clang-19
-microblaze                          defconfig    gcc-15.2.0
-mips                             allmodconfig    gcc-15.2.0
-mips                              allnoconfig    gcc-15.2.0
-mips                             allyesconfig    gcc-15.2.0
-nios2                            allmodconfig    clang-23
-nios2                            allmodconfig    gcc-11.5.0
-nios2                             allnoconfig    clang-23
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    clang-19
-nios2                               defconfig    gcc-11.5.0
-nios2                 randconfig-001-20260318    gcc-8.5.0
-nios2                 randconfig-002-20260318    gcc-8.5.0
-openrisc                         allmodconfig    clang-23
-openrisc                          allnoconfig    clang-23
-openrisc                          allnoconfig    gcc-15.2.0
-openrisc                            defconfig    gcc-15.2.0
-parisc                           allmodconfig    gcc-15.2.0
-parisc                            allnoconfig    clang-23
-parisc                            allnoconfig    gcc-15.2.0
-parisc                           allyesconfig    clang-19
-parisc                              defconfig    gcc-15.2.0
-parisc                randconfig-001-20260318    gcc-15.2.0
-parisc                randconfig-002-20260318    gcc-8.5.0
-parisc64                            defconfig    clang-19
-parisc64                            defconfig    gcc-15.2.0
-powerpc                          allmodconfig    gcc-15.2.0
-powerpc                           allnoconfig    clang-23
-powerpc                           allnoconfig    gcc-15.2.0
-powerpc                      ppc44x_defconfig    clang-23
-powerpc               randconfig-001-20260318    clang-23
-powerpc               randconfig-002-20260318    gcc-12.5.0
-powerpc                     tqm8548_defconfig    clang-23
-powerpc64             randconfig-001-20260318    gcc-11.5.0
-powerpc64             randconfig-002-20260318    clang-23
-riscv                            allmodconfig    clang-23
-riscv                             allnoconfig    clang-23
-riscv                             allnoconfig    gcc-15.2.0
-riscv                            allyesconfig    clang-16
-riscv                               defconfig    gcc-15.2.0
-riscv                 randconfig-001-20260318    gcc-13.4.0
-riscv                 randconfig-001-20260318    gcc-15.2.0
-riscv                 randconfig-002-20260318    gcc-12.5.0
-riscv                 randconfig-002-20260318    gcc-15.2.0
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-23
-s390                             allyesconfig    gcc-15.2.0
-s390                                defconfig    gcc-15.2.0
-s390                  randconfig-001-20260318    gcc-11.5.0
-s390                  randconfig-001-20260318    gcc-15.2.0
-s390                  randconfig-002-20260318    gcc-15.2.0
-s390                  randconfig-002-20260318    gcc-8.5.0
-sh                               allmodconfig    gcc-15.2.0
-sh                                allnoconfig    clang-23
-sh                                allnoconfig    gcc-15.2.0
-sh                               allyesconfig    clang-19
-sh                                  defconfig    gcc-14
-sh                    randconfig-001-20260318    gcc-15.2.0
-sh                    randconfig-001-20260318    gcc-9.5.0
-sh                    randconfig-002-20260318    gcc-15.2.0
-sparc                             allnoconfig    clang-23
-sparc                             allnoconfig    gcc-15.2.0
-sparc                               defconfig    gcc-15.2.0
-sparc                 randconfig-001-20260318    gcc-13.4.0
-sparc                 randconfig-001-20260318    gcc-8.5.0
-sparc                 randconfig-002-20260318    gcc-13.4.0
-sparc64                          allmodconfig    clang-23
-sparc64                             defconfig    gcc-14
-sparc64               randconfig-001-20260318    gcc-13.4.0
-sparc64               randconfig-001-20260318    gcc-8.5.0
-sparc64               randconfig-002-20260318    gcc-13.4.0
-sparc64               randconfig-002-20260318    gcc-8.5.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-23
-um                               allyesconfig    gcc-14
-um                               allyesconfig    gcc-15.2.0
-um                                  defconfig    gcc-14
-um                             i386_defconfig    gcc-14
-um                    randconfig-001-20260318    gcc-13.4.0
-um                    randconfig-001-20260318    gcc-14
-um                    randconfig-002-20260318    clang-23
-um                    randconfig-002-20260318    gcc-13.4.0
-um                           x86_64_defconfig    gcc-14
-x86_64                           allmodconfig    clang-20
-x86_64                            allnoconfig    clang-20
-x86_64                            allnoconfig    clang-23
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20260318    gcc-14
-x86_64      buildonly-randconfig-002-20260318    gcc-14
-x86_64      buildonly-randconfig-003-20260318    gcc-14
-x86_64      buildonly-randconfig-004-20260318    clang-20
-x86_64      buildonly-randconfig-004-20260318    gcc-14
-x86_64      buildonly-randconfig-005-20260318    clang-20
-x86_64      buildonly-randconfig-005-20260318    gcc-14
-x86_64      buildonly-randconfig-006-20260318    gcc-14
-x86_64                              defconfig    gcc-14
-x86_64                randconfig-001-20260318    clang-20
-x86_64                randconfig-001-20260318    gcc-14
-x86_64                randconfig-002-20260318    gcc-14
-x86_64                randconfig-003-20260318    gcc-14
-x86_64                randconfig-004-20260318    gcc-14
-x86_64                randconfig-005-20260318    gcc-14
-x86_64                randconfig-006-20260318    clang-20
-x86_64                randconfig-006-20260318    gcc-14
-x86_64                randconfig-011-20260318    clang-20
-x86_64                randconfig-011-20260318    gcc-14
-x86_64                randconfig-012-20260318    clang-20
-x86_64                randconfig-012-20260318    gcc-14
-x86_64                randconfig-013-20260318    clang-20
-x86_64                randconfig-013-20260318    gcc-14
-x86_64                randconfig-014-20260318    clang-20
-x86_64                randconfig-015-20260318    clang-20
-x86_64                randconfig-015-20260318    gcc-14
-x86_64                randconfig-016-20260318    clang-20
-x86_64                randconfig-071-20260318    gcc-14
-x86_64                randconfig-072-20260318    gcc-14
-x86_64                randconfig-073-20260318    clang-20
-x86_64                randconfig-073-20260318    gcc-14
-x86_64                randconfig-074-20260318    gcc-14
-x86_64                randconfig-075-20260318    gcc-14
-x86_64                randconfig-076-20260318    gcc-14
-x86_64                           rhel-9.4-bpf    gcc-14
-x86_64                         rhel-9.4-kunit    gcc-14
-x86_64                           rhel-9.4-ltp    gcc-14
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    clang-23
-xtensa                            allnoconfig    gcc-15.2.0
-xtensa                           allyesconfig    clang-23
-xtensa                randconfig-001-20260318    gcc-13.4.0
-xtensa                randconfig-001-20260318    gcc-8.5.0
-xtensa                randconfig-002-20260318    gcc-13.4.0
-xtensa                randconfig-002-20260318    gcc-8.5.0
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3124  
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3125  /**
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3126   * ixgbevf_setup_rx_resources - allocate Rx resources (Descriptors)
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3127   * @adapter: board private structure
+dec0d8e462322a drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Jeff Kirsher     2015-02-10  3128   * @rx_ring: Rx descriptor ring (for a specific queue) to setup
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3129   *
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3130   * Returns 0 on success, negative on failure
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3131   **/
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3132  int ixgbevf_setup_rx_resources(struct ixgbevf_adapter *adapter,
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3133  			       struct ixgbevf_ring *rx_ring)
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3134  {
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3135  	struct libeth_fq fq = {
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3136  		.count		= rx_ring->count,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3137  		.nid		= NUMA_NO_NODE,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3138  		.type		= LIBETH_FQE_MTU,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3139  		.xdp		= !!rx_ring->xdp_prog,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3140  		.idx		= rx_ring->queue_index,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3141  		.buf_len	= IXGBEVF_RX_PAGE_LEN(rx_ring->xdp_prog ?
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3142  						      LIBETH_XDP_HEADROOM :
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3143  						      LIBETH_SKB_HEADROOM),
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3144  	};
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3145  	int ret;
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3146  
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3147  	ret = libeth_rx_fq_create(&fq, &rx_ring->q_vector->napi);
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3148  	if (ret)
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3149  		return ret;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3150  
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3151  	rx_ring->pp = fq.pp;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3152  	rx_ring->rx_fqes = fq.fqes;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3153  	rx_ring->truesize = fq.truesize;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3154  	rx_ring->rx_buf_len = fq.buf_len;
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3155  
+7c3a4626eb65e7 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Florian Fainelli 2017-08-01  3156  	u64_stats_init(&rx_ring->syncp);
+7c3a4626eb65e7 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Florian Fainelli 2017-08-01  3157  
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3158  	/* Round up to nearest 4K */
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3159  	rx_ring->size = rx_ring->count * sizeof(union ixgbe_adv_rx_desc);
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3160  	rx_ring->size = ALIGN(rx_ring->size, 4096);
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3161  
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3162  	rx_ring->desc = dma_alloc_coherent(fq.pp->p.dev, rx_ring->size,
+2a1f8794161d9d drivers/net/ixgbevf/ixgbevf_main.c                Nick Nunley      2010-04-27  3163  					   &rx_ring->dma, GFP_KERNEL);
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3164  
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3165  	if (!rx_ring->desc) {
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3166  		ret = -ENOMEM;
+05d063aa867b7a drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Emil Tantilov    2014-01-17  3167  		goto err;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3168  	}
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3169  
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3170  	/* XDP RX-queue info */
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3171  	ret = __xdp_rxq_info_reg(&rx_ring->xdp_rxq, adapter->netdev,
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3172  				 rx_ring->queue_index, 0, rx_ring->truesize);
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3173  	if (ret)
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3174  		goto err;
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3175  
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3176  	xdp_rxq_info_attach_page_pool(&rx_ring->xdp_rxq, fq.pp);
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3177  
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16 @3178  	rx_ring->xdp_prog = adapter->xdp_prog;
+c7aec59657b60f drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Tony Nguyen      2018-03-16  3179  
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3180  	return 0;
+05d063aa867b7a drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Emil Tantilov    2014-01-17  3181  err:
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3182  	libeth_rx_fq_destroy(&fq);
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3183  	rx_ring->rx_fqes = NULL;
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3184  	rx_ring->pp = NULL;
+05d063aa867b7a drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Emil Tantilov    2014-01-17  3185  	dev_err(rx_ring->dev, "Unable to allocate memory for the Rx descriptor ring\n");
+556b0d5d0b1969 drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c Larysa Zaremba   2026-03-04  3186  	return ret;
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3187  }
+92915f71201b43 drivers/net/ixgbevf/ixgbevf_main.c                Greg Rose        2010-01-09  3188  
 
---
+:::::: The code at line 3178 was first introduced by commit
+:::::: c7aec59657b60f3a29fc7d3274ebefd698879301 ixgbevf: Add XDP support for pass and drop actions
+
+:::::: TO: Tony Nguyen <anthony.l.nguyen@intel.com>
+:::::: CC: Jeff Kirsher <jeffrey.t.kirsher@intel.com>
+
+-- 
 0-DAY CI Kernel Test Service
 https://github.com/intel/lkp-tests/wiki
