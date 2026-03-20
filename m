@@ -2,109 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id cJ0rA1VJvWlr8gIAu9opvQ
+	id 6LTGI75JvWlr8gIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 14:19:17 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 14:21:02 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B1202DAD9B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 14:19:16 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01EC42DADDE
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 14:21:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 11429847D4;
-	Fri, 20 Mar 2026 13:19:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D82A847CA;
+	Fri, 20 Mar 2026 13:20:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dXYQDYpgWa8A; Fri, 20 Mar 2026 13:19:13 +0000 (UTC)
+ id zS0PYiuEed-n; Fri, 20 Mar 2026 13:20:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79FCF847D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E947847D6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774012753;
-	bh=9MLYYERdfFA1CB4OH/+XWHwZn9CqGwo7sksbez6iZNc=;
+	s=default; t=1774012858;
+	bh=TZoiyOPcXYFytYbcPhQQwtFYV69MPiajbtiVckKehhI=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=BViC/SGYYCoRsROLnOM1eNBeu5RMM+joaTuPADHyxbpFzd7WLUaGtm58vhsTYqdrL
-	 9wHNyvBtl3yuRrvLPPLM+DX/il065ZTAnzYFAErv0wXOmSGZEvzaJcFwreRR/bEDtn
-	 BvGp+rlAlv0UmBs89ve1q+LDTJbX4XnQhYU/jpb01fH1RrLESbY64CCojj4XKyLOKz
-	 rXNRpYc07GNOlhc20AnuwgjU7axWENhx+n8jqHptzwzOB2Qi3ns0YLSG8cUaLfYMT7
-	 aY0f1TOBy2fbxM8eJwr1Ndsn/IzbxVEKhzpL9Fv3QQYvJUYPzGf1ZT3/abdJfRgRUS
-	 osSrhMYqDWj+g==
+	b=849IP3NvfGcIOM5rRiLoMnlBVC/MAA+bTua9RbaUcYB2ZIrco4McHhO5flK8V107r
+	 l3wKuSMz4peUl2tf0NUQvSTOTv6+8O+5Z8aR76IrOg9smZqr7KkOgbk0P+XtIJeRTJ
+	 UnhrHC/HIn+hrjrBnWEBJvGvDpMeoir/4vaXZhS4f/vWVja8n6uKts4gJdmsx78OAu
+	 MGkO6auqF1ydNZJkPAtecMs0q5FpNVe8DgUKGbwJHvqBVME4jk0Jo3E5h0xRMkF+Fl
+	 nICyqn4hv6YAQ8HwKyu/bPr0g2KDnh2okoMKzWl5AuMHm1rdK3PSxWJ8DrdKc7fiaj
+	 df3ADZkj60Vnw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 79FCF847D5;
-	Fri, 20 Mar 2026 13:19:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E947847D6;
+	Fri, 20 Mar 2026 13:20:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 1F3D91B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:19:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id D4D5F1B6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:20:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0815041CC7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:19:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C655B405FD
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:20:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gfN4uQBQ1EfD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Mar 2026 13:19:11 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PnJH-CMciG6S for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Mar 2026 13:20:56 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EFAFA41CC5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFAFA41CC5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9C3E14014E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C3E14014E
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id EFAFA41CC5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:19:10 +0000 (UTC)
-X-CSE-ConnectionGUID: UEHPyYT5R9qzJCQZEg9riw==
-X-CSE-MsgGUID: W5XUoZUZQjORG3UOT0sDjw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="85722485"
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="85722485"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9C3E14014E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 13:20:55 +0000 (UTC)
+X-CSE-ConnectionGUID: Wpj1J/kMRQmOwVDDa5WADA==
+X-CSE-MsgGUID: 0KgWl0i/S/OZsT7Ti+HkyA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="85722707"
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="85722707"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2026 06:19:10 -0700
-X-CSE-ConnectionGUID: Lx423qDxSKu/l1MtS1QhTQ==
-X-CSE-MsgGUID: USvdCJOpRS2ELwjrPwdxxA==
+ 20 Mar 2026 06:20:55 -0700
+X-CSE-ConnectionGUID: YB/3+kZyQZOx90BORRLQcQ==
+X-CSE-MsgGUID: 02YQOKTsRDmxZwYCT/OZ+w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="227409341"
+X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; d="scan'208";a="227409603"
 Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.246.17.139])
  ([10.246.17.139])
  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2026 06:19:07 -0700
-Message-ID: <ccac99ca-4a9e-4997-adf4-2eee389d60cc@linux.intel.com>
-Date: Fri, 20 Mar 2026 14:18:59 +0100
+ 20 Mar 2026 06:20:53 -0700
+Message-ID: <ea943092-d0a2-4a93-b6f2-72fcad8f9914@linux.intel.com>
+Date: Fri, 20 Mar 2026 14:20:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com
-Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@intel.com>,
- Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
-References: <20260320050556.422762-1-aleksandr.loktionov@intel.com>
+Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@intel.com>
+References: <20260320050529.422444-1-aleksandr.loktionov@intel.com>
 Content-Language: en-US
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <20260320050556.422762-1-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260320050529.422444-1-aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1774012751; x=1805548751;
+ t=1774012855; x=1805548855;
  h=message-id:date:mime-version:subject:to:cc:references:
  from:in-reply-to:content-transfer-encoding;
- bh=qZa3UKNeYYMd21cN91QyetESTuvn9ZfMASz3YdI2F6c=;
- b=GPQ08PbE6YkIucK/2bcVqIGLNUrvsmiz4HCItJ4cYmgJXT8D72cV/WVf
- WFDLbvgSFXMBboyVg4RxwHqSsso4ORcnjo9NREpEGT0UiCOR2z8R8ZMql
- dM91emR7SFDBIRzyGro8jHkASwX+jBNjVOhYULLbqD8q40Mt7ffoT8VQL
- 3ezwWnDd1tY4rhoRKBBkOE89BwXfP/ROT9n7LGQEGYgQLvI/zg0+YZnqR
- ALX6c8iuugERuoRAcTShHiE2TfBn3dg7TNEG6zT+EJjonsThrvF7Xt3Pn
- ZaiwXagv2eVXET1ZCo/XQkZSKmPG5zGb7zByQ7mq73Af8gLNiSofkNAKt
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=PQ6yOqa4PgyAZF4ktQrGNLVKtsw3530HSr+f7H4rcpw=;
+ b=keRNZEkDmrtEuG26bDO+ziyWtDr0e+I7Pk0EQFwv2qmh+2th1N87t46T
+ w1VXy4DeKDj++H0NFc8CqujdOJlWbFIQAeW6q/kkl7OAYfMvB2w7LLf5C
+ AJGAQ7m+w4SOSz01Wy9QTTRdA6DtKds5rnFBbADvm6aHx6e35iuqoR3R2
+ 4v4EQ1bEebcB4KiJG5r1KNCSbLXJcYqJdq6P39B8BMzFSgF2vms4lttdC
+ ElV1aCBmkPDWBBTqWjJghWB6ZxSFspeRDhcKfCOu3R18pn+luwPzYpXOw
+ 4oUgXvS5hGVJzeIPV/pd5LctMmu5DQg8RCKUa3j1ttUyUexpg+xu2uB5w
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GPQ08PbE
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: use ice_fill_eth_hdr()
- in ice_fill_sw_rule()
+ header.s=Intel header.b=keRNZEkD
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: fix allocating
+ excessive memory in ice_create_lag_recipe()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,26 +118,25 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [-0.71 / 15.00];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [-0.61 / 15.00];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,linux.intel.com:mid,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:marcin.szycik@intel.com,m:martyna.szapar-mudlaw@intel.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:marcin.szycik@intel.com,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,linux.intel.com:mid,osuosl.org:dkim];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[6];
+	RCPT_COUNT_FIVE(0.00)[5];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
@@ -147,10 +145,10 @@ X-Spamd-Result: default: False [-0.71 / 15.00];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 0B1202DAD9B
+X-Rspamd-Queue-Id: 01EC42DADDE
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
@@ -161,49 +159,30 @@ On 20.03.2026 06:05, Aleksandr Loktionov wrote:
 
 ACK
 
-> Use the already existing helper function to fill Ethernet header. Also
-> replace sizeof with a (also existing) macro to reduce the number of
-> variables.
+> For some reason ice_create_lag_recipe() allocates an array of 64
+> struct ice_aqc_recipe_data_elem elements, while it only needs one (1).
+> Fix it, while also using kzalloc_obj().
 > 
-> Suggested-by: Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@intel.com>
+> Fixes: 1e0f9881ef79 ("ice: Flesh out implementation of support for SRIOV on bonded interface")
 > Signed-off-by: Marcin Szycik <marcin.szycik@intel.com>
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_switch.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+>  drivers/net/ethernet/intel/ice/ice_lag.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-> index bb0f990..6496534 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_switch.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-> @@ -2612,7 +2612,6 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
->  	u16 vlan_id = ICE_MAX_VLAN_ID + 1;
->  	u16 vlan_tpid = ETH_P_8021Q;
->  	void *daddr = NULL;
-> -	u16 eth_hdr_sz;
->  	u8 *eth_hdr;
->  	u32 act = 0;
->  	__be16 *off;
-> @@ -2625,11 +2624,10 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
->  		return;
->  	}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+> index 310e8fe..70357dc 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_lag.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+> @@ -2418,8 +2418,8 @@ static int ice_create_lag_recipe(struct ice_hw *hw, u16 *rid,
+>  	if (err)
+>  		return err;
 >  
-> -	eth_hdr_sz = sizeof(dummy_eth_header);
->  	eth_hdr = s_rule->hdr_data;
+> -	new_rcp = kzalloc(ICE_RECIPE_LEN * ICE_MAX_NUM_RECIPES, GFP_KERNEL);
+> +	new_rcp = kzalloc_obj(*new_rcp, GFP_KERNEL);
+>  	if (!new_rcp)
+>  		return -ENOMEM;
+> 
+>  	memcpy(new_rcp, base_recipe, ICE_RECIPE_LEN);
 >  
->  	/* initialize the ether header with a dummy header */
-> -	memcpy(eth_hdr, dummy_eth_header, eth_hdr_sz);
-> +	ice_fill_eth_hdr(eth_hdr);
->  	ice_fill_sw_info(hw, f_info);
->  
->  	switch (f_info->fltr_act) {
-> @@ -2730,7 +2728,7 @@ ice_fill_sw_rule(struct ice_hw *hw, struct ice_fltr_info *f_info,
->  
->  	/* Create the switch rule with the final dummy Ethernet header */
->  	if (opc != ice_aqc_opc_update_sw_rules)
-> -		s_rule->hdr_len = cpu_to_le16(eth_hdr_sz);
-> +		s_rule->hdr_len = cpu_to_le16(DUMMY_ETH_HDR_LEN);
->  }
->  
->  /**
 
