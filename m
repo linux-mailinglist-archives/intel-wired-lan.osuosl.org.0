@@ -2,94 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SEv0CfyhvGns1gIAu9opvQ
+	id yJIkIfyhvGns1gIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
 	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 02:25:16 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 955C92D4A61
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF23D2D4A63
 	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 02:25:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CA96F616A7;
-	Fri, 20 Mar 2026 01:25:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4C20541BB4;
+	Fri, 20 Mar 2026 01:25:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id G7zm7gPeeaei; Fri, 20 Mar 2026 01:25:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xsb-FBuRBxL4; Fri, 20 Mar 2026 01:25:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BFF0616AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 97AC641BB7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1773969912;
-	bh=suEW+QJFcSsgWhqrlb5+SoMaziekppWcaVGrKT6pk3Q=;
+	s=default; t=1773969913;
+	bh=IJxOxbLkNxTNWsN6hAmdg1mKxCY8QyUuCBIp5EpuSIA=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=SNi+3s7BppIZzF5zIetlSRuHksL5yPSKMQ8FJmifNM32oKjjZEx8cBMXayq++Yh4o
-	 8fdA+SMpgBSrph2djdfC34JUGx6NI95XlIt9oy1MXLG01yYC1jpYEc166Nxeldf744
-	 lk0yaS4LxRagofIN/s8/DJItgUnkyAp/7QHRoTimHMBPrn/kGdcfdbw8Qt2lPcyoeP
-	 sNpdbjdgFuWrBcE3d0HX9GqDNRQUlQQInrdNPj26GtpMinhVra8O7DOvx1mkCfKvzu
-	 vzG1KHj38DQkz89xUtuTZweduNB1sdfol65jEC0bOApDCrbSM6aakOph4kEeGfrItz
-	 VpeJJHW/PLlwA==
+	b=N9ARiuiJUaQQki5aml2S38YfmJzHWTNlttcfwonrGNW21QevYyjNpT17OxweKLFhB
+	 /e6Fd/+Hc87am2lpfy/hMW/gjk/pYIfDnnBMdBhcLDFiAHNZAdyHWxj0/xPtntBB9D
+	 8NHNu7Oa+JmSdm8fuDl/SufC1pePAV0TKqP/Ysmy1s18LZYp9e7X4Dd/ohK+AAxYZe
+	 3bTT3QAX1sv1d+D1NWP24C3nfyy/3k2hnpz5shnuly4Wd7TyaToC8/AtPREE7fkaR/
+	 3GKcXFGaYwOtUBv/ZeIzolH3lriBPCCG94MTmEJ7eBe2+5ugbsBlmZFMVcbbnsZk4H
+	 XHHlxtI5+bo6g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0BFF0616AE;
-	Fri, 20 Mar 2026 01:25:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 97AC641BB7;
+	Fri, 20 Mar 2026 01:25:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 5CF2F1B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 216E7265
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 42AAF616AB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 769488452D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ryC6U7yokE0j for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Mar 2026 01:25:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.175;
- helo=mail-dy1-f175.google.com; envelope-from=stfomichev@gmail.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dacM0J8R33tK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Mar 2026 01:25:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=74.125.82.45;
+ helo=mail-dl1-f45.google.com; envelope-from=stfomichev@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7E4C9616AA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E4C9616AA
-Received: from mail-dy1-f175.google.com (mail-dy1-f175.google.com
- [74.125.82.175])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7E4C9616AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:09 +0000 (UTC)
-Received: by mail-dy1-f175.google.com with SMTP id
- 5a478bee46e88-2bdcf5970cdso1112566eec.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 18:25:09 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A905A8452A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A905A8452A
+Received: from mail-dl1-f45.google.com (mail-dl1-f45.google.com [74.125.82.45])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A905A8452A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 01:25:10 +0000 (UTC)
+Received: by mail-dl1-f45.google.com with SMTP id
+ a92af1059eb24-12732e6a123so2874789c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Mar 2026 18:25:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773969908; x=1774574708;
+ d=1e100.net; s=20251104; t=1773969910; x=1774574710;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=suEW+QJFcSsgWhqrlb5+SoMaziekppWcaVGrKT6pk3Q=;
- b=OH3VmU0gA/6o7Gv611/47KtDrt0Vnj0aKKxCljPRmnrZeEo0hket0mJ8hR7CNRDfpD
- Uwx6ksTlbdu0yUfi19CIRybDUk0ylNg48DqZVUsAJFplhgKei+co6WzRa2g8XhUujYmJ
- lVx33XlCXV8RTF9y7Kwsh68a6nvohC8mXjCwps43UYdF9zSLdxyl4mRe44Vw4wkHoBYR
- cDYabfrsw0UkVSmCpIg15+QOpd7NIXd3HS27hPZ7VWXw+mk+oEoAvx6ZaHdD6i4zgIdY
- HWF9RaDo2uaNGQmzrW+YinmxB5SI0AzIu6tYTDgczzfcOp2uB87BstsQLUF+A7IIbsKC
- Ch6g==
+ bh=IJxOxbLkNxTNWsN6hAmdg1mKxCY8QyUuCBIp5EpuSIA=;
+ b=UOuak0mQn4dHur2KhqiKu1FvaMsaPfd/fPE9+Dbt1InmEq6+DbuaAIwBP7gHSTrwvu
+ eZHU3Fmzrc5rqagNdZiPTRaxjW2WTeyYo6VoYmLW6JcS9YPyULHM+5gCpayO2V+XNIgA
+ 4ou4L13+1wsFMhsnil1KiPWidBd7nBxUP3ZKrJ8dl2kjle4LwJNV6jE6fq7JqpY35eCA
+ motOdG6jGNBZNGYiarOhVsM3BzRQXHC4sE8I+U7ZFnctGRuMF2986ulMv6WVTpMOe+0i
+ lmwSX/JerAuQzWBAkl6okkH/YspHzeuUy18ZeLBuQnjTzK6z1sODuPN76PlZXcPhwa6x
+ Wwlw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWknLiUpwmUsza6XrdCL5lXmk76Mzt8flROnkPHSyyRR6/Zy08sYw2H35TokESVHfFK050ywGpKvy4Hd7CB1H8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy3Gz91altDGbtddVnZxkdyDPaVcZtIoEbpATZ9IrMVOwYhx0ap
- XZ75mt4avOIMA0ZLIbJjD0fNxTPtvFxJ5z/AhRP9yfEIlp3OqU73b60=
-X-Gm-Gg: ATEYQzx5Pm1V0tzcsPp+ih9aWkZUw45Fc7JQpCv9FCOzjfwXHVt68kJIttecNTUDAv3
- KgAb5uJKI051Nizt6CFFPzPCypjCI5zzAObD02E9uq8URUF3kqhMhBEqbfM+XtUBOMYGxFclkxA
- 7pjIcIJXus5XaZ08WlF6Xxd+S3h+2eKQhQdDnaMBF7LJU1gd90DTiSJLpUJSUv7D3ss2/KXLWV4
- cXqE9XDAL1wfj2yyjo+od66Ui7mUUDV25xiqtCToa+cZArE/xI4BC9OYfN4XeLeLGHhaNH9VIje
- dAKE/CLcRonBatRNePtX3OGsNcgg4DpGwceF+cDD40JC5BaAccXTVPCYM7VeJ4BOVUET85Nv/xU
- hJUiWGEgPI2ZhOU4bTSSzbRdneH3Oz1xU9+NSX1Q2dkCseiG5KncaPWLOGYz8PnMPRn4OpTv4+l
- 2RLGmtqFsYVvLYmO0Tl2/izEahCsF/HRSAXI624rj4b/iCk9ubgYuYmZ16RNt3SmTZnqDp1ZJSY
- OLsc6ZtgITj5k8Knw==
-X-Received: by 2002:a05:7300:6428:b0:2a4:701a:b9ba with SMTP id
- 5a478bee46e88-2c10987b1cbmr609228eec.14.1773969908079; 
- Thu, 19 Mar 2026 18:25:08 -0700 (PDT)
+ AJvYcCVK5xn0sHcMGphBSLRadyzgDQOpcx810oRAxZxqspcBJfRsl5Um3o4S0cPL5oVJiJBzSCW/8H4N9mCyt5vD49o=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzwI5iTKpvPkwXbl5Pyubv5EjyeRa9F0xbtD9BqS/aoiqMiSvYS
+ OktNQi9mS58sIw7GZ7ogfY5IJ3PtFptRwwx+UdrBXNGcGuRc8EYNxac=
+X-Gm-Gg: ATEYQzyIt8oB0+criWUo52bT5jRtrSetjHBw/TBJgVs1vENZ9TVNoO1s8cVwCK0zdPx
+ d3mF9BcieFQhAiGHvbLZma3u//dOaq0VwL6Jd16noOCwhkiwhv2HZtO84IErfNK6Q3T6IEmeRij
+ bWObR0Ba2EllxF7hYlYIGV4ZbmRgDytep7a2VCqH1Bahyg6PWdOeQK2zbibF/qyKxCt/G0PfKpx
+ HC96K2K3Ti7GmYHYwVtMK7J8i4o9eodRj/XY5xaSLUCvOvZtCpsqQblyrzno2O8u8ANcsHA43c3
+ i9YoPO2pADKIBIkcyYVj4jk2ghP9bnQPtoEDOxxRKkyCA14Qf6IGGiSdDw0vwE3JvoCA5wLH3xy
+ btr7jxh1/LPLSfpAo8UIAzpWrRLXgvW453MDou6WY1U8DyYcMVWo+a3sNFW8K5wmhP8bmYjwV9t
+ 2ujbgQeoc7uiNT5fQN93IDIcHwWX1wMqbWbJyQjoGksjlLKknOz+r9hh94HPyoxI2KKNqMhYieF
+ 7JEYhV0OHbsVbbwdw==
+X-Received: by 2002:a05:7022:fa1:b0:123:2d38:929a with SMTP id
+ a92af1059eb24-12a726f86c3mr611130c88.38.1773969909296; 
+ Thu, 19 Mar 2026 18:25:09 -0700 (PDT)
 Received: from localhost (c-76-102-12-149.hsd1.ca.comcast.net. [76.102.12.149])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2c10b2e6c30sm1101353eec.25.2026.03.19.18.25.07
+ 5a478bee46e88-2c10b17a7c1sm1191627eec.7.2026.03.19.18.25.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Mar 2026 18:25:07 -0700 (PDT)
+ Thu, 19 Mar 2026 18:25:08 -0700 (PDT)
 From: Stanislav Fomichev <sdf@fomichev.me>
 To: netdev@vger.kernel.org
 Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
@@ -106,18 +105,18 @@ Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
  linux-rdma@vger.kernel.org, linux-wireless@vger.kernel.org,
  linux-kselftest@vger.kernel.org, leon@kernel.org
-Date: Thu, 19 Mar 2026 18:24:52 -0700
-Message-ID: <20260320012501.2033548-5-sdf@fomichev.me>
+Date: Thu, 19 Mar 2026 18:24:53 -0700
+Message-ID: <20260320012501.2033548-6-sdf@fomichev.me>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260320012501.2033548-1-sdf@fomichev.me>
 References: <20260320012501.2033548-1-sdf@fomichev.me>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=fomichev.me
-Subject: [Intel-wired-lan] [PATCH net-next v3 04/13] net: move promiscuity
- handling into dev_rx_mode_work
+Subject: [Intel-wired-lan] [PATCH net-next v3 05/13] fbnic: convert to
+ ndo_set_rx_mode_async
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -159,212 +158,158 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[sdf@fomichev.me,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	NEURAL_HAM(-0.00)[-0.996];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.997];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 955C92D4A61
+X-Rspamd-Queue-Id: EF23D2D4A63
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Move unicast promiscuity tracking into dev_rx_mode_work so it runs
-under netdev_ops_lock instead of under the addr_lock spinlock. This
-is required because __dev_set_promiscuity calls dev_change_rx_flags
-and __dev_notify_flags, both of which may need to sleep.
+Convert fbnic from ndo_set_rx_mode to ndo_set_rx_mode_async. The
+driver's __fbnic_set_rx_mode() now takes explicit uc/mc list
+parameters and uses __hw_addr_sync_dev() on the snapshots instead
+of __dev_uc_sync/__dev_mc_sync on the netdev directly.
 
-Change ASSERT_RTNL() to netdev_ops_assert_locked() in
-__dev_set_promiscuity, netif_set_allmulti and __dev_change_flags
-since these are now called from the work queue under the ops lock.
+Update callers in fbnic_up, fbnic_fw_config_after_crash,
+fbnic_bmc_rpc_check and fbnic_set_mac to pass the real address
+lists calling __fbnic_set_rx_mode outside the async work path.
 
+Cc: Alexander Duyck <alexanderduyck@fb.com>
+Cc: kernel-team@meta.com
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Stanislav Fomichev <sdf@fomichev.me>
 ---
- Documentation/networking/netdevices.rst |  4 ++
- net/core/dev.c                          | 79 +++++++++++++++++--------
- 2 files changed, 57 insertions(+), 26 deletions(-)
+ .../net/ethernet/meta/fbnic/fbnic_netdev.c    | 20 ++++++++++++-------
+ .../net/ethernet/meta/fbnic/fbnic_netdev.h    |  4 +++-
+ drivers/net/ethernet/meta/fbnic/fbnic_pci.c   |  4 ++--
+ drivers/net/ethernet/meta/fbnic/fbnic_rpc.c   |  2 +-
+ 4 files changed, 19 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/networking/netdevices.rst b/Documentation/networking/netdevices.rst
-index dc83d78d3b27..5cdaa1a3dcc8 100644
---- a/Documentation/networking/netdevices.rst
-+++ b/Documentation/networking/netdevices.rst
-@@ -298,6 +298,10 @@ struct net_device synchronization rules
- 	Notes: Sleepable version of ndo_set_rx_mode. Receives snapshots
- 	of the unicast and multicast address lists.
- 
-+ndo_change_rx_flags:
-+	Synchronization: rtnl_lock() semaphore. In addition, netdev instance
-+	lock if the driver implements queue management or shaper API.
-+
- ndo_setup_tc:
- 	``TC_SETUP_BLOCK`` and ``TC_SETUP_FT`` are running under NFT locks
- 	(i.e. no ``rtnl_lock`` and no device instance lock). The rest of
-diff --git a/net/core/dev.c b/net/core/dev.c
-index fedc423306fc..fc5c9b14faa0 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -9574,7 +9574,7 @@ static int __dev_set_promiscuity(struct net_device *dev, int inc, bool notify)
- 	kuid_t uid;
- 	kgid_t gid;
- 
--	ASSERT_RTNL();
-+	netdev_ops_assert_locked(dev);
- 
- 	promiscuity = dev->promiscuity + inc;
- 	if (promiscuity == 0) {
-@@ -9610,16 +9610,8 @@ static int __dev_set_promiscuity(struct net_device *dev, int inc, bool notify)
- 
- 		dev_change_rx_flags(dev, IFF_PROMISC);
- 	}
--	if (notify) {
--		/* The ops lock is only required to ensure consistent locking
--		 * for `NETDEV_CHANGE` notifiers. This function is sometimes
--		 * called without the lock, even for devices that are ops
--		 * locked, such as in `dev_uc_sync_multiple` when using
--		 * bonding or teaming.
--		 */
--		netdev_ops_assert_locked(dev);
-+	if (notify)
- 		__dev_notify_flags(dev, old_flags, IFF_PROMISC, 0, NULL);
--	}
- 	return 0;
+diff --git a/drivers/net/ethernet/meta/fbnic/fbnic_netdev.c b/drivers/net/ethernet/meta/fbnic/fbnic_netdev.c
+index b4b396ca9bce..c406a3b56b37 100644
+--- a/drivers/net/ethernet/meta/fbnic/fbnic_netdev.c
++++ b/drivers/net/ethernet/meta/fbnic/fbnic_netdev.c
+@@ -183,7 +183,9 @@ static int fbnic_mc_unsync(struct net_device *netdev, const unsigned char *addr)
+ 	return ret;
  }
  
-@@ -9641,7 +9633,7 @@ int netif_set_allmulti(struct net_device *dev, int inc, bool notify)
- 	unsigned int old_flags = dev->flags, old_gflags = dev->gflags;
- 	unsigned int allmulti, flags;
+-void __fbnic_set_rx_mode(struct fbnic_dev *fbd)
++void __fbnic_set_rx_mode(struct fbnic_dev *fbd,
++			 struct netdev_hw_addr_list *uc,
++			 struct netdev_hw_addr_list *mc)
+ {
+ 	bool uc_promisc = false, mc_promisc = false;
+ 	struct net_device *netdev = fbd->netdev;
+@@ -213,10 +215,10 @@ void __fbnic_set_rx_mode(struct fbnic_dev *fbd)
+ 	}
  
--	ASSERT_RTNL();
-+	netdev_ops_assert_locked(dev);
+ 	/* Synchronize unicast and multicast address lists */
+-	err = __dev_uc_sync(netdev, fbnic_uc_sync, fbnic_uc_unsync);
++	err = __hw_addr_sync_dev(uc, netdev, fbnic_uc_sync, fbnic_uc_unsync);
+ 	if (err == -ENOSPC)
+ 		uc_promisc = true;
+-	err = __dev_mc_sync(netdev, fbnic_mc_sync, fbnic_mc_unsync);
++	err = __hw_addr_sync_dev(mc, netdev, fbnic_mc_sync, fbnic_mc_unsync);
+ 	if (err == -ENOSPC)
+ 		mc_promisc = true;
  
- 	allmulti = dev->allmulti + inc;
- 	if (allmulti == 0) {
-@@ -9671,12 +9663,36 @@ int netif_set_allmulti(struct net_device *dev, int inc, bool notify)
- 	return 0;
+@@ -238,18 +240,21 @@ void __fbnic_set_rx_mode(struct fbnic_dev *fbd)
+ 	fbnic_write_tce_tcam(fbd);
  }
  
-+/**
-+ * dev_uc_promisc_update() - evaluate whether uc_promisc should be toggled.
-+ * @dev: device
-+ *
-+ * Must be called under netif_addr_lock_bh.
-+ * Return: +1 to enter promisc, -1 to leave, 0 for no change.
-+ */
-+static int dev_uc_promisc_update(struct net_device *dev)
-+{
-+	if (dev->priv_flags & IFF_UNICAST_FLT)
-+		return 0;
-+
-+	if (!netdev_uc_empty(dev) && !dev->uc_promisc) {
-+		dev->uc_promisc = true;
-+		return 1;
-+	}
-+	if (netdev_uc_empty(dev) && dev->uc_promisc) {
-+		dev->uc_promisc = false;
-+		return -1;
-+	}
-+	return 0;
-+}
-+
- static void dev_rx_mode_work(struct work_struct *work)
+-static void fbnic_set_rx_mode(struct net_device *netdev)
++static void fbnic_set_rx_mode(struct net_device *netdev,
++			      struct netdev_hw_addr_list *uc,
++			      struct netdev_hw_addr_list *mc)
  {
- 	struct net_device *dev = container_of(work, struct net_device,
- 					      rx_mode_work);
- 	struct netdev_hw_addr_list uc_snap, mc_snap, uc_ref, mc_ref;
- 	const struct net_device_ops *ops = dev->netdev_ops;
-+	int promisc_inc;
- 	int err;
+ 	struct fbnic_net *fbn = netdev_priv(netdev);
+ 	struct fbnic_dev *fbd = fbn->fbd;
  
- 	__hw_addr_init(&uc_snap);
-@@ -9704,16 +9720,29 @@ static void dev_rx_mode_work(struct work_struct *work)
- 		if (!err)
- 			err = __hw_addr_list_snapshot(&mc_ref, &dev->mc,
- 						      dev->addr_len);
--		netif_addr_unlock_bh(dev);
+ 	/* No need to update the hardware if we are not running */
+ 	if (netif_running(netdev))
+-		__fbnic_set_rx_mode(fbd);
++		__fbnic_set_rx_mode(fbd, uc, mc);
+ }
  
- 		if (err) {
- 			netdev_WARN(dev, "failed to sync uc/mc addresses\n");
- 			__hw_addr_flush(&uc_snap);
- 			__hw_addr_flush(&uc_ref);
- 			__hw_addr_flush(&mc_snap);
-+			netif_addr_unlock_bh(dev);
- 			goto out;
- 		}
+ static int fbnic_set_mac(struct net_device *netdev, void *p)
+ {
++	struct fbnic_net *fbn = netdev_priv(netdev);
+ 	struct sockaddr *addr = p;
  
-+		promisc_inc = dev_uc_promisc_update(dev);
-+
-+		netif_addr_unlock_bh(dev);
-+	} else {
-+		netif_addr_lock_bh(dev);
-+		promisc_inc = dev_uc_promisc_update(dev);
-+		netif_addr_unlock_bh(dev);
-+	}
-+
-+	if (promisc_inc)
-+		__dev_set_promiscuity(dev, promisc_inc, false);
-+
-+	if (ops->ndo_set_rx_mode_async) {
- 		ops->ndo_set_rx_mode_async(dev, &uc_snap, &mc_snap);
+ 	if (!is_valid_ether_addr(addr->sa_data))
+@@ -257,7 +262,8 @@ static int fbnic_set_mac(struct net_device *netdev, void *p)
  
- 		netif_addr_lock_bh(dev);
-@@ -9722,6 +9751,10 @@ static void dev_rx_mode_work(struct work_struct *work)
- 		__hw_addr_list_reconcile(&dev->mc, &mc_snap,
- 					 &mc_ref, dev->addr_len);
- 		netif_addr_unlock_bh(dev);
-+	} else if (ops->ndo_set_rx_mode) {
-+		netif_addr_lock_bh(dev);
-+		ops->ndo_set_rx_mode(dev);
-+		netif_addr_unlock_bh(dev);
+ 	eth_hw_addr_set(netdev, addr->sa_data);
+ 
+-	fbnic_set_rx_mode(netdev);
++	if (netif_running(netdev))
++		__fbnic_set_rx_mode(fbn->fbd, &netdev->uc, &netdev->mc);
+ 
+ 	return 0;
+ }
+@@ -551,7 +557,7 @@ static const struct net_device_ops fbnic_netdev_ops = {
+ 	.ndo_features_check	= fbnic_features_check,
+ 	.ndo_set_mac_address	= fbnic_set_mac,
+ 	.ndo_change_mtu		= fbnic_change_mtu,
+-	.ndo_set_rx_mode	= fbnic_set_rx_mode,
++	.ndo_set_rx_mode_async	= fbnic_set_rx_mode,
+ 	.ndo_get_stats64	= fbnic_get_stats64,
+ 	.ndo_bpf		= fbnic_bpf,
+ 	.ndo_hwtstamp_get	= fbnic_hwtstamp_get,
+diff --git a/drivers/net/ethernet/meta/fbnic/fbnic_netdev.h b/drivers/net/ethernet/meta/fbnic/fbnic_netdev.h
+index 9129a658f8fa..eded20b0e9e4 100644
+--- a/drivers/net/ethernet/meta/fbnic/fbnic_netdev.h
++++ b/drivers/net/ethernet/meta/fbnic/fbnic_netdev.h
+@@ -97,7 +97,9 @@ void fbnic_time_init(struct fbnic_net *fbn);
+ int fbnic_time_start(struct fbnic_net *fbn);
+ void fbnic_time_stop(struct fbnic_net *fbn);
+ 
+-void __fbnic_set_rx_mode(struct fbnic_dev *fbd);
++void __fbnic_set_rx_mode(struct fbnic_dev *fbd,
++			 struct netdev_hw_addr_list *uc,
++			 struct netdev_hw_addr_list *mc);
+ void fbnic_clear_rx_mode(struct fbnic_dev *fbd);
+ 
+ void fbnic_phylink_get_pauseparam(struct net_device *netdev,
+diff --git a/drivers/net/ethernet/meta/fbnic/fbnic_pci.c b/drivers/net/ethernet/meta/fbnic/fbnic_pci.c
+index e3aebbe3656d..6b139cf54256 100644
+--- a/drivers/net/ethernet/meta/fbnic/fbnic_pci.c
++++ b/drivers/net/ethernet/meta/fbnic/fbnic_pci.c
+@@ -135,7 +135,7 @@ void fbnic_up(struct fbnic_net *fbn)
+ 
+ 	fbnic_rss_reinit_hw(fbn->fbd, fbn);
+ 
+-	__fbnic_set_rx_mode(fbn->fbd);
++	__fbnic_set_rx_mode(fbn->fbd, &fbn->netdev->uc, &fbn->netdev->mc);
+ 
+ 	/* Enable Tx/Rx processing */
+ 	fbnic_napi_enable(fbn);
+@@ -180,7 +180,7 @@ static int fbnic_fw_config_after_crash(struct fbnic_dev *fbd)
  	}
  
- out:
-@@ -9740,28 +9773,22 @@ static void dev_rx_mode_work(struct work_struct *work)
- void __dev_set_rx_mode(struct net_device *dev)
- {
- 	const struct net_device_ops *ops = dev->netdev_ops;
-+	int promisc_inc;
+ 	fbnic_rpc_reset_valid_entries(fbd);
+-	__fbnic_set_rx_mode(fbd);
++	__fbnic_set_rx_mode(fbd, &fbd->netdev->uc, &fbd->netdev->mc);
  
- 	/* dev_open will call this function so the list will stay sane. */
- 	if (!netif_up_and_present(dev))
- 		return;
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/meta/fbnic/fbnic_rpc.c b/drivers/net/ethernet/meta/fbnic/fbnic_rpc.c
+index 42a186db43ea..fe95b6f69646 100644
+--- a/drivers/net/ethernet/meta/fbnic/fbnic_rpc.c
++++ b/drivers/net/ethernet/meta/fbnic/fbnic_rpc.c
+@@ -244,7 +244,7 @@ void fbnic_bmc_rpc_check(struct fbnic_dev *fbd)
  
--	if (ops->ndo_set_rx_mode_async) {
-+	if (ops->ndo_set_rx_mode_async || ops->ndo_change_rx_flags) {
- 		queue_work(rx_mode_wq, &dev->rx_mode_work);
- 		return;
+ 	if (fbd->fw_cap.need_bmc_tcam_reinit) {
+ 		fbnic_bmc_rpc_init(fbd);
+-		__fbnic_set_rx_mode(fbd);
++		__fbnic_set_rx_mode(fbd, &fbd->netdev->uc, &fbd->netdev->mc);
+ 		fbd->fw_cap.need_bmc_tcam_reinit = false;
  	}
  
--	if (!(dev->priv_flags & IFF_UNICAST_FLT)) {
--		/* Unicast addresses changes may only happen under the rtnl,
--		 * therefore calling __dev_set_promiscuity here is safe.
--		 */
--		if (!netdev_uc_empty(dev) && !dev->uc_promisc) {
--			__dev_set_promiscuity(dev, 1, false);
--			dev->uc_promisc = true;
--		} else if (netdev_uc_empty(dev) && dev->uc_promisc) {
--			__dev_set_promiscuity(dev, -1, false);
--			dev->uc_promisc = false;
--		}
--	}
-+	/* Legacy path for non-ops locked HW devices. */
-+
-+	promisc_inc = dev_uc_promisc_update(dev);
-+	if (promisc_inc)
-+		__dev_set_promiscuity(dev, promisc_inc, false);
- 
- 	if (ops->ndo_set_rx_mode)
- 		ops->ndo_set_rx_mode(dev);
-@@ -9811,7 +9838,7 @@ int __dev_change_flags(struct net_device *dev, unsigned int flags,
- 	unsigned int old_flags = dev->flags;
- 	int ret;
- 
--	ASSERT_RTNL();
-+	netdev_ops_assert_locked(dev);
- 
- 	/*
- 	 *	Set the flags on our device.
 -- 
 2.53.0
 
