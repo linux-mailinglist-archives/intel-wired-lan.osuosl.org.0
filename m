@@ -2,94 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eGQnC9GfvWkM/wIAu9opvQ
+	id APySNJugvWkM/wIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 20:28:17 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 20:31:39 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9D5952DFEC5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 20:28:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6104C2E001D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Mar 2026 20:31:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4B9BC6073F;
-	Fri, 20 Mar 2026 19:28:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 10DC36073F;
+	Fri, 20 Mar 2026 19:31:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MtrTuvyQCs_R; Fri, 20 Mar 2026 19:28:14 +0000 (UTC)
+ id cpi8utSbD35w; Fri, 20 Mar 2026 19:31:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 241B561BDE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8710761BE0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774034894;
-	bh=fL1jMIsCkYMM4m7gVy5CMk3G12QhHFU1IqZLlQZCToY=;
+	s=default; t=1774035097;
+	bh=SM+UFTZxO6q0FnWRZc28+1cImZD+nUxyKt62W+NaoZo=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6bqUbwlB+BqR95NOq8lwreTntyrPE01s2gKF8xyI2Afaq9DWKTq8xCSzEtdRQRfZY
-	 dTtmgfix96DO1oy554ooaj0QfAKpZyCzYOCEK3Zbm+2xAF2M+zQN2ETnA0YyHma40A
-	 s4XF+5B/VIwaI5FmJA0BCmg6UqJFQvpnKJwsNu30ueF4NscL4ByXBH3YYXak1Wq3Sm
-	 5DQAgog6shGVeEEOZCWGZry+tW3tQjpivW6U+IeH9tXEMXtiZn2vQx8mwE22OZ06Uu
-	 6qCTrxmgRvKsCdNG1dPhLH91KSLDttGx6l+lCaSpNvWNRQUaPtUgdSMrxTHfSDDUtA
-	 PD8rbwnsgmMAQ==
+	b=4Dj27aIIh5Tu2lZQ1/sSreBjYzbgbSbtL89sOJtlWo2cAl2eH7px++9HIS7nOEMI4
+	 6ntMuIJOa1hEeWZ+4nFitUcS0ZXE86w4eFfS3HtNawN57htmuhU3eB3quQQ1m2mtnI
+	 N/IYRQXbU0E5csTzya/k8VaYmP716TyVtv+0rXq9uuDemmUXLpIJN6hPu9MUlN0IV2
+	 T8H5xuZgfwKcg8EoQePQmOe34Sxyfregg1skomMv+wNzSOFJh5BHr63SSnxzCuJP7o
+	 CsF+VXfsEyzf9Mxs9BMAippdQgGUEF4G6BWIFADBJGupBE3yOMcC2UbBUdSz208eh9
+	 F7m2VCU61JMXQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 241B561BDE;
-	Fri, 20 Mar 2026 19:28:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8710761BE0;
+	Fri, 20 Mar 2026 19:31:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 18B9C25C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:28:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 89D0425C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:31:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F113A842A0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:28:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6F4EF41EE3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:31:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0n-IXzgXZUCB for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Mar 2026 19:28:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aRADNiFmWFJ4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Mar 2026 19:31:36 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6297A8429D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6297A8429D
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6297A8429D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:28:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CA3CF41EC9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CA3CF41EC9
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CA3CF41EC9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Mar 2026 19:31:35 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 23D8A44238;
- Fri, 20 Mar 2026 19:28:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C283AC2BCC6;
- Fri, 20 Mar 2026 19:28:08 +0000 (UTC)
-Date: Fri, 20 Mar 2026 19:28:06 +0000
+ by tor.source.kernel.org (Postfix) with ESMTP id 96D0B60126;
+ Fri, 20 Mar 2026 19:31:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2947AC2BCB7;
+ Fri, 20 Mar 2026 19:31:32 +0000 (UTC)
+Date: Fri, 20 Mar 2026 19:31:30 +0000
 From: Simon Horman <horms@kernel.org>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@intel.com>
-Message-ID: <20260320192806.GA167844@horms.kernel.org>
-References: <20260320050529.422444-1-aleksandr.loktionov@intel.com>
+ netdev@vger.kernel.org, Lukasz Czapnik <lukasz.czapnik@intel.com>
+Message-ID: <20260320193130.GH74886@horms.kernel.org>
+References: <20260320050541.422592-1-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260320050529.422444-1-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260320050541.422592-1-aleksandr.loktionov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1774034890;
- bh=hRCyxeO+q0UWavMXDa0++bIl1kG/fqO+nKzwc907+eo=;
+ d=kernel.org; s=k20201202; t=1774035094;
+ bh=QA/w4+khlPRy4EweZlpjnLRnmAwb/BV3yY+xixVCdvQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=f7E0ALlxYyOyPYGw7aZp0bTZ1fpK6livtLn3GPHRL2jNvow0C/lU+5onFW94aYrSR
- rvI7nJkwF9PNs3ursmjCZ8X58o5wWth5vYg6RmRK2riQ9WofOtx/IA1LYLoojrGVNq
- bjrw4K33mGSXnpCtFczZEfjgKWulwgUCHcP1dEKwGJoDLP6mPP5z+9XOVZ1Mdv4c2i
- jR5A0FqqtwGBSTnxPO89QtG4ISN72idMT5PkfrrBwu0kMz22s09Bz3kqIfFY/ldfc9
- M/TZaP50oJ7WS0hd5KQze81bGMdlL8h1S8MdErmf6UCFDxvq2SsCh7GsfyMU6XiDKZ
- o22EauwjlkIig==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=jdTVLv3lqiLj4KBIGwwtH1e33UD9cqU/ctYm9abicNjWz/jeJ1zynPj2hVxUIYRaU
+ 686SDBRQELplSM31QlCSueorVWpcacibMWHmPIMchm0g64v5lDosphVIOrnDFt7mgn
+ wkry0qBN0/l7Q+M9vC0IyK27TPS5PbB+VkB+IwL8oIWmPeRESU2GdmrgB/mBN7BVxd
+ 2ltSzoRavGsXeQVqbvVhJXvsVIfeJgygM5cgNlGo9FtmEmiBmLzPj33uhgWmyMXM59
+ Si4VCi3Sa99zZ2QMtV5cq5CnZs2XwmKH4ysxCao958g8wMXByHXuv5IxoOnXSawA5E
+ 2tyZm3z82GV/A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=f7E0ALlx
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: fix allocating
- excessive memory in ice_create_lag_recipe()
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jdTVLv3l
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: init desired_dcbx_cfg
+ in default DCB config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,20 +105,20 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [0.69 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:marcin.szycik@intel.com,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:lukasz.czapnik@intel.com,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,horms.kernel.org:mid];
-	ARC_NA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,horms.kernel.org:mid,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	DKIM_TRACE(0.00)[osuosl.org:+];
@@ -137,22 +136,34 @@ X-Spamd-Result: default: False [0.69 / 15.00];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 9D5952DFEC5
+X-Rspamd-Queue-Id: 6104C2E001D
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, Mar 20, 2026 at 06:05:29AM +0100, Aleksandr Loktionov wrote:
-> From: Marcin Szycik <marcin.szycik@intel.com>
+On Fri, Mar 20, 2026 at 06:05:41AM +0100, Aleksandr Loktionov wrote:
+> From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 > 
-> For some reason ice_create_lag_recipe() allocates an array of 64
-> struct ice_aqc_recipe_data_elem elements, while it only needs one (1).
-> Fix it, while also using kzalloc_obj().
+> When DCBX is disabled in firmware the driver falls back to software LLDP
+> mode and applies a default DCB configuration via ice_dcb_sw_dflt_cfg().
+> This function properly initializes local_dcbx_cfg with valid parameters
+> including etscfg.maxtcs from hardware capabilities. However,
+> desired_dcbx_cfg was never initialized in this path.
 > 
-> Fixes: 1e0f9881ef79 ("ice: Flesh out implementation of support for SRIOV on bonded interface")
-> Signed-off-by: Marcin Szycik <marcin.szycik@intel.com>
+> All DCB netlink functions (ice_dcbnl_setpfc, ice_dcbnl_setets, etc.)
+> use desired_dcbx_cfg as the base configuration for user-requested changes.
+> When desired_dcbx_cfg remains uninitialized with etscfg.maxtcs=0, the
+> firmware rejects the configuration for 4+ port NICs, causing DCB
+> configuration commands to fail.
+> 
+> It is not a problem for 1 or 2 port NICs where we support 8 TCs - in
+> that case FW accepts maxtc=0, treating it as 8.
+> 
+> Fix it by copying local_dcbx_cfg (which was freshly initialized) into
+> desired_dcbx_cfg after the default config is applied.
+> 
+> Fixes: b94b013eb626 ("ice: Implement DCBNL support")
+> Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-This doesn't seem to be a bug.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-So think we can drop the fixes tag.  And, it might be best to drop the
-"fix" language from the subject and commit message.
