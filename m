@@ -2,75 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id AFjNDPG9wWlSWAQAu9opvQ
+	id INmeCPe9wWlSWAQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Mar 2026 23:25:53 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Mar 2026 23:25:59 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6DCD2FE383
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Mar 2026 23:25:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EECD2FE38A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Mar 2026 23:25:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5A74740D35;
-	Mon, 23 Mar 2026 22:25:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 325CB40D37;
+	Mon, 23 Mar 2026 22:25:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gOLE81JUNH9G; Mon, 23 Mar 2026 22:25:50 +0000 (UTC)
+ id 4KHLM7mvyB3m; Mon, 23 Mar 2026 22:25:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3335B40D37
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22AB140D38
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774304750;
-	bh=0/dhRr6VDluE3gW0xLlbaV2NpCjo8FpEUjH2j2oIg6s=;
+	s=default; t=1774304756;
+	bh=cZTWFc3kG16ItsieiMm3jnTW1ho1fDt8Ykb8NoT4Rao=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=M+X/GztZhijVA2s15S4VeBIOlbhKvcwH6O+fiDNcy2DRsdbUTMoHULVUfr8hxRZ05
-	 NhmYnGsn60ZDKCXKsToFQ9BmJCCqav6hg+4zqIIej00Dhs6N/TM7JNkbG2wO9EJx8W
-	 d0J8DlxbEgw13cyUVWsfXp5x9j6vO1sjtGVCaMddSn8DFjo+kPLMIxBAVzLtwKAdwC
-	 ZFRwmHib8462lYFspwZp1SRJiUDarxzT3xyCORjfvNiSr/RYQx+U9/79naFWhtYXXR
-	 udyBrWa15u2gcFdKZuE5VIIVy3YRc0D38j6AFhcWWo3dZWfhRQstasMH6oFlK5SK4o
-	 T6/Qba+y3fg9A==
+	b=m/b6sRQTtqMSJav/BsrhymG/PyTL1AxT2XQAVGOGFJ7nchaCWW95N7DOg8yu29LAH
+	 JGo22Tvwcghy5qzfvM1EXgnYW/WDwSauqeyEAUAKUO6Ve8RRTLOuH5GmBQOYnss6Jj
+	 vcXDLG9q8wCYcbmJO+pNEIgTTX7M11u8uvQ7sgYdDJJz40Osd/S7LL7zKg4C/1CzmR
+	 O2ESb3ZtbOX547iXAl1Go9f21+ktLiWvKcrtmgkcl6JEiToCP6P7IK0908Xhr4GfGf
+	 Dc+aBGHx/vbZbtLhpt111IwnT97FABjKMRP4Ma3j4RVWgIoa1n+O4lcSNPAMJ4CmNK
+	 u4tKUYP4QtDYw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3335B40D37;
-	Mon, 23 Mar 2026 22:25:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22AB140D38;
+	Mon, 23 Mar 2026 22:25:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id EF9C4F4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5A2BD1D3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D574640D32
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3B0CF82356
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 57C6ZgColN1E for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Mar 2026 22:25:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gyiMxU0blKnU for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Mar 2026 22:25:53 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CDBCE40D20
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDBCE40D20
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4BAC281E5D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4BAC281E5D
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CDBCE40D20
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:46 +0000 (UTC)
-X-CSE-ConnectionGUID: MZZcRG9ISqGfJAI+Sz5+tg==
-X-CSE-MsgGUID: ulTKYfdbQeOZitiDiGbGxQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11738"; a="75221908"
-X-IronPort-AV: E=Sophos;i="6.23,138,1770624000"; d="scan'208";a="75221908"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4BAC281E5D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Mar 2026 22:25:53 +0000 (UTC)
+X-CSE-ConnectionGUID: 1wRDT6XgSpiONSTG3GkglQ==
+X-CSE-MsgGUID: C7vHeM4gQ3CXj//CnYiz4w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11738"; a="75221929"
+X-IronPort-AV: E=Sophos;i="6.23,138,1770624000"; d="scan'208";a="75221929"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Mar 2026 15:25:46 -0700
-X-CSE-ConnectionGUID: UMdwLwAmRoWTxG0KWEGwjA==
-X-CSE-MsgGUID: JnMhHZWLTG64FXLaaG4wOg==
+ 23 Mar 2026 15:25:52 -0700
+X-CSE-ConnectionGUID: 5TwTtNOdQJiGtprZpbaxqw==
+X-CSE-MsgGUID: LbxIW1uyTaWpPGeRN+WaGw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,138,1770624000"; d="scan'208";a="247207439"
+X-IronPort-AV: E=Sophos;i="6.23,138,1770624000"; d="scan'208";a="247207469"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by fmviesa002.fm.intel.com with ESMTP; 23 Mar 2026 15:25:41 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 23 Mar 2026 15:25:48 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: netdev@vger.kernel.org
-Date: Mon, 23 Mar 2026 23:21:30 +0100
-Message-Id: <20260323222133.1796997-6-grzegorz.nitka@intel.com>
+Date: Mon, 23 Mar 2026 23:21:31 +0100
+Message-Id: <20260323222133.1796997-7-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20260323222133.1796997-1-grzegorz.nitka@intel.com>
 References: <20260323222133.1796997-1-grzegorz.nitka@intel.com>
@@ -78,25 +78,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1774304746; x=1805840746;
+ t=1774304753; x=1805840753;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=8ceLVs2JsObasP3Lu+oXmghvt3ALk1HbwW5kHqK/T4Q=;
- b=FsOjI9O9nnkx/8g341uS3CDLnDYeQA4rb6Rk+Oq+L+IbhupgERmEWFdc
- E0A6iTQ6Tv9WMT42MKaKZG+dePJBHmrQAv9R3XzZsVWr+ypTgKpmju9/h
- TjJ15WHTw176LNruWblVuWUUgEMwvCWGTZxw0/1kAE9B5tQ+lx2nSzD8c
- GS3ID4sJ8WO6p6FnloWROeXuCrXCto59KVa+uiez9QuU5Zi2KsTFKQO7d
- xwp7IqVhXb3nqFjzqABKyBMzsG1mB8FqYAotdRPcSTu5ODSAgF+J6eLf+
- dUXpo6RIym46eMbzKeybjXLuXMTHQNZx/oAStb39L/as55i0ENAsIMOp9
+ bh=RXeLAwQd/WhX+HnMNBfpNgz9UNtamMV0lERMiFBdSsM=;
+ b=Sc5I3dQiLrgc1N8NEFocsxT2a8kbBWYQOsjYBQPCVxJPIXkZB5iusPPe
+ DyJ6KOsrF6RxaV4okpz8YAfkKyVOdSd2GW8rBxXXfNA7I9hKIRHfuU33n
+ HLfOY6LvMYmQlk82JpL8QfSQVsOVVB/k7lgnLS6cUDY3azY0El0vXj3p8
+ GTi4yaVF1icnV6pERyEil2x38WXnoZuFgMPxCRW6yrvKBo6H00/+vPY7y
+ +eTHivh3PcHRQd16BsvtPyaNjba6mrncTUQzMV+JMxPoAeF/FsO9eyNSD
+ w+DdpodpnQzCwJ+n+PwfJJTq4MUKs3WGUIjg4I7/yxR1OAT2OWb4jIcZw
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FsOjI9O9
-Subject: [Intel-wired-lan] [PATCH v3 net-next 5/8] ice: add TX clock (TXC)
- DPLL interface for E825 devices
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Sc5I3dQi
+Subject: [Intel-wired-lan] [PATCH v3 net-next 6/8] ice: implement CPI
+ support for E825C
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -147,599 +148,502 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email,intel.com:mid];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,phy.data:url];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: A6DCD2FE383
+X-Rspamd-Queue-Id: 7EECD2FE38A
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Introduce a TX clock DPLL instance and pins for E825-based devices.
-The TXC domain exposes two reference pins:
-  - EXT_EREF0 (board external electrical reference)
-  - SYNCE (port-derived reference, described via fwnode)
+Add full CPI (Converged PHY Interface) command handling required for
+E825C devices. The CPI interface allows the driver to interact with
+PHY-side control logic through the LM/PHY command registers, including
+enabling/disabling/selection of PHY reference clock.
 
-A new pin type (ICE_DPLL_PIN_TYPE_TXCLK) and pin ops are added. The
-SYNCE pin is registered when its fwnode becomes available, while
-EXT_EREF0 is registered directly. The notifier worker is updated to
-register/unregister TXC pins and to ignore notifications that are a
-side effect of internal registration by checking the src_id.
+This patch introduces:
+ - a new CPI subsystem (ice_cpi.c / ice_cpi.h) implementing the CPI
+   request/acknowledge state machine, including REQ/ACK protocol,
+   command execution, and response handling
+ - helper functions for reading/writing PHY registers over Sideband
+   Queue
+ - CPI command execution API (ice_cpi_exec) and a helper for enabling or
+   disabling Tx reference clocks (CPI 0xF1 opcode 'Config PHY clocking')
+ - addition of the non-posted write opcode (wr_np) to SBQ
+ - Makefile integration to build CPI support together with the PTP stack
 
-A new per-pin attribute tracks the TX reference source
-(enum ice_e825c_ref_clk). The TXC DPLL device is created and torn
-down alongside existing PPS/EEC devices on E825, with specific init
-and deinit flows for the TXC pins.
-
-Current TXC pin state getters return DISCONNECTED as a placeholder;
-hardware-backed state reporting will be implemented in a follow-up.
+This provides the infrastructure necessary to support PHY-side
+configuration flows on E825C and is required for advanced link control
+and Tx reference clock management.
 
 Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dpll.c   | 296 ++++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_dpll.h   |   6 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |   7 +
- 3 files changed, 286 insertions(+), 23 deletions(-)
+ drivers/net/ethernet/intel/ice/Makefile      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_cpi.c     | 347 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_cpi.h     |  69 ++++
+ drivers/net/ethernet/intel/ice/ice_sbq_cmd.h |   5 +-
+ 4 files changed, 420 insertions(+), 3 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.h
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-index 62f75701d652..72518fd1398d 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-@@ -19,6 +19,11 @@
- #define ICE_DPLL_SW_PIN_INPUT_BASE_QSFP		6
- #define ICE_DPLL_SW_PIN_OUTPUT_BASE		0
- 
-+#define E825_EXT_EREF_PIN_IDX			0
-+#define E825_EXT_SYNCE_PIN_IDX			1
-+#define E825_RCLK_PARENT_0_PIN_IDX		0
-+#define E825_RCLK_PARENT_1_PIN_IDX		1
+diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+index 5b2c666496e7..38db476ab2ec 100644
+--- a/drivers/net/ethernet/intel/ice/Makefile
++++ b/drivers/net/ethernet/intel/ice/Makefile
+@@ -54,7 +54,7 @@ ice-$(CONFIG_PCI_IOV) +=	\
+ 	ice_vf_mbx.o		\
+ 	ice_vf_vsi_vlan_ops.o	\
+ 	ice_vf_lib.o
+-ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o
++ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o ice_cpi.o
+ ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+ ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
+ ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
+diff --git a/drivers/net/ethernet/intel/ice/ice_cpi.c b/drivers/net/ethernet/intel/ice/ice_cpi.c
+new file mode 100644
+index 000000000000..97fe2ebb99f3
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_cpi.c
+@@ -0,0 +1,347 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (C) 2018-2026 Intel Corporation */
 +
- #define ICE_DPLL_PIN_SW_INPUT_ABS(in_idx) \
- 	(ICE_DPLL_SW_PIN_INPUT_BASE_SFP + (in_idx))
- 
-@@ -57,6 +62,7 @@
-  * @ICE_DPLL_PIN_TYPE_OUTPUT: output pin
-  * @ICE_DPLL_PIN_TYPE_RCLK_INPUT: recovery clock input pin
-  * @ICE_DPLL_PIN_TYPE_SOFTWARE: software controlled SMA/U.FL pins
-+ * @ICE_DPLL_PIN_TYPE_TXCLK: transmit clock reference input pin
-  */
- enum ice_dpll_pin_type {
- 	ICE_DPLL_PIN_INVALID,
-@@ -64,6 +70,7 @@ enum ice_dpll_pin_type {
- 	ICE_DPLL_PIN_TYPE_OUTPUT,
- 	ICE_DPLL_PIN_TYPE_RCLK_INPUT,
- 	ICE_DPLL_PIN_TYPE_SOFTWARE,
-+	ICE_DPLL_PIN_TYPE_TXCLK,
- };
- 
- static const char * const pin_type_name[] = {
-@@ -71,10 +78,13 @@ static const char * const pin_type_name[] = {
- 	[ICE_DPLL_PIN_TYPE_OUTPUT] = "output",
- 	[ICE_DPLL_PIN_TYPE_RCLK_INPUT] = "rclk-input",
- 	[ICE_DPLL_PIN_TYPE_SOFTWARE] = "software",
-+	[ICE_DPLL_PIN_TYPE_TXCLK] = "txclk-input",
- };
- 
- static const char * const ice_dpll_sw_pin_sma[] = { "SMA1", "SMA2" };
- static const char * const ice_dpll_sw_pin_ufl[] = { "U.FL1", "U.FL2" };
-+static const char * const ice_dpll_ext_eref_pin = "EXT_EREF0";
-+static const char * const ice_dpll_fwnode_ext_synce = "clk_ref_synce";
- 
- static const struct dpll_pin_frequency ice_esync_range[] = {
- 	DPLL_PIN_FREQUENCY_RANGE(0, DPLL_PIN_FREQUENCY_1_HZ),
-@@ -2517,12 +2527,75 @@ ice_dpll_rclk_state_on_pin_get(const struct dpll_pin *pin, void *pin_priv,
- 	return ret;
- }
- 
++#include "ice_type.h"
++#include "ice_common.h"
++#include "ice_ptp_hw.h"
++#include "ice_cpi.h"
++
 +/**
-+ * ice_dpll_txclk_state_on_dpll_set - set a state on TX clk pin
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @state: state to be set on pin
-+ * @extack: error reporting
++ * ice_cpi_get_dest_dev - get destination PHY for given phy index
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
 + *
-+ * Dpll subsystem callback, set a state of a Tx reference clock pin
-+ *
-+ * Return:
-+ * * negative - failure
++ * Return: sideband queue destination PHY device.
 + */
-+static int
-+ice_dpll_txclk_state_on_dpll_set(const struct dpll_pin *pin, void *pin_priv,
-+				 const struct dpll_device *dpll,
-+				 void *dpll_priv, enum dpll_pin_state state,
-+				 struct netlink_ext_ack *extack)
++static enum ice_sbq_dev_id ice_cpi_get_dest_dev(struct ice_hw *hw, u8 phy)
 +{
-+	/*
-+	 * TODO: set HW accordingly to selected TX reference clock.
-+	 * To be added in the follow up patches.
++	u8 curr_phy = hw->lane_num / hw->ptp.ports_per_phy;
++
++	/* In the driver, lanes 4..7 are in fact 0..3 on a second PHY.
++	 * On a single complex E825C, PHY 0 is always destination device phy_0
++	 * and PHY 1 is phy_0_peer.
++	 * On dual complex E825C, device phy_0 points to PHY on a current
++	 * complex and phy_0_peer to PHY on a different complex.
 +	 */
-+	return -EOPNOTSUPP;
++	if ((!ice_is_dual(hw) && phy) ||
++	    (ice_is_dual(hw) && phy != curr_phy))
++		return ice_sbq_dev_phy_0_peer;
++	else
++		return ice_sbq_dev_phy_0;
 +}
 +
 +/**
-+ * ice_dpll_txclk_state_on_dpll_get - get a state of Tx clk reference pin
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @state: on success holds pin state on parent pin
-+ * @extack: error reporting
-+ *
-+ * dpll subsystem callback, get a state of a TX clock reference pin.
++ * ice_cpi_write_phy - Write a CPI port register
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @addr: PHY register address
++ * @val: Value to write
 + *
 + * Return:
-+ * * 0 - success
++ * * 0 on success
++ * * other error codes when failed to write to PHY
 + */
-+static int
-+ice_dpll_txclk_state_on_dpll_get(const struct dpll_pin *pin, void *pin_priv,
-+				 const struct dpll_device *dpll,
-+				 void *dpll_priv,
-+				 enum dpll_pin_state *state,
-+				 struct netlink_ext_ack *extack)
++static int ice_cpi_write_phy(struct ice_hw *hw, u8 phy, u32 addr, u32 val)
 +{
-+	/*
-+	 * TODO: query HW status to determine if the TX reference is selected.
-+	 * To be added in the follow up patches.
-+	 */
-+	*state = DPLL_PIN_STATE_DISCONNECTED;
++	struct ice_sbq_msg_input msg = {
++		.dest_dev = ice_cpi_get_dest_dev(hw, phy),
++		.opcode = ice_sbq_msg_wr_np,
++		.msg_addr_low = lower_16_bits(addr),
++		.msg_addr_high = upper_16_bits(addr),
++		.data = val
++	};
++	int err;
 +
-+	return 0;
-+}
-+
- static const struct dpll_pin_ops ice_dpll_rclk_ops = {
- 	.state_on_pin_set = ice_dpll_rclk_state_on_pin_set,
- 	.state_on_pin_get = ice_dpll_rclk_state_on_pin_get,
- 	.direction_get = ice_dpll_input_direction,
- };
- 
-+static const struct dpll_pin_ops ice_dpll_txclk_ops = {
-+	.state_on_dpll_set = ice_dpll_txclk_state_on_dpll_set,
-+	.state_on_dpll_get = ice_dpll_txclk_state_on_dpll_get,
-+	.direction_get = ice_dpll_input_direction,
-+};
-+
- static const struct dpll_pin_ops ice_dpll_pin_sma_ops = {
- 	.state_on_dpll_set = ice_dpll_sma_pin_state_set,
- 	.state_on_dpll_get = ice_dpll_sw_pin_state_get,
-@@ -3023,9 +3096,13 @@ ice_dpll_unregister_pins(struct dpll_device *dpll, struct ice_dpll_pin *pins,
- {
- 	int i;
- 
--	for (i = 0; i < count; i++)
--		if (!pins[i].hidden)
--			dpll_pin_unregister(dpll, pins[i].pin, ops, &pins[i]);
-+	for (i = 0; i < count; i++) {
-+		if (pins[i].hidden)
-+			continue;
-+		if (IS_ERR_OR_NULL(pins[i].pin))
-+			continue;
-+		dpll_pin_unregister(dpll, pins[i].pin, ops, &pins[i]);
-+	}
- }
- 
- /**
-@@ -3199,19 +3276,40 @@ static bool ice_dpll_is_fwnode_pin(struct ice_dpll_pin *pin)
- 	return !IS_ERR_OR_NULL(pin->fwnode);
- }
- 
-+static bool ice_dpll_fwnode_eq(const struct fwnode_handle *a,
-+			       const struct fwnode_handle *b)
-+{
-+	return a && b && a == b;
-+}
-+
- static void ice_dpll_pin_notify_work(struct work_struct *work)
- {
- 	struct ice_dpll_pin_work *w = container_of(work,
- 						   struct ice_dpll_pin_work,
- 						   work);
- 	struct ice_dpll_pin *pin, *parent = w->pin;
-+	bool is_tx_synce_parent = false;
- 	struct ice_pf *pf = parent->pf;
-+	bool is_rclk_parent = false;
- 	int ret;
- 
- 	wait_for_completion(&pf->dplls.dpll_init);
- 	if (!test_bit(ICE_FLAG_DPLL, pf->flags))
- 		goto out; /* DPLL initialization failed */
- 
-+	/* Decide which parent we are handling, defensively checking FWNs */
-+	is_rclk_parent =
-+		ice_dpll_fwnode_eq(parent->fwnode,
-+				   pf->dplls.inputs[E825_RCLK_PARENT_0_PIN_IDX].fwnode) ||
-+		ice_dpll_fwnode_eq(parent->fwnode,
-+				   pf->dplls.inputs[E825_RCLK_PARENT_1_PIN_IDX].fwnode);
-+
-+	is_tx_synce_parent =
-+		ice_dpll_fwnode_eq(parent->fwnode,
-+				   pf->dplls.txclks[E825_EXT_SYNCE_PIN_IDX].fwnode);
-+	if (!is_rclk_parent && !is_tx_synce_parent)
-+		goto out;
-+
- 	switch (w->action) {
- 	case DPLL_PIN_CREATED:
- 		if (!IS_ERR_OR_NULL(parent->pin)) {
-@@ -3228,16 +3326,28 @@ static void ice_dpll_pin_notify_work(struct work_struct *work)
- 			goto out;
- 		}
- 
--		/* Register rclk pin */
--		pin = &pf->dplls.rclk;
--		ret = dpll_pin_on_pin_register(parent->pin, pin->pin,
--					       &ice_dpll_rclk_ops, pin);
--		if (ret) {
--			dev_err(ice_pf_to_dev(pf),
--				"Failed to register pin: %pe\n", ERR_PTR(ret));
--			dpll_pin_put(parent->pin, &parent->tracker);
--			parent->pin = NULL;
--			goto out;
-+		if (is_rclk_parent) {
-+			/* Register rclk pin via on-pin relationship */
-+			pin = &pf->dplls.rclk;
-+			ret = dpll_pin_on_pin_register(parent->pin, pin->pin,
-+						       &ice_dpll_rclk_ops, pin);
-+			if (ret) {
-+				dev_err(ice_pf_to_dev(pf),
-+					"RCLK pin register failed: %pe\n",
-+					ERR_PTR(ret));
-+				goto drop_parent_ref;
-+			}
-+		} else if (is_tx_synce_parent) {
-+			/* Register TX-CLK SYNCE pin directly to TXC DPLL */
-+			pin = &pf->dplls.txclks[E825_EXT_SYNCE_PIN_IDX];
-+			ret = dpll_pin_register(pf->dplls.txc.dpll, pin->pin,
-+						&ice_dpll_txclk_ops, pin);
-+			if (ret) {
-+				dev_err(ice_pf_to_dev(pf),
-+					"TX SYNCE pin register failed: %pe\n",
-+					ERR_PTR(ret));
-+				goto drop_parent_ref;
-+			}
- 		}
- 		break;
- 	case DPLL_PIN_DELETED:
-@@ -3246,11 +3356,18 @@ static void ice_dpll_pin_notify_work(struct work_struct *work)
- 			goto out;
- 		}
- 
--		/* Unregister rclk pin */
--		pin = &pf->dplls.rclk;
--		dpll_pin_on_pin_unregister(parent->pin, pin->pin,
--					   &ice_dpll_rclk_ops, pin);
--
-+		if (is_rclk_parent) {
-+			/* Unregister rclk pin */
-+			pin = &pf->dplls.rclk;
-+			dpll_pin_on_pin_unregister(parent->pin, pin->pin,
-+						   &ice_dpll_rclk_ops, pin);
-+		} else if (is_tx_synce_parent) {
-+			/* Unregister TX-CLK SYNCE pin from TXC DPLL */
-+			pin = &pf->dplls.txclks[E825_EXT_SYNCE_PIN_IDX];
-+			dpll_pin_unregister(pf->dplls.txc.dpll, pin->pin,
-+					    &ice_dpll_txclk_ops, pin);
-+		}
-+drop_parent_ref:
- 		/* Drop fwnode pin reference */
- 		dpll_pin_put(parent->pin, &parent->tracker);
- 		parent->pin = NULL;
-@@ -3276,6 +3393,12 @@ static int ice_dpll_pin_notify(struct notifier_block *nb, unsigned long action,
- 	if (pin->fwnode != info->fwnode)
- 		return NOTIFY_DONE; /* Not this pin */
- 
-+	/* Ignore notification which are the outcome of internal pin
-+	 * registration/unregistration calls - synce pin case.
-+	 */
-+	if (info->src_id == pin->pf->dplls.clock_id)
-+		return NOTIFY_DONE;
-+
- 	work = kzalloc_obj(*work);
- 	if (!work)
- 		return NOTIFY_DONE;
-@@ -3401,6 +3524,19 @@ ice_dpll_deinit_fwnode_pins(struct ice_pf *pf, struct ice_dpll_pin *pins,
- 	destroy_workqueue(pf->dplls.wq);
- }
- 
-+static int ice_dpll_deinit_txclk_pins(struct ice_pf *pf)
-+{
-+	struct ice_dpll_pin *synce_pin = &pf->dplls.txclks[E825_EXT_SYNCE_PIN_IDX];
-+	struct ice_dpll *dt = &pf->dplls.txc;
-+
-+	ice_dpll_unregister_pins(dt->dpll, pf->dplls.txclks,
-+				 &ice_dpll_txclk_ops,
-+				 ARRAY_SIZE(pf->dplls.txclks));
-+	ice_dpll_release_pins(&pf->dplls.txclks[E825_EXT_EREF_PIN_IDX], 1);
-+	ice_dpll_deinit_fwnode_pin(synce_pin);
-+	return 0;
-+}
-+
- /**
-  * ice_dpll_deinit_pins - deinitialize direct pins
-  * @pf: board private structure
-@@ -3420,8 +3556,10 @@ static void ice_dpll_deinit_pins(struct ice_pf *pf, bool cgu)
- 	struct ice_dpll *dp = &d->pps;
- 
- 	ice_dpll_deinit_rclk_pin(pf);
--	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
-+	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
-+		ice_dpll_deinit_txclk_pins(pf);
- 		ice_dpll_deinit_fwnode_pins(pf, pf->dplls.inputs, 0);
-+	}
- 	if (cgu) {
- 		ice_dpll_unregister_pins(dp->dpll, inputs, &ice_dpll_input_ops,
- 					 num_inputs);
-@@ -3552,6 +3690,58 @@ ice_dpll_init_fwnode_pins(struct ice_pf *pf, struct ice_dpll_pin *pins,
- 	return ret;
- }
- 
-+static int ice_dpll_init_txclk_pins(struct ice_pf *pf, int start_idx)
-+{
-+	struct ice_dpll_pin *ref_pin = pf->dplls.txclks;
-+	struct ice_dpll *txc = &pf->dplls.txc;
-+	int ret;
-+
-+	/* Configure EXT_EREF0 pin */
-+	ret = ice_dpll_get_pins(pf, ref_pin, start_idx, 1, pf->dplls.clock_id);
-+	if (ret)
-+		return ret;
-+	ret = dpll_pin_register(txc->dpll, ref_pin->pin, &ice_dpll_txclk_ops,
-+				ref_pin);
-+	if (ret)
-+		goto err_release_ext_eref;
-+
-+	/*
-+	 * Configure EXT_SYNCE pin (fwnode-backed).
-+	 * The pin may not yet be available; in that case registration
-+	 * will be deferred via the notifier path.
-+	 */
-+	ref_pin++;
-+	ret = ice_dpll_init_fwnode_pin(ref_pin, ice_dpll_fwnode_ext_synce);
-+	if (ret)
-+		goto err_unregister_ext_eref;
-+
-+	if (IS_ERR_OR_NULL(ref_pin->pin)) {
-+		dev_dbg(ice_pf_to_dev(pf),
-+			"Tx-clk SYNCE pin not registered yet\n");
-+		return 0;
-+	}
-+
-+	ret = dpll_pin_register(txc->dpll, ref_pin->pin, &ice_dpll_txclk_ops,
-+				ref_pin);
-+	if (ret)
-+		goto err_deinit_synce;
-+
-+	return 0;
-+
-+err_deinit_synce:
-+	ice_dpll_deinit_fwnode_pin(ref_pin);
-+err_unregister_ext_eref:
-+	dpll_pin_unregister(txc->dpll,
-+			    pf->dplls.txclks[E825_EXT_EREF_PIN_IDX].pin,
-+			    &ice_dpll_txclk_ops,
-+			    &pf->dplls.txclks[E825_EXT_EREF_PIN_IDX]);
-+
-+err_release_ext_eref:
-+	ice_dpll_release_pins(&pf->dplls.txclks[E825_EXT_EREF_PIN_IDX], 1);
-+
-+	return ret;
-+}
-+
- /**
-  * ice_dpll_init_pins_e825 - init pins and register pins with a dplls
-  * @pf: board private structure
-@@ -3574,6 +3764,15 @@ static int ice_dpll_init_pins_e825(struct ice_pf *pf)
- 
- 	ret = ice_dpll_init_rclk_pin(pf, DPLL_PIN_IDX_UNSPEC,
- 				     &ice_dpll_rclk_ops);
-+
-+	if (ret)
-+		goto unregister_pins;
-+
-+	ret = ice_dpll_init_txclk_pins(pf, 0);
-+	if (ret)
-+		ice_dpll_deinit_rclk_pin(pf);
-+
-+unregister_pins:
- 	if (ret) {
- 		/* Inform DPLL notifier works that DPLL init was finished
- 		 * unsuccessfully (ICE_DPLL_FLAG not set).
-@@ -3692,7 +3891,7 @@ static int ice_dpll_init_pins(struct ice_pf *pf, bool cgu)
- static void
- ice_dpll_deinit_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu)
- {
--	if (cgu)
-+	if (cgu || pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
- 		dpll_device_unregister(d->dpll, d->ops, d);
- 	dpll_device_put(d->dpll, &d->tracker);
- }
-@@ -3727,12 +3926,13 @@ ice_dpll_init_dpll(struct ice_pf *pf, struct ice_dpll *d, bool cgu,
- 		return ret;
- 	}
- 	d->pf = pf;
--	if (cgu) {
-+	if (cgu || pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
- 		const struct dpll_device_ops *ops = &ice_dpll_ops;
- 
- 		if (type == DPLL_TYPE_PPS && ice_dpll_is_pps_phase_monitor(pf))
- 			ops =  &ice_dpll_pom_ops;
--		ice_dpll_update_state(pf, d, true);
-+		if (cgu)
-+			ice_dpll_update_state(pf, d, true);
- 		ret = dpll_device_register(d->dpll, type, ops, d);
- 		if (ret) {
- 			dpll_device_put(d->dpll, &d->tracker);
-@@ -4081,6 +4281,36 @@ static int ice_dpll_init_info_sw_pins(struct ice_pf *pf)
- 	return 0;
- }
- 
-+/**
-+ * ice_dpll_init_info_txclk_pins_e825c - initializes tx-clk pins information
-+ * @pf: board private structure
-+ *
-+ * Init information for tx-clks pin, cache them in pf->dplls.txclks
-+ *
-+ * Return:
-+ * * 0 - success
-+ */
-+static int ice_dpll_init_info_txclk_pins_e825c(struct ice_pf *pf)
-+{
-+	struct ice_dpll_pin *tx_pin;
-+
-+	for (int i = 0; i < ICE_DPLL_TXCLK_NUM_MAX; i++) {
-+		tx_pin = &pf->dplls.txclks[i];
-+		tx_pin->prop.type = DPLL_PIN_TYPE_EXT;
-+		tx_pin->prop.capabilities |=
-+				 DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE;
-+		tx_pin->pf = pf;
-+		if (i == E825_EXT_EREF_PIN_IDX) {
-+			tx_pin->prop.board_label = ice_dpll_ext_eref_pin;
-+			tx_pin->tx_ref_src = ICE_REF_CLK_EREF0;
-+		} else if (i == E825_EXT_SYNCE_PIN_IDX) {
-+			tx_pin->tx_ref_src = ICE_REF_CLK_SYNCE;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_dpll_init_pins_info - init pins info wrapper
-  * @pf: board private structure
-@@ -4106,6 +4336,9 @@ ice_dpll_init_pins_info(struct ice_pf *pf, enum ice_dpll_pin_type pin_type)
- 			return ice_dpll_init_info_rclk_pin(pf);
- 	case ICE_DPLL_PIN_TYPE_SOFTWARE:
- 		return ice_dpll_init_info_sw_pins(pf);
-+
-+	case ICE_DPLL_PIN_TYPE_TXCLK:
-+		return ice_dpll_init_info_txclk_pins_e825c(pf);
- 	default:
- 		return -EINVAL;
- 	}
-@@ -4139,11 +4372,15 @@ static void ice_dpll_deinit_info(struct ice_pf *pf)
- static int ice_dpll_init_info_e825c(struct ice_pf *pf)
- {
- 	struct ice_dplls *d = &pf->dplls;
-+	struct ice_dpll *dt = &d->txc;
- 	int ret = 0;
- 	int i;
- 
- 	d->clock_id = ice_generate_clock_id(pf);
- 	d->num_inputs = ICE_SYNCE_CLK_NUM;
-+	dt->dpll_state = DPLL_LOCK_STATUS_LOCKED;
-+	dt->mode = DPLL_MODE_MANUAL;
-+	dt->dpll_idx = pf->ptp.port.port_num;
- 
- 	d->inputs = kzalloc_objs(*d->inputs, d->num_inputs);
- 	if (!d->inputs)
-@@ -4160,6 +4397,11 @@ static int ice_dpll_init_info_e825c(struct ice_pf *pf)
- 	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_RCLK_INPUT);
- 	if (ret)
- 		goto deinit_info;
-+
-+	ret = ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_TXCLK);
-+	if (ret)
-+		goto deinit_info;
-+
- 	dev_dbg(ice_pf_to_dev(pf),
- 		"%s - success, inputs: %u, outputs: %u, rclk-parents: %u\n",
- 		 __func__, d->num_inputs, d->num_outputs, d->rclk.num_parents);
-@@ -4292,6 +4534,9 @@ void ice_dpll_deinit(struct ice_pf *pf)
- 		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
- 	if (!IS_ERR_OR_NULL(pf->dplls.eec.dpll))
- 		ice_dpll_deinit_dpll(pf, &pf->dplls.eec, cgu);
-+	if (!IS_ERR_OR_NULL(pf->dplls.txc.dpll))
-+		ice_dpll_deinit_dpll(pf, &pf->dplls.txc, false);
-+
- 	ice_dpll_deinit_info(pf);
- 	mutex_destroy(&pf->dplls.lock);
- }
-@@ -4317,14 +4562,19 @@ static void ice_dpll_init_e825(struct ice_pf *pf)
- 	err = ice_dpll_init_info_e825c(pf);
- 	if (err)
- 		goto err_exit;
--	err = ice_dpll_init_pins_e825(pf);
-+	err = ice_dpll_init_dpll(pf, &pf->dplls.txc, false, DPLL_TYPE_TXC);
- 	if (err)
- 		goto deinit_info;
-+	err = ice_dpll_init_pins_e825(pf);
++	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
 +	if (err)
-+		goto deinit_txclk;
- 	set_bit(ICE_FLAG_DPLL, pf->flags);
- 	complete_all(&d->dpll_init);
- 
- 	return;
- 
-+deinit_txclk:
-+	ice_dpll_deinit_dpll(pf, &pf->dplls.txc, false);
- deinit_info:
- 	ice_dpll_deinit_info(pf);
- err_exit:
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
-index ae42cdea0ee1..23f9d4da73c5 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
-@@ -7,6 +7,7 @@
- #include "ice.h"
- 
- #define ICE_DPLL_RCLK_NUM_MAX	4
-+#define ICE_DPLL_TXCLK_NUM_MAX	2
- 
- /**
-  * enum ice_dpll_pin_sw - enumerate ice software pin indices:
-@@ -63,6 +64,7 @@ struct ice_dpll_pin {
- 	u8 ref_sync;
- 	bool active;
- 	bool hidden;
-+	enum ice_e825c_ref_clk tx_ref_src;
- };
- 
- /** ice_dpll - store info required for DPLL control
-@@ -111,9 +113,11 @@ struct ice_dpll {
-  * @lock: locks access to configuration of a dpll
-  * @eec: pointer to EEC dpll dev
-  * @pps: pointer to PPS dpll dev
-+ * @txc: pointer to TXC dpll dev
-  * @inputs: input pins pointer
-  * @outputs: output pins pointer
-  * @rclk: recovered pins pointer
-+ * @txclks: TX clock reference pins pointer
-  * @num_inputs: number of input pins available on dpll
-  * @num_outputs: number of output pins available on dpll
-  * @cgu_state_acq_err_num: number of errors returned during periodic work
-@@ -131,11 +135,13 @@ struct ice_dplls {
- 	struct completion dpll_init;
- 	struct ice_dpll eec;
- 	struct ice_dpll pps;
-+	struct ice_dpll txc;
- 	struct ice_dpll_pin *inputs;
- 	struct ice_dpll_pin *outputs;
- 	struct ice_dpll_pin sma[ICE_DPLL_PIN_SW_NUM];
- 	struct ice_dpll_pin ufl[ICE_DPLL_PIN_SW_NUM];
- 	struct ice_dpll_pin rclk;
-+	struct ice_dpll_pin txclks[ICE_DPLL_TXCLK_NUM_MAX];
- 	u8 num_inputs;
- 	u8 num_outputs;
- 	u8 sma_data;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 9bfd3e79c580..cbc9693179a1 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -265,6 +265,13 @@ struct ice_cgu_pin_desc {
- 	struct dpll_pin_frequency *freq_supp;
- };
- 
-+enum ice_e825c_ref_clk {
-+	ICE_REF_CLK_ENET,
-+	ICE_REF_CLK_SYNCE,
-+	ICE_REF_CLK_EREF0,
-+	ICE_REF_CLK_MAX,
++		ice_debug(hw, ICE_DBG_PTP,
++			  "Failed to write CPI msg to phy %d, err: %d\n",
++			  phy, err);
++
++	return err;
++}
++
++/**
++ * ice_cpi_read_phy - Read a CPI port register
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @addr: PHY register address
++ * @val: storage for register value
++ *
++ * Return:
++ * * 0 on success
++ * * other error codes when failed to read from PHY
++ */
++static int ice_cpi_read_phy(struct ice_hw *hw, u8 phy, u32 addr, u32 *val)
++{
++	struct ice_sbq_msg_input msg = {
++		.dest_dev = ice_cpi_get_dest_dev(hw, phy),
++		.opcode = ice_sbq_msg_rd,
++		.msg_addr_low = lower_16_bits(addr),
++		.msg_addr_high = upper_16_bits(addr)
++	};
++	int err;
++
++	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
++	if (err) {
++		ice_debug(hw, ICE_DBG_PTP,
++			  "Failed to read CPI msg from phy %d, err: %d\n",
++			  phy, err);
++		return err;
++	}
++
++	*val = msg.data;
++
++	return 0;
++}
++
++/**
++ * ice_cpi_wait_req0_ack0 - waits for CPI interface to be available
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ *
++ * This function checks if CPI interface is ready to use by CPI client.
++ * It's done by assuring LM.CMD.REQ and PHY.CMD.ACK bit in CPI
++ * interface registers to be 0.
++ *
++ * Return: 0 on success, negative on error
++ */
++static int ice_cpi_wait_req0_ack0(struct ice_hw *hw, int phy)
++{
++	union cpi_reg_phy_cmd_data phy_regs;
++	union cpi_reg_lm_cmd_data lm_regs;
++
++	for (int i = 0; i < CPI_RETRIES_COUNT; i++) {
++		int err;
++
++		/* check if another CPI Client is also accessing CPI */
++		err = ice_cpi_read_phy(hw, phy, CPI0_LM1_CMD_DATA,
++				       &lm_regs.val);
++		if (err)
++			return err;
++		if (lm_regs.field.cpi_req)
++			return -EBUSY;
++
++		/* check if PHY.ACK is deasserted */
++		err = ice_cpi_read_phy(hw, phy, CPI0_PHY1_CMD_DATA,
++				       &phy_regs.val);
++		if (err)
++			return err;
++		if (phy_regs.field.error)
++			return -EFAULT;
++		if (!phy_regs.field.ack)
++			/* req0 and ack0 at this point - ready to go */
++			return 0;
++
++		msleep(CPI_RETRIES_CADENCE_MS);
++	}
++
++	return -ETIMEDOUT;
++}
++
++/**
++ * ice_cpi_wait_ack - Waits for the PHY.ACK bit to be asserted/deasserted
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @asserted: desired state of PHY.ACK bit
++ * @data: pointer to the user data where PHY.data is stored
++ *
++ * This function checks if PHY.ACK bit is asserted or deasserted, depending
++ * on the phase of CPI handshake. If 'asserted' state is required, PHY command
++ * data is stored in the 'data' storage.
++ *
++ * Return: 0 on success, negative on error
++ */
++static int ice_cpi_wait_ack(struct ice_hw *hw, u8 phy, bool asserted,
++			    u32 *data)
++{
++	union cpi_reg_phy_cmd_data phy_regs;
++
++	for (int i = 0; i < CPI_RETRIES_COUNT; i++) {
++		int err;
++
++		err = ice_cpi_read_phy(hw, phy, CPI0_PHY1_CMD_DATA,
++				       &phy_regs.val);
++		if (err)
++			return err;
++		if (phy_regs.field.error)
++			return -EFAULT;
++		if (asserted && phy_regs.field.ack) {
++			if (data)
++				*data = phy_regs.val;
++			return 0;
++		}
++		if (!asserted && !phy_regs.field.ack)
++			return 0;
++
++		msleep(CPI_RETRIES_CADENCE_MS);
++	}
++
++	return -ETIMEDOUT;
++}
++
++#define ice_cpi_wait_ack0(hw, port) \
++	ice_cpi_wait_ack(hw, port, false, NULL)
++
++#define ice_cpi_wait_ack1(hw, port, data) \
++	ice_cpi_wait_ack(hw, port, true, data)
++
++/**
++ * ice_cpi_req0 - deasserts LM.REQ bit
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @data: the command data
++ *
++ * Return: 0 on success, negative on CPI write error
++ */
++static int ice_cpi_req0(struct ice_hw *hw, u8 phy, u32 data)
++{
++	union cpi_reg_lm_cmd_data *lm_regs;
++	int err;
++
++	lm_regs = (union cpi_reg_lm_cmd_data *)&data;
++	lm_regs->field.cpi_req = 0;
++
++	err = ice_cpi_write_phy(hw, phy, CPI0_LM1_CMD_DATA, lm_regs->val);
++
++	return err;
++}
++
++/**
++ * ice_cpi_exec_cmd - writes command data to CPI interface
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @data: the command data
++ *
++ * Return: 0 on success, otherwise negative on error
++ */
++static int ice_cpi_exec_cmd(struct ice_hw *hw, int phy, u32 data)
++{
++	return ice_cpi_write_phy(hw, phy, CPI0_LM1_CMD_DATA, data);
++}
++
++/**
++ * ice_cpi_exec - executes CPI command
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port the CPI action is taken on
++ * @cmd: pointer to the command struct to execute
++ * @resp: pointer to user allocated CPI response struct
++ *
++ * This function executes CPI request with respect to CPI handshake
++ * mechanism.
++ *
++ * Return: 0 on success, otherwise negative on error
++ */
++int ice_cpi_exec(struct ice_hw *hw, u8 phy,
++		 const struct ice_cpi_cmd *cmd,
++		 struct ice_cpi_resp *resp)
++{
++	union cpi_reg_phy_cmd_data phy_cmd_data;
++	union cpi_reg_lm_cmd_data lm_cmd_data;
++	int err, err1 = 0;
++
++	if (!cmd || !resp)
++		return -EINVAL;
++
++	memset(&lm_cmd_data, 0, sizeof(lm_cmd_data));
++
++	lm_cmd_data.field.cpi_req = CPI_LM_CMD_REQ;
++	lm_cmd_data.field.get_set = cmd->set;
++	lm_cmd_data.field.opcode = cmd->opcode;
++	lm_cmd_data.field.portlane = cmd->port;
++	lm_cmd_data.field.data = cmd->data;
++
++	/* 1. Try to acquire the bus, PHY ACK should be low before we begin */
++	err = ice_cpi_wait_req0_ack0(hw, phy);
++	if (err)
++		goto cpi_exec_exit;
++
++	/* 2. We start the CPI request */
++	err = ice_cpi_exec_cmd(hw, phy, lm_cmd_data.val);
++	if (err)
++		goto cpi_exec_exit;
++
++	/*
++	 * 3. Wait for CPI confirmation, PHY ACK should be asserted and opcode
++	 *    echoed in the response
++	 */
++	err = ice_cpi_wait_ack1(hw, phy, &phy_cmd_data.val);
++	if (err)
++		goto cpi_deassert;
++
++	if (phy_cmd_data.field.ack &&
++	    lm_cmd_data.field.opcode != phy_cmd_data.field.opcode) {
++		err = -EFAULT;
++		goto cpi_deassert;
++	}
++
++	resp->opcode = phy_cmd_data.field.opcode;
++	resp->data = phy_cmd_data.field.data;
++	resp->port = phy_cmd_data.field.portlane;
++
++cpi_deassert:
++	/* 4. We deassert REQ */
++	err1 = ice_cpi_req0(hw, phy, lm_cmd_data.val);
++	if (err1)
++		goto cpi_exec_exit;
++
++	/* 5. PHY ACK should be deasserted in response */
++	err1 = ice_cpi_wait_ack0(hw, phy);
++
++cpi_exec_exit:
++	if (!err)
++		err = err1;
++
++	return err;
++}
++
++/**
++ * ice_cpi_set_cmd - execute CPI SET command
++ * @hw: pointer to the HW struct
++ * @opcode: CPI command opcode
++ * @phy: phy index CPI command is applied for
++ * @port_lane: ephy index CPI command is applied for
++ * @data: CPI opcode context specific data
++ *
++ * Return: 0 on success.
++ */
++static int ice_cpi_set_cmd(struct ice_hw *hw, u16 opcode, u8 phy, u8 port_lane,
++			   u16 data)
++{
++	struct ice_cpi_resp cpi_resp = {0};
++	struct ice_cpi_cmd cpi_cmd = {
++		.opcode = opcode,
++		.set = true,
++		.port = port_lane,
++		.data = data,
++	};
++
++	return ice_cpi_exec(hw, phy, &cpi_cmd, &cpi_resp);
++}
++
++/**
++ * ice_cpi_ena_dis_clk_ref - enables/disables Tx reference clock on port
++ * @hw: pointer to the HW struct
++ * @phy: phy index of port for which Tx reference clock is enabled/disabled
++ * @clk: Tx reference clock to enable or disable
++ * @enable: bool value to enable or disable Tx reference clock
++ *
++ * This function executes CPI request to enable or disable specific
++ * Tx reference clock on given PHY.
++ *
++ * Return: 0 on success.
++ */
++int ice_cpi_ena_dis_clk_ref(struct ice_hw *hw, u8 phy,
++			    enum ice_e825c_ref_clk clk, bool enable)
++{
++	u16 val;
++
++	val = FIELD_PREP(CPI_OPCODE_PHY_CLK_PHY_SEL_M, phy) |
++	      FIELD_PREP(CPI_OPCODE_PHY_CLK_REF_CTRL_M,
++			 enable ? CPI_OPCODE_PHY_CLK_ENABLE :
++			 CPI_OPCODE_PHY_CLK_DISABLE) |
++	      FIELD_PREP(CPI_OPCODE_PHY_CLK_REF_SEL_M, clk);
++
++	return ice_cpi_set_cmd(hw, CPI_OPCODE_PHY_CLK, phy, 0, val);
++}
++
+diff --git a/drivers/net/ethernet/intel/ice/ice_cpi.h b/drivers/net/ethernet/intel/ice/ice_cpi.h
+new file mode 100644
+index 000000000000..767107fc18e5
+--- /dev/null
++++ b/drivers/net/ethernet/intel/ice/ice_cpi.h
+@@ -0,0 +1,69 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright (C) 2018-2025 Intel Corporation */
++
++#ifndef _ICE_CPI_H_
++#define _ICE_CPI_H_
++
++#define CPI0_PHY1_CMD_DATA	0x7FD028
++#define CPI0_LM1_CMD_DATA	0x7FD024
++#define CPI_RETRIES_COUNT	10
++#define CPI_RETRIES_CADENCE_MS	100
++
++#define CPI_OPCODE_PHY_CLK			0xF1
++#define CPI_OPCODE_PHY_CLK_PHY_SEL_M		GENMASK(9, 6)
++#define CPI_OPCODE_PHY_CLK_REF_CTRL_M		GENMASK(5, 4)
++#define CPI_OPCODE_PHY_CLK_PORT_SEL		0
++#define CPI_OPCODE_PHY_CLK_DISABLE		1
++#define CPI_OPCODE_PHY_CLK_ENABLE		2
++#define CPI_OPCODE_PHY_CLK_REF_SEL_M		GENMASK(3, 0)
++
++#define CPI_OPCODE_PHY_PCS_RESET		0xF0
++#define CPI_OPCODE_PHY_PCS_ONPI_RESET_VAL	0x3F
++
++#define CPI_LM_CMD_REQ		1
++#define CPI_LM_CMD_SET		1
++
++union cpi_reg_phy_cmd_data {
++	struct {
++		u16 data;
++		u16 opcode : 8;
++		u16 portlane : 3;
++		u16 reserved_13_11: 3;
++		u16 error : 1;
++		u16 ack : 1;
++	} __packed field;
++	u32 val;
 +};
 +
- #define E810C_QSFP_C827_0_HANDLE 2
- #define E810C_QSFP_C827_1_HANDLE 3
++union cpi_reg_lm_cmd_data {
++	struct {
++		u16 data;
++		u16 opcode : 8;
++		u16 portlane : 3;
++		u16 reserved_12_11: 2;
++		u16 get_set : 1;
++		u16 cpi_reset : 1;
++		u16 cpi_req : 1;
++	} __packed field;
++	u32 val;
++};
++
++struct ice_cpi_cmd {
++	u8 port;
++	u8 opcode;
++	u16 data;
++	bool set;
++};
++
++struct ice_cpi_resp {
++	u8 port;
++	u8 opcode;
++	u16 data;
++};
++
++int ice_cpi_exec(struct ice_hw *hw, u8 phy,
++		 const struct ice_cpi_cmd *cmd,
++		 struct ice_cpi_resp *resp);
++int ice_cpi_ena_dis_clk_ref(struct ice_hw *hw, u8 port,
++			    enum ice_e825c_ref_clk clk, bool enable);
++#endif /* _ICE_CPI_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+index 21bb861febbf..226243d32968 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+@@ -54,8 +54,9 @@ enum ice_sbq_dev_id {
+ };
  
+ enum ice_sbq_msg_opcode {
+-	ice_sbq_msg_rd	= 0x00,
+-	ice_sbq_msg_wr	= 0x01
++	ice_sbq_msg_rd		= 0x00,
++	ice_sbq_msg_wr		= 0x01,
++	ice_sbq_msg_wr_np	= 0x02
+ };
+ 
+ #define ICE_SBQ_MSG_FLAGS	0x40
 -- 
 2.39.3
 
