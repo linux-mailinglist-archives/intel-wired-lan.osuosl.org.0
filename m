@@ -2,154 +2,150 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GKjcHNi+wmmOlQQAu9opvQ
+	id ODgUEqHAwmmjlQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 17:42:00 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 17:49:37 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55EDC3193B2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 17:41:59 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 955363195F5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 17:49:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5948B409A4;
-	Tue, 24 Mar 2026 16:41:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A0AC04106D;
+	Tue, 24 Mar 2026 16:49:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o0fwAvch6Bki; Tue, 24 Mar 2026 16:41:56 +0000 (UTC)
+ id GESa0DgVIRRf; Tue, 24 Mar 2026 16:49:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D4C6A4095F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBA574106E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774370516;
-	bh=7MatbDgQaWgyh+g+DD4yZjrx8Tdr7YMJC0zFSYrDllM=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1774370972;
+	bh=LUyPHYFnDMu8hAARucm+50EyHryzQIeZaT9fhosOQIc=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=q9Tv7UKfcKzSsN+nXHXwQ1SC4hr9vSo0Jvdekg6tawmxtKbi+p+2R2BLN9aIX6OfH
-	 fH2tdFdxc+R79tP0rYRZvj+w79BT+PVtrn+0SQYLwURIzm0OxtPsxsE1rvAB4Svem4
-	 I6n/zqrcYJ0biWv2g5B+J3Qj4XsAjtTnhRob5e0SPvf8MDQFpoiJTkxLv4Atgu+R7X
-	 y+3AqvK9A/eVtdZvuUZCaYsm0Y5qfg6xKhw8FcAusP0NUo5F8CfHmqtjj7Cwn9HhoE
-	 Zd55eZ1o0SkQpbrlBSTAPGKMuIDk0aS1KSs8SAxEs2Xjp1A1cWsjfLY+ma1b/yj4Ec
-	 BlLVo1vBNBUuw==
+	b=xzEHXU+uL7MybW7Vlfkpka7tQXoa1a66s80FS3q8J0X5M6ClmlEQZ5MZuwc41QO23
+	 Qc2dCrSJRNWaWfoiUerfdb6Y4F+i6hws5c0CIWni47+r/XeKVuJXtSTla+TgGuS/rp
+	 NHIShDt0xeo4N+SpMG6la4ENZy7mDYEUbtCelLvnuF09/EN3FDXKsJYqu10L8nsitD
+	 cyFY9HNXxGi8ROO0EbjMzCgKvH/HBlmE4WS98vO0XSdT6zqyvwqyKZTXFptkKEC2af
+	 5Bcc9t8Sbi2vVGFVOWsoKaNqc/L75VYpMkpE4DshLhafS5rOBaAPxQJs3jIv32sdZm
+	 DD3v1AE5cmylQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D4C6A4095F;
-	Tue, 24 Mar 2026 16:41:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BBA574106E;
+	Tue, 24 Mar 2026 16:49:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 48204F4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:41:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id C50A4353
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:49:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2A97F80E55
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:41:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AC49A60DE3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:49:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QslerHRURaQx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Mar 2026 16:41:53 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62f; helo=mail-pl1-x62f.google.com;
- envelope-from=joe@dama.to; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3AC9980E52
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3AC9980E52
-Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com
- [IPv6:2607:f8b0:4864:20::62f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3AC9980E52
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:41:53 +0000 (UTC)
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2ab46931cf1so545515ad.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 09:41:53 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ax6FCGFmXsnK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Mar 2026 16:49:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::629; helo=mail-ej1-x629.google.com;
+ envelope-from=technoboy85@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D4AEF60DDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4AEF60DDF
+Received: from mail-ej1-x629.google.com (mail-ej1-x629.google.com
+ [IPv6:2a00:1450:4864:20::629])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D4AEF60DDF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 16:49:29 +0000 (UTC)
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-b97ba4c2be2so207364266b.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 09:49:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774370968; cv=none;
+ d=google.com; s=arc-20240605;
+ b=a4KdlRdaUWoE0XqIoQDCpZPYJRvg8Xt/dh1fHcYvN4Jl9NJzP1DHtHSMURLzNMC0rr
+ j8qkkClt/ciMDFRxDp19Mh5oBecX2hEOceHBVLscXP47Og6Kv86UyYSfYLhKoGkPv5Du
+ LsVzLLJYbnooW9cbZMxI3wGwi0aOxOwuavXT7Qkk6uCw1myvBlWrpNrTEvEMhPxxkrTm
+ C6p2MLqO1LUaGzWxgLt5JM9tlJ9ijJkm5yWS/04iciv7gvlw+Ax3DY0U4zOlzP0A7Zh4
+ g6bssnv6esO/NOweJh1snFV37FLpxTJs8wPwYo04kciq5lRS4KUExGSLd/lBywcjbQJD
+ C6gA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :dkim-signature;
+ bh=LUyPHYFnDMu8hAARucm+50EyHryzQIeZaT9fhosOQIc=;
+ fh=1g8rnfTlp4pCpW/miUPwdI1kYDt9lqAmpgu3TLM6qv8=;
+ b=PMNaWaSVaMXtG8S12GCiE7OKS+SaTkVnVBIWIlGp7kCoaRxzJATnpOJu4WbmBgDJ6q
+ bttCeTBL4lbYliZRzXpWY4YgE9Q7KznRvjBENtJezyxGz00xXT795ZkzQPfHq63Jr9h1
+ aK3u0xrtfYSlmyhKlebpKDF4LL2oQwt1lYdqLvrQByEDYMIrQ0eH+I74PsRwzIkUYQ0W
+ NdSfkonKg8suV8DB3xr+tcXangQ8GSUSYxY1uh1cdiJPL5n21M7d822I/Yk5fnBAGlvj
+ Gp2xLZfOQI021SaQuBAMzZ8P7nA9E+ThjDuMIW4/9HQGT2lXQNdV0gxEKotku5zjRmCF
+ 8/PQ==; darn=lists.osuosl.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774370512; x=1774975312;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7MatbDgQaWgyh+g+DD4yZjrx8Tdr7YMJC0zFSYrDllM=;
- b=cK0pTPWN6zs64w2wV1MJ3hBfrSU+dnVZibmVpxiQXpVEk6bJgNOeby371d4BQKZoqd
- rjLo1lreduiy9jkguYXcEdE4ghaWUOmSb9N79m8nyDmLR3SioN8H/rUSq49gSgeJ7db2
- lFwsqIncNBQ5wiOeJUSTUZPcUYxIBnM2FR0qepxqG6DSn2HuZhl6mKBRcrUsydIRliJO
- iM4aTwikd6hJZSsv8F32is44d6B8OtrsNaufInKIFMNygUOgUQDs4TXEQjzI6/JxNm4U
- Xq+8PWjhbdT3o0FfXrVMEmHb7bx0jfjLlxjSKbJZEeLvk9vuU3tCa0R5Jh/WV3GUId8d
- S8sg==
+ d=1e100.net; s=20251104; t=1774370968; x=1774975768;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LUyPHYFnDMu8hAARucm+50EyHryzQIeZaT9fhosOQIc=;
+ b=iO60OCPwWsLc0EG70uADa1/6UcsAP5GXNvn+WKdhY5EqLEZGj6r9Qko59XqV+baHzP
+ pczF8j1vTzSATHTvk8yxU1fwmlsqjaT+TQRnjiz+YfgAg10LOtQ9+0/gcu3jWHjoC7EI
+ rlxDKJQnoDgg/HHJnJPSfi8544sRvDCv/4U3PeYcgpwHD0pLxZNXW1erP4HJuYIWHSvz
+ TtICuc3w0RJ3TOpVG3yUjDb6OiphM2UgqjUydjszFWkO/QhsDjHyi0aZOoGeqPEfAQEi
+ +Ii9CM9YcxQAJfcXmCjcbFurKh3HzWN00uo9sEi1HDjUSrItR2zJu9NBzhYG8RcVTyko
+ hrnA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8N3m47BARVrJYDRuLvpdNjqk4GvqS0sn7VmpGEMEN82te3XZGKwetc7E3TXXCS7AmVUkRKKFZv6v4zeTRasE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzEIdq1JpiSqOQZAyMxoTb50yJJ4GTR6ePLqnxpph1/LnL6+lkJ
- z09bBJwotXWxbhwBiAfity5n9ikQg3cekmN8XtOAuYD2OUMO0mmxhX/WpxpKsm/17FE=
-X-Gm-Gg: ATEYQzxH6YHmjKFmNLFKk76la0X7qlEAU+u//f/0cGb3Pb13w3iaKtZmACO3yrRAdlD
- JHRP3HRA+qNJJkrNu1V+7GUHYoSruVWnNfh4bGONzO/wyr53lIGobKTh6Y9Al88XUf+Oxw3pI9u
- dEsfM+MD5z8kEJdFB7AN/LgbMqjj/wamvHdwzgbvd8/T8uO7ZnKG9l/DMY/rHxHZiw5tbytQc7M
- mRnXd9PTaXyD7cloIDALAEWRoAQW4ySRRxPJHBEoQCjx3sU0lqF9iTuTYvgSzl2+ys5KZWEpw0h
- DBYDLxYzcz2C8kK8L/5aKeJZ5GHMURfMXmbSkhXkvYhgJVEAjdHRi5fNkgLXc6YphsOsAUougVC
- hG4lT52VCMROAQ3Cr9etkrClPoyPSmxNE4/vKrlht93B5uj/sq8KjbFU4l6xQUoTRGbJTnrLIJB
- OnuR9N
-X-Received: by 2002:a17:902:db0e:b0:2b0:5a4c:726f with SMTP id
- d9443c01a7336-2b0a4e0f962mr38951665ad.15.1774370512477; 
- Tue, 24 Mar 2026 09:41:52 -0700 (PDT)
-Received: from localhost ([2a03:2880:2ff:50::])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b083516b96sm191790655ad.7.2026.03.24.09.41.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2026 09:41:52 -0700 (PDT)
-Date: Tue, 24 Mar 2026 09:41:51 -0700
-From: Joe Damato <joe@dama.to>
-To: Matteo Croce <technoboy85@gmail.com>
-Cc: Mohsin Bashir <mohsin.bashr@gmail.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, netdev@vger.kernel.org,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
-Message-ID: <acK+z8Udlg1qyDeu@devvm20253.cco0.facebook.com>
-Mail-Followup-To: Joe Damato <joe@dama.to>,
- Matteo Croce <technoboy85@gmail.com>,
- Mohsin Bashir <mohsin.bashr@gmail.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, netdev@vger.kernel.org,
- bpf@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
+ AJvYcCVP1tPQncK5NSRCTcAyCZubJvPU8P6o/149DNhEel4RmBu0L2lAUW1OH8utpBIaAidHKH78k4B+pH5EiqmqMBk=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yyr6QWTaieKQSsAoEtXrVNB5GhnhbrhVomNiLcjiYRmoOnYWwq6
+ 5PTCi/VUOESxsfOYOvhgaq3OnwbrJFu6RPwP2/KB508t53x+DDqODmDtrXY+uvs5ChfdFvoo5e+
+ mBnuvumz1pCImZ/LnuuUIfbaNaQHuckg=
+X-Gm-Gg: ATEYQzwy4grlMjXmJnxdKkV8aJ+foDgPm4Z7w5By+X4+Luq1bRlA3jQhvVV2SKR2wCe
+ 9bcCSn6TAiZc00RtNV0IR2fdlBeJ+1lOZ9IA/jQj+V0m+tq2Dt7UQN9rhrkq7UQHYRwi/SF9Fcm
+ aw6QmLdj1vEYEsJ7uC4r9irlcGlWEaxNkY0cz0WQjSE1oMqwL4A33n9k50KSN/ZfpYQsOimHn6w
+ yLFzGq3esWcZnvCeh4yn7qnBJJR5fAVWBJY+No8dXWH6lo0rYo6/ZxquPsaA9eMg8VsCkN3IipJ
+ eyY=
+X-Received: by 2002:a17:907:8694:b0:b98:11cb:5fa9 with SMTP id
+ a640c23a62f3a-b9a3f1ac473mr9080366b.22.1774370967348; Tue, 24 Mar 2026
+ 09:49:27 -0700 (PDT)
+MIME-Version: 1.0
 References: <20260320132356.63194-1-teknoraver@meta.com>
  <20260320132356.63194-2-teknoraver@meta.com>
  <1d708196-7b89-431f-bb17-177564196894@gmail.com>
  <CAFnufp0LRVxwh50cLrg=hUe6itshTqrNy53HkvBWk6MQ7uL0KA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFnufp0LRVxwh50cLrg=hUe6itshTqrNy53HkvBWk6MQ7uL0KA@mail.gmail.com>
+ <acK+z8Udlg1qyDeu@devvm20253.cco0.facebook.com>
+In-Reply-To: <acK+z8Udlg1qyDeu@devvm20253.cco0.facebook.com>
+From: Matteo Croce <technoboy85@gmail.com>
+Date: Tue, 24 Mar 2026 17:48:51 +0100
+X-Gm-Features: AQROBzA2_iW4WgzLGFh7V8V5wrdvQTwU5-3V6Nc152QQriQY_B9N3jAu42FUgtE
+Message-ID: <CAFnufp0_xfO7XquPpWjHs3rJnPw=ygQgriGJXkss2nrrXq-UQw@mail.gmail.com>
+To: Joe Damato <joe@dama.to>, Matteo Croce <technoboy85@gmail.com>, 
+ Mohsin Bashir <mohsin.bashr@gmail.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Alexei Starovoitov <ast@kernel.org>, 
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, netdev@vger.kernel.org,
+ bpf@vger.kernel.org, 
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dama-to.20230601.gappssmtp.com; s=20230601; t=1774370512; x=1774975312;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7MatbDgQaWgyh+g+DD4yZjrx8Tdr7YMJC0zFSYrDllM=;
- b=xg9GdYTiTG+/7bAHuYWlV6xa6eLUREWLM19xXqkAZSzXAEYJdKlFQPLJbNW/PGll0b
- AeKS555+m7oTvjvFlZjUK73oVhRCJd/m1Xw0IpIsDq5A4CMHigdiRpJ2At32Wcu/7hK4
- eFvWwzEAhAT8PERjAK5zQVcKC6jOlrFSuZvJKrQ8JyovRE4EQLUbXvBdoeegk3MVwVhP
- imZwh0Gbyv3hNYvZLOHVfWBofO7rfUJRIxunBCOSY4MjutP8BzjOxht/6lMyEEMRF5yZ
- vWgg1ltfvrMBsgggiO3VDRijbTT/FDPJwCYavr+NErAOgPZT6ZYWe4ThiEISfKJutlYZ
- Sw5A==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=dama.to
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=dama-to.20230601.gappssmtp.com
- header.i=@dama-to.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=xg9GdYTi
+ d=gmail.com; s=20251104; t=1774370968; x=1774975768; darn=lists.osuosl.org;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=LUyPHYFnDMu8hAARucm+50EyHryzQIeZaT9fhosOQIc=;
+ b=jWAnlqjWIYTXbYZn81A2foUHBHQEInuEx0AAvnd6/Ore6ZBFZMKPJt0r3X+AJrV5op
+ aUMeeDqetLhmfre1pa6G7w+8PxZxV6Uokr3jTzcxQBZXW26LEsIf5PNLQQQt49uzoUX2
+ wq6iMTivme5CSRcMznFtWVk1R1Dz6QhN6ZVYYedE+wxJdOqaj2xKeYYjnotIp2fth0BK
+ 3sFdHF/Vm7jDHf6wHOsK68Bkd1MqmVUKsw2q422YPCwdhyZP1ozFjKAXa8QeahPh4vQ8
+ ekWSd1GfZNQeABOS8Ji5ys1geO9RjUe0rcu/kNMuNMt9FEIfDVpqlqFKxRUBapYuKmuE
+ pgCA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20251104 header.b=jWAnlqjW
 Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/2] e1000e: add basic XDP
  support
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -166,55 +162,65 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [1.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MAILLIST(-0.20)[mailman];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:google.com:reject}];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:technoboy85@gmail.com,m:mohsin.bashr@gmail.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:mohsinbashr@gmail.com,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DMARC_NA(0.00)[dama.to];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	FORGED_SENDER(0.00)[joe@dama.to,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[17];
-	FREEMAIL_TO(0.00)[gmail.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_CC(0.00)[gmail.com,intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,vger.kernel.org,lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:joe@dama.to,m:technoboy85@gmail.com,m:mohsin.bashr@gmail.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:mohsinbashr@gmail.com,m:andrew@lunn.ch,m:johnfastabend@gmail.com,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[technoboy85@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[joe@dama.to,intel-wired-lan-bounces@osuosl.org];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FREEMAIL_TO(0.00)[dama.to,gmail.com,intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,iogearbox.net,vger.kernel.org,lists.osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[18];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,mail.gmail.com:mid,osuosl.org:dkim,dama.to:email];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	NEURAL_HAM(-0.00)[-0.995];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	MISSING_XM_UA(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[technoboy85@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	NEURAL_HAM(-0.00)[-0.996];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 55EDC3193B2
+	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[8]
+X-Rspamd-Queue-Id: 955363195F5
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Sun, Mar 22, 2026 at 03:11:56AM +0100, Matteo Croce wrote:
-> Il giorno ven 20 mar 2026 alle ore 22:23 Mohsin Bashir
-> <mohsin.bashr@gmail.com> ha scritto:
+Il giorno mar 24 mar 2026 alle ore 17:41 Joe Damato <joe@dama.to> ha scritto:
+>
+> On Sun, Mar 22, 2026 at 03:11:56AM +0100, Matteo Croce wrote:
+> > Il giorno ven 20 mar 2026 alle ore 22:23 Mohsin Bashir
+> > <mohsin.bashr@gmail.com> ha scritto:
+>
+> [...]
+>
+> > I addressed all the comments and I'll send a v4 soon, thanks!
+>
+> I was paging through the code last night and I was wondering: have you
+> considered splitting this patch into multiple smaller patches?
+>
+> It would probably make it easier for reviewers to read and comment on.
+>
+> Just my 2 cents since you are sending a v4.
 
-[...]
+I thought that all features included in NETDEV_XDP_ACT_BASIC must be
+submitted in a single commit.
 
-> I addressed all the comments and I'll send a v4 soon, thanks!
+-- 
+Matteo Croce
 
-I was paging through the code last night and I was wondering: have you
-considered splitting this patch into multiple smaller patches?
-
-It would probably make it easier for reviewers to read and comment on.
-
-Just my 2 cents since you are sending a v4.
+perl -e 'for($t=0;;$t++){print chr($t*($t>>8|$t>>13)&255)}' |aplay
