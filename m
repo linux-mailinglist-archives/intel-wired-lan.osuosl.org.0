@@ -2,126 +2,123 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id +DDyFv+DwmkAegQAu9opvQ
+	id qM3sKRKEwmkAegQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 13:30:55 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 13:31:14 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77997308404
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 13:30:53 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA7A430840D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 13:31:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D54BC40E3D;
-	Tue, 24 Mar 2026 12:30:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 664B38225B;
+	Tue, 24 Mar 2026 12:31:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AK_oDkMM0cT7; Tue, 24 Mar 2026 12:30:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2UtMRP0pk3gA; Tue, 24 Mar 2026 12:31:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4377440E59
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CE0C2821E3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774355450;
-	bh=650cxGRTwGdCgB7/1Uuk1bSKY+xLpPUDI9BTHKCNycA=;
+	s=default; t=1774355471;
+	bh=cNaZ16Av/pHiTgNmSUlJBQ+S1AKjelzqjrsdrMAWcQU=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=AamepK4O9q8zByd1oaBs92pwAMs7KgUTvahfg/aMCI21naOMnWjO1vnQaWLPpEc75
-	 eLkxALHeTBycJImviviMLPaQu96FrqCZ6FbK1hgQWjsQFeKf7l4AF14xtZJ31YWqSx
-	 2FekCSyM9ZWmOcZEcn/sVtnkawAsS2VkKvN05aTSIXvvLGVGVCe5CiLZmn4ha9wpy0
-	 WPTPwXj6lmPvPcioxmHm5SJR1nhPnhzg+DmeMt5nRhcwqWXShMxZi8os9zGUDYKd2c
-	 BdK6B/+vtND7EfrmjEnQsh08hVysabdzBgaSuCRe5UqYjJUDCse05J9gr3kdmp3Z2t
-	 PgFj4vmomFE7Q==
+	b=YcwXgHAcfZo/HSe53qngqdCGTbNPnYsNOX3UbE+7hR9TfADko3IZ/YMM1cpFYsrg9
+	 U4IOfdLTrGywUjmjsJsMon5NTZvj0YwHZb4mH1suUhZrDNAsqOEbRvv9CoTco51Wbm
+	 jBCCYq4NGOkQZMosdr1/Rjhor9umGzggSu5cho3s4zidKHj3OhdrkD7ZqtAhYpfKxj
+	 KzT843RvHUVgsdxMpUsaLU/F6zwlNdqKjJphcGB5TzEf5zF4wC+wtjE+bnDZyz/4iP
+	 ytMHqspXYPbKLRn2Te7uCaAVz6kUg+fW19nvb0H6GGyGcesT7nRQ9rcEeQYYjQc6fj
+	 CUYbkgWBGkszg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4377440E59;
-	Tue, 24 Mar 2026 12:30:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CE0C2821E3;
+	Tue, 24 Mar 2026 12:31:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id C3D5DF4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:30:48 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 62E58F4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:31:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A95EB60ABC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:30:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 546386090B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:31:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DP09Z1oxeriI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Mar 2026 12:30:46 +0000 (UTC)
+ id peodObqlwdDq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Mar 2026 12:31:09 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::334; helo=mail-wm1-x334.google.com;
+ client-ip=2a00:1450:4864:20::32a; helo=mail-wm1-x32a.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A06E76090B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A06E76090B
-Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
- [IPv6:2a00:1450:4864:20::334])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A06E76090B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:30:43 +0000 (UTC)
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4852b81c73aso34986595e9.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 05:30:43 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 745FF60B53
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 745FF60B53
+Received: from mail-wm1-x32a.google.com (mail-wm1-x32a.google.com
+ [IPv6:2a00:1450:4864:20::32a])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 745FF60B53
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 12:31:09 +0000 (UTC)
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-486b9675d36so43648885e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 05:31:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774355441; x=1774960241;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=650cxGRTwGdCgB7/1Uuk1bSKY+xLpPUDI9BTHKCNycA=;
- b=TRfPYd44gCENnUsUYtm7PXmMvVOtmI38xfz9KaUaktcoBrqskNphMv4R9wbHmZ9mDy
- XESmRkQ+YpOM0Xg367xlvgQJtVes4kCi7CjflNNdY2WU7eeXqh4qsR6uBLckxnnKKBaL
- LbmpgKidi5kNSaYPPq+j9cy7gmTzNIfznMrz5s4r04nxUK+JCqTOodQQtZWiouYlsmzS
- 2YGjNRPw4kSw2JCSJufj+yF7A9wJ/nDxtQQdUGRK88O7IwYTUuG0mh5FLOmD05uC+FwV
- BS2LNGAMgDHixvbNceTEJTDH3C4CK4xA4KpsvZ8OuLnf/PaXG5Q3zsP89M6X5khF0BYz
- v79Q==
+ d=1e100.net; s=20251104; t=1774355467; x=1774960267;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cNaZ16Av/pHiTgNmSUlJBQ+S1AKjelzqjrsdrMAWcQU=;
+ b=b/MWEyEm/c7Y5/4+cuompZnOLv6glM+BcwpAAe+K0J+tzw++eetvH0R/3JfWchLDq4
+ PRU+kANbPmXR9LfSTuLjHK7TJj3DmJ4ez2DPGgweS4brLLrxEcmD9BnXIYDMr/b7pgtI
+ Wp6dV5kd4P4Ig7KAqf6hQbduqkPpJSZHeaLDeidUuJnBtTTJcWMV6EbefPSxLO3pm3t+
+ 9G3je7ZCiImvnV9+asQPEQJFvlysU4NDa1s/sftEA/fu20+JGz5PdO6/N5VE5t21q0oj
+ 8M7v+riEJUzdhOCys7r/1vPT7deS+Jk7GS1xsAbKTfl6ZTvqRteaNE/A7saS/D4RI0WA
+ 597Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVHaEpT+u2jJnXucDCfW362G9KEQri6QOU1oJ8lTe/fGX+vSxuRs8V+s2g9Bh8a2gILhn4uFkEC5nA7tH0iicQ=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyti5HfyLqqlevbvwlYaEP6/kb9bRamcy5hEtEiGpVACDSyQ54G
- 2CkN+KQ6Y5m3FQ5+wTapL0Kr175KkfdhFCf0biaZQSn0VIkaiv2cuQqjhplEY5Ue3pA=
-X-Gm-Gg: ATEYQzwX5+OdSzLHicQhP4vksTnrLNDzEs1mDFSMn4dUf5ipISsvZ8taawGnDKgA6ow
- CZeC6/vBK0tcUnljX1UZvkJjvr9Ht7hoxrfc+ggxAa/MKLQEyYY6HZYV9pXgWnlGRPg7X/w8Upz
- XCxpImH/11WxpOEgkxHBeoT8C4N24FcDNFh8/TFMihBUD7WlvNHFreX9R5gkcejE85m0F5Mp60h
- DTL9fEIhfRB4QYHaaDQqptB804AEtK3A2jX54ENntd+XX1ZnCLnqkNFvJyQeWqjBVYAJ2ly7JPS
- dlnaqhtBYvlRZGuIpASHVF1qIRgZVqk+7DIYD4AzMrbsNz1lg2H76mMMTkzP9pt/hJT/RjEdXJ9
- dKUipz6Er6rcdPs/lBfPOUfjjx+qiodOddNJTwIK5NnvUeslrZF0N9PUTpyvYIHIG9FBGLjium0
- sHVNwO5sg/1LNIC48ry4pdpLvSyB2OOoTR0Q==
-X-Received: by 2002:a05:600c:524e:b0:485:3ae8:2231 with SMTP id
- 5b1f17b1804b1-486ff01efd8mr208630005e9.30.1774355440868; 
- Tue, 24 Mar 2026 05:30:40 -0700 (PDT)
+ AJvYcCX3bHT3AM9v1sm0hi6MTwby3CAJqczW5qjN434/Qkr4rqfKTNC4h9CV1ZyRXoUk3ankgBBr0z/HV938BsCJCt0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxQfLD/NcPHZufaba4TJ/nTqcf08Cuix+kxO8DNVuxSj5j8rFn7
+ AOA9gtJXlRUcXM0vbgX1Zs+mFSvwSw+2FLBYsDgssUSA6tOlhcADOaEb/du4l9dwl6k=
+X-Gm-Gg: ATEYQzwGmGUkt7d/9uN7YiozJJAttmaG9uhVEJnHwe2g3J1XnX3JKQeniayfkp2dUc8
+ tU79N2v/mvYTfzSRrNynYOYfUAL3L3uh/ghbpbTVZwAL95fdgEp+3I0x0O+oGVSTJhbc9Uek9ZI
+ dhAd466HpHC/8YaXyYl/2TT6YGy8TBOV0BevzhzRoDpnEfV8YDuAtMnmyLDKOd1Wqm5XktFu10k
+ sa/zt26O6dybkU8l3E2PiG86HsK8OuMEF3vFRET/I/VUSUKBDaO+1f6HBK/8uBUKvNYZkl/yjIR
+ RGNN8H6IR63PM2prTcZ+Ieg3/geGwy8angvWWSt4E7VcgbK19qEBDYzd4a3hu/SJojTSHcq7J4E
+ ZVRRTjRvTZEmvdtOiITXsLylPgRj1rMFagsYJfc108/Yu8lqz5EyhouKjlsRqfl9WMC4B4nFAf7
+ 4DQynz6YQGysTEPrIB9KEW48d1j2cQ0co31iM=
+X-Received: by 2002:a05:600c:528e:b0:485:3fc8:de9c with SMTP id
+ 5b1f17b1804b1-486fedb2ef0mr212873175e9.12.1774355467376; 
+ Tue, 24 Mar 2026 05:31:07 -0700 (PDT)
 Received: from FV6GYCPJ69 ([140.209.217.211]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-487117077cbsm45683595e9.6.2026.03.24.05.30.39
+ 5b1f17b1804b1-48711764625sm50073125e9.14.2026.03.24.05.31.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2026 05:30:40 -0700 (PDT)
-Date: Tue, 24 Mar 2026 13:30:37 +0100
+ Tue, 24 Mar 2026 05:31:06 -0700 (PDT)
+Date: Tue, 24 Mar 2026 13:31:04 +0100
 From: Jiri Pirko <jiri@resnulli.us>
 To: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Message-ID: <ose4zofbqvlzfhdina5nlolbj64inrhkr3nqok3dkheav2s6px@warnjuzviid5>
+Message-ID: <ao4eviden4pqqxpxhnrymdv2nkb4qumewoevuf4khbhqprvv5n@7ie2fsz77t63>
 References: <20260321222627.1193603-1-grzegorz.nitka@intel.com>
- <20260321222627.1193603-4-grzegorz.nitka@intel.com>
+ <20260321222627.1193603-2-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260321222627.1193603-4-grzegorz.nitka@intel.com>
+In-Reply-To: <20260321222627.1193603-2-grzegorz.nitka@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1774355441; x=1774960241;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1774355467; x=1774960267;
  darn=lists.osuosl.org; 
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=650cxGRTwGdCgB7/1Uuk1bSKY+xLpPUDI9BTHKCNycA=;
- b=PW/VAGNr3K774Z9I2vgkOUQmvXPSH7llh33jVqrHRvgkfPk49DeWDgbAwtdN8vJYGi
- rCyaFREYe13wRRkH1i2tmMEJGKpq64mS++Ei6OoWv7NdO99lQB3SOsh4BsRkk3odakis
- 1oXlB+fVKp7NSz4f4TNjj56gzrD66ECzLjfXZsyDA3vreUssOu00Df5Rx4RX7JKvhDNP
- /sOmPyfDgpweQBDGxCksY0A2n8yCs9fA7SHgtXRqyj/JcxBkhSRamo8mQTbiXy6Z8bXF
- Vt5GyZyFiv0rvLYAwlpoongkZ2fBW0XiJ6YzWq60Z9EepJF8bFZ8FUXDWgJruGAIGYlA
- A6Fg==
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=cNaZ16Av/pHiTgNmSUlJBQ+S1AKjelzqjrsdrMAWcQU=;
+ b=R+i/fdFwCCmPKVQ40ezfedcrtWYY+0rxViKDZP1uhFAT2LI4fh558rWIQs04y0jtVT
+ X+mhyxMeItzgx67DA+5szENkjUAU9WkNLv/CQYDHauZDnfXWS/AkhNXOZcX/wzQcvYYO
+ 5Bj+QUptKgwtXfn9TWDuGUZZtjK1sy2l00jrnj/87OayJBEzsy5/TATBsQO20bMjWW2T
+ /Uccy8MVXxDOPCVxaabPio2XFAsDqcw7In16M+ZXbz8q+/pv3981fgk0z+qyQiqJoLEV
+ rUe9Ub0UKi33Eqi0GFKG2HbOw/UYZtHld1QZIaLMotVdRjgy2OXAhGpaNJDD2IP8ULSF
+ wMZA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=PW/VAGNr
-Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 3/8] dpll: extend pin
- notifier and netlink events with notification source ID
+ header.s=20230601 header.b=R+i/fdFw
+Subject: Re: [Intel-wired-lan] [PATCH v2 net-next 1/8] dpll: add new DPLL
+ type for transmit clock (TXC) usage
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -147,15 +144,15 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [1.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_RHS_NOT_FQDN(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:ivecera@redhat.com,m:aleksandr.loktionov@intel.com,m:kuba@kernel.org,m:vadim.fedorenko@linux.dev,m:edumazet@google.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:Prathosh.Satish@microchip.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[nvidia.com:email,intel.com:email,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
 	FORGED_SENDER(0.00)[jiri@resnulli.us,intel-wired-lan-bounces@osuosl.org];
 	RCPT_COUNT_TWELVE(0.00)[19];
 	DMARC_NA(0.00)[resnulli.us];
@@ -178,81 +175,23 @@ X-Spamd-Result: default: False [1.29 / 15.00];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 77997308404
+X-Rspamd-Queue-Id: EA7A430840D
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Sat, Mar 21, 2026 at 11:26:22PM +0100, grzegorz.nitka@intel.com wrote:
->Extend the DPLL pin notification API to include a source identifier
->indicating where the notification originates. This allows notifier
->consumers and netlink listeners to distinguish between notifications
->coming from an associated DPLL instance, a parent pin, or the pin
->itself.
+Sat, Mar 21, 2026 at 11:26:20PM +0100, grzegorz.nitka@intel.com wrote:
+>Extend the DPLL subsystem with a new DPLL type, DPLL_TYPE_TXC,
+>representing devices that drive a transmit reference clock. Certain
+>PHYs, MACs and SerDes blocks use a dedicated TX reference clock for
+>link operation, and this clock domain is distinct from PPS- and
+>EEC-driven synchronization sources. Defining a dedicated type allows
+>user space and drivers to correctly classify and configure DPLLs
+>intended for TX clock generation.
 >
->A new field, src_id, is added to struct dpll_pin_notifier_info and is
->passed through all pin-related notification paths. Callers of
->dpll_pin_notify() are updated to provide a meaningful source identifier
->based on their context:
->  - pin registration/unregistration use the DPLL's clock_id,
->  - pin-on-pin operations use the parent pin's clock_id,
->  - pin changes use the pin's own clock_id.
+>The corresponding netlink specification is updated to expose "txc"
 >
->This enables richer event routing and more accurate state handling in
->user space and in-kernel consumers.
->
->The current DPLL pin notification infrastructure does not provide any
->way to identify where a pin-related notification originates. Both the
->in-kernel notifier chain and the netlink notification path only carry
->information about the pin itself, not about the component that triggered
->the event.
->
->This becomes problematic on platforms where multiple DPLL devices or
->drivers share the same physical pin via firmware description (fwnode).
->In such setups pin creation, deletion, or state changes can be triggered
->from several independent contexts:
->
->  - from the DPLL device that owns the pin,
->  - from another DPLL device that re-registers or rebinds the same
->    fwnode-described pin,
->  - or from a pin-on-pin relationship (parent pin registering child
->    pins).
->
->Without a source identifier all these notifications look identical to
->listeners. Drivers cannot reliably determine whether a received event
->is a result of their own registration/unregistration actions or
->originated from a different DPLL instance. This leads to several types
->of problems:
->
->  * risk of duplicate pin registration when a driver reacts to its own
->    event,
->  * difficulty suppressing notifications that are merely internal
->    bookkeeping side effects,
->  * inability to implement correct pin‑multiplexing or cross‑device
->    synchronization logic when pins are shared across fwnode domains.
->
->To address this, extend `struct dpll_pin_notifier_info` with a new
->`src_id` field that identifies the originator of the event. The DPLL
->core sets this field for all pin notifications:
->
->  - pin registration/unregistration: the source is the clock_id of the
->    DPLL initiating the operation,
->  - pin-on-pin relationships: the source is the parent pin's clock_id,
->  - pin property/state updates: the source is the pin's own clock_id.
->
->Netlink notifications now also carry this additional field.
->
->With this information notifier consumers can differentiate true external
->events from internal ones and ignore the latter when appropriate.
->As shown later in this series, ICE/E825 devices rely on this to avoid
->reacting to the events that their own registration logic triggers
->when a shared-fwnode pin appears.
->
->This change only extends the notification metadata and does not alter
->existing semantics for drivers that do not use the new field.
->
+>Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 
-This lenghty and verbose AI-generated patch description are so annoying.
-Care to cut it down to something like 1/8 without unnecessary things?
-
-
-
+Reviewed-by: Jiri Pirko <jiri@nvidia.com>
