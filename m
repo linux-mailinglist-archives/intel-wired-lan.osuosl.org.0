@@ -2,95 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 5aGwODvUwmmwmgQAu9opvQ
+	id SOmeDE/UwmmwmgQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 19:13:15 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 19:13:35 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A269B31A8EE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 19:13:14 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9C30531A922
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Mar 2026 19:13:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 024D483BA7;
-	Tue, 24 Mar 2026 18:13:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0697B4111D;
+	Tue, 24 Mar 2026 18:13:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id O0DhgjfAS4Wo; Tue, 24 Mar 2026 18:13:12 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zb_6AQ3m-DQw; Tue, 24 Mar 2026 18:13:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF0F183BA3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7FBD941085
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774375991;
-	bh=/nbVlsaioYKF4sVSgiEokAiqvKpmQsI/mQ3o3FZFtp4=;
+	s=default; t=1774376012;
+	bh=j4KIbqvhidbLdE2zkNvP4L5iPrMq8r7qV66qKB0JP/0=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=yWCSaJ/mrsmeTHQuTnSsMc054dAW4G3dFvVxgvJU4cmiuQMyoIRh4kStGIci1tj/q
-	 0YhR9bnFEKNUxDX8xiRtNTIBC/tUNZ9/+6Q8bGuIuCF7byLctBsRYzoxjZPASkbQ5m
-	 CcCyQFmhY3PYMQsi7r1w4yWlU7yq4setu3pzjO5EJ4idn0nLO8mb715qLWNqy4NmtQ
-	 E8+JtsUnAjjtnY5324IJe3i1397XsGy2yRiAK8OwPSLVcR6TCa7cTEZFf3PqI1XJmd
-	 XjleFiYTwmiGW9O4v9SksyrxHbZ3ROj6PSnL7+V5laIEss2KPdCOqzWdthTO1z9u7Q
-	 yfLr/D7gWbejw==
+	b=owiNH6NEiGjTAxKt8/7MistpXD0YT3tvY0qWsy1ikzMzwwIrZJllTvJcRKOSJlb+y
+	 UoapfTT7XAggHm8sYAtBkOCSVTU1rzpIW+5hYpkDkryPMVoxrvdhD6QlyJIjMNRnk8
+	 MBvhk1Y+wMR1ddXpLL4eiA+dcEjPPP0/xq5FkZc/m3nzA3cY8Oyb07KL4R0lVdh4dG
+	 OYIi+P1HHeTxgRLP9a6ycjjlq4evgwA8FRpsXkBCMLq1yyaWH0iRjatzY9UlKyOC+8
+	 SBSvFxUigBQRmbUiDhpzy0m7SbEoz9OWIGYpoWRXxljaQLn/0O2bQugvEvkrDIIUTq
+	 UmaVYTUFPFtgQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AF0F183BA3;
-	Tue, 24 Mar 2026 18:13:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7FBD941085;
+	Tue, 24 Mar 2026 18:13:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 6756B353
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8A6801D3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6422560B9D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7014060B9D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iOjSPG96x5XP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Mar 2026 18:13:08 +0000 (UTC)
+ id ecnbCNxw62w9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Mar 2026 18:13:29 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1232; helo=mail-dl1-x1232.google.com;
+ client-ip=2607:f8b0:4864:20::1234; helo=mail-dl1-x1234.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5316660B4E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5316660B4E
-Received: from mail-dl1-x1232.google.com (mail-dl1-x1232.google.com
- [IPv6:2607:f8b0:4864:20::1232])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5316660B4E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:08 +0000 (UTC)
-Received: by mail-dl1-x1232.google.com with SMTP id
- a92af1059eb24-128ebee22caso4639052c88.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 11:13:08 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BEC4260B4E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEC4260B4E
+Received: from mail-dl1-x1234.google.com (mail-dl1-x1234.google.com
+ [IPv6:2607:f8b0:4864:20::1234])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BEC4260B4E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 18:13:29 +0000 (UTC)
+Received: by mail-dl1-x1234.google.com with SMTP id
+ a92af1059eb24-12732e6a123so9406127c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Mar 2026 11:13:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774375987; x=1774980787;
+ d=1e100.net; s=20251104; t=1774376009; x=1774980809;
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/nbVlsaioYKF4sVSgiEokAiqvKpmQsI/mQ3o3FZFtp4=;
- b=eWTQxk1x8t5aNNxQExOAWvR0Hw6kD2CRfY745eDiN8JGZP0dxV0SW0otKZRFMsV16x
- 0OH2+6E8nmAF6YzojN1RMgVk0ckiepHfrgR3pIHYS8TctpKfX7XE18lzE3e0OhFhlSMd
- yLSiTYnyubImqcExWqIYtxd3rMOsZ8klAyGgSvkiqdmP3VqdfgbBzwCSB3uOqhmkvCCa
- eGG6NDlR+bMFMx2By6zOMy/k112M6fknJ1QAeWyfu1k1kzuxDV4DiAnvv/ConcpoEfpo
- QZ3j/+PCNNa0Jt2gakJVGGnACBJdz5FeDr/pGE6MjnXC0azR6sqNXnRz5IxEAs6ydfXx
- x3dQ==
+ bh=j4KIbqvhidbLdE2zkNvP4L5iPrMq8r7qV66qKB0JP/0=;
+ b=MYlmiTQpBphAPIybrwtCjpPm247+CCHF+my589k/+XGv7wwnltkx6ru2no7Qx1/ssE
+ m5oNPJhBeujUCK4NWF5xX6hJyRrGd2MrDViqmsa+rubbM3ddhxH4H6oH7xq3KuE6PJdX
+ 626FiivUdfVqFkcURvsI4Gq8VLZWaISDleacOTds/oY0JRYw36JTP+ejpNaXs8yBDRUo
+ FbihoLBeIPMZ6vyesew/dSt9CqD6NxibvBuqYLKajCJIqWCy618YP6QoYzch5BxPCXAg
+ qZTYbk/VseVt+snGHoLs5MqmLmGJV3w0vJ5ddsar2O6Yf+rinSA/5lMHbW4UIOYRDaNw
+ NAeA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGvjeIAslfLiwSu2aVekkyOVzfbW71fFVJYGnQGDQZkLlgZptHAMFmuLePUTvOQUI5ijO0j1UfsbXZYzZs4bs=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxFFy0h03WVHLRwW5CLhKarSw7oVTYCg8pblYqNEObVxSKZ81LB
- scPxh7v4Tg36XD6VdbAq5Rkzh3G/8Ekofl7UrKBu3xAHYf/4cO8s+Z8=
-X-Gm-Gg: ATEYQzzbUu6//w+AVcOo2HDLT8D/FKxP0zgyosxvDmD5Hg9XHG3tfM3FBtomjS9kj0n
- q/mxy5zMOQyjBA7C7/NQ9NvFaUG0b7ORO7H/uDxWM7NncWs97WCSuU/I5m0iKRVd3Hiz+y1slnd
- ethgZJNR+67r3XKCmMvo8fqoC+9fatJjGazOoGwbIqwKKdWilKTm8jQBKMEzd4BmGaqF3k+Gcso
- ZvLmzywP9CX1E8bC9VOXx0BVEPcP2HlzeqL832RrvOz0mPW1uHzMIg7y/ZNekJIQFJsyUTyH6bb
- Tag8zrLLe0Fe8viXUySItzM4gBSdfTCqYpfD04kdeF15B33h6NZ8dFqE3/UpU7sEcLPjFuQTJ07
- qy5AP3NSrHOJUlUWgpLEIe7xP8FU5qzBJ47doy8i2rD6Qnk/6XU/KYT1/tMFZGgAv64JxySYpuT
- MF5BS9BauP2xV1F4IIGzPsMVRGzOQxnRXEPdocY8PMOyTkHIFopHSVICyEZW1+I2ssCmihZbWR7
- rQ0vQhY0jhCQ/Nf9A==
-X-Received: by 2002:a05:7022:69a:b0:11b:f056:a1b3 with SMTP id
- a92af1059eb24-12a96e5d9eamr272090c88.11.1774375986837; 
- Tue, 24 Mar 2026 11:13:06 -0700 (PDT)
+ AJvYcCVZH4M2qTXM7Zf2Aqqc/NeRfZiCx6+1Lrg/0Er0ss8i30aYD0Ket+QPhYIKPJplu6O990R71wgePXTG9DWSnfw=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yx23h3ut4AqCnZAP+ggELrN5FTle5ZKOI5/95wBUqy7DPwGY1IC
+ XUb3CxDTlVzf5LrdYBJpXNmNW9UPOknp4NrkWN43Go17ckXZPHpbewo=
+X-Gm-Gg: ATEYQzxtN9H6WtxRldJLR381y6oSXP/nFUG2toF4C2zdzx3UvCvT7oRniNIfmDxXbGm
+ PJKAuDTTr69NO6k9UfqxCAYFwBSoYtQSGTy/TJeZz+PSUIFsm5aeBR4e0R34rENruAkVscyeRGq
+ rdg7xs3/UQaldCFwwP9Lh8Uz0oDIusYRCX6S7O/vfkoVwXQQ704p3S/W4BPVn7AgMiULU+n5tMI
+ gf00BYQWPgrE2OR8wnv+9fl5YlTFEorVFs8xihc0CEdwkBNtP6PdEml8+7hl9sSTTh4JVhwiYMw
+ TuKtRPPA0QtNVcbFKw0h9tsZfA6KfFYYXTb3oyybutoKmdO/919MxqfO9fAQIZhe5KhupTHy/bQ
+ sz6hX0stwMhPUPqhpAKDNyD+eRSCOb4+tsbltE1BuijWmu8i4HP9WJsY65AakKGN2z9SNVoMOee
+ awQHhvCszc6NbN35Ukb1PonYlIrA8Wi2V2C/pDljZrPv69O3crG7oPKbGE71tOYMLsxSdl9lsxm
+ sne9owUEjDbKpe+uA==
+X-Received: by 2002:a05:7022:526:b0:125:be41:db5b with SMTP id
+ a92af1059eb24-12a96f200f8mr243112c88.42.1774376008513; 
+ Tue, 24 Mar 2026 11:13:28 -0700 (PDT)
 Received: from localhost (c-76-102-12-149.hsd1.ca.comcast.net. [76.102.12.149])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-12a7330d1c5sm11223913c88.0.2026.03.24.11.13.05
+ 5a478bee46e88-2c10b35116bsm18984900eec.30.2026.03.24.11.13.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Mar 2026 11:13:05 -0700 (PDT)
-Date: Tue, 24 Mar 2026 11:13:04 -0700
+ Tue, 24 Mar 2026 11:13:27 -0700 (PDT)
+Date: Tue, 24 Mar 2026 11:13:26 -0700
 From: Stanislav Fomichev <stfomichev@gmail.com>
 To: Jakub Kicinski <kuba@kernel.org>
 Cc: Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
@@ -108,7 +108,7 @@ Cc: Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, linux-rdma@vger.kernel.org,
  linux-wireless@vger.kernel.org, linux-kselftest@vger.kernel.org,
  leon@kernel.org
-Message-ID: <acLUMN1BYkIVyOk8@mini-arch>
+Message-ID: <acLURpj2nttA6De3@mini-arch>
 Mail-Followup-To: Stanislav Fomichev <stfomichev@gmail.com>,
  Jakub Kicinski <kuba@kernel.org>,
  Stanislav Fomichev <sdf@fomichev.me>, netdev@vger.kernel.org,
@@ -127,33 +127,32 @@ Mail-Followup-To: Stanislav Fomichev <stfomichev@gmail.com>,
  linux-wireless@vger.kernel.org, linux-kselftest@vger.kernel.org,
  leon@kernel.org
 References: <20260320012501.2033548-1-sdf@fomichev.me>
- <20260320012501.2033548-4-sdf@fomichev.me>
- <20260323162003.0d155055@kernel.org>
+ <20260320012501.2033548-2-sdf@fomichev.me>
+ <20260323162053.62a148c2@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260323162003.0d155055@kernel.org>
+In-Reply-To: <20260323162053.62a148c2@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1774375987; x=1774980787; darn=lists.osuosl.org;
+ d=gmail.com; s=20251104; t=1774376009; x=1774980809; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references
  :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/nbVlsaioYKF4sVSgiEokAiqvKpmQsI/mQ3o3FZFtp4=;
- b=KQzwBU4f+rxtRy+RFnTcZh3Eh/0MbeGbHp0iZzY/yM7j1ODSbL9x6b+LYcVlUGhLYK
- 6ibRuJj0iXNwaCfUlOkr3dFbHM683QA/VYjEwB9k3hGaWVLWohawv49Tb+M6TWClICsv
- 9LZQaz8JbtnDOFIhyNVmabXERHiD5BDY9BI5nSoDrZPYneweyBViNeDzDH+lGVayspSS
- dXUKh92UlohtdKknSdp3Ch7BA/826ZPkE65x0VjF1qhVP6qMEOTLQxTZXnM0wddOtJgc
- hqnk3u2PO/0PbtWCuus/tJ/vZhu2WzzcbBC/HNB7ygUKS4TtlA4un1PitzTujP7FFqtx
- Ystg==
+ bh=j4KIbqvhidbLdE2zkNvP4L5iPrMq8r7qV66qKB0JP/0=;
+ b=V7W7NuwWT2rUdexlPhoid0JOABf6VYHXO1evkkhNWrLJzYnlP+2X8xtwQHlBuWkNqb
+ wu1C1ipmBYBpusCG1HMxBnU5wFm8d8oWSpE9RIuqY39snvgj3i7J4pTa9SM6qFiCixbz
+ GdILo6cDK4CV4mC7z3/wgy5S4EZA5VsF76w+zwNmejCv7ZpDZJAf5ny62wzMvTp+l6PB
+ W5xX/rK2e8GEzjhUR+ucJuzf9R1ybgK30J7p1fPyFZrv/HHR2BhW0ZtvDWOMTy2OfujO
+ oho84FOmsgoNyBm5JIhCtEkUvaDHeayjLpgkGNm4TOMc4ldR+A4PI8jyc57slQmm5vLc
+ +IRQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20251104 header.b=KQzwBU4f
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 03/13] net: introduce
- ndo_set_rx_mode_async and dev_rx_mode_work
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20251104 header.b=V7W7NuwW
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 01/13] net: add address
+ list snapshot and reconciliation infrastructure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -168,318 +167,50 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.29 / 15.00];
+X-Spamd-Result: default: False [1.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_RHS_NOT_FQDN(0.50)[];
-	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	MAILLIST(-0.20)[mailman];
 	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:kuba@kernel.org,m:sdf@fomichev.me,m:netdev@vger.kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:corbet@lwn.net,m:skhan@linuxfoundation.org,m:andrew+netdev@lunn.ch,m:michael.chan@broadcom.com,m:pavan.chebbi@broadcom.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:saeedm@nvidia.com,m:tariqt@nvidia.com,m:mbloch@nvidia.com,m:alexanderduyck@fb.com,m:kernel-team@meta.com,m:johannes@sipsolutions.net,m:sd@queasysnail.net,m:jianbol@nvidia.com,m:dtatulea@nvidia.com,m:mohsin.bashr@gmail.com,m:jacob.e.keller@intel.com,m:willemb@google.com,m:skhawaja@google.com,m:bestswngs@gmail.com,m:aleksandr.loktionov@intel.com,m:kees@kernel.org,m:linux-doc@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-rdma@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:leon@kernel.org,m:andrew@lunn.ch,m:mohsinbashr@gmail.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[stfomichev@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	FREEMAIL_FROM(0.00)[gmail.com];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[37];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FORGED_SENDER(0.00)[stfomichev@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[37];
 	MIME_TRACE(0.00)[0:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FREEMAIL_CC(0.00)[fomichev.me,vger.kernel.org,davemloft.net,google.com,redhat.com,kernel.org,lwn.net,linuxfoundation.org,lunn.ch,broadcom.com,intel.com,nvidia.com,fb.com,meta.com,sipsolutions.net,queasysnail.net,gmail.com,lists.osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[stfomichev@gmail.com,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_CC(0.00)[fomichev.me,vger.kernel.org,davemloft.net,google.com,redhat.com,kernel.org,lwn.net,linuxfoundation.org,lunn.ch,broadcom.com,intel.com,nvidia.com,fb.com,meta.com,sipsolutions.net,queasysnail.net,gmail.com,lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	NEURAL_HAM(-0.00)[-1.000];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	MISSING_XM_UA(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: A269B31A8EE
+X-Rspamd-Queue-Id: 9C30531A922
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
 On 03/23, Jakub Kicinski wrote:
-> On Thu, 19 Mar 2026 18:24:51 -0700 Stanislav Fomichev wrote:
-> > diff --git a/Documentation/networking/netdevices.rst b/Documentation/networking/netdevices.rst
-> > index 35704d115312..dc83d78d3b27 100644
-> > --- a/Documentation/networking/netdevices.rst
-> > +++ b/Documentation/networking/netdevices.rst
-> > @@ -289,6 +289,14 @@ struct net_device synchronization rules
-> >  ndo_set_rx_mode:
-> >  	Synchronization: netif_addr_lock spinlock.
-> >  	Context: BHs disabled
-> > +	Notes: Deprecated in favor of sleepable ndo_set_rx_mode_async.
-> > 
-> > +ndo_set_rx_mode_async:
-> > +	Synchronization: rtnl_lock() semaphore. In addition, netdev instance
-> > +	lock if the driver implements queue management or shaper API.
-> > +	Context: process (from a work queue)
-> > +	Notes: Sleepable version of ndo_set_rx_mode. Receives snapshots
+> On Thu, 19 Mar 2026 18:24:49 -0700 Stanislav Fomichev wrote:
+> > +EXPORT_SYMBOL(__hw_addr_list_snapshot);
+> > +EXPORT_SYMBOL(__hw_addr_list_reconcile);
 > 
-> It's probably just my weirdness but I find creating adjectives out 
-> of random nouns by adding "-able" to be in poor taste. "sleepable"
-> took root in certain three letter subsystems but I hope it won't
-> in netdev.
-> 
-> Please use your words:
-> 
-> 	Notes: Async version of ndo_set_rx_mode which runs in process
-> 	context. Receives snapshots f the unicast and multicast address lists.
+> Why?  For the kunit tests?
 
-SG, will do!
- 
-> > +	of the unicast and multicast address lists.
-> >  
-> >  ndo_setup_tc:
-> >  	``TC_SETUP_BLOCK`` and ``TC_SETUP_FT`` are running under NFT locks
-> > diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-> > index 469b7cdb3237..b05bdd67b807 100644
-> > --- a/include/linux/netdevice.h
-> > +++ b/include/linux/netdevice.h
-> > @@ -1117,6 +1117,16 @@ struct netdev_net_notifier {
-> >   *	This function is called device changes address list filtering.
-> >   *	If driver handles unicast address filtering, it should set
-> >   *	IFF_UNICAST_FLT in its priv_flags.
-> > + *	Cannot sleep, called with netif_addr_lock_bh held.
-> > + *	Deprecated in favor of sleepable ndo_set_rx_mode_async.
-> > + *
-> > + * void (*ndo_set_rx_mode_async)(struct net_device *dev,
-> > + *				 struct netdev_hw_addr_list *uc,
-> > + *				 struct netdev_hw_addr_list *mc);
-> > + *	Sleepable version of ndo_set_rx_mode. Called from a work queue
-> > + *	with rtnl_lock and netdev_lock_ops(dev) held. The uc/mc parameters
-> > + *	are snapshots of the address lists - iterate with
-> > + *	netdev_hw_addr_list_for_each(ha, uc).
-> >   *
-> >   * int (*ndo_set_mac_address)(struct net_device *dev, void *addr);
-> >   *	This function  is called when the Media Access Control address
-> > @@ -1437,6 +1447,9 @@ struct net_device_ops {
-> >  	void			(*ndo_change_rx_flags)(struct net_device *dev,
-> >  						       int flags);
-> >  	void			(*ndo_set_rx_mode)(struct net_device *dev);
-> > +	void			(*ndo_set_rx_mode_async)(struct net_device *dev,
-> > +							 struct netdev_hw_addr_list *uc,
-> > +							 struct netdev_hw_addr_list *mc);
-> >  	int			(*ndo_set_mac_address)(struct net_device *dev,
-> >  						       void *addr);
-> >  	int			(*ndo_validate_addr)(struct net_device *dev);
-> > @@ -1903,6 +1916,7 @@ enum netdev_reg_state {
-> >   *				has been enabled due to the need to listen to
-> >   *				additional unicast addresses in a device that
-> >   *				does not implement ndo_set_rx_mode()
-> > + *	@rx_mode_work:		Work queue entry for ndo_set_rx_mode_async()
-> >   *	@uc:			unicast mac addresses
-> >   *	@mc:			multicast mac addresses
-> >   *	@dev_addrs:		list of device hw addresses
-> > @@ -2293,6 +2307,7 @@ struct net_device {
-> >  	unsigned int		promiscuity;
-> >  	unsigned int		allmulti;
-> >  	bool			uc_promisc;
-> > +	struct work_struct	rx_mode_work;
-> >  #ifdef CONFIG_LOCKDEP
-> >  	unsigned char		nested_level;
-> >  #endif
-> > @@ -4661,6 +4676,11 @@ static inline bool netif_device_present(const struct net_device *dev)
-> >  	return test_bit(__LINK_STATE_PRESENT, &dev->state);
-> >  }
-> >  
-> > +static inline bool netif_up_and_present(const struct net_device *dev)
-> > +{
-> > +	return (dev->flags & IFF_UP) && netif_device_present(dev);
-> 
-> Is this really worth a dedicated helper? What are you trying to express
-> here semantically?
-
-I mostly added it to avoid repeating the same present & UP check. Will
-undo.
-
-> > +
-> >  void netif_device_detach(struct net_device *dev);
-> >  
-> >  void netif_device_attach(struct net_device *dev);
-> > diff --git a/net/core/dev.c b/net/core/dev.c
-> > index 200d44883fc1..fedc423306fc 100644
-> > --- a/net/core/dev.c
-> > +++ b/net/core/dev.c
-> > @@ -2381,6 +2381,8 @@ static void netstamp_clear(struct work_struct *work)
-> >  static DECLARE_WORK(netstamp_work, netstamp_clear);
-> >  #endif
-> >  
-> > +static struct workqueue_struct *rx_mode_wq;
-> > +
-> >  void net_enable_timestamp(void)
-> >  {
-> >  #ifdef CONFIG_JUMP_LABEL
-> > @@ -9669,22 +9671,84 @@ int netif_set_allmulti(struct net_device *dev, int inc, bool notify)
-> >  	return 0;
-> >  }
-> >  
-> > -/*
-> > - *	Upload unicast and multicast address lists to device and
-> > - *	configure RX filtering. When the device doesn't support unicast
-> > - *	filtering it is put in promiscuous mode while unicast addresses
-> > - *	are present.
-> > +static void dev_rx_mode_work(struct work_struct *work)
-> > +{
-> > +	struct net_device *dev = container_of(work, struct net_device,
-> > +					      rx_mode_work);
-> > +	struct netdev_hw_addr_list uc_snap, mc_snap, uc_ref, mc_ref;
-> > +	const struct net_device_ops *ops = dev->netdev_ops;
-> > +	int err;
-> > +
-> > +	__hw_addr_init(&uc_snap);
-> > +	__hw_addr_init(&mc_snap);
-> > +	__hw_addr_init(&uc_ref);
-> > +	__hw_addr_init(&mc_ref);
-> > +
-> > +	rtnl_lock();
-> > +	netdev_lock_ops(dev);
-> > +
-> > +	if (!netif_up_and_present(dev))
-> > +		goto out;
-> > +
-> > +	if (ops->ndo_set_rx_mode_async) {
-> 
-> How did we get here if we don't have this op?
-> Are you planning to plumb more code thru this work in the future?
-> If yes the whole rx_mode handling should be in a dedicated helper
-> rather than indenting most of the function.
-
-I do expand this, yes, in the subsequent patches. With promisc
-handling (ndo_change_rx_flags) and ndo_set_rx_mode fallback. Let me try
-to see if I can add some helper+struct to manage a set of snapshots
-to make it a bit more clear.
-
-> > +		netif_addr_lock_bh(dev);
-> > +
-> > +		err = __hw_addr_list_snapshot(&uc_snap, &dev->uc,
-> > +					      dev->addr_len);
-> > +		if (!err)
-> > +			err = __hw_addr_list_snapshot(&uc_ref, &dev->uc,
-> > +						      dev->addr_len);
-> > +		if (!err)
-> > +			err = __hw_addr_list_snapshot(&mc_snap, &dev->mc,
-> > +						      dev->addr_len);
-> > +		if (!err)
-> > +			err = __hw_addr_list_snapshot(&mc_ref, &dev->mc,
-> > +						      dev->addr_len);
-> 
-> This doesn't get slow with a few thousands of addresses?
-
-I can add kunit benchmark and attach the output? Although not sure where
-to go from that. The alternative to this is allocating an array of entries.
-I started with that initially but __hw_addr_sync_dev wants to kfree the
-individual entries and I decided not to have a separate helpers to
-manage the snapshots.
-
-> > +		netif_addr_unlock_bh(dev);
-> > +
-> > +		if (err) {
-> > +			netdev_WARN(dev, "failed to sync uc/mc addresses\n");
-> > +			__hw_addr_flush(&uc_snap);
-> > +			__hw_addr_flush(&uc_ref);
-> > +			__hw_addr_flush(&mc_snap);
-> > +			goto out;
-> > +		}
-> > +
-> > +		ops->ndo_set_rx_mode_async(dev, &uc_snap, &mc_snap);
-> > +
-> > +		netif_addr_lock_bh(dev);
-> > +		__hw_addr_list_reconcile(&dev->uc, &uc_snap,
-> > +					 &uc_ref, dev->addr_len);
-> > +		__hw_addr_list_reconcile(&dev->mc, &mc_snap,
-> > +					 &mc_ref, dev->addr_len);
-> > +		netif_addr_unlock_bh(dev);
-> > +	}
-> > +
-> > +out:
-> > +	netdev_unlock_ops(dev);
-> > +	rtnl_unlock();
-> > +}
-> > +
-> > +/**
-> > + * __dev_set_rx_mode() - upload unicast and multicast address lists to device
-> > + * and configure RX filtering.
-> > + * @dev: device
-> > + *
-> > + * When the device doesn't support unicast filtering it is put in promiscuous
-> > + * mode while unicast addresses are present.
-> >   */
-> >  void __dev_set_rx_mode(struct net_device *dev)
-> >  {
-> >  	const struct net_device_ops *ops = dev->netdev_ops;
-> >  
-> >  	/* dev_open will call this function so the list will stay sane. */
-> > -	if (!(dev->flags&IFF_UP))
-> > +	if (!netif_up_and_present(dev))
-> >  		return;
-> >  
-> > -	if (!netif_device_present(dev))
-> > +	if (ops->ndo_set_rx_mode_async) {
-> > +		queue_work(rx_mode_wq, &dev->rx_mode_work);
-> >  		return;
-> > +	}
-> >  
-> >  	if (!(dev->priv_flags & IFF_UNICAST_FLT)) {
-> >  		/* Unicast addresses changes may only happen under the rtnl,
-> > @@ -11708,6 +11772,16 @@ void netdev_run_todo(void)
-> >  
-> >  	__rtnl_unlock();
-> >  
-> > +	/* Make sure all pending rx_mode work completes before returning.
-> > +	 *
-> > +	 * rx_mode_wq may be NULL during early boot:
-> > +	 * core_initcall(netlink_proto_init) vs subsys_initcall(net_dev_init).
-> > +	 *
-> > +	 * Check current_work() to avoid flushing from the wq.
-> > +	 */
-> > +	if (rx_mode_wq && !current_work())
-> > +		flush_workqueue(rx_mode_wq);
-> 
-> Can we give the work a reference on the netdev (at init time) and
-> cancel + release it here instead of flushing / waiting?
-
-Not sure why cancel+release, maybe you're thinking about the unregister
-path? This is rtnl_unlock -> netdev_run_todo -> __rtnl_unlock + some
-extras.
-
-And the flush is here to plumb the addresses to the real devices
-before we return to the callers. Mostly because of the following
-things we have in the tests:
-
-# TEST: team cleanup mode lacp                                        [FAIL]
-#       macvlan unicast address not found on a slave
-
-Can you explain a bit more on the suggestion?
-
-> >  	/* Wait for rcu callbacks to finish before next phase */
-> >  	if (!list_empty(&list))
-> >  		rcu_barrier();
-> > @@ -12099,6 +12173,7 @@ struct net_device *alloc_netdev_mqs(int sizeof_priv, const char *name,
-> >  #endif
-> >  
-> >  	mutex_init(&dev->lock);
-> > +	INIT_WORK(&dev->rx_mode_work, dev_rx_mode_work);
-> >  
-> >  	dev->priv_flags = IFF_XMIT_DST_RELEASE | IFF_XMIT_DST_RELEASE_PERM;
-> >  	setup(dev);
-> > @@ -12203,6 +12278,8 @@ void free_netdev(struct net_device *dev)
-> >  
-> >  	kfree(rcu_dereference_protected(dev->ingress_queue, 1));
-> >  
-> > +	cancel_work_sync(&dev->rx_mode_work);
-> 
-> Should never happen so maybe wrap it in a WARN ?
-
-Or maybe just flush_workqueue here as well? To signal the intent that we
-are mostly waiting for the wq entry to be unused to be able to kfree it?
+Yeah, no good reason, will remove!
