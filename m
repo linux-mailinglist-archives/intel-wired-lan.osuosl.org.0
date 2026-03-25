@@ -2,99 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id OGddCGX8w2lXvQQAu9opvQ
+	id wOODHk4AxGlXvQQAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2026 16:16:53 +0100
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2026 16:33:34 +0100
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C572327B25
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2026 16:16:52 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0291632812F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Mar 2026 16:33:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B48A380FC6;
-	Wed, 25 Mar 2026 15:16:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9A1CB61046;
+	Wed, 25 Mar 2026 15:33:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i3jjw3A3uhDB; Wed, 25 Mar 2026 15:16:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XqIBCML-3ghI; Wed, 25 Mar 2026 15:33:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBCDB80E65
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0EF356100F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1774451810;
-	bh=AykiBgWTGZCmEG1OUiyg3JJRUJKAqcw2wf1No+Ajw+Q=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1774452812;
+	bh=CgGVEdDotrUxFWiSjF8zmnyJCQXPhbkhrROl5zrGJNE=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=fE0NQl5G39tMFihPTS7GUxa26GOK/2yupi73+1aFy/acq8vb141VBt0sFgPz7rXZ6
-	 98aK3zRKxlYthp2eSQLg+FLkrtBpvbRKm2ZelFd6JMNs4QhvWBfD54AAsSP0OwZMUq
-	 uegAQ2ekLu9CbKeY5Uo7W/no4tc3k99+BPO9uLQLPu4PJQ8EFjICmYb/SM/fu39VZv
-	 kYchZhdyme3FqTvcUaQBGJ5RcUaMslLfbgMcper4uqDKv1avZGxZW4P84Lt60fauFz
-	 v8RuVBF3M6QB3MfmbdXE/bO2s7x/qwqdTSO2gqNugASKwQZc9/9X6zf7CU+rWg5h87
-	 97lt0lwf5fmJQ==
+	b=yKwyRMyT4pKBqrXQldJeTnUn8fZaevanQjxlp/d3kShZ9iRzPzdUn8wlkyKVpQbwR
+	 9wqwyDfhc8VV3s9nXVVkQ6wIvNnDbSMyi2L0F94NoUOloFyyRxzTuR2eThNIHwjvtx
+	 lHH2xbZ3B1JFW6seJy5Y+dsez42fGk9DlIsyhl0XSr+ELlMqBD0aI15xGlHLr/DcsX
+	 0QT0Ka+jxOP1R67S7LaprgXYOcxuMUPPaQhy0uy9ra3Lt0kB6AXPC/wMi0WlDoEMAj
+	 usR2d/Y2UtwF58IiFqGG8kiXdg875KR19pqm8r39b6sEVEn0M2dmawe+36inVs/OHS
+	 QGywrf+wuOW+w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EBCDB80E65;
-	Wed, 25 Mar 2026 15:16:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0EF356100F;
+	Wed, 25 Mar 2026 15:33:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 3358F353
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:16:48 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 592E7353
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:29:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 520AF4014E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:16:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3E5EA4009E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:29:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SwWAGaFpArG1 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Mar 2026 15:16:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=77.108.111.100;
- helo=mail.amicon.ru; envelope-from=ade@amicon.ru; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 39C5D4009E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39C5D4009E
-Received: from mail.amicon.ru (mail.amicon.ru [77.108.111.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 39C5D4009E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:16:46 +0000 (UTC)
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received: from example.com (172.16.2.46) by mail.amicon.lan (192.168.0.59)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.27; Wed, 25 Mar
- 2026 18:16:40 +0300
-From: Agalakov Daniil <ade@amicon.ru>
+ id W5aeg1LKRrLB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Mar 2026 15:29:14 +0000 (UTC)
+X-Greylist: delayed 563 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 25 Mar 2026 15:29:13 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6101840081
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6101840081
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=83.149.199.84;
+ helo=mail.ispras.ru; envelope-from=pchelkin@ispras.ru; receiver=<UNKNOWN> 
+Received: from mail.ispras.ru (mail.ispras.ru [83.149.199.84])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6101840081
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Mar 2026 15:29:13 +0000 (UTC)
+Received: from localhost (unknown [79.139.245.7])
+ by mail.ispras.ru (Postfix) with ESMTPSA id 0A6A4413A4D1;
+ Wed, 25 Mar 2026 15:19:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru 0A6A4413A4D1
+Date: Wed, 25 Mar 2026 18:19:46 +0300
+From: Fedor Pchelkin <pchelkin@ispras.ru>
 To: Tony Nguyen <anthony.l.nguyen@intel.com>
-CC: Agalakov Daniil <ade@amicon.ru>, Przemek Kitszel
- <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <lvc-project@linuxtesting.org>, "Daniil
- Iskhakov" <dish@amicon.ru>, Roman Razov <rrv@amicon.ru>
-Date: Wed, 25 Mar 2026 18:16:04 +0300
-Message-ID: <20260325151615.1407182-3-ade@amicon.ru>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260325151615.1407182-1-ade@amicon.ru>
-References: <a70a49a0-43f8-4908-993a-50999bf0dfa8@intel.com>
- <20260325151615.1407182-1-ade@amicon.ru>
+Cc: Agalakov Daniil <ade@amicon.ru>, lvc-project@linuxtesting.org, 
+ Roman Razov <rrv@amicon.ru>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew+netdev@lunn.ch>, 
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Daniil Iskhakov <dish@amicon.ru>, "David S. Miller" <davem@davemloft.net>
+Message-ID: <20260325180127-711d8e8fbff840853081f11e-pchelkin@ispras>
+References: <20260318120512.687149-1-ade@amicon.ru>
+ <20260318120512.687149-3-ade@amicon.ru>
+ <5128e54e-4164-4cb1-8ae1-e58d6a40c005@intel.com>
 MIME-Version: 1.0
-X-Originating-IP: [172.16.2.46]
-X-ClientProxiedBy: mail.amicon.lan (192.168.0.59) To mail.amicon.lan
- (192.168.0.59)
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; d=amicon.ru; s=mail;
- c=simple/simple; 
- t=1774451801; h=from:subject:to:date:message-id;
- bh=CCk76vE/xjR+yNkkzEFs2kbv/+OqHzHF8wQdMwc3Q+c=;
- b=A5C0Y/LVSQQHJPx1q2vu01IU5HhZXytE2wVXMcKZ5SboKny2Zh5XMXxtNd4VeJY+PcGWZ+/HCyw
- LyqXCQyorG5fKzj3ZeH0SZaGqC4DLNQ1fz1FexS0ybo5G5ngCgVi2PY6IIsxtafI0BNs+8Ris+QhW
- d4ngJs3tCGvD8KufBFpqyt/MNgaGvrRHdCzrmdxQDlcZVWDYjDoNd4QUJigt/Ddq+UqL3di1GMOGa
- aex9kbDq6Pv5LRy9yYI7fo6h6x2IEfZzMSDoOJTmFv3TxT+NmeY9KkXjB0ZwoAOuw5J6/TiOuOYaC
- fW1DocDPYclpEIU0273DX8lLLJiDwTZ3ftUQ==
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <5128e54e-4164-4cb1-8ae1-e58d6a40c005@intel.com>
+X-Mailman-Approved-At: Wed, 25 Mar 2026 15:33:30 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ispras.ru; s=default; t=1774451987;
+ bh=CgGVEdDotrUxFWiSjF8zmnyJCQXPhbkhrROl5zrGJNE=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=FABBEw/37TiAtd+C2rszl59lq2kNQvjmeRtRirvxCr+ARggo14pCI2v/SAGWBj72r
+ 3gf3sFpnQ1aM1xs/SBJS9HQH4BZwv753opCIKSbOSgzD6XOJdhW52sVPevE9ow2MDj
+ 5/bi8ITcQS68lg1n0mUTy2SGVA86x2GFMcrOqk0Q=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amicon.ru
+ dmarc=pass (p=none dis=none)
+ header.from=ispras.ru
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=amicon.ru header.i=@amicon.ru
- header.a=rsa-sha256 header.s=mail header.b=A5C0Y/LV
-Subject: [Intel-wired-lan] [PATCH net-next v2 2/2] e1000e: limit endianness
- conversion to boundary words
+ dkim=pass (1024-bit key,
+ unprotected) header.d=ispras.ru header.i=@ispras.ru header.a=rsa-sha256
+ header.s=default header.b=FABBEw/3
+Subject: Re: [Intel-wired-lan] [PATCH net 2/3] e1000: fix endianness
+ conversion of uninitialized words
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -109,105 +108,79 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [3.69 / 15.00];
+X-Spamd-Result: default: False [1.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_QUARANTINE(1.50)[amicon.ru : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
+	MID_RHS_NOT_FQDN(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	DMARC_POLICY_SOFTFAIL(0.10)[ispras.ru : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	URIBL_MULTI_FAIL(0.00)[linuxtesting.org:server fail,amicon.ru:server fail,osuosl.org:server fail,smtp1.osuosl.org:server fail];
-	RCPT_COUNT_TWELVE(0.00)[14];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER(0.00)[ade@amicon.ru,intel-wired-lan-bounces@osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:ade@amicon.ru,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:lvc-project@linuxtesting.org,m:dish@amicon.ru,m:rrv@amicon.ru,m:andrew@lunn.ch,s:lists@lfdr.de];
-	SUSPICIOUS_AUTH_ORIGIN(0.00)[];
-	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:ade@amicon.ru,m:lvc-project@linuxtesting.org,m:rrv@amicon.ru,m:przemyslaw.kitszel@intel.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:netdev@vger.kernel.org,m:kuba@kernel.org,m:pabeni@redhat.com,m:dish@amicon.ru,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linuxtesting.org:url,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	FORGED_SENDER(0.00)[pchelkin@ispras.ru,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[14];
 	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[amicon.ru:email,amicon.ru:mid,linuxtesting.org:url];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[ade@amicon.ru,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	HAS_XOIP(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	NEURAL_HAM(-0.00)[-1.000];
+	MISSING_XM_UA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[pchelkin@ispras.ru,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-1.000];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: 5C572327B25
+X-Rspamd-Queue-Id: 0291632812F
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-[Why]
-In e1000_set_eeprom(), the eeprom_buff is allocated to hold a range of
-words. However, only the boundary words (the first and the last) are
-populated from the EEPROM if the write request is not word-aligned.
-The words in the middle of the buffer remain uninitialized because they
-are intended to be completely overwritten by the new data via memcpy().
+Hi,
 
-The previous implementation had a loop that performed le16_to_cpus()
-on the entire buffer. This resulted in endianness conversion being
-performed on uninitialized memory for all interior words.
+On Tue, 24. Mar 16:26, Tony Nguyen wrote:
+> On 3/18/2026 5:05 AM, Agalakov Daniil wrote:
+> > [Why]
+> > In e1000_set_eeprom(), the eeprom_buff is allocated to hold a range of
+> > words. However, only the boundary words (the first and the last) are
+> > populated from the EEPROM if the write request is not word-aligned.
+> > The words in the middle of the buffer remain uninitialized because they
+> > are intended to be completely overwritten by the new data via memcpy().
+> > 
+> > The previous implementation had a loop that performed le16_to_cpus()
+> > on the entire buffer. This resulted in endianness conversion being
+> > performed on uninitialized memory for all interior words.
+> > 
+> > Fix this by converting the endianness only for the boundary words
+> > immediately after they are successfully read from the EEPROM.
+> > 
+> > Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> > 
+> > Fixes: 1da177e4c3f4 ("Linux-2.6.12-rc2")
+> 
+> While this is definitely better, I'm not sure there's a bug here since it's
+> being immediately overwritten. Seems like this patch would be better going
+> to *-next as an improvement.
 
-Fix this by converting the endianness only for the boundary words
-immediately after they are successfully read from the EEPROM.
+It's worth stating in the commit message that the uninitialized memory is
+touched with le16_to_cpus() in the loop only on BE systems.  Little-endian
+ones are not affected - le16_to_cpus() is a no-op there.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+Anyway, for the BE case, touching and manipulating uninit memory bytes is
+still in general considered a bug, even if this memory is overwritten a
+few lines after that.  I guess if KMSAN supported big-endian architectures,
+it would hit this, and that wouldn't be a false-positive.
 
-Co-developed-by: Iskhakov Daniil <dish@amicon.ru>
-Signed-off-by: Iskhakov Daniil <dish@amicon.ru>
-Signed-off-by: Agalakov Daniil <ade@amicon.ru>
----
-v2:
- - Split from the original bugfix series and targeted at 'net-text'.
- - Removed the Fixes: tag; limiting the conversion scope is an
-   improvement to avoid unnecessary processing of uninitialized memory.
- - Improved commit description for clarity.
- - Note on e1000e: this driver already contains the necessary return
-   value checks for EEPROM reads, so only the endianness conversion
-   cleanup is included for e1000e.
-
- drivers/net/ethernet/intel/e1000e/ethtool.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index dbed30943ef4..785d89477c43 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -583,13 +583,21 @@ static int e1000_set_eeprom(struct net_device *netdev,
- 		/* need read/modify/write of first changed EEPROM word */
- 		/* only the second byte of the word is being modified */
- 		ret_val = e1000_read_nvm(hw, first_word, 1, &eeprom_buff[0]);
-+
-+		/* Device's eeprom is always little-endian, word addressable */
-+		le16_to_cpus(&eeprom_buff[0]);
-+
- 		ptr++;
- 	}
--	if (((eeprom->offset + eeprom->len) & 1) && (!ret_val))
-+	if (((eeprom->offset + eeprom->len) & 1) && (!ret_val)) {
- 		/* need read/modify/write of last changed EEPROM word */
- 		/* only the first byte of the word is being modified */
- 		ret_val = e1000_read_nvm(hw, last_word, 1,
- 					 &eeprom_buff[last_word - first_word]);
-+	
-+		/* Device's eeprom is always little-endian, word addressable */
-+		le16_to_cpus(&eeprom_buff[last_word - first_word]);
-+	}
- 
- 	if (ret_val)
- 		goto out;
--- 
-2.51.0
-
+I'm not aware of the details on how you treat the bugs in these drivers
+for BE-systems: maybe they aren't prioritized and then would occasionnaly
+go as -next material.  But, again, this situation looks like a real bug
+worth fixing on BE-systems.
