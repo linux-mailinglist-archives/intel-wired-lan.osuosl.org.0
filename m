@@ -2,75 +2,75 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 0BP4AGL3zmnqsAYAu9opvQ
+	id 6J96EWf3zmnqsAYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:26 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:31 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EAF938F03E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:25 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF38A38F045
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3A2874034C;
-	Thu,  2 Apr 2026 23:10:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F253280D3D;
+	Thu,  2 Apr 2026 23:10:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oyiM-EpzIQi1; Thu,  2 Apr 2026 23:10:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id oZT7TzrxZYDn; Thu,  2 Apr 2026 23:10:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E6394050D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D59781152
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775171421;
-	bh=tRmyZ4Aa8cDa7qvEl6tnZtb4W8ctKZYXHkxtKUVnDek=;
+	s=default; t=1775171427;
+	bh=uZKBkY+k6IRYFaAh0rxhYL9UCBLdycst07sHfPe6v6w=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=eNZ32TfJa3lYpRwHS6GgF2oPfOZG0GmQ7GQ2nM/rk0pEjJBwHW/ndCvTj2+Xm0OHX
-	 /XFISIFhTBQAnJf6Z8M9Rci7t2aubZ4+ZShusImfDt7cXbEwFxl3ddKRt+TmTDfoBX
-	 D2JfRRyYHP54Cp6GpJ3Ysw/hmZRi11DLJgkDiTEfou0jYs7nPi5f1L6LUsNoThUR7X
-	 /C8eJyD6sDvWRPjC9ID5OisQZvTGBJu+lg/ijMYR8FT18YbvpKRKxPcmg63Ck4BFU/
-	 RzRv83iUWUdtEbmEawndw9xBVHfsxtz7eAfC0wp9blnWdt1ITV+/8w4LoPXdItqfk6
-	 1raUd30MgYx1Q==
+	b=ORw50WPwqf1dPxvVF8fZH3xPfR58YnJ78ZloEHfI1EieI/Nj83Jyc7LRj9GjJ2NVc
+	 cFDDLq042wyT+j2F82HVf208kgmzbmsh38fXl7hE1oTkj7QuCr0+NBTWepbx3vVoat
+	 xvRxDlc9Ou0J3fCPpN+3/AHoSN6rkjDhcxjhUzoxAmSFbmogZ65xguA8Cwp4bAT+Dk
+	 yTYc3D+7MzctDQa0pso33MzSFc2xGwLAQnLKPBknV6q2r4Ca9UQlNSycr7A4U8BR5p
+	 LhATjIDQApEZ2HiNVUaduiEeXXuxequK3l+KK+zcZn2sTx8WnGRD/gpKvaNJ82oZUo
+	 Dts/DjWajOxcA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9E6394050D;
-	Thu,  2 Apr 2026 23:10:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7D59781152;
+	Thu,  2 Apr 2026 23:10:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id F41A82CC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:19 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 93DBC2CC
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D92A3606CA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:19 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 85E6C40074
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xMODYeBwaP6o for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2026 23:10:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xM5KVSVJUwQ2 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Apr 2026 23:10:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C9EBF605CE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C9EBF605CE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 949A24002D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 949A24002D
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C9EBF605CE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:18 +0000 (UTC)
-X-CSE-ConnectionGUID: /fWylC2gQ36iVkWRIJWeUA==
-X-CSE-MsgGUID: hEwfxhONRGKUSKdm7fQE2Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11747"; a="76123051"
-X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="76123051"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 949A24002D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:24 +0000 (UTC)
+X-CSE-ConnectionGUID: jEz9DtAbReCXhYvwuVDCPw==
+X-CSE-MsgGUID: AqlJxBTKRUmE/ju/RWO/rQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11747"; a="76123072"
+X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="76123072"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2026 16:10:18 -0700
-X-CSE-ConnectionGUID: 5WyODcubTU6s79Wyv3fKTg==
-X-CSE-MsgGUID: gVtNGIlZTQa+NfT6oCtJaw==
+ 02 Apr 2026 16:10:24 -0700
+X-CSE-ConnectionGUID: ZdJQoyjIQ1O3dk3ees0qwQ==
+X-CSE-MsgGUID: NHCIa/5pR6qVwkOxvLZoOw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="227044415"
+X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="227044424"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa008.jf.intel.com with ESMTP; 02 Apr 2026 16:10:14 -0700
+ by orviesa008.jf.intel.com with ESMTP; 02 Apr 2026 16:10:20 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: netdev@vger.kernel.org
-Date: Fri,  3 Apr 2026 01:06:19 +0200
-Message-Id: <20260402230626.3826719-2-grzegorz.nitka@intel.com>
+Date: Fri,  3 Apr 2026 01:06:20 +0200
+Message-Id: <20260402230626.3826719-3-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20260402230626.3826719-1-grzegorz.nitka@intel.com>
 References: <20260402230626.3826719-1-grzegorz.nitka@intel.com>
@@ -78,25 +78,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775171419; x=1806707419;
+ t=1775171425; x=1806707425;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=h6SdAt8V/8U61Dau5TYRbsrbBcUy7opyRgE4IDMhs3o=;
- b=Uzs2nMFYa35qot0II5aqOx25OsamZDgbfBWBL765LtTL5I41INqnyd16
- pUjQgLvfxM6+rYoYe3OX/5Pt2KeuCToApEwcpodsZnFvG4SSiF3gO1tI/
- e3P2msY0m0Fb64EIV30wngCxO3EX6kWL2Y5zjjekwk418dgdRv6R6Slxq
- aF/5OZAPXJa+n5hXfuWtx77SoUkeapTxvo4ABrTzR8hYZ3L8CuiOfb1wz
- zhOxwWndt1B7ZQBCCa4/aDl8VBjSZsTvAnwVl6jPlXxXD+XB89roZQ9fv
- f++J8/lXrh3hAYQ0AuZXPADaogPYuvDBLz5mEcuuilZ0SOhfDqtobLkTa
+ bh=mGVGmB9xUUY2QySpvbbDhKQd8FqE0QgLo4M6A/it0eo=;
+ b=XiSgiLQcFg8PPVlSrU+S9SChEdkf9kstvfH9O/QRU6mDCoy8odH6k/L+
+ 6aT7QqUmUwYnQThYXn49Yyko7o5VcOCxOib3P3xAsmUDIgwpf17LzdYQI
+ SSvvUHt0qBVbb/yp2gq4c9B0DMVv3t3VM7X7BP2545/I9FR2c+kXyztWQ
+ VIXVhjs9e4DAIsO8eqmvw9460s3mDIEkJNKsusRmc+5E3RHibaXK3ukuM
+ OZezBR6LuyKBm/hOlVs0JBBosLWe1vlP9C4hBdyYcIZE9iZzFGE+XxVDQ
+ PMfLW7oj7A4bcYspUebM6Eo1J65i/g1ZNSCL+/palKpsJ/Rka6rZOlFgM
  g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Uzs2nMFY
-Subject: [Intel-wired-lan] [PATCH v5 net-next 1/8] dpll: add new DPLL type
- for transmit clock (TXC) usage
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XiSgiLQc
+Subject: [Intel-wired-lan] [PATCH v5 net-next 2/8] dpll: allow registering
+ FW-identified pin with a different DPLL
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -141,7 +142,7 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,nvidia.com:email,intel.com:email,intel.com:mid];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,nvidia.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
@@ -152,74 +153,54 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 6EAF938F03E
+X-Rspamd-Queue-Id: AF38A38F045
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Extend the DPLL subsystem with a new DPLL type, DPLL_TYPE_TXC,
-representing devices that drive a transmit reference clock. Certain
-PHYs, MACs and SerDes blocks use a dedicated TX reference clock for
-link operation, and this clock domain is distinct from PPS- and
-EEC-driven synchronization sources. Defining a dedicated type allows
-user space and drivers to correctly classify and configure DPLLs
-intended for TX clock generation.
-
-The corresponding netlink specification is updated to expose "txc".
+Relax the (module, clock_id) equality requirement when registering a
+pin identified by firmware (pin->fwnode). Some platforms associate a
+FW-described pin with a DPLL instance that differs from the pin's
+(module, clock_id) tuple. For such pins, permit registration without
+requiring the strict match. Non-FW pins still require equality.
 
 Reviewed-by: Jiri Pirko <jiri@nvidia.com>
 Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 ---
- Documentation/netlink/specs/dpll.yaml | 3 +++
- drivers/dpll/dpll_nl.c                | 2 +-
- include/uapi/linux/dpll.h             | 2 ++
- 3 files changed, 6 insertions(+), 1 deletion(-)
+ drivers/dpll/dpll_core.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
-index 3dd48a32f783..2a2ee37a1fc0 100644
---- a/Documentation/netlink/specs/dpll.yaml
-+++ b/Documentation/netlink/specs/dpll.yaml
-@@ -138,6 +138,9 @@ definitions:
-       -
-         name: eec
-         doc: dpll drives the Ethernet Equipment Clock
-+      -
-+        name: txc
-+        doc: dpll drives Tx reference clock
-     render-max: true
-   -
-     type: enum
-diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
-index a2b22d492114..4182bdbb6dbb 100644
---- a/drivers/dpll/dpll_nl.c
-+++ b/drivers/dpll/dpll_nl.c
-@@ -34,7 +34,7 @@ const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1] = {
- static const struct nla_policy dpll_device_id_get_nl_policy[DPLL_A_TYPE + 1] = {
- 	[DPLL_A_MODULE_NAME] = { .type = NLA_NUL_STRING, },
- 	[DPLL_A_CLOCK_ID] = { .type = NLA_U64, },
--	[DPLL_A_TYPE] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
-+	[DPLL_A_TYPE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
- };
+diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
+index 3f54754cdec4..55ad03977d6d 100644
+--- a/drivers/dpll/dpll_core.c
++++ b/drivers/dpll/dpll_core.c
+@@ -880,11 +880,21 @@ dpll_pin_register(struct dpll_device *dpll, struct dpll_pin *pin,
+ 		return -EINVAL;
  
- /* DPLL_CMD_DEVICE_GET - do */
-diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
-index de0005f28e5c..8f6db5d5bf0c 100644
---- a/include/uapi/linux/dpll.h
-+++ b/include/uapi/linux/dpll.h
-@@ -109,10 +109,12 @@ enum dpll_clock_quality_level {
-  * enum dpll_type - type of dpll, valid values for DPLL_A_TYPE attribute
-  * @DPLL_TYPE_PPS: dpll produces Pulse-Per-Second signal
-  * @DPLL_TYPE_EEC: dpll drives the Ethernet Equipment Clock
-+ * @DPLL_TYPE_TXC: dpll drives Tx reference clock
-  */
- enum dpll_type {
- 	DPLL_TYPE_PPS = 1,
- 	DPLL_TYPE_EEC,
-+	DPLL_TYPE_TXC,
+ 	mutex_lock(&dpll_lock);
+-	if (WARN_ON(!(dpll->module == pin->module &&
+-		      dpll->clock_id == pin->clock_id)))
++
++	/*
++	 * For pins identified via firmware (pin->fwnode), allow registration
++	 * even if the pin's (module, clock_id) differs from the target DPLL.
++	 * For non-fwnode pins, require a strict (module, clock_id) match.
++	 */
++	if (!pin->fwnode &&
++	    WARN_ON_ONCE(dpll->module != pin->module ||
++			 dpll->clock_id != pin->clock_id)) {
+ 		ret = -EINVAL;
+-	else
+-		ret = __dpll_pin_register(dpll, pin, ops, priv, NULL);
++		goto out_unlock;
++	}
++
++	ret = __dpll_pin_register(dpll, pin, ops, priv, NULL);
++out_unlock:
+ 	mutex_unlock(&dpll_lock);
  
- 	/* private: */
- 	__DPLL_TYPE_MAX,
+ 	return ret;
 -- 
 2.39.3
 
