@@ -2,173 +2,132 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SFymGaOzzWnJfwYAu9opvQ
+	id oIyUERi9zWlmgQYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 02:09:07 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 02:49:28 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB71E381E61
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 02:09:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0E11D382148
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 02:49:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3495640DE2;
-	Thu,  2 Apr 2026 00:09:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9CAED40DB4;
+	Thu,  2 Apr 2026 00:49:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eOWA95oIvFMU; Thu,  2 Apr 2026 00:09:04 +0000 (UTC)
+ id pLE_Y08WYyXh; Thu,  2 Apr 2026 00:49:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E55F440DE0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56AB340DC2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775088544;
-	bh=uXFGiZPHGtQ1mCJotl3k/kk/S8XjX07BpyIvC+5gnr0=;
-	h=Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1775090963;
+	bh=J0mm8Q+hlh6VRKVwIi/bFhcu/urWowNBuqerynEwGNc=;
+	h=From:In-Reply-To:Date:Cc:References:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=WS8sKJYJ7XHcg6zehn9BYPvykSVmilnH6r2RfakagvGVXQnjfsTvM545MC3rLcBgC
-	 g+NXE4OgDaw6ybWA4wPt57yHr2OeqJgUDTd1UdTD4lWcw3Zfpdk857WKS2G3LzAtJd
-	 hK7FERf74GwDQ8Di9ovr3nVIsORnegkS1WvbPfS8EjrEBtWO2Rk9VpmT5BKAYVCgYt
-	 nz7olwadsomSVks53E+nGVn2CaVydvpYxOVaphkkApZYyBHZwY5ED6IQ2f8de9rgz1
-	 Ij9Z50AfWNZbPc+kH6P0gAEA4TgU00UmdBXEC/gOnv4Ayfi5aHRlqR0a0BE1QIBXLZ
-	 hlAe6sMqckKIA==
+	 From;
+	b=H7Kb7IMjK63mmRKeuvuYp15Vnhg5h1K8avMizQCI3vdzuM+S7MlOlHwyNp9lUiMmw
+	 vBo9fVxe9M0k2xUKSVQvdSZJwb1xRWIAlOApBvqluOG5Jq8leqHkCy9vv+8GIWVveC
+	 a0tFLW6jV6g+RVX1G8iNBBOzw+uc3+APaA27FI3RGRXfqcurF2ZcKkEywmdkevJUH9
+	 mTg5BX1mX0APVZBDRXLo+M3moDpMPQeGGwnB/p/hCvY5X0ME/o26DAlf57wmC1i+WX
+	 1ZR42nWzM7qRLjM10k70xi79jzXpWeyApHAMwxZ9p2+V23/UK9ysRRloi/w9mCBxa+
+	 fB2fYePtcfNnA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E55F440DE0;
-	Thu,  2 Apr 2026 00:09:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 56AB340DC2;
+	Thu,  2 Apr 2026 00:49:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 704E42A2
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:09:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DE2192E9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:49:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4BAD881959
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:09:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CFB37812F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:49:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X3Eq_x8n_yk4 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2026 00:09:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.101.53.64;
- helo=bl0pr03cu003.outbound.protection.outlook.com;
- envelope-from=ynorov@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 55D0081926
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 55D0081926
-Received: from BL0PR03CU003.outbound.protection.outlook.com
- (mail-eastusazon11012064.outbound.protection.outlook.com [52.101.53.64])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 55D0081926
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:09:01 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=v+QnDeHXnes1h/AH1iiv3KfJ/GPMVougkFyQpD6DOdbskwJtjFlNnFf1Ti4vkh1O3zD2McrTQR+Jy3z3cH8RD5BWT5JTY+XozoUwIS2ogSO3hvjUjbWQ/4TCTjAB2z7a9N4WyRN3MpJTJUjEHmHMbM1H0Y0IpXkECzK8ebDin7d05kLn/vfVNcPP/rLAL6Nwt44E+Z2VYvbR4vWVrWLpbHsm5cPqIUjBTWpfX7JVu5Rxw4c4GwzLjvLBIzVhIS93oZDQaSWSnm5Go1IfTbpU/KZzwJvDtC15m8CMj2KkFFIo5Dm5smFcMtsouD20CSPnDdyrJ9zbcAaVs0U62sSyLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uXFGiZPHGtQ1mCJotl3k/kk/S8XjX07BpyIvC+5gnr0=;
- b=Sx+IBIRWVIbZtzmm+JvtEaDVMpuYzjbZMw5kzLgVWFkDPFX6kddLBeBoWkW9Z2BGdztAXUM8u9iuz+YgNaEX/QFQUlCqCvnDuJdId5SZ1mg2wvLq2iEypA+nP9kedlF3EudQJXhCyqZKiF0wJA6P39pQeX1kNLaIFk974TCkoRZf8ibhs4lmbYLZsDJMz6EfIjYharG4h5SPlBVd74mIZTUrkeLIB0DYUVR8D1jb4y4uZJd+06hut1SaBAcKMri2JzyBdCZzkfkqNo1jMbbHbwc1gOolYu6Q1183SOVB4jFzSzLxub8EByfEf4G20vTGkVXQwfvZDASUOTLNKRZJLA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-Received: from CY8PR12MB7171.namprd12.prod.outlook.com (2603:10b6:930:5c::20)
- by SN7PR12MB6838.namprd12.prod.outlook.com (2603:10b6:806:266::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.17; Thu, 2 Apr
- 2026 00:08:56 +0000
-Received: from CY8PR12MB7171.namprd12.prod.outlook.com
- ([fe80::4487:395f:3abf:ad9]) by CY8PR12MB7171.namprd12.prod.outlook.com
- ([fe80::4487:395f:3abf:ad9%4]) with mapi id 15.20.9769.011; Thu, 2 Apr 2026
- 00:08:55 +0000
-Date: Wed, 1 Apr 2026 20:08:53 -0400
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Thomas =?iso-8859-1?Q?Hellstr=F6m?= <thomas.hellstrom@linux.intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Andrew Morton <akpm@linux-foundation.org>,
- David Airlie <airlied@gmail.com>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Matthew Brost <matthew.brost@intel.com>,
- Paolo Abeni <pabeni@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Simona Vetter <simona@ffwll.ch>, Yury Norov <yury.norov@gmail.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- dri-devel@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
-Cc: Simon Horman <horms@kernel.org>,
- David Laight <david.laight.linux@gmail.com>
-Message-ID: <ac2zgKiszbbUb79t@yury>
-References: <20260302011159.61778-1-ynorov@nvidia.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260302011159.61778-1-ynorov@nvidia.com>
-X-ClientProxiedBy: BN9PR03CA0681.namprd03.prod.outlook.com
- (2603:10b6:408:10e::26) To CY8PR12MB7171.namprd12.prod.outlook.com
- (2603:10b6:930:5c::20)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY8PR12MB7171:EE_|SN7PR12MB6838:EE_
-X-MS-Office365-Filtering-Correlation-Id: e2e09539-71a5-41c2-f282-08de904c07c7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|7416014|376014|1800799024|10070799003|921020|56012099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: CU+nebmwnqqimNzyqgcEhrRF9FxR5hzmG0TQ0RqZJ+8EwrecgYY0IsPufeh2j83/dAdXEDDaJatZ+5P6tYdWrUYDwIa/T6lil6f1RMDhhYKga6OUqUzwDHfUTNaCySVTlm9rGfg8nagZ4TlC+ncwGSen68EaGsa65hRoEeGD52qBzVm50ym+jRh6LLzTUp8fu17TANySI0Sw6KvD2JNWArdm/uAh9ZX/1fw8yY/RFxeS/ZuZf4Yrd1sDMnhbo0dvEUas/O6eaHKAKfk1Dr+fsKlZJd6nSs9wpeOJsHZUchO99Gckfnf5MMM2NUsK5Vh6Qk682QE3Dat17/W4ouX9/zed2L/gLfnpU+ERaaaPKqXV6+xiyohSpVk5dcpq41LFZP76NdsyxZ/WEVF8f0qYUBEUqKp2AIP45Y1MAVwtM5iVsA5k6XYsnl341QGlqlVclbOQ7LuDTIRFHJk1/DSZt2kOdU+qZsyf6xKjgaZQa163TO7bgVWw5DLSzsFBXi/HTB3IJoHLSuwqGYhANUEO52nIU9GwRm5Duzi4GXOUxj+An2eg9ShhNizHJLH3Poxm6XM1GdR2ABnVOZjHSIc6HKuiTMVT9DzSToCfeSEawNY3sxUBQOM0RliX4lFk2V+11LzhtJX7cE1gJZJO7HVvAZe+DzbkLizWh5cuSym5Qxe1NdIyN1iBMhJFcJfwkWwBVWI+XAS3blWZN8Z/VgzQzjYxJE2fKJvNGitRzRzX4P3jm7rMeX6gRNhMMGIH5ff5AyOrbB1rOc1dTtsQmin4QNupdDs4DTGUTixQIhEv37U=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CY8PR12MB7171.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(7416014)(376014)(1800799024)(10070799003)(921020)(56012099003)(18002099003)(22082099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?E7lRfOZPugBzEVhN+h5bXJgcbdDhq9LrMAXrrpaC3Q4wQDN5BU4oQjKSNrEt?=
- =?us-ascii?Q?3Jf2d4XUmN0nOmHyBZDjqhW5Bvy4EBrKmqU5CPXyLVJP07mxg/hE3tH6+I7V?=
- =?us-ascii?Q?KY7ztsYJ2gCQw6zopo7RAcc0F+Q7jvAGXJ3UxJ9b5yv0f76726tNnKgBudWv?=
- =?us-ascii?Q?zdLoh4yUND357TNEc7R9G8wX6qlmgGR4KLM9iPKrbESwTM6nL7NS9ddfRreN?=
- =?us-ascii?Q?DpFGBXkhKBE3tkFT57b4Uh1e1XHfhlYB/IOpk/fb5erSau3/8MbHjl1Wsz+c?=
- =?us-ascii?Q?Wn1rBu+PH326ZXOQZrrPJCFxLg6inCTstO5vtYQ/9qgrPQ1V9OIEe7/DXPvb?=
- =?us-ascii?Q?UbuJJ92fIeONkq+u7bRSk6fkT05D1KMXMVnnDWlc3UWvzeNTZqRhM2L/XryE?=
- =?us-ascii?Q?jpgu4Hjc2gMScSFaw8ybaG8j9g/liwoAPtasw+OBXxKexEhyAXgRY8duCRa8?=
- =?us-ascii?Q?FSRb0S89plzcwJSPSPmer1HfUz+xGTT8qONulAH7YXP9ul6AwvDBXBnYaz2Q?=
- =?us-ascii?Q?reZ8JmNviR9JqKzpdcdr1FKQh6WCAPjxXktt8qvY+of5xSqO2sejDpZ8VlmH?=
- =?us-ascii?Q?zH7spINRaWdBSoYzj9bWaxz8JFU1UTwRBb0DZAhjN/+FDMYFCaqD7xj++OfS?=
- =?us-ascii?Q?DqeA/8g6ZH4xQdlv/kGDt3J6Nw6/8gKxQ5L7OSAt52f5HW+bZeTu+6hDvPKa?=
- =?us-ascii?Q?qu0exv9mio6iCl0a2fYmty8oro1lqYhVnMqBOdNBW2q/bQmgtAca95L92xbY?=
- =?us-ascii?Q?1yoSh4piPZa5eV6XiRrmTzsoa+skC5FLxug2JPnFu4eGfHy6a5WDleFhSuF5?=
- =?us-ascii?Q?xPGbYIFP0NAxnLtc/lIgFz1FITADUN7EK8j3ipGU3hZuVfKmrsEIFN8upeVI?=
- =?us-ascii?Q?CGZe7u4YyX/TaV2iKAAsYUnx8h4iXFhnwHP0ND9EUxi8DWdYGyMseWRvFmmi?=
- =?us-ascii?Q?wlGyixMALIbV4gnFBXeaoElaOlEQOwaUYPLkBEWf+vrkpotu8mk3JFwqIEVh?=
- =?us-ascii?Q?K/5t61Y+SC1km2x1JSYESUuSTLlDikdShHLyh1tc9dJCOq3FyLPp52wMSRYx?=
- =?us-ascii?Q?a8Eo4xIcx/nUoitDVvAQ4QupVR1PIKRFw6wkwNBtuKsycPK5IPHavW/FCnlb?=
- =?us-ascii?Q?3nVnn+a1c+Q79Gy+REgYe4eVp8vrCroPv8XlBuCSVbQ20QMsA+86K4qVM0AY?=
- =?us-ascii?Q?9nG4g1g2c4vx0y/4WSTo/ciiRhxMdbZkX/Rp/AcWsdN1z2kqUse7cgdTyMhk?=
- =?us-ascii?Q?KBzgecXDGkGfLzICiJoUJA34op8X3rByU7fEm2B1XkK0RhUOzCwQWruGYICf?=
- =?us-ascii?Q?DEuQoMRbGwg63nlv2Qj/W5AsqdVq6xRjvNg6RbEaXEURAhr3jJKuaZeMTH1+?=
- =?us-ascii?Q?QEd+33OwSDdxgnQDIZDW4mT4WU1ozAqZMZKwwvt9HUx8PTYsogKXEqi1Onol?=
- =?us-ascii?Q?/lDD1FUpFR7xIzEXe9z9Lwce9NEFTH2s/GafBkBGoXkjROw47iPv+EsSBZjo?=
- =?us-ascii?Q?6pUV6d55HvRz4BS6mbvH0RAdtvJhuBNXDIdyeG3n7O1IwTqbBvvkLrxE3uN7?=
- =?us-ascii?Q?lt3m1lG7HyIKAn4Qe9oo8/s2wg63+DF2d85RlZKAYjia7nAQrut4gLLMxyRm?=
- =?us-ascii?Q?RIpz+YLfM50hIBKZeCQ9sFHaMMM+AXMd8F4cQQDSc3crR9ujZcDxB4B5Pz6r?=
- =?us-ascii?Q?zIuBPGKei9bXhbbtSoCJbm7KSh3CF/2VGB3RrmTrtNpITJgPBsvw2aOMV71A?=
- =?us-ascii?Q?VU3fEzXGWvSwBW+mpOT0hO+zLpFVW2fLoRQxV9z5tC90nxzmssKo?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e2e09539-71a5-41c2-f282-08de904c07c7
-X-MS-Exchange-CrossTenant-AuthSource: CY8PR12MB7171.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Apr 2026 00:08:55.7601 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: z1S8vMqp2dIIJDzS0NDCQWU7P2d2feaV92sH0XAm00HTa6x4Wuj0/Nu+feuIjHIWwods8PCLqFgOWRZGeICppg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6838
+ id 79KbZb7u_O9q for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Apr 2026 00:49:20 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::122a; helo=mail-dl1-x122a.google.com;
+ envelope-from=bob@vanvalzah.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B0A32812EA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0A32812EA
+Received: from mail-dl1-x122a.google.com (mail-dl1-x122a.google.com
+ [IPv6:2607:f8b0:4864:20::122a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B0A32812EA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 00:49:19 +0000 (UTC)
+Received: by mail-dl1-x122a.google.com with SMTP id
+ a92af1059eb24-126ea4b77adso607462c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 01 Apr 2026 17:49:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1775090958; x=1775695758;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-gg:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=J0mm8Q+hlh6VRKVwIi/bFhcu/urWowNBuqerynEwGNc=;
+ b=G/FoONfh22CZIfWDmcxW5v8a6c1TAXdMpC4c09g5/YxzoTZaqHws5S2U5n6z7H+Ovd
+ nfVTGntewgItBBPSfmkr+fhVnCYMiekb5aUA3V+ughhr2WOomzZ4igCSzSNxV4bPR6Ej
+ b1eYaJ44nXJ7Tx4hzgTCYd3C1XNfMeoiDNbSTzXuBvEJxWKeG0TBA5OHWGvXYHUaAqZt
+ v/3lLc2XF5Rgt2jCYdTT2FGQqqJI1C3bA5nQNIxPB7rBBrIJIiUD1FOjZG3k8NeLGsnK
+ CKne/UxQmeWc0elWUAWpUDvtxQqJDK+/LzPT+cgOe0TmitynNwA+Sc6VMfruCa4GG+VP
+ E9xQ==
+X-Gm-Message-State: AOJu0Yw4qW4oLJ2CusTjJYWxC92DOsqeqoPI3Zb0rTQvu7Nvueufaoac
+ v/gvx45ZTFAcBMWPlbk9zslP2XO4fysVEjW+l3+ETGZHLlfcuPnAsPjgl3P3m5uZqDA=
+X-Gm-Gg: ATEYQzx1ckaKLySVQjOXVUzSU5hsP1af5e0Fl/LLKP7vvTaVgNfYcy9dpnWr1nszw3T
+ G4KSv1lVZxybBjgpWTod8BgSPV0CgHbiIu53vEBWAZX36dL25YLYtVMI7FjAATQYAu4uf9Vua4H
+ jo++OY1Fy413XanNhOTRkN6uI9DqImEq5u+Nli0F97rLxpFnV3YFWHNmgDtEqbT/eTHterKKY4I
+ 3+eT0HcEVRvY6CiF5Cd2Hdhd5EV5DX7YdIrdQ9G36VDTkjREDRzuwhFSfyBKFergqj/DSU8T3Zy
+ zeii0lx3komlAQaOpXePElEHlSd0a5hg9aJYG7oXqDoApMFo3R0gZQd2I4y0gvp7vsoQD6dzQul
+ QM/kM8FpQli9ZEPg76bqtfXG8k+AL7vTTyYryw5cfDMIdg7+g50tlt/rOQXXzdzuekFvaN/vgEk
+ s7Emcq6KkEKWNGiYLJQLP4DfymMHD0OBNXLX8P1UzviFqVhkxt9kD6Q5dciR7j32S2AFxiLSism
+ wGPz1r7
+X-Received: by 2002:a05:7022:670a:b0:128:ce84:f68b with SMTP id
+ a92af1059eb24-12bee5fbe77mr844804c88.4.1775090958271; 
+ Wed, 01 Apr 2026 17:49:18 -0700 (PDT)
+Received: from smtpclient.apple (syn-108-178-167-002.biz.spectrum.com.
+ [108.178.167.2]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12bede5a225sm1898759c88.9.2026.04.01.17.49.16
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 01 Apr 2026 17:49:17 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+From: Bob Van Valzah <bob@vanvalzah.com>
+In-Reply-To: <CAD61B95-35BF-4BAC-AC26-6AC043DE6FC1@vanvalzah.com>
+Date: Wed, 1 Apr 2026 17:49:03 -0700
+Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, julianstj@fb.com, jeff@jeffgeerling.com,
+ Lasse Johnsen <lasse@timebeat.app>, Ian Gough <ian@timebeat.app>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <CDC20B85-E83B-4AC9-9261-24B3D967DCA6@vanvalzah.com>
+References: <D1C3B3DF-960F-40C7-BBD7-994359F0C8AD@vanvalzah.com>
+ <65977d5b-16eb-418c-995e-6a918f67707a@linux.dev>
+ <B22CCB1A-15FE-4233-9F47-7FE522C8D6FF@VanValzah.Com>
+ <CAD61B95-35BF-4BAC-AC26-6AC043DE6FC1@vanvalzah.com>
+To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+X-Mailer: Apple Mail (2.3864.400.21)
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=Nvidia.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uXFGiZPHGtQ1mCJotl3k/kk/S8XjX07BpyIvC+5gnr0=;
- b=OtHjWcEOWfEiIMJ7DANlP4opEjc//MJfmt64MP2J/7CKinh5CErPGUy6TYN+z0IftSGvDwl+9z1ltixUxXC+0l7B3xfXlQsEX/ITA0yI08exll+3g0EUpZqvb1nwK/Jh0/55nZTnHbWK7gat/gQv+RJLlbEByJ/PUKFSz2jDiTFek8fTtC2c5q7xZYasg2rmBpagrivKpkBBMIgmYgQxpW1oAtlSgni5RCkdVPywOto+s3WxR6EZPIx8BxfXae3wC7ho2sepoyBOBoPcZ7FXJb0lB0so4/eIxTfE6K/rCkqEQLkfBi+iTrL9Sv28E+abOdupe3YdUtaVj5dtLQAAkQ==
+ d=vanvalzah-com.20230601.gappssmtp.com; s=20230601; t=1775090958; x=1775695758;
+ darn=lists.osuosl.org; 
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=J0mm8Q+hlh6VRKVwIi/bFhcu/urWowNBuqerynEwGNc=;
+ b=0ux39O/nEpfHtvmR8+ZGlO4iz2q+3DmhX5I6pcbjEEv1lrbv+pH0Q4u/n7y9EpSFZO
+ 0gUSwEnI3tKl5x0Sysv3L4ZZxCiperVGtZqfU1cGa0a90qfHT2AlYj6gIeqhvVwCaXVE
+ Jw6hw+WM9zN1ec3gmaDekn+TbiDwhElmajsOfIYzDs78S114+cDvxKqwwSw04f20b+Oc
+ FGGXxpl0Qq9JzrIA8YRhaGp8JFmmx5kj+fM3JjCSnOkTFFdLOVTELY7HvqYzLLk6hPNZ
+ y6Zkx33ga6j1LFeUXT2jTR1oHIVH2X7AuKj/kVdFicHS472p/9VeeW9PqEWEAYOAVy9Q
+ 9V9w==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=nvidia.com
+ dmarc=none (p=none dis=none)
+ header.from=vanvalzah.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=OtHjWcEO
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 0/4] ice: use better bitmap API
+ unprotected) header.d=vanvalzah-com.20230601.gappssmtp.com
+ header.i=@vanvalzah-com.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=0ux39O/n
+Subject: Re: [Intel-wired-lan] [PATCH] igc: fix Tx timestamp timeout caused
+ by unlocked TIMINCA write in adj fine]
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -181,74 +140,450 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Yury Norov via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Yury Norov <ynorov@nvidia.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.79 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	MID_RHS_NOT_FQDN(0.50)[];
-	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [-0.71 / 15.00];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:thomas.hellstrom@linux.intel.com,m:andrew+netdev@lunn.ch,m:akpm@linux-foundation.org,m:airlied@gmail.com,m:edumazet@google.com,m:kuba@kernel.org,m:matthew.brost@intel.com,m:pabeni@redhat.com,m:przemyslaw.kitszel@intel.com,m:rodrigo.vivi@intel.com,m:simona@ffwll.ch,m:yury.norov@gmail.com,m:linux@rasmusvillemoes.dk,m:dri-devel@lists.freedesktop.org,m:intel-xe@lists.freedesktop.org,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:horms@kernel.org,m:david.laight.linux@gmail.com,m:andrew@lunn.ch,m:yurynorov@gmail.com,m:davidlaightlinux@gmail.com,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FREEMAIL_TO(0.00)[intel.com,davemloft.net,linux.intel.com,lunn.ch,linux-foundation.org,gmail.com,google.com,kernel.org,redhat.com,ffwll.ch,rasmusvillemoes.dk,lists.freedesktop.org,vger.kernel.org,lists.osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[22];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MIME_TRACE(0.00)[0:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[nvidia.com:replyto,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
-	HAS_REPLYTO(0.00)[ynorov@nvidia.com];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_CC(0.00)[kernel.org,gmail.com];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	MISSING_XM_UA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DMARC_NA(0.00)[vanvalzah.com];
+	ARC_NA(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	NEURAL_HAM(-0.00)[-0.999];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[bob@vanvalzah.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	MID_RHS_MATCH_FROM(0.00)[];
+	APPLE_MAILER_COMMON(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[8];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: AB71E381E61
+X-Rspamd-Queue-Id: 0E11D382148
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Sun, Mar 01, 2026 at 08:11:54PM -0500, Yury Norov wrote:
-> Use better bitmap API where appropriate. Patches #3,4 may be applied
-> separately.
+Vadim,
 
-Added in bitmap-for-next for testing. Thanks!
- 
-> v1: https://lore.kernel.org/all/20251223162303.434659-1-yury.norov@gmail.com/
-> v2:
->  - new v2#4;
->  - add documentation line (Simon);
-> 
-> Yury Norov (4):
->   bitmap: introduce bitmap_weighted_xor()
->   ice: use bitmap_weighted_xor() in ice_find_free_recp_res_idx()
->   ice: use bitmap_empty() in ice_vf_has_no_qs_ena
->   drm/xe: switch xe_pagefault_queue_init() to using bitmap_weighted_or()
-> 
->  drivers/gpu/drm/xe/xe_pagefault.c           |  3 +--
->  drivers/net/ethernet/intel/ice/ice_switch.c |  4 +---
->  drivers/net/ethernet/intel/ice/ice_vf_lib.c |  4 ++--
->  include/linux/bitmap.h                      | 15 +++++++++++++++
->  lib/bitmap.c                                |  7 +++++++
->  5 files changed, 26 insertions(+), 7 deletions(-)
-> 
-> -- 
-> 2.43.0
+Thanks for the feedback on our first patch. We've spent more time in
+the lab studying the igc TX timestamp behavior under stress. We
+understand the failure modes much better now.
+
+You were right that ptp_tx_lock was the wrong lock =E2=80=94 it guards =
+the TX
+queue, not the timing registers. You suggested tmreg_lock instead. We
+tested tmreg_lock alone (v2) and found it doesn't fix the bug: it =
+appears
+that the race is between the software TIMINCA write and the hardware=E2=80=
+=99s
+asynchronous TX timestamp capture pipeline, not between two software =
+threads.
+tmreg_lock serializes software register accesses but can't prevent the =
+hardware
+from reading TIMINCA at the instant software writes it.
+
+Our v3 patch (attached) takes tmreg_lock as you suggested, and
+additionally disables TX timestamping in hardware via TSYNCTXCTL around
+the TIMINCA write. This prevents the hardware from starting new
+timestamp captures during the rate change:
+
+    spin_lock_irqsave(&igc->tmreg_lock, flags);
+    txctl =3D rd32(IGC_TSYNCTXCTL);
+    wr32(IGC_TSYNCTXCTL, txctl & ~IGC_TSYNCTXCTL_ENABLED);
+    wr32(IGC_TIMINCA, inca);
+    wr32(IGC_TSYNCTXCTL, txctl);
+    spin_unlock_irqrestore(&igc->tmreg_lock, flags);
+
+v3 doesn't return -EBUSY, so there's no risk of adjfine starvation
+under TX load. It always completes the TIMINCA write.
+
+This still isn't a complete fix. Under extreme stress (100k+ adjfine/s
+concurrent with 100k+ TX timestamps/s), disabling TSYNCTXCTL can strand
+an in-progress capture that started before the disable. The stranded
+slot sits occupied for IGC_PTP_TX_TIMEOUT (15s) before the watchdog
+clears it. However, these rates are far beyond any realistic PTP
+deployment. At realistic rates (1 Hz adjfine + 128 Hz PTP sync), v3
+passes all our tests cleanly.
+
+We don't know of a way to prevent pathological system call patterns
+from causing the hardware to lock up. The vulnerable window seems to
+span the hardware's internal capture-to-latch pipeline, not just the
+TIMINCA write instant, and there's no software-visible indication of
+when a capture is mid-flight.
+
+Test methodology
+----------------
+
+Our earlier multi-test runs gave misleading results because the
+15-second timeout pipeline carried stranded slots from one test into
+the next. We now reload the igc driver between each test to ensure
+clean hardware state. The reproducer is the same one we submitted
+previously:
+
+  =
+https://github.com/bobvan/PePPAR-Fix/blob/main/tools/igc_tx_timeout_repro.=
+py
+
+We also have a single-test runner that reloads the driver automatically:
+
+  =
+https://github.com/bobvan/PePPAR-Fix/blob/main/tools/igc_tx_single_test.py=
+
+
+
+Results (clean state, driver reloaded between each test)
+--------------------------------------------------------
+
+Stock driver (no patch):
+
+  TX 100/s  + adj 1/s     : no timeout in 60s  (0 TO, 0 skip)
+  TX 1k/s   + adj 1/s     : no timeout in 60s  (0 TO, 0 skip)
+  TX 10k/s  + adj 1/s     : no timeout in 60s  (0 TO, 0 skip)
+  TX 1k/s   + adj 10k/s   : no timeout in 60s  (0 TO, 0 skip)
+  TX 10k/s  + adj 100k/s  : no timeout in 60s  (0 TO, 0 skip)
+  TX 100k/s + adj 100k/s  : FAIL at 16s        (3 TO, 76 skip)
+  TX 100k/s + no adj      : FAIL at 16s        (4 TO, 8M skip)
+
+v3 (tmreg_lock + TSYNCTXCTL disable/enable):
+
+  TX 128/s  + adj 1/s     : no timeout in 300s (0 TO, 0 skip)
+  TX 100k/s + adj 100k/s  : FAIL at 17s        (12 TO, 1.7M skip)
+
+Three distinct failure modes
+----------------------------
+
+1. TIMINCA corruption (the original bug):
+
+   adjfine writes TIMINCA while a TX timestamp capture is in progress.
+   The hardware latches a value computed with an inconsistent increment
+   rate. The valid bit in TSYNCTXCTL is never set, the slot stays
+   occupied, and the watchdog times out after 15 seconds.
+
+   Signature: low skip count + moderate timeout count. The capture
+   acquired a slot normally but the timestamp was corrupt.
+
+   This is the bug that matters in practice. At 1 Hz adjfine + 128 Hz
+   PTP sync, the collision probability per adjfine call is low but
+   nonzero =E2=80=94 we measured ~30 minute MTBF empirically.
+
+2. TX timestamp slot exhaustion:
+
+   At extreme TX rates (100k+) without adjfine, all 4 timestamp slots
+   (IGC_MAX_TX_TSTAMP_REGS) stay occupied because the interrupt/drain
+   path can't keep up. New packets requesting timestamps are skipped
+   (tx_hwtstamp_skipped). Eventually some slot's 15-second timeout
+   fires.
+
+   Signature: massive skip count (millions), timeout count =3D 4 (one
+   per slot). This is unrelated to the TIMINCA race.
+
+3. TSYNCTXCTL stranding (v3 side effect):
+
+   When v3 disables TSYNCTXCTL_ENABLED, a capture that was already
+   in progress may never complete =E2=80=94 the hardware won't set the =
+valid
+   bit for a capture started while timestamping was enabled if it
+   finishes after timestamping is disabled. The slot stays occupied
+   for 15 seconds.
+
+   Signature: high skip count + high timeout count. At 100k adj/s,
+   timestamping is disabled 100k times per second, frequently
+   stranding captures.
+
+   This doesn't occur at realistic rates because the 1 Hz adjfine
+   only creates one brief (~1 =C2=B5s) disable window per second.
+
+
+PTP GM scaling implications
+---------------------------
+
+With adjfine fixed at 1/s (realistic for any GPSDO), the adjfine race
+is not the scaling bottleneck.  The limit is the 4-slot TX timestamp
+queue (IGC_MAX_TX_TSTAMP_REGS).  We swept TX timestamp rates from
+128/s to 150k/s with 1 Hz adjfine and driver reload between each
+test (v3 patch):
+
+  TX   128/s + adj 1/s : clean 60s   (1 PTP client at 128 Hz)
+  TX  1024/s + adj 1/s : clean 60s   (~8 clients)
+  TX  8192/s + adj 1/s : clean 60s   (~64 clients)
+  TX 65536/s + adj 1/s : clean 60s   (~512 clients)
+  TX 100k/s  + adj 1/s : FAIL 17s    (12 TO, 9M skip =E2=80=94 slot =
+exhaustion)
+  TX 100k/s  + NO adj  : FAIL 17s    (12 TO, 10M skip =E2=80=94 same =
+without adj)
+
+The 100k/s failure is slot exhaustion (identical with and without
+adjfine), not the TIMINCA race.  The i225/i226 hardware can handle
+roughly 65k TX timestamps per second before the 4-slot queue becomes
+the bottleneck.  This limits the i226 to approximately 500 PTP
+clients at logSyncInterval -7 (128 Hz sync).
+
+The adjfine race itself has negligible probability at 1 Hz adjfine.
+The TSYNCTXCTL disable window in v3 is ~1 =C2=B5s per second =E2=80=94 a =
+duty
+cycle of 10^-6.  Even at 65k TX timestamps/s, the probability of
+a capture starting during that window is ~0.065 per second, giving
+an estimated MTBF of many hours.
+
+
+Note on igc_ptp_tx_hang
+------------------------
+
+We noticed that igc_ptp_tx_hang() does not check TSYNCTXCTL valid
+bits before declaring a timeout. It only checks whether 15 seconds
+have elapsed since the slot was assigned. If the hardware captured a
+valid timestamp but the completion interrupt was lost or coalesced,
+the valid timestamp is thrown away by the timeout handler (which reads
+TXSTMPH_0 to clear all valid bits). A more robust timeout handler
+could check TSYNCTXCTL and salvage valid-but-undelivered timestamps
+before declaring a timeout. This wouldn't fix the TIMINCA race but
+would make the system more resilient to lost interrupts.
+
+
+Tested on:
+  - Intel i226 (TimeHAT board on Raspberry Pi 5)
+  - Kernel 6.12.62+rpt-rpi-2712 (Raspberry Pi OS)
+  - Intel out-of-tree igc driver 5.4.0-7642.46
+
+Thanks,
+Bob Van Valzah
+
+=E2=80=94
+
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c =
+b/drivers/net/ethernet/int
+el/igc/igc_ptp.c
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -47,6 +47,8 @@ static int igc_ptp_adjfine_i225(struct ptp_clock_info =
+*ptp, lo
+ng scaled_ppm)
+ {
+        struct igc_adapter *igc =3D container_of(ptp, struct =
+igc_adapter,
+                                               ptp_caps);
+        struct igc_hw *hw =3D &igc->hw;
++       unsigned long flags;
++       u32 txctl;
+        int neg_adj =3D 0;
+        u64 rate;
+        u32 inca;
+@@ -63,7 +65,17 @@ static int igc_ptp_adjfine_i225(struct ptp_clock_info =
+*ptp, l
+ong scaled_ppm)
+        if (neg_adj)
+                inca |=3D ISGN;
+
+-       wr32(IGC_TIMINCA, inca);
++       /* Changing TIMINCA while the hardware is capturing a TX =
+timestamp
++        * corrupts the timestamp, causing "Tx timestamp timeout."
++        * Temporarily disable TX timestamping so no new capture can =
+start
++        * during the rate change.
++        */
++       spin_lock_irqsave(&igc->tmreg_lock, flags);
++       txctl =3D rd32(IGC_TSYNCTXCTL);
++       wr32(IGC_TSYNCTXCTL, txctl & ~IGC_TSYNCTXCTL_ENABLED);
++       wr32(IGC_TIMINCA, inca);
++       wr32(IGC_TSYNCTXCTL, txctl);
++       spin_unlock_irqrestore(&igc->tmreg_lock, flags);
+
+        return 0;
+ }
+--
+2.39.2
+
+
+> On Mar 31, 2026, at 6:14=E2=80=AFPM, Bob Van Valzah =
+<Bob@VanValzah.Com> wrote:
+>=20
+> There is one other symptom of this bug that we neglected to report =
+previously: PEROUT stops. That=E2=80=99s PPS OUT for us, so it=E2=80=99s =
+how we first noticed the problem. Recovery was to unload and reload the =
+igc driver.
+>=20
+> I take this as further evidence for my hunch that the hardware just =
+reaches some internal =E2=80=9Cthis should never happen=E2=80=9D state =
+and the PHC just stops ticking.
+>=20
+> Hoping this additional symptom report might help with diagnosis.
+>=20
+> Bob
+>=20
+>> On Mar 30, 2026, at 12:42=E2=80=AFPM, Bob Van Valzah =
+<Bob@VanValzah.Com> wrote:
+>>=20
+>> Thanks for following up Vadim. To be clear, we do not see our patch =
+as a solution to the problem, since it does not eliminate the underlying =
+contention, it just reduces the likelihood.
+>>=20
+>> We now have a bit more hands-on time running the patch and can see =
+its limitations. The driver just throws the timeout error less often =
+now. Moreover, our code calling adjfine() has to be ready for an EBUSY. =
+The patch is certainly not an elegant solution. It may well have worked =
+better, or perhaps been a complete fix, if we had taken tmreg_lock. =
+Sorry if we sent our patch prematurely.
+>>=20
+>> We think the contention happens when a system call made by a clock =
+disciplining daemon like ts2phc changes a PHC's frequency, while a =
+timestamping daemon like ptp4l has requested a timestamp against that =
+same PHC. A plausible explanation is that the hardware fails to produce =
+a timestamp for a packet when it collides with a PHC frequency =
+adjustment, leading to the timestamp timeout. We see this contention =
+128x more often than the average user because we cranked our PTP sync =
+rate up to 128 Hz. We care about every ns here. The likelihood probably =
+also scales with the number of PTP clients.
+>>=20
+>> Sorry, in retrospect, we may have overstated our case in declaring =
+the root cause as the lack of locking, since our locking only reduces =
+the likelihood of the timestamp timeout. Intel may provide insight to =
+the underlying cause of the timeout, but my hunch is that the collision =
+of a timestamp request against a PHC and a frequency change of the same =
+PHC causes the timestamp request to fail, leading to the timeout. Our =
+repro code makes this happen so reliably that it should be easy for the =
+hardware guys to explain exactly what=E2=80=99s going on. Hopefully, =
+they can advise on a more elegant avoidance strategy than our ham-handed =
+lock.
+>>=20
+>> We have not tried recovering a timestamp following the error. We may =
+have used the term =E2=80=9Ccorrupted=E2=80=9D poorly here. Since the =
+error message says =E2=80=9Ctimeout," that could mean the hardware =
+produced no timestamp at all, rather than a corrupted one.
+>>=20
+>> This isn=E2=80=99t a show-stopper for us, but we note that =
+timekeeping daemons with imperfect error handling could react to this =
+situation poorly and perhaps fail silently.
+>>=20
+>> Bob
+>>=20
+>>> On Mar 30, 2026, at 11:39=E2=80=AFAM, Vadim Fedorenko =
+<vadim.fedorenko@linux.dev> wrote:
+>>>=20
+>>> On 29/03/2026 04:25, Bob Van Valzah wrote:
+>>>> Hi,
+>>>> We found a race in igc_ptp_adjfine_i225() that causes "Tx timestamp
+>>>> timeout" errors and eventually wedges EXTTS when a PTP grandmaster
+>>>> (ptp4l with hardware timestamping) runs concurrently with PHC
+>>>> frequency discipline (any GPSDO calling clock_adjtime =
+ADJ_FREQUENCY).
+>>>> Root cause: igc_ptp_adjfine_i225() writes IGC_TIMINCA without =
+holding
+>>>> any lock.  Every other PTP clock operation in igc_ptp.c (adjtime,
+>>>> gettime, settime) holds tmreg_lock, but adjfine does not.  When the
+>>>> increment rate changes while the hardware is capturing a TX =
+timestamp,
+>>>> the captured value is corrupt.  The driver retries for
+>>>> IGC_PTP_TX_TIMEOUT (15s), then logs the timeout and frees the skb.
+>>>> Repeated occurrences eventually prevent EXTTS from delivering =
+events.
+>>>> The attached reproducer (triggers in ~17 seconds on i226):
+>>>> One thread calling clock_adjtime(ADJ_FREQUENCY) at ~200k/s on the
+>>>> PHC, another sending UDP packets with SO_TIMESTAMPING requesting
+>>>> hardware TX timestamps at ~100k/s.  A Python reproducer is at:
+>>>> =
+https://github.com/bobvan/PePPAR-Fix/blob/main/tools/igc_tx_timeout_repro.=
+py
+>>>> At realistic rates (1 Hz adjfine from a GPSDO + ptp4l at 128 Hz
+>>>> sync), the race triggers in ~30 minutes.
+>>>> The attached patch holds ptp_tx_lock around the TIMINCA write and
+>>>> skips the write if any TX timestamps are pending (tx_tstamp[i].skb
+>>>> !=3D NULL), returning -EBUSY.  This doesn't fully close the =
+hardware
+>>>> race (a new TX capture can start between the check and the write),
+>>>> but at realistic rates the residual probability gives ~25 year MTBF
+>>>> vs ~30 minutes without the patch.
+>>>> A complete fix would likely require either disabling TX =
+timestamping
+>>>> around TIMINCA writes (via TSYNCTXCTL), or making the timeout =
+recovery
+>>>> path more robust so a single corrupt timestamp doesn't wedge the
+>>>> subsystem.  We'd welcome guidance from the igc maintainers on the
+>>>> preferred approach.
+>>>> Tested on:
+>>>> - Intel i226 (TimeHAT v5 board on Raspberry Pi 5)
+>>>> - Kernel 6.12.62+rpt-rpi-2712 (Raspberry Pi OS)
+>>>> - Intel out-of-tree igc driver 5.4.0-7642.46
+>>>> - Stock upstream igc_ptp.c (same code, same bug)
+>>>> Bob
+>>>> ---
+>>>> drivers/net/ethernet/intel/igc/igc_ptp.c | 18 +++++++++++++++++-
+>>>> 1 file changed, 17 insertions(+), 1 deletion(-)
+>>>> diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c =
+b/drivers/net/ethernet/intel/igc/igc_ptp.c
+>>>> index XXXXXXX..XXXXXXX 100644
+>>>> --- a/drivers/net/ethernet/intel/igc/igc_ptp.c
+>>>> +++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+>>>> @@ -47,8 +47,10 @@ static int igc_ptp_adjfine_i225(struct =
+ptp_clock_info *ptp, long scaled_ppm)
+>>>> {
+>>>>       struct igc_adapter *igc =3D container_of(ptp, struct =
+igc_adapter,
+>>>>                                              ptp_caps);
+>>>>       struct igc_hw *hw =3D &igc->hw;
+>>>> +       unsigned long flags;
+>>>>       int neg_adj =3D 0;
+>>>>       u64 rate;
+>>>>       u32 inca;
+>>>> +       int i;
+>>>>       if (scaled_ppm < 0) {
+>>>>               neg_adj =3D 1;
+>>>> @@ -63,7 +65,21 @@ static int igc_ptp_adjfine_i225(struct =
+ptp_clock_info *ptp, long scaled_ppm)
+>>>>       if (neg_adj)
+>>>>               inca |=3D ISGN;
+>>>> -       wr32(IGC_TIMINCA, inca);
+>>>> +       /* Changing the clock increment rate while a TX timestamp =
+is being
+>>>> +        * captured by the hardware can corrupt the timestamp, =
+causing the
+>>>> +        * driver to report "Tx timestamp timeout" and eventually =
+wedging
+>>>> +        * the EXTTS subsystem.  Serialize with pending TX =
+timestamps:
+>>>> +        * skip the rate change if any are in flight.
+>>>> +        */
+>>>> +       spin_lock_irqsave(&igc->ptp_tx_lock, flags);
+>>>> +       for (i =3D 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
+>>>> +               if (igc->tx_tstamp[i].skb) {
+>>>> +                       spin_unlock_irqrestore(&igc->ptp_tx_lock, =
+flags);
+>>>> +                       return -EBUSY;
+>>>> +               }
+>>>> +       }
+>>>> +       wr32(IGC_TIMINCA, inca);
+>>>> +       spin_unlock_irqrestore(&igc->ptp_tx_lock, flags);
+>>>=20
+>>> It's a bit weird solution, because in this case we may end up having =
+no
+>>> successful calls to adjfine with high amount of TX timestamp packets =
+in flight. Another problem here is that access to timing registers is
+>>> guarded by tmreg_lock, but here you use ptp_tx_lock, which protects
+>>> queue.
+>>>=20
+>>> Were you able to recover "corrupted" time stamps to figure out why =
+they
+>>> are discarded?
+>>>=20
+>>>=20
+>>>>       return 0;
+>>>> }
+>>>> --
+>>>> 2.39.2
+>>=20
+>>=20
+>=20
+
