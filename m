@@ -2,98 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id AIdnNI3JzmmtqAYAu9opvQ
+	id mGhpCVf3zmn7sAYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 21:54:53 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:15 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2613438DCFD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Apr 2026 21:54:53 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5453940F5A;
-	Thu,  2 Apr 2026 19:54:51 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g2KV3hM7qz2d; Thu,  2 Apr 2026 19:54:50 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8376B40DFC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775159690;
-	bh=Wa2Ti0L4VFL/0iT7RcOsdP8uwakcsPpYM7FQt+KxcQE=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=0wMVgcLBkGEs4/EMrkaZP3nY7X2EXuhVsf9T7j9V0xWCsZUBoIJp7Me++qZI5mqzJ
-	 kN012qcs2VGBYZM1mG3wkNUSH81RUmQQIRQpLZPLMxFCLtCQRKPOvzSAoz8OOavdzf
-	 dkMFcfB1vXIMusHfs+7zy/xjEsJDVX/3CSyNBxC87ycgLWUbjwJTgm/Z64HVwsI9fi
-	 nGBJRHWuRKeeWKHA8+iVAdevi2W1MYRAcsepuxpAdIerOrwu6Og2uERurdxwK1DqEE
-	 pGhjMDd7ZONmlMSRvq2pbT61ga6fkTpuAGHbhT8J5PLX7j5hkYmxmNIhPFSIxsXyJ3
-	 41qQSyZozhcOA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8376B40DFC;
-	Thu,  2 Apr 2026 19:54:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 2B9A62CC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 19:54:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29D8238F029
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 01:10:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 11DDD806EC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 19:54:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E4F5280D91;
+	Thu,  2 Apr 2026 23:10:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PIJDrMHZCwir for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Apr 2026 19:54:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 365C7806C3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 365C7806C3
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 365C7806C3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 19:54:48 +0000 (UTC)
-X-CSE-ConnectionGUID: y3JjQCAmQMe/vpB15jvagg==
-X-CSE-MsgGUID: mFdHbyBFQ1mYYUTLx3Vy3A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11747"; a="76416950"
-X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="76416950"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Apr 2026 12:54:48 -0700
-X-CSE-ConnectionGUID: VEL37hF6SS2MHnt7vdwWaQ==
-X-CSE-MsgGUID: Y6IZoh7PTJmmftS0fBjtJw==
+ id pyYeox-wKqur; Thu,  2 Apr 2026 23:10:11 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 03DCA80DA2
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1775171411;
+	bh=QAyietkVI9v0rZAOsPNRIUqn+MkErFk+Sp8Snf/iy4k=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=gSERSlDIIJOzcG2PlJ48TWaf1Vs3h9nLRVoR3NF6cei5d7Xs9ptMg5bJVYRAVeIrV
+	 nmUYEYyXRtH55lmkZ9571Y1Mma1imO+GbapJnJklUkkp3jwSSEiLdJD1AtUEW5tyCm
+	 XsxtakGYyrKGQ5tfDfA3bcfS2z2gXwz21UIzJbVDn9ccaGPLGyoAkQ0X/DnH+3bHsQ
+	 SeG4+pYKdLaznHZJY9jOcbOwB9ge2g3NTrtiMUFOFcDs/iEHmP/s73FqsJ7+MKcsqp
+	 i27QuHtOti/wh32GSnjgmcxjm/koBAQe1/MrNl4QKpJYcOT/ErwHV3nMHF1sRaxoNt
+	 JL/B8KiCKK8Vg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 03DCA80DA2;
+	Thu,  2 Apr 2026 23:10:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id D06352A2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id B8EF5606CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:09 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id m51ylQ4u69Iq for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Apr 2026 23:10:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 58AF5605CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58AF5605CE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 58AF5605CE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Apr 2026 23:10:07 +0000 (UTC)
+X-CSE-ConnectionGUID: anLB1yMtQXWUmmvM00NUxQ==
+X-CSE-MsgGUID: eD/2UKwXRdm6ehvvgiGbtg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11747"; a="76123031"
+X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="76123031"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Apr 2026 16:10:07 -0700
+X-CSE-ConnectionGUID: JfEn535nSMOtI70bJozDzw==
+X-CSE-MsgGUID: i3FZBnqFTHapB6h/2FCjSw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="223792216"
-Received: from lkp-server01.sh.intel.com (HELO 064ad336901d) ([10.239.97.150])
- by fmviesa007.fm.intel.com with ESMTP; 02 Apr 2026 12:54:46 -0700
-Received: from kbuild by 064ad336901d with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1w8O7o-000000000OH-07fe;
- Thu, 02 Apr 2026 19:54:44 +0000
-Date: Fri, 03 Apr 2026 03:54:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202604030335.tfToC7bQ-lkp@intel.com>
-User-Agent: s-nail v14.9.25
+X-IronPort-AV: E=Sophos;i="6.23,156,1770624000"; d="scan'208";a="227044401"
+Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
+ by orviesa008.jf.intel.com with ESMTP; 02 Apr 2026 16:10:03 -0700
+From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+To: netdev@vger.kernel.org
+Date: Fri,  3 Apr 2026 01:06:18 +0200
+Message-Id: <20260402230626.3826719-1-grzegorz.nitka@intel.com>
+X-Mailer: git-send-email 2.39.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775159688; x=1806695688;
- h=date:from:to:subject:message-id;
- bh=AQdhqSS2Pul5BehtHsm3B+GkvVRo+2sv2/MrgYdVdAE=;
- b=VoAhq7On1nN4IQQaIoTu9ykZred2T1UebuqqFE7IN8E/KHdcJ2ZhwWur
- k9k+6oJ+3ymS8AqU1eW05Ky8w65wbo988enrXHzdck0QUwqYkB+inX5Iy
- 5pMy+h+Zi8utaelpR472BRjCV/NOJY8U+Qk5lazhERDnt7zqqG+/Uo4m+
- az265Hygcb8uH2uJxqRl2DLNPD+9+TXaOYYlfG59SBzGqSXgiGd/leSw0
- l/58ziF9I+3H+hjQb+MzkZ1bHBN68kRozPupzdFnVDEPahoB8xc9R0xv9
- Q98hTRv3qNySuVAzKvqPyUsz33vuhR8qvoSg3B+poY29er6Bl0ooCJ5ez
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1775171408; x=1806707408;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ajZW05UQdtaVy0CBuJYX5951jU8a/swEG1qZqdkSpeY=;
+ b=IZ7r6ee1CvvlxzWHRk+SikEQqStW1kPDKsv06jjb6M8GnXey3EGFNB96
+ kPrlUTWZEOUkQ+D3m4p9q1sEE2chg5KLcSPvuPz8SUruujL8qeSVqMhuY
+ 4ehItWS4GRX7bZ1uzTH1Xv6qIaPvkDc63QeE2QeUwgRXFnKZvfWohVhRg
+ jZXAFRHiKNp+4h5A0swBb87IRAEQ8+zrNbi0lPthhhQ6IxKhlljpToSfY
+ QLXbRkaWBCO7HJhKRqJ8+xElogX1pVHgYHCXbaRScyHptEBDvFqhTmR1l
+ yPCRwgJi3hLRqS/awF4+C8i/jGeCKQV4fUq53I0t/Zg1KmWtdSr4cnOVH
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VoAhq7On
-Subject: [Intel-wired-lan] [tnguy-next-queue:200GbE] BUILD SUCCESS
- 92fec6746e041fd9e4afea5b17adf9384a767cef
+ header.s=Intel header.b=IZ7r6ee1
+Subject: [Intel-wired-lan] [PATCH v5 net-next 0/8] dpll/ice: Add TXC DPLL
+ type and full TX reference clock control for E825
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,218 +108,174 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, kuba@kernel.org,
+ jiri@resnulli.us, edumazet@google.com, przemyslaw.kitszel@intel.com,
+ richardcochran@gmail.com, donald.hunter@gmail.com,
+ linux-kernel@vger.kernel.org, arkadiusz.kubalewski@intel.com,
+ andrew+netdev@lunn.ch, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
+ Prathosh.Satish@microchip.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [1.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	MAILLIST(-0.20)[mailman];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	NEURAL_HAM(-0.00)[-0.998];
-	ARC_NA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_COUNT_SEVEN(0.00)[10];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[18];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_ONE(0.00)[1];
-	TO_DN_ALL(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+]
-X-Rspamd-Queue-Id: 2613438DCFD
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	NEURAL_HAM(-0.00)[-1.000];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 29D8238F029
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 200GbE
-branch HEAD: 92fec6746e041fd9e4afea5b17adf9384a767cef  ixd: add devlink support
+NOTE: This series is intentionally submitted on net-next (not
+intel-wired-lan) as early feedback of DPLL subsystem changes is
+welcomed. In the past possible approaches were discussed in [1].
 
-elapsed time: 758m
+This series adds TX reference clock support for E825 devices and exposes
+TX clock selection and synchronization status via the Linux DPLL
+subsystem.
+E825 hardware contains a dedicated Tx clock (TXC) domain that is
+distinct
+from PPS and EEC. TX reference clock selection is device‑wide, shared
+across ports, and mediated by firmware as part of the link bring‑up
+process. As a result, TX clock selection intent may differ from the
+effective hardware configuration, and software must verify the outcome
+after link‑up.
+To support this, the series introduces TXC support incrementally across
+the DPLL core and the ice driver:
 
-configs tested: 168
-configs skipped: 2
+- add a new DPLL type (TXC) to represent transmit clock generators;
+- relax DPLL pin registration rules for firmware‑described shared pins
+  and extend pin notifications with a source identifier;
+- allow dynamic state control of SyncE reference pins where hardware
+  supports it;
+- add CPI infrastructure for PHY‑side TX clock control on E825C;
+- introduce a TXC DPLL device and TX reference clock pins (EXT_EREF0 and
+  SYNCE) in the ice driver;
+- extend the Restart Auto‑Negotiation command to carry a TX reference
+  clock index;
+- implement hardware‑backed TX reference clock switching, post‑link
+- verification, and TX synchronization reporting.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+TXCLK pins report TX reference topology only. Actual synchronization
+success is reported via the TXC DPLL lock status, which is updated after
+hardware verification: external Tx references report LOCKED, while the
+internal ENET/TXCO source reports UNLOCKED.
+This provides reliable TX reference selection and observability on E825
+devices using standard DPLL interfaces, without conflating user intent
+with effective hardware behavior.
 
-tested configs:
-alpha                             allnoconfig    gcc-15.2.0
-alpha                            allyesconfig    gcc-15.2.0
-alpha                               defconfig    gcc-15.2.0
-arc                              allmodconfig    clang-16
-arc                               allnoconfig    gcc-15.2.0
-arc                              allyesconfig    clang-23
-arc                                 defconfig    gcc-15.2.0
-arc                   randconfig-001-20260402    gcc-11.5.0
-arc                   randconfig-002-20260402    gcc-11.5.0
-arm                               allnoconfig    gcc-15.2.0
-arm                              allyesconfig    clang-16
-arm                                 defconfig    gcc-15.2.0
-arm                   randconfig-001-20260402    gcc-11.5.0
-arm                   randconfig-002-20260402    gcc-11.5.0
-arm                   randconfig-003-20260402    gcc-11.5.0
-arm                   randconfig-004-20260402    gcc-11.5.0
-arm64                            allmodconfig    clang-23
-arm64                             allnoconfig    gcc-15.2.0
-arm64                               defconfig    gcc-15.2.0
-arm64                 randconfig-001-20260402    gcc-15.2.0
-arm64                 randconfig-002-20260402    gcc-15.2.0
-arm64                 randconfig-003-20260402    gcc-15.2.0
-arm64                 randconfig-004-20260402    gcc-15.2.0
-csky                             allmodconfig    gcc-15.2.0
-csky                              allnoconfig    gcc-15.2.0
-csky                                defconfig    gcc-15.2.0
-csky                  randconfig-001-20260402    gcc-15.2.0
-csky                  randconfig-002-20260402    gcc-15.2.0
-hexagon                          allmodconfig    gcc-15.2.0
-hexagon                           allnoconfig    gcc-15.2.0
-hexagon                             defconfig    gcc-15.2.0
-hexagon               randconfig-001-20260402    clang-18
-hexagon               randconfig-002-20260402    clang-18
-i386                             allmodconfig    clang-20
-i386                              allnoconfig    gcc-15.2.0
-i386                             allyesconfig    clang-20
-i386        buildonly-randconfig-001-20260402    clang-20
-i386        buildonly-randconfig-002-20260402    clang-20
-i386        buildonly-randconfig-003-20260402    clang-20
-i386        buildonly-randconfig-004-20260402    clang-20
-i386        buildonly-randconfig-005-20260402    clang-20
-i386        buildonly-randconfig-006-20260402    clang-20
-i386                                defconfig    gcc-15.2.0
-i386                  randconfig-001-20260402    clang-20
-i386                  randconfig-002-20260402    clang-20
-i386                  randconfig-003-20260402    clang-20
-i386                  randconfig-004-20260402    clang-20
-i386                  randconfig-005-20260402    clang-20
-i386                  randconfig-006-20260402    clang-20
-i386                  randconfig-007-20260402    clang-20
-i386                  randconfig-011-20260402    clang-20
-i386                  randconfig-012-20260402    clang-20
-i386                  randconfig-013-20260402    clang-20
-i386                  randconfig-014-20260402    clang-20
-i386                  randconfig-015-20260402    clang-20
-i386                  randconfig-016-20260402    clang-20
-i386                  randconfig-017-20260402    clang-20
-loongarch                        allmodconfig    clang-23
-loongarch                         allnoconfig    gcc-15.2.0
-loongarch                           defconfig    clang-19
-loongarch             randconfig-001-20260402    clang-18
-loongarch             randconfig-002-20260402    clang-18
-m68k                             allmodconfig    gcc-15.2.0
-m68k                              allnoconfig    gcc-15.2.0
-m68k                             allyesconfig    clang-16
-m68k                                defconfig    clang-19
-m68k                        stmark2_defconfig    gcc-15.2.0
-microblaze                        allnoconfig    gcc-15.2.0
-microblaze                       allyesconfig    gcc-15.2.0
-microblaze                          defconfig    clang-19
-mips                             allmodconfig    gcc-15.2.0
-mips                              allnoconfig    gcc-15.2.0
-mips                             allyesconfig    gcc-15.2.0
-nios2                            allmodconfig    clang-23
-nios2                             allnoconfig    clang-23
-nios2                               defconfig    clang-19
-nios2                 randconfig-001-20260402    clang-18
-nios2                 randconfig-002-20260402    clang-18
-openrisc                         allmodconfig    clang-23
-openrisc                          allnoconfig    clang-23
-openrisc                            defconfig    gcc-15.2.0
-parisc                           allmodconfig    gcc-15.2.0
-parisc                            allnoconfig    clang-23
-parisc                           allyesconfig    clang-19
-parisc                              defconfig    gcc-15.2.0
-parisc                randconfig-001-20260402    clang-20
-parisc                randconfig-002-20260402    clang-20
-parisc64                            defconfig    clang-19
-powerpc                          allmodconfig    gcc-15.2.0
-powerpc                           allnoconfig    clang-23
-powerpc               randconfig-001-20260402    clang-20
-powerpc               randconfig-002-20260402    clang-20
-powerpc64             randconfig-001-20260402    clang-20
-powerpc64             randconfig-002-20260402    clang-20
-riscv                            allmodconfig    clang-23
-riscv                             allnoconfig    clang-23
-riscv                            allyesconfig    clang-16
-riscv                               defconfig    gcc-15.2.0
-riscv                 randconfig-001-20260402    clang-23
-riscv                 randconfig-002-20260402    clang-23
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-23
-s390                             allyesconfig    gcc-15.2.0
-s390                                defconfig    gcc-15.2.0
-s390                  randconfig-001-20260402    clang-23
-s390                  randconfig-002-20260402    clang-23
-sh                               allmodconfig    gcc-15.2.0
-sh                                allnoconfig    clang-23
-sh                               allyesconfig    clang-19
-sh                                  defconfig    gcc-14
-sh                    randconfig-001-20260402    clang-23
-sh                    randconfig-002-20260402    clang-23
-sparc                             allnoconfig    clang-23
-sparc                               defconfig    gcc-15.2.0
-sparc                 randconfig-001-20260402    gcc-14
-sparc                 randconfig-002-20260402    gcc-14
-sparc64                          allmodconfig    clang-23
-sparc64                             defconfig    gcc-14
-sparc64               randconfig-001-20260402    gcc-14
-sparc64               randconfig-002-20260402    gcc-14
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-23
-um                               allyesconfig    gcc-15.2.0
-um                                  defconfig    gcc-14
-um                             i386_defconfig    gcc-14
-um                    randconfig-001-20260402    gcc-14
-um                    randconfig-002-20260402    gcc-14
-um                           x86_64_defconfig    gcc-14
-x86_64                           allmodconfig    clang-20
-x86_64                            allnoconfig    clang-23
-x86_64                           allyesconfig    clang-20
-x86_64      buildonly-randconfig-001-20260402    clang-20
-x86_64      buildonly-randconfig-002-20260402    clang-20
-x86_64      buildonly-randconfig-003-20260402    clang-20
-x86_64      buildonly-randconfig-004-20260402    clang-20
-x86_64      buildonly-randconfig-005-20260402    clang-20
-x86_64      buildonly-randconfig-006-20260402    clang-20
-x86_64                              defconfig    gcc-14
-x86_64                                  kexec    clang-20
-x86_64                randconfig-001-20260402    gcc-14
-x86_64                randconfig-002-20260402    gcc-14
-x86_64                randconfig-003-20260402    gcc-14
-x86_64                randconfig-004-20260402    gcc-14
-x86_64                randconfig-005-20260402    gcc-14
-x86_64                randconfig-006-20260402    gcc-14
-x86_64                randconfig-011-20260402    clang-20
-x86_64                randconfig-012-20260402    clang-20
-x86_64                randconfig-013-20260402    clang-20
-x86_64                randconfig-014-20260402    clang-20
-x86_64                randconfig-015-20260402    clang-20
-x86_64                randconfig-016-20260402    clang-20
-x86_64                randconfig-071-20260402    clang-20
-x86_64                randconfig-072-20260402    clang-20
-x86_64                randconfig-073-20260402    clang-20
-x86_64                randconfig-074-20260402    clang-20
-x86_64                randconfig-075-20260402    clang-20
-x86_64                randconfig-076-20260402    clang-20
-x86_64                               rhel-9.4    clang-20
-x86_64                           rhel-9.4-bpf    gcc-14
-x86_64                          rhel-9.4-func    clang-20
-x86_64                    rhel-9.4-kselftests    clang-20
-x86_64                         rhel-9.4-kunit    gcc-14
-x86_64                           rhel-9.4-ltp    gcc-14
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    clang-23
-xtensa                           allyesconfig    clang-23
-xtensa                randconfig-001-20260402    gcc-14
-xtensa                randconfig-002-20260402    gcc-14
+[1] https://lore.kernel.org/netdev/20250905160333.715c34ac@kernel.org/
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Changes in v5:
+ - rebased
+ - reworded cover letter
+ - replace 'ntfy_src' new argument name with 'src_clk_id' and use it
+   consistently in DPLL notification calls (patch 3/8)
+ - reworded commit message (patch 5/8)
+ - use FIELD_PREP/GENMSK macros instead of struct bitfields (patch 6/8)
+ - reworded commit message (patch 5/8, patch 8/8)
+ - refactor the code to avoid sleeping while DPLL mutex is held (using
+   work_queue, patch 8/8)
+ - added TXCLK pins and TXC DPLL notifications (patch 8/8)
+ - removed 'unused clock disable' mechanism from the scope of this series
+
+Changes in v4:
+ - rebased
+ - edited, shortened the commit message in 3/8 patch
+ - moved ice_get_ctrl_pf to the header file (patch 8/8) and
+   removed duplicated static definitions from ice_ptp and ice_txlck
+   modules
+ - add NULL/invalid pointer checker for returned pointer from
+   ice_get_ctrl_pf (patch 8/8)
+ - edited error message in case AN restart failure (patch 8/8)
+
+Changes in v3:
+- improved commit message (patch 1/8, AI review comment)
+- improved deinitialization path in ice_dpll_deinit_txclk_pins to
+  avoid potential NULL dereference. NULL checking moved to
+  ice_dpll_unregister_pins (patch 5/8, found by AI review)
+- removed redundant semicolon (patch 6/8)
+
+Changes in v2:
+- rebased
+- added autogenerated DPLL files (patch 1/8)
+- fixed checkpatch 'parenthesis alignment' warning (patch 2/8)
+- fixed error path in ice_dpll_init_txclk_pins (AI warning, patch 5/8)
+- fixed kdoc warnings (patch 6/8, patch 8/8)
+
+Grzegorz Nitka (8):
+  dpll: add new DPLL type for transmit clock (TXC) usage
+  dpll: allow registering FW-identified pin with a different DPLL
+  dpll: extend pin notifier and netlink events with notification source
+    ID
+  dpll: zl3073x: allow SyncE_Ref pin state change
+  ice: introduce TXC DPLL device and TX ref clock pin framework for E825
+  ice: implement CPI support for E825C
+  ice: add Tx reference clock index handling to AN restart command
+  ice: implement E825 TX ref clock control and TXC hardware sync status
+
+ Documentation/netlink/specs/dpll.yaml         |   3 +
+ drivers/dpll/dpll_core.c                      |  32 +-
+ drivers/dpll/dpll_core.h                      |   3 +-
+ drivers/dpll/dpll_netlink.c                   |  10 +-
+ drivers/dpll/dpll_netlink.h                   |   4 +-
+ drivers/dpll/dpll_nl.c                        |   2 +-
+ drivers/dpll/zl3073x/prop.c                   |   9 +
+ drivers/net/ethernet/intel/ice/Makefile       |   2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |  12 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |   5 +-
+ drivers/net/ethernet/intel/ice/ice_common.h   |   2 +-
+ drivers/net/ethernet/intel/ice/ice_cpi.c      | 337 ++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_cpi.h      |  61 +++
+ drivers/net/ethernet/intel/ice/ice_dpll.c     | 380 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_dpll.h     |  10 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   3 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  26 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   7 +
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  37 ++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  34 ++
+ drivers/net/ethernet/intel/ice/ice_sbq_cmd.h  |   5 +-
+ drivers/net/ethernet/intel/ice/ice_txclk.c    | 241 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_txclk.h    |  38 ++
+ include/linux/dpll.h                          |   1 +
+ include/uapi/linux/dpll.h                     |   2 +
+ 26 files changed, 1215 insertions(+), 53 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.h
+
+
+base-commit: f35340f2d653f1003602878403c901396ab03c17
+-- 
+2.39.3
+
