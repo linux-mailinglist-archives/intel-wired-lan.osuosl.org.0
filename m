@@ -2,82 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8NBMJNh1z2kewgYAu9opvQ
+	id 8OoAKVt9z2mvwgYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 10:10:00 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 10:42:03 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 735CB391F28
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 10:09:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 98AE53923C1
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 10:42:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF4E560829;
-	Fri,  3 Apr 2026 08:09:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9E533607CB;
+	Fri,  3 Apr 2026 08:42:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zhmrPfRjyTW4; Fri,  3 Apr 2026 08:09:57 +0000 (UTC)
+ id U_jJAPDZxBqy; Fri,  3 Apr 2026 08:42:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 681E5607A0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 126216086A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775203797;
-	bh=MbjhZi2bJN9+5VnBpc6vE+kn+nwe3T1CIFQtDNtzAsc=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1775205720;
+	bh=3g6IcMWKVUBoqLmwic0ACVsxjnrasv48ZxbOmX/qmgU=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=plpYnigP8Dso7hKRUmxjBGjtTLlQP57XJcDBbH1uHRphvP6K6AByHWVDAQqC3Uqki
-	 NK+AvKLJJCvK3WtXrXwnmwXbRglXGgvj6cJOSHXkQ3RA5kGUkzXntMYSHkRqW+Lm5b
-	 WqZWcsrJ/c42TXkUiebDZuXInhTDYdRtTVqVced86i+Tqs+vZW6OoilTLU4YxtY1Dr
-	 cfvx+mlHA7h4xSnIaS1RY89HlPJVNQFMobE1cQeaB+2O64lBbFx147xaxvbsABjz53
-	 1ltakIxt5XYNOAYyIXCM91LGngk8Xtm97F0cdmS89oNPYbzpooTO4T6lGBiK6lUaN9
-	 G7P2EGhO3eJSw==
+	b=RqoL8xyiHoE94/4E4Bar/Zw5DpVwpM2dfbFZzdYxzBM2ki3W0up/+iyVrHoYeLOeD
+	 3gz4Xp9CHKaKoHfMlqzFXgoeHtNFQf1xnt2B/aY6LDBXTyYbC7W4j7cffYq8oRLlUu
+	 c1ERcbE974UiXu/8SEpLpCgOxWpjdq2HvfkyU7PPY1CfR92wfLHoO95Xm9IWpvmsBF
+	 aQ1Cnq52aGucPcghm9v3Z9U6vLPEeh+65k3v6QZk2P7UWNBgfD1dqcpmApCi5Ez1cb
+	 Vjk9+cKMTaLPJm0cMY4lzvY5zU9h+ulciDbTmzfgf0hRvezvtWBZ8vWF1dk2BGiBrN
+	 kO6CnZ9i8wFeQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 681E5607A0;
-	Fri,  3 Apr 2026 08:09:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 126216086A;
+	Fri,  3 Apr 2026 08:42:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 9DCF11A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:09:55 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id A3A822CC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:41:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8F0F160639
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:09:55 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 854A7400E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:41:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NlR60oMSXfnN for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Apr 2026 08:09:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id korQik0h80o1 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Apr 2026 08:41:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E5E7F606A3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E5E7F606A3
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E5E7F606A3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:09:52 +0000 (UTC)
-Received: from [192.168.2.229] (p57bd9728.dip0.t-ipconnect.de [87.189.151.40])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 169814C2C37D58;
- Fri, 03 Apr 2026 10:09:36 +0200 (CEST)
-Message-ID: <3013fbbd-74ef-4636-9a18-5c35c4e8dd04@molgen.mpg.de>
-Date: Fri, 3 Apr 2026 10:09:33 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BC432400A0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC432400A0
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BC432400A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 08:41:57 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sea.source.kernel.org (Postfix) with ESMTP id 033B64345B;
+ Fri,  3 Apr 2026 08:41:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECA4EC4CEF7;
+ Fri,  3 Apr 2026 08:41:55 +0000 (UTC)
+Date: Fri, 3 Apr 2026 09:41:53 +0100
+From: Simon Horman <horms@kernel.org>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Leszek Pepiak <leszek.pepiak@intel.com>
-References: <20260403054321.3791392-1-aleksandr.loktionov@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260403054321.3791392-1-aleksandr.loktionov@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net-next] iavf: fix kernel-doc comment
- style in ethtool ops
+ netdev@vger.kernel.org
+Message-ID: <20260403084153.GA18306@horms.kernel.org>
+References: <20260327073046.134085-1-aleksandr.loktionov@intel.com>
+ <20260327073046.134085-10-aleksandr.loktionov@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260327073046.134085-10-aleksandr.loktionov@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1775205716;
+ bh=t4B5nxYfc/0Isd7sIgSmwbGveNKqQ2CZvNKcMjwldZo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=aR8PIdc/0OYUWDHYLfzYOL7T+43v0LiELV1mJRUJFsno+S5We93x0eKxVC+dE5RJ9
+ 6RCEI0GiY/CQTNm/+8p65OJ11f8XQSrVHotYNBrecnRFs/qYFHn2cGeYk4/2UBs50s
+ 0Nc/ivsvphyiV7weLu/jnEQq3nMNqzXgE8cpkp1lB/QZN3zyv8h6k6WBoMesRkt91m
+ z9hGLuPKOw2/7hE9ybpcbt1yoq+PSc98aGQi2MERu1SOen9pgBIOP/toxfmwQFbA+1
+ kTiA1eTK9WvqcJOl57y63IkkyA71wjKttDSWyG5yk0bPffol8t/GUAhs3LzvcLcxc3
+ oz44ZXBfHjY2A==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=aR8PIdc/
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ixgbe: fix integer overflow
+ and wrong bit position in ixgbe_validate_rtr()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -92,105 +104,103 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [-0.71 / 15.00];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [0.69 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:leszek.pepiak@intel.com,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,mpg.de:email,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,molgen.mpg.de:mid];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DMARC_NA(0.00)[mpg.de];
-	FORGED_SENDER(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,horms.kernel.org:mid,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCPT_COUNT_FIVE(0.00)[5];
+	MISSING_XM_UA(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_THREE(0.00)[4];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: 735CB391F28
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 98AE53923C1
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Dear Leszek, dear Aleksandr,
+On Fri, Mar 27, 2026 at 08:30:44AM +0100, Aleksandr Loktionov wrote:
+> Two bugs in the same loop in ixgbe_validate_rtr():
 
+If these are bugs then they should have a Fixes tag.
+If there is more than one bug, possibly split into two patches.
+And if these are present in net, then probably they are iwl-net material.
 
-Thank you for the patch.
+OTOH, if they are not bugs, then please don't describe them as such.
 
-Am 03.04.26 um 07:43 schrieb Aleksandr Loktionov:
-> From: Leszek Pepiak <leszek.pepiak@intel.com>
 > 
-> iavf_get_channels() and iavf_set_channels() use the legacy `**/`
-> comment terminator and embed the return description in the body text.
-> Convert to proper kernel-doc style: single `*/` terminator and an
-> explicit `Return:` section.
+> 1. When extracting 3-bit traffic class values from the IXGBE_RTRUP2TC
+>    register the shifted value was assigned directly to a u8, silently
+>    truncating any bits above bit 7.  Mask with IXGBE_RTRUP2TC_UP_MASK
+>    before the assignment so only the intended 3 bits are kept.
 > 
-> Signed-off-by: Leszek Pepiak <leszek.pepiak@intel.com>
+> 2. When clearing an out-of-bounds entry the mask was always shifted by
+>    the fixed constant IXGBE_RTRUP2TC_UP_SHIFT (== 3), regardless of
+>    which loop iteration was being processed.  This means only the entry
+>    at bit position 3 was ever cleared; entries at bit positions 0, 6, 9,
+>    ..., 21 were left unreset.  Use i * IXGBE_RTRUP2TC_UP_SHIFT to target
+>    the correct field for each iteration.
+
+This describes the effect at the register level.
+But I think it would be useful to describe the effect that
+users will experience.
+
+> 
+> Also replace the hardcoded 0x7 literal with the IXGBE_RTRUP2TC_UP_MASK
+> constant for consistency with other parts of the driver.
+> 
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> 
+
+This does seem ripe for use of FIELD_GET and FIELD_PREP.
+
+But if these are bug fixes, then this minimalist approach looks good to me.
+
+
 > ---
->   drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 13 +++++++------
->   1 file changed, 7 insertions(+), 6 deletions(-)
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-> index 8188dd4..425acbb 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-> @@ -1846,13 +1846,13 @@ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
->   	return ret;
->   }
->   /**
-> - * iavf_get_channels: get the number of channels supported by the device
-> + * iavf_get_channels - get the number of channels supported by the device
->    * @netdev: network interface device structure
->    * @ch: channel information structure
->    *
->    * For the purposes of our device, we only use combined channels, i.e. a tx/rx
->    * queue pair. Report one extra channel to match our "other" MSI-X vector.
-> - **/
-> + */
->   static void iavf_get_channels(struct net_device *netdev,
->   			      struct ethtool_channels *ch)
->   {
-> @@ -1873,14 +1873,15 @@ static void iavf_get_channels(struct net_device *netdev,
->   }
->   
->   /**
-> - * iavf_set_channels: set the new channel count
-> + * iavf_set_channels - set the new channel count
->    * @netdev: network interface device structure
->    * @ch: channel information structure
->    *
->    * Negotiate a new number of channels with the PF then do a reset.  During
-> - * reset we'll realloc queues and fix the RSS table.  Returns 0 on success,
-> - * negative on failure.
-> - **/
-> + * reset we'll realloc queues and fix the RSS table.
-> + *
-> + * Return: 0 on success, negative on failure.
-> + */
->   static int iavf_set_channels(struct net_device *netdev,
->   			     struct ethtool_channels *ch)
->   {
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 9aec66c..53b82a5 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -9798,11 +9798,12 @@ static void ixgbe_validate_rtr(struct ixgbe_adapter *adapter, u8 tc)
+>  	rsave = reg;
+>  
+>  	for (i = 0; i < MAX_TRAFFIC_CLASS; i++) {
+> -		u8 up2tc = reg >> (i * IXGBE_RTRUP2TC_UP_SHIFT);
+> +		u8 up2tc = IXGBE_RTRUP2TC_UP_MASK &
+> +			   (reg >> (i * IXGBE_RTRUP2TC_UP_SHIFT));
+>  
+>  		/* If up2tc is out of bounds default to zero */
+>  		if (up2tc > tc)
+> -			reg &= ~(0x7 << IXGBE_RTRUP2TC_UP_SHIFT);
+> +			reg &= ~(IXGBE_RTRUP2TC_UP_MASK << (i * IXGBE_RTRUP2TC_UP_SHIFT));
+>  	}
+>  
+>  	if (reg != rsave)
+> -- 
+> 2.52.0
+> 
