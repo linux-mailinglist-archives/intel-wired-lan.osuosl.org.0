@@ -2,94 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id YGN+DgCDz2mwwwYAu9opvQ
+	id WOgINFWEz2mwwwYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 11:06:08 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 11:11:49 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB8AB392901
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 11:06:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA5E1392A31
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 11:11:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 24510409E8;
-	Fri,  3 Apr 2026 09:06:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D5BE40CD0;
+	Fri,  3 Apr 2026 09:11:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ra3pu8uBdbKa; Fri,  3 Apr 2026 09:06:05 +0000 (UTC)
+ id 8YfU-ihYHQIW; Fri,  3 Apr 2026 09:11:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9DA2640BDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3B8F40CC2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775207165;
-	bh=MP4C9sOsOcaOqKGDl0GdhqZahjXBwKV5bVXDeuALXPA=;
+	s=default; t=1775207506;
+	bh=o1UjQHKuXo7LS5/5fejLpQfU5dX6DJXfYC6l2YDTPL4=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=4Zg+RkHz5CzznK5qxsIAaOkUrm9BGFnqm2J6KC2oQfErZ+soTMywGbQiQ5bqLm6gy
-	 K2/JYoNSCDTBGfaPZlPBJheae3RSrzczbqwCBUlrTNQ0p3pHJwaFOH1hYZlVXW3mgw
-	 tRsFWgwRbCm3tUUQ1RiOwJZ1rMBlihnhfijuVimJQXJYsSX8B6gTmXjh5kdZfPClHo
-	 7YuUNwrxYPrA99AioCqxpiWH62UBW7T4YQtN2g+eO0Y2CEPHcrS59KYg5lGck7Xlr7
-	 zA3ehrhhT4aHEs6H1zy3zySLU6rvajJjCYmVfbTuVNxiIMLE/ur52HZ7kybULxJ1xd
-	 FnBexxtR34ncg==
+	b=KU7NFCqTs9h1KShQkBH+rlxinVKSEZ3DfYW0Qc2TpDVZmzs+OXj4lhHN0g0csVRcL
+	 VGfd6bXiKH3V9IHZCsnrT/ZXYwEFTlsDsEr3rFB0tqR+GER0ivaZTg4L1bRjlSlzjU
+	 Iwq3DkjqNsFpu1kBw/RHol6Ac57eNJJ0dqK5wa+/WYYL25WwDGevFXEGW3+1h/FRmy
+	 /ffmFmy1y4HPCQPwCnnvyB84yzBBZA7Ypn7Lw6XxR9WxH3+6hI1/pOwXiNxTtIMiYL
+	 rR+OsnLzbaR+CSFWHKG+kml5Y0ed4ky5xr0pW4gl8oMZ8nLEnfE8DogquQ9Ji1L2ks
+	 KwNyKir1wWJYQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9DA2640BDF;
-	Fri,  3 Apr 2026 09:06:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D3B8F40CC2;
+	Fri,  3 Apr 2026 09:11:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 78B822CC
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:06:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 97C4D1F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:11:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 67F1040055
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:06:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7D84340CA9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:11:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6TmPtxNpE-4m for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Apr 2026 09:06:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C236B40028
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C236B40028
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C236B40028
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:06:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s_4l649qXEd2 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Apr 2026 09:11:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C399740C8E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C399740C8E
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C399740C8E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 09:11:43 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 12A4460008;
- Fri,  3 Apr 2026 09:06:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1A37C4CEF7;
- Fri,  3 Apr 2026 09:06:00 +0000 (UTC)
-Date: Fri, 3 Apr 2026 10:05:58 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id 49C4140ADA;
+ Fri,  3 Apr 2026 09:11:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC2C7C4CEF7;
+ Fri,  3 Apr 2026 09:11:41 +0000 (UTC)
+Date: Fri, 3 Apr 2026 10:11:39 +0100
 From: Simon Horman <horms@kernel.org>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Paul Greenwalt <paul.greenwalt@intel.com>
-Message-ID: <20260403090558.GE11973@horms.kernel.org>
+ netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>
+Message-ID: <20260403091139.GF11973@horms.kernel.org>
 References: <20260327072332.130320-1-aleksandr.loktionov@intel.com>
- <20260327072332.130320-3-aleksandr.loktionov@intel.com>
+ <20260327072332.130320-2-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260327072332.130320-3-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260327072332.130320-2-aleksandr.loktionov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1775207161;
- bh=H37DUjLxE6C6eoONgTSfZeAyzqq6kkHrKPV6bhnkF2c=;
+ d=kernel.org; s=k20201202; t=1775207503;
+ bh=MmlIaJ9yGTrDk4ESaEPt7Z8bs3ConO2uqtUwszGU+PE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rSFZ6RioqUNtlia0e/Of/j7QUkUyb4O/qRfeWhV8ykGNImr48SrcahC4ZeJqlAr57
- 9FKryywykEALF89c1k3PiREEZwHTQryaxCdlUN+zW68RfQd2QG2g4mR6VnsmjlsnEx
- 139E6IePR/LyF2cz7Id89COM/rfF0DyN3EJ0/tpKVsGcnqbTYINLwEFiddNhu13XLV
- lyYUBJO7sztziRtVbrxIm4rpVD7w154UJhSAf2NaDUgu0vdn+qMXesDGVYhX4vSDZF
- c94IdMpofJIAcJbE9k0/fJLcHlfm9C/0vWQnqFB0btfVZ3Zgzxd3qwDQ9qRXx++ciZ
- H7AskzF5Nk1iA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=s12bb9vbP27D3eJbosHTzPM+rbUdqvFaupKZwRdx+nfqwiNvPSyIcA6h6ufTn/aYS
+ 6swWGMhyOzRBBvc6CwqSpA+sDZ9G2RBUF+mPnvViwoWnvTElg36YqhsRn1sD3B0uwY
+ UFJYTW/Kz9YlTSoC9YRUBjQhT+TvBEKW+Zo8eSh0GYQQvO98gWNuPfaKwmujQMJ/dl
+ i6IshMP9CZYu39WtOZjoRhKVUwS1B9gt2IM+F1JuYyfWHwHx8y0xrCTXt+N/t+486F
+ 6SUctRg2xq+kWXs72KrcwcNHLEs3yVrL31bcYWMJHa6Bb3ovh9d90NijuAhI0ti2+5
+ onBGlf7YzDoJA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=rSFZ6Rio
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix PTP Call Trace during
- PTP release
+ header.a=rsa-sha256 header.s=k20201202 header.b=s12bb9vb
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix locking around
+ wait_event_interruptible_locked_irq
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,20 +106,20 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [0.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,horms.kernel.org:mid,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[horms.kernel.org:mid,intel.com:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:paul.greenwalt@intel.com,s:lists@lfdr.de];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:jacob.e.keller@intel.com,m:kuba@kernel.org,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
@@ -129,41 +129,41 @@ X-Spamd-Result: default: False [0.79 / 15.00];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
+	RCPT_COUNT_FIVE(0.00)[6];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	MID_RHS_MATCH_FROMTLD(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: AB8AB392901
+X-Rspamd-Queue-Id: DA5E1392A31
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, Mar 27, 2026 at 08:23:26AM +0100, Aleksandr Loktionov wrote:
-> From: Paul Greenwalt <paul.greenwalt@intel.com>
+On Fri, Mar 27, 2026 at 08:23:25AM +0100, Aleksandr Loktionov wrote:
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> If a PF reset occurs when the PTP state is ICE_PTP_UNINIT, then
-> ice_ptp_rebuild() will update the state to ICE_PTP_ERROR. This will
-> result in the following PTP release call trace during driver unload:
+> Commit 50327223a8bb ("ice: add lock to protect low latency interface")
+> introduced a wait queue used to protect the low latency timer interface.
+> The queue is used with the wait_event_interruptible_locked_irq macro, which
+> unlocks the wait queue lock while sleeping. The irq variant uses
+> spin_lock_irq and spin_unlock_irq to manage this. The wait queue lock was
+> previously locked using spin_lock_irqsave. This difference in lock variants
+> could lead to issues, since wait_event would unlock the wait queue and
+> restore interrupts while sleeping.
 > 
->     kernel BUG at lib/list_debug.c:52!
->     ice_ptp_release+0x332/0x3c0 [ice]
->     ice_deinit_features.part.0+0x10e/0x120 [ice]
->     ice_remove+0x100/0x220 [ice]
+> The ice_read_phy_tstamp_ll_e810() function is ultimately called through
+> ice_read_phy_tstamp, which is called from ice_ptp_process_tx_tstamp or
+> ice_ptp_clear_unexpected_tx_ready. The former is called through the
+> miscellaneous IRQ thread function, while the latter is called from the
+> service task work queue thread. Neither of these functions has interrupts
+> disabled, so use spin_lock_irq instead of spin_lock_irqsave.
 > 
-> This was observed when passing PF1 through to a VM. ice_ptp_init()
-> fails because ctrl_pf is NULL and sets the state to ICE_PTP_UNINIT.
-> 
-> Fix by detecting the ICE_PTP_UNINIT state in ice_ptp_rebuild() and
-> returning without error, preventing the invalid state transition to
-> ICE_PTP_ERROR. The only valid path to ICE_PTP_ERROR is from
-> ICE_PTP_RESETTING after a failed rebuild.
-> 
-> Fixes: 8293e4cb2ff5 ("ice: introduce PTP state machine")
+> Fixes: 50327223a8bb ("ice: add lock to protect low latency interface")
 > Cc: stable@vger.kernel.org
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Reported-by: Jakub Kicinski <kuba@kernel.org>
+> Closes: https://lore.kernel.org/netdev/20250109181823.77f44c69@kernel.org/
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
-
