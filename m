@@ -2,94 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eLbkBUq+z2nd0AYAu9opvQ
+	id oOsDKhi/z2kM0QYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 15:19:06 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 15:22:32 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FBD33945F6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 15:19:05 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EA52394643
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 03 Apr 2026 15:22:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0784660909;
-	Fri,  3 Apr 2026 13:19:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4336281D73;
+	Fri,  3 Apr 2026 13:22:29 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QhchmeH4MOwt; Fri,  3 Apr 2026 13:22:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8690D81D24
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1775222548;
+	bh=neNLBEe7gvTRsCYCzn2WqFavJHrI0fEg1G89BKCBisw=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=PeEJXyULvMcFtO1rXNjVLl5va75VccVIWisHe+azuHmoZMlan8cisF47+qM8C6d0v
+	 KyajX1H+UMSc6h5Tf4sN5IXDMo7Z9c8IEysQNC/uMd8wEfdYUvjPsZXHl05dTCc3ym
+	 XcTdH7uBg6+O+QO2/syaJI5Riq6ObcyWNiZ8JGB5tNoeVRAgMr+T3wSrU0ozzui2gB
+	 sq8IApn2emM5LEvoh4AK/O6LSpNsFYdKFkDLa99o1LTCRuaVWAVkKt+Aui3P6fOrix
+	 qgJIR+s8vCjrTvHpMF9RE2TbCK87pmxkqQxF1xVk/crfVE6h+vEuih6qOWeTZx8tcw
+	 mQvGrFIBT+ooQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8690D81D24;
+	Fri,  3 Apr 2026 13:22:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8059F2CC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:22:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 71B3B608FA
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:22:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AdZIMSsH_TJX; Fri,  3 Apr 2026 13:19:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7487B608FA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775222343;
-	bh=te7LE8wDADStaGGb4qjEVnc6wYWw+UkBvDSQtGw+Kg4=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=cUIGPNS+bowFnj1WIOUrye6AEDsXR2lNvONQTrufgsA2KPbJhxl9GvT2/PQuOxr7C
-	 b/meoIBWjRqRQlvVsyqIDruohLM5RFFgD12BJFxtWvyIojkI6vWpK9CZJczn5U6epf
-	 pAnBdfBBV2Hy5gYro/PKKgGj+IUYLCdj3OohX67HoXpHnOyiUE2Ws8mhu9nYC6msGi
-	 FxRN3Rp6Qc5Z49/sUMu1fhUEMENx+/wG7UUceqi603cV8/H8XdLIv/50+PqeB9N6IM
-	 379OtorXeMO4ctWlWojRfIPwnXvDFCcEmmuT1Py2VnUqdjsh1h+1IrUAQzw/WmZYCe
-	 OtRsBALq0j3Zg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7487B608FA;
-	Fri,  3 Apr 2026 13:19:03 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 47CA21A9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:19:02 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 26D54402DD
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:19:02 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CfDf79rgwWdJ for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Apr 2026 13:19:01 +0000 (UTC)
+ id vaB33ymwzkOr for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Apr 2026 13:22:25 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 785054003D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 785054003D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6CF68608F5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6CF68608F5
 Received: from sea.source.kernel.org (sea.source.kernel.org
  [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 785054003D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:19:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6CF68608F5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Apr 2026 13:22:25 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id A42A8409B4;
- Fri,  3 Apr 2026 13:19:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87C51C4CEF7;
- Fri,  3 Apr 2026 13:18:59 +0000 (UTC)
-Date: Fri, 3 Apr 2026 14:18:57 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id 7AA08432D2;
+ Fri,  3 Apr 2026 13:22:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3385AC4CEF7;
+ Fri,  3 Apr 2026 13:22:23 +0000 (UTC)
 From: Simon Horman <horms@kernel.org>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org
-Message-ID: <20260403131857.GB113102@horms.kernel.org>
-References: <20260327073046.134085-1-aleksandr.loktionov@intel.com>
- <20260327073046.134085-11-aleksandr.loktionov@intel.com>
+To: aleksandr.loktionov@intel.com
+Cc: Simon Horman <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, anthony.l.nguyen@intel.com
+Date: Fri,  3 Apr 2026 14:21:52 +0100
+Message-ID: <20260403132152.121293-1-horms@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260327073046.134085-7-aleksandr.loktionov@intel.com>
+References: <20260327073046.134085-7-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260327073046.134085-11-aleksandr.loktionov@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1775222340;
- bh=g1nTip99Zbu1z+sH7Y5JE6BpjHLM/Tk8483oMhcrWfQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=q11as0GMEFuBHP7c3Dwe7+zIKVYzMkaVTZFyDG+S69gQdGy5h1R56b16cJhMQoqJG
- jaM7BXrymI93BiW1rJ+apAo7EaNXEpAq9yUR1FXpAOEZUAlec1NXmk9nN3aptwe0pi
- TzqRlg/VaV0V8/w11pWVkpeAUf0RVrIvJ8xSeYS+8qKS3YIjiu/NFaCtDDeTV58JDF
- E4d63yTaLQsLlcB31PpN32w5E7Gs8jM3Eq85xDYmeR88V1W4uS9y1+Y9K9kFivtrTa
- LuDP/jz6LGyGzW3A3X+b4V0lUMeXGcwATIyhEboOForoPL3XGAFYxI9qFq80JUL4ic
- 5dCogCWmFlg9Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1775222544;
+ bh=XJaKaKKd6LcAtQg1wJb8HMrtsWbfEKIHuq5U5a185ZU=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=S8Xgcu83rmjiuAHx96HukGqJKnEkqu790+UWaNwBTNHFniryumfHQgRr8S2JwIJbH
+ q84Ho/tCh0N/QnuMEVqxjWXTCxvM+FC0+SU0YqiGEm25/b0h4NoQuytecixgsTWTim
+ 0KqU68/JAtnJQfEutYsTtHdCxteJojQh87Ib0WrNhbJ2QtpcvbhXAl4mzEsAg8J7Ui
+ f29i8FnbIz9mJ9lugCx+9HoRzdLylFOMEOQ8hpAE8+XVMuhWYy7gwkdQ8bo5tJIlQJ
+ LMAbzAu+9AN+fRdXXXWzRvMQG8axNx9pjRuyglz6bljZGx84Rx2S3yggW7jDpYk7AT
+ Jnj0vtjlmhLgg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=q11as0GM
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ixgbe: fix ITR value
- overflow in adaptive interrupt throttling
+ header.a=rsa-sha256 header.s=k20201202 header.b=S8Xgcu83
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ixgbe: replace GFP_ATOMIC
+ with GFP_KERNEL in ixgbe_fcoe_ddp_setup()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,64 +103,84 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.69 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MAILLIST(-0.20)[mailman];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[horms.kernel.org:mid,intel.com:email,osuosl.org:dkim];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:horms@kernel.org,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,s:lists@lfdr.de];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:url,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_FIVE(0.00)[5];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 7FBD33945F6
+X-Rspamd-Queue-Id: 1EA52394643
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, Mar 27, 2026 at 08:30:45AM +0100, Aleksandr Loktionov wrote:
-> ixgbe_update_itr() packs a mode flag (IXGBE_ITR_ADAPTIVE_LATENCY, bit 7)
-> and a usecs delay (bits [6:0]) into an unsigned int, then stores it in
-> ring_container->itr which is u8.  Values above 0xFF wrap, corrupting both
-> the delay and the mode-flag on the next readback.
-> 
-> Separate the mode bits from the usecs sub-field; clamp only the latter to
-> [0, IXGBE_ITR_ADAPTIVE_LATENCY - 1] via min_t(unsigned int, ...) so
-> overflow cannot bleed into bit 7.  Add a WARN_ONCE() when the raw usecs
-> value exceeds U8_MAX so out-of-range ITR computations are visible in
-> dmesg during development and testing.
-> 
-> Fixes: b4ded8327fea ("ixgbe: Update adaptive ITR algorithm")
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
 
-Somehow - perhaps because there is no m/n notation present in the [] in the
-subject - Patchwork has treated each patch in this series as it's own
-patch-set.
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
+---
+ixgbe: replace GFP_ATOMIC with GFP_KERNEL in ixgbe_fcoe_ddp_setup()
 
-And in the case of this patch, it didn't apply - I assume
-because in order to do so an earlier patch in the series
-needs to be present.
+This commit changes the memory allocation flag in ixgbe_fcoe_ddp_setup()
+from GFP_ATOMIC to GFP_KERNEL based on the claim that the function is
+never called from atomic context.
 
-So CI didn't run on this patch :(
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
+> index 011fda9c6193..7fa0971073e5 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c
+> @@ -193,7 +193,7 @@ static int ixgbe_fcoe_ddp_setup(struct net_device *netdev, u16 xid,
+>  	}
+>
+>  	/* alloc the udl from per cpu ddp pool */
+> -	ddp->udl = dma_pool_alloc(ddp_pool->pool, GFP_ATOMIC, &ddp->udp);
+> +	ddp->udl = dma_pool_alloc(ddp_pool->pool, GFP_KERNEL, &ddp->udp);
+                                                    ^^^^^^^^^^
+Doesn't this allocation happen in atomic context? Looking at the function,
+get_cpu() is called earlier:
+
+ixgbe_fcoe_ddp_setup() {
+    ...
+    ddp_pool = per_cpu_ptr(fcoe->ddp_pool, get_cpu());
+    ...
+    ddp->udl = dma_pool_alloc(ddp_pool->pool, GFP_KERNEL, &ddp->udp);
+    ...
+    put_cpu();
+}
+
+get_cpu() disables preemption, which means GFP_KERNEL allocations (which
+can sleep during direct reclaim) would trigger a BUG() when attempted with
+preemption disabled.
+
+The commit message claims the function is "never from an atomic context",
+but while the callers may be in process context, the function itself creates
+atomic context via get_cpu().
+
+>  	if (!ddp->udl) {
+>  		e_err(drv, "failed allocated ddp context\n");
+>  		goto out_noddp_unmap;
