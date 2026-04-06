@@ -2,100 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MBvFNRBA1GmRsQcAu9opvQ
+	id CBFmFxNA1GmRsQcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 07 Apr 2026 01:21:52 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 07 Apr 2026 01:21:55 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D72F23A8173
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 07 Apr 2026 01:21:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF08B3A8183
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 07 Apr 2026 01:21:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 22355407F0;
-	Mon,  6 Apr 2026 23:21:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9E097407FC;
+	Mon,  6 Apr 2026 23:21:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UPgfMsbo4dgF; Mon,  6 Apr 2026 23:21:48 +0000 (UTC)
+ id evaKPrh-mq6D; Mon,  6 Apr 2026 23:21:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 25B02407D8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 411FB407CE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775517708;
-	bh=7YmkspzO6vU1XuqeESiK3Na4YZb0e1kBsdZFFlLOS5U=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=PMnz8RrEA9hIuG0uqQx6YQCb6yk+Ivkz0j1pKZU5Uwy8T+hgHfXL01r1iN05/AOma
-	 mm5KNIqQJ7F+Q7ij0Bcbb0m/IIQqToghyfjzBnlQZWXpKmRmmuFGLg4cGlruKzAdYx
-	 6D6v/r7u2/z0K8Fu+abYdwTwTA8YjPw8N6LbmEOMnyv/3KgRZkE6Sp6B6PKj5z7mUB
-	 hFX3Fz6+8L6WPFFEWStvogELC9FDHCw2a1lVDe9+PSYWY1i6BnsEvUheVvw7PrrPcf
-	 f+0HF4CrfM7/FVq1XFFDqgHLZup+7EOdW2v4yuajQaU94/fi8sVSDj8JG8U5anOjS/
-	 hBnDGCL24OhDQ==
+	s=default; t=1775517709;
+	bh=x/h072mNH8O3frvdI61cCmI6mKDeI7Vt7BpXvSiOBIU=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=F71jPZgI6MWpE3b0kxVyLod9klmxcPnrjxRyNznHM2M4Gcw8pSQWkjXEhOjP7Xz7w
+	 0CKdpJPlRR8bSwZ+7oWTeEAOfP3bvJjB1568KH2sJLY/P7RAgU/q7ZxTi6ojhVUcgT
+	 PerXiKWr02Cddbzsr7j1pUMF0C8+VDIDhS94eBoDHgMcBWCQb1Dq9K/S7smBrvEtWg
+	 PskraTVO+qsZBe2uoKpnpshkA7WLQrNyYSz9ckmv+r35Ym3ebmeqTO7lCdtOLOn0la
+	 Z2uaU26zEXeqQxOWnJeGblX7foJWrFPwT2zgf2EgZWY2UNy/uBPiHH43jVFNIOf5ZA
+	 MXZuEmyhkEuhw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 25B02407D8;
-	Mon,  6 Apr 2026 23:21:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 411FB407CE;
+	Mon,  6 Apr 2026 23:21:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 4FF562EF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 23:21:46 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id B81941EB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 23:21:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 41A5280D44
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9D20C80CAF
  for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 23:21:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KU_0eKbpJSz4 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Apr 2026 23:21:45 +0000 (UTC)
+ id IieMTD-4g-DT for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Apr 2026 23:21:46 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
  helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 854A880CAF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 854A880CAF
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E439880D29
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E439880D29
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 854A880CAF
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E439880D29
  for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 23:21:45 +0000 (UTC)
-X-CSE-ConnectionGUID: thV8JcVRS3CwBfaBVODRgA==
-X-CSE-MsgGUID: +RzyXwv3R5SXcsHMkocefg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11751"; a="76368982"
-X-IronPort-AV: E=Sophos;i="6.23,164,1770624000"; d="scan'208";a="76368982"
+X-CSE-ConnectionGUID: kl13WZyDSwaPaDqYocJUcg==
+X-CSE-MsgGUID: IKQvVeI1SYiQzYwMaSPzCg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11751"; a="76368984"
+X-IronPort-AV: E=Sophos;i="6.23,164,1770624000"; d="scan'208";a="76368984"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 Apr 2026 16:21:45 -0700
-X-CSE-ConnectionGUID: HGI4C95KR1Kb0yjomD8imA==
-X-CSE-MsgGUID: 70QloSe0SbiPEaPQaNavfQ==
+X-CSE-ConnectionGUID: njMNRV/uQE+PsVEet3GWgQ==
+X-CSE-MsgGUID: kUxQpqsAQu2cm77uTCXO1w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,164,1770624000"; d="scan'208";a="232050498"
+X-IronPort-AV: E=Sophos;i="6.23,164,1770624000"; d="scan'208";a="232050499"
 Received: from dcskidmo-m40.jf.intel.com ([10.166.241.14])
  by orviesa003.jf.intel.com with ESMTP; 06 Apr 2026 16:21:45 -0700
 From: Joshua Hay <joshua.a.hay@intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org
-Date: Mon,  6 Apr 2026 16:32:34 -0700
-Message-Id: <20260406233236.3585504-1-joshua.a.hay@intel.com>
+Date: Mon,  6 Apr 2026 16:32:35 -0700
+Message-Id: <20260406233236.3585504-2-joshua.a.hay@intel.com>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20260406233236.3585504-1-joshua.a.hay@intel.com>
+References: <20260406233236.3585504-1-joshua.a.hay@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1775517706; x=1807053706;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=7xmwcJYJm6E1fVmwZFpjH2ZcK/4kqQYQeVx6z126pwk=;
- b=EU1i+onZLDYHOG+VoLXwcrfTbTzl2W6GhrRZIM4bBA1cmno9DHLcFHlF
- cdDTYwDBm873pZVw4ZcsasOwUEH0YAycxdX6nFalDdbSZ2iRIwy+DYR2h
- 5aLnwJbjSdbFlMRG8JKYaQLFJxRKcrlZ/C2gZ5QVgPwjI4yJr5NUlvlrB
- +PyxVV2o7sUfZSauzqHgoqHWMjk0tq7fEkQSHatlYlNhZ4SOmDM9x7fIW
- mKhtipkhHwiiBfXGiyKmhT7U+0gfiRmIahHAGWxTKilifpgW0eOIO/Kcl
- UuCbLVO44J+QXE640ZhHnxPJ9VEtgyOpt25unKgDx2kHvdJcFmOJ8fXaS
- A==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=zYACHUeAYIX/BOrJWhNTzqspS+ACuYxHxxVneDb5d+Y=;
+ b=beK4Pyd6W13T66hZjFpmtCbEcRQEzBO8ILqvLShwRA34pualk35oWOek
+ 3ymnfz3SAN0EhdVtOFZDZZnAAzAPOkvG4OeYBga1qRwXvU6LSmJMa+VUY
+ mczw9idfwdCwr3hsrITUSJxQd3GFa2cCG5y0WLybo1gQyk5ady27Q4lzg
+ iMKgTyzLsfEut43p49fik/y+42ZzcTVfJteeyqRfL7VWcp0qTEegOT/ES
+ 6UNVoyOvRRnB/2ZkMNMCm6gKWoaXZxvSpxghxSWjx7Yz+DgzuTEykSJy9
+ RdqgcL2xyXaeW4ArG7tA9ZuUOnJDIfPEr27Ptonh7DudDYRDwCFs6U+eG
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=EU1i+onZ
-Subject: [Intel-wired-lan] [PATCH iwl-net 0/2] idpf: queue based scheduling
- fixes
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=beK4Pyd6
+Subject: [Intel-wired-lan] [PATCH iwl-net 1/2] idpf: do not enable XDP if
+ queue based scheduling is not supported
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,19 +116,19 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCPT_COUNT_TWO(0.00)[2];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	ARC_NA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	MIME_TRACE(0.00)[0:+];
 	FROM_NEQ_ENVFROM(0.00)[joshua.a.hay@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
@@ -135,30 +137,43 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D72F23A8173
+X-Rspamd-Queue-Id: CF08B3A8183
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-This series fixes some TxQ scheduling mode issues exposed by recent FW
-changes. 
+The current XDP implementation uses queue based scheduling for its TxQs.
+If the FW does not advertise support for queue based scheduling, do not
+enable XDP. Add the missing capability check at the start of the XDP
+configuration. This will temporarily break XDP while a flow based
+implementation is worked on, as well as while FWs with queue based by
+default are rolled out.
 
-Patch 1 prevents XDP from being enabled if queue based scheduling is not
-supported by the firmware.
+Fixes: 705457e7211f ("idpf: implement XDP_SETUP_PROG in ndo_bpf for splitq")
+Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/xdp.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Patch 2 fixes a NULL ptr dereference in the Tx path when queue based
-scheduling is enabled, and also adds support to process both 4 and 8
-byte completion descriptors to avoid timeouts in queue based scheduling
-mode.
-
-Joshua Hay (2):
-  idpf: do not enable XDP if queue based scheduling is not supported
-  idpf: fix skb datapath queue based scheduling crashes and timeouts
-
- drivers/net/ethernet/intel/idpf/idpf_txrx.c | 49 +++++++++++++--------
- drivers/net/ethernet/intel/idpf/idpf_txrx.h |  6 ++-
- drivers/net/ethernet/intel/idpf/xdp.c       |  7 +++
- 3 files changed, 43 insertions(+), 19 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
+index 18a6e7062863..9c3bdb193684 100644
+--- a/drivers/net/ethernet/intel/idpf/xdp.c
++++ b/drivers/net/ethernet/intel/idpf/xdp.c
+@@ -511,6 +511,13 @@ int idpf_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+ 	if (!idpf_is_queue_model_split(vport->dflt_qv_rsrc.txq_model))
+ 		goto notsupp;
+ 
++	if (!idpf_is_cap_ena(vport->adapter, IDPF_OTHER_CAPS,
++			     VIRTCHNL2_CAP_SPLITQ_QSCHED)) {
++		NL_SET_ERR_MSG_MOD(xdp->extack,
++				   "Device does not support requested XDP Tx scheduling mode");
++		goto notsupp;
++	}
++
+ 	switch (xdp->command) {
+ 	case XDP_SETUP_PROG:
+ 		ret = idpf_xdp_setup_prog(vport, xdp);
 -- 
 2.39.2
 
