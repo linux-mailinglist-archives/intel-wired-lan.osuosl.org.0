@@ -2,96 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CChTHZyp02k4kAcAu9opvQ
+	id OAm+MuC/02kalgcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Apr 2026 14:39:56 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Apr 2026 16:14:56 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEA9E3A35C1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Apr 2026 14:39:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5027A3A3D53
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Apr 2026 16:14:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A0C7060641;
-	Mon,  6 Apr 2026 12:30:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B8C3760721;
+	Mon,  6 Apr 2026 14:06:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Xgt9CQS9oVQm; Mon,  6 Apr 2026 12:30:14 +0000 (UTC)
+ id HMLQjsFycAHG; Mon,  6 Apr 2026 14:06:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D9A086065E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CC7260640
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775478613;
-	bh=3OLGYuWueXpAxw4Xwkb7rNrd6HvEWShajiH3l89z4JE=;
+	s=default; t=1775484386;
+	bh=6dvUwkTyEiFOcgg/rtaSGFzUpJXNrZgNepii9xrmX4g=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=TD6Bg4G2I49ocptK6Le/HvPnz/1gTG2qAbiH8JqHqMVLXygJlQ68gNd2hJrJvry8A
-	 sJcEQt1nz7Sm/7SVdKWhSaEqAcrbxpzQS9MIeGKjtaJFz8DaQj3259dE4AzQRDP/Zy
-	 RVcaoOZxo63BMlWPLdcV6z32TL/zqEnKOjTsh4KC8255WLCudu69llCiLIMpZWvASh
-	 NDVYHTzegYc+uX3SKTtO2r+zrScIi7OWdigz7WKS6B44Q64uKH/DSjD5J7/TiZts1Z
-	 5m8g81wUiRLV5oWTZNOqT4cZKgD6vZJ6ZtvEhTf1wnuKpTdWFq+YWzzFz/+4rp5Be8
-	 Pd5AWmWNRj1xQ==
+	b=OZ7QB0MFuLa5AT8V6Cub6yo6eTeS+fZtfWJ+nJ8GwdqoMv1Nip/zbX8OblQY4Ihqt
+	 qRl4SDfYXuRt1I1HgpZdIZ9ww98ZSBQkmjm46z9PHtc/RdlvglVq0TeXmyKK2oU9DU
+	 GrjwEnaTbz8Yc3FR4FzN8dwnUc0aNAX3rnO4IPNzW+s7FuvM4CNlpBwnkAGXbsDCiV
+	 zIdN3wO2Y+4FfXXJ9IjLrCejBiIeD82KB3xqd4vkp9FN/VOseMW2mm7Xl2OZDmJJa4
+	 SjJrxaVSWORz0wIfUSorhLUngyfey4EL4QVxOph2iZP8lw5DaCOg3ON/9ayfgCEcFt
+	 J6QTXFsGAdeOA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D9A086065E;
-	Mon,  6 Apr 2026 12:30:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3CC7260640;
+	Mon,  6 Apr 2026 14:06:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id D5AA9219
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 12:30:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 492271EB
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 14:06:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C633B8078F
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 12:30:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 272804072F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 14:06:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VnEeJSEVYZhF for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Apr 2026 12:30:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=49.212.198.91;
- helo=www2881.sakura.ne.jp; envelope-from=kohei@enjuk.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B7DBA80785
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7DBA80785
-Received: from www2881.sakura.ne.jp (www2881.sakura.ne.jp [49.212.198.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B7DBA80785
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 12:30:10 +0000 (UTC)
-Received: from x1 (13.3.31.150.dy.iij4u.or.jp [150.31.3.13])
- (authenticated bits=0)
- by www2881.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 636CTo3j080947
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 6 Apr 2026 21:29:52 +0900 (JST) (envelope-from kohei@enjuk.jp)
-Date: Mon, 6 Apr 2026 21:29:50 +0900
-From: Kohei Enju <kohei@enjuk.jp>
-To: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, stable@vger.kernel.org
-Message-ID: <adOjGCms-5PBuNte@x1>
-References: <20260406112057.906685-1-jtornosm@redhat.com>
- <20260406112057.906685-4-jtornosm@redhat.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id d1fYQuBgwpUN for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Apr 2026 14:06:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6291F40712
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6291F40712
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6291F40712
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Apr 2026 14:06:23 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id 916AC60123;
+ Mon,  6 Apr 2026 14:06:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C230C4CEF7;
+ Mon,  6 Apr 2026 14:06:20 +0000 (UTC)
+Date: Mon, 6 Apr 2026 15:06:17 +0100
+From: Simon Horman <horms@kernel.org>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Message-ID: <20260406140617.GC395680@kernel.org>
+References: <20260327073046.134085-1-aleksandr.loktionov@intel.com>
+ <20260327073046.134085-11-aleksandr.loktionov@intel.com>
+ <20260403131857.GB113102@horms.kernel.org>
+ <IA3PR11MB8986472BF64AFBF2191A381EE55EA@IA3PR11MB8986.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260406112057.906685-4-jtornosm@redhat.com>
-X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
- bh=3OLGYuWueXpAxw4Xwkb7rNrd6HvEWShajiH3l89z4JE=; 
- c=relaxed/relaxed; d=enjuk.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20251215; t=1775478592; v=1;
- b=exUuEimwu+3LRSzYhW/E37U5h2mO6GNiVvGmtd5dpgX/MBhWFIRJCLhZbiiqOJDa
- 0qTY6LkjTmVPE4ycnrw8xHlErDa4Lvy/wPiI9NPbZmm7QLuh53Ji8h9boEEkZZrY
- +8bgVkBfITYXHXECH6t6DfGXldKysJhXceZOAdcFCR5B3sNyXYkf2vTTYTwZZXKg
- yhR6XtxA81mCXQqIQ1iN0W6C9XTvQhqs14dxL4cnl8XI13cHGjwWN0Jk954uLN7L
- TjoH7yRrykcjXmbrOW1BOFKavYCawN7taZrMrAR7Siup5IhIzBBQWWOwHAPTl3e8
- CvTnHpqFoo5nVy8PO9RyUA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=enjuk.jp
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+In-Reply-To: <IA3PR11MB8986472BF64AFBF2191A381EE55EA@IA3PR11MB8986.namprd11.prod.outlook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1775484381;
+ bh=lSOhJktgpXKPmVSgZ1HfGR78lmK+3sPi09aFmGX56q0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=AG7paG2FM97zut6Ait4Vs9oVl0bVsbqvUMoTJdkG9GcrMOE+LVmL1NCho4pjItkAi
+ GsHNFBkYtZGbu0UfS/lLqHWNhdlUqggZWm2uICusyTcRkhLx8hR34suFlBn1YzCyVf
+ Dj0zTvtLlFVOanXrdSrTzfYbOXoRwO+zHS4tEG+15ErwBpcmJDlEgHxfgqx/QLEjkH
+ ULhlyOiVF6Pwvf1cbSVj5l5/74pB72e1i4BSFy0IfUp6riyqwYG8B53Ep24jQB6NDu
+ Az6wHh8QM1MhWk7NrXgiOYW0IFjja5Ho7lPRkwhd+pAhRrUw2lZwQtUUW6evlruVsS
+ CrItt9ADHf3iA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=enjuk.jp header.i=@enjuk.jp header.a=rsa-sha256
- header.s=rs20251215 header.b=exUuEimw
-Subject: Re: [Intel-wired-lan] [PATCH net 3/3] iavf: drop netdev lock while
- waiting for MAC change completion
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=AG7paG2F
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ixgbe: fix ITR value
+ overflow in adaptive interrupt throttling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,125 +108,97 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [7.79 / 15.00];
-	URIBL_BLACK(7.50)[osuosl.org:dkim];
-	MID_RHS_NOT_FQDN(0.50)[];
+X-Spamd-Result: default: False [8.69 / 15.00];
+	URIBL_BLACK(7.50)[osuosl.org:dkim,osuosl.org:email];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MAILLIST(-0.20)[mailman];
 	BAD_REP_POLICIES(0.10)[];
 	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[enjuk.jp : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	R_DKIM_ALLOW(0.00)[osuosl.org:s=default];
-	FORGED_RECIPIENTS(0.00)[m:jtornosm@redhat.com,m:netdev@vger.kernel.org,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:stable@vger.kernel.org,s:lists@lfdr.de];
-	GREYLIST(0.00)[pass,body];
-	FORGED_SENDER(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:email,intel.com:email];
+	GREYLIST(0.00)[pass,body];
 	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	TO_DN_SOME(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	NEURAL_SPAM(0.00)[0.462];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kohei@enjuk.jp,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[10];
-	R_SPF_ALLOW(0.00)[+mx];
-	NEURAL_SPAM(0.00)[0.759];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_THREE(0.00)[4];
+	MID_RHS_MATCH_FROM(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	MISSING_XM_UA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_COUNT_SEVEN(0.00)[8]
-X-Rspamd-Queue-Id: EEA9E3A35C1
+	R_SPF_ALLOW(0.00)[+mx];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 5027A3A3D53
 X-Rspamd-Action: add header
 X-Rspamd-Server: lfdr
 X-Spam: Yes
 
-On 04/06 13:20, Jose Ignacio Tornos Martinez wrote:
-> After commit ad7c7b2172c3 ("net: hold netdev instance lock during sysfs
-> operations"), iavf_set_mac() is called with the netdev instance lock
-> already held.
+On Fri, Apr 03, 2026 at 04:12:02PM +0000, Loktionov, Aleksandr wrote:
 > 
-> The function queues a MAC address change request and then waits for
-> completion while holding this lock. However, the watchdog task that
-> processes admin queue commands (including MAC changes) also needs to
-> acquire the netdev lock to run.
 > 
-> This creates a lock contention scenario:
-> 1. iavf_set_mac() holds netdev lock and waits for MAC change
-> 2. Watchdog needs netdev lock to process the MAC change request
-> 3. Watchdog blocks waiting for lock
-> 4. MAC change times out after 2.5 seconds
-> 5. iavf_set_mac() returns -EAGAIN
+> > -----Original Message-----
+> > From: Simon Horman <horms@kernel.org>
+> > Sent: Friday, April 3, 2026 3:19 PM
+> > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> > Cc: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; netdev@vger.kernel.org
+> > Subject: Re: [PATCH iwl-next] ixgbe: fix ITR value overflow in
+> > adaptive interrupt throttling
+> > 
+> > On Fri, Mar 27, 2026 at 08:30:45AM +0100, Aleksandr Loktionov wrote:
+> > > ixgbe_update_itr() packs a mode flag (IXGBE_ITR_ADAPTIVE_LATENCY,
+> > bit
+> > > 7) and a usecs delay (bits [6:0]) into an unsigned int, then stores
+> > it
+> > > in ring_container->itr which is u8.  Values above 0xFF wrap,
+> > > corrupting both the delay and the mode-flag on the next readback.
+> > >
+> > > Separate the mode bits from the usecs sub-field; clamp only the
+> > latter
+> > > to [0, IXGBE_ITR_ADAPTIVE_LATENCY - 1] via min_t(unsigned int, ...)
+> > so
+> > > overflow cannot bleed into bit 7.  Add a WARN_ONCE() when the raw
+> > > usecs value exceeds U8_MAX so out-of-range ITR computations are
+> > > visible in dmesg during development and testing.
+> > >
+> > > Fixes: b4ded8327fea ("ixgbe: Update adaptive ITR algorithm")
+> > > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> > 
+> > Somehow - perhaps because there is no m/n notation present in the []
+> > in the subject - Patchwork has treated each patch in this series as
+> > it's own patch-set.
+> > 
+> > And in the case of this patch, it didn't apply - I assume because in
+> > order to do so an earlier patch in the series needs to be present.
+> > 
+> > So CI didn't run on this patch :(
 > 
-> This particularly affects VFs during initialization when enslaved to a
-> bond. The first VF typically succeeds as it's already fully initialized,
-> but subsequent VFs fail as they're still progressing through their state
-> machine and need the watchdog to advance.
+> Good day, Simon
 > 
-> Fix by temporarily dropping the netdev lock before waiting for MAC change
-> completion, allowing the watchdog to run and process the request, then
-> re-acquiring the lock before returning.
+> I have a bunch of simple /* independent */ patches for submission every week.
+> Whis way you'd recommend to send them to ease /* and accelerate review */ ?
 > 
-> This is safe because:
-> - The MAC change request is already queued before we drop the lock
-> - iavf_is_mac_set_handled() just checks filter state, doesn't modify it
-> - We re-acquire the lock before checking results and returning
-> 
-> Fixes: ad7c7b2172c3 ("net: hold netdev instance lock during sysfs operations")
-> cc: stable@vger.kernel.org
-> Signed-off-by: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index dad001abc908..6281858e6f3c 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -1068,10 +1068,14 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
->  	if (ret)
->  		return ret;
->  
-> +	netdev_unlock(netdev);
-> +
->  	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue,
->  					       iavf_is_mac_set_handled(netdev, addr->sa_data),
->  					       msecs_to_jiffies(2500));
->  
-> +	netdev_lock(netdev);
-> +
+> 1. submit one by one
+> 2. submit as a batch by one git command (with the same internal main ID tag internally)
+> 3. imagine a cover latter and submit as a patch-set 
 
-Hi Jose, thank you for the fix and detailed explanation.
+Hi Aleksandr,
 
-I don't have a great solution for this issue, but dropping the netdev
-lock taken by the networking core in the driver callback might not look
-acceptable.
-
-FYI, Petr reported the same type of locking issue in
-ndo_change_mtu(), and the v1 approach was really similar to this one.
-https://lore.kernel.org/intel-wired-lan/20260202155813.3f8fbc27@kernel.org/
-
-IIUC, the issue was eventually fixed by completing the reset
-synchronously in the same context as ndo_change_mtu(), instead of
-dropping the netdev lock and waiting for reset_task.
-https://lore.kernel.org/intel-wired-lan/20260211191855.1532226-1-poros@redhat.com/
-
-If that applies here as well, maybe iavf_set_mac() needs a similar
-approach, e.g. progressing the relevant virtchnl request/completion
-synchronously with the netdev lock held, rather than dropping the lock
-here?
-
->  	/* If ret < 0 then it means wait was interrupted.
->  	 * If ret == 0 then it means we got a timeout.
->  	 * else it means we got response for set MAC from PF,
-> -- 
-> 2.53.0
-> 
+I would suggest 3 and lean towards small batches.
