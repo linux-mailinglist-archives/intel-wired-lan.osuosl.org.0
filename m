@@ -2,77 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id AOdAIyRU1mm8DQgAu9opvQ
+	id WEtWGiVU1mm8DQgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:04 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:05 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0A6793BCA0F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:03 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 356E53BCA17
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 74D1A608C5;
-	Wed,  8 Apr 2026 13:12:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DC97240E9E;
+	Wed,  8 Apr 2026 13:12:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gLO1olnde8ht; Wed,  8 Apr 2026 13:12:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NSmqL9dC6cya; Wed,  8 Apr 2026 13:12:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD3C3608DA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DF2040EBD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775653921;
-	bh=qvuGwcCg0+d/p9CbAV+bQc43TGHJtD/eAWBX7DKslBE=;
+	s=default; t=1775653923;
+	bh=/9LczlXbZFjuBTx0ndJmA4xwbezRp2g2ENUAjXeU8sE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=CrFV3gzryXLhqp2jI98TOtOK1S4izpTqtgXUBfB5cZqdvFGV4TQJYaeinlsJXFms1
-	 cuz26ZTd3eW65dVWNlt8XKDgi/dJB0DwS2BgmRUuQ6kkDobcVbZMxvFUjctJCkSB4n
-	 ONixMPpWhjEtXxkpdmn7pbFiR/O73xq+j8+fV73CZG8TR+6zE/gS7Kii/3dgciGrqd
-	 mcoHfcwZQ+3+Fp2an99XqqTpPAymcr24X/EwzVlbL94xxBUXlCDP2/aW/RbUK1gE8I
-	 k15apL0kkMUMTJmAaya+ykGIlx5tWJPfWBjIJvyvHQRVSEadQO2KGFOMXXAb2K8WoV
-	 7Te2L53IXlfHg==
+	b=UVIuoygGgUcOzRl/UO6AgzlrBgN6Qv77s61V5T44pX8UIxww1TKr4hdzj7zI+9BnO
+	 +nW7O8IvXFohTNDkwgnqJhScmtxEbXnO5n0nupBS97/Y9tBa4GRom4/ACUvaet4XP1
+	 8wTl21UKl+o4sj24iuC4tue/JUaTuIwI8NxbvBFNO1i8mpYI6XGygGavRBtMn4c2ci
+	 odtl+s3jw6UghHEzInLylGqZGhZ2VbOyoH3gfr1QMdrZ9/zNtm0M0wktNkqlUQiXsD
+	 02v9Lo8b8jCAXwpStWnO9YGJ2ACc3e56kCkjpBqeVbHuDNLxG+HT2J5WjfTj1ao/+G
+	 45O8zC424addQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD3C3608DA;
-	Wed,  8 Apr 2026 13:12:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4DF2040EBD;
+	Wed,  8 Apr 2026 13:12:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id BBF941F6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:11:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id D87CE2C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B870E60856
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:11:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id C665D608A8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OfqVbBPQ7WO9 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Apr 2026 13:11:58 +0000 (UTC)
+ id 4FWj8z8s6IvI for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Apr 2026 13:12:00 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 13F0D608A8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13F0D608A8
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CD38960856
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD38960856
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13F0D608A8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:11:58 +0000 (UTC)
-X-CSE-ConnectionGUID: ZwEN60XeQ+OLyGYENARkKg==
-X-CSE-MsgGUID: uChYM58dRzCTHoRSlqXIWw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11752"; a="102087227"
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="102087227"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CD38960856
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:11:59 +0000 (UTC)
+X-CSE-ConnectionGUID: rT4vAhQUS0WcGLGldfA28g==
+X-CSE-MsgGUID: wxS9RzTqSSqxXqchxcfy9A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11752"; a="102087230"
+X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="102087230"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2026 06:11:58 -0700
-X-CSE-ConnectionGUID: UYU4/WfkRCy55u/s3o2AYw==
-X-CSE-MsgGUID: pcGEyYDkTQuuRSYQcN+Hdg==
+ 08 Apr 2026 06:12:00 -0700
+X-CSE-ConnectionGUID: rUHFCMYtRA2GMS7NnUPfyA==
+X-CSE-MsgGUID: 50q468FFT7aSpIcd5UV7jg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="228714944"
+X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="228714949"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by orviesa007.jf.intel.com with ESMTP; 08 Apr 2026 06:11:57 -0700
+ by orviesa007.jf.intel.com with ESMTP; 08 Apr 2026 06:11:59 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org
-Date: Wed,  8 Apr 2026 15:11:49 +0200
-Message-ID: <20260408131154.2661818-2-aleksandr.loktionov@intel.com>
+Cc: netdev@vger.kernel.org,
+	Paul Greenwalt <paul.greenwalt@intel.com>
+Date: Wed,  8 Apr 2026 15:11:50 +0200
+Message-ID: <20260408131154.2661818-3-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260408131154.2661818-1-aleksandr.loktionov@intel.com>
 References: <20260408131154.2661818-1-aleksandr.loktionov@intel.com>
@@ -80,25 +81,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775653918; x=1807189918;
+ t=1775653920; x=1807189920;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=jqWWnbeGaAloNgo2/0T0yqS/cY0f70+KgebTL+VZ8HI=;
- b=WogBYzQVLLLRsLbLfWYRcPYJijap9mk3Z9KRQIyTOKlwihwBtEHOvLrx
- dIQsPe+dI29htdQnNT0CPfLHNlxnvf9hkCyFGsdNmMQxHkOy//UC4tCVZ
- zGNjidVv0i6XWtkxjZpZ9L98tAEXvkcXAJ+wm5yaFp+9X1CKSNxAyDYUS
- w7mgMFJ4aP5dRGr6IQvRRVie3iREdPzN0Osvq3KyGmtXSEiu83kqnPEVT
- XtrPfgJw1RNF+xnrcdcpoTE3/gr4QTdOsxNLK+uq1mAGOOGxjkf2/eXqk
- QE9TkZk+bpQEdh3y9YB+MD6gxt98IpdK/xalGE8RDpC8e7fxznF/nvnsn
- g==;
+ bh=6Gpm78H9t2C6etiRw2hqX9OI9lfPgYaJTQ33kuwqqOU=;
+ b=HigbuAdBkW4Vv6v7C600E1vMlYMLodfhRfIyj1rKP8tmIa1T0fu8Snyy
+ iP3v5JTeOlK2eiljFkdkaAEJz6wulCi6qWDePEvbDU88X9yge7O7MMmH/
+ TL6nrig0W0HiYn1j62g1Bx0G2r7BNc64jFAw9EmMVOHVeOjxrRhfLnfCi
+ TZyltFRUAgc512jfCH9RxJe463PMYAld+rZ8e5zeQ8FCa0TbDCsZxMg3R
+ 2zz4F/mq5aw/XmXyhV7dC/Moco/u+Hd3XMNPupTudRWRnSfpQlOJQK7EK
+ 5GXCEkD2m3Ahi0k7zsD8Y7K+MNHyx5HbusQY6VzBJeaIFDp6kdBF1VrMi
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WogBYzQV
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/6] ixgbe: fix SWFW semaphore
- timeout for X550 family
+ header.a=rsa-sha256 header.s=Intel header.b=HigbuAdB
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 2/6] ixgbe: add bounds check
+ for debugfs register access
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,87 +114,111 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [0.89 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[5];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-1.000];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 0A6793BCA0F
+X-Rspamd-Queue-Id: 356E53BCA17
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-According to FW documentation, the most time-consuming FW operation is
-Shadow RAM (SR) dump which takes up to 3.2 seconds.  For X550 family
-devices the module-update FW command can take over 4.5 s.  The default
-semaphore loop runs 200 iterations with a 5 ms sleep each, giving a
-maximum wait of 1 s -- not "200 ms" as previously stated in error.
-This is insufficient for X550 family FW update operations and causes
-spurious EBUSY failures.
+From: Paul Greenwalt <paul.greenwalt@intel.com>
 
-Extend the SW/FW semaphore timeout from 1 s to 5 s (1000 iterations x
-5 ms) for all three X550 variants: ixgbe_mac_X550, ixgbe_mac_X550EM_x,
-and ixgbe_mac_x550em_a.  All three share the same FW and exhibit the
-same worst-case latency.  Use three explicit mac.type comparisons rather
-than a range check so future MAC additions are not inadvertently
-captured.
+Prevent out-of-bounds MMIO accesses triggered through user-controlled
+register offsets.  IXGBE_HFDR (0x15FE8) is the highest valid MMIO
+register in the ixgbe register map; any offset beyond it would address
+unmapped memory.
 
-The timeout variable is set immediately before the loop so the intent
-is clear, with an inline comment stating the resulting maximum delay.
+Add a defense-in-depth check at two levels:
 
-Suggested-by: Soumen Karmakar <soumen.karmakar@intel.com>
+1. ixgbe_read_reg() -- the noinline register read accessor.  A
+   WARN_ON_ONCE() guard here catches any future code path (including
+   ioctl extensions) that might inadvertently pass an out-of-range
+   offset without relying on higher layers to catch it first.
+   ixgbe_write_reg() is a static inline called from the TX/RX hot path;
+   adding WARN_ON_ONCE there would inline the check at every call site,
+   so only the read path gets this guard.
+
+2. ixgbe_dbg_reg_ops_write() -- the debugfs 'reg_ops' interface is the
+   only current path where a raw, user-supplied offset enters the driver.
+   Gating it before invoking the register accessors provides a clean,
+   user-visible failure (silent ignore with no kernel splat) for
+   deliberately malformed debugfs writes.
+
+Add a reg <= IXGBE_HFDR guard to both the read and write paths in
+ixgbe_dbg_reg_ops_write(), and a WARN_ON_ONCE + early-return guard to
+ixgbe_read_reg().
+
+Fixes: 91fbd8f081e2 ("ixgbe: added reg_ops file to debugfs")
+Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 Cc: stable@vger.kernel.org
-Suggested-by: Marta Plantykow <marta.a.plantykow@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
 v1 -> v2:
- - Squash with 0015 (X550EM extension); fix commit message ("200ms" was
-   wrong, actual default is 1 s); replace >= / <= range check with three
-   explicit mac.type == comparisons per Tony Nguyen.
+ - Add Fixes: tag; reroute from iwl-next to iwl-net (security-relevant
+   hardening for user-controllable out-of-bounds MMIO).
 
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c | 6 ++++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c    | 2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-index e67e2fe..a3c8f51 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-@@ -577,6 +577,15 @@ int ixgbe_acquire_swfw_sync_X540(struct ixgbe_hw *hw, u32 mask)
- 
- 	swmask |= swi2c_mask;
- 	fwmask |= swi2c_mask << 2;
-+	/* Extend to 5 s (1000 x 5 ms) for X550 family; default is 1 s
-+	 * (200 x 5 ms).  FW SR-dump takes up to 3.2 s; module-update up
-+	 * to 4.5 s.
-+	 */
-+	if (hw->mac.type == ixgbe_mac_X550 ||
-+	    hw->mac.type == ixgbe_mac_X550EM_x ||
-+	    hw->mac.type == ixgbe_mac_x550em_a)
-+		timeout = 1000;
-+
- 	for (i = 0; i < timeout; i++) {
- 		/* SW NVM semaphore bit is used for access to all
- 		 * SW_FW_SYNC bits (not just NVM)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
+index 5b1cf49d..a6a19c0 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_debugfs.c
+@@ -86,7 +86,8 @@ static ssize_t ixgbe_dbg_reg_ops_write(struct file *filp,
+ 		u32 reg, value;
+ 		int cnt;
+ 		cnt = sscanf(&ixgbe_dbg_reg_ops_buf[5], "%x %x", &reg, &value);
+-		if (cnt == 2) {
++		/* bounds-check register offset */
++		if (cnt == 2 && reg <= IXGBE_HFDR) {
+ 			IXGBE_WRITE_REG(&adapter->hw, reg, value);
+ 			value = IXGBE_READ_REG(&adapter->hw, reg);
+ 			e_dev_info("write: 0x%08x = 0x%08x\n", reg, value);
+@@ -97,7 +98,8 @@ static ssize_t ixgbe_dbg_reg_ops_write(struct file *filp,
+ 		u32 reg, value;
+ 		int cnt;
+ 		cnt = sscanf(&ixgbe_dbg_reg_ops_buf[4], "%x", &reg);
+-		if (cnt == 1) {
++		/* bounds-check register offset */
++		if (cnt == 1 && reg <= IXGBE_HFDR) {
+ 			value = IXGBE_READ_REG(&adapter->hw, reg);
+ 			e_dev_info("read 0x%08x = 0x%08x\n", reg, value);
+ 		} else {
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 210c7b9..4a1f3c2 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -354,4 +354,6 @@ u32 ixgbe_read_reg(struct ixgbe_hw *hw, u32 reg)
+ 	if (ixgbe_removed(reg_addr))
+ 		return IXGBE_FAILED_READ_REG;
++	if (WARN_ON_ONCE(reg > IXGBE_HFDR))
++		return IXGBE_FAILED_READ_REG;
+ 	if (unlikely(hw->phy.nw_mng_if_sel &
+ 		     IXGBE_NW_MNG_IF_SEL_SGMII_ENABLE)) {
 -- 
 2.52.0
