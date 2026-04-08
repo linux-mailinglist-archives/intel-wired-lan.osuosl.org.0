@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id yOBSLD5U1mm8DQgAu9opvQ
+	id 2EPkJ0FU1mm8DQgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:30 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:33 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DAD03BCA60
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:30 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9CD9660B71;
-	Wed,  8 Apr 2026 13:12:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Sfrh6v_KqV5j; Wed,  8 Apr 2026 13:12:27 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21C56608F9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775653947;
-	bh=TlDQvsw9wa2nRT2kcaM1hqF8VWnZP4cH3KzqxqrEfaE=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=mXGsK4t1oxHS/Xxu73YHvfM9ChoJfJo3lUxfrOIzlqbOUhd1gIhVyC0kRtbAb1+6r
-	 S+fUXsNIrp7nDC5NhAFk1SUHtddJW3RrXwxjkfn8OJAZAcxNu7TucY94eEBozrfNlp
-	 YqFW58iUQItL71kqRJzykxrkHCEdbVVbyp5fToecPQXm8jiL9pz0ZXpi27e0kx6eYY
-	 Nz69Hd8i/A2DKeTGwpAlQtkIx2KeIN+IcGYqFNLHTBW7sKAsJrSme+6RoyLY+rnjAF
-	 6Roc0Q//7ZPDhdZjJpHUuEdJvnZvgW98fUCzqvRNlTZQIalbqy+nBePti6513PJGGn
-	 LP4nzy47umtag==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21C56608F9;
-	Wed,  8 Apr 2026 13:12:27 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7223C1F6
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:25 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63BD43BCA71
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 08 Apr 2026 15:12:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 58C9F40EC4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 86B6440F1F;
+	Wed,  8 Apr 2026 13:12:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DjAMV9JzADBh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 Apr 2026 13:12:24 +0000 (UTC)
+ id lpwYOLe3MD66; Wed,  8 Apr 2026 13:12:29 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E0C040EC4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1775653949;
+	bh=Tk98gFi1G4Cc60/OkMoHNdw7FjA9PdLmLGQkbABHMfU=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=AwHW+TLMjGKtrs8gL6RvWleFjtjwl/jQzfxnkQ7SSWTwRsS4VM6e8MY/59KpF4vVH
+	 chOI9CVgmmuINDE55MyN0k8yKIC+y0g9muWt/TIcd8Jy5WAkLOW5elstbR0hKnf8EZ
+	 68yoKDDshYCcdBm3mziaMD6qc8+tA/nWiLOeiT/4FIgt4XIZNt390cKUj9PUODXJ7y
+	 tInZpiaiR/X5w6bAzucPFfpzU8x8bxSBNZ7H4iHpVK3ypStTAa3S82+mX/9iR/HkGp
+	 6BcptK1ZyfQ0Elss9tql8g+BSy01BaBsR/mthT4Z8b/SDMmpO90T26cIM/UDaTNkLf
+	 b//j1sA9DbCMQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E0C040EC4;
+	Wed,  8 Apr 2026 13:12:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4C90D2C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:27 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3EF6D40F1F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:27 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EmUfROixAEHR for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 Apr 2026 13:12:26 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AFB7940EC1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFB7940EC1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3335940ECD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3335940ECD
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AFB7940EC1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:24 +0000 (UTC)
-X-CSE-ConnectionGUID: drzcdRl5SFG9021yhXJ4hQ==
-X-CSE-MsgGUID: C2f/b5xdSuS5ZKZs6EKm3A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11752"; a="102087271"
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="102087271"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3335940ECD
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 Apr 2026 13:12:26 +0000 (UTC)
+X-CSE-ConnectionGUID: W6Xc9Un5SxqVAlfjHPeHsw==
+X-CSE-MsgGUID: MgsjarmIQmOB5/HodFeOQA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11752"; a="102087283"
+X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="102087283"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2026 06:12:24 -0700
-X-CSE-ConnectionGUID: NJ9yPvteQTKjL6xVMcgY+A==
-X-CSE-MsgGUID: 5POLM2duRceF21fFxT21nw==
+ 08 Apr 2026 06:12:26 -0700
+X-CSE-ConnectionGUID: +B6SeTRFSZyabaTTLmNT2g==
+X-CSE-MsgGUID: rX3SN5HwTG+tC10sUiu4Og==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="228715090"
+X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; d="scan'208";a="228715100"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by orviesa007.jf.intel.com with ESMTP; 08 Apr 2026 06:12:24 -0700
+ by orviesa007.jf.intel.com with ESMTP; 08 Apr 2026 06:12:25 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  aleksandr.loktionov@intel.com
 Cc: netdev@vger.kernel.org
-Date: Wed,  8 Apr 2026 15:12:12 +0200
-Message-ID: <20260408131216.2662245-5-aleksandr.loktionov@intel.com>
+Date: Wed,  8 Apr 2026 15:12:13 +0200
+Message-ID: <20260408131216.2662245-6-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260408131216.2662245-1-aleksandr.loktionov@intel.com>
 References: <20260408131216.2662245-1-aleksandr.loktionov@intel.com>
@@ -80,25 +80,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775653945; x=1807189945;
+ t=1775653946; x=1807189946;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=BWYev73HaJSnzrEAnlgrwJYbkkFT02+lBiRDnD08l2M=;
- b=YzrdjmExP+7QwpMcjQRUyzJ3u9mHQzobrCIGAcHUoYzbAU+45mN3JZs3
- XCKyIx/GdkDOkf78I80vbyCMkgPeJ+2VJWWl7bMmgzsReltQEfa5kkMhS
- IXMcjs2YD5sXRsQokvJOyBElFCwm35GoyP5aLeqL2p4ECsmlRrepw4sum
- pdQDJ0hwkpbPcqyGe3qIkHZCxCqnDy7y3fba5Dfba4GZOhIkmFeN5UvSr
- riZlYYCAEbYO2z0TfwcHm+0U6ZA+yPyqn1B/ImTR5kTw4n0XcCYlDktHr
- YofOMCnV3exBn3+G6QKOnlcp9SHnE4uAfDCHOlF4TifkIfOkgdzUY1voN
- A==;
+ bh=Kqq495al0fixHxITQwzw8FJCfkmaTNXmJ8mDt7IdcGo=;
+ b=OfQoJFkFzV+tvpr3sX1CUS3DTFB67Ys8v/aLlr2pvBBejcQsgFBtCtuq
+ JCXLDqFVn9zGjbJHfxBqonYOSVcFSaX6rnhXNfrsky7ywvciqj2p2JVwr
+ L2ARAilihZVHl6grG94Y6WSXCjgqP3U2pd0yDDuMaGMis0Obp3x4pAccn
+ Qx4XKsj19VpvlWNCGfedZAt3b9CQp5zXdShOkPhKGE0r89lHZO9c+a25A
+ I2p3rX5X/sgDREcQAZZyzJIYYHLxkGcfLi3SScYsJEkKxGK+t7NRTUNY6
+ jPbU9mBQV/GVhEnrWFGSi+HefXUxjoYnb95RzURuEeqqMs3VBcKE9hWtw
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YzrdjmEx
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 4/8] ixgbe: add
- IXGBE_ITR_ADAPTIVE_MASK_USECS constant
+ header.a=rsa-sha256 header.s=Intel header.b=OfQoJFkF
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 5/8] ixgbe: remove
+ ixgbe_ping_all_vfs() from link state change handlers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -136,60 +136,61 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,intel.com:email,intel.com:mid];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email,intel.com:mid];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 2DAD03BCA60
+X-Rspamd-Queue-Id: 63BD43BCA71
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-From: Alexander Duyck <alexander.h.duyck@intel.com>
+When multiple VFs are brought up simultaneously, a VF can receive a
+CTS (Clear To Send) mailbox message instead of the expected RESET |
+(N)ACK response, because the watchdog fires a gratuitous ping right as
+the VF mailbox transaction is in progress.
 
-ixgbe_set_itr() clears the mode flag (IXGBE_ITR_ADAPTIVE_LATENCY, bit 7)
-with the open-coded complement expression ~IXGBE_ITR_ADAPTIVE_LATENCY.
-This is equivalent to keeping only bits [6:0], i.e. the usecs sub-field.
+Remove the ixgbe_ping_all_vfs() call from both ixgbe_watchdog_link_is_up()
+and ixgbe_watchdog_link_is_down().  Both paths contain an identical call
+with the same race window during VF initialization: link-state changes
+(up or down) can arrive while VFs are mid-initialization, and the
+gratuitous ping from either direction collides with the VF mailbox state
+machine for the same reason.
 
-Add IXGBE_ITR_ADAPTIVE_MASK_USECS = IXGBE_ITR_ADAPTIVE_LATENCY - 1 =
-0x7F to name this mask explicitly and replace the open-coded AND-NOT
-operation with the cleaner AND form.  The two expressions are
-arithmetically identical; the change improves readability.
+Link-state changes are already communicated to VFs through the normal
+mailbox protocol; these extra pings are redundant on both paths.
 
-Signed-off-by: Alexander Duyck <alexander.h.duyck@intel.com>
+Suggested-by: Sebastian Basierski <sebastianx.basierski@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
 v1 -> v2:
- - Split from monolithic ITR cleanup; this patch only adds the
-   IXGBE_ITR_ADAPTIVE_MASK_USECS constant and updates ixgbe_set_itr().
+ - Extend fix to also remove ixgbe_ping_all_vfs() from
+   ixgbe_watchdog_link_is_down(), which carries the same race window;
+   justifies the asymmetry by eliminating it.
 
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      | 1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index b3f4d21..c704cc6 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -475,6 +475,7 @@ static inline unsigned int ixgbe_rx_pg_order(struct ixgbe_ring *ring)
- #define IXGBE_ITR_ADAPTIVE_MAX_USECS	84
- #define IXGBE_ITR_ADAPTIVE_LATENCY	0x80
- #define IXGBE_ITR_ADAPTIVE_BULK		0x00
-+#define IXGBE_ITR_ADAPTIVE_MASK_USECS	(IXGBE_ITR_ADAPTIVE_LATENCY - 1)
- 
- struct ixgbe_ring_container {
- 	struct ixgbe_ring *ring;	/* pointer to linked list of rings */
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index d7c5e83..1885fe8 100644
+index 1885fe8..7c3d821 100644
 --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
 +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -2960,7 +2960,7 @@ static void ixgbe_set_itr(struct ixgbe_q_vector *q_vector)
- 	new_itr = min(q_vector->rx.itr, q_vector->tx.itr);
+@@ -8151,9 +8151,6 @@ static void ixgbe_watchdog_link_is_up(struct ixgbe_adapter *adapter)
  
- 	/* Clear latency flag if set, shift into correct position */
--	new_itr &= ~IXGBE_ITR_ADAPTIVE_LATENCY;
-+	new_itr &= IXGBE_ITR_ADAPTIVE_MASK_USECS;
- 	new_itr <<= 2;
+ 	/* update the default user priority for VFs */
+ 	ixgbe_update_default_up(adapter);
+-
+-	/* ping all the active vfs to let them know link has changed */
+-	ixgbe_ping_all_vfs(adapter);
+ }
  
- 	if (new_itr != q_vector->itr) {
+ /**
+@@ -8183,8 +8180,5 @@ static void ixgbe_watchdog_link_is_down(struct ixgbe_adapter *adapter)
+ 	e_info(drv, "NIC Link is Down\n");
+ 	netif_carrier_off(netdev);
+-
+-	/* ping all the active vfs to let them know link has changed */
+-	ixgbe_ping_all_vfs(adapter);
+ }
+ 
+ static bool ixgbe_ring_tx_pending(struct ixgbe_adapter *adapter)
 -- 
 2.52.0
