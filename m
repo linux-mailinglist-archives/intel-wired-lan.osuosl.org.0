@@ -2,102 +2,218 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id WLd/JcBx12maOAgAu9opvQ
+	id cMVqKER512mXOggAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 11:30:40 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 12:02:44 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67E403C881A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 11:30:39 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BCC7440B08;
-	Thu,  9 Apr 2026 09:30:37 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8DWO6E0e1nEI; Thu,  9 Apr 2026 09:30:36 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B319640B30
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775727036;
-	bh=FGpOESm4pt7NJBYd807lDoTaH55R9/u8KBIuaHklUtI=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=8ciQIHErSDNC4pjDtDi0/QYyjMvBUX9Upe9RZ23GlZebTPaGLFkBcr1KY1Tj1iGIi
-	 qY1HjXGfOWwYQZ5pGDevmHeEw/GxEfZ1pi37RH/PAzq+qS90PPNd7ywkWjidCD0b3/
-	 0A42VfD2+qoWK/s1mJzffyBOdj31o3lFLj8UnOwatLUnKAPgQMImU5FM9LldZBjIka
-	 ldEdBKfDuvzyUxwhYnbyeL9xq0fnd1fQ9ox1weHJePkrI+yQOD2RonY+r5E4a71Lzk
-	 3RJPSePvPJD9JCqMYGixy7+TTTGSkeUjTRPo+9/EOAGXGiGprTVi7IPi/biYkgmdss
-	 AG1naWlZ4GmcA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B319640B30;
-	Thu,  9 Apr 2026 09:30:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 842AC237
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E87133C8DE3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 12:02:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 617D560D92
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2603860ED4;
+	Thu,  9 Apr 2026 10:02:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZxnQwTVWxBow for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Apr 2026 09:30:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ id h5UxYGXwgbK3; Thu,  9 Apr 2026 10:02:41 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F5F160EDB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1775728961;
+	bh=PA7hJA8sP1e6msFQignsprFdfVto1o240+c+7K7Z0BQ=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=Hfj94vjuCYjPMO9H2pQ8h02nodsgs5kjR9vkdwqSeFBgoaM9w2jg0f06vnZZhl3j7
+	 Xw6zeQn9Gx6bhm53i5d95EutCaSAOBv5QeQXBoyTc2ZX504SuAeIt0M+bMKWxIjNC4
+	 qCvDpTJ3LIVCOkQ8/msHDRbGa0SQ7E/TEKnA4PZakzUiAXGOc3j3bnv4J/nfVlTabB
+	 U0wxguf011149znpz49Ab4Pti+73e19uW7fELU+2Y1E2awjQuyDgusdcEXWLKCoCrV
+	 kvhxiKCbT0UCp7q3kUZRsBrJ17/C6FwchTEahYTsjr/MLvFNF/FTmO8k5EGSCYzJFD
+	 A5IzPW5opCZzQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F5F160EDB;
+	Thu,  9 Apr 2026 10:02:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 21B90237
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 10:02:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0744760D92
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 10:02:40 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ezQUxhNpBMs9 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Apr 2026 10:02:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=rafal.romanowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5E1D36085F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E1D36085F
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5E1D36085F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:33 +0000 (UTC)
-X-CSE-ConnectionGUID: /XjrlIl7S02lbsLdOz251w==
-X-CSE-MsgGUID: q5cRpNs9RdeNjjhxFsGsTA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11753"; a="99353990"
-X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="99353990"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2026 02:30:23 -0700
-X-CSE-ConnectionGUID: 3MAVYzx+SFOalnYUalmgfw==
-X-CSE-MsgGUID: amAGPJs1SSmmeKyoKhXqVQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 015F760890
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 015F760890
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 015F760890
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 10:02:37 +0000 (UTC)
+X-CSE-ConnectionGUID: OwjdbMbnQFia+5yNFWFV1A==
+X-CSE-MsgGUID: vny8x674QeSn7k6EDeAVGA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11753"; a="94309693"
+X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="94309693"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2026 03:02:37 -0700
+X-CSE-ConnectionGUID: oX3CxfFXRo6LXWgM9xXieQ==
+X-CSE-MsgGUID: SMJdc8K8SrC6X4vNeqeISQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="225557921"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmviesa007.fm.intel.com with ESMTP; 09 Apr 2026 02:30:21 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org,
-	Leszek Pepiak <leszek.pepiak@intel.com>
-Date: Thu,  9 Apr 2026 11:30:20 +0200
-Message-ID: <20260409093020.3808687-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.52.0
+X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="233623755"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+ by fmviesa005.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2026 03:02:36 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 9 Apr 2026 03:02:36 -0700
+Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Thu, 9 Apr 2026 03:02:36 -0700
+Received: from PH7PR06CU001.outbound.protection.outlook.com (52.101.201.51) by
+ edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 9 Apr 2026 03:02:35 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=esSN6s1fnTv758BL1uNP7Ft9RVUySvrH7HxU/1M1H5FepU2WMfyThzw8y7+FIyTMt1xCu9Qgxmm1gRabKoV8YF6eg0OKaO7YPHyvwGyqyDmUsJrsIRwwv+dtDL3enWEPusgoch21HKCOc5uMb2Q7/jqB98coTqhsi+8Gx541nj+NnP9FoPrFxEjAJkaRYtP5nILLTJQ+d1mheV8co6f/02LWn9r4YXJtL3M/40qNom9eRBjKQQyj8qHvf9MVrpcdGztJIeSp0vf7jjfN33j1b27/+ZHXx5qcK4XXHUjvzrsHK//2lvASwTd7VAJHOeu2fy3Vnm28nF8F04nnYWOCEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PA7hJA8sP1e6msFQignsprFdfVto1o240+c+7K7Z0BQ=;
+ b=kj6smAdmQBlBOffsulUJfIATIAovtFurfINTAYJTDhjBjZZblCTX9t4M84egzDk/a5I0eu1zF1IVuHyg0QiztcX+J6VTk+RllFRV5TE4WIZPM7tC17eNmP2y+2DIWibA8uktM2sWRR5Fs7DXF+VmYwZSZJA8XM+fdsYIPDhyvyIfdvdCBoQq5kd4AgtTRvQ6HcUp7ir1QiNyvM63Pk3lPaKTVWxkfy5Yr3+2ao6hV1BjzaaJukvXles6ik2nE8f77mJy7FObBVUCS5LVvpSQjWSuloHfSRBRYHTse1VqhhFOIl371RKoduDvsIFJMgz0hPyeKzth48z+Mee68/iYRw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8985.namprd11.prod.outlook.com (2603:10b6:208:575::17)
+ by PH0PR11MB7633.namprd11.prod.outlook.com (2603:10b6:510:26c::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.15; Thu, 9 Apr
+ 2026 10:02:31 +0000
+Received: from IA3PR11MB8985.namprd11.prod.outlook.com
+ ([fe80::355c:96ca:a45:dd5d]) by IA3PR11MB8985.namprd11.prod.outlook.com
+ ([fe80::355c:96ca:a45:dd5d%5]) with mapi id 15.20.9745.012; Thu, 9 Apr 2026
+ 10:02:30 +0000
+From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Oros, Petr"
+ <poros@redhat.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+CC: Paul Menzel <pmenzel@molgen.mpg.de>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Eric Dumazet <edumazet@google.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Loktionov,
+ Aleksandr" <aleksandr.loktionov@intel.com>, Andrew Lunn
+ <andrew+netdev@lunn.ch>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S. Miller"
+ <davem@davemloft.net>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v2] iavf: fix wrong VLAN mask
+ for legacy Rx descriptors L2TAG2
+Thread-Index: AQHcuq4mJuN6zWaFo0Oiu7ZWSm74qLW8vicAgBncXoA=
+Date: Thu, 9 Apr 2026 10:02:30 +0000
+Message-ID: <IA3PR11MB89850E71703C62523CB0F0EC8F582@IA3PR11MB8985.namprd11.prod.outlook.com>
+References: <20260323101558.1477593-1-poros@redhat.com>
+ <734bbc85-2209-4b6c-913e-e3637532e315@intel.com>
+In-Reply-To: <734bbc85-2209-4b6c-913e-e3637532e315@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8985:EE_|PH0PR11MB7633:EE_
+x-ms-office365-filtering-correlation-id: d00926c6-3d0f-4fa0-9d86-08de961f1d0e
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|7416014|376014|1800799024|38070700021|18002099003|56012099003|22082099003;
+x-microsoft-antispam-message-info: bcVKLBUM7nuFOkloWNXDKaAY6hBM1UdGs8Oc2oB355963Ehh4DlBD8Sij42UGf2LCNZd+VdyxxcamKhcKBRTW9DvZ+vF74Prrq3fYlgwTEVWOeCQo7Uxll+6zf0l5bbmC2ka+TjDRva0UfkGbSbtXnKCdQJJb2S5/Ai2xZdGW8qTPMkHNwGdZAePqWt6WrSpn7Usqh9zay6EoCWkJatgwgTAAzVnH2MuvzAWAc3OD5PFjJuggDOtJtLYB+WRK+M+TZksw/VR8O08+cWJ7IdrhGNGZzhGJq0cOb7CEiDwSwKDLTXIn95oOCCtFbbfF3GF+OpPNQs65NNdlf8gzV+d0jepVvf/QAfPpQHuQvUJpmKKqfUwlnGTJISKzockL4MV/+Jp7pgyDOixFUljQCRL1Rxr6GID5ttQUqbU4kkypW/6/n9RQm+7y5OmreFGlH4TPY4JRLnY0RDVpUJjmUMlPwR8o5kaW5hMLvje1iUHezpt/KdhIoyIYsOugtHGBPiZttCzXql8G1N+Ri0/LlH8ZaKw8Rmccw9Mpb0OTBeZt3E1FLDc5Liks3KpldhiAUHtc1LN/GoNutEvE5qU978kEajRoT+yjJlNRW5roInOgR31h7etmLGhbPRQWTd5k5mYROKM3iCOCdSdpMPa2qFg/qn2i79DWr0aihNOt/ja0a66pP8JfiSu/ohZqBb2T64mj6t5NJDvQOubunMLfgSZNtw4F6z5O0yGZR4+Zd7kUi0EBXR3mbaUjQoNSrU8+TAbk8ALOoOggairRikF3qlEuz7Buwec0PvW9fETQ6BdcmI=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8985.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(7416014)(376014)(1800799024)(38070700021)(18002099003)(56012099003)(22082099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?d2UwaEowUHlNM05sVkxSTEZrZVN4TFM1a2RJakY5Z3QwTzlaK3VBTlVBM3py?=
+ =?utf-8?B?cW8wd0IzNk5aa3BrSm9ualFsZXRseDBST283OERDYlpHWndSOHRZOW4wd29x?=
+ =?utf-8?B?dk1Da3pPeDRZbWtXVTBJcTVRdm51RmZsZFVTMzh4QlpJN2FvNGU1Rlk5Rk1I?=
+ =?utf-8?B?VmJkd2FyREcxYlYzbmNOVnYwVXJUMFhSOG9CUGlhbEh1dW15dGNnakJEWVNz?=
+ =?utf-8?B?MmFuTk1EZVhaWnBPazJsTEcwdHRqSlpGVnpzdmFuWG1aKzUvOGJWdmxTSFE5?=
+ =?utf-8?B?bk9KRDJmZ0NzR1hWOFAxTWRTWU5mbFdUekpaMDlzTmZjV01qNGcwUWNDTjRz?=
+ =?utf-8?B?WlMrVmZlVGRsZU4zSzZrSVBTdlhpWTRGMDR3UkVtTFI2NXJ4VExKS0lVS1ZB?=
+ =?utf-8?B?VGxlSEMrL0NVNjZ5ZlgzWWFkSmNpejA2VGxTOGowU0ZtRjNnUDlpZUs0c0xQ?=
+ =?utf-8?B?SVVtMnVmK1kwdzNxbFV6MFVybGFXR1RuQ0x5OXNmM1RaZzZ1TExUNjd6U2Zo?=
+ =?utf-8?B?Yys5UmdDbCtWbGcrd3BOTitsWXMzcUZNRkFraEpkZzd4Z2lSdldURUUrOVY0?=
+ =?utf-8?B?dDJhdklkQjNVRGl1Y1BWMVh2bmJRbjN5aGxSalRnbWlvd3FORCszSmNTakhC?=
+ =?utf-8?B?aTRRZnoxakZLaXFWbUtmNmwyU2k0N2VUVmNVaW5SU21EQ3RkMnp0MkZ3eWpl?=
+ =?utf-8?B?SVc3UDQxVDMvSlcyR3hxRTV3NEs3OTFoWmM4bHVNOGZ0TkRYZEJYa09McmMr?=
+ =?utf-8?B?dTBEYzNweHhUak43b3ZGS3JiYnlmTVRlY1dXNUoxa1JOWE1GdE9sOUY4bE5R?=
+ =?utf-8?B?TGtQNHVhNXFaZWovNjQzd2tJMkZnTWZDSXo4RmxHb2UvQlllckhtcnZNTTlX?=
+ =?utf-8?B?cGlyZ0hpWG5iRThIY1UwODAvbjBZVnl0STZwM2FSbUpBUys0YU12MDlFNysx?=
+ =?utf-8?B?YkdCa1puN2pvRVMrMnJJN0k5djhycHNEYldUSytJaHNWT09LeWpRdFNSNGFr?=
+ =?utf-8?B?eCtxUUltR2hVSDk5NDFUdkVTaEgvRFpmMTBwOTRTZHhyUW5aN080S0UyK1Q2?=
+ =?utf-8?B?NzRYbU1USVJ2Tmd4MVRnMkFCL3FHMk5BSGkyNTh3QzlWdkZJSXNKMlFnQzR0?=
+ =?utf-8?B?UDNDeWsyTS9jd0hZV3lRRkl1RjBEd1dVbFloTVRpaHUwVE9HemFaalZkbTM0?=
+ =?utf-8?B?a1RPVitvcXB2dlAyZElIQ284NjJueGMvVE1nTmZ0U1lVU0FpeExQUVlEbWIr?=
+ =?utf-8?B?c3djOEhSQ2F3cTVqWDdiazh2dUlCd0J4Yzh0N3p6UnNYSmVNZUw0ZHJhZTZn?=
+ =?utf-8?B?Mk5rTjNlR0dvaWduWE43R0ZMUlFxQUlrVEdpcWhTNUxyanFoeHJtWE9MTUtE?=
+ =?utf-8?B?bE01U3FWUkszTmc1TlBTdC8vOW5DaElTT1VpTzQ2T0lzbTdDcHI2dHdzY2lT?=
+ =?utf-8?B?ZHMrMTFzTU9qakJRZ0xKK1d0cTVWd20xTENkekxMYkZVL2JjdGcrakRoa2t2?=
+ =?utf-8?B?VVppQ04zOXIweWZmVjFaR0hLbTl0WU1oU2VlK0JTdDFvMi8vWWZqWndLQi9Q?=
+ =?utf-8?B?dXRoSmFUN01YdGxMV2x4cWJ2RytzMUJUK0VmRjNRRFZKL0p2bEFQeDNKY1Rz?=
+ =?utf-8?B?dllIcjdhc3BDYUl2U3JRRHhnbFNGd0RrUzNCZC9rRUJaNVZJTHVmUTVXWFBs?=
+ =?utf-8?B?K2c0WjBvY2dnNjYxSkpYWHFmcXhHczhRKzFUL29Pbzdvem43TS9OdzF6NlNm?=
+ =?utf-8?B?M2hYUXdQT2Y4c0hvallMSkVONzRqYy9HZHMzVXc0NktmbktPakgvenZDVTNs?=
+ =?utf-8?B?WWhiRVZ2UWNRN0l5TjFsdEhwY3NScWhRTXBsVDFnZkZDaG52a0xadWlKakww?=
+ =?utf-8?B?LzNya0dmZEMrY1kyVUdVdm9hckdzaG1nbUVYR3o1TkY1aGp2dVc2c29EU2Ro?=
+ =?utf-8?B?a2UxMSszTHA3eUI4cVA3MitucHVaRHlleHRTU0h4MU1qVkJsbUZIMmpyWEZQ?=
+ =?utf-8?B?WXpwMDFqR1pEcWJCWHV1emFzSlgrSE1DdjVPNVp6d3pLVXZPa3haUDR0UFl3?=
+ =?utf-8?B?UXlPWUhTbUxjL1lKak1nMkltdlVmbnY1OUZ4Z0hYYTdkZmpPK3BaQndkaDFX?=
+ =?utf-8?B?Z1FHcnFOb2psTGE1U2RMcklVVlU0RnN2ZHhlVFRQOEZCbk5ucXBjWUtpeVYr?=
+ =?utf-8?B?bGxJK0lncXlEckI0UTVPOTF3VWFVdzE5VWtLdVFWOEJSck1NVG4vNmtTYyth?=
+ =?utf-8?B?aVhPK2JpMTgwVGZ6ZGpJcGw1YjFrRXhiRWhBZ1I2ZDRyZU5WTzAxV3J6MTdr?=
+ =?utf-8?B?Z0R6RThmcUZ0REJOR1NRUndPVmZObGp1dXVlMU9pa2NFbU93NURGdz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Exchange-RoutingPolicyChecked: qLTSgFjiVb7Jq4CuiSvuJI0k+Nq9Dfvg3dZWa5ulhL0HyqOexVeoRryiRJCfZSKmf+FL3Tqr9SZshIonFD9djLP+ctGGhYU11ioU1WNUzuNlSbcT/s2fDm3ZGHh4LsW/SS8HUa+GBCkyduDx7I+Rj+eXtZvWnXcwRb2X8usLNLEmtmPKBe2lxahxRSDORATLxYR36CyJ/IL7KZBX0MWW7bRFO4773SWR8FjFSMrI5JSwbCZ1ZNiiixpJz0Mg+GsNB6gOARzhxtwWSfMNtw45HdZ04GxyNip0Nd9o3uTs43y54cDak0sEmcagHWQuIyM9nR9InLvOihlmH9URDNP6Fw==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8985.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d00926c6-3d0f-4fa0-9d86-08de961f1d0e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2026 10:02:30.8225 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: kKnkSJ7d10orASZyV0U2+/keGO+QhRjIbm1W6/8sMQDubM3frJgio+DQixNgz5dRvoxelUug2P+NWQxEOjsy4HyN+vL/X2DT7uyN+/ksyK8=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB7633
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775727034; x=1807263034;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=cZC1cpq3OkYGpFiaUIPpsCrPyX8cmaKcyyjykqFlc08=;
- b=fikXucms1QBfcDhndifIkIHvIjwcUJ1HV4THwksD41Lx/U80Xc17pkJC
- UNFt06HU51zf82hePoSsJp4ZF/3HAeYSUx6Ghy+6noffoTtkYtUL0Vh/K
- Lzz7wrKFls55Fe5X1MWM9DirjxGNjeWCUkFJK3J+TQ+nABokm5sXk4AMn
- uWWP/vTyZW7rnYvRoNMDXcZ4ROXP/NR2YmVbYhAPDegy69wkZKtu5YU5m
- el9Fjg5UVizJvc4cSMCb2CLoe4+OB5zKcOYkjYJzitKuGf4p71g38oSL6
- LySOkCqrgFuIx42ROmmzeWPnL0SZbRxKslf/zp0WW5JM/tTyrfSE/pwxT
- w==;
+ t=1775728959; x=1807264959;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=PA7hJA8sP1e6msFQignsprFdfVto1o240+c+7K7Z0BQ=;
+ b=F1fi05KMhTiWF/NIwVIcHNK+x/iI68wQQMU3PNtRFfPyK/ETtv1ge//5
+ no7fjNriSHBxG5oNDW3XXa4qWu6sVvZ0r9xCqMzFqTUPj7esWhUlCv9fk
+ m2wsb+JkXuxnwHw/e+PtpWwrLFJUKmTrJgY/PqpoduPfYtvecKHaDcc7O
+ qXk5k3D1KCFBieCFOx+ulBjnQMN351f8mrJsRCNrlq6zzMeaEKMN2iSga
+ gHfA1VpdJ6xpCtCU+mzb9DVE+vESRUfOhOj4zxl8+/ids8j3OXZ7aZCkL
+ LxuZzmXB5hISkb7UCn+K6FbEU2PXaym6gt5lwmbuAQJqUP43wyejj6Ddl
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=fikXucms
-Subject: [Intel-wired-lan] [PATCH net-next v2] iavf: fix kernel-doc comment
- style in iavf_ethtool.c
+ header.s=Intel header.b=F1fi05KM
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] iavf: fix wrong VLAN mask
+ for legacy Rx descriptors L2TAG2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,398 +228,79 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [2.89 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MIME_BASE64_TEXT_BOGUS(1.00)[];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_BASE64_TEXT(0.10)[];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER(0.00)[rafal.romanowski@intel.com,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,osuosl.org:dkim];
-	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:poros@redhat.com,m:netdev@vger.kernel.org,m:pmenzel@molgen.mpg.de,m:przemyslaw.kitszel@intel.com,m:edumazet@google.com,m:linux-kernel@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:mateusz.polchlopek@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[rafal.romanowski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[15];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 67E403C881A
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	TO_DN_SOME(0.00)[]
+X-Rspamd-Queue-Id: E87133C8DE3
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-iavf_ethtool.c contains 31 kernel-doc comment blocks using the legacy
-`**/` terminator instead of the correct single `*/`. Two function
-headers also use a colon separator (`iavf_get_channels:`,
-`iavf_set_channels:`) instead of the ` - ` dash required by kernel-doc.
-
-Additionally several comments embed their return-value descriptions in
-the body paragraph, producing `scripts/kernel-doc -Wreturn` warnings.
-Void functions that incorrectly say "Returns ..." are also rephrased.
-
-Fix all issues across the full file:
- - Replace every `**/` terminator with `*/`.
- - Change `function_name:` doc headers to `function_name -`.
- - Move inline "Returns ..." sentences into dedicated `Return:` sections
-   for non-void functions (iavf_get_msglevel, iavf_get_rxnfc,
-   iavf_set_channels, iavf_get_rxfh_key_size, iavf_get_rxfh_indir_size,
-   iavf_get_rxfh, iavf_set_rxfh).
- - Rephrase body descriptions in void functions that incorrectly said
-   "Returns ..." (iavf_get_drvinfo, iavf_get_ringparam, iavf_get_coalesce).
- - Remove boilerplate body text for iavf_get_rxfh_key_size and
-   iavf_get_rxfh_indir_size; the `Return:` line now conveys the same
-   information without the vague "Returns the table size." sentence.
-
-Suggested-by: Anthony L. Nguyen <anthony.l.nguyen@intel.com>
-Suggested-by: Leszek Pepiak <leszek.pepiak@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v1 -> v2 extending the scope of the changes to whole iavf_ethtool.c file
----
- drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 103 ++++++++++++------------
- 1 file changed, 53 insertions(+), 50 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 1cd1f3f..a615d59 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -32,7 +32,7 @@
-  * statistics array. Thus, every statistic string in an array should have the
-  * same type and number of format specifiers, to be formatted by variadic
-  * arguments to the iavf_add_stat_string() helper function.
-- **/
-+ */
- struct iavf_stats {
- 	char stat_string[ETH_GSTRING_LEN];
- 	int sizeof_stat;
-@@ -116,7 +116,7 @@ iavf_add_one_ethtool_stat(u64 *data, void *pointer,
-  * the next empty location for successive calls to __iavf_add_ethtool_stats.
-  * If pointer is null, set the data values to zero and update the pointer to
-  * skip these stats.
-- **/
-+ */
- static void
- __iavf_add_ethtool_stats(u64 **data, void *pointer,
- 			 const struct iavf_stats stats[],
-@@ -140,7 +140,7 @@ __iavf_add_ethtool_stats(u64 **data, void *pointer,
-  *
-  * The parameter @stats is evaluated twice, so parameters with side effects
-  * should be avoided.
-- **/
-+ */
- #define iavf_add_ethtool_stats(data, pointer, stats) \
- 	__iavf_add_ethtool_stats(data, pointer, stats, ARRAY_SIZE(stats))
- 
-@@ -157,7 +157,7 @@ __iavf_add_ethtool_stats(u64 **data, void *pointer,
-  * buffer and update the data pointer when finished.
-  *
-  * This function expects to be called while under rcu_read_lock().
-- **/
-+ */
- static void
- iavf_add_queue_stats(u64 **data, struct iavf_ring *ring)
- {
-@@ -189,7 +189,7 @@ iavf_add_queue_stats(u64 **data, struct iavf_ring *ring)
-  *
-  * Format and copy the strings described by stats into the buffer pointed at
-  * by p.
-- **/
-+ */
- static void __iavf_add_stat_strings(u8 **p, const struct iavf_stats stats[],
- 				    const unsigned int size, ...)
- {
-@@ -216,7 +216,7 @@ static void __iavf_add_stat_strings(u8 **p, const struct iavf_stats stats[],
-  * The parameter @stats is evaluated twice, so parameters with side effects
-  * should be avoided. Additionally, stats must be an array such that
-  * ARRAY_SIZE can be called on it.
-- **/
-+ */
- #define iavf_add_stat_strings(p, stats, ...) \
- 	__iavf_add_stat_strings(p, stats, ARRAY_SIZE(stats), ## __VA_ARGS__)
- 
-@@ -249,7 +249,7 @@ static const struct iavf_stats iavf_gstrings_stats[] = {
-  *
-  * Reports speed/duplex settings. Because this is a VF, we don't know what
-  * kind of link we really have, so we fake it.
-- **/
-+ */
- static int iavf_get_link_ksettings(struct net_device *netdev,
- 				   struct ethtool_link_ksettings *cmd)
- {
-@@ -308,7 +308,7 @@ static int iavf_get_link_ksettings(struct net_device *netdev,
-  * @sset: id of string set
-  *
-  * Reports size of various string tables.
-- **/
-+ */
- static int iavf_get_sset_count(struct net_device *netdev, int sset)
- {
- 	/* Report the maximum number queues, even if not every queue is
-@@ -331,7 +331,7 @@ static int iavf_get_sset_count(struct net_device *netdev, int sset)
-  * @data: pointer to data buffer
-  *
-  * All statistics are added to the data buffer as an array of u64.
-- **/
-+ */
- static void iavf_get_ethtool_stats(struct net_device *netdev,
- 				   struct ethtool_stats *stats, u64 *data)
- {
-@@ -367,7 +367,7 @@ static void iavf_get_ethtool_stats(struct net_device *netdev,
-  * @data: buffer for string data
-  *
-  * Builds the statistics string table
-- **/
-+ */
- static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
- {
- 	unsigned int i;
-@@ -392,7 +392,7 @@ static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
-  * @data: buffer for string data
-  *
-  * Builds string tables for various string sets
-- **/
-+ */
- static void iavf_get_strings(struct net_device *netdev, u32 sset, u8 *data)
- {
- 	switch (sset) {
-@@ -408,8 +408,8 @@ static void iavf_get_strings(struct net_device *netdev, u32 sset, u8 *data)
-  * iavf_get_msglevel - Get debug message level
-  * @netdev: network interface device structure
-  *
-- * Returns current debug message level.
-- **/
-+ * Return: current debug message level.
-+ */
- static u32 iavf_get_msglevel(struct net_device *netdev)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -424,7 +424,7 @@ static u32 iavf_get_msglevel(struct net_device *netdev)
-  *
-  * Set current debug message level. Higher values cause the driver to
-  * be noisier.
-- **/
-+ */
- static void iavf_set_msglevel(struct net_device *netdev, u32 data)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -439,8 +439,8 @@ static void iavf_set_msglevel(struct net_device *netdev, u32 data)
-  * @netdev: network interface device structure
-  * @drvinfo: ethool driver info structure
-  *
-- * Returns information about the driver and device for display to the user.
-- **/
-+ * Fills @drvinfo with information about the driver and device.
-+ */
- static void iavf_get_drvinfo(struct net_device *netdev,
- 			     struct ethtool_drvinfo *drvinfo)
- {
-@@ -458,9 +458,9 @@ static void iavf_get_drvinfo(struct net_device *netdev,
-  * @kernel_ring: ethtool extenal ringparam structure
-  * @extack: netlink extended ACK report struct
-  *
-- * Returns current ring parameters. TX and RX rings are reported separately,
-- * but the number of rings is not reported.
-- **/
-+ * Fills @ring with current ring parameters. TX and RX rings are reported
-+ * separately, but the number of rings is not reported.
-+ */
- static void iavf_get_ringparam(struct net_device *netdev,
- 			       struct ethtool_ringparam *ring,
- 			       struct kernel_ethtool_ringparam *kernel_ring,
-@@ -483,7 +483,7 @@ static void iavf_get_ringparam(struct net_device *netdev,
-  *
-  * Sets ring parameters. TX and RX rings are controlled separately, but the
-  * number of rings is not specified, so all rings get the same settings.
-- **/
-+ */
- static int iavf_set_ringparam(struct net_device *netdev,
- 			      struct ethtool_ringparam *ring,
- 			      struct kernel_ethtool_ringparam *kernel_ring,
-@@ -551,7 +551,7 @@ static int iavf_set_ringparam(struct net_device *netdev,
-  * Gets the per-queue settings for coalescence. Specifically Rx and Tx usecs
-  * are per queue. If queue is <0 then we default to queue 0 as the
-  * representative value.
-- **/
-+ */
- static int __iavf_get_coalesce(struct net_device *netdev,
- 			       struct ethtool_coalesce *ec, int queue)
- {
-@@ -588,11 +588,11 @@ static int __iavf_get_coalesce(struct net_device *netdev,
-  * @kernel_coal: ethtool CQE mode setting structure
-  * @extack: extack for reporting error messages
-  *
-- * Returns current coalescing settings. This is referred to elsewhere in the
-- * driver as Interrupt Throttle Rate, as this is how the hardware describes
-- * this functionality. Note that if per-queue settings have been modified this
-- * only represents the settings of queue 0.
-- **/
-+ * Fills @ec with current coalescing settings. This is referred to elsewhere
-+ * in the driver as Interrupt Throttle Rate, as this is how the hardware
-+ * describes this functionality. Note that if per-queue settings have been
-+ * modified this only represents the settings of queue 0.
-+ */
- static int iavf_get_coalesce(struct net_device *netdev,
- 			     struct ethtool_coalesce *ec,
- 			     struct kernel_ethtool_coalesce *kernel_coal,
-@@ -608,7 +608,7 @@ static int iavf_get_coalesce(struct net_device *netdev,
-  * @queue: the queue to read
-  *
-  * Read specific queue's coalesce settings.
-- **/
-+ */
- static int iavf_get_per_queue_coalesce(struct net_device *netdev, u32 queue,
- 				       struct ethtool_coalesce *ec)
- {
-@@ -622,7 +622,7 @@ static int iavf_get_per_queue_coalesce(struct net_device *netdev, u32 queue,
-  * @queue: the queue to modify
-  *
-  * Change the ITR settings for a specific queue.
-- **/
-+ */
- static int iavf_set_itr_per_queue(struct iavf_adapter *adapter,
- 				  struct ethtool_coalesce *ec, int queue)
- {
-@@ -680,7 +680,7 @@ static int iavf_set_itr_per_queue(struct iavf_adapter *adapter,
-  * @queue: the queue to change
-  *
-  * Sets the coalesce settings for a particular queue.
-- **/
-+ */
- static int __iavf_set_coalesce(struct net_device *netdev,
- 			       struct ethtool_coalesce *ec, int queue)
- {
-@@ -722,7 +722,7 @@ static int __iavf_set_coalesce(struct net_device *netdev,
-  * @extack: extack for reporting error messages
-  *
-  * Change current coalescing settings for every queue.
-- **/
-+ */
- static int iavf_set_coalesce(struct net_device *netdev,
- 			     struct ethtool_coalesce *ec,
- 			     struct kernel_ethtool_coalesce *kernel_coal,
-@@ -1639,7 +1639,7 @@ static int iavf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
-  * @netdev: network interface device structure
-  *
-  * Return: number of RX rings.
-- **/
-+ */
- static u32 iavf_get_rx_ring_count(struct net_device *netdev)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -1653,8 +1653,8 @@ static u32 iavf_get_rx_ring_count(struct net_device *netdev)
-  * @cmd: ethtool rxnfc command
-  * @rule_locs: pointer to store rule locations
-  *
-- * Returns Success if the command is supported.
-- **/
-+ * Return: 0 on success, -EOPNOTSUPP if the command is not supported.
-+ */
- static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
- 			  u32 *rule_locs)
- {
-@@ -1684,13 +1684,13 @@ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
- 	return ret;
- }
- /**
-- * iavf_get_channels: get the number of channels supported by the device
-+ * iavf_get_channels - get the number of channels supported by the device
-  * @netdev: network interface device structure
-  * @ch: channel information structure
-  *
-  * For the purposes of our device, we only use combined channels, i.e. a tx/rx
-  * queue pair. Report one extra channel to match our "other" MSI-X vector.
-- **/
-+ */
- static void iavf_get_channels(struct net_device *netdev,
- 			      struct ethtool_channels *ch)
- {
-@@ -1706,14 +1706,15 @@ static void iavf_get_channels(struct net_device *netdev,
- }
- 
- /**
-- * iavf_set_channels: set the new channel count
-+ * iavf_set_channels - set the new channel count
-  * @netdev: network interface device structure
-  * @ch: channel information structure
-  *
-- * Negotiate a new number of channels with the PF then do a reset.  During
-- * reset we'll realloc queues and fix the RSS table.  Returns 0 on success,
-- * negative on failure.
-- **/
-+ * Negotiate a new number of channels with the PF then do a reset. During
-+ * reset we'll realloc queues and fix the RSS table.
-+ *
-+ * Return: 0 on success, negative on failure.
-+ */
- static int iavf_set_channels(struct net_device *netdev,
- 			     struct ethtool_channels *ch)
- {
-@@ -1750,8 +1751,8 @@ static int iavf_set_channels(struct net_device *netdev,
-  * iavf_get_rxfh_key_size - get the RSS hash key size
-  * @netdev: network interface device structure
-  *
-- * Returns the table size.
-- **/
-+ * Return: the RSS hash key size.
-+ */
- static u32 iavf_get_rxfh_key_size(struct net_device *netdev)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -1763,8 +1764,8 @@ static u32 iavf_get_rxfh_key_size(struct net_device *netdev)
-  * iavf_get_rxfh_indir_size - get the rx flow hash indirection table size
-  * @netdev: network interface device structure
-  *
-- * Returns the table size.
-- **/
-+ * Return: the indirection table size.
-+ */
- static u32 iavf_get_rxfh_indir_size(struct net_device *netdev)
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -1777,8 +1778,10 @@ static u32 iavf_get_rxfh_indir_size(struct net_device *netdev)
-  * @netdev: network interface device structure
-  * @rxfh: pointer to param struct (indir, key, hfunc)
-  *
-- * Reads the indirection table directly from the hardware. Always returns 0.
-- **/
-+ * Reads the indirection table directly from the hardware.
-+ *
-+ * Return: 0 always.
-+ */
- static int iavf_get_rxfh(struct net_device *netdev,
- 			 struct ethtool_rxfh_param *rxfh)
- {
-@@ -1806,9 +1809,9 @@ static int iavf_get_rxfh(struct net_device *netdev,
-  * @rxfh: pointer to param struct (indir, key, hfunc)
-  * @extack: extended ACK from the Netlink message
-  *
-- * Returns -EINVAL if the table specifies an invalid queue id, otherwise
-- * returns 0 after programming the table.
-- **/
-+ * Return: 0 on success, -EOPNOTSUPP if the hash function is not supported,
-+ * -EINVAL if the table specifies an invalid queue id.
-+ */
- static int iavf_set_rxfh(struct net_device *netdev,
- 			 struct ethtool_rxfh_param *rxfh,
- 			 struct netlink_ext_ack *extack)
-@@ -1885,7 +1888,7 @@ static const struct ethtool_ops iavf_ethtool_ops = {
-  *
-  * Sets ethtool ops struct in our netdev so that ethtool can call
-  * our functions.
-- **/
-+ */
- void iavf_set_ethtool_ops(struct net_device *netdev)
- {
- 	netdev->ethtool_ops = &iavf_ethtool_ops;
--- 
-2.52.0
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gPGlu
+dGVsLXdpcmVkLWxhbi1ib3VuY2VzQG9zdW9zbC5vcmc+IE9uIEJlaGFsZiBPZiBKYWNvYg0KPiBL
+ZWxsZXINCj4gU2VudDogVHVlc2RheSwgTWFyY2ggMjQsIDIwMjYgMTI6MDcgQU0NCj4gVG86IE9y
+b3MsIFBldHIgPHBvcm9zQHJlZGhhdC5jb20+OyBuZXRkZXZAdmdlci5rZXJuZWwub3JnDQo+IENj
+OiBQYXVsIE1lbnplbCA8cG1lbnplbEBtb2xnZW4ubXBnLmRlPjsgS2l0c3plbCwgUHJ6ZW15c2xh
+dw0KPiA8cHJ6ZW15c2xhdy5raXRzemVsQGludGVsLmNvbT47IEVyaWMgRHVtYXpldCA8ZWR1bWF6
+ZXRAZ29vZ2xlLmNvbT47IGxpbnV4LQ0KPiBrZXJuZWxAdmdlci5rZXJuZWwub3JnOyBMb2t0aW9u
+b3YsIEFsZWtzYW5kciA8YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb20+Ow0KPiBBbmRyZXcg
+THVubiA8YW5kcmV3K25ldGRldkBsdW5uLmNoPjsgTmd1eWVuLCBBbnRob255IEwNCj4gPGFudGhv
+bnkubC5uZ3V5ZW5AaW50ZWwuY29tPjsgTWF0ZXVzeiBQb2xjaGxvcGVrDQo+IDxtYXRldXN6LnBv
+bGNobG9wZWtAaW50ZWwuY29tPjsgSmFrdWIgS2ljaW5za2kgPGt1YmFAa2VybmVsLm9yZz47IFBh
+b2xvDQo+IEFiZW5pIDxwYWJlbmlAcmVkaGF0LmNvbT47IERhdmlkIFMuIE1pbGxlciA8ZGF2ZW1A
+ZGF2ZW1sb2Z0Lm5ldD47IGludGVsLQ0KPiB3aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZw0KPiBT
+dWJqZWN0OiBSZTogW0ludGVsLXdpcmVkLWxhbl0gW1BBVENIIGl3bC1uZXQgdjJdIGlhdmY6IGZp
+eCB3cm9uZyBWTEFOIG1hc2sgZm9yDQo+IGxlZ2FjeSBSeCBkZXNjcmlwdG9ycyBMMlRBRzINCj4g
+DQo+IE9uIDMvMjMvMjAyNiAzOjE1IEFNLCBQZXRyIE9yb3Mgd3JvdGU6DQo+ID4gVGhlIHJlcHJv
+ZHVjZXIgcmVxdWlyZXMgbGVnYWN5IFJ4IGRlc2NyaXB0b3JzLiBPbiBtb2Rlcm4gaWNlICsgaWF2
+Zg0KPiA+IHdpdGggZnVsbCBQVFAgc3VwcG9ydCwgZmxleCBkZXNjcmlwdG9ycyBhcmUgYWx3YXlz
+IG5lZ290aWF0ZWQgYW5kIHRoZQ0KPiA+IGJ1Z2d5IGxlZ2FjeSBwYXRoIGlzIG5ldmVyIHJlYWNo
+ZWQuIEZsZXggZGVzY3JpcHRvcnMgcmVxdWlyZSBhbGwgb2Y6DQo+ID4gIC0gQ09ORklHX1BUUF8x
+NTg4X0NMT0NLIGVuYWJsZWQNCj4gPiAgLSBWSVJUQ0hOTF9WRl9PRkZMT0FEX1JYX0ZMRVhfREVT
+QyBncmFudGVkIGJ5IFBGDQo+ID4gIC0gUFRQIGNhcGFiaWxpdGllcyBuZWdvdGlhdGVkIChWSVJU
+Q0hOTF9WRl9DQVBfUFRQKQ0KPiA+ICAtIFZJUlRDSE5MXzE1ODhfUFRQX0NBUF9SWF9UU1RBTVAg
+c3VwcG9ydGVkDQo+ID4gIC0gVklSVENITkxfUlhESURfMl9GTEVYX1NRX05JQyBwcmVzZW50IGlu
+IEREUCBwcm9maWxlDQo+ID4NCj4gPiBJZiBhbnkgY29uZGl0aW9uIGlzIG5vdCBtZXQsIGlhdmZf
+c2VsZWN0X3J4X2Rlc2NfZm9ybWF0KCkgZmFsbHMgYmFjaw0KPiA+IHRvIGxlZ2FjeSBkZXNjcmlw
+dG9ycyAoUlhESUQ9MSkgYW5kIHRoZSB3cm9uZyBMMlRBRzIgbWFzayBpcyBoaXQuDQo+ID4NCj4g
+DQo+ID4gRml4ZXM6IDJkYzhlN2MzNmQ4MCAoImlhdmY6IHJlZmFjdG9yIGlhdmZfY2xlYW5fcnhf
+aXJxIHRvIHN1cHBvcnQNCj4gPiBsZWdhY3kgYW5kIGZsZXggZGVzY3JpcHRvcnMiKQ0KPiANCj4g
+U3VyZSBlbm91Z2gsIHRoaXMgY29tbWl0IGNoYW5nZWQgdGhlIGxlZ2FjeSB2ZXJzaW9uIHRvOg0K
+PiArLyogU3RyaXBwZWQgUy1UQUcgVkxBTiBmcm9tIHRoZSByZWNlaXZlIHBhY2tldCAqLw0KPiAr
+I2RlZmluZSBJQVZGX1JYRF9MRUdBQ1lfTDJUQUcyX00gICAgICAgICAgICAgICBHRU5NQVNLX1VM
+TCg2MywgMzIpDQo+IA0KPiBJIGd1ZXNzIHNpbmNlIHdlIGJhc2ljYWxseSBhbHdheXMgbmVnb3Rp
+YXRlZCBmbGV4aWJsZSBkZXNjcmlwdG9ycyBhZnRlciB0aGlzIHRoYXQgd2UNCj4gbmV2ZXIgY2F1
+Z2h0IGl0Lg0KPiANCj4gVGhhbmtzIGZvciB0aGUgZml4Lg0KPiANCj4gUmV2aWV3ZWQtYnk6IEph
+Y29iIEtlbGxlciA8amFjb2IuZS5rZWxsZXJAaW50ZWwuY29tPg0KPiANCj4gUmVnYXJkcywNCj4g
+SmFrZQ0KDQpUZXN0ZWQtYnk6IFJhZmFsIFJvbWFub3dza2kgPHJhZmFsLnJvbWFub3dza2lAaW50
+ZWwuY29tPg0KDQo=
