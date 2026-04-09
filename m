@@ -2,206 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id OOgrLERn12myNggAu9opvQ
+	id WLd/JcBx12maOAgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 10:45:56 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 11:30:40 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E0BD3C7E70
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 10:45:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67E403C881A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 09 Apr 2026 11:30:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A6F5F40B9B;
-	Thu,  9 Apr 2026 08:45:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BCC7440B08;
+	Thu,  9 Apr 2026 09:30:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D9k8rntO56Vb; Thu,  9 Apr 2026 08:45:53 +0000 (UTC)
+ id 8DWO6E0e1nEI; Thu,  9 Apr 2026 09:30:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C2D0410E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B319640B30
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775724353;
-	bh=N5xp+LPdsxy14qtIIOAb9BI9SmsmquXjpws6x+2+Jw0=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=uUQyXRO9HdmVDyufP28aHgKqAVHfpEHQBNKs56BMTjM/Ig0ITqNZyBcy2eBBAbIPj
-	 FegJsGls2NsIEu08NA5CuKew7lm+1hCYA7HnfSxa9ZezHUccTQAG1fsEsD5Q06TMSu
-	 qRJqirPGfu93Rq97JIlWKLCasKRCuP+PcTxKNJpzU5U8PGGFuMPoEenMdzUuwrQG4H
-	 f/gTfD+NKxKBqHryrbf84Gb0/INx9MhtJYqVxw8SQZIqPl+VEJJ4vZMAJGsPG4VRXu
-	 Sf8i9Lw1qImeWTjIHYE64x1WrFrbK6GYLKVPlTKEYKoh0cgFzOBhiXiygv3hDE/gRo
-	 3Pb71TLFRySJQ==
+	s=default; t=1775727036;
+	bh=FGpOESm4pt7NJBYd807lDoTaH55R9/u8KBIuaHklUtI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=8ciQIHErSDNC4pjDtDi0/QYyjMvBUX9Upe9RZ23GlZebTPaGLFkBcr1KY1Tj1iGIi
+	 qY1HjXGfOWwYQZ5pGDevmHeEw/GxEfZ1pi37RH/PAzq+qS90PPNd7ywkWjidCD0b3/
+	 0A42VfD2+qoWK/s1mJzffyBOdj31o3lFLj8UnOwatLUnKAPgQMImU5FM9LldZBjIka
+	 ldEdBKfDuvzyUxwhYnbyeL9xq0fnd1fQ9ox1weHJePkrI+yQOD2RonY+r5E4a71Lzk
+	 3RJPSePvPJD9JCqMYGixy7+TTTGSkeUjTRPo+9/EOAGXGiGprTVi7IPi/biYkgmdss
+	 AG1naWlZ4GmcA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2C2D0410E7;
-	Thu,  9 Apr 2026 08:45:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B319640B30;
+	Thu,  9 Apr 2026 09:30:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 0DB061F6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 08:45:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 842AC237
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0A75E4039B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 08:45:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 617D560D92
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TCQm4xXI681J for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 Apr 2026 08:45:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZxnQwTVWxBow for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 Apr 2026 09:30:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4CA0040246
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4CA0040246
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4CA0040246
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 08:45:51 +0000 (UTC)
-X-CSE-ConnectionGUID: +g4P6o08RFqybtK5xF5/Lg==
-X-CSE-MsgGUID: 509qDvveREy0jCDqfcchsw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11753"; a="76602126"
-X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="76602126"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2026 01:45:50 -0700
-X-CSE-ConnectionGUID: EI45RLxvT2yXT0gwddSGLw==
-X-CSE-MsgGUID: Eyh94OKISH2Zphlwe2+K2Q==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5E1D36085F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E1D36085F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5E1D36085F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 Apr 2026 09:30:33 +0000 (UTC)
+X-CSE-ConnectionGUID: /XjrlIl7S02lbsLdOz251w==
+X-CSE-MsgGUID: q5cRpNs9RdeNjjhxFsGsTA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11753"; a="99353990"
+X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="99353990"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2026 02:30:23 -0700
+X-CSE-ConnectionGUID: 3MAVYzx+SFOalnYUalmgfw==
+X-CSE-MsgGUID: amAGPJs1SSmmeKyoKhXqVQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="259157534"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2026 01:45:50 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Thu, 9 Apr 2026 01:45:50 -0700
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Thu, 9 Apr 2026 01:45:50 -0700
-Received: from PH8PR06CU001.outbound.protection.outlook.com (40.107.209.12) by
- edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Thu, 9 Apr 2026 01:45:49 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=TJhXADgaTQXufN67WUDJDEBYbqi1XTSz5aBNjq7XLlxJV2NH8LpIRxNecTCIXVWMp5eJY0AGQqGxW/nh3kX3hZQWhAl3TmRd919ZiGbuldE/YkF3l3fV1D8ciEluXk9YxCkOu1sD9cepjb4RD1idC7zLZ8txkZXt6f8/RZjXZzhz2VSUOSC9IEhBx+2RqBNwiCtYSeQhIJ4dWAuowIO+YbJAlyNlc/Asfwfddpk6hJzuuWiwEkbY0xLbjsFosvjQAd2aQlXnHQ8bsp7bdU4xXxDzMbRJthUniz6bTT9/pvs3FLXHkyGBdrEhZgBOXDt39KJ4+IhGeY+G7cVbjGRGYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=N5xp+LPdsxy14qtIIOAb9BI9SmsmquXjpws6x+2+Jw0=;
- b=IFiifgSZYN2Pw9B8VpChQr5WJ5felAMah/TKFHGjhiXWbFLqFbFoKf6pEtT0edNnCGCWJfyW/eJ1hdhhj0vPWxb8L8jPPKfFy3yWdtt0FExm6b36Y+C1PsLNqLdKjNV4PZ9rqbN9f8SL5lJZPZ8PZlmLuUIro2aWsdG+y7hG/7BuhxqEROErWPMYlv02A+agC9CEg65RFFXqgN1Xopg51dlCWNTyWEyR02TzTPaLf3IIy6Ktl/TRHRQNR3t7c6pKhpF0P5RjjZf6YecdiDUaMI4qCbAHwk5Gpz8r7l0HjAnx4RTVD6bPi59g9J/Fq88UEINFLtV2n4zm2gUy4r6Atw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by DS0PR11MB7960.namprd11.prod.outlook.com (2603:10b6:8:fe::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.20; Thu, 9 Apr
- 2026 08:45:47 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9745.012; Thu, 9 Apr 2026
- 08:45:47 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Matt Fleming <matt@readmodwrite.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>
-CC: Andrew Lunn <andrew+netdev@lunn.ch>, "David S . Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "kernel-team@cloudflare.com" <kernel-team@cloudflare.com>, Matt Fleming
- <mfleming@cloudflare.com>
-Thread-Topic: [Intel-wired-lan] [PATCH net] ice: Fix missing 1's complement
- negation in GCS raw checksum
-Thread-Index: AQHcx52Wus8Y9aTtgUiaojGbSlgRrbXWawWQ
-Date: Thu, 9 Apr 2026 08:45:47 +0000
-Message-ID: <IA3PR11MB8986EA00649C92EE3FE6FBE5E5582@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20260408190214.1287708-1-matt@readmodwrite.com>
-In-Reply-To: <20260408190214.1287708-1-matt@readmodwrite.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|DS0PR11MB7960:EE_
-x-ms-office365-filtering-correlation-id: 09a15001-0af2-4712-c6cd-08de96146538
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|7416014|38070700021|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: uMU6VE6rAdTzRnvL3i0cHUrpNmY0kBAxt1QSlf6TsS5hGIprOPAC6RaLUM6JZYNQ+ryyJ0aSjIbc+ChlrYFzimGy413XwF1oOBBcNki5uVcR3lTR5UP8O+quE+trE5gAdAWi7hOhr+q2N31JPg0qNHMSU20n0CAWSFmhNYJQ2d5D7dMGXea9ceJ2IQkmWQ11012q/vVR65BJJOgta13MivQURTbYHx7FkLP2CbvzbauM4KOoZQ+nXPdS6mSnGCLFJ6lOs1w4uElC/CLQXlVGcrY6XfhretFonuXTb3w+1tfU7Ez8P73z/VM40JW5JfX/GPcdd5EQLD+R0soHTS+WBX/Mk344TtWCKoA66arVGgz+YYPT1oVhvL04PKIMotd1x+KiJFnhhuUl4q40/6XVU7Qu29Gmt8bW/f1rUE21Rk3DGuiEjD+u9RZA4KJGA5B6pQGstRSRXw7/GNFGTfRAtKm5YIwa7FVkXC4/XlSzh3eQeXLG831Wds4H+h7o/yBJSH2jqSlbJUkNhsBQobBdbVYouzPudlMzQtiyMly71eY2iFfDYlk97I6QRUaFuK8lUIkeTvQ1TzzSxTMXpE9UJUU5LpJWh9a4+EKQxiHteOcSMc/TEtbL0lf541GwrBCeSvXymhjgpS+jMTaRAPnfHzwBbm/fZayXSFJ1IHFwY3EwqFuD5z7Kneq3JGIS158d69POEIYZUuMcPda0U6chjMHf6cOtiBRmUFlJGMhsdg0K6mG8EarXkexAT7tddNw+AaGDPtt7vxjk3g26r6tcAOYqsscXeF517fwDSNCeKIc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016)(7416014)(38070700021)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?DtLE2m6bQuACpsixN5fdZbqoqd4nTaO6q5THFscnNi1RenXVSLmnEvDAf7/e?=
- =?us-ascii?Q?hNqu/zHHjyduxU4J5LAtxUUYNwKZ8BK6C9DAne2YSgXx5bpHissrja2rahUy?=
- =?us-ascii?Q?uXxYwXXlMYahtWzSuCk1pLS8tLbg7RvlMKI4rtWXGXX5/Q455KhQkGjylbIr?=
- =?us-ascii?Q?wwmqViDt0He6duNN2wkRH5YS/keigqdxxTiKegMBma/J6zqUypm3rBiEXdnM?=
- =?us-ascii?Q?UKMcDzJEx7lXfpG4WUPPT8VLhlmIrHJww4Ti9LJ1+2qEuKd/qhTRyo6jFlbD?=
- =?us-ascii?Q?vHM4hocFrffK4q8fIRvuEHULsi/Jhnor0x47TFPoZD7cbyt6gy1iqPkkAQkN?=
- =?us-ascii?Q?1k3aI2ZZrx8xQPFtN00Ms+zBZCf5vKxWIDk9IOIKhwyOs8I6+uHQH9DJQR27?=
- =?us-ascii?Q?pH7hI0StiA7/2tUHuW9EpwszaH8vR4/HuNBv1hbtmtQm1t3G3/BxX0gEl+qr?=
- =?us-ascii?Q?qbM7OfBYvsvgSyiHmDMf5mkYbTqTSOaKWBHEyHuaXTV+fhRbCxg0SbPWd5J3?=
- =?us-ascii?Q?b+IdU/meNAxfg8KHEpR018GT0L9oqZ65APfVxIgf9pncmKg212lw6xATx6NN?=
- =?us-ascii?Q?0kg9GlT2ulQpS9puwZ+W6owczaBitrLDt1MmJ8vz/j1L96DYtZ8Dv5V9ZMrz?=
- =?us-ascii?Q?LFiyONn3j46SzytV4xEvWzoAtCK6b7FCgSJvfOftoIpwNPUNsHy/amCNLolv?=
- =?us-ascii?Q?MLrJ8g9wgdlpDaL3lNsfpBVEv0YhzQ9q0S4hx2pt9apl+QWMjPndPcuDX5aQ?=
- =?us-ascii?Q?GeZ0Cv5F9U+vqeBFgzG+fAYdsHhe7iDrPx4WdKr59tsF+CpsIVT+OKsL9S12?=
- =?us-ascii?Q?Pte6n4JstOzeK4OC4q0KWpux+hWemgAXa+YRtb8HeWGLHEXpS58Tnrwf3Oes?=
- =?us-ascii?Q?EOrVtm5VZd8wi0PDXFmAWWNSns8GKXPs30ybpDcOs+urw/ZVnaLnHFRb3b5Y?=
- =?us-ascii?Q?Z/O4rvuhjAHGbko6YgvHmwDoH0G6yzltNE24WlzWegAXPA5YqQ818/0+5F5o?=
- =?us-ascii?Q?0K3mv4fj/aynJhTIaPj77dzV82C6MZN0Tmp7Jo2wmY3Dg11KXZ8dBkhzonsb?=
- =?us-ascii?Q?uZahKRL++R+TW0aUQOg1wJDSq5hSWE2G8ZhWjK0EVFDP6/uu+rqRVD+v0uGp?=
- =?us-ascii?Q?cYZA8W3NCsc8G/0PJj95YtHDzHg1DcaTr7wVV1F1Z1BWjgthd0BbuOIEUTxt?=
- =?us-ascii?Q?t4NcIU6rh07SAJJ3SLaHRsH5DaJhyHrJ2+fMZJJj7mteYTXV4iLiXkmDgMbJ?=
- =?us-ascii?Q?pQCyMTjN20Cs3Crb9UM/1LWLEVXzG2jVeShKvhRWmUqW5Mb+hC5M6YUfHA8d?=
- =?us-ascii?Q?rxbsMH9JzhCQKx7vl15vALImz3nakh59bmyGrwOW7PcmzXhaFHROw/+V7BZz?=
- =?us-ascii?Q?ZS5kOBEJipZa9UUoGh+ju/YlcKRUaFvTfbPz1lTVSRk8X+PBMk/4Kl6yMbeW?=
- =?us-ascii?Q?OF95Zeq03hADTOrHWx9ATumd5DRa47hrLSETcFHtdAelJKVe81xJJRdq0WXA?=
- =?us-ascii?Q?QgUlGmA2+OIcyEcxe5Ntg89Y/dbCC66CqAliXxIw54jud54nncS4BXb+PzWY?=
- =?us-ascii?Q?tQ+LAX2bddMk2R6+AJHkxG0C1LtMvaXuhsUXZFi2Kjmm5HsO93yoATBv0JY4?=
- =?us-ascii?Q?g4s+eNK4HiqYYrBVfesUp162JHdGSKIqgoWgd2EXdEC1TyltwcpDNjj1/IEZ?=
- =?us-ascii?Q?t7i2Mo4y5k4fd5C7ytiptmoEd+OKmfb4RMdaLT8YF3DLFaDnAx43oWVdP5uJ?=
- =?us-ascii?Q?5Z2yNhVG0EDeCIfctoOjgJQBDfRk9aI=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+X-IronPort-AV: E=Sophos;i="6.23,169,1770624000"; d="scan'208";a="225557921"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmviesa007.fm.intel.com with ESMTP; 09 Apr 2026 02:30:21 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Cc: netdev@vger.kernel.org,
+	Leszek Pepiak <leszek.pepiak@intel.com>
+Date: Thu,  9 Apr 2026 11:30:20 +0200
+Message-ID: <20260409093020.3808687-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: LTdZO9Nw6+PqywxrNzAHoI6v20qb5Hstz6lHzqRRVX+AD6R89BVt2mpUj7j/KySlp+QRI6Hoy+MmR5x536BB2LpNOvRKFMolaZP/b6QWJJeo4TESg255/0Eaq2IC0fSwMuRHgfj95GVHgsEYSC7F0YQE88E7opQv9Gvft4P1b9CL0FHyQpuYb+zEjfSUNliGUQcsjD0TX/OqKJ3bwcns1dQWMrAjGP4uZ29PdcpbQReSmZh/LP7QIK37NKyOlf1ZQFzW+4tQL6hsLByieCeI9+mBnum+/zlIvaQAcyYOmOrBMYtgkmNByGbKR73DO06sTSrGfy5QcegZ2XiMIywu8g==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 09a15001-0af2-4712-c6cd-08de96146538
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Apr 2026 08:45:47.4772 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: jndmgqwHoMrQC3UxoW2RFB7zYxQv+HCQJDDFCkpZHRvl0cahjHnIBZ/GzB59qHNyWiOPSERvR/5hrM6ReFME9zU89+PhWchXg1zOQ+/lGUc=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7960
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775724351; x=1807260351;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=xVk6CScZ/o/M4m49uajIRQ9ODy56pZ04B3W2G9bLrNg=;
- b=A3T2KDscnQIbysNyI373oHcv+DBEJv5jEI34Bj+U2K7RP1NvVFU5TWy2
- 75odnp1rkpt22VF2hNse0eeDWM0kzEKV6fieYAf33vULx6seIbGD4J8yk
- ZoEZ4c1rtJYzjhG1jUutg2mVyxYxbxUlKjPOPS5cE18HgkvJZAeEdC6CR
- Qrgt+l/iIOXtc02++n7RYPuBxbZ6XxcpxwVyxqBMR+/1Jtk/eZjobtqn2
- OsqG34jAPwg0s/AxCuwBIr4I/v7T/tgriFzfK66gEP9PM7VRyD/vqeC2z
- YC2OCs99OMuMi/zeV4puWU+nWYNewnbg1R0xk2o41R7w1VSuav53sqNDt
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1775727034; x=1807263034;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cZC1cpq3OkYGpFiaUIPpsCrPyX8cmaKcyyjykqFlc08=;
+ b=fikXucms1QBfcDhndifIkIHvIjwcUJ1HV4THwksD41Lx/U80Xc17pkJC
+ UNFt06HU51zf82hePoSsJp4ZF/3HAeYSUx6Ghy+6noffoTtkYtUL0Vh/K
+ Lzz7wrKFls55Fe5X1MWM9DirjxGNjeWCUkFJK3J+TQ+nABokm5sXk4AMn
+ uWWP/vTyZW7rnYvRoNMDXcZ4ROXP/NR2YmVbYhAPDegy69wkZKtu5YU5m
+ el9Fjg5UVizJvc4cSMCb2CLoe4+OB5zKcOYkjYJzitKuGf4p71g38oSL6
+ LySOkCqrgFuIx42ROmmzeWPnL0SZbRxKslf/zp0WW5JM/tTyrfSE/pwxT
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=A3T2KDsc
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix missing 1's complement
- negation in GCS raw checksum
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=fikXucms
+Subject: [Intel-wired-lan] [PATCH net-next v2] iavf: fix kernel-doc comment
+ style in iavf_ethtool.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -216,102 +112,398 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.89 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:matt@readmodwrite.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:kernel-team@cloudflare.com,m:mfleming@cloudflare.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[5];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	NEURAL_HAM(-0.00)[-0.999];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-1.000];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,osuosl.org:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,IA3PR11MB8986.namprd11.prod.outlook.com:mid,davemloft.net:email]
-X-Rspamd-Queue-Id: 0E0BD3C7E70
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 67E403C881A
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
+iavf_ethtool.c contains 31 kernel-doc comment blocks using the legacy
+`**/` terminator instead of the correct single `*/`. Two function
+headers also use a colon separator (`iavf_get_channels:`,
+`iavf_set_channels:`) instead of the ` - ` dash required by kernel-doc.
 
+Additionally several comments embed their return-value descriptions in
+the body paragraph, producing `scripts/kernel-doc -Wreturn` warnings.
+Void functions that incorrectly say "Returns ..." are also rephrased.
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> Of Matt Fleming
-> Sent: Wednesday, April 8, 2026 9:02 PM
-> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
-> Przemyslaw <przemyslaw.kitszel@intel.com>
-> Cc: Andrew Lunn <andrew+netdev@lunn.ch>; David S . Miller
-> <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub
-> Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; intel-
-> wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
-> kernel@vger.kernel.org; kernel-team@cloudflare.com; Matt Fleming
-> <mfleming@cloudflare.com>
-> Subject: [Intel-wired-lan] [PATCH net] ice: Fix missing 1's complement
-> negation in GCS raw checksum
->=20
-> From: Matt Fleming <mfleming@cloudflare.com>
->=20
-> Commit 905d1a220e8d ("ice: Add E830 checksum offload support") added
-> Generic Checksum (GCS) support for E830 NICs but omitted the 1's
-> complement negation (~) when converting the hardware raw_csum to
-> skb->csum for CHECKSUM_COMPLETE.
->=20
-> Without the negation, every CHECKSUM_COMPLETE packet fails the fast-
-> path validation in nf_ip_checksum() and falls through to software
-> checksumming via __skb_checksum_complete(), which triggers the rate-
-> limited "hw csum failure" warning. Packets are still accepted (the
-> software recheck passes) but hardware checksum offload is effectively
-> disabled and the warning floods dmesg on systems running nf_conntrack
-> on VLAN sub-interfaces.
->=20
-> Multiple other drivers (idpf, ehea, iwlwifi, cassini, sunhme, enetc)
-> also apply ~ for CHECKSUM_COMPLETE. The ice driver was the only in-
-> tree user of csum_unfold() for CHECKSUM_COMPLETE that omitted it.
->=20
-> Fixes: 905d1a220e8d ("ice: Add E830 checksum offload support")
-> Signed-off-by: Matt Fleming <mfleming@cloudflare.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_txrx_lib.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-> b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-> index e695a664e53d..c177579e0114 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-> @@ -92,7 +92,7 @@ static void ice_rx_gcs(struct sk_buff *skb,
->  	desc =3D (struct ice_32b_rx_flex_desc_nic *)rx_desc;
->  	skb->ip_summed =3D CHECKSUM_COMPLETE;
->  	csum =3D (__force u16)desc->raw_csum;
-> -	skb->csum =3D csum_unfold((__force __sum16)swab16(csum));
-> +	skb->csum =3D csum_unfold((__force __sum16)~swab16(csum));
->  }
->=20
->  /**
-> --
-> 2.43.0
+Fix all issues across the full file:
+ - Replace every `**/` terminator with `*/`.
+ - Change `function_name:` doc headers to `function_name -`.
+ - Move inline "Returns ..." sentences into dedicated `Return:` sections
+   for non-void functions (iavf_get_msglevel, iavf_get_rxnfc,
+   iavf_set_channels, iavf_get_rxfh_key_size, iavf_get_rxfh_indir_size,
+   iavf_get_rxfh, iavf_set_rxfh).
+ - Rephrase body descriptions in void functions that incorrectly said
+   "Returns ..." (iavf_get_drvinfo, iavf_get_ringparam, iavf_get_coalesce).
+ - Remove boilerplate body text for iavf_get_rxfh_key_size and
+   iavf_get_rxfh_indir_size; the `Return:` line now conveys the same
+   information without the vague "Returns the table size." sentence.
 
+Suggested-by: Anthony L. Nguyen <anthony.l.nguyen@intel.com>
+Suggested-by: Leszek Pepiak <leszek.pepiak@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v1 -> v2 extending the scope of the changes to whole iavf_ethtool.c file
+---
+ drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 103 ++++++++++++------------
+ 1 file changed, 53 insertions(+), 50 deletions(-)
 
-I'd recommend adding Cc: stable@vger.kernel.org
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 1cd1f3f..a615d59 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -32,7 +32,7 @@
+  * statistics array. Thus, every statistic string in an array should have the
+  * same type and number of format specifiers, to be formatted by variadic
+  * arguments to the iavf_add_stat_string() helper function.
+- **/
++ */
+ struct iavf_stats {
+ 	char stat_string[ETH_GSTRING_LEN];
+ 	int sizeof_stat;
+@@ -116,7 +116,7 @@ iavf_add_one_ethtool_stat(u64 *data, void *pointer,
+  * the next empty location for successive calls to __iavf_add_ethtool_stats.
+  * If pointer is null, set the data values to zero and update the pointer to
+  * skip these stats.
+- **/
++ */
+ static void
+ __iavf_add_ethtool_stats(u64 **data, void *pointer,
+ 			 const struct iavf_stats stats[],
+@@ -140,7 +140,7 @@ __iavf_add_ethtool_stats(u64 **data, void *pointer,
+  *
+  * The parameter @stats is evaluated twice, so parameters with side effects
+  * should be avoided.
+- **/
++ */
+ #define iavf_add_ethtool_stats(data, pointer, stats) \
+ 	__iavf_add_ethtool_stats(data, pointer, stats, ARRAY_SIZE(stats))
+ 
+@@ -157,7 +157,7 @@ __iavf_add_ethtool_stats(u64 **data, void *pointer,
+  * buffer and update the data pointer when finished.
+  *
+  * This function expects to be called while under rcu_read_lock().
+- **/
++ */
+ static void
+ iavf_add_queue_stats(u64 **data, struct iavf_ring *ring)
+ {
+@@ -189,7 +189,7 @@ iavf_add_queue_stats(u64 **data, struct iavf_ring *ring)
+  *
+  * Format and copy the strings described by stats into the buffer pointed at
+  * by p.
+- **/
++ */
+ static void __iavf_add_stat_strings(u8 **p, const struct iavf_stats stats[],
+ 				    const unsigned int size, ...)
+ {
+@@ -216,7 +216,7 @@ static void __iavf_add_stat_strings(u8 **p, const struct iavf_stats stats[],
+  * The parameter @stats is evaluated twice, so parameters with side effects
+  * should be avoided. Additionally, stats must be an array such that
+  * ARRAY_SIZE can be called on it.
+- **/
++ */
+ #define iavf_add_stat_strings(p, stats, ...) \
+ 	__iavf_add_stat_strings(p, stats, ARRAY_SIZE(stats), ## __VA_ARGS__)
+ 
+@@ -249,7 +249,7 @@ static const struct iavf_stats iavf_gstrings_stats[] = {
+  *
+  * Reports speed/duplex settings. Because this is a VF, we don't know what
+  * kind of link we really have, so we fake it.
+- **/
++ */
+ static int iavf_get_link_ksettings(struct net_device *netdev,
+ 				   struct ethtool_link_ksettings *cmd)
+ {
+@@ -308,7 +308,7 @@ static int iavf_get_link_ksettings(struct net_device *netdev,
+  * @sset: id of string set
+  *
+  * Reports size of various string tables.
+- **/
++ */
+ static int iavf_get_sset_count(struct net_device *netdev, int sset)
+ {
+ 	/* Report the maximum number queues, even if not every queue is
+@@ -331,7 +331,7 @@ static int iavf_get_sset_count(struct net_device *netdev, int sset)
+  * @data: pointer to data buffer
+  *
+  * All statistics are added to the data buffer as an array of u64.
+- **/
++ */
+ static void iavf_get_ethtool_stats(struct net_device *netdev,
+ 				   struct ethtool_stats *stats, u64 *data)
+ {
+@@ -367,7 +367,7 @@ static void iavf_get_ethtool_stats(struct net_device *netdev,
+  * @data: buffer for string data
+  *
+  * Builds the statistics string table
+- **/
++ */
+ static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
+ {
+ 	unsigned int i;
+@@ -392,7 +392,7 @@ static void iavf_get_stat_strings(struct net_device *netdev, u8 *data)
+  * @data: buffer for string data
+  *
+  * Builds string tables for various string sets
+- **/
++ */
+ static void iavf_get_strings(struct net_device *netdev, u32 sset, u8 *data)
+ {
+ 	switch (sset) {
+@@ -408,8 +408,8 @@ static void iavf_get_strings(struct net_device *netdev, u32 sset, u8 *data)
+  * iavf_get_msglevel - Get debug message level
+  * @netdev: network interface device structure
+  *
+- * Returns current debug message level.
+- **/
++ * Return: current debug message level.
++ */
+ static u32 iavf_get_msglevel(struct net_device *netdev)
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+@@ -424,7 +424,7 @@ static u32 iavf_get_msglevel(struct net_device *netdev)
+  *
+  * Set current debug message level. Higher values cause the driver to
+  * be noisier.
+- **/
++ */
+ static void iavf_set_msglevel(struct net_device *netdev, u32 data)
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+@@ -439,8 +439,8 @@ static void iavf_set_msglevel(struct net_device *netdev, u32 data)
+  * @netdev: network interface device structure
+  * @drvinfo: ethool driver info structure
+  *
+- * Returns information about the driver and device for display to the user.
+- **/
++ * Fills @drvinfo with information about the driver and device.
++ */
+ static void iavf_get_drvinfo(struct net_device *netdev,
+ 			     struct ethtool_drvinfo *drvinfo)
+ {
+@@ -458,9 +458,9 @@ static void iavf_get_drvinfo(struct net_device *netdev,
+  * @kernel_ring: ethtool extenal ringparam structure
+  * @extack: netlink extended ACK report struct
+  *
+- * Returns current ring parameters. TX and RX rings are reported separately,
+- * but the number of rings is not reported.
+- **/
++ * Fills @ring with current ring parameters. TX and RX rings are reported
++ * separately, but the number of rings is not reported.
++ */
+ static void iavf_get_ringparam(struct net_device *netdev,
+ 			       struct ethtool_ringparam *ring,
+ 			       struct kernel_ethtool_ringparam *kernel_ring,
+@@ -483,7 +483,7 @@ static void iavf_get_ringparam(struct net_device *netdev,
+  *
+  * Sets ring parameters. TX and RX rings are controlled separately, but the
+  * number of rings is not specified, so all rings get the same settings.
+- **/
++ */
+ static int iavf_set_ringparam(struct net_device *netdev,
+ 			      struct ethtool_ringparam *ring,
+ 			      struct kernel_ethtool_ringparam *kernel_ring,
+@@ -551,7 +551,7 @@ static int iavf_set_ringparam(struct net_device *netdev,
+  * Gets the per-queue settings for coalescence. Specifically Rx and Tx usecs
+  * are per queue. If queue is <0 then we default to queue 0 as the
+  * representative value.
+- **/
++ */
+ static int __iavf_get_coalesce(struct net_device *netdev,
+ 			       struct ethtool_coalesce *ec, int queue)
+ {
+@@ -588,11 +588,11 @@ static int __iavf_get_coalesce(struct net_device *netdev,
+  * @kernel_coal: ethtool CQE mode setting structure
+  * @extack: extack for reporting error messages
+  *
+- * Returns current coalescing settings. This is referred to elsewhere in the
+- * driver as Interrupt Throttle Rate, as this is how the hardware describes
+- * this functionality. Note that if per-queue settings have been modified this
+- * only represents the settings of queue 0.
+- **/
++ * Fills @ec with current coalescing settings. This is referred to elsewhere
++ * in the driver as Interrupt Throttle Rate, as this is how the hardware
++ * describes this functionality. Note that if per-queue settings have been
++ * modified this only represents the settings of queue 0.
++ */
+ static int iavf_get_coalesce(struct net_device *netdev,
+ 			     struct ethtool_coalesce *ec,
+ 			     struct kernel_ethtool_coalesce *kernel_coal,
+@@ -608,7 +608,7 @@ static int iavf_get_coalesce(struct net_device *netdev,
+  * @queue: the queue to read
+  *
+  * Read specific queue's coalesce settings.
+- **/
++ */
+ static int iavf_get_per_queue_coalesce(struct net_device *netdev, u32 queue,
+ 				       struct ethtool_coalesce *ec)
+ {
+@@ -622,7 +622,7 @@ static int iavf_get_per_queue_coalesce(struct net_device *netdev, u32 queue,
+  * @queue: the queue to modify
+  *
+  * Change the ITR settings for a specific queue.
+- **/
++ */
+ static int iavf_set_itr_per_queue(struct iavf_adapter *adapter,
+ 				  struct ethtool_coalesce *ec, int queue)
+ {
+@@ -680,7 +680,7 @@ static int iavf_set_itr_per_queue(struct iavf_adapter *adapter,
+  * @queue: the queue to change
+  *
+  * Sets the coalesce settings for a particular queue.
+- **/
++ */
+ static int __iavf_set_coalesce(struct net_device *netdev,
+ 			       struct ethtool_coalesce *ec, int queue)
+ {
+@@ -722,7 +722,7 @@ static int __iavf_set_coalesce(struct net_device *netdev,
+  * @extack: extack for reporting error messages
+  *
+  * Change current coalescing settings for every queue.
+- **/
++ */
+ static int iavf_set_coalesce(struct net_device *netdev,
+ 			     struct ethtool_coalesce *ec,
+ 			     struct kernel_ethtool_coalesce *kernel_coal,
+@@ -1639,7 +1639,7 @@ static int iavf_set_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd)
+  * @netdev: network interface device structure
+  *
+  * Return: number of RX rings.
+- **/
++ */
+ static u32 iavf_get_rx_ring_count(struct net_device *netdev)
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+@@ -1653,8 +1653,8 @@ static u32 iavf_get_rx_ring_count(struct net_device *netdev)
+  * @cmd: ethtool rxnfc command
+  * @rule_locs: pointer to store rule locations
+  *
+- * Returns Success if the command is supported.
+- **/
++ * Return: 0 on success, -EOPNOTSUPP if the command is not supported.
++ */
+ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 			  u32 *rule_locs)
+ {
+@@ -1684,13 +1684,13 @@ static int iavf_get_rxnfc(struct net_device *netdev, struct ethtool_rxnfc *cmd,
+ 	return ret;
+ }
+ /**
+- * iavf_get_channels: get the number of channels supported by the device
++ * iavf_get_channels - get the number of channels supported by the device
+  * @netdev: network interface device structure
+  * @ch: channel information structure
+  *
+  * For the purposes of our device, we only use combined channels, i.e. a tx/rx
+  * queue pair. Report one extra channel to match our "other" MSI-X vector.
+- **/
++ */
+ static void iavf_get_channels(struct net_device *netdev,
+ 			      struct ethtool_channels *ch)
+ {
+@@ -1706,14 +1706,15 @@ static void iavf_get_channels(struct net_device *netdev,
+ }
+ 
+ /**
+- * iavf_set_channels: set the new channel count
++ * iavf_set_channels - set the new channel count
+  * @netdev: network interface device structure
+  * @ch: channel information structure
+  *
+- * Negotiate a new number of channels with the PF then do a reset.  During
+- * reset we'll realloc queues and fix the RSS table.  Returns 0 on success,
+- * negative on failure.
+- **/
++ * Negotiate a new number of channels with the PF then do a reset. During
++ * reset we'll realloc queues and fix the RSS table.
++ *
++ * Return: 0 on success, negative on failure.
++ */
+ static int iavf_set_channels(struct net_device *netdev,
+ 			     struct ethtool_channels *ch)
+ {
+@@ -1750,8 +1751,8 @@ static int iavf_set_channels(struct net_device *netdev,
+  * iavf_get_rxfh_key_size - get the RSS hash key size
+  * @netdev: network interface device structure
+  *
+- * Returns the table size.
+- **/
++ * Return: the RSS hash key size.
++ */
+ static u32 iavf_get_rxfh_key_size(struct net_device *netdev)
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+@@ -1763,8 +1764,8 @@ static u32 iavf_get_rxfh_key_size(struct net_device *netdev)
+  * iavf_get_rxfh_indir_size - get the rx flow hash indirection table size
+  * @netdev: network interface device structure
+  *
+- * Returns the table size.
+- **/
++ * Return: the indirection table size.
++ */
+ static u32 iavf_get_rxfh_indir_size(struct net_device *netdev)
+ {
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+@@ -1777,8 +1778,10 @@ static u32 iavf_get_rxfh_indir_size(struct net_device *netdev)
+  * @netdev: network interface device structure
+  * @rxfh: pointer to param struct (indir, key, hfunc)
+  *
+- * Reads the indirection table directly from the hardware. Always returns 0.
+- **/
++ * Reads the indirection table directly from the hardware.
++ *
++ * Return: 0 always.
++ */
+ static int iavf_get_rxfh(struct net_device *netdev,
+ 			 struct ethtool_rxfh_param *rxfh)
+ {
+@@ -1806,9 +1809,9 @@ static int iavf_get_rxfh(struct net_device *netdev,
+  * @rxfh: pointer to param struct (indir, key, hfunc)
+  * @extack: extended ACK from the Netlink message
+  *
+- * Returns -EINVAL if the table specifies an invalid queue id, otherwise
+- * returns 0 after programming the table.
+- **/
++ * Return: 0 on success, -EOPNOTSUPP if the hash function is not supported,
++ * -EINVAL if the table specifies an invalid queue id.
++ */
+ static int iavf_set_rxfh(struct net_device *netdev,
+ 			 struct ethtool_rxfh_param *rxfh,
+ 			 struct netlink_ext_ack *extack)
+@@ -1885,7 +1888,7 @@ static const struct ethtool_ops iavf_ethtool_ops = {
+  *
+  * Sets ethtool ops struct in our netdev so that ethtool can call
+  * our functions.
+- **/
++ */
+ void iavf_set_ethtool_ops(struct net_device *netdev)
+ {
+ 	netdev->ethtool_ops = &iavf_ethtool_ops;
+-- 
+2.52.0
