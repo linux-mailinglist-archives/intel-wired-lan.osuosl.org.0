@@ -2,77 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id MBGpM52r2GkmgwgAu9opvQ
+	id sE96Jp+r2GkmgwgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:49 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:51 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 737673D3942
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4E63B3D3949
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CC0EA60BAD;
-	Fri, 10 Apr 2026 07:49:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A107960BAB;
+	Fri, 10 Apr 2026 07:49:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YhwMPKA6hVRK; Fri, 10 Apr 2026 07:49:39 +0000 (UTC)
+ id MVe3tYXeRBKh; Fri, 10 Apr 2026 07:49:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 239A660B54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 04941608B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775807379;
-	bh=OUTCdFQltu1dbkcgiF/618QfP1pIn7qM/kY4ea73GQ0=;
+	s=default; t=1775807381;
+	bh=Jwcl3Qdav8RvydIKl0s+Wt5lhJ2UrYGx01R1Tp4cJr0=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=uYX+uTA72I3MabugBpXN5JBPe6D91jr8cXIEvjXueWXjln2efn6UdKUdKiEXy3fEs
-	 bGhkMMLEF+eCfsU3JKYLErget761XnHMFvdsV/U3cFQf8+RmdLMe0xnc+ziDpRPxiP
-	 vZ2LLKcW0DpzK+l41MqzgJRAc5RpJ0Pdh7s7huTa5aQicLV6aKJzp6K/ylnIwM5XFA
-	 SuzGYbmkh2gLp5L9in2JyOlTh1tp2bh5Coqg5vd44B+6+4A8k0wlVF65qw3MfcqvN+
-	 QIFqN0CUsQZ+QOhVgGgnPIXvTaaVhcMOr0ZYtx0d9LPxa6gRZRBY+VjVXY7gb9cAcW
-	 +0TaJEhyFoNbg==
+	b=ZnLGAO2J3ABa8gJmvfIsGK4r5V6U9BVPllbTsjcGbctWI0MsqGfXbzAHWSjdX+Z7m
+	 mz6PkDjO/8+RDAzOLT/UoUqZOmfC2VQszj55lPqu0qIMahiS074r3wn0BeHEZy2kNR
+	 CFSAaqmNnEAwJb89QTJDO52vdyg1FjZ6ErNGezg06OqaW9RRQJMpgMr204BDFem1od
+	 5KTc3iPGhfrBvjBsvYKGG6P0SA8zDOoojzUGRdYVMvV5tPbw7MlVajEaPzGKBJIT77
+	 znXgxFbMrOl5R/ugUGbG6YM1LqRy1WOo+bYdwlmZpluLg0YNkFME5W7q90EUILJetr
+	 4FIt+5BHxA9EQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 239A660B54;
-	Fri, 10 Apr 2026 07:49:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 04941608B6;
+	Fri, 10 Apr 2026 07:49:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 60F321F6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 735CE1F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4741D81A81
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 598A981A81
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 15eKPrPNIfFl for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Apr 2026 07:49:36 +0000 (UTC)
+ id hd_umFQIDaV5 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Apr 2026 07:49:38 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 923CE816EE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 923CE816EE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5B26C816EE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B26C816EE
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 923CE816EE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:36 +0000 (UTC)
-X-CSE-ConnectionGUID: 2B8tTk+0RoiRgdnLSEi5YA==
-X-CSE-MsgGUID: qvenbS4dQO6mbU4/taI+Cg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11754"; a="77007943"
-X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="77007943"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5B26C816EE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:38 +0000 (UTC)
+X-CSE-ConnectionGUID: maUm4tOgQOqq8wc4aVh2QA==
+X-CSE-MsgGUID: 8hR+Nq77SAq05rYLIuGeFQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11754"; a="77007945"
+X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="77007945"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2026 00:49:36 -0700
-X-CSE-ConnectionGUID: P2JMCbCZRdiv7CpQKluA+g==
-X-CSE-MsgGUID: us4bh296TrO2QRq2vlpOcQ==
+ 10 Apr 2026 00:49:38 -0700
+X-CSE-ConnectionGUID: zT8ceFmrThObprmwK0C0cg==
+X-CSE-MsgGUID: b+wSATUkTWCA7gjGbjtZlw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="228941899"
+X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="228941906"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by orviesa008.jf.intel.com with ESMTP; 10 Apr 2026 00:49:35 -0700
+ by orviesa008.jf.intel.com with ESMTP; 10 Apr 2026 00:49:37 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org
-Date: Fri, 10 Apr 2026 09:49:19 +0200
-Message-ID: <20260410074921.1254213-9-aleksandr.loktionov@intel.com>
+Cc: netdev@vger.kernel.org,
+	Larysa Zaremba <larysa.zaremba@intel.com>
+Date: Fri, 10 Apr 2026 09:49:20 +0200
+Message-ID: <20260410074921.1254213-10-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260410074921.1254213-1-aleksandr.loktionov@intel.com>
 References: <20260410074921.1254213-1-aleksandr.loktionov@intel.com>
@@ -80,25 +81,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1775807377; x=1807343377;
+ t=1775807378; x=1807343378;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Tl3EkNAWXZS7VSusaCuL0Eb4xS+3persYVF/W/GWM1w=;
- b=hPJQApxj0ob/wlnkioW41Mvu9tT68OjvOk7kjQ8fHMHTpkjqRGFGAEUT
- 22Wp0B09kDnfPor6jq1v95iWhgpJX+KuOnpUzMBxlIgaKSKfKQPvWHxkc
- uFFk3bjMjECzjJRAhHrnwUmpjRyVQBmfboxBiMZlYkvu+7s6vnp/FTdoQ
- JOtZzNHstyqOolhw6WqBCMl3MCjl8TT1eWMZqkbKP2bjmeDVmdZRrZcyZ
- LlxFLFpiL2JMRYqp2wMiRd7Klllw8FyDKzyBRMQF3RlaUmLZq/4d2OV2C
- JdzM6r6cQmO9aLD1uCEGTypzFKx/gyGh+GCYcjJ39Zr7iAIhu02c09F+j
- g==;
+ bh=/GsckPs+NdN9rChj/2Ywk80a8qYQmlKLwO31lOo/oAA=;
+ b=GTbEJEHzMxvfC9iI0ml3AGy7t/6T6ycaZNp+yI/r1TVHch4mbMV8K1yP
+ d1TQt3eAWhINmbV/MH29Ek3xadMWBpT5nDS4/WzBjS0QOJ9VPP1k8Ubm4
+ Kf+V75ZzM0ymS6jf3u7PUb+S7OodvG86HqA+agBmxscZSnOLS3wo4Mtde
+ nvFPHE3qSk7cLt5NaN1NCX2VHwMTjLLkQHLs+Z3KURAfUxiiOOZr9F5UT
+ 16VQOKY73MiuJ6Y7mYGHYAbaoqRV/gCqDwbtGt3Z83XExPNN0aaKCE+54
+ ZFo1sEBeO0Cbuav0sv125ezCjAIIKD20A/GgB06n2isk2n7y8dViUIsBp
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hPJQApxj
-Subject: [Intel-wired-lan] [PATCH iwl-next 8/10] ice: move
- ice_phy_get_speed_eth56g() from ice_ptp_hw.c to ice_common.c
+ header.a=rsa-sha256 header.s=Intel header.b=GTbEJEHz
+Subject: [Intel-wired-lan] [PATCH iwl-next 9/10] ice: use inline helpers
+ instead of memcmp() for IPv6 mask checks in ice_ethtool_fdir
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,228 +114,161 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [0.89 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[5];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:email,intel.com:mid];
 	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:email,intel.com:mid];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-1.000];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 737673D3942
+X-Rspamd-Queue-Id: 4E63B3D3949
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-ice_phy_get_speed_eth56g() is currently a file-local (static)
-helper in ice_ptp_hw.c. Future users outside that compilation
-unit require access to it.
+Replace static full_ipv6_addr_mask / zero_ipv6_addr_mask structs
+and the associated memcmp() calls in ice_ethtool_fdir.c with the
+kernel-provided ipv6_addr_any() helper and a new ice_ipv6_mask_full()
+inline, reducing boilerplate and making intent clearer.
 
-Move the function to ice_common.c, add a declaration in
-ice_common.h, and relocate the enum ice_eth56g_link_spd from
-ice_ptp_hw.h to ice_type.h so it is visible to callers of the
-new exported function.
-
-Suggested-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Suggested-by: Larysa Zaremba <larysa.zaremba@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 45 +++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_common.h |  1 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 45 ---------------------
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h | 13 ------
- drivers/net/ethernet/intel/ice/ice_type.h   | 13 ++++++
- 5 files changed, 59 insertions(+), 58 deletions(-)
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c | 57 ++++++-------------
+ 1 file changed, 16 insertions(+), 41 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index ce11fea..2cebe4e 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3513,6 +3513,51 @@ u16 ice_get_link_speed_based_on_phy_type(u64 phy_type_low, u64 phy_type_high)
- 		return speed_phy_type_high;
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+index aceec18..1d7c595 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+@@ -8,23 +8,10 @@
+ #include "ice_fdir.h"
+ #include "ice_flow.h"
  
-+/**
-+ * ice_phy_get_speed_eth56g - Get link speed based on PHY link type
-+ * @li: pointer to link information struct
-+ *
-+ * Return: simplified ETH56G PHY speed
-+ */
-+enum ice_eth56g_link_spd ice_phy_get_speed_eth56g(struct ice_link_status *li)
-+{
-+	u16 speed = ice_get_link_speed_based_on_phy_type(li->phy_type_low,
-+							 li->phy_type_high);
-+
-+	switch (speed) {
-+	case ICE_AQ_LINK_SPEED_1000MB:
-+		return ICE_ETH56G_LNK_SPD_1G;
-+	case ICE_AQ_LINK_SPEED_2500MB:
-+		return ICE_ETH56G_LNK_SPD_2_5G;
-+	case ICE_AQ_LINK_SPEED_10GB:
-+		return ICE_ETH56G_LNK_SPD_10G;
-+	case ICE_AQ_LINK_SPEED_25GB:
-+		return ICE_ETH56G_LNK_SPD_25G;
-+	case ICE_AQ_LINK_SPEED_40GB:
-+		return ICE_ETH56G_LNK_SPD_40G;
-+	case ICE_AQ_LINK_SPEED_50GB:
-+		switch (li->phy_type_low) {
-+		case ICE_PHY_TYPE_LOW_50GBASE_SR:
-+		case ICE_PHY_TYPE_LOW_50GBASE_FR:
-+		case ICE_PHY_TYPE_LOW_50GBASE_LR:
-+		case ICE_PHY_TYPE_LOW_50GBASE_KR_PAM4:
-+		case ICE_PHY_TYPE_LOW_50G_AUI1_AOC_ACC:
-+		case ICE_PHY_TYPE_LOW_50G_AUI1:
-+			return ICE_ETH56G_LNK_SPD_50G;
-+		default:
-+			return ICE_ETH56G_LNK_SPD_50G2;
-+		}
-+	case ICE_AQ_LINK_SPEED_100GB:
-+		if (li->phy_type_high ||
-+		    li->phy_type_low == ICE_PHY_TYPE_LOW_100GBASE_SR2)
-+			return ICE_ETH56G_LNK_SPD_100G2;
-+		else
-+			return ICE_ETH56G_LNK_SPD_100G;
-+	default:
-+		return ICE_ETH56G_LNK_SPD_1G;
-+	}
-+}
-+
- /**
-  * ice_update_phy_type
-  * @phy_type_low: pointer to the lower part of phy_type
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index e700ac0..cc5cee8 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -342,6 +342,7 @@ ice_aq_get_gpio(struct ice_hw *hw, u16 gpio_ctrl_handle, u8 pin_idx,
- 		bool *value, struct ice_sq_cd *cd);
- bool ice_is_100m_speed_supported(struct ice_hw *hw);
- u16 ice_get_link_speed_based_on_phy_type(u64 phy_type_low, u64 phy_type_high);
-+enum ice_eth56g_link_spd ice_phy_get_speed_eth56g(struct ice_link_status *li);
- int
- ice_aq_set_lldp_mib(struct ice_hw *hw, u8 mib_type, void *buf, u16 buf_size,
- 		    struct ice_sq_cd *cd);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 61c0a0d..54a8afa 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -1401,51 +1401,6 @@ static int ice_ptp_write_port_cmd_eth56g(struct ice_hw *hw, u8 port,
- 	return 0;
- }
- 
--/**
-- * ice_phy_get_speed_eth56g - Get link speed based on PHY link type
-- * @li: pointer to link information struct
-- *
-- * Return: simplified ETH56G PHY speed
-- */
--static enum ice_eth56g_link_spd
--ice_phy_get_speed_eth56g(struct ice_link_status *li)
--{
--	u16 speed = ice_get_link_speed_based_on_phy_type(li->phy_type_low,
--							 li->phy_type_high);
--
--	switch (speed) {
--	case ICE_AQ_LINK_SPEED_1000MB:
--		return ICE_ETH56G_LNK_SPD_1G;
--	case ICE_AQ_LINK_SPEED_2500MB:
--		return ICE_ETH56G_LNK_SPD_2_5G;
--	case ICE_AQ_LINK_SPEED_10GB:
--		return ICE_ETH56G_LNK_SPD_10G;
--	case ICE_AQ_LINK_SPEED_25GB:
--		return ICE_ETH56G_LNK_SPD_25G;
--	case ICE_AQ_LINK_SPEED_40GB:
--		return ICE_ETH56G_LNK_SPD_40G;
--	case ICE_AQ_LINK_SPEED_50GB:
--		switch (li->phy_type_low) {
--		case ICE_PHY_TYPE_LOW_50GBASE_SR:
--		case ICE_PHY_TYPE_LOW_50GBASE_FR:
--		case ICE_PHY_TYPE_LOW_50GBASE_LR:
--		case ICE_PHY_TYPE_LOW_50GBASE_KR_PAM4:
--		case ICE_PHY_TYPE_LOW_50G_AUI1_AOC_ACC:
--		case ICE_PHY_TYPE_LOW_50G_AUI1:
--			return ICE_ETH56G_LNK_SPD_50G;
--		default:
--			return ICE_ETH56G_LNK_SPD_50G2;
+-static struct in6_addr full_ipv6_addr_mask = {
+-	.in6_u = {
+-		.u6_addr8 = {
+-			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+-			0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 -		}
--	case ICE_AQ_LINK_SPEED_100GB:
--		if (li->phy_type_high ||
--		    li->phy_type_low == ICE_PHY_TYPE_LOW_100GBASE_SR2)
--			return ICE_ETH56G_LNK_SPD_100G2;
--		else
--			return ICE_ETH56G_LNK_SPD_100G;
--	default:
--		return ICE_ETH56G_LNK_SPD_1G;
 -	}
--}
- 
- /**
-  * ice_phy_cfg_parpcs_eth56g - Configure TUs per PAR/PCS clock cycle
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 9bfd3e7..a13256a 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -50,19 +50,6 @@ enum eth56g_res_type {
- 	NUM_ETH56G_PHY_RES
- };
- 
--enum ice_eth56g_link_spd {
--	ICE_ETH56G_LNK_SPD_1G,
--	ICE_ETH56G_LNK_SPD_2_5G,
--	ICE_ETH56G_LNK_SPD_10G,
--	ICE_ETH56G_LNK_SPD_25G,
--	ICE_ETH56G_LNK_SPD_40G,
--	ICE_ETH56G_LNK_SPD_50G,
--	ICE_ETH56G_LNK_SPD_50G2,
--	ICE_ETH56G_LNK_SPD_100G,
--	ICE_ETH56G_LNK_SPD_100G2,
--	NUM_ICE_ETH56G_LNK_SPD /* Must be last */
 -};
 -
- /**
-  * struct ice_phy_reg_info_eth56g - ETH56G PHY register parameters
-  * @base_addr: base address for each PHY block
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 1e82f4c..4db235a 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -859,6 +859,19 @@ struct ice_mbx_data {
- #define ICE_PORTS_PER_QUAD	4
- #define ICE_GET_QUAD_NUM(port) ((port) / ICE_PORTS_PER_QUAD)
+-static struct in6_addr zero_ipv6_addr_mask = {
+-	.in6_u = {
+-		.u6_addr8 = {
+-			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-			0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+-		}
+-	}
+-};
++static bool ice_ipv6_mask_full(const __be32 *a)
++{
++	return (a[0] & a[1] & a[2] & a[3]) == cpu_to_be32(0xffffffff);
++}
  
-+enum ice_eth56g_link_spd {
-+	ICE_ETH56G_LNK_SPD_1G,
-+	ICE_ETH56G_LNK_SPD_2_5G,
-+	ICE_ETH56G_LNK_SPD_10G,
-+	ICE_ETH56G_LNK_SPD_25G,
-+	ICE_ETH56G_LNK_SPD_40G,
-+	ICE_ETH56G_LNK_SPD_50G,
-+	ICE_ETH56G_LNK_SPD_50G2,
-+	ICE_ETH56G_LNK_SPD_100G,
-+	ICE_ETH56G_LNK_SPD_100G2,
-+	NUM_ICE_ETH56G_LNK_SPD /* Must be last */
-+};
-+
- #define ATQBAL_FLAGS_INTR_IN_PROGRESS	BIT(0)
+ /* calls to ice_flow_add_prof require the number of segments in the array
+  * for segs_cnt. In this code that is one more than the index.
+@@ -1070,10 +1057,8 @@ ice_set_fdir_ip6_seg(struct ice_flow_seg_info *seg,
+ 	enum ice_flow_field src_port, dst_port;
  
- struct ice_e810_params {
+ 	/* make sure we don't have any empty rule */
+-	if (!memcmp(tcp_ip6_spec->ip6src, &zero_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)) &&
+-	    !memcmp(tcp_ip6_spec->ip6dst, &zero_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)) &&
++	if (ipv6_addr_any((struct in6_addr *)tcp_ip6_spec->ip6src) &&
++	    ipv6_addr_any((struct in6_addr *)tcp_ip6_spec->ip6dst) &&
+ 	    !tcp_ip6_spec->psrc && !tcp_ip6_spec->pdst)
+ 		return -EINVAL;
+ 
+@@ -1097,24 +1082,20 @@ ice_set_fdir_ip6_seg(struct ice_flow_seg_info *seg,
+ 	*perfect_fltr = true;
+ 	ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_IPV6 | l4_proto);
+ 
+-	if (!memcmp(tcp_ip6_spec->ip6src, &full_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)))
++	if (ice_ipv6_mask_full(tcp_ip6_spec->ip6src))
+ 		ice_flow_set_fld(seg, ICE_FLOW_FIELD_IDX_IPV6_SA,
+ 				 ICE_FLOW_FLD_OFF_INVAL, ICE_FLOW_FLD_OFF_INVAL,
+ 				 ICE_FLOW_FLD_OFF_INVAL, false);
+-	else if (!memcmp(tcp_ip6_spec->ip6src, &zero_ipv6_addr_mask,
+-			 sizeof(struct in6_addr)))
++	else if (ipv6_addr_any((struct in6_addr *)tcp_ip6_spec->ip6src))
+ 		*perfect_fltr = false;
+ 	else
+ 		return -EOPNOTSUPP;
+ 
+-	if (!memcmp(tcp_ip6_spec->ip6dst, &full_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)))
++	if (ice_ipv6_mask_full(tcp_ip6_spec->ip6dst))
+ 		ice_flow_set_fld(seg, ICE_FLOW_FIELD_IDX_IPV6_DA,
+ 				 ICE_FLOW_FLD_OFF_INVAL, ICE_FLOW_FLD_OFF_INVAL,
+ 				 ICE_FLOW_FLD_OFF_INVAL, false);
+-	else if (!memcmp(tcp_ip6_spec->ip6dst, &zero_ipv6_addr_mask,
+-			 sizeof(struct in6_addr)))
++	else if (ipv6_addr_any((struct in6_addr *)tcp_ip6_spec->ip6dst))
+ 		*perfect_fltr = false;
+ 	else
+ 		return -EOPNOTSUPP;
+@@ -1167,33 +1148,27 @@ ice_set_fdir_ip6_usr_seg(struct ice_flow_seg_info *seg,
+ 	if (usr_ip6_spec->l4_proto)
+ 		return -EOPNOTSUPP;
+ 	/* empty rules are not valid */
+-	if (!memcmp(usr_ip6_spec->ip6src, &zero_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)) &&
+-	    !memcmp(usr_ip6_spec->ip6dst, &zero_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)))
++	if (ipv6_addr_any((struct in6_addr *)usr_ip6_spec->ip6src) &&
++	    ipv6_addr_any((struct in6_addr *)usr_ip6_spec->ip6dst))
+ 		return -EINVAL;
+ 
+ 	*perfect_fltr = true;
+ 	ICE_FLOW_SET_HDRS(seg, ICE_FLOW_SEG_HDR_IPV6);
+ 
+-	if (!memcmp(usr_ip6_spec->ip6src, &full_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)))
++	if (ice_ipv6_mask_full(usr_ip6_spec->ip6src))
+ 		ice_flow_set_fld(seg, ICE_FLOW_FIELD_IDX_IPV6_SA,
+ 				 ICE_FLOW_FLD_OFF_INVAL, ICE_FLOW_FLD_OFF_INVAL,
+ 				 ICE_FLOW_FLD_OFF_INVAL, false);
+-	else if (!memcmp(usr_ip6_spec->ip6src, &zero_ipv6_addr_mask,
+-			 sizeof(struct in6_addr)))
++	else if (ipv6_addr_any((struct in6_addr *)usr_ip6_spec->ip6src))
+ 		*perfect_fltr = false;
+ 	else
+ 		return -EOPNOTSUPP;
+ 
+-	if (!memcmp(usr_ip6_spec->ip6dst, &full_ipv6_addr_mask,
+-		    sizeof(struct in6_addr)))
++	if (ice_ipv6_mask_full(usr_ip6_spec->ip6dst))
+ 		ice_flow_set_fld(seg, ICE_FLOW_FIELD_IDX_IPV6_DA,
+ 				 ICE_FLOW_FLD_OFF_INVAL, ICE_FLOW_FLD_OFF_INVAL,
+ 				 ICE_FLOW_FLD_OFF_INVAL, false);
+-	else if (!memcmp(usr_ip6_spec->ip6dst, &zero_ipv6_addr_mask,
+-			 sizeof(struct in6_addr)))
++	else if (ipv6_addr_any((struct in6_addr *)usr_ip6_spec->ip6dst))
+ 		*perfect_fltr = false;
+ 	else
+ 		return -EOPNOTSUPP;
 -- 
 2.52.0
 
