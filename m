@@ -2,92 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oBKDMxxO2Gk/bggAu9opvQ
+	id eLIHI4ur2GkmgwgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 03:10:52 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:31 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E86BD3D0FC5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 03:10:51 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D20763D38E6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Apr 2026 09:49:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 85C4782CA5;
-	Fri, 10 Apr 2026 01:10:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AF22F60A45;
+	Fri, 10 Apr 2026 07:49:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hji_QJJCZ-Qe; Fri, 10 Apr 2026 01:10:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5lk8hpA1Jr2O; Fri, 10 Apr 2026 07:49:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06FE882CAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6FF0B608A5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1775783448;
-	bh=t247P7Tq3knyRcMQORony+MEBdGwlOjbdD1yvSDAaPM=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=DpBWGm8BMSS6UUKzCxPDZVWz7RhH5yUx0hz7usNBTHzKrvmyaJZpXEt7n6KYdXdzd
-	 HDVzjNXtIi/YV6vZKuaahLfWPSCZasdya5hQAReiShBoNNgq7aSJPBducmlmPax4hG
-	 qpUfjS0Yrub6rzeGoCrzV0JKr56jpoqhmhCwyLxa4IWwSgNTaUEk/Mix7aRm2yPyrZ
-	 BEwOQbV7v0i5Zkg7f60UlGAntQZaF2THhWNykuERPPWOsm2w+VeONP/nYAjEZTL9+J
-	 Eb1gkhU9hQ0yjawsolAcFgL0HmM2FXoWsvTqJ4ftByeNPSMEcseEJ7q7aTxWzaoLOR
-	 jlbBd0pWYH6DA==
+	s=default; t=1775807367;
+	bh=3h3p97+NDQ7+qgwRltDQuCV3w/p6aEYOdL+cDgPr3xE=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=rjDQO7cTtP2zdQlLx3Yh8f7VHQZNfB0cRwCw/NQlCBkxWP75nd/tY2VVBmiXPNOv+
+	 b77Lks6nz0/YSbBdITlfcWgaq2zqQTiC0K8HCxI7seEwYMR97XUgMiI96TjTZhc0vK
+	 j+wcP1mRglf/VDqfELNC68+mugAwYsagWoOd4jQiUtXa4Ec9aH2HLJ0m9WbW+/d3Rz
+	 CBVO9mNTYkBWsKSFo+J5bMjJ7HQybXYswsnKsJi050ZbdFPPnFF2iqT5aKEUNHsK6B
+	 c62xRpX1qoob4oYiRM0WNc3Zp/zapgvvMj9SR2OrcXOc4r/0X5BiMo+yw/L9myk6H1
+	 JGDSdjLwDnCrw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06FE882CAC;
-	Fri, 10 Apr 2026 01:10:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6FF0B608A5;
+	Fri, 10 Apr 2026 07:49:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3617C194
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 01:10:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1DA981F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1374F8227B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 01:10:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0F8CD81A81
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VS-VvNFQKwLS for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Apr 2026 01:10:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3D724821F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D724821F9
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3D724821F9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 01:10:44 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 6D33160103;
- Fri, 10 Apr 2026 01:10:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55413C4CEF7;
- Fri, 10 Apr 2026 01:10:42 +0000 (UTC)
-Date: Thu, 9 Apr 2026 18:10:41 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
-Message-ID: <20260409181041.395a0c37@kernel.org>
-In-Reply-To: <IA1PR11MB621925C1718B838147404DC492582@IA1PR11MB6219.namprd11.prod.outlook.com>
-References: <20260402230626.3826719-1-grzegorz.nitka@intel.com>
- <20260406192312.0f7a2760@kernel.org>
- <IA1PR11MB621925C1718B838147404DC492582@IA1PR11MB6219.namprd11.prod.outlook.com>
+ id ltIqxhzhyPyX for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Apr 2026 07:49:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 275B2816EE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 275B2816EE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 275B2816EE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Apr 2026 07:49:24 +0000 (UTC)
+X-CSE-ConnectionGUID: q7DT7pvsTM2mEilvXdU9Gw==
+X-CSE-MsgGUID: G5hUpqkKQw+/JqjBMvrzQQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11754"; a="77007917"
+X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="77007917"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2026 00:49:24 -0700
+X-CSE-ConnectionGUID: WZwY2/85SbeenjuPVjA8Jg==
+X-CSE-MsgGUID: Miag2Z7hTAqqT/WnyX1mIA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,171,1770624000"; d="scan'208";a="228941842"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by orviesa008.jf.intel.com with ESMTP; 10 Apr 2026 00:49:23 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Cc: netdev@vger.kernel.org
+Date: Fri, 10 Apr 2026 09:49:11 +0200
+Message-ID: <20260410074921.1254213-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1775783443;
- bh=bOsL/5Ai9nkE51jkRZmv54YIfdu2zvaWVlpTurET71Q=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=eqlNT4PPbX5lYdH6cHK1Sb/ADvhscQaQLrSaA4bf1TWnsvM1Ms0SDiNYXziLykA4Y
- YiOvTOJ1CZBsmI34XvT2jH24hf7sfroANf9GVOkSizLCn9rp4ke6E3blQKliphchlF
- j81dQzdXslxdBuAi1wY3hJsXy94yApGjSVjaZ6sxwgJYAmNJl9c4TRbJAF78vDsiSR
- giueZKc2SKTmeJf4BQ8NI63DE0NvHHfackHzGwwjUcAfvSOaVaYuVrdejxeqy7dtIQ
- T3eJdfK6qrv0Nm4MuZwGGsJ6guP6xaSzE1l0uGU+OivfzAdfGW2G8K4ApSBZhAVF8M
- V4soj1S/G6aHg==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1775807365; x=1807343365;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=buWg/nB8AnUQvbl+9LgNQcCODOBB+fgL61OAveIbTH8=;
+ b=hTP9P0+Rc2qPIJFvvrRri1LitrG4UZ7Vp2nSl88OiLP0DKQS8V1Cd4s3
+ p40Sl5dGVxPoR1LIdrdTgJS5f31Rlv3TdZSQpJaxbohGWjyAIW/8nL2fF
+ /MQiFJyWTj0AWMzgdP17NerlVHCfvJ0TRnqa9dc6xYHBudWTI0EWDvj5e
+ koyVsvYZc7UmoYko4ffUXD4BcKysDnb6oryPZXesIFIF+BdRMMuv3kzqm
+ oTG/vzfQLWc9VkmFGotx3rrXGH/YyHXAH9MviQn9eTjqFpHsfGFvMyZ1y
+ 8acF39l9eD+eI8FOesf+2rZD3JmqJyJEABHeH+dWW0ypmPiKu1InaawnR
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=eqlNT4PP
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 0/8] dpll/ice: Add TXC
- DPLL type and full TX reference clock control for E825
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=hTP9P0+R
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/10] ice: misc cleanups and
+ improvements
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -100,109 +109,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Vecera, Ivan" <ivecera@redhat.com>,
- "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "jiri@resnulli.us" <jiri@resnulli.us>,
- "edumazet@google.com" <edumazet@google.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
- Arkadiusz" <arkadiusz.kubalewski@intel.com>,
- "Prathosh.Satish@microchip.com" <Prathosh.Satish@microchip.com>,
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "horms@kernel.org" <horms@kernel.org>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "davem@davemloft.net" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	ARC_NA(0.00)[];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,resnulli.us,google.com,vger.kernel.org,gmail.com,intel.com,microchip.com,lunn.ch,lists.osuosl.org,kernel.org,davemloft.net];
-	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:jiri@resnulli.us,m:edumazet@google.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:Prathosh.Satish@microchip.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[18];
-	FORGED_SENDER(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
+	RCPT_COUNT_THREE(0.00)[4];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: E86BD3D0FC5
+	RCVD_COUNT_SEVEN(0.00)[9];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:mid,osuosl.org:dkim]
+X-Rspamd-Queue-Id: D20763D38E6
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Thu, 9 Apr 2026 11:21:35 +0000 Nitka, Grzegorz wrote:
-> > On Fri,  3 Apr 2026 01:06:18 +0200 Grzegorz Nitka wrote: =20
-> > > This series adds TX reference clock support for E825 devices and expo=
-ses
-> > > TX clock selection and synchronization status via the Linux DPLL
-> > > subsystem.
-> > > E825 hardware contains a dedicated Tx clock (TXC) domain that is
-> > > distinct
-> > > from PPS and EEC. TX reference clock selection is device=E2=80=91wide=
-, shared
-> > > across ports, and mediated by firmware as part of the link bring=E2=
-=80=91up
-> > > process. As a result, TX clock selection intent may differ from the
-> > > effective hardware configuration, and software must verify the outcome
-> > > after link=E2=80=91up.
-> > > To support this, the series introduces TXC support incrementally acro=
-ss
-> > > the DPLL core and the ice driver:
-> > >
-> > > - add a new DPLL type (TXC) to represent transmit clock generators; =
-=20
-> >=20
-> > I'm not grasping why this is needed, isn't it part of any EEC system
-> > that the DPLL can drive the TXC? Is your system going to expose multiple
-> > DPLLs now for one NIC?
->=20
-> Hello Jakub,
-> For E825 device, the short answer is yes. We have platform EEC now and
-> we want to add:
-> - TXC DPLLs per port, and
-> - PPS DPLL for TSPLL config purposes (in the near future)
->=20
-> EEC (Ethernet Equipment Clock) type DPLL is designed to control multiple
-> source signals (internal-NIC or external), where one drives the dpll devi=
-ce,
-> where multiple outputs are possible, each could drive various components
-> as well as propagate signal to external devices.
-> TXC is specific dpll device that associated with single ETH port to contr=
-ol it's source,
-> there is no need to declare any outputs as the single output is already d=
-etermined.
-> Basically, having TXC DPLL indicates per port control over SyncE (or some=
- external)
-> clock source.=C2=A0
+Ten independent patches for net-next. DCB fix for the 3-bit max-TC
+wrap, ethtool link-type coverage gaps, OICR rate bump, and the usual
+code quality sweep - log messages, struct layout, helper refactoring.
+None touch the data path.
 
-Could you share a diagram of how things are wired up?
-DPLL can have multiple outputs and multiple inputs. I'm not getting why
-a single device would have to have multiple actual DPLLs (which makes
-me worried this is just some "convenient use of the uAPI")
+---
+Aleksandr Loktionov (7):
+  ice: add PORT_AUI and PORT_NONE ethtool port type reporting
+  ice: improve Add/Update VSI error messages in ice_vsi_init()
+  ice: increase OICR interrupt moderation rate to 20K interrupts/sec
+  ice: emit user-visible info message for non-contiguous ETS TC config
+  ice: move ice_phy_get_speed_eth56g() from ice_ptp_hw.c to ice_common.c
+  ice: use inline helpers instead of memcmp() for IPv6 mask checks in ice_ethtool_fdir
+  ice: promote Tx FIFO drain timeout message from dev_dbg to dev_warn
+
+Dave Ertman (1):
+  ice: translate FW to SW for max num TCs encoding
+
+Jacob Keller (1):
+  ice: reorder ice_flash_info fields to eliminate padding
+
+Paul Greenwalt (1):
+  ice: allow setting advertised speed and duplex for all media types
+
+ drivers/net/ethernet/intel/ice/ice_common.c       | 45 +++++
+ drivers/net/ethernet/intel/ice/ice_common.h       |  1 +
+ drivers/net/ethernet/intel/ice/ice_dcb.c          |  2 +
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c      |  2 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c      | 30 ++++--
+ drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c | 41 ++---
+ drivers/net/ethernet/intel/ice/ice_lib.c          |  4 +-
+ drivers/net/ethernet/intel/ice/ice_main.c         |  2 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c          |  6 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c       | 45 -----
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h       | 13 --
+ drivers/net/ethernet/intel/ice/ice_type.h         | 15 +-
+ 11 files changed, 132 insertions(+), 57 deletions(-)
