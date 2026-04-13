@@ -2,94 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eHpxBeP33GlaYgkAu9opvQ
+	id uHi0Gpv53GnXYgkAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Apr 2026 16:04:19 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Apr 2026 16:11:39 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 87AE93ECECC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Apr 2026 16:04:18 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C9A873ED1FA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Apr 2026 16:11:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 325EC8476F;
-	Mon, 13 Apr 2026 14:04:17 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C06EA84791;
+	Mon, 13 Apr 2026 14:11:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fqLSC76ZdkO5; Mon, 13 Apr 2026 14:04:16 +0000 (UTC)
+ id g1sMO7q6u7Qq; Mon, 13 Apr 2026 14:11:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7B9238475A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E64EF84797
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776089056;
-	bh=v1C5qdQnf7YIMB+iEYlsrIwDfbPEhXXGWNFrTiSabBA=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1776089494;
+	bh=DS+S0BRyZHRR76xF3fsEAk6msLD+shY5kdGfLkw+59M=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=cSYubW+cXebksU+PtUQ2y606Kd+lM0f0gmDs+9mAfrKvy7frgUaUUaIyod6ZMQbTL
-	 iP4g8KtSeGBe9IUN/kKplcngBGEeqO9AmYoqsNLyOm8Ovz88Oh8Nx4JMiiKBZoVZZV
-	 RdTTHbjc4MbFWRnt6kIx74AIw44GsUyrMepy+A1YmGKmQ8VkqJl9Cdz8Q3w9Q1tx2L
-	 QpoSE2os4evAYP7VbiGv4m0VQiFz8LgoVKKsqnQRYat5vNtBZLtAfT6xOPK000XCf6
-	 WrrlmhhDdvKDYa+UWStdZfktV3/hzNM7vM9k36fZGRAA9cxKKfFiMJOelS+a4wDceY
-	 Kf3YZkQlZczUA==
+	b=5IrH54aTBDhuladj5r410PFwdQDg0R7uSXxEAeBWNN2I8RRCxLbAzM3aFramTELSz
+	 wZUphAE6rNkpYlVzToxorXuP3gNoRKVhw5UPga4NwhAMAgeckY1Vfot+4ZFm6Qp4X1
+	 iZjwuAUlT+fsdLGk165GDp7yUaiWcpYYsDtCQooYSRCnD9aYusuRhuRGgdrTHc7szu
+	 FyqKSLnufTYuddgvpZ5zRaFLnAQVyiFxho0r3kVGhY50UQeLgKVTDIZ3tk1/amPodX
+	 cQAyzj2YOJM5E3AkeUdpUGb6+F45cnULA2IrAba0kJXbN5zxTTG5svzPMKPotuhoDk
+	 pW+/C4kfGsvxw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7B9238475A;
-	Mon, 13 Apr 2026 14:04:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E64EF84797;
+	Mon, 13 Apr 2026 14:11:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7ECE7237
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:04:14 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 4130F237
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:11:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 64F1342089
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:04:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3245D422AE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:11:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9tEW7FT8rvgK for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 Apr 2026 14:04:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7436441292
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7436441292
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7436441292
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:04:13 +0000 (UTC)
+ id iOIBPHzOVTR4 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 Apr 2026 14:11:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7242E41F54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7242E41F54
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7242E41F54
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 Apr 2026 14:11:32 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 201BD4041D;
- Mon, 13 Apr 2026 14:04:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9062CC2BCAF;
- Mon, 13 Apr 2026 14:04:11 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id 7BC0260172;
+ Mon, 13 Apr 2026 14:11:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD6D9C2BCAF;
+ Mon, 13 Apr 2026 14:11:28 +0000 (UTC)
+Date: Mon, 13 Apr 2026 15:11:26 +0100
 From: Simon Horman <horms@kernel.org>
-To: aleksandr.loktionov@intel.com
-Cc: 'Simon Horman' <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
- anthony.l.nguyen@intel.com, netdev@vger.kernel.org, stable@vger.kernel.org
-Date: Mon, 13 Apr 2026 15:03:07 +0100
-Message-ID: <20260413140307.715409-1-horms@kernel.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260408131154.2661818-7-aleksandr.loktionov@intel.com>
-References: <20260408131154.2661818-7-aleksandr.loktionov@intel.com>
+To: Matt Fleming <matt@readmodwrite.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, kernel-team@cloudflare.com,
+ Matt Fleming <mfleming@cloudflare.com>
+Message-ID: <20260413141126.GR469338@kernel.org>
+References: <20260408190214.1287708-1-matt@readmodwrite.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260408190214.1287708-1-matt@readmodwrite.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776089052;
- bh=PZPocgNq/t+BoK9YO0g4NcHOvsEnwrcuzcTMgVzbDRc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=sQ/rI1UvHOQ+roW0A6IDSgDJ1b0pLaQvXe5zqkw+FVGVpWk8EG1wK8fGIagzv6Mim
- 4O8BpTNUTZPrNHweOqewPuZft/QR4+jHezJ/glnRr/F91wRA6HcCOzM7ormX8x8lds
- dR9IPCfYKcSZNwExOtF+Y78WtWLmejYpNQ92Ya7SH8y2HcZL4Tf4TVsEw+uehCRszU
- lUy0lOI5KQVDIewL3zdcwlsxR2nJw6h0XZda++ue09kUXr6LITbszedrYV4YeMqXUi
- D1ylNUlHp0S5hV4a0Xk971C+ZxKs2YgRY1oIAkHAgxmQ7oEVUsrCPzOWi7WeIfzBL4
- E/Fmsl2sCLMMQ==
+ d=kernel.org; s=k20201202; t=1776089491;
+ bh=gFRvrKXlOfg+aEGi39wpVj9CoHvkfV4SW9XjwhO71Bg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Vuz8JIgyGFQs79J7jNYhLXjVTEJKcIy7q5fIMQvp69Rs6UAmh9zywB6sRRJyuSPZ2
+ g+pdHQ203cM48BifuF+R1XKrQAour1unMgz1Hs9HNTMCQzb2M3F4CRrv4S2bN2AAfT
+ 29qhXHvawfyEttE99sA2TD0YgSFFuxY+c2+oUt2NwsZH5HNRQi85n8aohpaOvSd32v
+ fM9Vygo51KBRkcEEhB8B9OMaZ7kqOmtJ3ZeRTprb2EqP88EMVtZe1TDG9WyHnoQiru
+ RKdLCkyaoXwYB6kV24hu8LH8p1H1q0ApAoO5ee8ZbPe7R36iMv9CJbvNo5XyKF14mn
+ aGz59T8PyA/0w==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=sQ/rI1Uv
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 6/6] ixgbe: fix integer
- overflow and wrong bit position in ixgbe_validate_rtr()
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Vuz8JIgy
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix missing 1's complement
+ negation in GCS raw checksum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,86 +109,66 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.19 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	ARC_NA(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:horms@kernel.org,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:stable@vger.kernel.org,s:lists@lfdr.de];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	NEURAL_HAM(-0.00)[-0.997];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,sashiko.dev:url,osuosl.org:dkim];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[13];
+	FORGED_RECIPIENTS(0.00)[m:matt@readmodwrite.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:kernel-team@cloudflare.com,m:mfleming@cloudflare.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCPT_COUNT_FIVE(0.00)[6];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-0.997];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 87AE93ECECC
+X-Rspamd-Queue-Id: C9A873ED1FA
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-From: 'Simon Horman' <horms@kernel.org>
+On Wed, Apr 08, 2026 at 08:02:14PM +0100, Matt Fleming wrote:
+> From: Matt Fleming <mfleming@cloudflare.com>
+> 
+> Commit 905d1a220e8d ("ice: Add E830 checksum offload support") added
+> Generic Checksum (GCS) support for E830 NICs but omitted the 1's
+> complement negation (~) when converting the hardware raw_csum to
+> skb->csum for CHECKSUM_COMPLETE.
+> 
+> Without the negation, every CHECKSUM_COMPLETE packet fails the
+> fast-path validation in nf_ip_checksum() and falls through to software
+> checksumming via __skb_checksum_complete(), which triggers the
+> rate-limited "hw csum failure" warning. Packets are still accepted
+> (the software recheck passes) but hardware checksum offload is
+> effectively disabled and the warning floods dmesg on systems running
+> nf_conntrack on VLAN sub-interfaces.
+> 
+> Multiple other drivers (idpf, ehea, iwlwifi, cassini, sunhme, enetc)
+> also apply ~ for CHECKSUM_COMPLETE. The ice driver was the only in-tree
+> user of csum_unfold() for CHECKSUM_COMPLETE that omitted it.
+> 
+> Fixes: 905d1a220e8d ("ice: Add E830 checksum offload support")
+> Signed-off-by: Matt Fleming <mfleming@cloudflare.com>
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
-Full review at: https://sashiko.dev
----
-ixgbe: fix integer overflow and wrong bit position in ixgbe_validate_rtr()
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-This commit fixes two bugs in ixgbe_validate_rtr() by masking the
-traffic-class field properly before assigning it to a u8, and correctly
-shifting the mask for clearing out-of-bounds entries.
-
-Cc: stable@vger.kernel.org
-
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index 5ff462a848feb..8ebf717ce4017 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -9782,11 +9782,12 @@ static void ixgbe_validate_rtr(struct ixgbe_adapter *adapter, u8 tc)
->  	rsave = reg;
->  
->  	for (i = 0; i < MAX_TRAFFIC_CLASS; i++) {
-> -		u8 up2tc = reg >> (i * IXGBE_RTRUP2TC_UP_SHIFT);
-> +		u8 up2tc = (reg >> (i * IXGBE_RTRUP2TC_UP_SHIFT)) &
-> +			   IXGBE_RTRUP2TC_UP_MASK;
->  
->  		/* If up2tc is out of bounds default to zero */
->  		if (up2tc > tc)
-
-This wasn't introduced by this patch, but is there a pre-existing off-by-one
-error in this bounds check?
-
-If tc represents the number of enabled traffic classes (e.g., 4), the valid TC
-indices would be 0 through tc - 1. If up2tc equals tc, it would be out of
-bounds, but the condition up2tc > tc will evaluate to false and the invalid
-mapping won't be cleared.
-
-Could this allow an invalid UP-to-TC mapping to persist in the hardware
-register, potentially causing received packets to be mis-steered to an
-uninitialized or non-existent traffic class queue?
-
-Should the condition be corrected to ensure up2tc is strictly less than tc
-when tc > 0?
-
-> -			reg &= ~(0x7 << IXGBE_RTRUP2TC_UP_SHIFT);
-> +			reg &= ~(IXGBE_RTRUP2TC_UP_MASK << (i * IXGBE_RTRUP2TC_UP_SHIFT));
->  	}
