@@ -2,109 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id QBxhJBIB3mkRmAkAu9opvQ
+	id eIjUAjkD3mkRmAkAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 10:55:46 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:04:57 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED35E3F78E4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 10:55:45 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A9EB3F7A49
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:04:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8BC4E61CF0;
-	Tue, 14 Apr 2026 08:55:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5A38B42995;
+	Tue, 14 Apr 2026 09:04:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F48yrVYsHGS1; Tue, 14 Apr 2026 08:55:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wjYk29NIXOMH; Tue, 14 Apr 2026 09:04:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D13561CD9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96FD942991
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776156943;
-	bh=rzFrTzoq0HnCZHcVlEeNBgHotPSPhdkKZmBWoRPrbOg=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1776157493;
+	bh=DJAxnQ1AZdXITwfi/uqwzh+zlb6HRBFVe8X4hHzfMCM=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=6UvQ4MmyMki3f9djBEgpaamXC5FKAQmmrNeRlDJFCKntvE0WhdKpaiO+MRVgGlkP7
-	 5EWBJpUgNk5Lks0KM8rsk3N4naG/rq72wj93LcfG685i+VGCK7A3ZsS5ftZs8fCs1v
-	 VV59ztb8cb1ZFIkBdeCVH5Ox6LOniaYMEyeOx8w5WTIb0EGXbl3MOQ5fxQvE5X7+pq
-	 HB3o2KOSNM0j340I7VjO8nrasJkgDsmpWU287c56KTbk7tSnOCm+kvErM8DwADcOsd
-	 zSUKhQeawn/2wpKifnUxR2Gtc6YbGeSPDrY8MGBS/MR5ACfcqbm6TYR1sLJVHJfOFd
-	 DZaKKIQUtXjiA==
+	b=2PofvRlGWIaGrHD1TuOisk5n6KE3deqI5537Q5BhNHhGuyB6MCW1vzM0LRwq+MxRq
+	 zHfn4aTPILDTSlB9ebbTuvqAytRrbOLdM/wcpnmsyHmCAdhU2Skc8RfuCWHn5BgssE
+	 L+XrUSngKDH2gtMlFuNTsPOEPMdtXXlu0DpxYTioeF4s0OCNrqnXP/1hfTOOQ0C8Mh
+	 Dxn3+T67abR2XO5xwXxB4fqCrGJkheNk3tUBhLYpj1sBGzKHKTbWuIIX4ufxxcJh0N
+	 +D+ZUf1Aw+w/FZNRgE35SQo3Z/rv9RsLnGjP5E0riCkjm1y54aMgSqdfAIaSTY6nYo
+	 v1vE55GZd3mRw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0D13561CD9;
-	Tue, 14 Apr 2026 08:55:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 96FD942991;
+	Tue, 14 Apr 2026 09:04:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 7063E283
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 08:55:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 053B9237
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:04:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6149A403B9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 08:55:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id EB3B64298A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:04:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ew8xyKjSTj3a for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2026 08:55:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 66F9240191
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 66F9240191
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 66F9240191
- for <intel-wired-lan@osuosl.org>; Tue, 14 Apr 2026 08:55:39 +0000 (UTC)
-X-CSE-ConnectionGUID: d+9770hPRLuuXx7to+YLZw==
-X-CSE-MsgGUID: PZ+rTnQJTFO2NzzXwVA5AA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="88186418"
-X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="88186418"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2026 01:55:40 -0700
-X-CSE-ConnectionGUID: rfAdmeYfT7OQFopcDKEkiA==
-X-CSE-MsgGUID: Aoc23v+fREy3t9eodGYHEQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="223535662"
-Received: from avbakuno-mobl.ccr.corp.intel.com (HELO [10.246.16.61])
- ([10.246.16.61])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Apr 2026 01:55:37 -0700
-Message-ID: <01cee873-23d7-43f5-96eb-29826d1c157c@linux.intel.com>
-Date: Tue, 14 Apr 2026 10:55:35 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OQjz7qKYnmRo for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2026 09:04:51 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EA5FD42988
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA5FD42988
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EA5FD42988
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:04:50 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by tor.source.kernel.org (Postfix) with ESMTP id B46D760018;
+ Tue, 14 Apr 2026 09:04:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1DE33C19425;
+ Tue, 14 Apr 2026 09:04:47 +0000 (UTC)
+From: Simon Horman <horms@kernel.org>
+To: aleksandr.loktionov@intel.com
+Cc: 'Simon Horman' <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ jacob.e.keller@intel.com
+Date: Tue, 14 Apr 2026 10:04:29 +0100
+Message-ID: <20260414090429.740296-1-horms@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260410074921.1254213-3-aleksandr.loktionov@intel.com>
+References: <20260410074921.1254213-3-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Matt Vollrath <tactii@gmail.com>, intel-wired-lan@osuosl.org
-Cc: stable@vger.kernel.org, Avigail Dahan <avigailx.dahan@intel.com>
-References: <20260413000325.33379-1-tactii@gmail.com>
-Content-Language: pl, en-US
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173, 80-298
- Gdansk - KRS 101882 - NIP 957-07-52-316
-In-Reply-To: <20260413000325.33379-1-tactii@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1776156941; x=1807692941;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=kudLCTIITmlAZjTqgthhq39P8xFZprhHZarcmmvo6PU=;
- b=cWkG0Mt7cdFFEvQcCH004TenPRNAgqdAm3aPHelXIa6YTlN0O7cXaH8p
- +e9eeuIybEhuIkekaXSfKrJuDWe3iND6MAyA5ueTHLjo2XLI6trwe2XRh
- 6QWaFQLFM3hOBDOdKsWWHzwZeE0KZcZtMmlS68aDPOtSu8181EiETRbt3
- bcG7TPsc0MpgBKd4zKi2M6FrtCZ6nBoL3n32wJENYYV0fsaPE5KuWfBlC
- QtmV5JubuHJqA0xrKZPT3t5McgCKbMJKDGhs4V/DpsyaXYMJNCgI+K/Ll
- u1gFQu08ikVXpmhY7ewdTkFRWcLqmX78+uGwmpBDQt6x0GjEYrHbZlRI0
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=cWkG0Mt7
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] e1000e: Unroll PTP in
- probe error handling
+ d=kernel.org; s=k20201202; t=1776157489;
+ bh=JJHgXdaywcrs/YUTvzPh7LAar39SbrQoipL1n9cetjs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=ISLbYqQm8+XFSWvqFF8bJsv2FSvLP7lQqJ6pE7KBhmhTkL/xe+Mx/hZzBrzdEQqMm
+ 09rhHRYQlzhJq3rs86UPMOGC85ZZmkvakQgyfceyD7vrhbdmSQ7EaQvCCNvQhXMWos
+ Cgyt+ASyoSH6yTOt2V1UHbPN0qUrX0LPu79F6q8YL0QUydIqZNeW3CBoHnQ7wB5k59
+ 9deCVr3nXEYtOJ6XEPPR2CghU6WuAQ9zqCPlH0P4qX4jY4vW3h+S7B06M902PThK7w
+ DAFBAwwlW+VTCGteclFLUz07R1CjRtdK3KGxV2lZ7u7q+G8dCkInnRWmBFuy8y1R98
+ I2hvgEwm+uYHg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=ISLbYqQm
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/10] ice: allow setting
+ advertised speed and duplex for all media types
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,96 +104,120 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [-0.71 / 15.00];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_SPF_ALLOW(-0.20)[+mx];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:tactii@gmail.com,m:intel-wired-lan@osuosl.org,m:stable@vger.kernel.org,m:avigailx.dahan@intel.com,s:lists@lfdr.de];
-	FREEMAIL_TO(0.00)[gmail.com,osuosl.org];
-	FORGED_SENDER(0.00)[dawid.osuchowski@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:horms@kernel.org,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:jacob.e.keller@intel.com,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,linux.intel.com:mid,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	HAS_ORG_HEADER(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	FROM_NEQ_ENVFROM(0.00)[dawid.osuchowski@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	NEURAL_HAM(-0.00)[-0.996];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_FIVE(0.00)[6];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: ED35E3F78E4
+X-Rspamd-Queue-Id: 1A9EB3F7A49
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On 2026-04-13 2:03 AM, Matt Vollrath wrote:
+From: 'Simon Horman' <horms@kernel.org>
 
-Hey Matt,
-
-Thanks for the patch!
-
-Apologies but it seems I didn't explain fully where the changelog should 
-go, same goes for the Cc: stable as it should be inserted into the 
-commit msg as a tag, see example below.
-
-> If probe fails after registering the PTP clock and its delayed work,
-> these resources must be released.
-> 
-> This was not an issue until a 2016 fix moved the e1000e_ptp_init() call
-> before the jump to err_register.
-> 
-> Fixes: aa524b66c5ef ("e1000e: don't modify SYSTIM registers during SIOCSHWTSTAMP ioctl")
-> Signed-off-by: Matt Vollrath <tactii@gmail.com>
-> Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
-> ---
-
-Changelog should go _here_, not below the:
-
--- 
-2.43.0
-
-and should also have the --- afterwards. So using this patch submission 
-as an example your commit msg + changelog should look like the following:
-
-If probe fails after registering the PTP clock and its delayed work,
-these resources must be released.
-
-This was not an issue until a 2016 fix moved the e1000e_ptp_init() call
-before the jump to err_register.
-
-Fixes: aa524b66c5ef ("e1000e: don't modify SYSTIM registers during 
-SIOCSHWTSTAMP ioctl")
-Cc: stable@vger.kernel.org
-Signed-off-by: Matt Vollrath <tactii@gmail.com>
-Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+Full review at: https://sashiko.dev
 ---
-Changes:
-v2:
-* Apply the correct Fixes tag
-* Target iwl-net
-* Cc stable
----
+ice: allow setting advertised speed and duplex for all media types
 
-  drivers/net/ethernet/intel/e1000e/netdev.c | 1 +
-  1 file changed, 1 insertion(+)
+This commit allows setting advertised speed and duplex for all media types by
+only refusing media types NONE or UNKNOWN in strict mode. It adds AUI and NONE
+to the ice_media_type enum.
 
-<snip of the rest of the diff/>
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index e6a20af6f63de..62d214c5582ad 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -2634,10 +2635,14 @@ ice_set_link_ksettings(struct net_device *netdev,
+>  	if (!pi)
+>  		return -EIO;
+>  
+> -	if (pi->phy.media_type != ICE_MEDIA_BASET &&
+> -	    pi->phy.media_type != ICE_MEDIA_FIBER &&
+> -	    pi->phy.media_type != ICE_MEDIA_BACKPLANE &&
+> -	    pi->phy.media_type != ICE_MEDIA_DA &&
+> +	lenient_mode = test_bit(ICE_FLAG_LINK_LENIENT_MODE_ENA, pf->flags);
+> +
+> +	/* Setting the speed and duplex advertised by autonegotiation is
+> +	 * supported for all media types, so only return unsupported for media
+> +	 * type none or unknown in strict mode.
+> +	 */
+> +	if ((pi->phy.media_type == ICE_MEDIA_NONE ||
+> +	     (pi->phy.media_type == ICE_MEDIA_UNKNOWN && !lenient_mode)) &&
+>  	    pi->phy.link_info.link_info & ICE_AQ_LINK_UP)
+>  		return -EOPNOTSUPP;
 
-Once again sorry for not saying it more clearly before.
+Will AUI media types still be rejected here in strict mode?
 
-Best regards
-~Dawid
+The patch adds ICE_MEDIA_AUI and ICE_MEDIA_NONE to enum ice_media_type, but
+doesn't appear to update ice_get_media_type() to actually return these new
+values. 
+
+If AUI media continues to fall through to ICE_MEDIA_UNKNOWN, wouldn't the new
+logic still reject it when lenient mode is disabled, defeating the intent of
+the patch?
+
+[ ... ]
+> @@ -2667,7 +2672,7 @@ ice_set_link_ksettings(struct net_device *netdev,
+>  	if (!bitmap_subset(copy_ks.link_modes.advertising,
+>  			   safe_ks.link_modes.supported,
+>  			   __ETHTOOL_LINK_MODE_MASK_NBITS)) {
+> -		if (!test_bit(ICE_FLAG_LINK_LENIENT_MODE_ENA, pf->flags))
+> +		if (!lenient_mode)
+>  			netdev_info(netdev, "The selected speed is not supported by the current media. Please select a link speed that is supported by the current media.\n");
+>  		err = -EOPNOTSUPP;
+>  		goto done;
+
+This isn't a bug introduced by this patch, but does taking this error path
+accidentally release another thread's lock?
+
+The ICE_CFG_BUSY flag is used as an ad-hoc lock later in this function:
+
+	while (test_and_set_bit(ICE_CFG_BUSY, pf->state)) {
+		timeout--;
+		if (!timeout) {
+			err = -EBUSY;
+			goto done;
+		}
+		usleep_range(TEST_SET_BITS_SLEEP_MIN, TEST_SET_BITS_SLEEP_MAX);
+	}
+
+If the bitmap_subset() check fails, or if the while loop times out, it jumps to
+the done label:
+
+done:
+	kfree(phy_caps);
+	clear_bit(ICE_CFG_BUSY, pf->state);
+
+Since the bitmap_subset() check happens before test_and_set_bit() has acquired
+the lock, wouldn't this unconditionally clear the ICE_CFG_BUSY flag even if
+another thread currently holds it? Could this synchronization be replaced with a
+standard lock to avoid these issues?
