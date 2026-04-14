@@ -2,112 +2,211 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aHgfI2ce3mk1ngkAu9opvQ
+	id sGCfDvYf3mkynwkAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 13:00:55 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 13:07:34 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 171983F90D9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 13:00:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8177F3F91F1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 13:07:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF43084C19;
-	Tue, 14 Apr 2026 11:00:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C495184C22;
+	Tue, 14 Apr 2026 11:07:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Xy4fqFpi-OcU; Tue, 14 Apr 2026 11:00:52 +0000 (UTC)
+ id eNafYQJo0yXt; Tue, 14 Apr 2026 11:07:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C37D184C1D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C8F8A84C4B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776164452;
-	bh=ZUuW6S8vq+qFO9JpVN9QFMuGPGZumM43B/zb/rVii/U=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1776164850;
+	bh=TWzrOyzDIS0scgHWhMf7gbFFlxVHfBbl3tWASC6mfRM=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=HsiTGsTGnoXVSyqC2vz4Wjwzi9i/vdEovpb7VJDzpbQUJoPC/Z1V8aPHwFCxwfKMq
-	 qnByRtgCR535yEgbIztC305FRWWiPSGd/L5Vk5zoRVe4hAM82sCAKuCXIS2H+btdV6
-	 7qf361abFeKek5/IEgox3466L0DcaAe/9y5jx5Z9uQcy/qZN8kJi6s41kJmfq+BG2d
-	 qGNbHP5ipzxmaaVcDqack3y5ZAq3Uk1ZBHj+ruxiHlOnNVnA33i5r5sSKyBhDv7zQT
-	 +ResSSQbaLWTc1ElXm8LWvKLnNiS4g492OdiRHLLUB9sFgZWf8GDqnywUw1wOA006F
-	 SU+9G/HiVQhpg==
+	b=Ai9EVHqSmSuW4Y2fpvo8Pa8svjGPA+3lvASyOGeY1hJCljk/2orijN+1u6E4CwiwR
+	 MBg6M48KkHQwxGhpdd8sYbtdqjgUj4fqDZGCpalORBoOogQiCnScM1Ppvm3HO1zLNm
+	 o17VBm5p/6Xj3+4mPpGlFLi97lmtfe2NNqTndiaWSM98iWOg2IUvwTyWxFCZTDfYnJ
+	 H/kWaYhHV7uMjZF1Mtvm2AHROfDpwsb2Nmg1A58/vYfU1U6vVfk7BlUZ7aBDUTjqj4
+	 E4cQtxtmsSD4wB/S8BudRDBjvtMDHqe+dOCW6Pwgbl/0kvh58M643C+YQFmgP4eeUb
+	 +frZ+2Gr+75gg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C37D184C1D;
-	Tue, 14 Apr 2026 11:00:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C8F8A84C4B;
+	Tue, 14 Apr 2026 11:07:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id BF085237
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:00:50 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4CCC7237
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:07:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A52E884C19
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:00:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3D9A1403B1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:07:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JInKWPZM3RNI for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2026 11:00:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=jtornosm@redhat.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6J0nDSIJefqX for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2026 11:07:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 74FDB84C14
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 74FDB84C14
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 74FDB84C14
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:00:49 +0000 (UTC)
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-278-j5qJb-hUPtepsz5YqfYV-A-1; Tue,
- 14 Apr 2026 07:00:46 -0400
-X-MC-Unique: j5qJb-hUPtepsz5YqfYV-A-1
-X-Mimecast-MFC-AGG-ID: j5qJb-hUPtepsz5YqfYV-A_1776164445
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6342118002F5; Tue, 14 Apr 2026 11:00:45 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.44.48.43])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 902B13000C1D; Tue, 14 Apr 2026 11:00:41 +0000 (UTC)
-From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com,
- Jose Ignacio Tornos Martinez <jtornosm@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Tue, 14 Apr 2026 13:00:06 +0200
-Message-ID: <20260414110006.124286-6-jtornosm@redhat.com>
-In-Reply-To: <20260414110006.124286-1-jtornosm@redhat.com>
-References: <20260414110006.124286-1-jtornosm@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 466CF400BA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 466CF400BA
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 466CF400BA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 11:07:28 +0000 (UTC)
+X-CSE-ConnectionGUID: fYTnAqcbTOaqlrHZW0LsqA==
+X-CSE-MsgGUID: NgFQhgY0QaqrjViiKakF7Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="102574913"
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="102574913"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2026 04:07:26 -0700
+X-CSE-ConnectionGUID: EZech1U6REC42dsIfecq5A==
+X-CSE-MsgGUID: XNt3zVagSAGH8dMysUTIwg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="230288649"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by orviesa007.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Apr 2026 04:07:27 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 14 Apr 2026 04:07:26 -0700
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Tue, 14 Apr 2026 04:07:26 -0700
+Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.68)
+ by edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 14 Apr 2026 04:07:25 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=CSpZzj1/jrX/iNwKbQzBYwbMziAqy6mzwUX4E0jXS2/OPKEaQ3Ib5GVDrFAXw8D0JaSMLg/V4rhLXqfUKMOwGblNj0ppNu7ExHo8j6qoBnWInnULnz5GEl1jKL9CDQlXyOlHCpAchnuJbebWgVAoTDGUt8E9asreU7kWYl9uCOvrzW3Poz6SUFlyjWfZGu+KUkSbM7fFnS5FeNa9FLqiSsLKdkfIPdWsaB8V/wQvDH+2oARi6+XsofNA1lYzdcNZcyhlhBWszqZecCP0zqzf+0Wdys5EpOhYzSyozsp05FR8dIttu6uN6UcEUKqa1sw/UD+NxJDr6lpL6TRz73qLvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TWzrOyzDIS0scgHWhMf7gbFFlxVHfBbl3tWASC6mfRM=;
+ b=cVLEQqlWl2AZ1kz8OqZxkQ7+B8lh7j6BhrengnWdZKZ0qPqiBd7iGj6Z6Ghu/Ky0mjiMkJ0gG8ZFA7oIjED4uInvHqlJSQTFI2pHkTBmL2KW2U36SkEbwaBVSVLK51H/6Nw6mWQtQYun7KHgo95p4vembMTLvyc9K92vM6wDAFQGIBm2qyY1xPs2n8LkIJ3/5PBfJnOfg2uq9SuFktMVCwY6oh0/JOwdF6E/3qhvzZC3I0bAp9E/+2T+RBRjArgugly4RQ/Kagr/fsZK0jnDryTFypKY8lSxRUX6czs2mC8q3XxnbSUCzRZk8VBo7htntWsdhOH+/ZSHusvCIs6KCw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by PH7PR11MB8123.namprd11.prod.outlook.com (2603:10b6:510:236::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.20; Tue, 14 Apr
+ 2026 11:07:22 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9745.012; Tue, 14 Apr 2026
+ 11:07:21 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: "Tantilov, Emil S" <emil.s.tantilov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, "Bhat, Jay" <jay.bhat@intel.com>, "Barrera,
+ Ivan D" <ivan.d.barrera@intel.com>, "Zaremba, Larysa"
+ <larysa.zaremba@intel.com>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, 
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
+ <davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>, 
+ "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "Chittim, Madhu"
+ <madhu.chittim@intel.com>, "decot@google.com" <decot@google.com>,
+ "willemb@google.com" <willemb@google.com>, "sheenamo@google.com"
+ <sheenamo@google.com>, "lukas@wunner.de" <lukas@wunner.de>
+Thread-Topic: [PATCH iwl-next v2 1/2] idpf: remove conditonal MBX deinit from
+ idpf_vc_core_deinit()
+Thread-Index: AQHcy70bXa0JJO4YuU2JyJc3EXRkm7XeZa6w
+Date: Tue, 14 Apr 2026 11:07:21 +0000
+Message-ID: <IA3PR11MB8986EDBC27D4267AA0F48BFBE5252@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20260414031631.2107-1-emil.s.tantilov@intel.com>
+ <20260414031631.2107-2-emil.s.tantilov@intel.com>
+In-Reply-To: <20260414031631.2107-2-emil.s.tantilov@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|PH7PR11MB8123:EE_
+x-ms-office365-filtering-correlation-id: ab021629-7cc2-4f8f-eebe-08de9a15ffdb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|1800799024|366016|18096099003|38070700021|22082099003|18002099003|56012099003;
+x-microsoft-antispam-message-info: ckAeQ1Z1RmieIoS/zslJl+vwmqHliP6/oEQ7ssjkqqJz71t/sIiQARcCrLX1dTIXWRiQrczDGKGKg9sDusVFP1JhBz5Cwye/73r7oc73nxEfVauI48ZCdinpVSAMmE3JfN9WEPhTghyEf0TXlckECCAoitahd3JyZFcghm2x2iTpN136WkZX6bVYKmAz5ARSoKCtPZQgXz65mZKMpVXlJPx9qwGmRb++tMDihy15jbuxi/Fu3YgJuVIb4tx3jrm72EuhNDx5BzCm6VCA7Qi8t9qVuPwstlBZ3ZIhPOlUgzg1Q43ZMrrl0AcaatwsT6wxe/qi09mIcNlcsL3djkK3t0N3LRcx4T02FhED2gk+u/sA7i/1jlMSyND2izelUW+EHMivXHMVXBgKH7Fc9ItoK+ENl0si6zNPcVm50J1l5s4G6UGSBybozHWS8l6gQktYfSOdVtf4H+M0ogrmOd1t/XwZP3LIGQvzWY8H23uJ9BvMAJe4wHvzyFt2XKLPZa4ztOr49hDxVPofiH+qqwtItMHq/5qsPlQ/LV433a9lQNTivclbzb0tD7frgqXFMHKOM0k7bfj6P73QNDP8qEJuDQzVn1fVuKjm8lu1KxluCkQ12TvPNsqCdY6xQ3jWoa7UAQ8MriJ4YewtS7DkHaI0lMUNaQMNHSLCkSNlolUPc0vU7LT291nRbXHzdOz8jBo4IO4MKehTJGNcpDxqm8sq9iDS0gDCsFLqhZqnld5hOCRglN0nZTiCkvKVbuTwMqtxmU+dwoflIfPZ14uhDEC00ZQaE/ajeRRZKangROrWk7M=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(1800799024)(366016)(18096099003)(38070700021)(22082099003)(18002099003)(56012099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?7HvG6M8AbIZE8JS1H7LXOA7LuXzFFYiseyMUGeEh8q7d3nR7fuYHiityG1aY?=
+ =?us-ascii?Q?dzKO/4Jg8EmcIc/EueFGL6m8fLUNBIxDOtvX9zOasIz9OyGUBbYKI+P1PlGH?=
+ =?us-ascii?Q?+f74wz7PmAb5NLBnUMx0yoUdtE0uxki/9cDuTiPSAq4BAbHVX4SZ0+Udpt/G?=
+ =?us-ascii?Q?51nx4UasO7eVvBieog2D1ic3hmSBFdvHXLArho+6B49dq/uqmMIz6nrHfD3O?=
+ =?us-ascii?Q?XCgFpzjrxIbTLcRBxOVmp2T6VX59K8N8/1eWxCHVtuWzlZyxHcJqjpX6yZWA?=
+ =?us-ascii?Q?8VaiXksSzPiUxW53amXgTpke5bj0aG4NZdR0PUsHi50M4yye6l7P+ddJzYLP?=
+ =?us-ascii?Q?GwK3JTzBxp/sn0xfqzu6h5BBm1X+8QU8gREUMgrIP2Jmdq5PDDGJMhsOHJ3T?=
+ =?us-ascii?Q?9/Zc/H1m98iToK9laF6oIMZ9M8DNND+lzCae7QuYxn+P34PkpQWWzoKcTY39?=
+ =?us-ascii?Q?I47MJxCvQvv4yPOWbz78RnGg5NsuIC5M2kz1LD8NOy7gClc567Lxn+MSSOzd?=
+ =?us-ascii?Q?YNXHVK2voWa8fP1gaOWhc8uqnpYrd6pokSUWItb4cu7mFx/wWAJCPaIiMRvc?=
+ =?us-ascii?Q?nIxRziGAw8DlMzx7PSjAApehkPBzCaUgVBxFceTSDbpQYsfUBUO8xZ+WGe3R?=
+ =?us-ascii?Q?cU9T/gBUXS54Gk/QeXZc0MFtt64RGe2EuD+ralg6aQ53GmzgSBDJHmmxXrur?=
+ =?us-ascii?Q?fBSKp8F8wppYJNTK1UxHLfvqToD1Sdcsgz7uiR/n5yudcvrel0J67xBpFwij?=
+ =?us-ascii?Q?FzU1BeObDgQsEm6Svv2ISUz6NT7RdYzbxUGctK9L7iAEEkKac9IJUI/g0uHy?=
+ =?us-ascii?Q?MPtgdZsUA3FPgDKPWYqjlUx1f9/F4v/ZVOA1usjviCXG5WRGb9lL74rg6MQP?=
+ =?us-ascii?Q?bsV3slSWiIMmDc8WzDp+hz2LjNbcGFBPV3YNAd+5wMWEgaa0Gi7PiwK8syHn?=
+ =?us-ascii?Q?pptdSjk514WAPHYb5SzbGyWeX36j62Cje3WD+m2uEPLxMN8tsjaNUClEp2cc?=
+ =?us-ascii?Q?XnInxkzwlWZlCcKALTJDXstvSfn5Y99vl7HfrtlVg4eLHAWOGm87bKfC77l7?=
+ =?us-ascii?Q?nYLiOWJUA+2fDsk7rbwGDD486u/OlBPtaNhsf9MPgeFFg7X2JP5+kirMYqyV?=
+ =?us-ascii?Q?rcKWoNcCTVU/qj3BY7X+d6EPSd1Gs0bDwFfvA5ZeGY2A+1hyeq17JykaIbT3?=
+ =?us-ascii?Q?4qmYzYMf65HZLRn1EX59vlUhVKBDhIO2XfA0gqAF98yP+Quw8R5jBiFJ3iTL?=
+ =?us-ascii?Q?nkgbXC2/sGxqcIa9iAu0wIf3giV8JEohAzDTgIcVp45501PikLVpUvoZWJNf?=
+ =?us-ascii?Q?s8dfafkmTBFro8UvfxA1KyNtsmY6LhrRSpp6Ny0RAjItlGuEbHyx1P8pcJWG?=
+ =?us-ascii?Q?3ltweJsq27/vhAARFNjeRXKPcXYnOMIUuOazDuiuc3/RnevDZXH9IXRGarlR?=
+ =?us-ascii?Q?9xwUXbPl7NZUakNkXp1kA/BMg9jabaoxqOk7c1O2oiyj4p4ackaTLkzR6xmN?=
+ =?us-ascii?Q?5SwsGAVkC1b9yyVJAE0BtY5pM6DsMZLyfRUX/8vVAb39Fq8RTlhyA6P+efeP?=
+ =?us-ascii?Q?XPp8R+jAgFwZqu0+0zx4//nD/wym4+EWANEyMBHXMdXI7Z7R1y+SNY3kpPvk?=
+ =?us-ascii?Q?ECXperSgFm4LaAbQ/nLUd36iX4NZyREAVTfTdKLuDwXmS20dO2cdhXICCJYC?=
+ =?us-ascii?Q?8zui/WPLlDqwafn1qAnqIWXSIcDP4cAR5SHAt6SOMiBfbxJczufU2aDLKijV?=
+ =?us-ascii?Q?TriNC19zZdV6DbLaRMdCM7EHnArxDjQ=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: MdF-DC5iS90-V84CeOiKMkRUKqUlUY0HWUnDUzSCXUQ_1776164445
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1776164448;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZUuW6S8vq+qFO9JpVN9QFMuGPGZumM43B/zb/rVii/U=;
- b=NyIO+A6ITXlhaWmGMM1D2WUoBaLr1+UEWpHs09DY0hEUREskWlJtRmESKtle0KTW31oJoe
- +VR3/vDEcM7D0CSLln1YZkdia3PKRVOlE/hnCOVNkCTw0/M38xrqEDhoNpasXC1jhJUxEQ
- nGD5GEy50OTC4JnHzcJIB2LgPsLfSXE=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=NyIO+A6I
-Subject: [Intel-wired-lan] [PATCH net v3 5/5] iavf: refactor virtchnl
- polling into single function
+X-Exchange-RoutingPolicyChecked: AwEkDEEfcIvS5a2vLYYLkdEXM53tw3AYFo1RHC40jdnq/LEPvf5Y6PQib9vhuFuA+t4B+grLoMUKOy4kDc7qBRoMw82D7wrKLoMBDX/BGzL342LFSkE83eStaZJzGThGyGjT8FtH0LlHz2kAnqoEP1S8lRC3thnip4dyOKHKtgXS8n3SsYmjeydCjtM0xw74bh+uIZNA3u/jyj1bt6atGJeIkxZAJVdibeJXE1akXLfneSEiy+FadHcDra/H46xAWjIPiXnnOThTf3L5ri7m10he/ko/ep7Hrlb4zdseo7/jAZ/RF3vK1fsVCq9hDJErdySdiBn9K7GV9/kxJ05pWw==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ab021629-7cc2-4f8f-eebe-08de9a15ffdb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Apr 2026 11:07:21.0525 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: QMRukR7tKm1HwB8cEkjq6+EXi8mZTZ17xAHoOGFwMRXQSf2nx8g6M1dJJ0QT9VJAGWSFR6QOuVcq25rssbSF1FQlUfYqHGiZjl6xcujxTs4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8123
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1776164847; x=1807700847;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=+BTUZSZUhpIF55hrnc+qbcybJA69vYa984V8tL5c5js=;
+ b=oF2vU3ZZWCiOMO4e34woL9r+3xp2W7ek9y9Z0lfi+oCCDPqcUO4AobNe
+ vtQpAHKk46j1Y+lIy+JhxjzpuAXGfPs9dKMvrn3hg8mJsiMzwvIwcbv4p
+ YM1eMtmxj+2sAcBo4VeHoXKWfgwqTVLj7yDy5uvZ+Z+h0KC68EyLehmkA
+ O0+bT7+jXr+51k8WdHq5evZZIMFSWixJbm98OaQ0j8puMtb2ZJItPqLvI
+ QQzws26IFjIL7O17symOALZMdmD9KM6FMPxmK4r2iQB1f4mWvt8G5aZtE
+ modRH1tBIXrynK5XAKwfroLGfILrQay4UldSSwwYa8SqJEVw02syF7UTe
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=oF2vU3ZZ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 1/2] idpf: remove
+ conditonal MBX deinit from idpf_vc_core_deinit()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,439 +221,115 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.69 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
+X-Spamd-Result: default: False [1.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[text/plain];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[20];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jtornosm@redhat.com,m:przemyslaw.kitszel@intel.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:emil.s.tantilov@intel.com,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:jay.bhat@intel.com,m:ivan.d.barrera@intel.com,m:larysa.zaremba@intel.com,m:anthony.l.nguyen@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksander.lobakin@intel.com,m:linux-pci@vger.kernel.org,m:madhu.chittim@intel.com,m:decot@google.com,m:willemb@google.com,m:sheenamo@google.com,m:lukas@wunner.de,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim,intel.com:email];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.999];
-	RCPT_COUNT_SEVEN(0.00)[10];
-	MISSING_XM_UA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	NEURAL_HAM(-0.00)[-0.995];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 171983F90D9
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns]
+X-Rspamd-Queue-Id: 8177F3F91F1
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-At this moment, the driver has two separate functions for polling virtchnl
-messages from the admin queue:
-- iavf_poll_virtchnl_msg() for init-time (no timeout, no completion
-  handler)
-- iavf_poll_virtchnl_response() for runtime (with timeout, calls
-  completion)
 
-Refactor by enhancing iavf_poll_virtchnl_msg() to handle both use cases:
-1. Init-time mode (timeout_ms=0):
-  - Polls until matching opcode found or queue empty
-  - Returns raw message data without processing through completion handler
-  - Exits immediately on empty queue (no sleep/retry)
-2. Runtime mode (timeout_ms>0):
-  - Polls with timeout using condition callback or opcode check
-  - Processes all messages through iavf_virtchnl_completion()
-  - Supports custom completion callback (takes priority) or falls back
-    to checking adapter->current_op against expected opcode
-  - Uses pending parameter to skip sleep when more messages queued
-  - Uses 50-75 usec sleep (due to commit 9e3f23f44f32 ("i40e: reduce wait
-    time for adminq command completion"))
 
-By unifying message handling, both init-time and runtime messages can be
-processed through the completion handler when appropriate, ensuring
-consistent state updates and maintaining backward compatibility with all
-existing call sites.
+> -----Original Message-----
+> From: Tantilov, Emil S <emil.s.tantilov@intel.com>
+> Sent: Tuesday, April 14, 2026 5:17 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Bhat, Jay <jay.bhat@intel.com>;
+> Barrera, Ivan D <ivan.d.barrera@intel.com>; Loktionov, Aleksandr
+> <aleksandr.loktionov@intel.com>; Zaremba, Larysa
+> <larysa.zaremba@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; andrew+netdev@lunn.ch;
+> davem@davemloft.net; edumazet@google.com; kuba@kernel.org;
+> pabeni@redhat.com; Lobakin, Aleksander <aleksander.lobakin@intel.com>;
+> linux-pci@vger.kernel.org; Chittim, Madhu <madhu.chittim@intel.com>;
+> decot@google.com; willemb@google.com; sheenamo@google.com;
+> lukas@wunner.de
+> Subject: [PATCH iwl-next v2 1/2] idpf: remove conditonal MBX deinit
+> from idpf_vc_core_deinit()
+"conditional" -> "conditional"
 
-Suggested-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |   9 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  13 +-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 247 ++++++++----------
- 3 files changed, 125 insertions(+), 144 deletions(-)
+Everything else looks fine
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index b012a91b0252..9b25c5a65d2a 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -607,11 +607,10 @@ void iavf_disable_vlan_stripping(struct iavf_adapter *adapter);
- void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			      enum virtchnl_ops v_opcode,
- 			      enum iavf_status v_retval, u8 *msg, u16 msglen);
--int iavf_poll_virtchnl_response(struct iavf_adapter *adapter,
--				bool (*condition)(struct iavf_adapter *, const void *),
--				const void *cond_data,
--				enum virtchnl_ops v_opcode,
--				unsigned int timeout_ms);
-+int iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
-+			   enum virtchnl_ops op_to_poll, unsigned int timeout_ms,
-+			   bool (*condition)(struct iavf_adapter *, const void *),
-+			   const void *cond_data);
- int iavf_config_rss(struct iavf_adapter *adapter);
- void iavf_cfg_queues_bw(struct iavf_adapter *adapter);
- void iavf_cfg_queues_quanta_size(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 80277d495a8d..b0db15fd8ddb 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1075,6 +1075,7 @@ static bool iavf_mac_change_done(struct iavf_adapter *adapter, const void *data)
-  */
- static int iavf_set_mac_sync(struct iavf_adapter *adapter, const u8 *addr)
- {
-+	struct iavf_arq_event_info event;
- 	int ret;
- 
- 	netdev_assert_locked(adapter->netdev);
-@@ -1083,8 +1084,16 @@ static int iavf_set_mac_sync(struct iavf_adapter *adapter, const u8 *addr)
- 	if (ret)
- 		return ret;
- 
--	return iavf_poll_virtchnl_response(adapter, iavf_mac_change_done, addr,
--					   VIRTCHNL_OP_UNKNOWN, 2500);
-+	event.buf_len = IAVF_MAX_AQ_BUF_SIZE;
-+	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
-+	if (!event.msg_buf)
-+		return -ENOMEM;
-+
-+	ret = iavf_poll_virtchnl_msg(&adapter->hw, &event, VIRTCHNL_OP_UNKNOWN,
-+				     2500, iavf_mac_change_done, addr);
-+
-+	kfree(event.msg_buf);
-+	return ret;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index df124f840ddb..ef9a251060d9 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -54,55 +54,121 @@ int iavf_send_api_ver(struct iavf_adapter *adapter)
- }
- 
- /**
-- * iavf_poll_virtchnl_msg
-+ * iavf_virtchnl_completion_done - Check if virtchnl operation completed
-+ * @adapter: adapter structure
-+ * @condition: optional callback for custom completion check
-+ * @cond_data: context data for callback
-+ * @op_to_poll: opcode to check against current_op (if no callback)
-+ *
-+ * Checks if operation is complete. Callback takes priority if provided,
-+ * otherwise checks if current_op matches op_to_poll.
-+ *
-+ * Return: true if operation completed
-+ */
-+static inline bool
-+iavf_virtchnl_completion_done(struct iavf_adapter *adapter,
-+			      bool (*condition)(struct iavf_adapter *, const void *),
-+			      const void *cond_data,
-+			      enum virtchnl_ops op_to_poll)
-+{
-+	if (condition)
-+		return condition(adapter, cond_data);
-+
-+	return adapter->current_op == op_to_poll;
-+}
-+
-+/**
-+ * iavf_poll_virtchnl_msg - Poll admin queue for virtchnl message
-  * @hw: HW configuration structure
-  * @event: event to populate on success
-- * @op_to_poll: requested virtchnl op to poll for
-+ * @op_to_poll: virtchnl opcode to poll for (used for init-time and runtime
-+ *              without callback)
-+ * @timeout_ms: timeout in milliseconds (0 = no timeout, exit on empty queue)
-+ * @condition: optional callback to check custom completion (runtime use,
-+ *             takes priority over op_to_poll check)
-+ * @cond_data: context data for condition callback
-+ *
-+ * Enhanced polling function that handles both init-time and runtime use cases:
-+ * - Init-time: Set op_to_poll, timeout_ms=0, condition=NULL
-+ *   Polls until matching opcode found or queue empty
-+ * - Runtime with callback: Set timeout_ms>0, condition callback, cond_data
-+ *   Polls with timeout until condition returns true (op_to_poll not used)
-+ * - Runtime without callback: Set op_to_poll, timeout_ms>0, condition=NULL
-+ *   Polls with timeout until adapter->current_op == op_to_poll
-+ *
-+ * Runtime messages are processed through iavf_virtchnl_completion().
-+ * For init-time use, returns 0 with raw message data in event buffer.
-+ * For runtime use, returns 0 when completion condition is met.
-  *
-- * Initialize poll for virtchnl msg matching the requested_op. Returns 0
-- * if a message of the correct opcode is in the queue or an error code
-- * if no message matching the op code is waiting and other failures.
-+ * Return: 0 on success, -EAGAIN on timeout, or error code
-  */
--static int
--iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
--		       enum virtchnl_ops op_to_poll)
-+int iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
-+			   enum virtchnl_ops op_to_poll, unsigned int timeout_ms,
-+			   bool (*condition)(struct iavf_adapter *, const void *),
-+			   const void *cond_data)
- {
-+	struct iavf_adapter *adapter = hw->back;
-+	unsigned long timeout = timeout_ms ? jiffies + msecs_to_jiffies(timeout_ms) : 0;
- 	enum virtchnl_ops received_op;
- 	enum iavf_status status;
--	u32 v_retval;
-+	u32 v_retval = 0;
-+	u16 pending;
- 
--	while (1) {
--		/* When the AQ is empty, iavf_clean_arq_element will return
--		 * nonzero and this loop will terminate.
--		 */
--		status = iavf_clean_arq_element(hw, event, NULL);
--		if (status != IAVF_SUCCESS)
--			return iavf_status_to_errno(status);
--		received_op =
--		    (enum virtchnl_ops)le32_to_cpu(event->desc.cookie_high);
-+	do {
-+		if (timeout_ms && iavf_virtchnl_completion_done(adapter, condition,
-+								cond_data, op_to_poll))
-+			return 0;
- 
--		if (received_op == VIRTCHNL_OP_EVENT) {
--			struct iavf_adapter *adapter = hw->back;
--			struct virtchnl_pf_event *vpe =
--				(struct virtchnl_pf_event *)event->msg_buf;
-+		status = iavf_clean_arq_element(hw, event, &pending);
-+		if (status == IAVF_SUCCESS) {
-+			received_op = (enum virtchnl_ops)le32_to_cpu(event->desc.cookie_high);
- 
--			if (vpe->event != VIRTCHNL_EVENT_RESET_IMPENDING)
--				continue;
-+			/* Handle reset events specially */
-+			if (received_op == VIRTCHNL_OP_EVENT) {
-+				struct virtchnl_pf_event *vpe =
-+					(struct virtchnl_pf_event *)event->msg_buf;
- 
--			dev_info(&adapter->pdev->dev, "Reset indication received from the PF\n");
--			if (!(adapter->flags & IAVF_FLAG_RESET_PENDING))
--				iavf_schedule_reset(adapter,
--						    IAVF_FLAG_RESET_PENDING);
-+				if (vpe->event != VIRTCHNL_EVENT_RESET_IMPENDING)
-+					continue;
-+
-+				dev_info(&adapter->pdev->dev,
-+					 "Reset indication received from the PF\n");
-+				if (!(adapter->flags & IAVF_FLAG_RESET_PENDING))
-+					iavf_schedule_reset(adapter,
-+							    IAVF_FLAG_RESET_PENDING);
-+
-+				return -EIO;
-+			}
-+
-+			v_retval = le32_to_cpu(event->desc.cookie_low);
-+
-+			if (!timeout_ms) {
-+				if (received_op == op_to_poll)
-+					return virtchnl_status_to_errno((enum virtchnl_status_code)
-+							v_retval);
-+			} else {
-+				iavf_virtchnl_completion(adapter, received_op,
-+							 (enum iavf_status)v_retval,
-+							 event->msg_buf, event->msg_len);
-+			}
-+
-+			if (pending)
-+				continue;
-+		} else if (!timeout_ms) {
-+			return iavf_status_to_errno(status);
-+		}
- 
--			return -EIO;
-+		if (timeout_ms) {
-+			memset(event->msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
-+			usleep_range(50, 75);
- 		}
- 
--		if (op_to_poll == received_op)
--			break;
--	}
-+	} while (!timeout_ms || time_before(jiffies, timeout));
-+
-+	if (iavf_virtchnl_completion_done(adapter, condition, cond_data, op_to_poll))
-+		return 0;
- 
--	v_retval = le32_to_cpu(event->desc.cookie_low);
--	return virtchnl_status_to_errno((enum virtchnl_status_code)v_retval);
-+	return -EAGAIN;
- }
- 
- /**
-@@ -124,7 +190,8 @@ int iavf_verify_api_ver(struct iavf_adapter *adapter)
- 	if (!event.msg_buf)
- 		return -ENOMEM;
- 
--	err = iavf_poll_virtchnl_msg(&adapter->hw, &event, VIRTCHNL_OP_VERSION);
-+	err = iavf_poll_virtchnl_msg(&adapter->hw, &event, VIRTCHNL_OP_VERSION,
-+				     0, NULL, NULL);
- 	if (!err) {
- 		struct virtchnl_version_info *pf_vvi =
- 			(struct virtchnl_version_info *)event.msg_buf;
-@@ -294,7 +361,8 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
- 	if (!event.msg_buf)
- 		return -ENOMEM;
- 
--	err = iavf_poll_virtchnl_msg(hw, &event, VIRTCHNL_OP_GET_VF_RESOURCES);
-+	err = iavf_poll_virtchnl_msg(hw, &event, VIRTCHNL_OP_GET_VF_RESOURCES,
-+				     0, NULL, NULL);
- 	memcpy(adapter->vf_res, event.msg_buf, min(event.msg_len, len));
- 
- 	/* some PFs send more queues than we should have so validate that
-@@ -322,7 +390,8 @@ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
- 		return -ENOMEM;
- 
- 	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
--				     VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS);
-+				     VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
-+				     0, NULL, NULL);
- 	if (!err)
- 		memcpy(&adapter->vlan_v2_caps, event.msg_buf,
- 		       min(event.msg_len, len));
-@@ -342,7 +411,8 @@ int iavf_get_vf_supported_rxdids(struct iavf_adapter *adapter)
- 	event.buf_len = sizeof(rxdids);
- 
- 	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
--				     VIRTCHNL_OP_GET_SUPPORTED_RXDIDS);
-+				     VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
-+				     0, NULL, NULL);
- 	if (!err)
- 		adapter->supp_rxdids = rxdids;
- 
-@@ -359,7 +429,8 @@ int iavf_get_vf_ptp_caps(struct iavf_adapter *adapter)
- 	event.buf_len = sizeof(caps);
- 
- 	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
--				     VIRTCHNL_OP_1588_PTP_GET_CAPS);
-+				     VIRTCHNL_OP_1588_PTP_GET_CAPS,
-+				     0, NULL, NULL);
- 	if (!err)
- 		adapter->ptp.hw_caps = caps;
- 
-@@ -2961,101 +3032,3 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
- }
- 
--/**
-- * iavf_virtchnl_done - Check if virtchnl operation completed
-- * @adapter: board private structure
-- * @condition: optional callback for custom completion check
-- *   (takes priority)
-- * @cond_data: context data for callback
-- * @v_opcode: virtchnl opcode value we're waiting for if no condition
-- *   configured (typically VIRTCHNL_OP_UNKNOWN), if condition not used
-- *
-- * Checks completion status. Callback takes priority if provided. Otherwise
-- * waits for current_op to reach v_opcode (typically VIRTCHNL_OP_UNKNOWN
-- * after completion).
-- *
-- * Return: true if operation completed
-- */
--static inline bool iavf_virtchnl_done(struct iavf_adapter *adapter,
--				      bool (*condition)(struct iavf_adapter *, const void *),
--				      const void *cond_data,
--				      enum virtchnl_ops v_opcode)
--{
--	if (condition)
--		return condition(adapter, cond_data);
--
--	return adapter->current_op == v_opcode;
--}
--
--/**
-- * iavf_poll_virtchnl_response - Poll admin queue for virtchnl response
-- * @adapter: board private structure
-- * @condition: optional callback to check if desired response received
-- *   (takes priority)
-- * @cond_data: context data passed to condition callback
-- * @v_opcode: virtchnl opcode value to wait for if no condition configured
-- *   (typically VIRTCHNL_OP_UNKNOWN), if condition, not used
-- * @timeout_ms: maximum time to wait in milliseconds
-- *
-- * Polls admin queue and processes all messages until condition returns true
-- * or timeout expires. If condition is NULL, waits for current_op to become
-- * v_opcode (typically VIRTCHNL_OP_UNKNOWN after operation completes).
-- * Caller must hold netdev_lock. This can sleep for up to timeout_ms while
-- * polling hardware.
-- *
-- * Return: 0 on success (condition met), -EAGAIN on timeout or error
-- */
--int iavf_poll_virtchnl_response(struct iavf_adapter *adapter,
--				bool (*condition)(struct iavf_adapter *, const void *),
--				const void *cond_data,
--				enum virtchnl_ops v_opcode,
--				unsigned int timeout_ms)
--{
--	struct iavf_hw *hw = &adapter->hw;
--	struct iavf_arq_event_info event;
--	enum virtchnl_ops v_op;
--	enum iavf_status v_ret;
--	unsigned long timeout;
--	u16 pending;
--	int ret;
--
--	netdev_assert_locked(adapter->netdev);
--
--	event.buf_len = IAVF_MAX_AQ_BUF_SIZE;
--	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
--	if (!event.msg_buf)
--		return -ENOMEM;
--
--	timeout = jiffies + msecs_to_jiffies(timeout_ms);
--	do {
--		if (iavf_virtchnl_done(adapter, condition, cond_data, v_opcode)) {
--			ret = 0;
--			goto out;
--		}
--
--		ret = iavf_clean_arq_element(hw, &event, &pending);
--		if (!ret) {
--			v_op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
--			v_ret = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
--
--			iavf_virtchnl_completion(adapter, v_op, v_ret,
--						 event.msg_buf, event.msg_len);
--
--			memset(event.msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
--
--			if (pending)
--				continue;
--		}
--
--		usleep_range(50, 75);
--	} while (time_before(jiffies, timeout));
--
--	if (iavf_virtchnl_done(adapter, condition, cond_data, v_opcode))
--		ret = 0;
--	else
--		ret = -EAGAIN;
--
--out:
--	kfree(event.msg_buf);
--	return ret;
--}
--- 
-2.53.0
+>=20
+> Previously it was assumed that idpf_vc_core_deinit() is always being
+> called during reset handling, with remove being an exception. Ideally
+> the driver needs to communicate the changes to FW in all instances
+> where the MBX is not already disabled. Remove the remove_in_prog check
+> from
+> idpf_vc_core_deinit() as the MBX was already disabled while handling
+> the reset via libie_ctlq_xn_shutdown() by the service task. This is
+> also needed by the following patch, introducing PCI callbacks support.
+>=20
+> Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
+> Reviewed-by: Jay Bhat <jay.bhat@intel.com>
+> Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+> ---
+>  drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 11 +----------
+>  1 file changed, 1 insertion(+), 10 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> index 129c8f6b0faa..fceaf3ec1cd4 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> @@ -3229,24 +3229,15 @@ int idpf_vc_core_init(struct idpf_adapter
+> *adapter)
+>   */
+>  void idpf_vc_core_deinit(struct idpf_adapter *adapter)  {
+> -	bool remove_in_prog;
+> -
+>  	if (!test_bit(IDPF_VC_CORE_INIT, adapter->flags))
+>  		return;
+>=20
+> -	/* Avoid transaction timeouts when called during reset */
+> -	remove_in_prog =3D test_bit(IDPF_REMOVE_IN_PROG, adapter->flags);
+> -	if (!remove_in_prog)
+> -		idpf_deinit_dflt_mbx(adapter);
+> -
+>  	idpf_ptp_release(adapter);
+>  	idpf_deinit_task(adapter);
+>  	idpf_idc_deinit_core_aux_device(adapter);
+>  	idpf_rel_rx_pt_lkup(adapter);
+>  	idpf_intr_rel(adapter);
+> -
+> -	if (remove_in_prog)
+> -		idpf_deinit_dflt_mbx(adapter);
+> +	idpf_deinit_dflt_mbx(adapter);
+>=20
+>  	cancel_delayed_work_sync(&adapter->serv_task);
+>=20
+> --
+> 2.37.3
 
