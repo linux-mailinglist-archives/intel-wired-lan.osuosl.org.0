@@ -2,107 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oBATI5Gx3WmLhwkAu9opvQ
+	id cANUOAvk3WnDkwkAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 05:16:33 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 08:51:55 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D02093F5350
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 05:16:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 71B3984A4D;
-	Tue, 14 Apr 2026 03:16:31 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 97xPHvfWiVPU; Tue, 14 Apr 2026 03:16:30 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B06FD84A4E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776136590;
-	bh=UBBfl4H/GrZPEzpy1Xwz25cPl+Pbc/PtQwaBDuVpV3g=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=yqbmfue17zl6GMTRT7gvFjT9qmwbM051iiwGRfDzNjiMIQjIua//lzSPDzlI64hbc
-	 k5Vuh6wAG7cBMRaiNDKdAVA6AOhgK4e/JdwLDy1HuWlc5uKtvBmjKc+6XCOeOUGr5G
-	 rjts67iwaOn/3j3Avw2LS2+UuNQNEN6uElP0Ivyv1rl8qtwjP08wLDmxG/ktHeAkZd
-	 XBDEEV9dfwH8qMkC36EAS3gkTZjjYGDAqllrDjH7KQSptnTv4ZqojbgrR4r5ieEY98
-	 fC2w0TRlDiSI4WMU3nk/lv7to239NQsBt5zMgRjuiwD5eJEjhyRvxf7ia+1JxM80td
-	 qttCyOfD5oPlw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B06FD84A4E;
-	Tue, 14 Apr 2026 03:16:30 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id F1ABF375
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 03:16:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1E3D3F6453
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 08:51:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D8336428BD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 03:16:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0D9B9429AD;
+	Tue, 14 Apr 2026 06:51:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zkNCyR7gPIG3 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2026 03:16:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+ id f2-WI_dqI0YV; Tue, 14 Apr 2026 06:51:52 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CC23429B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1776149512;
+	bh=UARQj8SxdTxUrsYo7FJoyB6wUKernTP+wSB5F8i2tA8=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=1k2i6/Af0c6i1Imbd0WCLXawMgrz62EQie+XAyzCuhGANzMACMOpkaBNsAKWPUSMa
+	 btuH5+Mz3lw86FLEaSVjIQfyo9q6DHPQai/qA0bIo2fXXi1Twfcr1AIT50ASW+lM78
+	 s0J7xtwKJWn3lu33xL1ExUdl7j0Ryr3Ol3AfYmLACnQ56BNwUAzHJ9CCcJPYiEpGgO
+	 nwlrIqRqsMFTUfspndfpOZ0FjU9PnKyYnJkWp8rkL2YhDCLPNQ1e/AYQibnff785LA
+	 sRnfbPQdDnwLB68xBUd3zmJhjZ/qsgwqMZODNYTZPPyxhNl8/KCftjkkjx4QCA21kw
+	 YibIDQ3mlpFnQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6CC23429B0;
+	Tue, 14 Apr 2026 06:51:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 66914237
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 06:51:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5808861CA0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 06:51:51 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 69GxuGEc4K3T for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2026 06:51:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=dima.ruinskiy@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 79755428BA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 79755428BA
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 79755428BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 03:16:26 +0000 (UTC)
-X-CSE-ConnectionGUID: x8/jj2jXQWG9AkiJy5PDmw==
-X-CSE-MsgGUID: OZ8i6eWqRciEMDamCZ9vFw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="87706583"
-X-IronPort-AV: E=Sophos;i="6.23,178,1770624000"; d="scan'208";a="87706583"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Apr 2026 20:16:26 -0700
-X-CSE-ConnectionGUID: DUNMgJhcTS+4CscNgjf+Aw==
-X-CSE-MsgGUID: 2dSd10edQ4Kgrb3jhu+rKw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3436E61C9F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3436E61C9F
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3436E61C9F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 06:51:49 +0000 (UTC)
+X-CSE-ConnectionGUID: EMjknfRWRC+4oB0DGVjJjg==
+X-CSE-MsgGUID: 6jJ44k1KT1q9uStr7jHNhw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="102553953"
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="102553953"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Apr 2026 23:51:49 -0700
+X-CSE-ConnectionGUID: IjgjwI+0RxmZ8P0dlKVgQg==
+X-CSE-MsgGUID: MaVvLnj5QJamLfvUc6s3LQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,178,1770624000"; d="scan'208";a="226795517"
-Received: from estantil-desk.jf.intel.com ([10.166.241.24])
- by fmviesa007.fm.intel.com with ESMTP; 13 Apr 2026 20:16:25 -0700
-From: Emil Tantilov <emil.s.tantilov@intel.com>
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="234040803"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.70])
+ by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Apr 2026 23:51:47 -0700
+From: Dima Ruinskiy <dima.ruinskiy@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com, jay.bhat@intel.com,
- ivan.d.barrera@intel.com, aleksandr.loktionov@intel.com,
- larysa.zaremba@intel.com, anthony.l.nguyen@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, aleksander.lobakin@intel.com,
- linux-pci@vger.kernel.org, madhu.chittim@intel.com, decot@google.com,
- willemb@google.com, sheenamo@google.com, lukas@wunner.de
-Date: Mon, 13 Apr 2026 20:16:31 -0700
-Message-Id: <20260414031631.2107-3-emil.s.tantilov@intel.com>
-X-Mailer: git-send-email 2.17.2
-In-Reply-To: <20260414031631.2107-1-emil.s.tantilov@intel.com>
-References: <20260414031631.2107-1-emil.s.tantilov@intel.com>
+Cc: dima.ruinskiy@intel.com, jacob.e.keller@intel.com,
+ anthony.l.nguyen@intel.com
+Date: Tue, 14 Apr 2026 09:51:44 +0300
+Message-Id: <20260414065144.2990497-1-dima.ruinskiy@intel.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1776136586; x=1807672586;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references;
- bh=8ikZyGWBrYDUmbI9iD2F/pftTxEbB0IwHGrbW3M86xc=;
- b=GWVhopSUiFPWEMQ0Jxd2tTN4KmX/rMNPiMHd6x5GPPsEHFKc4r9eumMQ
- IbA17XcEiy96AYEfrwb2Ox42kpCC/Gtn07VDw9wyVeAZ/woiyutWKM9Lh
- HcsM6X+uK2/Bin3fhmJtPD921Zji2UBUMA+q242xf4IeGh+4EYu6Op8fq
- jyMFhawtpIzuw93xAwCOXCyCnnWlQIWEEeGW9m860tC7H2Ou5r0TVeieZ
- PWyVGWzDCDX/BJi8cqcUUk/UE2gJp6gHkZfQeU5tWfjkuBezsaJyqry2m
- i7Sr7EEVjH6LqcQmx712USICIklIt9jMoW9RJSblwpFSOy1TpT6yEixgM
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1776149510; x=1807685510;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=TnEDCLRxVWsnakpIIu7X5NOzqPaFmGhI5HZx2OB7W0c=;
+ b=iNbWbp59mZ7Cvqt3KXDNtPkHjZCKdkvgHzs2OftiTijwZ1L6LWR/0ZRf
+ kqWuTUhdVSElLcx6HtaKf9ynLpzNeBg2OCAjvIGtgnGqVhY6AZlNyrRgp
+ jaLjNRTnLiXGX0P0F5VwgrWnrngdXUJDo4SNb7mjnA0N6jaP61wqJUejc
+ vozrdOJQceQzHbDzWdez/5nJwMLQMbDaMpIQ/VYtChV71EGHG5yH6cpt9
+ bWSap4lhANHzKXhWTb/+27uVetdXIRUvJmVdyP5iYpXna+YLO4PolRvLf
+ dvwRIo+raBl4714TZ3chBCwd7caRzW7mbOJwrqHfH5G5puGxDNGKPFj3a
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GWVhopSU
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/2] idpf: implement pci error
- handlers
+ header.s=Intel header.b=iNbWbp59
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] e1000e: correct TIMINCA on
+ ADP/TGP systems with wrong XTAL frequency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,283 +112,166 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
+X-Spamd-Result: default: False [0.89 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
+	RCPT_COUNT_THREE(0.00)[4];
 	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[20];
-	MIME_TRACE(0.00)[0:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[dima.ruinskiy@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.992];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	NEURAL_HAM(-0.00)[-0.996];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D02093F5350
+X-Rspamd-Queue-Id: A1E3D3F6453
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Add callbacks to handle PCI errors and FLR reset. When preparing to handle
-reset on the bus, the driver must stop all operations that can lead to MMIO
-access in order to prevent HW errors. To accomplish this introduce helper
-idpf_reset_prepare() that gets called prior to FLR or when PCI error is
-detected. Upon resume the recovery is done through the existing reset path
-by starting the event task.
+From: Vitaly Lifshits <vitaly.lifshits@intel.com>
 
-The following callbacks are implemented:
-.reset_prepare runs the first portion of the generic reset path leading up
-to the part where we wait for the reset to complete.
-.reset_done/resume runs the recovery part of the reset handling.
-.error_detected is the callback dealing with PCI errors, similar to the
-prepare call, we stop all operations, prior to attempting a recovery.
-.slot_reset is the callback attempting to restore the device, provided a
-PCI reset was initiated by the AER driver.
+On some Tiger Lake (TGP) and Alder Lake (ADP) platforms, the hardware
+XTAL clock is incorrectly interpreted as 24 MHz instead of the actual
+38.4 MHz. This causes the PHC to run significantly faster than system
+time, breaking PTP synchronization.
 
-Whereas previously the init logic guaranteed netdevs during reset, the
-addition of idpf_detach_and_close() to the PCI callbacks flow makes it
-possible for the function to be called without netdevs. Add check to
-avoid NULL pointer dereference in that case.
+To mitigate this at runtime, measure PHC vs system time over ~1 ms using
+cross-timestamps. If the PHC increment differs from system time beyond
+the expected tolerance (currently >100 uSecs), reprogram TIMINCA for the
+38.4 MHz profile and reinitialize the timecounter.
 
-Co-developed-by: Alan Brady <alan.brady@intel.com>
-Signed-off-by: Alan Brady <alan.brady@intel.com>
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Reviewed-by: Jay Bhat <jay.bhat@intel.com>
-Reviewed-by: Madhu Chittim <madhu.chittim@intel.com>
+Tested on an affected system using phc_ctl:
+Without fix:
+sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+clock time: 16.000541250 (expected ~10s)
+
+With fix:
+sudo phc_ctl enp0s31f6 set 0.0 wait 10 get
+clock time: 9.984407212 (expected ~10s)
+
+Fixes: fb776f5d57ee ("e1000e: Add support for Tiger Lake")
+Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Co-developed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+Signed-off-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf.h      |   3 +
- drivers/net/ethernet/intel/idpf/idpf_lib.c  |  13 ++-
- drivers/net/ethernet/intel/idpf/idpf_main.c | 112 ++++++++++++++++++++
- 3 files changed, 126 insertions(+), 2 deletions(-)
+v4: replace ktime_to_ns(ktime_get_real()) with ktime_get_real_ns()
+v3: fix cc.shift and wrap TIMINCA write in systim_lock
+v2: avoid resetting the systim and rephrase commit message
+v1: initial version
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 78 ++++++++++++++++++++++
+ 1 file changed, 78 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index 1d0e32e47e87..164d2f3e233a 100644
---- a/drivers/net/ethernet/intel/idpf/idpf.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -88,6 +88,7 @@ enum idpf_state {
-  * @IDPF_REMOVE_IN_PROG: Driver remove in progress
-  * @IDPF_MB_INTR_MODE: Mailbox in interrupt mode
-  * @IDPF_VC_CORE_INIT: virtchnl core has been init
-+ * @IDPF_PCI_CB_RESET: Reset via the PCI callbacks
-  * @IDPF_FLAGS_NBITS: Must be last
-  */
- enum idpf_flags {
-@@ -97,6 +98,7 @@ enum idpf_flags {
- 	IDPF_REMOVE_IN_PROG,
- 	IDPF_MB_INTR_MODE,
- 	IDPF_VC_CORE_INIT,
-+	IDPF_PCI_CB_RESET,
- 	IDPF_FLAGS_NBITS,
- };
- 
-@@ -1012,4 +1014,5 @@ void idpf_idc_vdev_mtu_event(struct iidc_rdma_vport_dev_info *vdev_info,
- int idpf_add_del_fsteer_filters(struct idpf_adapter *adapter,
- 				struct virtchnl2_flow_rule_add_del *rule,
- 				enum virtchnl2_op opcode);
-+void idpf_detach_and_close(struct idpf_adapter *adapter);
- #endif /* !_IDPF_H_ */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index 7988836fbae0..1e706beb0098 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -758,13 +758,16 @@ static int idpf_init_mac_addr(struct idpf_vport *vport,
- 	return 0;
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 9befdacd6730..26fdef6075c8 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3902,6 +3902,81 @@ static void e1000_flush_desc_rings(struct e1000_adapter *adapter)
+ 		e1000_flush_rx_ring(adapter);
  }
  
--static void idpf_detach_and_close(struct idpf_adapter *adapter)
-+void idpf_detach_and_close(struct idpf_adapter *adapter)
- {
- 	int max_vports = adapter->max_vports;
- 
- 	for (int i = 0; i < max_vports; i++) {
- 		struct net_device *netdev = adapter->netdevs[i];
- 
-+		if (!netdev)
-+			continue;
++/**
++ * e1000e_xtal_tgp_workaround - Adjust XTAL clock based on PHC and system
++ * clock delta.
++ * @adapter: Pointer to the private adapter structure
++ *
++ * Measures the time difference between the PHC (Precision Hardware Clock)
++ * and the system clock over a 1 millisecond interval. If the delta
++ * exceeds 100 microseconds, reconfigure the XTAL clock to 38.4 MHz.
++ */
++static void e1000e_xtal_tgp_workaround(struct e1000_adapter *adapter)
++{
++	s64 phc_delta, sys_delta, sys_start_ns, sys_end_ns, delta_ns;
++	struct ptp_system_timestamp sys_start = {}, sys_end = {};
++	struct ptp_clock_info *info = &adapter->ptp_clock_info;
++	struct timespec64 phc_start, phc_end;
++	struct e1000_hw *hw = &adapter->hw;
++	struct netlink_ext_ack extack = {};
++	unsigned long flags;
++	u32 timinca;
++	s32 ret_val;
 +
- 		/* If the interface is in detached state, that means the
- 		 * previous reset was not handled successfully for this
- 		 * vport.
-@@ -1908,6 +1911,10 @@ static void idpf_init_hard_reset(struct idpf_adapter *adapter)
- 
- 	dev_info(dev, "Device HW Reset initiated\n");
- 
-+	/* Reset has already happened, skip to recovery. */
-+	if (test_and_clear_bit(IDPF_PCI_CB_RESET, adapter->flags))
-+		goto check_rst_complete;
++	/* Capture start */
++	if (info->gettimex64(info, &phc_start, &sys_start)) {
++		e_dbg("PHC gettimex(start) failed\n");
++		return;
++	}
 +
- 	/* Prepare for reset */
- 	if (test_bit(IDPF_HR_DRV_LOAD, adapter->flags)) {
- 		reg_ops->trigger_reset(adapter, IDPF_HR_DRV_LOAD);
-@@ -1925,6 +1932,7 @@ static void idpf_init_hard_reset(struct idpf_adapter *adapter)
- 		goto unlock_mutex;
++	/* Small interval to measure increment */
++	usleep_range(1000, 1100);
++
++	/* Capture end */
++	if (info->gettimex64(info, &phc_end, &sys_end)) {
++		e_dbg("PHC gettimex(end) failed\n");
++		return;
++	}
++
++	/* Compute deltas */
++	phc_delta = timespec64_to_ns(&phc_end) -
++		    timespec64_to_ns(&phc_start);
++
++	sys_start_ns = (timespec64_to_ns(&sys_start.pre_ts) +
++			timespec64_to_ns(&sys_start.post_ts)) >> 1;
++
++	sys_end_ns = (timespec64_to_ns(&sys_end.pre_ts) +
++		      timespec64_to_ns(&sys_end.post_ts)) >> 1;
++
++	sys_delta = sys_end_ns - sys_start_ns;
++
++	delta_ns = phc_delta - sys_delta;
++	if (delta_ns > 100000) {
++		e_dbg("Corrected PHC frequency: TIMINCA set for 38.4 MHz\n");
++		/* Program TIMINCA for 38.4 MHz */
++		spin_lock_irqsave(&adapter->systim_lock, flags);
++		adapter->cc.shift = INCVALUE_SHIFT_38400KHZ;
++		timinca = (INCPERIOD_38400KHZ <<
++			   E1000_TIMINCA_INCPERIOD_SHIFT) |
++			  (((INCVALUE_38400KHZ <<
++			     adapter->cc.shift) &
++			   E1000_TIMINCA_INCVALUE_MASK));
++		ew32(TIMINCA, timinca);
++
++		/* reset the systim ns time counter */
++		timecounter_init(&adapter->tc, &adapter->cc,
++				 ktime_get_real_ns());
++		spin_unlock_irqrestore(&adapter->systim_lock, flags);
++
++		/* restore the previous hwtstamp configuration settings */
++		ret_val = e1000e_config_hwtstamp(adapter,
++						 &adapter->hwtstamp_config,
++						 &extack);
++		if (ret_val && extack._msg)
++			e_err("%s\n", extack._msg);
++	}
++}
++
+ /**
+  * e1000e_systim_reset - reset the timesync registers after a hardware reset
+  * @adapter: board private structure
+@@ -3953,6 +4028,9 @@ static void e1000e_systim_reset(struct e1000_adapter *adapter)
+ 		if (extack._msg)
+ 			e_err("%s\n", extack._msg);
  	}
- 
-+check_rst_complete:
- 	/* Wait for reset to complete */
- 	err = idpf_check_reset_complete(adapter, &adapter->reset_reg);
- 	if (err) {
-@@ -1984,7 +1992,8 @@ void idpf_vc_event_task(struct work_struct *work)
- 	if (test_bit(IDPF_HR_FUNC_RESET, adapter->flags))
- 		goto func_reset;
- 
--	if (test_bit(IDPF_HR_DRV_LOAD, adapter->flags))
-+	if (test_bit(IDPF_HR_DRV_LOAD, adapter->flags) ||
-+	    test_bit(IDPF_PCI_CB_RESET, adapter->flags))
- 		goto drv_load;
- 
- 	return;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index d99f759c55e1..54fca25c09f7 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -234,6 +234,7 @@ static int idpf_cfg_device(struct idpf_adapter *adapter)
- 	if (err)
- 		pci_dbg(pdev, "PCIe PTM is not supported by PCIe bus/controller\n");
- 
-+	pci_save_state(pdev);
- 	pci_set_drvdata(pdev, adapter);
- 
- 	return 0;
-@@ -360,6 +361,116 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	return err;
++
++	if (hw->mac.type == e1000_pch_adp || hw->mac.type == e1000_pch_tgp)
++		e1000e_xtal_tgp_workaround(adapter);
  }
  
-+static void idpf_reset_prepare(struct idpf_adapter *adapter)
-+{
-+	pci_dbg(adapter->pdev, "resetting\n");
-+	set_bit(IDPF_HR_RESET_IN_PROG, adapter->flags);
-+	cancel_delayed_work_sync(&adapter->serv_task);
-+	cancel_delayed_work_sync(&adapter->vc_event_task);
-+	idpf_detach_and_close(adapter);
-+	idpf_idc_issue_reset_event(adapter->cdev_info);
-+	idpf_vc_core_deinit(adapter);
-+}
-+
-+/**
-+ * idpf_pci_err_detected - PCI error detected, about to attempt recovery
-+ * @pdev: PCI device struct
-+ * @err: err detected
-+ *
-+ * Return: %PCI_ERS_RESULT_NEED_RESET to attempt recovery,
-+ * %PCI_ERS_RESULT_DISCONNECT if recovery is not possible.
-+ */
-+static pci_ers_result_t
-+idpf_pci_err_detected(struct pci_dev *pdev, pci_channel_state_t err)
-+{
-+	struct idpf_adapter *adapter = pci_get_drvdata(pdev);
-+
-+	/* Shutdown the mailbox if PCI I/O is in a bad state to avoid MBX
-+	 * timeouts during the prepare stage.
-+	 */
-+	if (pci_channel_offline(pdev))
-+		libie_ctlq_xn_shutdown(adapter->xnm);
-+
-+	idpf_reset_prepare(adapter);
-+
-+	if (err == pci_channel_io_perm_failure)
-+		return PCI_ERS_RESULT_DISCONNECT;
-+
-+	/* When called due to PCI error, driver will have to force PFR on
-+	 * resume, in order to complete the recovery via the event task.
-+	 */
-+	set_bit(IDPF_PCI_CB_RESET, adapter->flags);
-+
-+	return PCI_ERS_RESULT_NEED_RESET;
-+}
-+
-+/**
-+ * idpf_pci_err_slot_reset - PCI undergoing reset
-+ * @pdev: PCI device struct
-+ *
-+ * Reset PCI state and use a register read to see if we're good.
-+ *
-+ * Return: %PCI_ERS_RESULT_RECOVERED on success,
-+ * %PCI_ERS_RESULT_DISCONNECT on failure.
-+ */
-+static pci_ers_result_t
-+idpf_pci_err_slot_reset(struct pci_dev *pdev)
-+{
-+	struct idpf_adapter *adapter = pci_get_drvdata(pdev);
-+
-+	pci_restore_state(pdev);
-+	pci_set_master(pdev);
-+	pci_wake_from_d3(pdev, false);
-+	if (readl(adapter->reset_reg.rstat) != 0xFFFFFFFF)
-+		return PCI_ERS_RESULT_RECOVERED;
-+
-+	return PCI_ERS_RESULT_DISCONNECT;
-+}
-+
-+/**
-+ * idpf_pci_err_resume - Resume operations after PCI error recovery
-+ * @pdev: PCI device struct
-+ */
-+static void idpf_pci_err_resume(struct pci_dev *pdev)
-+{
-+	struct idpf_adapter *adapter = pci_get_drvdata(pdev);
-+
-+	/* Force a PFR when resuming from PCI error. */
-+	if (test_and_set_bit(IDPF_PCI_CB_RESET, adapter->flags))
-+		adapter->dev_ops.reg_ops.trigger_reset(adapter, IDPF_HR_FUNC_RESET);
-+
-+	queue_delayed_work(adapter->vc_event_wq,
-+			   &adapter->vc_event_task,
-+			   msecs_to_jiffies(300));
-+}
-+
-+/**
-+ * idpf_pci_err_reset_prepare - Prepare driver for PCI reset
-+ * @pdev: PCI device struct
-+ */
-+static void idpf_pci_err_reset_prepare(struct pci_dev *pdev)
-+{
-+	idpf_reset_prepare(pci_get_drvdata(pdev));
-+}
-+
-+/**
-+ * idpf_pci_err_reset_done - PCI err reset recovery complete
-+ * @pdev: PCI device struct
-+ */
-+static void idpf_pci_err_reset_done(struct pci_dev *pdev)
-+{
-+	pci_dbg(pdev, "reset: done\n");
-+	idpf_pci_err_resume(pdev);
-+}
-+
-+static const struct pci_error_handlers idpf_pci_err_handler = {
-+	.error_detected = idpf_pci_err_detected,
-+	.slot_reset = idpf_pci_err_slot_reset,
-+	.reset_prepare = idpf_pci_err_reset_prepare,
-+	.reset_done = idpf_pci_err_reset_done,
-+	.resume = idpf_pci_err_resume,
-+};
-+
- /* idpf_pci_tbl - PCI Dev idpf ID Table
-  */
- static const struct pci_device_id idpf_pci_tbl[] = {
-@@ -377,5 +488,6 @@ static struct pci_driver idpf_driver = {
- 	.sriov_configure	= idpf_sriov_configure,
- 	.remove			= idpf_remove,
- 	.shutdown		= idpf_shutdown,
-+	.err_handler		= &idpf_pci_err_handler,
- };
- module_pci_driver(idpf_driver);
+ /**
 -- 
-2.37.3
+2.34.1
 
