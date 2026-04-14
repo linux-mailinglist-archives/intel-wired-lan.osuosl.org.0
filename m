@@ -2,94 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id ENAINWoK3mnRmQkAu9opvQ
+	id EIkNCTYL3mnRmQkAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:35:38 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:39:02 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E8723F800B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:35:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 96BAA3F80C6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Apr 2026 11:39:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DE3D284A0D;
-	Tue, 14 Apr 2026 09:35:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CADC428EF;
+	Tue, 14 Apr 2026 09:39:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id S0OsiNtZjHsZ; Tue, 14 Apr 2026 09:35:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iGHgYh8AESPv; Tue, 14 Apr 2026 09:38:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C50484A22
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A0D5A428C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776159336;
-	bh=Wo7X9hi1yVQa4ktkr6bzoFZkW4EeLYwM+j3dTCe5g7Q=;
+	s=default; t=1776159539;
+	bh=/J82LbjAOwM7Yp+CsiEbDlGZEmeFrL+3b950wa4gWf0=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=rgJtXGPXsn++hQJjL/4AMV6BKXkD+cavzY9Tir6Xn8wzSKUDTR+/rhUHgJNUjCPVu
-	 AinmpSyJkG8+ZjAoPM+i9Z1QvDEPOzUG/KNv2f93ik5o1vPoDC//HgA1PLn33zJCOP
-	 I7DbFlDr24Zkx7MeWSBhSIRipgt/Zv9AKk+M1lw+aXAdimSAke2RA+xWgPeBLyzush
-	 u2KSimdVl3p7FU/wYY5AsxmmBQPVl3CsxnOEA3wtHcs6rBDmwcaZiAlYSyOWarLU1W
-	 OEbTbpPXPGalfw9u36CF76scH9znrDmaGSBMoaK05jLx+V9VoFw1ftkWu83FOpXbMk
-	 7Elg3Zcuu4cwA==
+	b=cmMSB8OwsVFZ1LWC3n5nYAzrApKxOyOMu7nVSQYTMNzBhynzFoJ8E9xPM/y6v0KZL
+	 FMsJu5ngBkYGBKeTdyMLXwWkbYvByngma8xG5KO90W7SYfREWJssZqt5N6TGA6hZXs
+	 j9sRkaNoqMDIkr9ESuH69wYw7ag7Gfz/RFZ75MrYsjv/XBnehy2g6u848N5fN1mfjw
+	 oUIdHCMO5lI1kfqFB3uZx7pZhRZmKqylLOTpUvHcf5YofidMvAsML5wdt0NNLWPuVw
+	 Cx0cnFrntXrjm45AQs8vI8wkkpx5x1KNrdlAiQZiRxrn1r4e1Nhm5GcUMq/lFDwOYc
+	 dj73EmbPSw4Lw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5C50484A22;
-	Tue, 14 Apr 2026 09:35:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A0D5A428C8;
+	Tue, 14 Apr 2026 09:38:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 597B5283
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:35:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id D5465237
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:38:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4B338848D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:35:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id BB743428C4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:38:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 36pyoGDVxo60 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Apr 2026 09:35:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5FAC684491
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FAC684491
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5FAC684491
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:35:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OY9zwFjPSQt3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Apr 2026 09:38:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 26AE0428C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 26AE0428C1
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 26AE0428C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Apr 2026 09:38:56 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id D1FF84420B;
- Tue, 14 Apr 2026 09:35:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93EE2C19425;
- Tue, 14 Apr 2026 09:35:31 +0000 (UTC)
-Date: Tue, 14 Apr 2026 10:35:29 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 13E41600AD;
+ Tue, 14 Apr 2026 09:38:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C5A32C2BCB4;
+ Tue, 14 Apr 2026 09:38:54 +0000 (UTC)
+Date: Tue, 14 Apr 2026 10:38:52 +0100
 From: Simon Horman <horms@kernel.org>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Karen Ostrowska <karen.ostrowska@intel.com>
-Message-ID: <20260414093529.GZ469338@kernel.org>
+ netdev@vger.kernel.org
+Message-ID: <20260414093852.GA469338@kernel.org>
 References: <20260410074921.1254213-1-aleksandr.loktionov@intel.com>
- <20260410074921.1254213-8-aleksandr.loktionov@intel.com>
+ <20260410074921.1254213-9-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260410074921.1254213-8-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260410074921.1254213-9-aleksandr.loktionov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776159332;
- bh=tra6XbY2ZXS84BCeCHJ/jfRvO2OJtZrT+BiKRYt0ooc=;
+ d=kernel.org; s=k20201202; t=1776159535;
+ bh=V0Twrt94RMQHR87PARXsvnrB4lobZx+97fuAAeeHGfQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PV77rM/F7X6Fmm7xlFaKKHRcuuPm0D3weHM7oCa1AhuovRi62+4lsgQ7uMUGvW2SV
- eUx8ByvT4Ott3FWTVPd468Hhx00qqHN2lgBVdohnuvOIRG5qUg37doeg5xLGul2kM/
- v66igD1LiVZ6Oegi2H8ronSXgilZarl0wqZeuO4ZiC31+cVm2XOpQzAAeFX0eODdbo
- OLM2TuFLXuFce/wgC5UHgMzaGiLjknhPPy58vtz51hsDMTALM4e1p97R3iYbHapLHO
- lQ1VI+4V/MhPL2LVQyAj3k0LeVzmV4MqmHJOCAz4JKtYJ0yVLGkfAEl/3xPEAWxHJc
- +G1J9m1vRj3+Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=gTdHq9mbrBoCjTJQZ7S5TZYU/IpPVc6NmfIQcdb2pGBVtfNAeBxJUq3ee44Q2JUaY
+ tXrQS7kEa+DLy4KJ94kICM2Kf5WBqDVJdd9EF2js/0iqld7WrStkcuhOYrpdKFS+k6
+ pfNf+tvAsS9CMMFR+ilvENDVwFx8Z+ERLlXpqb1UF4ZQVXynmQj/b/oXJDYaxgxWoM
+ V24+no4uU0uTmuTMq3yXeHUVHz27zFy2m8vabdYusciJMXYaaTqS4mK+BtOvGXnRa5
+ LeMp1J14LbYTZ04i+uZTAMPa7L6bfNSh0JnKTO5gI4wJQbRAF785U/zgMAYGBgZKvk
+ kWa5cRbllyzmA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=PV77rM/F
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 7/10] ice: emit user-visible
- info message for non-contiguous ETS TC config
+ header.a=rsa-sha256 header.s=k20201202 header.b=gTdHq9mb
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 8/10] ice: move
+ ice_phy_get_speed_eth56g() from ice_ptp_hw.c to ice_common.c
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,77 +103,58 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.69 / 15.00];
+X-Spamd-Result: default: False [0.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:karen.ostrowska@intel.com,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
 	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_THREE(0.00)[4];
 	MISSING_XM_UA(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	NEURAL_HAM(-0.00)[-0.999];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 4E8723F800B
+X-Rspamd-Queue-Id: 96BAA3F80C6
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, Apr 10, 2026 at 09:49:18AM +0200, Aleksandr Loktionov wrote:
-> When the remote LLDP peer advertises a non-contiguous TC
-> mapping the driver silently falls back to a default single-TC
-> configuration. This leaves the user without any indication of
-> why their DCB configuration was not honoured.
+On Fri, Apr 10, 2026 at 09:49:19AM +0200, Aleksandr Loktionov wrote:
+> ice_phy_get_speed_eth56g() is currently a file-local (static)
+> helper in ice_ptp_hw.c. Future users outside that compilation
+> unit require access to it.
+
+FWIIW, I think it would be slightly better if this patch was accompanied by
+such a user.
+
 > 
-> Print an informational message at the entry of
-> ice_dcb_noncontig_cfg() so the user knows ETS with
-> non-contiguous TCs is not supported and that the driver
-> has fallen back to defaults.
+> Move the function to ice_common.c, add a declaration in
+> ice_common.h, and relocate the enum ice_eth56g_link_spd from
+> ice_ptp_hw.h to ice_type.h so it is visible to callers of the
+> new exported function.
 > 
-> Suggested-by: Karen Ostrowska <karen.ostrowska@intel.com>
+> Suggested-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> index bd77f1c..1c53b09 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> @@ -712,6 +712,8 @@ static int ice_dcb_noncontig_cfg(struct ice_pf *pf)
->  	struct device *dev = ice_pf_to_dev(pf);
->  	int ret;
->  
-> +	dev_info(dev, "Non-contiguous ETS TC config not supported, falling back to default single TC\n");
 
-Sashiko points out that this seems to be controlled by user input.
-If so, it should probably be rate limited.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-> +
->  	/* Configure SW DCB default with ETS non-willing */
->  	ret = ice_dcb_sw_dflt_cfg(pf, false, true);
->  	if (ret) {
-> -- 
-> 2.52.0
-> 
