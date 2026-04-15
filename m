@@ -2,98 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id ao/5KZR132lWTQAAu9opvQ
+	id MMO9CN5132ljTQAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 13:25:08 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 13:26:22 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59BEF403BB1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 13:25:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3E09B403C3F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 13:26:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1210140849;
-	Wed, 15 Apr 2026 11:25:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A62D647AB4;
+	Wed, 15 Apr 2026 11:26:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Po3O_8JjCKE4; Wed, 15 Apr 2026 11:25:03 +0000 (UTC)
+ id yQCkmyhGyupG; Wed, 15 Apr 2026 11:26:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4713A406BB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F242147745
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776252303;
-	bh=iFqgxHzKGuiYqCS0bSi5CKyFjy58lVe5/2IVoOBIOJc=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1776252379;
+	bh=iZpVUgANLHe9bJT14MDPaLHB9doID5pO17wzLlwEfVY=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=01M5BaZqxMs1s/mVAvMuutXKd1CBzKHXi9wGg4Y40a2R05PS2TrKN49tUxG38Acwa
-	 CgcgEX2sOP3zjuwLd9jyB7jRJriF+aHmF8CAqe1GkiadF4qb+pDAZGmo0xU48Bc1h7
-	 q6Z/UT0aevHTf5+CItfD6mLu3+T+6yaoo4yMKwOTXT3AfCdAUlpbA/8NAZE8NAVX+C
-	 NpjwWSy17Iv4ZiqBRdTDADOGs/f1XxIL3GaW0hA295bFeWcFFL4VNLqFvfSPvWfD9k
-	 w/nNpNRFUx+bjrAzT9aCQ5UXCsW8F2egMQ1idplkZA0gWFd5/VpfeLdOKRPeVdQmI/
-	 bxAU31+E36aGw==
+	b=MXd9atm1VYhoYKD6s/n0ZaQGDof3RLFFuh33vckXcfieb5k6fILas8pDuLuWjhkxy
+	 rB3+zAUvWfNqNZeEJRSo56bTzEWUU5VNzHtcG/BTQNJm0TMIOv3eHxS0aDXQVxwJS9
+	 RzK0dzmDjctDr8EA+j7mqgeEGwV3GTmOtBz8iIxpCuo8CeYnFJ0u08UuAE4Rv8QK4j
+	 2LWpMZ0qFuFRiO0gXBCn8akhAfOnSY4bcFt8+de91GgEKzO1G7d85nqOcHKETtFkGD
+	 VGITmJaYaW0P1XrBo6LsfQJlqpEqzFz4YON7mTfmbJz5SFTh2m6z2gMOUTKkA28rxt
+	 BDLPN1O7Gg/TQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4713A406BB;
-	Wed, 15 Apr 2026 11:25:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F242147745;
+	Wed, 15 Apr 2026 11:26:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 26D0E375
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:25:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id DE5B2283
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:26:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 18CB76072F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:25:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D03BD853BD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:26:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dYSJUB09SMNu for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Apr 2026 11:25:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EAD8B60727
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EAD8B60727
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EAD8B60727
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:25:00 +0000 (UTC)
-X-CSE-ConnectionGUID: upUcQPEwTyK4dh9I+6+brw==
-X-CSE-MsgGUID: FH2kESkNTjCJkefa44O+xg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11759"; a="81094689"
-X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="81094689"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Apr 2026 04:24:59 -0700
-X-CSE-ConnectionGUID: NdDP+pvzQdG2R+9Kxh2bTg==
-X-CSE-MsgGUID: vdXegQ+yR72PX5OSXCKlnw==
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PCDtpnPiY-FP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Apr 2026 11:26:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.korba@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 06D8D82ED2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06D8D82ED2
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 06D8D82ED2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 11:26:16 +0000 (UTC)
+X-CSE-ConnectionGUID: w+0FPs07R4GrBDmKEnq1zw==
+X-CSE-MsgGUID: ZlLbcro1SbWDm369tbGApA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11759"; a="94626762"
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="94626762"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2026 04:26:17 -0700
+X-CSE-ConnectionGUID: cFiMoeY0QKWnbnpjPLr5Fg==
+X-CSE-MsgGUID: 5o0dAeXFQk+/x73ulD9N8Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="227747235"
-Received: from lkp-server01.sh.intel.com (HELO 7f3b36e5d6a5) ([10.239.97.150])
- by fmviesa008.fm.intel.com with ESMTP; 15 Apr 2026 04:24:58 -0700
-Received: from kbuild by 7f3b36e5d6a5 with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1wCyMa-000000000R7-0VGa;
- Wed, 15 Apr 2026 11:24:56 +0000
-Date: Wed, 15 Apr 2026 19:24:55 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202604151947.uQ4BkAQJ-lkp@intel.com>
-User-Agent: s-nail v14.9.25
+Received: from pae-d-dell-r7525-263.igk.intel.com ([172.28.191.240])
+ by fmviesa003.fm.intel.com with ESMTP; 15 Apr 2026 04:26:14 -0700
+From: Przemyslaw Korba <przemyslaw.korba@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com,
+ Przemyslaw Korba <przemyslaw.korba@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Date: Wed, 15 Apr 2026 13:27:05 +0200
+Message-ID: <20260415112706.1562382-2-przemyslaw.korba@intel.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1776252301; x=1807788301;
- h=date:from:to:subject:message-id;
- bh=fOfpwZrzf4jNGEiYYTdW4aVjAOUsUwwEQOrJ774CyEY=;
- b=FjXJNBmAqNXIE7yyqThGxlG1piUnKhIdPhXI2uI37+22C47wXGoYqnPx
- QfRdkhUoLnpi/khWcuAgQYpSkNbyKwWTd7QMcQXpO71QrdYHS2oS4uC+L
- BOjfYOk7YHPK7lLzGCOzVwYBXfUwxI64BhV2hHCICh0vFgnEGnI6B+Xyk
- s13PBiF/cSvsffTD8ndmgFqwepH8yYTzgv+qU24nBzCwSITU+6ueZ6Z5e
- lCnisgTh3oke5uipa8GGWhzcfmuCd0ov99DR6ra33UsA1/flS68wxVWxK
- FxXqN6P1wS1DVVoX3eC0gqZFwxhQGw4FLJvO35T13nYxH7jn+5sjUd4Ep
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1776252377; x=1807788377;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=eIZb6zCxsJfPaW4k4tZ8a8BEq2ntgaMYL7LfKkdt5ho=;
+ b=A9Lm+RmlzcVppj/xnWAiyYWLasOhAn0s5TOl8DwGuVh6PPspzns3dbTu
+ oLmxTcSvDNcz04XQLxTAEtimaMA3+C1O59UXB5+Q8ZFPN1mjJmxFRl9Hv
+ J6ZFDsqcOwZtoC9hF0c4XDrQl0V4TJPNHnrVegcFyY3cYqaUvy8K+5rW2
+ H0etcE7PIOx0RHGaNls9Oy5FyDHIBHeQvfChd+VGwXkYDMiZZAKMYVXQu
+ TCHB+tg7GcGdnWUMuIq0L5F9VxMXPM6O1xlCPddm5iNEIFPKXPMenFSNh
+ w3guVcbcUoucJwWOEjbPP8w7jedAy6n9fYTwjZ6F77djm4f4uTo7MXm+M
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FjXJNBmA
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- fe435b2b5f9863d29dcf2eeffa58fa5b324c2e5b
+ header.s=Intel header.b=A9Lm+Rml
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: add SBQ posted writes with
+ non-posted support for CGU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,165 +114,293 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [0.39 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.995];
-	FROM_HAS_DN(0.00)[];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_ONE(0.00)[1];
-	MIME_TRACE(0.00)[0:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TO_DN_ALL(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,msg.data:url];
+	ARC_NA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 59BEF403BB1
+	MIME_TRACE(0.00)[0:+];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	TO_DN_SOME(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[przemyslaw.korba@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_SEVEN(0.00)[7];
+	NEURAL_HAM(-0.00)[-1.000];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 3E09B403C3F
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: fe435b2b5f9863d29dcf2eeffa58fa5b324c2e5b  ice: fix infinite recursion in ice_cfg_tx_topo via ice_init_dev_hw
+From: Karol Kolacinski <karol.kolacinski@intel.com>
 
-elapsed time: 811m
+Sideband queue (SBQ) is a HW queue with very short completion time. All
+SBQ writes were posted by default, which means that the driver did not
+have to wait for completion from the neighbor device, because there was
+none. This introduced unnecessary delays, where only those delays were
+"ensuring" that the command is "completed" and this was a potential race
+condition.
 
-configs tested: 117
-configs skipped: 0
+Add the possibility to perform non-posted writes where it's necessary to
+wait for completion, instead of relying on fake completion from the FW,
+where only the delays are guarding the writes.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Flush the SBQ by reading address 0 from the PHY 0 before issuing SYNC
+command to ensure that writes to all PHYs were completed and skip SBQ
+message completion if it's posted.
 
-tested configs:
-alpha                   allnoconfig    gcc-15.2.0
-alpha                  allyesconfig    gcc-15.2.0
-alpha                     defconfig    gcc-15.2.0
-arc                    allmodconfig    gcc-15.2.0
-arc                     allnoconfig    gcc-15.2.0
-arc                    allyesconfig    gcc-15.2.0
-arc                       defconfig    gcc-15.2.0
-arc         randconfig-001-20260415    gcc-13.4.0
-arc         randconfig-002-20260415    gcc-13.4.0
-arm                     allnoconfig    clang-23
-arm                     allnoconfig    gcc-15.2.0
-arm                    allyesconfig    gcc-15.2.0
-arm                       defconfig    gcc-15.2.0
-arm         randconfig-001-20260415    gcc-13.4.0
-arm         randconfig-002-20260415    gcc-13.4.0
-arm         randconfig-003-20260415    gcc-13.4.0
-arm         randconfig-004-20260415    gcc-13.4.0
-arm64                  allmodconfig    clang-19
-arm64                   allnoconfig    gcc-15.2.0
-arm64                     defconfig    gcc-15.2.0
-arm64       randconfig-001-20260415    gcc-15.2.0
-arm64       randconfig-002-20260415    gcc-15.2.0
-arm64       randconfig-003-20260415    gcc-15.2.0
-arm64       randconfig-004-20260415    gcc-15.2.0
-csky                   allmodconfig    gcc-15.2.0
-csky                    allnoconfig    gcc-15.2.0
-csky                      defconfig    gcc-15.2.0
-csky        randconfig-001-20260415    gcc-15.2.0
-csky        randconfig-002-20260415    gcc-15.2.0
-hexagon                allmodconfig    clang-17
-hexagon                allmodconfig    gcc-15.2.0
-hexagon                 allnoconfig    clang-23
-hexagon                 allnoconfig    gcc-15.2.0
-hexagon                   defconfig    gcc-15.2.0
-hexagon     randconfig-001-20260415    clang-18
-hexagon     randconfig-002-20260415    clang-18
-i386                   allmodconfig    gcc-14
-i386                    allnoconfig    gcc-14
-i386                    allnoconfig    gcc-15.2.0
-i386                   allyesconfig    gcc-14
-i386                      defconfig    gcc-15.2.0
-loongarch              allmodconfig    clang-19
-loongarch               allnoconfig    clang-23
-loongarch               allnoconfig    gcc-15.2.0
-loongarch   randconfig-001-20260415    clang-18
-loongarch   randconfig-002-20260415    clang-18
-m68k                   allmodconfig    gcc-15.2.0
-m68k                    allnoconfig    gcc-15.2.0
-m68k                   allyesconfig    gcc-15.2.0
-microblaze              allnoconfig    gcc-15.2.0
-microblaze             allyesconfig    gcc-15.2.0
-mips                   allmodconfig    gcc-15.2.0
-mips                    allnoconfig    gcc-15.2.0
-mips                   allyesconfig    gcc-15.2.0
-nios2                  allmodconfig    clang-23
-nios2                  allmodconfig    gcc-11.5.0
-nios2                   allnoconfig    clang-23
-nios2                   allnoconfig    gcc-11.5.0
-nios2       randconfig-001-20260415    clang-18
-nios2       randconfig-002-20260415    clang-18
-openrisc               allmodconfig    clang-23
-openrisc               allmodconfig    gcc-15.2.0
-openrisc                allnoconfig    clang-23
-openrisc                allnoconfig    gcc-15.2.0
-parisc                 allmodconfig    gcc-15.2.0
-parisc                  allnoconfig    clang-23
-parisc                  allnoconfig    gcc-15.2.0
-parisc                 allyesconfig    gcc-15.2.0
-parisc      randconfig-001-20260415    gcc-9.5.0
-parisc      randconfig-002-20260415    gcc-9.5.0
-powerpc                allmodconfig    gcc-15.2.0
-powerpc                 allnoconfig    clang-23
-powerpc                 allnoconfig    gcc-15.2.0
-powerpc     randconfig-001-20260415    gcc-9.5.0
-powerpc     randconfig-002-20260415    gcc-9.5.0
-powerpc       xes_mpc85xx_defconfig    gcc-15.2.0
-powerpc64   randconfig-001-20260415    gcc-9.5.0
-powerpc64   randconfig-002-20260415    gcc-9.5.0
-riscv                  allmodconfig    clang-23
-riscv                   allnoconfig    clang-23
-riscv                   allnoconfig    gcc-15.2.0
-riscv                  allyesconfig    clang-16
-s390                   allmodconfig    clang-18
-s390                    allnoconfig    clang-23
-s390                   allyesconfig    gcc-15.2.0
-sh                     allmodconfig    gcc-15.2.0
-sh                      allnoconfig    clang-23
-sh                      allnoconfig    gcc-15.2.0
-sh                     allyesconfig    gcc-15.2.0
-sh                        defconfig    gcc-14
-sparc                   allnoconfig    clang-23
-sparc                   allnoconfig    gcc-15.2.0
-sparc64                allmodconfig    clang-23
-sparc64                   defconfig    gcc-14
-um                     allmodconfig    clang-19
-um                      allnoconfig    clang-23
-um                     allyesconfig    gcc-14
-um                     allyesconfig    gcc-15.2.0
-um                        defconfig    gcc-14
-um                   i386_defconfig    gcc-14
-um                 x86_64_defconfig    gcc-14
-x86_64                 allmodconfig    clang-20
-x86_64                  allnoconfig    clang-20
-x86_64                  allnoconfig    clang-23
-x86_64                 allyesconfig    clang-20
-x86_64                    defconfig    gcc-14
-x86_64                        kexec    clang-20
-x86_64                     rhel-9.4    clang-20
-x86_64                 rhel-9.4-bpf    gcc-14
-x86_64                rhel-9.4-func    clang-20
-x86_64          rhel-9.4-kselftests    clang-20
-x86_64               rhel-9.4-kunit    gcc-14
-x86_64                 rhel-9.4-ltp    gcc-14
-x86_64                rhel-9.4-rust    clang-20
-xtensa                  allnoconfig    clang-23
-xtensa                  allnoconfig    gcc-15.2.0
-xtensa                 allyesconfig    clang-23
+To analyze if delays are gone, look for and compare time spent in
+ice_sq_send_cmd — posted writes should return immediately after the wr32.
+That can be done for example by adjusting phc time with phc_ctl on E830
+device, for less than 2 seconds to use this new mechanism. Without it,
+command below will fail.
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Reproduction steps:
+phc_ctl eth13 adj 1
+phc_ctl[4478170.994]: adjusted clock by 1.000000 seconds
+
+Check trace for timing for comparisions:
+echo ice_sbq_send_cmd > /sys/kernel/debug/tracing/set_ftrace_filter
+echo function_graph > /sys/kernel/debug/tracing/current_tracer
+cat /sys/kernel/debug/tracing/trace
+
+Tested on:
+  - Intel E830 NIC (FW version 1.00)
+  - Kernel 6.19.0+
+
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Signed-off-by: Przemyslaw Korba <przemyslaw.korba@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.c  | 18 ++++--
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c  | 64 ++++++++++++--------
+ drivers/net/ethernet/intel/ice/ice_sbq_cmd.h |  5 +-
+ 3 files changed, 53 insertions(+), 34 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index f84990996530..2cd3d6d450a9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1777,23 +1777,29 @@ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flags)
+ 	msg.msg_addr_low = cpu_to_le16(in->msg_addr_low);
+ 	msg.msg_addr_high = cpu_to_le32(in->msg_addr_high);
+ 
+-	if (in->opcode)
++	switch (in->opcode) {
++	case ice_sbq_msg_wr_p:
++	case ice_sbq_msg_wr_np:
+ 		msg.data = cpu_to_le32(in->data);
+-	else
++		break;
++	case ice_sbq_msg_rd:
+ 		/* data read comes back in completion, so shorten the struct by
+ 		 * sizeof(msg.data)
+ 		 */
+ 		msg_len -= sizeof(msg.data);
++		break;
++	default:
++		return -EINVAL;
++	}
+ 
+-	if (in->opcode == ice_sbq_msg_wr)
+-		cd.posted = 1;
++	cd.posted = in->opcode == ice_sbq_msg_wr_p;
+ 
+ 	desc.flags = cpu_to_le16(flags);
+ 	desc.opcode = cpu_to_le16(ice_sbq_opc_neigh_dev_req);
+ 	desc.param0.cmd_len = cpu_to_le16(msg_len);
+ 	status = ice_sbq_send_cmd(hw, &desc, &msg, msg_len, &cd);
+ 
+-	if (!status && !in->opcode)
++	if (!status && in->opcode == ice_sbq_msg_rd)
+ 		in->data = le32_to_cpu
+ 			(((struct ice_sbq_msg_cmpl *)&msg)->data);
+ 	return status;
+@@ -6701,7 +6707,7 @@ int ice_write_cgu_reg(struct ice_hw *hw, u32 addr, u32 val)
+ {
+ 	struct ice_sbq_msg_input cgu_msg = {
+ 		.dest_dev = ice_get_dest_cgu(hw),
+-		.opcode = ice_sbq_msg_wr,
++		.opcode = ice_sbq_msg_wr_np,
+ 		.msg_addr_low = addr,
+ 		.data = val
+ 	};
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index 690f9d874443..0f202d4dae7c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -368,6 +368,16 @@ void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+ static void ice_ptp_exec_tmr_cmd(struct ice_hw *hw)
+ {
+ 	struct ice_pf *pf = container_of(hw, struct ice_pf, hw);
++	struct ice_sbq_msg_input msg = {
++		.dest_dev = ice_sbq_dev_phy_0,
++		.opcode = ice_sbq_msg_rd,
++	};
++	int err;
++
++	/* Flush SBQ by reading address 0 on PHY 0 */
++	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
++	if (err)
++		dev_warn(ice_hw_to_dev(hw), "Failed to flush SBQ: %d\n", err);
+ 
+ 	if (!ice_is_primary(hw))
+ 		hw = ice_get_primary_hw(pf);
+@@ -433,7 +443,7 @@ static int ice_write_phy_eth56g(struct ice_hw *hw, u8 port, u32 addr, u32 val)
+ {
+ 	struct ice_sbq_msg_input msg = {
+ 		.dest_dev = ice_ptp_get_dest_dev_e825(hw, port),
+-		.opcode = ice_sbq_msg_wr,
++		.opcode = ice_sbq_msg_wr_p,
+ 		.msg_addr_low = lower_16_bits(addr),
+ 		.msg_addr_high = upper_16_bits(addr),
+ 		.data = val
+@@ -2358,11 +2368,12 @@ static bool ice_is_40b_phy_reg_e82x(u16 low_addr, u16 *high_addr)
+ static int
+ ice_read_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 *val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.opcode = ice_sbq_msg_rd,
++	};
+ 	int err;
+ 
+ 	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+-	msg.opcode = ice_sbq_msg_rd;
+ 
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+@@ -2435,12 +2446,13 @@ ice_read_64b_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 low_addr, u64 *val)
+ static int
+ ice_write_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.opcode = ice_sbq_msg_wr_p,
++		.data = val
++	};
+ 	int err;
+ 
+ 	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+-	msg.opcode = ice_sbq_msg_wr;
+-	msg.data = val;
+ 
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+@@ -2594,15 +2606,15 @@ static int ice_fill_quad_msg_e82x(struct ice_hw *hw,
+ int
+ ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.opcode = ice_sbq_msg_rd,
++	};
+ 	int err;
+ 
+ 	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+ 	if (err)
+ 		return err;
+ 
+-	msg.opcode = ice_sbq_msg_rd;
+-
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+@@ -2628,16 +2640,16 @@ ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+ int
+ ice_write_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.opcode = ice_sbq_msg_wr_p,
++		.data = val
++	};
+ 	int err;
+ 
+ 	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+ 	if (err)
+ 		return err;
+ 
+-	msg.opcode = ice_sbq_msg_wr;
+-	msg.data = val;
+-
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+@@ -4275,14 +4287,14 @@ static void ice_ptp_init_phy_e82x(struct ice_ptp_hw *ptp)
+  */
+ static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.dest_dev = ice_sbq_dev_phy_0,
++		.opcode = ice_sbq_msg_rd,
++		.msg_addr_low = lower_16_bits(addr),
++		.msg_addr_high = upper_16_bits(addr),
++	};
+ 	int err;
+ 
+-	msg.msg_addr_low = lower_16_bits(addr);
+-	msg.msg_addr_high = upper_16_bits(addr);
+-	msg.opcode = ice_sbq_msg_rd;
+-	msg.dest_dev = ice_sbq_dev_phy_0;
+-
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+@@ -4305,15 +4317,15 @@ static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
+  */
+ static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
+ {
+-	struct ice_sbq_msg_input msg = {0};
++	struct ice_sbq_msg_input msg = {
++		.dest_dev = ice_sbq_dev_phy_0,
++		.opcode = ice_sbq_msg_wr_p,
++		.msg_addr_low = lower_16_bits(addr),
++		.msg_addr_high = upper_16_bits(addr),
++		.data = val
++	};
+ 	int err;
+ 
+-	msg.msg_addr_low = lower_16_bits(addr);
+-	msg.msg_addr_high = upper_16_bits(addr);
+-	msg.opcode = ice_sbq_msg_wr;
+-	msg.dest_dev = ice_sbq_dev_phy_0;
+-	msg.data = val;
+-
+ 	err = ice_sbq_rw_reg(hw, &msg, LIBIE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+diff --git a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+index 21bb861febbf..86a143ebf089 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_sbq_cmd.h
+@@ -54,8 +54,9 @@ enum ice_sbq_dev_id {
+ };
+ 
+ enum ice_sbq_msg_opcode {
+-	ice_sbq_msg_rd	= 0x00,
+-	ice_sbq_msg_wr	= 0x01
++	ice_sbq_msg_rd		= 0x00,
++	ice_sbq_msg_wr_p	= 0x01,
++	ice_sbq_msg_wr_np	= 0x02,
+ };
+ 
+ #define ICE_SBQ_MSG_FLAGS	0x40
+
+base-commit: 0851f49814a8899a9769619b50baaeef59f9ece4
+-- 
+2.43.0
+
