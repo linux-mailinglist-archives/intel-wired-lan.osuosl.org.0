@@ -2,94 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aDnmDs2W32nXWQAAu9opvQ
+	id IECRBNaX32nXWQAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 15:46:53 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 15:51:18 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74F62404FAE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 15:46:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 279A1405029
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Apr 2026 15:51:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D041A853AA;
-	Wed, 15 Apr 2026 13:46:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7BCF9428C4;
+	Wed, 15 Apr 2026 13:51:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6bUOa485cWyD; Wed, 15 Apr 2026 13:46:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id V4R7mgfelNX8; Wed, 15 Apr 2026 13:51:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F324E853AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C369C428DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776260809;
-	bh=e2E16ESmFx2Dv/sZs0E1IKmC6EICNa32ZsBtsT+TPrY=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=1FLhElU69WBkVoUfikF9D8eR25u85p+D5t715TUaSSNyyjeN7DWB8PsuPG2tMWyYO
-	 P59IW+FEjXsCdmFrl/DBrREMiu5aXvFGLSrg4AvmfIUKxojJxQUQgplCK9TWCoSu3K
-	 dxrwinfX46a1UltTFCdLviqOf2CH+tq/NmmYWgCnTnvrRc4R+PvIjoksRgLLaF3mvk
-	 HTaGagOx6U8rfLUmtmq3kvo5K7gA83NsspTPvoZT+khXosXW1+nd3xN3tgXxu6Vym4
-	 dZdnsKMLPclZXpNLXmpfoM6gEZUaSOOtkJC663rsPCy1uMPym5WEXW5BLks0v8S0dy
-	 jFAljbLVaRX6g==
+	s=default; t=1776261074;
+	bh=Riun1LSq90KC+LL/GJhV8bHLTQX68EtqtmPEaPE7d7Q=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=IVFEXuulO+97FL03pYvxdI5EnOemDoBbnCq64LTBHG8NtbXoYZQyk69O6jsjUR43m
+	 7Eog0ZQ4nnfBgdf3Qqqpyhg+CMyzbIlc9WcFcb986CG3bF2dGksniy6/p5v2AteZOB
+	 ThDNluMCpYfIoMRXfSL2BrP6d9Hoi0eitRE7CYrysBnTuB+OAZ8CXUwutxkeqEnZ0r
+	 v3yOczmBsxU22IqUokYUXjrbEZHWDX8Bj/LLKUGy4ZHhy+pnL7IEL+7fc40m/ioGJl
+	 PoJKWqjI4D3BHyGDRNjjnvt9ODlHmcx8KEDuF+466/juh3qoRKcz2OjeScZ5M4q/Hj
+	 9aoX4AQbaqpfA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F324E853AB;
-	Wed, 15 Apr 2026 13:46:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C369C428DD;
+	Wed, 15 Apr 2026 13:51:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 40481237
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:46:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id B71BD375
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:51:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2597F6F526
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:46:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A8F0240070
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:51:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id boPP4_I-eium for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Apr 2026 13:46:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7632C6F4C7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7632C6F4C7
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7632C6F4C7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:46:46 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 1453640B9D;
- Wed, 15 Apr 2026 13:46:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA725C19424;
- Wed, 15 Apr 2026 13:46:44 +0000 (UTC)
-Date: Wed, 15 Apr 2026 14:46:42 +0100
-From: Simon Horman <horms@kernel.org>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, Avinash Dayanand <avinash.dayanand@intel.com>
-Message-ID: <20260415134642.GJ772670@horms.kernel.org>
-References: <20260413073035.4082204-1-aleksandr.loktionov@intel.com>
- <20260413073035.4082204-5-aleksandr.loktionov@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260413073035.4082204-5-aleksandr.loktionov@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ShwTxpA8xiVb for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Apr 2026 13:51:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A928F40060
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A928F40060
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A928F40060
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Apr 2026 13:51:10 +0000 (UTC)
+X-CSE-ConnectionGUID: zbYqFDM5T4Gbue3eQDRJ1g==
+X-CSE-MsgGUID: NpRdNoxFR+CQiKDGGz9iKw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11759"; a="87861386"
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="87861386"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2026 06:51:10 -0700
+X-CSE-ConnectionGUID: nLSApKrjSVSVa7QrENu1kg==
+X-CSE-MsgGUID: mhA6wSvJQ+Wqle1ZK7zcNg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; d="scan'208";a="225727858"
+Received: from lkp-server01.sh.intel.com (HELO 7f3b36e5d6a5) ([10.239.97.150])
+ by fmviesa006.fm.intel.com with ESMTP; 15 Apr 2026 06:51:09 -0700
+Received: from kbuild by 7f3b36e5d6a5 with local (Exim 4.98.2)
+ (envelope-from <lkp@intel.com>) id 1wD0e3-000000000YR-0mHl;
+ Wed, 15 Apr 2026 13:51:07 +0000
+Date: Wed, 15 Apr 2026 21:50:13 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202604152105.9EWXJjdT-lkp@intel.com>
+User-Agent: s-nail v14.9.25
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776260805;
- bh=hUX+08o1UGhyqMZxAK7BKsm8gMlYpj2DYuE3FXFWmiU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Mm74+F2bxyVi1iMSesfUj0I41WtcnfisuF5oIYTOP13t9S1w0+qUJoSFt8ywZMLpZ
- X/mN5Xj1ITnFmBE0EjG3IfA/zwiamEt+kLZjbIc/DdZfeF/Csrul2Z7ypZiR4xR2DQ
- 9KEoyyS0TlL7p7K58PcaNmwaHq0aKK2EP/3DxSYrVjvEZKZja7+q3pGnaHo2jK9C5/
- ymFiYr+bZg+861hBsnWh5iR9HVOexTQA8Fprh76cgyZmPMA2sosB5Wcr9Ie2xAZRcz
- 2FyplORTjonOkQDRXohxIcO9LeNNBKUnn+o7+dFN95QabobrfxDBdAShGAhYB2rz+N
- qevYxHM4n/h7w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Mm74+F2b
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 4/5] iavf: fix TC boundary
- check in iavf_handle_tclass
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1776261072; x=1807797072;
+ h=date:from:to:subject:message-id;
+ bh=l0xOQb3ereSLCqm6RdvvDvhAcNz4uuznzM7xVNsj0/A=;
+ b=BmuYw/kr6Ldlj1wjVKrOC8hnzuExdjHVP6fPpY9i7ux/yGYaXVbapKLG
+ 1oSN/lNQUxldKczOtKYzPe/0Mr/QZ2Hw4qkGrSMHh9Vif1fUZ6XdKL+QN
+ IMkOpnEPsPTMwZjXQxi41oFsyhIW1kEWdtob9a5ikTk7TKc5fzuB4Q7zt
+ l9pdYn4d3qlmc7Jh+cWrdk9Z+RR/1Iur67OUkptGIXdz92QIkt+fUahtQ
+ YVZ25ntuolBRuK3ALsj6nfbLrqYOqbpulUMs9S14mR1AHKatqGcP4bWZk
+ Tgng6qpV3/QQsfgfOK2eeUKLEERsLa7tji+O4LhimRPn1ukJb49wqfjQV
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=BmuYw/kr
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ e516da3f7d84e75af6dc6320d728b0e5b96de5dd
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,129 +108,124 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim,intel.com:email];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:avinash.dayanand@intel.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	NEURAL_HAM(-0.00)[-0.996];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
-	NEURAL_HAM(-0.00)[-0.999];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_ONE(0.00)[1];
+	MIME_TRACE(0.00)[0:+];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TO_DN_ALL(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 74F62404FAE
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[10]
+X-Rspamd-Queue-Id: 279A1405029
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Mon, Apr 13, 2026 at 09:30:34AM +0200, Aleksandr Loktionov wrote:
-> From: Avinash Dayanand <avinash.dayanand@intel.com>
-> 
-> The condition `tc < adapter->num_tc` admits any tc value equal to or
-> greater than num_tc, bypassing the destination-port validation and
-> allowing traffic to be steered to a non-existent traffic class. Change
-> the comparison to `tc > adapter->num_tc` to correctly reject
-> out-of-range TC values.
-> 
-> Fixes: 0075fa0fadd0 ("i40evf: Add support to apply cloud filters")
-> Signed-off-by: Avinash Dayanand <avinash.dayanand@intel.com>
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: e516da3f7d84e75af6dc6320d728b0e5b96de5dd  ice: fix infinite recursion in ice_cfg_tx_topo via ice_init_dev_hw
 
-I am a bit confused by this logic.
+elapsed time: 956m
 
-With this patch applied:
+configs tested: 76
+configs skipped: 2
 
-1) For tc <= adapter->num_tc, which I assume is valid TCs (other than 0,
-   in which case the function returns earlier), the filter destination port
-   is skipped.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-   But the failure path for that checks logs:
-   "Specify destination port to redirect to traffic class other than TC0\n"
+tested configs:
+alpha                   allnoconfig    gcc-15.2.0
+alpha                  allyesconfig    gcc-15.2.0
+arc                    allmodconfig    gcc-15.2.0
+arc                     allnoconfig    gcc-15.2.0
+arc                    allyesconfig    gcc-15.2.0
+arc         randconfig-001-20260415    gcc-13.4.0
+arc         randconfig-002-20260415    gcc-15.2.0
+arm                     allnoconfig    clang-23
+arm                    allyesconfig    gcc-15.2.0
+arm64                  allmodconfig    clang-19
+arm64                   allnoconfig    gcc-15.2.0
+csky                   allmodconfig    gcc-15.2.0
+csky                    allnoconfig    gcc-15.2.0
+hexagon                allmodconfig    clang-17
+hexagon                 allnoconfig    clang-23
+i386                   allmodconfig    gcc-14
+i386                    allnoconfig    gcc-14
+i386                   allyesconfig    gcc-14
+loongarch              allmodconfig    clang-19
+loongarch               allnoconfig    clang-23
+loongarch                 defconfig    clang-19
+m68k                   allmodconfig    gcc-15.2.0
+m68k                    allnoconfig    gcc-15.2.0
+m68k                   allyesconfig    gcc-15.2.0
+m68k                      defconfig    gcc-15.2.0
+microblaze              allnoconfig    gcc-15.2.0
+microblaze             allyesconfig    gcc-15.2.0
+microblaze                defconfig    gcc-15.2.0
+mips                   allmodconfig    gcc-15.2.0
+mips                    allnoconfig    gcc-15.2.0
+mips                   allyesconfig    gcc-15.2.0
+nios2                  allmodconfig    gcc-11.5.0
+nios2                   allnoconfig    gcc-11.5.0
+nios2                     defconfig    gcc-11.5.0
+openrisc               allmodconfig    gcc-15.2.0
+openrisc                allnoconfig    gcc-15.2.0
+parisc                 allmodconfig    gcc-15.2.0
+parisc                  allnoconfig    gcc-15.2.0
+parisc                 allyesconfig    gcc-15.2.0
+parisc64                  defconfig    gcc-15.2.0
+powerpc                allmodconfig    gcc-15.2.0
+powerpc                 allnoconfig    gcc-15.2.0
+riscv                  allmodconfig    clang-23
+riscv                   allnoconfig    gcc-15.2.0
+riscv                  allyesconfig    clang-16
+s390                   allmodconfig    clang-18
+s390                    allnoconfig    clang-23
+s390                   allyesconfig    gcc-15.2.0
+sh                     allmodconfig    gcc-15.2.0
+sh                      allnoconfig    gcc-15.2.0
+sh                     allyesconfig    gcc-15.2.0
+sh                        defconfig    gcc-15.2.0
+sparc                   allnoconfig    gcc-15.2.0
+sparc       randconfig-001-20260415    gcc-8.5.0
+sparc       randconfig-002-20260415    gcc-11.5.0
+sparc64                allmodconfig    clang-23
+sparc64                   defconfig    clang-20
+sparc64     randconfig-001-20260415    clang-23
+sparc64     randconfig-002-20260415    gcc-12.5.0
+um                     allmodconfig    clang-19
+um                      allnoconfig    clang-23
+um                     allyesconfig    gcc-14
+um                        defconfig    clang-23
+um                   i386_defconfig    gcc-14
+um          randconfig-001-20260415    clang-23
+um          randconfig-002-20260415    clang-23
+um                 x86_64_defconfig    clang-23
+x86_64                 allmodconfig    clang-20
+x86_64                  allnoconfig    clang-20
+x86_64                 allyesconfig    clang-20
+x86_64                    defconfig    gcc-14
+x86_64                rhel-9.4-rust    clang-20
+xtensa                  allnoconfig    gcc-15.2.0
+xtensa                 allyesconfig    gcc-15.2.0
+xtensa      randconfig-001-20260415    gcc-8.5.0
+xtensa      randconfig-002-20260415    gcc-8.5.0
 
-   This does not seem consistent.
-
-2) For tc > adapter->num_tc, which I assume is invalid TCs,
-   the function will eventually assign fields of filter->f and succeed
-   if filter has a valid destination port.
-
-   This doesn't seem to be in keeping with the patch description.
-
-3) The above two points aside, is there an out by 1 condition in
-   the condition tc > adapter->num_tc. It seems to imply
-   that tc == adapter->num_tc is a valid tc. But I suspect that
-   is not hte case.
-
-In short, I'm wondering if the function should look something like this
-(completely untested):
-
-/**
- * iavf_handle_tclass - Forward to a traffic class on the device
- * @adapter: board private structure
- * @tc: traffic class index on the device
- * @filter: pointer to cloud filter structure
- */
-static int iavf_handle_tclass(struct iavf_adapter *adapter, u32 tc,
-			      struct iavf_cloud_filter *filter)
-{
-		if (tc == 0)
-			return 0;
-
-		if (tc >= adapter->num_tc) {
-			// dev_err(...);
-			return -EINVAL;
-		}
-
-		if (!filter->f.data.tcp_spec.dst_port) {
-			dev_err(&adapter->pdev->dev,
-				"Specify destination port to redirect to traffic class other than TC0\n");
-			return -EINVAL;
-		}
-
-		/* redirect to a traffic class on the same device */
-		filter->f.action = VIRTCHNL_ACTION_TC_REDIRECT;
-		filter->f.action_meta = tc;
-
-		return 0;
-}
-
-> ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index ab5f5adc..5e4035b 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -4062,7 +4062,7 @@ static int iavf_handle_tclass(struct iavf_adapter *adapter, u32 tc,
->  {
->  	if (tc == 0)
->  		return 0;
-> -	if (tc < adapter->num_tc) {
-> +	if (tc > adapter->num_tc) {
->  		if (!filter->f.data.tcp_spec.dst_port) {
->  			dev_err(&adapter->pdev->dev,
->  				"Specify destination port to redirect to traffic class other than TC0\n");
-> -- 
-> 2.52.0
-> 
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
