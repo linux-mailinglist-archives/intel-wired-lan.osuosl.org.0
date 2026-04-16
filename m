@@ -2,161 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id oPyfE4PW4GlymgAAu9opvQ
+	id UNQnO2Tq4GmmnQAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:30:59 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 15:55:48 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD91C40E2EC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:30:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB4B440F454
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 15:55:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 648748064F;
-	Thu, 16 Apr 2026 12:30:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 38E8980CEA;
+	Thu, 16 Apr 2026 13:55:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YCJ5uPJYqAOM; Thu, 16 Apr 2026 12:30:56 +0000 (UTC)
+ id KFmPSlNOP6e3; Thu, 16 Apr 2026 13:55:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CAE5580661
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7815080C95
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776342656;
-	bh=VyPrg9GQ2OOkA0iAAEE3gj1RNHhV/N2lAktXeN9rB7c=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1776347745;
+	bh=fQSVH5EnCCB38CeqTQiAH5evSRyO3uhQtiQydinxuuw=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=mXnkuofMMIqWUhWrB03X+Xhw4e+3mCACJAJIDZSghhlPGJC0tHuu+haj2+HbEctpp
-	 ZV6D4KjGa9YOc9+9tmysD1AZ54qouJhuZfXQNPTyo3SwhjcU4IdAlos2/q68I5J2Ub
-	 +btPyqkeb5XfzOiJvMmLL9wC8odIZFGAf92lqyTq6cH6CtSpUIhRHi/hHXvaU0iu8B
-	 FQP6jcz0LdrHO+g+vQTSAEVWqpu96mfYPyAWW+IH8gsx2yVyLIcYniDrufdeVRl3nb
-	 Gq2bb7l0G3t2Ato5AejaCdcn6BOSv0EsNtryYFAn1R/MZruMB1vdNZdzibm91Tsuhp
-	 6H4SM7PsOB5ZQ==
+	b=KTqh04jC5h85rD1aKrkwW4Q7hTIH8E7jhxMrZNMgwf7dkyBwjw8TDuLfPhYeMDe9v
+	 0aQJSwbgbFiVrtyncKFfBWXyQHtTz7ZscrvuOnWTnucfawqTQAcUKcueEu165MQBwc
+	 Nkiunpqwj5I+ICcc4Fr3KeO7OoBWENl8Ar2znPPuZYG6TwlO21/Q7Uf+222otx9t6s
+	 YKp5nru/sM2w1UIQzwZWVmNi7h/mnj1pzQVAqHqY4QjqoKS4lraBDAf4aI9ZmdNf2P
+	 QtVKcES733E3ve7gRIHe8WXvIvqJ5V7eDo5aOTO+RinhE+DsJ45l7d0xX6CeCxHeig
+	 wDxxs0FnFVjug==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CAE5580661;
-	Thu, 16 Apr 2026 12:30:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7815080C95;
+	Thu, 16 Apr 2026 13:55:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id D4771127
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id AFCA8775
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 13:55:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C4E4D401B8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A143C606C9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 13:55:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id b4c9haIt5EyH for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bqyEg-sKnAO3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Apr 2026 13:55:43 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=krzk@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 320854018A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 320854018A
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BA4EE606BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA4EE606BE
 Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 320854018A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BA4EE606BE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 13:55:43 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 91B2640474;
- Thu, 16 Apr 2026 12:30:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB8D2C2BCAF;
- Thu, 16 Apr 2026 12:30:40 +0000 (UTC)
-Message-ID: <1fba96bd-124d-431d-8de8-78688c248600@kernel.org>
-Date: Thu, 16 Apr 2026 14:30:37 +0200
+ by sea.source.kernel.org (Postfix) with ESMTP id 3020B4020C;
+ Thu, 16 Apr 2026 13:55:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5522C2BCAF;
+ Thu, 16 Apr 2026 13:55:40 +0000 (UTC)
+From: Simon Horman <horms@kernel.org>
+To: jtornosm@redhat.com
+Cc: Simon Horman <horms@kernel.org>, stable@vger.kernel.org,
+ davem@davemloft.net, jesse.brandeburg@intel.com, edumazet@google.com,
+ przemyslaw.kitszel@intel.com, netdev@vger.kernel.org, pabeni@redhat.com,
+ intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ kuba@kernel.org
+Date: Thu, 16 Apr 2026 14:55:19 +0100
+Message-ID: <20260416135519.873936-1-horms@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260414110006.124286-5-jtornosm@redhat.com>
+References: <20260414110006.124286-5-jtornosm@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Philipp Hahn <phahn-oss@avm.de>, amd-gfx@lists.freedesktop.org,
- apparmor@lists.ubuntu.com, bpf@vger.kernel.org, ceph-devel@vger.kernel.org,
- cocci@inria.fr, dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
- gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
- intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev,
- kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org,
- linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
- linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org,
- linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org,
- linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-mm@kvack.org,
- linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
- sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev
-Cc: Julia Lawall <Julia.Lawall@inria.fr>, Nicolas Palix <nicolas.palix@imag.fr>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776342653;
- bh=0+upWZt1SQSfIz6OgmfLK1joGZgudnQ2lP+Bv+7s1DM=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=aREs4pY9AFWiyPis1yCUHi655kH6F2cmateO3OS3vwiWh4XGstegazkXh9fTeJRQW
- F7PNlGo+5uv4JS1ghUA7GmLt/nGdKTIiz0N3eNo0k9qdgxnlZ6UVo1xvuY/jm0Jsgz
- 6OXZlHvLM95FlzgQqthFFGhbIejPY5s4jQOos8SHiaMv+4GNWDNJ4NBjKmastJKLl9
- B+kLcT7cwceOa9aKNihg3CZG+65E3BtgCcBvAVf5SIS4E47zAqVB8uUKfjkayyutdK
- 0Jj6v6r/4toyxe6BrveBQ3dEYq/LaiTL2nhXiDsBmOQK54Y4zcD7qDew9ISAzQHpha
- d9g1fsIICa3fA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1776347743;
+ bh=fFpcxlUO8GkQVJnT624RqhJ8wfJGsPEiug5f2tM8N84=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Y7sXTEzuoc1itLxf7/1AMhRehGXWxIVJQm8eE1TG2fJank9owGVyz4xmOmxZ9ZiCM
+ 4x2ZcCaTlUzBj/i/Zfyx7MZuymnhZiapvaOo5aLIZvhS7pmnkUp322/Eo62DBaEZ8x
+ RK6gkQSwUxF0Ax9K3WTLzndK2InSyheFkmqvBNEkmpXMukkv7lrIGPkoB2AEUZj3Ms
+ dUyMeaLK5KqOdrfzcns8rfE2ErtLRicYS4C2OM+zYzJdMBL31BxAtHWBT1KNmoH48y
+ tYF3ZWIlVm82JUkr8+lw9qtv0OA8pYOzjpAJBRTWcQDiZ+IOBjEc6z/Cgy+V8ap2gR
+ ki5VKDDJDD1+w==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=aREs4pY9
-Subject: Re: [Intel-wired-lan] [PATCH 01/61] Coccinelle: Prefer
- IS_ERR_OR_NULL over manual NULL check
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=Y7sXTEzu
+Subject: Re: [Intel-wired-lan] [PATCH net v3 4/5] ice: skip unnecessary VF
+ reset when setting trust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -172,88 +107,112 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [2.19 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:phahn-oss@avm.de,m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.o
- rg,m:linux-pm@vger.kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:Julia.Lawall@inria.fr,m:nicolas.palix@imag.fr,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[imag.fr:email,osuosl.org:dkim,avm.de:email];
-	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER(0.00)[krzk@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[12];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:jtornosm@redhat.com,m:horms@kernel.org,m:stable@vger.kernel.org,m:davem@davemloft.net,m:jesse.brandeburg@intel.com,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:pabeni@redhat.com,m:anthony.l.nguyen@intel.com,m:kuba@kernel.org,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[krzk@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_GT_50(0.00)[56];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	NEURAL_HAM(-0.00)[-0.999];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	NEURAL_HAM(-0.00)[-0.998];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: BD91C40E2EC
+X-Rspamd-Queue-Id: DB4B440F454
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On 10/03/2026 12:48, Philipp Hahn wrote:
-> Find and convert uses of IS_ERR() plus NULL check to IS_ERR_OR_NULL().
-> 
-> There are several cases where `!ptr && WARN_ON[_ONCE](IS_ERR(ptr))` is
-> used:
-> - arch/x86/kernel/callthunks.c:215 WARN_ON_ONCE
-> - drivers/clk/clk.c:4561 WARN_ON_ONCE
-> - drivers/interconnect/core.c:793 WARN_ON
-> - drivers/reset/core.c:718 WARN_ON
-> The change is not 100% semantical equivalent as the warning will now
-> also happen when the pointer is NULL.
-> 
-> To: Julia Lawall <Julia.Lawall@inria.fr>
-> To: Nicolas Palix <nicolas.palix@imag.fr>
-> Cc: cocci@inria.fr
-> Cc: linux-kernel@vger.kernel.org
-> 
-> ---
-> drivers/clocksource/mips-gic-timer.c:283 looks suspicious: ret != clk,
-> but Daniel Lezcano verified it as cottect.
-> 
-> There are some cases where the checks are part of a larger expression:
-> - mm/kmemleak.c:1095
-> - mm/kmemleak.c:1155
-> - mm/kmemleak.c:1173
-> - mm/kmemleak.c:1290
-> - mm/kmemleak.c:1328
-> - mm/kmemleak.c:1241
-> - mm/kmemleak.c:1310
-> - mm/kmemleak.c:1258
-> - net/netlink/af_netlink.c:2670
-> Thanks to Julia Lawall for the help to also handle them.
-> 
-> Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
-> ---
->  scripts/coccinelle/api/is_err_or_null.cocci | 125 ++++++++++++++++++++++++++++
->  1 file changed, 125 insertions(+)
-> 
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
 
-Neither this, nor try from 2011, nor any future try should be accepted,
-because it creates impression IS_ERR_OR_NULL is somehow okay. No, it is
-not okay, it is a discouraged pattern leading to less readable and
-maintainable code. We should not have therefore any tools suggesting
-usage of IS_ERR_OR_NULL, because people will be converting poor code
-into that, instead of fixing that poor code.
+For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
+---
+ice: skip unnecessary VF reset when setting trust
 
-Best regards,
-Krzysztof
+Similar to the i40e fix, ice_set_vf_trust() unconditionally calls
+ice_reset_vf() when the trust setting changes. The ice driver already
+has logic to clean up MAC LLDP filters when removing trust, which is
+the only operation that requires filter synchronization. After this
+cleanup, the VF reset is only necessary if there were actually filters
+to remove.
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+> @@ -1399,14 +1399,19 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
+>
+>  	mutex_lock(&vf->cfg_lock);
+>
+> -	while (!trusted && vf->num_mac_lldp)
+> -		ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
+> -
+>  	vf->trusted = trusted;
+> -	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
+>  	dev_info(ice_pf_to_dev(pf), "VF %u is now %strusted\n",
+>  		 vf_id, trusted ? "" : "un");
+>
+> +	/* Only reset VF if removing trust and there are MAC LLDP filters
+> +	 * to clean up. Reset is needed to ensure filter removal completes.
+> +	 */
+> +	if (!trusted && vf->num_mac_lldp) {
+> +		while (vf->num_mac_lldp)
+> +			ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
+> +		ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
+> +	}
+> +
+
+Does setting vf->trusted before the cleanup loop break the filter
+removal? Looking at the cleanup mechanism, ice_vf_update_mac_lldp_num()
+calls ice_vf_is_lldp_ena() which checks both num_mac_lldp AND
+vf->trusted:
+
+ice_vf_lib.h:ice_vf_is_lldp_ena():
+    return vf->num_mac_lldp && vf->trusted;
+
+With the new ordering where vf->trusted is set to false before the loop:
+
+ice_vf_update_mac_lldp_num() logic:
+    was_ena = ice_vf_is_lldp_ena(vf);  // evaluates to (num > 0 && FALSE) = FALSE
+    vf->num_mac_lldp--;
+    is_ena = ice_vf_is_lldp_ena(vf);   // evaluates to FALSE
+
+    if (was_ena != is_ena)              // FALSE != FALSE is FALSE
+        ice_vsi_cfg_sw_lldp(vsi, false, false);  // NEVER called
+
+But in the old code, vf->trusted was still TRUE during the loop:
+
+    was_ena = (num > 0 && TRUE) = TRUE
+    vf->num_mac_lldp--;
+    is_ena = (0 && TRUE) = FALSE      // when last filter removed
+
+    if (was_ena != is_ena)            // TRUE != FALSE is TRUE
+        ice_vsi_cfg_sw_lldp(...)      // called to remove LLDP filters
+
+So the ETH_P_LLDP packet filters are not removed from the hardware
+switch, leaving stale filter rules. Should vf->trusted be set after the
+cleanup loop instead?
+
+>  	mutex_unlock(&vf->cfg_lock);
+>
+>  out_put_vf:
