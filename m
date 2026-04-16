@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 0CMGGjvV4Gk5mgAAu9opvQ
+	id oPyfE4PW4GlymgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:25:31 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:30:59 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEB1D40E110
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:25:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD91C40E2EC
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Apr 2026 14:30:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6CA516070F;
-	Thu, 16 Apr 2026 12:25:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 648748064F;
+	Thu, 16 Apr 2026 12:30:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QmIy9VwnRSLZ; Thu, 16 Apr 2026 12:25:22 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YCJ5uPJYqAOM; Thu, 16 Apr 2026 12:30:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F1C8605B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CAE5580661
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776342322;
-	bh=EW+81uRJG1PkQDI7vy+71C2mKk60lXiMxe7+Z/S5SCE=;
+	s=default; t=1776342656;
+	bh=VyPrg9GQ2OOkA0iAAEE3gj1RNHhV/N2lAktXeN9rB7c=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=eYbl66LwvZ4xDjuvx2dTV2OlcDnANKFuujczRkCbx0ilGWgJfSSicN4684LwfDy1U
-	 c8Yp9dLuKhg5k6lVtWHKQQhZR2fK0lDES6Wxjok+SxL1IC4UH+2Cob4gLZT6WToNn2
-	 7ypIDF/KbOiKopc3R7efcOKQzZqZQapELpK/glpEDeIyj5wNYM66o37/KKod0WJKSS
-	 1HJlg5LJZH5GR+xqcZ7U2fB6fDgOeE7TzoMSw9RQok2LTPHqSSioKBzIk3W7dPrVZa
-	 9dNMI4UjEu/kGftvmjdjJ2zOFzCQYkKpM3Y1yBe1IoNP9x2KwrK7705ezKCc4iZ0Vm
-	 OSYp/dEYjL+7w==
+	b=mXnkuofMMIqWUhWrB03X+Xhw4e+3mCACJAJIDZSghhlPGJC0tHuu+haj2+HbEctpp
+	 ZV6D4KjGa9YOc9+9tmysD1AZ54qouJhuZfXQNPTyo3SwhjcU4IdAlos2/q68I5J2Ub
+	 +btPyqkeb5XfzOiJvMmLL9wC8odIZFGAf92lqyTq6cH6CtSpUIhRHi/hHXvaU0iu8B
+	 FQP6jcz0LdrHO+g+vQTSAEVWqpu96mfYPyAWW+IH8gsx2yVyLIcYniDrufdeVRl3nb
+	 Gq2bb7l0G3t2Ato5AejaCdcn6BOSv0EsNtryYFAn1R/MZruMB1vdNZdzibm91Tsuhp
+	 6H4SM7PsOB5ZQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F1C8605B0;
-	Thu, 16 Apr 2026 12:25:22 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CAE5580661;
+	Thu, 16 Apr 2026 12:30:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id E296E2CF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:25:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id D4771127
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DD2904040E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:25:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C4E4D401B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FsExoXcnFI4k for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Apr 2026 12:25:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=krzk@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2BEBF402D3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2BEBF402D3
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2BEBF402D3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:25:19 +0000 (UTC)
+ id b4c9haIt5EyH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=krzk@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 320854018A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 320854018A
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 320854018A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 12:30:54 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 54A6B60126;
- Thu, 16 Apr 2026 12:25:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4797C2BCB3;
- Thu, 16 Apr 2026 12:25:04 +0000 (UTC)
-Message-ID: <1fd72d1b-f5cd-447f-ae11-6f4d4426b8e8@kernel.org>
-Date: Thu, 16 Apr 2026 14:24:57 +0200
+ by sea.source.kernel.org (Postfix) with ESMTP id 91B2640474;
+ Thu, 16 Apr 2026 12:30:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB8D2C2BCAF;
+ Thu, 16 Apr 2026 12:30:40 +0000 (UTC)
+Message-ID: <1fba96bd-124d-431d-8de8-78688c248600@kernel.org>
+Date: Thu, 16 Apr 2026 14:30:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Philipp Hahn <phahn-oss@avm.de>, amd-gfx@lists.freedesktop.org,
@@ -88,9 +88,9 @@ To: Philipp Hahn <phahn-oss@avm.de>, amd-gfx@lists.freedesktop.org,
  ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev
-Cc: Georgi Djakov <djakov@kernel.org>
+Cc: Julia Lawall <Julia.Lawall@inria.fr>, Nicolas Palix <nicolas.palix@imag.fr>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-55-bd63b656022d@avm.de>
+ <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -136,27 +136,26 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260310-b4-is_err_or_null-v1-55-bd63b656022d@avm.de>
+In-Reply-To: <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776342318;
- bh=gECMS4EGrtN1lWkNcMdqV1cQaJPbxrgRQTXN3zouHSg=;
+ d=kernel.org; s=k20201202; t=1776342653;
+ bh=0+upWZt1SQSfIz6OgmfLK1joGZgudnQ2lP+Bv+7s1DM=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=GQGv29sXj5S5z7UPKnXaUJAuD1qc92DQaWs8UXQ6wwBCK62RBOeMuB3RtNcxzLs+n
- PPcHL7L8pFqT/h2G0bvvPkUySB8nqp1hX+g8DsxNBEPpxoa8+yXm1bMdZVixBjqxgs
- n60V3osh+8lSW6pt2nDmsfqoDHDW6Auv9CDrXKgdtoPlM9Xla54AXl1OSAYSKpcXrA
- NmL+fSV7Qk/BTzx5WK8y+vV+U+fxOTS5SiuiemUg0UByoPARoWSlKdZYhXUYnMvTFf
- DgJsTYvf1ogHE4V/gC2FO90mA6aK9sVcz0Z1Cm9dDcGVpaCAj1nCKENYb7/YBcL1F4
- 1oc9q29NjGBrg==
+ b=aREs4pY9AFWiyPis1yCUHi655kH6F2cmateO3OS3vwiWh4XGstegazkXh9fTeJRQW
+ F7PNlGo+5uv4JS1ghUA7GmLt/nGdKTIiz0N3eNo0k9qdgxnlZ6UVo1xvuY/jm0Jsgz
+ 6OXZlHvLM95FlzgQqthFFGhbIejPY5s4jQOos8SHiaMv+4GNWDNJ4NBjKmastJKLl9
+ B+kLcT7cwceOa9aKNihg3CZG+65E3BtgCcBvAVf5SIS4E47zAqVB8uUKfjkayyutdK
+ 0Jj6v6r/4toyxe6BrveBQ3dEYq/LaiTL2nhXiDsBmOQK54Y4zcD7qDew9ISAzQHpha
+ d9g1fsIICa3fA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=GQGv29sX
-Subject: Re: [Intel-wired-lan] [PATCH 55/61] interconnect: Prefer
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=aREs4pY9
+Subject: Re: [Intel-wired-lan] [PATCH 01/61] Coccinelle: Prefer
  IS_ERR_OR_NULL over manual NULL check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -172,78 +171,89 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.19 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[avm.de:email,osuosl.org:dkim];
-	FORGED_SENDER(0.00)[krzk@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:phahn-oss@avm.de,m:amd-gfx@lists.freedesktop.org,m:apparmor@lists.ubuntu.com,m:bpf@vger.kernel.org,m:ceph-devel@vger.kernel.org,m:cocci@inria.fr,m:dm-devel@lists.linux.dev,m:dri-devel@lists.freedesktop.org,m:gfs2@lists.linux.dev,m:intel-gfx@lists.freedesktop.org,m:iommu@lists.linux.dev,m:kvm@vger.kernel.org,m:linux-arm-kernel@lists.infradead.org,m:linux-block@vger.kernel.org,m:linux-bluetooth@vger.kernel.org,m:linux-btrfs@vger.kernel.org,m:linux-cifs@vger.kernel.org,m:linux-clk@vger.kernel.org,m:linux-erofs@lists.ozlabs.org,m:linux-ext4@vger.kernel.org,m:linux-fsdevel@vger.kernel.org,m:linux-gpio@vger.kernel.org,m:linux-hyperv@vger.kernel.org,m:linux-input@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:linux-leds@vger.kernel.org,m:linux-media@vger.kernel.org,m:linux-mips@vger.kernel.org,m:linux-mm@kvack.org,m:linux-modules@vger.kernel.org,m:linux-mtd@lists.infradead.org,m:linux-nfs@vger.kernel.org,m:linux-omap@vger.kernel.org,m:linux-phy@lists.infradead.o
- rg,m:linux-pm@vger.kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:djakov@kernel.org,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+];
+ rg,m:linux-pm@vger.kernel.org,m:linux-rockchip@lists.infradead.org,m:linux-s390@vger.kernel.org,m:linux-scsi@vger.kernel.org,m:linux-sctp@vger.kernel.org,m:linux-security-module@vger.kernel.org,m:linux-sh@vger.kernel.org,m:linux-sound@vger.kernel.org,m:linux-stm32@st-md-mailman.stormreply.com,m:linux-trace-kernel@vger.kernel.org,m:linux-usb@vger.kernel.org,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:ntfs3@lists.linux.dev,m:samba-technical@lists.samba.org,m:sched-ext@lists.linux.dev,m:target-devel@vger.kernel.org,m:tipc-discussion@lists.sourceforge.net,m:v9fs@lists.linux.dev,m:Julia.Lawall@inria.fr,m:nicolas.palix@imag.fr,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[imag.fr:email,osuosl.org:dkim,avm.de:email];
 	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER(0.00)[krzk@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[krzk@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_GT_50(0.00)[55];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_GT_50(0.00)[56];
 	MID_RHS_MATCH_FROM(0.00)[];
-	NEURAL_HAM(-0.00)[-0.998];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	NEURAL_HAM(-0.00)[-0.999];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: CEB1D40E110
+X-Rspamd-Queue-Id: BD91C40E2EC
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On 10/03/2026 12:49, Philipp Hahn wrote:
-> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-> check.
+On 10/03/2026 12:48, Philipp Hahn wrote:
+> Find and convert uses of IS_ERR() plus NULL check to IS_ERR_OR_NULL().
 > 
-> Semantich change: Previously the code only printed the warning on error,
-> but not when the pointer was NULL. Now the warning is printed in both
-> cases!
-
-NAK, read the code
-
+> There are several cases where `!ptr && WARN_ON[_ONCE](IS_ERR(ptr))` is
+> used:
+> - arch/x86/kernel/callthunks.c:215 WARN_ON_ONCE
+> - drivers/clk/clk.c:4561 WARN_ON_ONCE
+> - drivers/interconnect/core.c:793 WARN_ON
+> - drivers/reset/core.c:718 WARN_ON
+> The change is not 100% semantical equivalent as the warning will now
+> also happen when the pointer is NULL.
 > 
-> Change found with coccinelle.
-> 
-> To: Georgi Djakov <djakov@kernel.org>
-> Cc: linux-pm@vger.kernel.org
+> To: Julia Lawall <Julia.Lawall@inria.fr>
+> To: Nicolas Palix <nicolas.palix@imag.fr>
+> Cc: cocci@inria.fr
 > Cc: linux-kernel@vger.kernel.org
+> 
+> ---
+> drivers/clocksource/mips-gic-timer.c:283 looks suspicious: ret != clk,
+> but Daniel Lezcano verified it as cottect.
+> 
+> There are some cases where the checks are part of a larger expression:
+> - mm/kmemleak.c:1095
+> - mm/kmemleak.c:1155
+> - mm/kmemleak.c:1173
+> - mm/kmemleak.c:1290
+> - mm/kmemleak.c:1328
+> - mm/kmemleak.c:1241
+> - mm/kmemleak.c:1310
+> - mm/kmemleak.c:1258
+> - net/netlink/af_netlink.c:2670
+> Thanks to Julia Lawall for the help to also handle them.
+> 
 > Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 > ---
->  drivers/interconnect/core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  scripts/coccinelle/api/is_err_or_null.cocci | 125 ++++++++++++++++++++++++++++
+>  1 file changed, 125 insertions(+)
 > 
-> diff --git a/drivers/interconnect/core.c b/drivers/interconnect/core.c
-> index 8569b78a18517b33abeafac091978b25cbc1acc7..22e92b30f73853d5bd2e05b4f52cb5aa22556468 100644
-> --- a/drivers/interconnect/core.c
-> +++ b/drivers/interconnect/core.c
-> @@ -790,7 +790,7 @@ void icc_put(struct icc_path *path)
->  	size_t i;
->  	int ret;
->  
-> -	if (!path || WARN_ON(IS_ERR(path)))
-> +	if (WARN_ON(IS_ERR_OR_NULL(path)))
 
-IS_ERR_OR_NULL is simply discouraged, but beside of code preference, you
-just added bug here. This is clearly not equivalent and you emit warn on
-perfectly valid case!
+Neither this, nor try from 2011, nor any future try should be accepted,
+because it creates impression IS_ERR_OR_NULL is somehow okay. No, it is
+not okay, it is a discouraged pattern leading to less readable and
+maintainable code. We should not have therefore any tools suggesting
+usage of IS_ERR_OR_NULL, because people will be converting poor code
+into that, instead of fixing that poor code.
 
 Best regards,
 Krzysztof
