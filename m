@@ -2,114 +2,118 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wMRtJj2H4WnbuQAAu9opvQ
+	id WHUwNHyq4WkywgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2026 03:05:01 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2026 05:35:24 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A159D415E8E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2026 03:05:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4D7F416A17
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Apr 2026 05:35:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E988C8052F;
-	Fri, 17 Apr 2026 01:04:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 85072605BD;
+	Fri, 17 Apr 2026 03:35:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mGJCTad4B-zQ; Fri, 17 Apr 2026 01:04:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1ErlBoA4y7Jw; Fri, 17 Apr 2026 03:35:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4045E80531
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0528960A8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776387898;
-	bh=gzWePiR4wJvav7DKNP0IvFVMtEhJxILYW4FQXkLO0yw=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=w+3CQDFUebJnU3lf77JzalQvJiaxMZ9e/TfnrhFxa1Q3kApSBzQNRh2VzopNeJMmn
-	 ToggcPghr1r5F9ndKbwuQTESLFmKin2MSlvxmjKBl6X2SJ6Mu2lLD+06PwC/D9UexT
-	 pMdObX7i2QMOA19AnFuL75zp2vE1HpjnBVB/HEHOdpr8AzLqWhBVQEEZjlhJAhAeVD
-	 HBK7V2c0vRqDh6/A+i5qQHx4odwWBid6sccJpcyu3k06R0FK/NC/gQhqnx2z7yhIh6
-	 RkWxUQMGKtFCiA9TbJD7ALaJKSoD791/Pp9+nrG8RKrzi1OguAnDjyDnCiAkvnhPaC
-	 X3y6NDoCw6WUA==
+	s=default; t=1776396921;
+	bh=hvouVp4w0YbHvQbdpa7mn27k6mvB2sHRdWB4T5BpS3c=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=MDBV6R2hSuRuGtCJmvbSsC++Nr5hCq8Vpuq+MqBBQEnk4imx9Wm5XbjFfleMHYUPa
+	 KLLnJry8OzHKXiI5uSSs60r4Qgrg3EVKMg0sICItd0Nc8tz9vl4r0xi2Qik2rsHv+V
+	 5ELnrbFa8VoMSNuHM0pZVOWFBEW+cYf4QVjukFplEiqhm4Ep9AY2E9yymlmRCYFti4
+	 DRcARyJma4mvwnekOKiUDnodIGfhJzGdg0wBLe5l0hxKowcypYSUzKzvuNUPyQMrd9
+	 P4HHLOf3G16JhMbftQzmQMbkKWQG/fYl8TwGlsBUn2QH/2m2E8cbIw2wayR3p9C+M6
+	 K/WTD4XtQiY2Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4045E80531;
-	Fri, 17 Apr 2026 01:04:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0528960A8C;
+	Fri, 17 Apr 2026 03:35:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id EC9DD396
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 01:04:56 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 057D5259
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 03:35:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DE8E78052D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 01:04:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DF6AF81208
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 03:35:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YYT7RJ-OCjNd for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Apr 2026 01:04:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 186F380528
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 186F380528
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 186F380528
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 01:04:55 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 7D1F36012B;
- Fri, 17 Apr 2026 01:04:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7DBE1C2BCB5;
- Fri, 17 Apr 2026 01:04:53 +0000 (UTC)
-Date: Thu, 16 Apr 2026 18:04:47 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Cc: "Vecera, Ivan" <ivecera@redhat.com>, "vadim.fedorenko@linux.dev"
- <vadim.fedorenko@linux.dev>, "edumazet@google.com" <edumazet@google.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "davem@davemloft.net" <davem@davemloft.net>,
- "Prathosh.Satish@microchip.com" <Prathosh.Satish@microchip.com>,
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "horms@kernel.org" <horms@kernel.org>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "pabeni@redhat.com" <pabeni@redhat.com>,
- "jiri@resnulli.us" <jiri@resnulli.us>
-Message-ID: <20260416180447.1a3c5c87@kernel.org>
-In-Reply-To: <IA0PR11MB7378FF7BF4EA32C1F89372C19B232@IA0PR11MB7378.namprd11.prod.outlook.com>
-References: <20260402230626.3826719-1-grzegorz.nitka@intel.com>
- <20260406192312.0f7a2760@kernel.org>
- <IA1PR11MB621925C1718B838147404DC492582@IA1PR11MB6219.namprd11.prod.outlook.com>
- <20260409181041.395a0c37@kernel.org>
- <IA1PR11MB62194BF52262FCEB7FD5E76D92592@IA1PR11MB6219.namprd11.prod.outlook.com>
- <20260410133812.4cf9b090@kernel.org>
- <IA0PR11MB737882B384AE7279EBCD05C79B242@IA0PR11MB7378.namprd11.prod.outlook.com>
- <20260414145835.07fbe355@kernel.org>
- <IA0PR11MB737842E2098D0952A8BA1FE29B222@IA0PR11MB7378.namprd11.prod.outlook.com>
- <20260416082751.04782987@kernel.org>
- <IA0PR11MB7378FF7BF4EA32C1F89372C19B232@IA0PR11MB7378.namprd11.prod.outlook.com>
+ id nqcMrAolSNhn for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Apr 2026 03:35:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1231; helo=mail-dl1-x1231.google.com;
+ envelope-from=tactii@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3DDDF811F7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3DDDF811F7
+Received: from mail-dl1-x1231.google.com (mail-dl1-x1231.google.com
+ [IPv6:2607:f8b0:4864:20::1231])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3DDDF811F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Apr 2026 03:35:19 +0000 (UTC)
+Received: by mail-dl1-x1231.google.com with SMTP id
+ a92af1059eb24-12c726c30efso218244c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Apr 2026 20:35:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776396918; x=1777001718;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hvouVp4w0YbHvQbdpa7mn27k6mvB2sHRdWB4T5BpS3c=;
+ b=AvDI5m6+ALNFydEBWxokTCNojuaQBUPyAbf8ZtMA4GVjAY7z6uMk5TdSobfLLPHUPE
+ gm0l6GZZvwF1vWvJNf5qHeOkOli92N5vKFzOT/SLn7quUTwMUlj4Qm+ejuqgRJXdIxAP
+ CSNFKpmvI39m/IqHjD6SvjYatQTyeRE7EyfDcW+N5oiB4iOzoSyDTb/eznsBgo2vRVsW
+ xZyaeUTj3Ri0+AB7LSfiaoAmjtEpaMIKUCeS+Fi658XS+1mQ8flm6LEEwVZ0SH41cjGB
+ tp3V89iFEkrcFE52GzuG9dh2NlskZ/oBa+ypZQQOEme1G2Z7o4/0JP4X786hXMe6uobe
+ Aztw==
+X-Gm-Message-State: AOJu0Yw8OM1dMD0rhewo/1cz4Rbc1jU2EiQqx2h3/K6V4XxbpKt6/e7p
+ fJo+9wcgOVsYTPjSPi7CDqLujEOAuxBfEaR/AU6jnm7fFRc6ZuL2ccaKaBm0lpV9cFs=
+X-Gm-Gg: AeBDiesN4yHR4ENTyCZljgkOpAvLY68Fa2pPJ+sp/pMAbqp0sFGmrh8AL15Ga1gPwFq
+ P3T2KnQiM0wSYBASxEQwxe6TtZxYCwhcrQKvhxwCPQlJAOSMMTcx5WtUOCXizey6mzNP4RsIraY
+ 7U6DvpQTc/dfTzZ+LTcA5YILvwJENs1ofvL5A/+DCb9RejIaGKg3DahvgeEnB3tmvwBvlmhnGi7
+ rAhlJMN8aySsNlGmKlpUJ6GCuvuXjaS6A99LbPDrk0e4sq5OXTxHg5OhjxmJ80isUuWD3njS/BS
+ adNnsPrW6Uws65n6gMBDYt3+k7D28CE6EJGdjfWHac+xwY9lqfr3mB3ehhTurgfaX+POkGX5U3E
+ U+DpwMP74wfXaer1sfct/F5SXy19cLTL7IXw6eSvOvnyIR4aIuN84+9IzOIRxYx2WrlNocMx7Sn
+ YyMskz+X9+0PMIjAIteRmmo/+A03FXtiKBMK0=
+X-Received: by 2002:a05:7022:220f:b0:127:5cd6:fa45 with SMTP id
+ a92af1059eb24-12c73f72632mr449412c88.14.1776396917545; 
+ Thu, 16 Apr 2026 20:35:17 -0700 (PDT)
+Received: from devobuntu.lan ([2600:6c5c:6b00:ba4:7419:7bc9:9c2a:7cc2])
+ by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12c749c46c8sm511978c88.1.2026.04.16.20.35.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 16 Apr 2026 20:35:15 -0700 (PDT)
+From: Matt Vollrath <tactii@gmail.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: Matt Vollrath <tactii@gmail.com>,
+	stable@vger.kernel.org
+Date: Thu, 16 Apr 2026 23:34:52 -0400
+Message-ID: <20260417033452.640551-1-tactii@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776387894;
- bh=uef/MQUFdwKWAzdRkfr82aSqXlQWMKmwRMGsFqVycJg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=AFsF5VjnZpZMwUuZwG42cFUA/ApcxrnvS78EoSawtPVB7vXB5OsYtsPsoUBfsD+LZ
- 4uvvqsFfa2V3CzfrIbE2d8UJs6sfgrhZuRBAMy7COZrKaDpmonM/krI3wBjkPB2zvj
- zmn/HQwr3IAc7vF+cehDG6tAHms7HikId8JNssgu8i+8Wv6UIxugG8+u3aof/hPWxL
- I4aOpVHJj1TAS354NCkazF+crkhVATK4607FwT2H/K4cZ69qq5DQsDWS/tWBybL2x1
- MtSqd3nUy1kvPw8p4/PWTngj2r7iAmATpWRDhYTItdG3iQDqSoca7Mmk4KhMLMGISk
- r7pinxcjTwhKw==
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1776396918; x=1777001718; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=hvouVp4w0YbHvQbdpa7mn27k6mvB2sHRdWB4T5BpS3c=;
+ b=s8qqftE9LWJmp/JmG8UAcDwRlI5IbObXTOyaJ7jcGI07GLi/hbiCLU7L9h52/kkq8d
+ RVrqe2hcqRGYr8caDgzEG2tinTZX2c50sffbYhthOPzQt7HPcIo5j8lMqnf0ElSVEqS1
+ BFBXFk20FvySKc8J+UGN3OL9QyFlwnBi0QZ7Zs96o6nPijPfjfRpbpa2kZReeQIUlC5G
+ gwe0oYaPn7tVgaY0K6wtpLt98GonSZUAV9J0GPWkG+zMwvCSkUZeNHexh/+wU4x9nq2V
+ o8BHDmGbPBDhqb7VzsXDFXeZMdiAHfI454v43ieKu1FoLpzIFd7peTms9OikrHAWQdXg
+ mbdw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=AFsF5Vjn
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 0/8] dpll/ice: Add TXC
- DPLL type and full TX reference clock control for E825
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20251104 header.b=s8qqftE9
+Subject: [Intel-wired-lan] [PATCH iwl-net] igbvf: Fix leak in TX DMA error
+ cleanup
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -124,132 +128,72 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [10.19 / 15.00];
-	URIBL_BLACK(7.50)[osuosl.org:dkim];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	SUSPICIOUS_RECIPS(1.50)[];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	BAD_REP_POLICIES(0.10)[];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_SPF_ALLOW(-0.20)[+mx];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:arkadiusz.kubalewski@intel.com,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:edumazet@google.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:davem@davemloft.net,m:Prathosh.Satish@microchip.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:jiri@resnulli.us,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	R_DKIM_ALLOW(0.00)[osuosl.org:s=default];
-	GREYLIST(0.00)[pass,meta];
-	FORGED_SENDER(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[17];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,google.com,vger.kernel.org,gmail.com,davemloft.net,microchip.com,lunn.ch,lists.osuosl.org,kernel.org,intel.com,resnulli.us];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
-	TO_DN_SOME(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.512];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_FROM(0.00)[gmail.com];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MISSING_XM_UA(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	R_SPF_ALLOW(0.00)[+mx];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[tactii@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[gmail.com,vger.kernel.org];
+	NEURAL_HAM(-0.00)[-1.000];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_THREE(0.00)[3];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: A159D415E8E
-X-Rspamd-Action: add header
+X-Rspamd-Queue-Id: D4D7F416A17
+X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spam: Yes
 
-On Thu, 16 Apr 2026 18:26:11 +0000 Kubalewski, Arkadiusz wrote:
-> >> This HW doesn't use EEC DPLL signal to feed MAC clock, as DPLL is
-> >> external from NIC point of view. Only 2 signals from such external DPLL
-> >> device are used by NIC:
-> >> - synce (a single source for all those TXC per-port DPLL device)
-> >> - time_ref (a source for the TS_PLL - which drives PTP timer)  
-> >
-> >No bypass? The PLL is actually in the loop? oof, this is beyond
-> >my understanding of clocks and signals :S
->
-> TBH, I am not entirely sure what do you mean with MAC PLL into bypass
-> mode, but the HW description I have provided is still true, the MAC is
-> not fed with any DPLL provided signal here. Only port tx clocks PLLs and
-> a timer PLL can use those.
+If an error is encountered while mapping TX buffers, the driver should
+unmap any buffers already mapped for that skb.
 
-The ASIC PLL IPs I managed to find had a bypass mode where the reference
-/ input frequency still goes thru the dividers but the PLL circuit is
-bypassed. I assumed that if we want to distribute a syntonized clock
-across the network we would want as few PLL circuits in the paths as
-possible and we'd use bypass (which would be relevant here since for
-the target use case we wouldn't engage the PLL of the TXC). But this 
-is 100% guesswork so I'm probably speaking gibberish.
+Because count is incremented before each frag mapping, it will always
+match the correct number of unmappings needed when dma_error is reached.
+Decrementing count before the while loop in dma_error causes an
+off-by-one error. If any mapping was successful before an unsuccessful
+mapping, exactly one DMA mapping (the head) would leak.
 
-> >> Well, 'floating' MUX type pin not connected to any dpll would require a
-> >> lot of additional implementations, just to allow source selection, as we
-> >> have tried it already.
-> >>
-> >> Wouldn't more generic name cause a DPLL purpose problem?  
-> >
-> >The old proposal in netdev family was to to have source selection
-> >without creating a real mux. Not saying I'm dead set on that direction.
-> 
-> Yes, correct, it kept the list of dpll pins valid for source selection of
-> tx clock within the netdev and control over it through RT netlink.
-> That solution was rather simple but you requested to hack into dpll so we
-> did here.
-> 
-> IMHO this is cleanest and simplest solution we could find to keep it
-> within DPLL subsystem.
-> 
-> >> We still want to make sure that given DPLL device would serve the role
-> >> of source selection for particular port where a source pin should be an
-> >> output either on EEC dpll or some external signal generator but somehow
-> >> related to SyncE or similar solutions.  
-> >
-> >Right, but adding a new "type" per location of the PLL (especially if
-> >we lean into covering any ASIC PLL) may not scale, and opens us up to
-> >"vendor X calls it Y" and "in design A clock is fed by pll type X and
-> >in design B by type Y".
-> 
-> I was thinking that this is more like a purpose specific DPLL device, if
-> someone would want something similar we would have to review it, right?
+This bug was introduced by a 2010 fix for an endless loop in dma_error.
+All other affected drivers have already been fixed.
 
-We would if it was a Ethernet MAC PLL, but if someone wanted to expose
-whether some random PLL in their ASIC locks - are we adding a new type
-for each one of those?
+Fixes: c1fa347f20f1 ("e1000/e1000e/igb/igbvf/ixgb/ixgbe: Fix tests of unsigned in *_tx_map()")
+Cc: stable@vger.kernel.org
+Assisted-by: Claude:claude-4-7-opus
+Signed-off-by: Matt Vollrath <tactii@gmail.com>
+---
+ drivers/net/ethernet/intel/igbvf/netdev.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-> >IIUC you do provide "linking" of the pins? netdev will have the MAC pin
-> >assigned. Is the pin that connects the PLLs also annotated so that user
-> >knows what's on the "other side"? Maybe the topology would be clear
-> >enough from just that, and we don't have to add a TXC type.
-> >Call the PLL "integrated" or something generic. User should be able to
-> >trace the path of the signals?  
-> 
-> It depends, TX clock has one of external pins connected to external DPLL,
-> but second is a board-level pin with ability to provide some external
-> clock signal, the user would have to determine that purpose just based
-> on the topology of one of the pins, which seems a bit problematic?
-> I.e. if at some point there would be HW with only external non-DPLL
-> connected pins?
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index ac57212ab02bd..19b2228e80bae 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -2190,8 +2190,6 @@ static inline int igbvf_tx_map_adv(struct igbvf_adapter *adapter,
+ 	buffer_info->time_stamp = 0;
+ 	buffer_info->length = 0;
+ 	buffer_info->mapped_as_page = false;
+-	if (count)
+-		count--;
+ 
+ 	/* clear timestamp and dma mappings for remaining portion of packet */
+ 	while (count--) {
+-- 
+2.43.0
 
-Not sure I follow, TBH. To me the function of the "MAC PLL" is fairly
-obvious from the fact that it has a pin exposed via rtnetlink. So it's
-obviously a DPLL which can drive the Tx clock?
-
-It's the function / relation / linking to the EEC DPLL that may not 
-be obvious. But user can see how the pins connect they can get some
-LLM to draw a diagram of a live system.. et voila :)
-
-> I mean 'generic' type is something we could do, but as already mentioned,
-> thought that we want a DPLL types specified/designed for some particular
-> functions/tasks. 
-
-I feel like we often get labels wrong the first time around, so if we
-can defer adding them until later that'd make me happy..
