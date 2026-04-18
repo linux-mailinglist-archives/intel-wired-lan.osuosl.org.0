@@ -2,94 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id suO2FQV542lhHQEAu9opvQ
+	id kCTvFby242mVKAEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2026 14:28:53 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2026 18:52:12 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C137B42116A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2026 14:28:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 32045421B29
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 18 Apr 2026 18:52:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2EE4C60F04;
-	Sat, 18 Apr 2026 12:28:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A8CC440F87;
+	Sat, 18 Apr 2026 16:52:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mBuCv1SryevU; Sat, 18 Apr 2026 12:28:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Vnfmd4UDm9dn; Sat, 18 Apr 2026 16:52:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3BDB60F38
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E74C240F76
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776515330;
-	bh=tTNM3wWu961Uj6RztSTjbggRBgtBsCRotUuNmdklGAU=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1776531129;
+	bh=lJT6eUZ8/0wb0gv+fWpBt8xji6v9X7XIoCnYmfmk5Gg=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=az9G3XV7THh3+4gjKDC/F8GKU/TzFje79vtuubx8JMowUlcjktEbphFFVcf7milJD
-	 yab8YVvf0rAlMjvdRXpKzEpSZv5fNVGojGnMd8pcPk+57dojMc5ZhUBVmudo1/J8ev
-	 eeXPJM5S/adrY9Y7lljntQP8JZeml6EMx+cDdN0QFMhlVK+jvBObtxzqZ/EEIBNBhY
-	 UR/f6fnOsYasdAsdznEOJNeQM6nREAjd7tu9vbR+R462JPY4KKdfLZZ7b5i26Jjpw/
-	 yyXJXdbNVND/IKSZ0Du2vVwZsObdd0cGTMAZL8SGNkdMyb2ay/9/hB8KJ483F42S4w
-	 /mwUayZb2/ZUQ==
+	b=H8KErcTtmOL/dKY8I1pTFbMa5hmRycZv6G0eLLB4Wam3JC7qug1gbSnKDjnPwNICl
+	 ucT81q+ZUQVfMzHtgJS8oRLusphO3wvnOnM6248b29LpSx615p+rdocA+8X9X8w9cS
+	 gt/oecG8I4ELqTQr/sxGopSwhZUGGEawAwuJxfpD4Oi93YEahHAKsvKKQLjdGvynMy
+	 wN6QpYXtQl2QyS7Ng03QNwiZkfTsrkv8hK4ot6BmG24c6Cp6zH0DTxLYhW8eTlPFqi
+	 Ar6okpMw+C/zRKDSFZT/r3zmnxmeDFAcIBoIFRbGiGIVOnWiRS5p5gmfUhh7PA2pG8
+	 KhCjVToNNWVRg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A3BDB60F38;
-	Sat, 18 Apr 2026 12:28:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E74C240F76;
+	Sat, 18 Apr 2026 16:52:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 847FB347
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 12:28:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 77E2A259
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 16:52:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 824B660EF9
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 12:28:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5DD5440F70
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 16:52:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RqlO5hwAw7za for <intel-wired-lan@lists.osuosl.org>;
- Sat, 18 Apr 2026 12:28:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MEiJEYzwKfkm for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 18 Apr 2026 16:52:06 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E33EA60E85
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E33EA60E85
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E33EA60E85
- for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 12:28:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 60A0D40F6C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60A0D40F6C
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 60A0D40F6C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 18 Apr 2026 16:52:06 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 27C0943630;
- Sat, 18 Apr 2026 12:28:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8945C19424;
- Sat, 18 Apr 2026 12:28:46 +0000 (UTC)
-Date: Sat, 18 Apr 2026 13:28:44 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 8AE7360138;
+ Sat, 18 Apr 2026 16:52:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0DB15C19424;
+ Sat, 18 Apr 2026 16:52:00 +0000 (UTC)
 From: Simon Horman <horms@kernel.org>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org
-Message-ID: <20260418122844.GD280379@horms.kernel.org>
-References: <20260415142841.3222399-1-aleksandr.loktionov@intel.com>
- <20260415142841.3222399-4-aleksandr.loktionov@intel.com>
+To: khai.wen.tan@linux.intel.com
+Cc: 'Simon Horman' <horms@kernel.org>, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, faizal.abdul.rahim@intel.com,
+ hong.aun.looi@intel.com, khai.wen.tan@intel.com,
+ faizal.abdul.rahim@linux.intel.com
+Date: Sat, 18 Apr 2026 17:48:38 +0100
+Message-ID: <20260418164837.380985-2-horms@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260416015520.6090-4-khai.wen.tan@linux.intel.com>
+References: <20260416015520.6090-4-khai.wen.tan@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260415142841.3222399-4-aleksandr.loktionov@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776515328;
- bh=rCG4Rh/heETZ9U5/libATa8KrgxSzbUI5XQZax8lu+w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=k0NaPH65AwtUCCw3BS6vhQ3tyaMHgvpdM07vZb3PdDWcmO2/ztvJuAI3PNnUHX6Xz
- dqpZFHTBXg6LUSyMedWfb78jN3McatGLnev0Eg805z+aG4h37YJQkuHtpiUK15g75D
- uzpY0tz/HgZar2/YTl3zBqvaG6AXRZFnIWFZNk4V/4tleQ6ICGcwSdp4InkJzW7B6X
- sTdAqbbhUO4boWjJb50Ft75W8h8/P2dS36k1frywkcVOQfv76LTEgcYQNDdaHwUdUy
- 8lpuw3EYKNyR+Nn/LtTgU/Y9r1uNio/z9RctEhBJlTnaJlQxHccsvE45SwFPHAUGFG
- MdMXQHgTvV67w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1776531124;
+ bh=XMTZj1YxPkY22L6vssswSQjk4oTxVG3RPZgGbSOfif8=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=rKzdxscKKp1giWSsuSCO3jKQUC4b8sL/u/GsH00AIPnDBiOFJoqb+6gaZ64Cr6ODv
+ K4N1QExtkRpDDRwGOlvYHPsn+kQOOUeOFYwtQza7gw7DCyUCcQQltn08GGsU8FNvX9
+ XFH4j7PYOg+Mg4sCJDgKFHcgbadra4WCrK94J4fAkuf8JCj0ow8UCP1ehX1OCtAgT/
+ dSf1NBAr93ssqP8u0Z7P8dOZ1mFG3FAivCr/GSgm2zRV8CJE4MpIsnM1ATPPng9N68
+ xtinbU1VIwcPW6/o2Jqq708tUrlauGyQ7aipfDdgZ4LnQrCcJG7lco/Bhk63vOq04c
+ TZ5P6Z7j6yNsg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=k0NaPH65
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3 3/6] ixgbe: call
- ixgbe_setup_fc() before fc_enable() after NVM update
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=rKzdxscK
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 3/3] igc: add support for
+ forcing link speed without autonegotiation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,83 +109,129 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.69 / 15.00];
+X-Spamd-Result: default: False [3.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	MAILLIST(-0.20)[mailman];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,horms.kernel.org:mid,intel.com:email];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_TWELVE(0.00)[16];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:khai.wen.tan@linux.intel.com,m:horms@kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:faizal.abdul.rahim@intel.com,m:hong.aun.looi@intel.com,m:khai.wen.tan@intel.com,m:faizal.abdul.rahim@linux.intel.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
-	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-0.981];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: C137B42116A
+X-Rspamd-Queue-Id: 32045421B29
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Wed, Apr 15, 2026 at 04:28:38PM +0200, Aleksandr Loktionov wrote:
-> During an NVM update the PHY reset clears the Technology Ability Field
-> (IEEE 802.3 clause 37 register 7.10) back to hardware defaults.  When
-> the driver subsequently calls only hw->mac.ops.fc_enable() the SRRCTL
-> register is recalculated from stale autonegotiated capability bits,
-> which the MDD (Malicious Driver Detect) logic treats as an invalid
-> change and halts traffic on the PF.
-> 
-> Fix by calling ixgbe_setup_fc() immediately before fc_enable() in
-> ixgbe_watchdog_update_link() so that flow-control autoneg and the PHY
-> registers are re-programmed in the correct order after any reset.
-> 
-> Skip setup_fc() on backplane links: on 82599 backplane interfaces
-> setup_fc() resolves to prot_autoc_write() ->
-> ixgbe_reset_pipeline_82599() which toggles IXGBE_AUTOC_AN_RESTART.
-> Calling it unconditionally on link-up creates an infinite link-flap
-> loop because each AN-restart triggers another link-up event.  Guard
-> with a get_media_type() check and skip setup_fc() when the media type
-> is ixgbe_media_type_backplane; fc_enable() is still called.
-> 
-> Also handle the failure path: if setup_fc() returns an error its output
-> is invalid and calling fc_enable() on the unchanged hardware state would
-> repeat the exact MDD-triggering condition the fix is meant to prevent.
-> Skip fc_enable() in that case while still calling
-> ixgbe_set_rx_drop_en() which configures the independent RX-drop
-> behaviour.
-> 
-> Fixes: 93c52dd0033b ("ixgbe: Merge watchdog functionality into service task")
-> Suggested-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
-> v2 -> v3:
->  - Skip setup_fc() for ixgbe_media_type_backplane: unconditional call on
->    82599 backplane links triggers prot_autoc_write() ->
->    ixgbe_reset_pipeline_82599() -> IXGBE_AUTOC_AN_RESTART, causing an
->    infinite link-flap loop (Simon Horman).
+From: 'Simon Horman' <horms@kernel.org>
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+This is an AI-generated review of your patch. The human sending this
+email has considered the AI review valid, or at least plausible.
+Full review at: https://sashiko.dev
+---
+igc: add support for forcing link speed without autonegotiation
 
-(Unsurprisingly) Sashiko has a number of things to say about this patchset.
-But I believe they can all be analysed as part of follow-up work: no need
-to block progress of this patchset IMHO.
+This commit adds support to allow users to force 10/100 Mb/s link speed
+and duplex via ethtool when autonegotiation is disabled.
+
+> diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> index cfcbf2fdad6ea..5bd37d1be1688 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+
+[ ... ]
+
+> @@ -2000,6 +2013,41 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+>  	return 0;
+>  }
+>  
+> +/**
+> + * igc_handle_autoneg_disabled - Configure forced speed/duplex settings
+> + * @adapter: private driver structure
+> + * @speed: requested speed (must be SPEED_10 or SPEED_100)
+> + * @duplex: requested duplex
+> + *
+> + * Records forced speed/duplex when autoneg is disabled.
+> + * Caller must validate speed before calling this function.
+> + */
+> +static void igc_handle_autoneg_disabled(struct igc_adapter *adapter, u32 speed,
+> +					u8 duplex)
+> +{
+> +	struct igc_mac_info *mac = &adapter->hw.mac;
+> +
+> +	switch (speed) {
+> +	case SPEED_10:
+> +		mac->forced_speed_duplex = (duplex == DUPLEX_FULL) ?
+> +			IGC_FORCED_10F : IGC_FORCED_10H;
+> +		break;
+> +	case SPEED_100:
+> +		mac->forced_speed_duplex = (duplex == DUPLEX_FULL) ?
+> +			IGC_FORCED_100F : IGC_FORCED_100H;
+> +		break;
+> +	default:
+> +		WARN_ONCE(1, "Unsupported speed %u\n", speed);
+> +		return;
+> +	}
+> +
+> +	mac->autoneg_enabled = false;
+> +
+> +	/* Half-duplex cannot support flow control per IEEE 802.3 */
+> +	if (duplex == DUPLEX_HALF)
+> +		adapter->hw.fc.requested_mode = igc_fc_none;
+> +}
+
+If userspace issues an ethtool command without specifying duplex, the duplex
+value can be DUPLEX_UNKNOWN. In this case, forced_speed_duplex correctly
+defaults to half-duplex since duplex == DUPLEX_FULL evaluates to false. 
+
+However, since DUPLEX_UNKNOWN is not equal to DUPLEX_HALF, the check above
+fails, and the requested flow control mode remains unchanged. Could this leave
+flow control enabled on a forced half-duplex link, violating IEEE 802.3?
+Should this check be based on the resolved mac->forced_speed_duplex state
+instead?
+
+[ ... ]
+
+> @@ -2071,14 +2120,20 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+>  		}
+>  	}
+>  
+> +	if (cmd->base.autoneg == AUTONEG_DISABLE &&
+> +	    cmd->base.speed != SPEED_10 && cmd->base.speed != SPEED_100) {
+> +		netdev_info(dev, "Unsupported speed for forced link\n");
+> +		return -EINVAL;
+> +	}
+> +
+>  	while (test_and_set_bit(__IGC_RESETTING, &adapter->state))
+>  		usleep_range(1000, 2000);
+
+This isn't a bug introduced by this patch, but does this ad-hoc
+synchronization using bit flags circumvent proper locking guarantees? The
+networking subsystem guidelines forbid using bit flags as ad-hoc locks. 
+
+Using a bit flag in a polling loop bypasses lockdep analysis, fairness, and
+strict memory ordering. Could this be replaced with a real synchronization
+mechanism like a mutex?
