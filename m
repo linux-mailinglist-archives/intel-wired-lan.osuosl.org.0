@@ -2,95 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iF0iG3wn5mm6sgEAu9opvQ
+	id yDIXEWAp5mnesgEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2026 15:17:48 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2026 15:25:52 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D792A42B80D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2026 15:17:47 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AD46A42BAFD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Apr 2026 15:25:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 843AC6110E;
-	Mon, 20 Apr 2026 13:17:46 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jnUdpOiIqYWn; Mon, 20 Apr 2026 13:17:45 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD61461110
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776691065;
-	bh=OE9ZET9pl/qfqICyoSUQ1GTqvhYDo6TxYPBRUjNi3As=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=m5PP950RUI4Zcy5C4u21vuYMqx2c43QdWdx2g8O+rC3ZfoCjX62if+R/mwZJb4wzb
-	 6m9z82hrQWz3GSoqKiCzKs36nt7n8LpMqg+l7Uts+6wYRsaHgxEOTrvjmtoN7vGGqz
-	 GRoZh5m77Ok5upP60OAfjRNq1p/XoubUCS1LD0web5CZxMKZdzDZUkMBQPKn0QA3HK
-	 GL1gx7btSefOLQn8ugK7V6+1be7/xlv7joI6HnT5jpo36fFVHzdEfXgq2AJ9z51I86
-	 DzXUyjPyCF9EYzs3NbYfbePErmRkQBuWuKtvEgYkzo4/VjJBPrIYsGgaC+Kn1B5WpU
-	 cEXJyimq7Q5fg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BD61461110;
-	Mon, 20 Apr 2026 13:17:45 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id ED337259
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:17:43 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DE84641106
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:17:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5ADF641094;
+	Mon, 20 Apr 2026 13:25:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mT2Y4E6btF-f for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Apr 2026 13:17:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=sashal@kernel.org;
+ id YcGVUcFinteS; Mon, 20 Apr 2026 13:25:47 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B939741063
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1776691547;
+	bh=tzaEMvNCW5DwA9q3fvsoQ7MDcZLB2ng2Tf370Rvip5Q=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=VYLueZ+O6q4TcWH68cAqtdO094SoDgoeTL2R5S/KdMlasbN/zuudwLosxcQ1NmJnW
+	 fUspaEAlQoR4px6346grN3cPntsPoAbT+DMzQ/od6cxb44bU2B/9M2FprH9iFqSNH2
+	 CAd2LtxBraPSmj7WENudtDGYuLn8/JBbkzNuwojWmVE9yLA5qGkOGIdt3NZKnV7+WC
+	 NrSNoHR2tf4aEaCg70SK3BflDnxl3czQnM8dBbF1hKX6CMiCe0QYl9K0TVCXWR0k6I
+	 4S48uDXX+KRRSVCfOq0fljj0hBYZevZRd++iC3asqqwq/Xwfkf65WAZ2s8j62dn76n
+	 pNt6ggnKkhc8A==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id B939741063;
+	Mon, 20 Apr 2026 13:25:47 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 66E12259
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:25:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4CCB981E0F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:25:45 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UUwXIvyxw269 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Apr 2026 13:25:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=sashal@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E4AAC410FE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E4AAC410FE
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E4AAC410FE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:17:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0992581E08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0992581E08
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0992581E08
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Apr 2026 13:25:43 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 3BA4F4053A;
- Mon, 20 Apr 2026 13:17:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5D991C19425;
- Mon, 20 Apr 2026 13:17:40 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id 4506B6014B;
+ Mon, 20 Apr 2026 13:25:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3470C19425;
+ Mon, 20 Apr 2026 13:25:39 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Date: Mon, 20 Apr 2026 09:08:57 -0400
-Message-ID: <20260420131539.986432-71-sashal@kernel.org>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Simon Horman <horms@kernel.org>, Rinitha S <sx.rinitha@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Sasha Levin <sashal@kernel.org>,
+ przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ mateusz.polchlopek@intel.com, slawomirx.mrozowicz@intel.com,
+ stefan.wegrzyn@intel.com, piotr.kwapulinski@intel.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Date: Mon, 20 Apr 2026 09:18:04 -0400
+Message-ID: <20260420132314.1023554-90-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260420131539.986432-1-sashal@kernel.org>
-References: <20260420131539.986432-1-sashal@kernel.org>
+In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
+References: <20260420132314.1023554-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.18.23
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1776691062;
- bh=4LhA/ekNF8VXPZGUFStEsaW/fv1Qg6XXQYP6qjgZg58=;
+ d=kernel.org; s=k20201202; t=1776691542;
+ bh=d5z/ux0RoWsVHSFKIjpXceLH38gp5GTJw6vk/1sYnEA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=AgmK4vFkIFGogVR4TpJXId5vvBMf1kMk3ORgcPC3jF2T/Y1qFjTFF2QCrVFbPxxFR
- GMjJe/uF4j0uW6aSKQ5DnszLjj+iIYn3ETrH22r+7Sox3HGtCojR2MIA69bniWpOJg
- JSyCqGyEzUvFVnUXFrLcatoI7788YRbM6o+2nVb2t07vhdSiGd7YlvJnxMIubSyPjZ
- CsPGMaNNycjWUlc2XTiQDSzYyW+hUObTi3FP69hW8/0JkZMeT+bTe6YyaKP6PX50Qq
- /y8tYXcPBaTbYImMnA4CbGvVSUb3vrFeeiqb/+0hAKOF7TlkyvLU6ESwI3nD94Rbmy
- wYJwszyUKyEpQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=kDH/FQp8nwZKpk9f444vo8J8uAwpYDrbi62yJHoFLFtf9DBFtQQjPzDYMGQLVWBdH
+ PvoIJpJJcosP8UD0pCi3i5FRRZputXVGTaFkgf9cwewIX4zyAs3C2IGTb4sN3zzgBx
+ EEUNaYj216GXkLS6FpzBcUHbFx0XsTFrpewlankJ9VvCpPoMv1mKyJd/mZrzyUBi31
+ cIb1VLm6qcNyIue8E9SYJss6OokgFNIoIEQBprhYFUsSrTmYCrvwLrabB8jcjz8ikD
+ jvuvjvj371Qm0VRGN9v3q0e3T421GayVHYw3eIqR+baUIwPT9XdPjf0yp5lIv1jZGD
+ /RSYD9T9ouOkg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=AgmK4vFk
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.18] ixgbevf: add missing
- negotiate_features op to Hyper-V ops table
+ header.s=k20201202 header.b=kDH/FQp8
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.18] ixgbe: stop re-reading flash
+ on every get_drvinfo for e610
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,17 +113,9 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, Xiaoqiang Xiong <xxiong@redhat.com>,
- przemyslaw.kitszel@intel.com, linux-kernel@vger.kernel.org,
- jedrzej.jagielski@intel.com,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>, andrew+netdev@lunn.ch,
- edumazet@google.com, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- jacob.e.keller@intel.com, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [3.69 / 15.00];
+X-Spamd-Result: default: False [3.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
@@ -122,74 +124,73 @@ X-Spamd-Result: default: False [3.69 / 15.00];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[17];
-	FORGED_SENDER(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:patches@lists.linux.dev,m:stable@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:jedrzej.jagielski@intel.com,m:horms@kernel.org,m:sx.rinitha@intel.com,m:anthony.l.nguyen@intel.com,m:sashal@kernel.org,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:mateusz.polchlopek@intel.com,m:slawomirx.mrozowicz@intel.com,m:stefan.wegrzyn@intel.com,m:piotr.kwapulinski@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:patches@lists.linux.dev,m:stable@vger.kernel.org,m:sashal@kernel.org,m:xxiong@redhat.com,m:przemyslaw.kitszel@intel.com,m:linux-kernel@vger.kernel.org,m:jedrzej.jagielski@intel.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	NEURAL_SPAM(0.00)[0.450];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	FROM_NEQ_ENVFROM(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	MIME_TRACE(0.00)[0:+];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	NEURAL_HAM(-0.00)[-0.735];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[sashal@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D792A42B80D
+X-Rspamd-Queue-Id: AD46A42BAFD
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-From: Michal Schmidt <mschmidt@redhat.com>
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
-[ Upstream commit 4821d563cd7f251ae728be1a6d04af82a294a5b9 ]
+[ Upstream commit d8ae40dc20cbd7bb6e6b36a928e2db2296060ad2 ]
 
-Commit a7075f501bd3 ("ixgbevf: fix mailbox API compatibility by
-negotiating supported features") added the .negotiate_features callback
-to ixgbe_mac_operations and populated it in ixgbevf_mac_ops, but forgot
-to add it to ixgbevf_hv_mac_ops. This leaves the function pointer NULL
-on Hyper-V VMs.
+ixgbe_get_drvinfo() calls ixgbe_refresh_fw_version() on every ethtool
+query for e610 adapters.  That ends up in ixgbe_discover_flash_size(),
+which bisects the full 16 MB NVM space issuing one ACI command per
+step (~20 ms each, ~24 steps total = ~500 ms).
 
-During probe, ixgbevf_negotiate_api() calls ixgbevf_set_features(),
-which unconditionally dereferences hw->mac.ops.negotiate_features().
-On Hyper-V this results in a NULL pointer dereference:
+Profiling on an idle E610-XAT2 system with telegraf scraping ethtool
+stats every 10 seconds:
 
-  BUG: kernel NULL pointer dereference, address: 0000000000000000
-  [...]
-  Hardware name: Microsoft Corporation Virtual Machine/Virtual Machine [...]
-  Workqueue: events work_for_cpu_fn
-  RIP: 0010:0x0
-  [...]
-  Call Trace:
-   ixgbevf_negotiate_api+0x66/0x160 [ixgbevf]
-   ixgbevf_sw_init+0xe4/0x1f0 [ixgbevf]
-   ixgbevf_probe+0x20f/0x4a0 [ixgbevf]
-   local_pci_probe+0x50/0xa0
-   work_for_cpu_fn+0x1a/0x30
-   [...]
+  kretprobe:ixgbe_get_drvinfo took 527603 us
+  kretprobe:ixgbe_get_drvinfo took 523978 us
+  kretprobe:ixgbe_get_drvinfo took 552975 us
+  kretprobe:ice_get_drvinfo   took       3 us
+  kretprobe:igb_get_drvinfo   took       2 us
+  kretprobe:i40e_get_drvinfo  took       5 us
 
-Add ixgbevf_hv_negotiate_features_vf() that returns -EOPNOTSUPP and
-wire it into ixgbevf_hv_mac_ops. The caller already handles -EOPNOTSUPP
-gracefully.
+The half-second stall happens under the RTNL lock, causing visible
+latency on ip-link and friends.
 
-Fixes: a7075f501bd3 ("ixgbevf: fix mailbox API compatibility by negotiating supported features")
-Reported-by: Xiaoqiang Xiong <xxiong@redhat.com>
-Closes: https://issues.redhat.com/browse/RHEL-155455
-Assisted-by: Claude:claude-4.6-opus-high Cursor
-Tested-by: Xiaoqiang Xiong <xxiong@redhat.com>
-Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+The FW version can only change after an EMPR reset.  All flash data is
+already populated at probe time and the cached adapter->eeprom_id is
+what get_drvinfo should be returning.  The only place that needs to
+trigger a re-read is ixgbe_devlink_reload_empr_finish(), right after
+the EMPR completes and new firmware is running.  Additionally, refresh
+the FW version in ixgbe_reinit_locked() so that any PF that undergoes a
+reinit after an EMPR (e.g. triggered by another PF's devlink reload)
+also picks up the new version in adapter->eeprom_id.
+
+ixgbe_devlink_info_get() keeps its refresh call for explicit
+"devlink dev info" queries, which is fine given those are user-initiated.
+
+Fixes: c9e563cae19e ("ixgbe: add support for devlink reload")
+Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Tested-by: Rinitha S <sx.rinitha@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
@@ -198,34 +199,94 @@ LLM Generated explanations, may be completely bogus:
 
 Error: Failed to generate final synthesis
 
- drivers/net/ethernet/intel/ixgbevf/vf.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/ethernet/intel/ixgbe/devlink/devlink.c |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h           |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c   | 13 +++++++------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      | 10 ++++++++++
+ 4 files changed, 19 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbevf/vf.c b/drivers/net/ethernet/intel/ixgbevf/vf.c
-index b67b580f7f1c9..f6df86d124b9e 100644
---- a/drivers/net/ethernet/intel/ixgbevf/vf.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/vf.c
-@@ -709,6 +709,12 @@ static int ixgbevf_negotiate_features_vf(struct ixgbe_hw *hw, u32 *pf_features)
- 	return err;
+diff --git a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
+index d227f4d2a2d17..f32e640ef4ac0 100644
+--- a/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ixgbe/devlink/devlink.c
+@@ -474,7 +474,7 @@ static int ixgbe_devlink_reload_empr_finish(struct devlink *devlink,
+ 	adapter->flags2 &= ~(IXGBE_FLAG2_API_MISMATCH |
+ 			     IXGBE_FLAG2_FW_ROLLBACK);
+ 
+-	return 0;
++	return ixgbe_refresh_fw_version(adapter);
  }
  
-+static int ixgbevf_hv_negotiate_features_vf(struct ixgbe_hw *hw,
-+					    u32 *pf_features)
-+{
-+	return -EOPNOTSUPP;
-+}
+ static const struct devlink_ops ixgbe_devlink_ops = {
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+index dce4936708eb4..047f04045585a 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
+@@ -973,7 +973,7 @@ int ixgbe_init_interrupt_scheme(struct ixgbe_adapter *adapter);
+ bool ixgbe_wol_supported(struct ixgbe_adapter *adapter, u16 device_id,
+ 			 u16 subdevice_id);
+ void ixgbe_set_fw_version_e610(struct ixgbe_adapter *adapter);
+-void ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter);
++int ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter);
+ #ifdef CONFIG_PCI_IOV
+ void ixgbe_full_sync_mac_table(struct ixgbe_adapter *adapter);
+ #endif
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 2d660e9edb80a..0c8f310689776 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -1153,12 +1153,17 @@ static int ixgbe_set_eeprom(struct net_device *netdev,
+ 	return ret_val;
+ }
+ 
+-void ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter)
++int ixgbe_refresh_fw_version(struct ixgbe_adapter *adapter)
+ {
+ 	struct ixgbe_hw *hw = &adapter->hw;
++	int err;
 +
- /**
-  *  ixgbevf_set_vfta_vf - Set/Unset VLAN filter table address
-  *  @hw: pointer to the HW structure
-@@ -1142,6 +1148,7 @@ static const struct ixgbe_mac_operations ixgbevf_hv_mac_ops = {
- 	.setup_link		= ixgbevf_setup_mac_link_vf,
- 	.check_link		= ixgbevf_hv_check_mac_link_vf,
- 	.negotiate_api_version	= ixgbevf_hv_negotiate_api_version_vf,
-+	.negotiate_features	= ixgbevf_hv_negotiate_features_vf,
- 	.set_rar		= ixgbevf_hv_set_rar_vf,
- 	.update_mc_addr_list	= ixgbevf_hv_update_mc_addr_list_vf,
- 	.update_xcast_mode	= ixgbevf_hv_update_xcast_mode,
++	err = ixgbe_get_flash_data(hw);
++	if (err)
++		return err;
+ 
+-	ixgbe_get_flash_data(hw);
+ 	ixgbe_set_fw_version_e610(adapter);
++	return 0;
+ }
+ 
+ static void ixgbe_get_drvinfo(struct net_device *netdev,
+@@ -1166,10 +1171,6 @@ static void ixgbe_get_drvinfo(struct net_device *netdev,
+ {
+ 	struct ixgbe_adapter *adapter = ixgbe_from_netdev(netdev);
+ 
+-	/* need to refresh info for e610 in case fw reloads in runtime */
+-	if (adapter->hw.mac.type == ixgbe_mac_e610)
+-		ixgbe_refresh_fw_version(adapter);
+-
+ 	strscpy(drvinfo->driver, ixgbe_driver_name, sizeof(drvinfo->driver));
+ 
+ 	strscpy(drvinfo->fw_version, adapter->eeprom_id,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 501216970e611..240f7cc3f213f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -6289,6 +6289,16 @@ void ixgbe_reinit_locked(struct ixgbe_adapter *adapter)
+ 	if (adapter->flags & IXGBE_FLAG_SRIOV_ENABLED)
+ 		msleep(2000);
+ 	ixgbe_up(adapter);
++
++	/* E610 has no FW event to notify all PFs of an EMPR reset, so
++	 * refresh the FW version here to pick up any new FW version after
++	 * a hardware reset (e.g. EMPR triggered by another PF's devlink
++	 * reload).  ixgbe_refresh_fw_version() updates both hw->flash and
++	 * adapter->eeprom_id so ethtool -i reports the correct string.
++	 */
++	if (adapter->hw.mac.type == ixgbe_mac_e610)
++		(void)ixgbe_refresh_fw_version(adapter);
++
+ 	clear_bit(__IXGBE_RESETTING, &adapter->state);
+ }
+ 
 -- 
 2.53.0
 
