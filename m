@@ -2,111 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SO2XFLRb52l87AEAu9opvQ
+	id YP+SMDaJ6Gk6LgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Apr 2026 13:12:52 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Apr 2026 10:39:18 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CC7E2439F59
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Apr 2026 13:12:51 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 848064438FE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 Apr 2026 10:39:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6EFE16131C;
-	Tue, 21 Apr 2026 11:12:50 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tRP_UU1LY_CJ; Tue, 21 Apr 2026 11:12:48 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEB786131E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776769968;
-	bh=iEkfECukKbV80ZZBX+sDP9TLbBqsQA+hSKML9YufPe0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=GuAr0y8pdxf8Eokv8laNFz7MlMZqq8QUsElfGcOhreb+Qq5Hxhw92PC4p3deZ9M/o
-	 +RLWd7VnsEfg8+gI18vL2ycNpbYbatnz8RkxnfsLUPC5a1BlsV6DNL/VjsGNOcrOEG
-	 AtigLK7P5Hu+ibHoxeZr7h0HPipQtCwvEfdvYU2Xc1n3C5gVoxkQyoMZwRqhynWVH4
-	 OtaZDNIwkDRn1kMBntceN0qYqj1L9yqttbceZMkFngGYgYior40mEXrEZXPP84YaqN
-	 397f0ivBSxR+wI6ZpCABQdEAXhC4yQMTcxpG94NWQjuemhiiZqPGla2F8Kk4rY6B21
-	 5f8e7cxCdnEQw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BEB786131E;
-	Tue, 21 Apr 2026 11:12:48 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C5260259
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Apr 2026 11:12:46 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AAC1141F29
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Apr 2026 11:12:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C03940698;
+	Wed, 22 Apr 2026 08:39:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JFvSBmfZfI92 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Apr 2026 11:12:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=vinschen@redhat.com;
+ id T6-3oZFJ_Vb6; Wed, 22 Apr 2026 08:39:14 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A3E0F4081D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1776847154;
+	bh=8Gw4w2Dl7a6FO2pEPaCgqdLjYVopqglpNJ3OhQU//m0=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=rd7Tv1Bgs4wCDBXAcVUmvwQYpUgX/IWv7ODzm5qBGIh4J0HLPd7/cFJsKcI7ex3EF
+	 Z2VzHMaaBgZHJUsZLtIZIXNJVxqzXZKuYF3xzS7RrGfkEyuB0qIbBEFx/yN2vJ1OAI
+	 rIs8BsBv1XzYuRrEZd79LfWw1iNFjT+E5g9VoLAS1zrv5BnFQPdZ20cTsQFhi/S/9H
+	 yXLmnubAXJ0Z0ITfEn650hUlcCq1DJfr0fNNndLaiDuFQvk7ZbE9X4uIr8fx/ODfeL
+	 kYN8prezJNOzWlAnyp1uyzMMa9CsIQqqR12okkSWi3zgaY33fc4M2QWuWdZgUg4GQ2
+	 4hyHYo5utdbVQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id A3E0F4081D;
+	Wed, 22 Apr 2026 08:39:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id C1A59257
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2026 08:39:12 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id BAFCA846CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2026 08:39:12 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ajAzvr7uxOCP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 22 Apr 2026 08:39:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 85B5541F28
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85B5541F28
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 85B5541F28
- for <intel-wired-lan@osuosl.org>; Tue, 21 Apr 2026 11:12:44 +0000 (UTC)
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-639-syRl3_z_M6yGUyI_u16pAw-1; Tue,
- 21 Apr 2026 07:12:39 -0400
-X-MC-Unique: syRl3_z_M6yGUyI_u16pAw-1
-X-Mimecast-MFC-AGG-ID: syRl3_z_M6yGUyI_u16pAw_1776769959
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DF5AC1800473; Tue, 21 Apr 2026 11:12:38 +0000 (UTC)
-Received: from calimero.vinschen.de (unknown [10.44.32.45])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9D216195608E; Tue, 21 Apr 2026 11:12:38 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 1DFEAA80C56; Tue, 21 Apr 2026 13:12:36 +0200 (CEST)
-From: Corinna Vinschen <vinschen@redhat.com>
-To: intel-wired-lan@osuosl.org,
-	netdev@vger.kernel.org
-Date: Tue, 21 Apr 2026 13:12:36 +0200
-Message-ID: <20260421111236.875379-1-vinschen@redhat.com>
-In-Reply-To: <IA3PR11MB898664A49E614F197D4FED6EE52C2@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <IA3PR11MB898664A49E614F197D4FED6EE52C2@IA3PR11MB8986.namprd11.prod.outlook.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4FC9E846CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4FC9E846CE
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4FC9E846CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 22 Apr 2026 08:39:11 +0000 (UTC)
+X-CSE-ConnectionGUID: PWQx2eBNTgOgsKzbQBUkPA==
+X-CSE-MsgGUID: Njh+X6o9S4KzY1PxeZsbhA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11763"; a="76827704"
+X-IronPort-AV: E=Sophos;i="6.23,192,1770624000"; d="scan'208";a="76827704"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2026 01:39:10 -0700
+X-CSE-ConnectionGUID: bgQrZQfHQaazekliRtVgvg==
+X-CSE-MsgGUID: TjLeu755Si6KxtFXz56UZQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,192,1770624000"; d="scan'208";a="227957981"
+Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.20.189])
+ ([10.247.20.189])
+ by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Apr 2026 01:39:08 -0700
+Message-ID: <dfdf4a8c-41cd-482f-baf6-64fe82698453@linux.intel.com>
+Date: Wed, 22 Apr 2026 16:38:59 +0800
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: TvCiq_WA3BB_K-bjga2TQ7L7tK2Qak_BZX2JSb7v8nw_1776769959
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1776769963;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=iEkfECukKbV80ZZBX+sDP9TLbBqsQA+hSKML9YufPe0=;
- b=Lc6wpenGroj0PVanbJ5m1/7THRCCrkLuNyhY8jvV+FIFVhcfnLtcvwWic70bgBy3GttzEa
- 7aqu3P8XwpXyDsPnfD37YJfSlX90KNi6ZsRO+Z3zhdiBPIFUlTlgAAGM60HxRqTPEObrZE
- CguQIB3+fnOSOqbBuDdmM6OZm7IBhv8=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Lc6wpenG
-Subject: [Intel-wired-lan] [PATCH net] iavf: iavf_virtchnl_completion: drop
- duplicate ether_addr_equal() test
+User-Agent: Mozilla Thunderbird
+To: Kohei Enju <kohei@enjuk.jp>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ kohei.enju@gmail.com, stable@vger.kernel.org
+References: <20260415025226.114115-1-kohei@enjuk.jp>
+Content-Language: en-US
+From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <20260415025226.114115-1-kohei@enjuk.jp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1776847151; x=1808383151;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=w73KMIQlHjPb+N1olkaiecVh/4Mf9dDmU8qVJtpkvSg=;
+ b=OzpvqIxLaUY1Fy7FWxl/HVigYMNS+yQcluFXNbQhYyimXfI1UBqG/a7e
+ EjrJjW89Eo/+5ebs5KNr6z9r5EKU7ERYjphG1MKSealICzFoYStRlV6pe
+ 4vv6XNhK3key+ojfVIoRJvmqrOdyhLvCZ51/iphQd5RUy+xtqU2SQKtvT
+ nVyBSaWSnfXpxt3210QesP2Tqk36yW4JA24hMj8/V/TPiUv94ERfpgKt/
+ UMwA1vwlo0h9ftjrllIAw7BixvUW9QFFL9UocfsXNE5oOhtYPVzERCyLG
+ pQg6acuXRVEFtZ3ss0k/LDD4aZQT8vjDAoESgtfKI3+XPt2doKMPjQIWK
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=OzpvqIxL
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igc: fix potential skb
+ leak in igc_fpe_xmit_smd_frame()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,84 +121,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Corinna Vinschen <vinschen@redhat.com>, stable@vger.kernel.org,
- Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:intel-wired-lan@osuosl.org,m:netdev@vger.kernel.org,m:vinschen@redhat.com,m:stable@vger.kernel.org,m:jtornosm@redhat.com,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:kohei@enjuk.jp,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:kohei.enju@gmail.com,m:stable@vger.kernel.org,m:andrew@lunn.ch,m:koheienju@gmail.com,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER(0.00)[vinschen@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid,intel.com:email,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	FORGED_SENDER(0.00)[faizal.abdul.rahim@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,osuosl.org:dkim,intel.com:email];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,gmail.com,vger.kernel.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[vinschen@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[faizal.abdul.rahim@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-0.985];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_COUNT_SEVEN(0.00)[11]
-X-Rspamd-Queue-Id: CC7E2439F59
+	RCVD_COUNT_SEVEN(0.00)[9]
+X-Rspamd-Queue-Id: 848064438FE
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-This is just a simple cleanup fix.  Commit 35a2443d0910f ("iavf: Add
-waiting for response from PF in set mac") introduced a duplicate
-ether_addr_equal() check, so the current code tests the new MAC twice
-against the former MAC.
 
-Remove the outer ether_addr_equal() test, remnant of commit c5c922b3e09b
-("iavf: fix MAC address setting for VFs when filter is rejected")
 
-Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
-Fixes: 35a2443d0910f ("iavf: Add waiting for response from PF in set mac")
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-Added CC: stable@vger.kernel.org
+On 15/4/2026 10:52 am, Kohei Enju wrote:
+> When igc_fpe_init_tx_descriptor() fails, no one takes care of an
+> allocated skb, leaking it. [1]
+> Use dev_kfree_skb_any() on failure.
+> 
+> Tested on an I226 adapter with the following command, while injecting
+> faults in igc_fpe_init_tx_descriptor() to trigger the error path.
+>   # ethtool --set-mm $DEV verify-enabled on tx-enabled on pmac-enabled on
+> 
+> [1]
+> unreferenced object 0xffff888113c6cdc0 (size 224):
+> ...
+>    backtrace (crc be3d3fda):
+>      kmem_cache_alloc_node_noprof+0x3b1/0x410
+>      __alloc_skb+0xde/0x830
+>      igc_fpe_xmit_smd_frame.isra.0+0xad/0x1b0
+>      igc_fpe_send_mpacket+0x37/0x90
+>      ethtool_mmsv_verify_timer+0x15e/0x300
+> 
+> Cc: stable@vger.kernel.org
+> Fixes: 5422570c0010 ("igc: add support for frame preemption verification")
+> Signed-off-by: Kohei Enju <kohei@enjuk.jp>
+> ---
+> Changes:
+>    v2:
+>      - change to idiomatic style with goto (Simon)
+>      - add Cc to stable (Alex)
+>      - add reprodunction steps (Alex)
+>    v1: https://lore.kernel.org/all/20260329145122.126040-1-kohei@enjuk.jp/
+> ---
+>   drivers/net/ethernet/intel/igc/igc_tsn.c | 8 +++++++-
+>   1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> index 8a110145bfee..02dd9f0290a3 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> @@ -109,10 +109,16 @@ static int igc_fpe_xmit_smd_frame(struct igc_adapter *adapter,
+>   	__netif_tx_lock(nq, cpu);
+>   
+>   	err = igc_fpe_init_tx_descriptor(ring, skb, type);
+> -	igc_flush_tx_descriptors(ring);
+> +	if (err)
+> +		goto err_free_skb_any;
+>   
+> +	igc_flush_tx_descriptors(ring);
+>   	__netif_tx_unlock(nq);
+> +	return 0;
+>   
+> +err_free_skb_any:
+> +	__netif_tx_unlock(nq);
+> +	dev_kfree_skb_any(skb);
+>   	return err;
+>   }
+>   
 
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+Thanks for helping to fix this.
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index a52c100dcbc5..9b8e7e4376c2 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -2579,13 +2579,11 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 	case VIRTCHNL_OP_ADD_ETH_ADDR:
- 		if (!v_retval)
- 			iavf_mac_add_ok(adapter);
--		if (!ether_addr_equal(netdev->dev_addr, adapter->hw.mac.addr))
--			if (!ether_addr_equal(netdev->dev_addr,
--					      adapter->hw.mac.addr)) {
--				netif_addr_lock_bh(netdev);
--				eth_hw_addr_set(netdev, adapter->hw.mac.addr);
--				netif_addr_unlock_bh(netdev);
--			}
-+		if (!ether_addr_equal(netdev->dev_addr, adapter->hw.mac.addr)) {
-+			netif_addr_lock_bh(netdev);
-+			eth_hw_addr_set(netdev, adapter->hw.mac.addr);
-+			netif_addr_unlock_bh(netdev);
-+		}
- 		wake_up(&adapter->vc_waitqueue);
- 		break;
- 	case VIRTCHNL_OP_GET_STATS: {
--- 
-2.53.0
+Reviewed-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+
 
