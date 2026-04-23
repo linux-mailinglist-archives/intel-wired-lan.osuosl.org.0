@@ -2,113 +2,206 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id R8oYG/4Y6mmzuAIAu9opvQ
+	id 6BuhIzAb6mkOuQIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2026 15:05:02 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2026 15:14:24 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 27BF0452722
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2026 15:05:02 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 06AB545299B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 23 Apr 2026 15:14:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BB92E40310;
-	Thu, 23 Apr 2026 13:05:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC3F383B94;
+	Thu, 23 Apr 2026 13:14:19 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MGD6Z0EMK6rh; Thu, 23 Apr 2026 13:14:16 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1301C83B97
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1776950056;
+	bh=xFvKTJ2R0bgIZu5IVSOpGLu1Bi50vEdjWx8VX0qlKsg=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=IGO4+qTSqhuAToL4ZcuPMGAW5YTh3+5a7mpeRQRZtTRm/c9TfAmmXgLEdHyxbqT9P
+	 lk9HqouMQWVrIdOw3VSzlAaay85ngXgVxr/jruoQrud5ngDDrizOJsd1ZHG/MSGD7l
+	 UHT1LHNrJpFWxCM/6CUqJ1J/gAaUMrT713xhxupPiR1OOU/io+8mJDOMpwjyg1VLd9
+	 QYI1P/zPtZSYripR6HuqD8DYXDq2j7srbYd8JM+UA7l0H9a/gK/uCW4RVjgcMC0VZL
+	 QIVlLfz93se3vT4qHKLgRnZPAaZ3DTJq6CN4nMYPIXVoqFlZKmx2HWOUXT5mdZA8Qx
+	 igEaiCgjctaOg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1301C83B97;
+	Thu, 23 Apr 2026 13:14:16 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 76C4624D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:14:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 68A4240F56
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:14:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yfoYB1QU0QlX; Thu, 23 Apr 2026 13:04:59 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B196A403F5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1776949499;
-	bh=hNxPm0l1Sh7y0ewMYZbtJKVp2OY0iO3QRahnfY38HjY=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=Dic1PCFnkIqc8/o4L0GztUAM41HrVUqBc4Iult0Jfi1yGZ1bdI4MIybB5FupQuUCx
-	 Xr9yOPBX3esKzUbMTYxCyWj0B38z/z40Hr1XXE7P/glL/JVt1ZW+9u0nAWLA9Bpiol
-	 ZVaI41IDVwpG4JfyPsvY7WVoXIURHDYli+HpcU6B54cF5nfYJ13BGatRRi57JIZJND
-	 6d89lS0B5KPqV4xctxPhu3UoP/2egeCLvYpWAcuqgEHjtol+fokQy669EtU1ZEttdW
-	 45DGe9hlRgiZk2tAEqrgZyV3rpYSVGFln1qL2QYDXjEMqXI/4nKmjpb1VWd6PZ4fuW
-	 XT9HOtP4PLHwg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B196A403F5;
-	Thu, 23 Apr 2026 13:04:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 676F6206
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:04:57 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4CC7E6059E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:04:57 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Fw6et_B1HjwT for <intel-wired-lan@lists.osuosl.org>;
- Thu, 23 Apr 2026 13:04:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=jtornosm@redhat.com;
+ id 0Modl2VmyIML for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 23 Apr 2026 13:14:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8C76960B36
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C76960B36
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8C76960B36
- for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:04:51 +0000 (UTC)
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-380-gryGd0IUPd6ToVTN0eyAgA-1; Thu,
- 23 Apr 2026 09:04:45 -0400
-X-MC-Unique: gryGd0IUPd6ToVTN0eyAgA-1
-X-Mimecast-MFC-AGG-ID: gryGd0IUPd6ToVTN0eyAgA_1776949482
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 76A0A1935303; Thu, 23 Apr 2026 13:04:42 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.44.32.35])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4036E19560AB; Thu, 23 Apr 2026 13:04:37 +0000 (UTC)
-From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- aleksandr.loktionov@intel.com, jacob.e.keller@intel.com, horms@kernel.org,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-Date: Thu, 23 Apr 2026 15:04:05 +0200
-Message-ID: <20260423130405.139568-5-jtornosm@redhat.com>
-In-Reply-To: <20260423130405.139568-1-jtornosm@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5A6CF40FC2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A6CF40FC2
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5A6CF40FC2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 23 Apr 2026 13:14:10 +0000 (UTC)
+X-CSE-ConnectionGUID: 6Wq8ragaSeecsCueRdQzMQ==
+X-CSE-MsgGUID: sAS6mCKfSPinATPozT2QCQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11764"; a="77083928"
+X-IronPort-AV: E=Sophos;i="6.23,194,1770624000"; d="scan'208";a="77083928"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2026 06:14:10 -0700
+X-CSE-ConnectionGUID: bbSVx8ooRpqN+QmP6kNYTg==
+X-CSE-MsgGUID: S5qjm+6XRDeZgksC489ilA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,194,1770624000"; d="scan'208";a="237017704"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+ by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2026 06:14:09 -0700
+Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 23 Apr 2026 06:14:08 -0700
+Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
+ FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Thu, 23 Apr 2026 06:14:08 -0700
+Received: from BN8PR05CU002.outbound.protection.outlook.com (52.101.57.15) by
+ edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Thu, 23 Apr 2026 06:14:08 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Ahiwcmogsd4TxorLtoLlw/8MP5BfWz5F7eIxVIeYe8mDbotCUKY4YsM7lx9Yl9Xuszs7b4/YkFoaFrtPlPRZ05fZC9Dud5IBpkwGQ/VXzpBCy92m8RxFs9loPIcJQhgH8lxn6oiwFUTtevTwPk+PDVDZ6VrFO6pzxbkDPIOfvPLcmjuSqm85t3xcILa+WzB4Hm9BR6gHlsLFFJKpx6hxIh4OaBOh/bgi6JPWUB8Qlgud0aYajr/Zt7AfuCODSqsTokaTOuN4hfhReU1cm3uR9NqGFXWo9PKkhqGSV83wOYgldv/WXz5EeGglMc5EH4UDfdTOfWSrGXIaBPCBqqxaOA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=xFvKTJ2R0bgIZu5IVSOpGLu1Bi50vEdjWx8VX0qlKsg=;
+ b=D+O0qYY2YNhdCu4ttGr4u6nn3Q78OsSK/5qsai8J73w7YuEd02WooMOMuffc67UaMugO0zpOP1yIz1M7zDyTr70QePNG1LSX1vz8eraRPytJYKl0JBH7Mcewk1ASXZxt1kcGlFltFvzi7TPuUfgxaN5/AGsL4SlknqyGdf9BAOdLlYEmIRzoPO2nKzJoOvJxJN6D2eGncuMMGWWzL/FzIzPBYxIuK+cONY1LZqYWRztVFItzCFsboT/jbMQkKQB8GTymHzlTliLFE2cOsfcWqm2FiXyV7NXyleO+Q1HrV0ZRsCrFnY7Ud/Y9toI0zAqr/UL6Gmd0PrnHIdcP6Hyhww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by SA2PR11MB4891.namprd11.prod.outlook.com (2603:10b6:806:11e::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.21; Thu, 23 Apr
+ 2026 13:14:05 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9846.014; Thu, 23 Apr 2026
+ 13:14:05 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, "Keller, Jacob E"
+ <jacob.e.keller@intel.com>, "horms@kernel.org" <horms@kernel.org>,
+ "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>, "Nguyen, Anthony
+ L" <anthony.l.nguyen@intel.com>, "davem@davemloft.net" <davem@davemloft.net>, 
+ "edumazet@google.com" <edumazet@google.com>, "kuba@kernel.org"
+ <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>
+Thread-Topic: [PATCH net v4 1/4] iavf: return EBUSY if reset in progress or
+ not ready during MAC change
+Thread-Index: AQHc0yHBXinznxpkQkm+PAWUoJajtrXsn8ug
+Date: Thu, 23 Apr 2026 13:14:05 +0000
+Message-ID: <IA3PR11MB8986CB8CCF01A323EC675F5EE52A2@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20260423130405.139568-1-jtornosm@redhat.com>
+ <20260423130405.139568-2-jtornosm@redhat.com>
+In-Reply-To: <20260423130405.139568-2-jtornosm@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SA2PR11MB4891:EE_
+x-ms-office365-filtering-correlation-id: bcc71130-46bc-4879-000a-08dea13a321d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|366016|56012099003|18002099003|22082099003|38070700021;
+x-microsoft-antispam-message-info: 3lt0Ub0wXlXSstRKYj+7+Al/Ft8Wa2+cab/i8WuxaPjGfS3GhEn+shBBMle6UXEMLqooIBC8JEDHU+ajIUdHOeJx1wj9l/WitA+ezmcI4/H0CjSlX96rBalJZhCFrx/9yfBrR7T1jWXtQX38fN6TWZchCLv1NAg+i5c3gh0gdJRPKVpmPgL55gqwsh3xgfDJccPXxJE0WsZYiDHLOnLrQK8jPcd/P9xIbSi5z0o3B0Yxm+VVvgNm63292oV2HVxGmqqfg5Xux4kvNX98YfzsjSmSi+7XEayVDx9aBy4kHhAQCEghcw0EnFoMfTf08PdPNUE/oEHtPOE4Y2maexJcKtTf5NfLNWMDQfVxZnwm9fyAl6i51AUYHWHEecQFZE9e1tdj1KRVVjtkpFaohKTRcgOulDUA0ZadokWpoCQZlB/Bg5p+qtqdlFf6NhNCHJpy3Z+LEcQ21hUERtLZCT/wERiIT+R/VoIqqty5brXRTIG7XhaKZuSek0TlC/lZTdFoVUhDAPIGCdw+dRKOO3dfN+ol/TvJwa2Z4UgEOlk7ktoyLC7UFWF0Xr2WU+8qkmJ0Nw7AGbru8/PLtZPSKE7tjxKhLOhq8FEEp8gRv98HhJn3gz4N53vwtpCdEP9uV+vmgOnxLJXsso1FjBXXa98803LKiirtQmHuY0wUqBIM2Oezi1PUq3N1EoHGJ67gU1rqzcnYQ8YaJH/QJ3CY6UlPHLEbkMh6QPsl+CeZmMwm52pQyFNmVFyjp+qM2DtsFiRbaj9YNZGFGbY8gVml3AJDsogoXVTxm0WhkqBO0fl+cV8=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(56012099003)(18002099003)(22082099003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?xU6E8u3D4LXd2ozVBxhkbUpknhMi/VmJ3lP/t+Ssa4ufuMz81gvUbKd2mn5f?=
+ =?us-ascii?Q?qYFz4LTEEGoaRr+kMbGBRiEalzZzfmc0PNWw0MqIs7mjYlwYfOWsPVIN8jBO?=
+ =?us-ascii?Q?BduxQGC9pTd2CdYL/hxPOtl8tk+IRQBPCXtxVIo6xRrHTpDxRDLtbkMQ+dwp?=
+ =?us-ascii?Q?wSWhDtT7xM8dNnt2XEir1YUQPppMlMutVLBuRKZtlaPD4D5MbZXL5Nnre8pt?=
+ =?us-ascii?Q?Zqfsoc9J/ZtLjVXcLSZ51R6dsBQ/5wKFZw/UxiWDnrqoVdz/blm3TBBZRI4x?=
+ =?us-ascii?Q?+sue79BuZypo6YBVmZ2TrJSH/+XBqOcRaruMyBihrDbqOsTvvzyHGJL26a9X?=
+ =?us-ascii?Q?zJ9bTvakhjjH8S+GFkD0ZqsBPQu1Z6zPfQwgjBdf/ek/WRGuelXHTbgkplob?=
+ =?us-ascii?Q?L52DFy97GeczHcx8GDT56i9mm/QfYSGW1sYtgcrM5zQaQ0sxE8lvuWEPq+HB?=
+ =?us-ascii?Q?67NUt+oXe5jzB9M87xqrxeiV1f0+M9GCzimRNcBBe35mQU4kYLKg96hIxG6E?=
+ =?us-ascii?Q?pSlHey/zk2KkUit/dY3/rO5d++WWX0eJTpdb45L2/mM3ne19Qlqs1u+VxaOx?=
+ =?us-ascii?Q?6PteTilExtPQqe5aBIrBKLmW6Gj9IUvLQOOv3SHC3lXM+9lns3C3FhzbpgLV?=
+ =?us-ascii?Q?4K0zYhoEZKitNjkYEKrO1Vn4QIBTDzbIWs+uaLjt2HUjlGzc7C3/Gu63xI/3?=
+ =?us-ascii?Q?9QZb6VvB2VW3TR90Zz1hz1VxeKN5CZdYsSM6jEYNHu+4MYati9rJNSTz0U1E?=
+ =?us-ascii?Q?ReLBk8fLgMEDF8Pjpd4iJ4lbyxkoQf9crQ3cJWiJZpbwAmHZIm3XbBAE/jVJ?=
+ =?us-ascii?Q?vxFuW0hBIwks04z4JTOC3DAQoxm0foWER/rfCaM3uoWGG1gSSJijWxMjPGH+?=
+ =?us-ascii?Q?CYEJsYI+KzTOpYFx+frITWslUIjX6l9OiKvPXnAnBRCegelamPMaQ8KPF5wN?=
+ =?us-ascii?Q?//lc3aCf4/2CH/FXNBE5gQ41Lot0Mn2LE04abwUR63BOleTx8qYf/HjwFe3O?=
+ =?us-ascii?Q?TZ1NTCoh84OM3eJmKvWViYhyFrgcvHwG3FnYarUDqXAJ37n4+zEZftUaoMfC?=
+ =?us-ascii?Q?KSSBAV46H93GcinmUA99aIJSaA8pnQl1SqTdGoJ1BDzfgnplMWz2tJMw4OgW?=
+ =?us-ascii?Q?RYdIh84/wbY8fUrbYVYPfZ5NU2E0YElKhIMLV5uT+sKChFH/qAsuqkRWBQQu?=
+ =?us-ascii?Q?lXYI5RIcLxuaRV7ieDslicRBUqjEjp7nrO3lGWXjC87P9lzDO4wz2a41mGQ6?=
+ =?us-ascii?Q?qFgBHGuqYL/h1L9ev/N4hnV3JRbnzMYsr5mUZax1JsspQsaEAktvP9DzD2Ks?=
+ =?us-ascii?Q?mBrvdnwEFbgCVcyKH60Rq9vaT10dpIr2P+D7S/6tEdi/IWwhn384o3QlWPc2?=
+ =?us-ascii?Q?3H0moATrj/zVPJ4vwevwyBtBdAzyXD6yod28PNdUHHhSSRTB/E29wiHQetxa?=
+ =?us-ascii?Q?X7IrFxZDQYUHczxdBtNjckL6OJF6r+I1tCh2M3R8oTo1IQ17n65KlaGSJ99j?=
+ =?us-ascii?Q?GjCujjxTU3tZnY/OLnCzoG2kUIn5hMzPjPP3pDXTaiRO6k5WKvIQnwQoCMZo?=
+ =?us-ascii?Q?MNA+lPSs6Ug4d4kwRA9KERcRZTNcLPXnZ9eRdJJFdt6vgJvNJztWTCGgqoWO?=
+ =?us-ascii?Q?AlctedjrR8MJESmJbCFxHbGWqSrjy1ctCghKBmC7kOD/yPXiSE6XrBjwtqbG?=
+ =?us-ascii?Q?ZUZiRHHcKObUzJvYg44vvx2sAAN96WW/bfB5DTZJtJkb0d5kNRiFo1ti/OmI?=
+ =?us-ascii?Q?q0a/V3arN5DpBlOjKcil+oR1UtIAelc=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: MnXGOP_7jSAfP4xv52G9WYWht6ia3YVFK0AP_wncd-I_1776949482
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1776949490;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hNxPm0l1Sh7y0ewMYZbtJKVp2OY0iO3QRahnfY38HjY=;
- b=Elh+3OeFvqIl4ZvNclOeZV6aLq5o0L1YxG0mKp0ylv1r9Xm7dGcfnrAexI7xoZRo/sKMEx
- hL9+7MK+KfEDhFQsFjL85jdILYJ1bBIvfc7xBcZZCwoJNegZCq7axBESxgOm/woj+DNrKm
- E76nSZOrc0HLyHjfhbQKPdHT2Z8zqok=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Elh+3OeF
-Subject: [Intel-wired-lan] [PATCH net v4 4/4] ice: skip unnecessary VF reset
- when setting trust
+X-Exchange-RoutingPolicyChecked: or9qkFDQtj4IzqIhgeJstu++R3PPeaigvNp8+IY8ucivkesnc+Dmx3SPERloQpAqflS1sjKB28d38S0IweEOW+1JylXVHmVXlyXUUB5h1IatDHG5l2BygP+JVPshZVJWkm9Uv36+c3hyNwtOwLSV0Ucr14ZqkgQefUe+oy+xYtA1ZS5O3WseGHr5rfm49RH006ZhuMxZmMcqcsKE/B0mu/TcDxp2tpuNKX+oZB/ItJpnm11gD/GT/kC6WDoK4TZaWalVi4vuvSpVpYiS9ghWuUvtoRzH9TrXwo8XYG9FDERn60aV28qweIijqxhRgqWxvLZSTitjBEG1woLd+ZDJzQ==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bcc71130-46bc-4879-000a-08dea13a321d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2026 13:14:05.3548 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8ot7z82KBNj/tGo/vzqEPTeT8KjlA8DazHz+KVnMzlhQSLNoy3zZad2VUQ7VDomeNEPd//fvcY3EVpVucaZfemTCUDReq/OtZ5oMTqHyxRw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4891
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1776950051; x=1808486051;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=vyFzYq9PGMEOuKNuShmB9AX+HUWmfYTTfktA65sBLU0=;
+ b=B/mHoG7vCZ7zFV+Kpgldyf4Eodlk4r7QreoZ8d15dXQhsmlmIGPFrD93
+ qOCnJjoF5OdqcWBMSSJXUSDN4NdYZX5fkTbxLIpV88VfMpMLFTvvnpJYS
+ J562kys3PoA93dIPtbqnwSusYsHY0oOq8OtD/afAm+s0U90I7ItRMt32F
+ ikUP34eOinH3vokoP6B5rJm/WUQK/zVMkyQOOqGZuQlXpcPolhETQune+
+ qzX6q0Boe+YPTJmdoCl25Yc6X++aGnZwBCgTrHSh2a/BanV20WAPlhNAB
+ jY658Yp3WPDjNrpMBamaxaqhI5r6FNZL+4z9vZrtEnzamMiYSjPmLiZU8
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=B/mHoG7v
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net v4 1/4] iavf: return EBUSY if
+ reset in progress or not ready during MAC change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,177 +216,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
+X-Spamd-Result: default: False [0.39 / 15.00];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:jacob.e.keller@intel.com,m:horms@kernel.org,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jtornosm@redhat.com,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,sashiko.dev:url];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:jtornosm@redhat.com,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:jacob.e.keller@intel.com,m:horms@kernel.org,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,s:lists@lfdr.de];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	MISSING_XM_UA(0.00)[];
-	TO_DN_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[12];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 27BF0452722
+	TO_DN_SOME(0.00)[]
+X-Rspamd-Queue-Id: 06AB545299B
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Similar to the i40e fix, ice_set_vf_trust() unconditionally calls
-ice_reset_vf() when the trust setting changes. While the delay is smaller
-than i40e this reset is still unnecessary in most cases.
 
-Additionally, the original code has a race condition: it deletes MAC LLDP
-filters BEFORE resetting the VF. During this deletion, the VF is still
-ACTIVE and can add new MAC LLDP filters concurrently, potentially
-corrupting the filter list.
 
-When granting trust, no reset is needed - we can just set the capability
-flag to allow privileged operations.
+> -----Original Message-----
+> From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
+> Sent: Thursday, April 23, 2026 3:04 PM
+> To: netdev@vger.kernel.org
+> Cc: intel-wired-lan@lists.osuosl.org; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Loktionov, Aleksandr
+> <aleksandr.loktionov@intel.com>; Keller, Jacob E
+> <jacob.e.keller@intel.com>; horms@kernel.org;
+> jesse.brandeburg@intel.com; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; davem@davemloft.net;
+> edumazet@google.com; kuba@kernel.org; pabeni@redhat.com; Jose Ignacio
+> Tornos Martinez <jtornosm@redhat.com>
+> Subject: [PATCH net v4 1/4] iavf: return EBUSY if reset in progress or
+> not ready during MAC change
+>=20
+> When a MAC address change is requested while the VF is resetting or
+> still initializing, return -EBUSY immediately instead of attempting
+> the operation.
+>=20
+> Additionally, during early initialization states (before __IAVF_DOWN),
+> the PF may be slow to respond to MAC change requests, causing long
+> delays. Only allow MAC changes once the VF reaches __IAVF_DOWN state
+> or later, when the watchdog is running and the VF is ready for
+> operations.
+>=20
+> After commit ad7c7b2172c3 ("net: hold netdev instance lock during
+> sysfs operations"), MAC changes are called with the netdev lock held,
+> so we should not wait with the lock held during reset or
+> initialization. This allows the caller to retry or handle the busy
+> state appropriately without blocking other operations.
+>=20
+> Signed-off-by: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> ---
+>=20
+>  drivers/net/ethernet/intel/iavf/iavf_main.c | 3 +++
+>  1 file changed, 3 insertions(+)
+>=20
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index dad001abc908..67aa14350b1b 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -1060,6 +1060,9 @@ static int iavf_set_mac(struct net_device
+> *netdev, void *p)
+>  	struct sockaddr *addr =3D p;
+>  	int ret;
+>=20
+> +	if (iavf_is_reset_in_progress(adapter) || adapter->state <
+> __IAVF_DOWN)
+> +		return -EBUSY;
+> +
+>  	if (!is_valid_ether_addr(addr->sa_data))
+>  		return -EADDRNOTAVAIL;
+>=20
+> --
+> 2.53.0
 
-When revoking trust, we need to:
-1. Clear the capability flag to block privileged operations
-2. Disable promiscuous mode if it was enabled (trusted VFs can enable it)
-3. Only reset if MAC LLDP filters exist (to clean them up)
-
-When we do reset (MAC LLDP case), we fix the race condition by resetting
-first to clear VF state (which blocks new MAC LLDP filter additions), then
-delete existing filters safely. During cleanup, vf->trusted remains true so
-ice_vf_is_lldp_ena() works properly. Only after cleanup do we set
-vf->trusted = false.
-
-When we don't reset, we manually handle capability flag and promiscuous
-mode via helper function.
-
-The ice driver already has logic to clean up MAC LLDP filters when
-removing trust. After this cleanup, the VF reset is only necessary if
-there were actually filters to remove (num_mac_lldp was non-zero).
-
-This saves time and eliminates unnecessary service disruption when
-changing VF trust settings in most cases, while properly handling filter
-cleanup.
-
-Fixes: 2296345416b0 ("ice: receive LLDP on trusted VFs")
-Signed-off-by: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
----
-v4:
-    - Address AI review (sashiko.dev) from Simon Horman:
-      vf->trusted ordering bug
-    - Fix upstream race condition when comparing with i40e code
-    - Apply capability flag and promiscuous mode fixes from i40e AI review
-    - Add helper function ice_setup_vf_trust() for non-reset path
-    - Export ice_vf_clear_all_promisc_modes() for code reuse 
-v3: https://lore.kernel.org/all/20260414110006.124286-5-jtornosm@redhat.com/
-
- drivers/net/ethernet/intel/ice/ice_sriov.c  | 41 +++++++++++++++++++--
- drivers/net/ethernet/intel/ice/ice_vf_lib.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_vf_lib.h |  1 +
- 3 files changed, 39 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 7e00e091756d..d0da7f6adc23 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -1364,6 +1364,34 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- 	return __ice_set_vf_mac(ice_netdev_to_pf(netdev), vf_id, mac);
- }
- 
-+/**
-+ * ice_setup_vf_trust - Enable/disable VF trust mode without reset
-+ * @vf: VF to configure
-+ * @setting: trust setting
-+ *
-+ * Manually handle capability flag and promiscuous mode when changing trust
-+ * without performing a VF reset.
-+ * When reset is performed, this is not necessary as the reset procedure
-+ * already handles this.
-+ **/
-+static void ice_setup_vf_trust(struct ice_vf *vf, bool setting)
-+{
-+	struct ice_vsi *vsi;
-+
-+	if (setting) {
-+		set_bit(ICE_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
-+	} else {
-+		clear_bit(ICE_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
-+
-+		if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
-+		    test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states)) {
-+			vsi = ice_get_vf_vsi(vf);
-+			if (vsi)
-+				ice_vf_clear_all_promisc_modes(vf, vsi);
-+		}
-+	}
-+}
-+
- /**
-  * ice_set_vf_trust
-  * @netdev: network interface device structure
-@@ -1399,11 +1427,16 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- 
- 	mutex_lock(&vf->cfg_lock);
- 
--	while (!trusted && vf->num_mac_lldp)
--		ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
--
-+	/* Reset only if revoking trust with MAC LLDP filters */
-+	if (!trusted && vf->num_mac_lldp) {
-+		ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
-+		while (vf->num_mac_lldp)
-+			ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
-+	} else {
-+		ice_setup_vf_trust(vf, trusted);
-+	}
- 	vf->trusted = trusted;
--	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
-+
- 	dev_info(ice_pf_to_dev(pf), "VF %u is now %strusted\n",
- 		 vf_id, trusted ? "" : "un");
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index c8bc952f05cd..81bbf30e5c29 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -623,7 +623,7 @@ ice_vf_get_promisc_masks(struct ice_vf *vf, struct ice_vsi *vsi,
-  *
-  * Clear all promiscuous/allmulticast filters for a VF
-  */
--static int
-+int
- ice_vf_clear_all_promisc_modes(struct ice_vf *vf, struct ice_vsi *vsi)
- {
- 	struct ice_pf *pf = vf->pf;
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index 7a9c75d1d07c..a3501bd92311 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -310,6 +310,7 @@ bool ice_is_any_vf_in_unicast_promisc(struct ice_pf *pf);
- void
- ice_vf_get_promisc_masks(struct ice_vf *vf, struct ice_vsi *vsi,
- 			 u8 *ucast_m, u8 *mcast_m);
-+int ice_vf_clear_all_promisc_modes(struct ice_vf *vf, struct ice_vsi *vsi);
- int
- ice_vf_set_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m);
- int
--- 
-2.53.0
-
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
