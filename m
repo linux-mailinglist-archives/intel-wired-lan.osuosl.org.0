@@ -2,104 +2,208 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id kPQ2NUjk72kFHgEAu9opvQ
+	id mPQyMY/s72mjKgEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 00:33:44 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 01:09:03 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D2C8447B854
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 00:33:43 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B12AD47BB73
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 01:09:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0A0A56087F;
-	Mon, 27 Apr 2026 22:33:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1FE57818D0;
+	Mon, 27 Apr 2026 23:09:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZlpjQVv-eCEE; Mon, 27 Apr 2026 22:33:41 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Bw1mEzsmy1kF; Mon, 27 Apr 2026 23:09:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 306E060880
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 378CF81911
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777329221;
-	bh=zOMuizjCel+FNshUjyMI9iY1N7hryCEjTtm4srkgjTA=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=S0n/UxmwRiLxSRsylm18UruuydwXeeT1uyHUPQNUHk3YYFRFu126GYGi3H6MUxFxU
-	 6k81cemHplKofOHr9OSHKY/s3giwYvGUkhYspWOH0h+UZ0qKG7gxsSNntvK/M7WBZY
-	 ykOx2vgjzb54Et0Aa6EeEO2SHZACQQUFgZf5EZLtaenJaLrxp3gYGv3f4WcLZM1yei
-	 KYkIlTnJR7A1qzghAFO/trtDvk+HM9KKjBx1WofbJcXXt+reS3u9+RYQMcfJxHmj7i
-	 5aU6kC+NGR76YPFzK/Xvey9c8KCci1BlT7wadn0odNbN9AnpfZ2TZgGJyBaYpaReNT
-	 qJdYn+SOW4iiw==
+	s=default; t=1777331340;
+	bh=p6j9L0GQ2bBK4o0luKgiuaVpnsLhfDGvEpb4k7g/Rks=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=a4N05Ge7TFriIIFrNycrfBnVDQtlUIJkT9031DeXak74eM6Cp/k24g+AyxEHiW130
+	 xdYakhn0m3PDttMk5jRRFw3sEJ7JQKJh1co8IC3E5N0Kj3U/irlDuRjeWqxyT0nM6J
+	 mZumDod+7+3j221XypjBdYreNcA4ADnxSqDEYy0Gdo2VySBmd9oYTWGZbL3p2uvw4Y
+	 SWjLK49VEFuvgqG6+GSvzLxwCmacOnD8Rr1yn4VeNA3SRoKsVEehz0+bBxYAit5cLu
+	 x+KUzLRY6LZWBHGgEd4ecVXebY9ccnyo2JJpvNgicZx2oK3TUiVLMs7on5afEWfZkQ
+	 tpwQNuLPXsqKQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 306E060880;
-	Mon, 27 Apr 2026 22:33:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 378CF81911;
+	Mon, 27 Apr 2026 23:09:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 644F41B8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 22:33:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id CDF221B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 23:08:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4270C4023E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 22:33:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B364E818EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 23:08:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id s3aUnbjgaSrl for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2026 22:33:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yd4nVN6uj-zY for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2026 23:08:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 384FA40224
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 384FA40224
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 384FA40224
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 22:33:37 +0000 (UTC)
-X-CSE-ConnectionGUID: J0LkSv6qSR2tgcEx/dfVGw==
-X-CSE-MsgGUID: 8it+gQX2QnuV4HNUKy5FlQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11769"; a="95796868"
-X-IronPort-AV: E=Sophos;i="6.23,202,1770624000"; d="scan'208";a="95796868"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Apr 2026 15:33:37 -0700
-X-CSE-ConnectionGUID: XSmbS6lARpKP1U1bYtOGTg==
-X-CSE-MsgGUID: uMrMv8oLQqONyKqB4fVMVw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F0EEF818D0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F0EEF818D0
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F0EEF818D0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 23:08:56 +0000 (UTC)
+X-CSE-ConnectionGUID: EuueRhNWTj+jjAOQDTK8kw==
+X-CSE-MsgGUID: AlcXHjI2Su2QfzCGgtMgXQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11769"; a="65763651"
+X-IronPort-AV: E=Sophos;i="6.23,203,1770624000"; d="scan'208";a="65763651"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2026 16:08:55 -0700
+X-CSE-ConnectionGUID: jPwSBYzKT423punZH03/dw==
+X-CSE-MsgGUID: 4yJQagHnQumQG5VUCdkSfQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,202,1770624000"; d="scan'208";a="257079940"
-Received: from dcskidmo-m40.jf.intel.com ([10.166.241.14])
- by fmviesa002.fm.intel.com with ESMTP; 27 Apr 2026 15:33:36 -0700
-From: Joshua Hay <joshua.a.hay@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: emil.s.tantilov@intel.com, willemb@google.com, decot@google.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- aleksander.lobakin@intel.com, netdev@vger.kernel.org, kuba@kernel.org,
- stable@vger.kernel.org, Joshua Hay <joshua.a.hay@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Mon, 27 Apr 2026 15:44:26 -0700
-Message-Id: <20260427224426.3933839-1-joshua.a.hay@intel.com>
-X-Mailer: git-send-email 2.39.2
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="6.23,203,1770624000"; d="scan'208";a="257310942"
+Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Apr 2026 16:08:56 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Mon, 27 Apr 2026 16:08:55 -0700
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Mon, 27 Apr 2026 16:08:55 -0700
+Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.46)
+ by edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Mon, 27 Apr 2026 16:08:53 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mzW7C7k7YnGGWJIX1AqR2dxekOjmc6dB0bHAHDvXuY7EFuy5yu2IGoe3oJXP+tpZo9Q5EYhCvbNbZcYv0ajzbfF2p4SdIQNcdNvvry/TAEkxwlFALrIINbnAWHcvcsQ3f+/y3aDSRlDaN2pJEXjVv1BHHqaZqx+yW/PdJf7zxgALOtqCJeqvptmsRLokE9z16qNLFnAsOM2Vy7OghpkXx9ZjjhbB/Qlep31wnKqHTL5jxYpSHXWoz5lAB3KUf1lbyrtp1T3GGYJMgj2EsBwkY9sKE1vi2/Pck5Upd8dd1ky8TzimaewI9q4fnxMKfHfmZDUsqTeXxC1tOIGDeBGZMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=p6j9L0GQ2bBK4o0luKgiuaVpnsLhfDGvEpb4k7g/Rks=;
+ b=JSf/i66o9uAjqU5AUMv2yKISxboy4qYMBkEZNmCg4Sd6rIUhNQ40UYpZqhanmoIUkDWcTJdxds2oFBck6znSUJwsoHjfMCpIw7HmYKAMFGLPYe3tdK0lJE6eut09QPHmz2ce3iGs37ho7sUkM7S7CnNpmg/FgCmGiH7PzYv6sLY4ZODAnkjO9hqHM6UHgZTC0svd9Fs8cH9kCenD+RWzu/CWVwlY5IjsS5XCo/a2LypKG2II6cWkh78ojVUSrsSl9QJzh4MQbgBxco54o8KoEkvkbUC+RZBmlRYeKXfwrF8tXSWmOO00as/Nn1SU2d6y+mePiyB4lnJ7iI537DGY9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7579.namprd11.prod.outlook.com (2603:10b6:8:14d::5) by
+ PH7PR11MB5959.namprd11.prod.outlook.com (2603:10b6:510:1e2::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.16; Mon, 27 Apr
+ 2026 23:08:42 +0000
+Received: from DS0PR11MB7579.namprd11.prod.outlook.com
+ ([fe80::4199:4cb5:cf88:e79e]) by DS0PR11MB7579.namprd11.prod.outlook.com
+ ([fe80::4199:4cb5:cf88:e79e%5]) with mapi id 15.20.9870.016; Mon, 27 Apr 2026
+ 23:08:42 +0000
+Message-ID: <1108c3d8-df01-4a6b-a616-87c5940d5e15@intel.com>
+Date: Mon, 27 Apr 2026 16:08:39 -0700
+User-Agent: Mozilla Thunderbird
+To: Michal Schmidt <mschmidt@redhat.com>, "Loktionov, Aleksandr"
+ <aleksandr.loktionov@intel.com>
+References: <20260427151827.43342-1-mschmidt@redhat.com>
+ <IA3PR11MB898650A3226F812E881C1630E5362@IA3PR11MB8986.namprd11.prod.outlook.com>
+ <CADEbmW0m_4p9XZZYWnX8RmYjtj1YtV2FRVygac1QH8iN8+FpGQ@mail.gmail.com>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <CADEbmW0m_4p9XZZYWnX8RmYjtj1YtV2FRVygac1QH8iN8+FpGQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: MW4PR02CA0026.namprd02.prod.outlook.com
+ (2603:10b6:303:16d::25) To DS0PR11MB7579.namprd11.prod.outlook.com
+ (2603:10b6:8:14d::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB7579:EE_|PH7PR11MB5959:EE_
+X-MS-Office365-Filtering-Correlation-Id: 25978703-c1c1-4d66-c8b1-08dea4b1ecad
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|7416014|366016|1800799024|22082099003|18002099003|56012099003;
+X-Microsoft-Antispam-Message-Info: UdME7KfSGL/4uRPG7aTAYhv9YzKr4zdD6Dp0visd9EQuVrxTLHR6II5+VYrwehxt0G3uik813MvOYKSW804Eg8kBpUMGp1HI5kc5Q2BIv2d6JVh2GkEDPnMCJEK/zCGc2jlcKBxpHQtvnPhTkEoeHac6DCaf9HWjmv660k+/orSMIEzxnTcVur93ri9fiwwAOLfoYVlO/Vmb5kKXqLjzDGMVl2rnN9aW7yRYN8RHq7c17CykVz1WAoP5sij+xWaAG3tnhuze/TnzKm5ygvEkxszueYi2x2CEgv0010ddqnb4GRRMmoPFxYhPsl9YSzaqJitz7jw0nAQ3neKO1PKFd3uW26HuLJCTuujL2pc4P6eIXoiGFwn/8VOtzrxxRyvI9jsb32LBKXM7PhS4iq5/SPxxqqANC4aFYl6FUR6fOczAGj+TNN3oEBq7A5uXRq/nX0tb7JawHnMadVmLjRjayXotSKDOF6B4YvUyf4nt7WcbLw1x4b90fcSEe3755pEldrL9ebnrX3n1SuvqSytlynVbrrXL5IXrByBqcQJWgC4FQ6ShBQS+MTdRn0487J3B91T4KmB6W7fsLiPQyB2Oh7ZOfSENyqKh25LBZpeasMEypE0ejgzRDAbXZ7dfpUJ78VwcNaRWDcY9oCiPAdo7WxaCwMwdQ39akGA5mLcHv8rSBpShZqbraXEVzKZXALcnUxjXHHp6PaecsTLatfcwoC4FZzOiIl6yn2Q28X9E+hE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7579.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024)(22082099003)(18002099003)(56012099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R0lTMnhleVdVTkhMYTdMbVlJUUhuUTVOU0FOVVR3UzJ4UVdsQjI1TzFjWlp3?=
+ =?utf-8?B?dzNaTDgxQ0R2ZWRaZ21LbC9KanllSlhjdVVoMXlPM0pXaUdoWm5ISXdTYUxB?=
+ =?utf-8?B?TkFoV1hZZVFxdnNoSy9HdzlvY0hQUnVNMFdUd3dVeE1tdGc2NXBZMU9EY1V1?=
+ =?utf-8?B?RWNWOWtDZ2U0MXdkZy9ENG9Jc2ZLanEyem5PaCs5Nzd4b2pnUEZ0c2g1Q1Bw?=
+ =?utf-8?B?Y01pZlNycW1xL3NzRHV3c1loQ2JVMWFjNnlWYTY5akFqb2VwUjdab0ZEQ1BQ?=
+ =?utf-8?B?VXk3di9yR01EQlhpbjkyWEl4OHJLeU1tNE5RZ3IxMEdUZVJuT2VJL3dxdGZP?=
+ =?utf-8?B?YVc5bEhFU21qYTV1ZVlqcHRDa0M5YW1mU3d3RVlOaVBUZ00yK2tQWTU3bVd6?=
+ =?utf-8?B?alE0a0xzRE9wWFUyTFBmYVd6NGlDYjdLc2NPdFRWckhCRGNSTVlMMkJiZVkr?=
+ =?utf-8?B?UFlJQllEa0ZWVUxqS3dBMVJTMlo2WkluQ2E2d2VJTnJoaVcreFZvM3V2R3VG?=
+ =?utf-8?B?VDdRNThPV0trV24zVHhOeTdUcUFxRjAvM2NTd0tkRUNuOGRSUUc5MGUyVEQ0?=
+ =?utf-8?B?Z0x3TDNPdUVLak9xUkZNOTFUTWM0c2Q3NW9MWnFiZUZpa2FYYXFNTWxhNE5y?=
+ =?utf-8?B?dUxuRmxCNCs4NjZBbzMwcW93ejJ2N00wY1hEUVpYR3RUUGhRSVl2clJMNnVT?=
+ =?utf-8?B?MG1Uams1UXFUUnBkclJiQVZ3aEd2cVFCeWJVZFZTbUpKRDNscHNENkF3d28y?=
+ =?utf-8?B?eG5pVE15ZWFzOUVDQ0hkWGpVS3AxTWNoQVMrUms1K3BEdkV5Y2RLTlVabkts?=
+ =?utf-8?B?QUVsQk9WTmxSUElnNEUwdjJBaUEwUEROb0RBZFdFVHVpdzVQSUZ0S0lnMXdl?=
+ =?utf-8?B?VlJuSDFlbXR6WEVIK3p2ditZdVZyRTJjdFc1cjBybDRLd2lFOWxNS1VBa3BO?=
+ =?utf-8?B?dENYODdGR1BvbjM3NjRlRGdiVXNmRzhnZUtsaTlYeU5hZlEyTzROV01WMUdT?=
+ =?utf-8?B?bEN5MTJhK1hCaEFTS0dYOFRxdnNVZWwzWXhRVS9JWUFycFl1RU5DdWc2Z0Nk?=
+ =?utf-8?B?UTl6dXJuSjY5bTUyd2JGWmJySStUTDExdmJkK3FtZ3I0djY0YnJ1aEt0WVpl?=
+ =?utf-8?B?ajN3RkovcHhCaVZyUWFLQkZUTjZId1ZxeTR4VlZobW9QcXF6dVRMRW5iQk9S?=
+ =?utf-8?B?VDhqYzU5QTc4UGNLd2NHcjhPdDExNStsVjJWZFo0ZVhKQlpBcG16L0dNUEtk?=
+ =?utf-8?B?ejNyOEovQjI4dmNERFllZDFoM0hUcDFQSjU0TFdlQlF2SHZvbjhWRnpsYXRZ?=
+ =?utf-8?B?SE1LN1NEejk2blpNZnlCUGQ3QlllcjU4czRKVmk0SDRMYjFlMVdLSDZJRW1D?=
+ =?utf-8?B?alhQNGd0YkVGbnBwMmdEbkJyRGdseDNTTEdVL2UvT3h4aW81V1k4SXdpRDlh?=
+ =?utf-8?B?UmcvT25LRUphdThqWkwwaGhDNTF0OE8wbUpCZWFxZjgrNWE3QXFtQ0RveERa?=
+ =?utf-8?B?YWdIaG9DT2ZtTTRwVStDSkZYNCtNRkZrNktGeEZhcnhzK1BzWXhJakJqWkF1?=
+ =?utf-8?B?VnZvUWpqWjkrOCs5SW80bnFjc2Rjb2ZQVkcwdnJ3NGN2YjVDN3IrT3piNzJm?=
+ =?utf-8?B?QlRkZ043VzhkODRXWXRYemNtYUZnMTJ5ZTBHMW9wMGwxd0NOU2NneTlKOGx1?=
+ =?utf-8?B?SWpEd0Nvck8vZFd4eGxDWHVwTHpNeTYrTGZBNnZIcjJIOGhVemZpTk1JS1RE?=
+ =?utf-8?B?czBOWnd5UThIdUIrb25kUzdGZmNZbFptMGd2V3JnSEU0dUMvdXJLeDU2Y2NS?=
+ =?utf-8?B?a1NlQmlIU0NLVnhkMHE1dTREMW5YRmdyVUp1K01oU2dQa3VWMWxwNHlraTQ0?=
+ =?utf-8?B?bThKTVBvamp5U00rOUR0M1ZkMGFkMmVTeXhzbzhVWTc1NG40cW81Ujl3MGpD?=
+ =?utf-8?B?Ukk4WTZEKzQ0dGVsOFY0ZDY5R1NsOFNsTFovL3Bqa08yVVdqRFpEdFg0QW9I?=
+ =?utf-8?B?Z2hnVitOTkNLWFduWTNZZ1hET3hjSmozbStqU0NiVnNKblBTeHRJUkpBaW9r?=
+ =?utf-8?B?OEh2WEFuZ3BPTDlYcnhkNUFiMUNtNk1Td3VnTlJueTFzMFEwRnNUaUtwMXhM?=
+ =?utf-8?B?RzU1T2toTFZ2ZHMySEtlTU5LUTVPOVQzcU5IcmFaTjhLcWxGRE5YSVI3RjAv?=
+ =?utf-8?B?eHZYTmVtbGEzQ1NUbGlYampBR1crYVdwLzhpeEYyeUdCRjloMHdpYmxnUjJy?=
+ =?utf-8?B?VXVUWFByQ3NORElBZmRqMVBYTzNrVFN3aHRDbFRtSTNSVC9ZMjFzS0xKQ1Z3?=
+ =?utf-8?B?OWg3YTZPSWFla2lWWUk0WWRtckhBbWxoZWxFUDRvMXZyZTZWY2tQZz09?=
+X-Exchange-RoutingPolicyChecked: tTd7766rcZbLfiAxy6MCkaLXT+uOjSO3xEPyHCEcNy3Z7GBSpC0B62b1dSbAUohcvPl6Z3iOZCVDUEqVH4D4b8R4g7ggjJXG7VWj05AGlitWaa/hxJxpfGDhUOZwLt3LmUUvHSaCyXKHPkqo1zbpvBUvTdxzvsCv+H7pxxnsEmBJcrgKYbb3p7s1hNFPCzRr9+XKjGJp/dP4wj1cvt1wECmgXJVy6SDQWsdFaREF3EcgmewpU6d5GUC/ONvAHBXoEwJl2bxhXt5VEQnnjrEe/b5eFk85dRJblaXt0FHnSVoFM6Fkxaz9u1pb6UT9A3n9pqazF7TvI+39MjtXfokJLw==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 25978703-c1c1-4d66-c8b1-08dea4b1ecad
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7579.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2026 23:08:42.4623 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: aK9iC1YVPl3LxLCEWSQ6zXO6PE4pTrlkZKZ24/869toWqy+Suzb4NcmXnCHouhmljUAy4F4VP/RXTrQ4EcNzZLU1lMHhImyRIzIPOFV7m1I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5959
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1777329218; x=1808865218;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=uuG6m9JJzzDuJXg4Q5er1swNxzGNOCZ6GcUTfaZUSNU=;
- b=TsMb9PCmDZuwMimTL5ZHX/UqVjoco47TIsR9qTcFLfYzSQ3V34gIU/Of
- LcHhWqduU4j7JuqO0YGhC1wAEJAqk5BSuh4qbYvJLtHcSlINIRjh7bvrL
- O3YX5NQ+MN8+mBXZHsUGpZ14b2XwfVze/xvHGHPLxT0/IboxxwG1UXSL+
- TBW023CCwE5oEjwtk1x31x7gOyHFk3WOpqVtuWBIwoOcpEe7sEOHdk/W4
- pZ3DbWGbJnh8OUWBHYEN+TQxLCejnrQ61ok4bnPDl6cCmWxfpkBzs49MK
- MaYxjEsiL6oVYwl9wGClmieDDNp16c78h+ZUDZCgetSjQm7jwBOPXkEXW
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1777331337; x=1808867337;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=E6875dHXjoRZMngdfMF6YCLFmA76IeyJDs/3ho40dMA=;
+ b=MZoeA7p+lVsMsZcpk6xCcmMZgJq4Ai4hZRxr+XylaJHeJ6enbdfOYW/X
+ x1nA09g7jNEj4T1lDT2g4lMkGzzk5dFnmv5Upui5Btm193c7PAS+e2C+Q
+ DuT3J+RlaEdOQ7f0WtuW2DsqkTV2IUwhjVeHniuw07UjOVzw1fF1OiqCu
+ 2+jkfwofj1+beFCHpSlaCC5F/1kcB9PAK6Wr04+p1L+I9OPej3nni5XMO
+ gPUbcb/6euFPhq7LMeFtqjy3F8CA0aQ0fq0iENtkyp0ytTpsTcpC37yJF
+ 0Z4BR0Dr+yoFom8PMtakpGCUl/KwRr3GhomXT34y1IGHGMlE0lbg/BhWL
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TsMb9PCm
-Subject: [Intel-wired-lan] [PATCH net v3] idpf: fix xdp crash in soft reset
- error path
+ header.s=Intel header.b=MZoeA7p+
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix stats array overflow
+ when VF requests more queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,282 +216,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David
+ S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: D2C8447B854
+X-Rspamd-Queue-Id: B12AD47BB73
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [1.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	FORGED_RECIPIENTS(0.00)[m:mschmidt@redhat.com,m:aleksandr.loktionov@intel.com,m:przemyslaw.kitszel@intel.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email];
-	FROM_NEQ_ENVFROM(0.00)[joshua.a.hay@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	NEURAL_HAM(-0.00)[-1.000];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	FORGED_SENDER(0.00)[jacob.e.keller@intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[jacob.e.keller@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	NEURAL_HAM(-0.00)[-1.000];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email]
 
-From: Emil Tantilov <emil.s.tantilov@intel.com>
-
-NULL pointer dereference is reported in cases where idpf_vport_open()
-fails during soft reset:
-
-./xdpsock -i <inf> -q -r -N
-
-[ 3179.186687] idpf 0000:83:00.0: Failed to initialize queue ids for vport 0: -12
-[ 3179.276739] BUG: kernel NULL pointer dereference, address: 0000000000000010
-[ 3179.277636] #PF: supervisor read access in kernel mode
-[ 3179.278470] #PF: error_code(0x0000) - not-present page
-[ 3179.279285] PGD 0
-[ 3179.280083] Oops: Oops: 0000 [#1] SMP NOPTI
-...
-[ 3179.283997] Workqueue: events xp_release_deferred
-[ 3179.284770] RIP: 0010:idpf_find_rxq_vec+0x17/0x30 [idpf]
-...
-[ 3179.291937] Call Trace:
-[ 3179.292392]  <TASK>
-[ 3179.292843]  idpf_qp_switch+0x25/0x820 [idpf]
-[ 3179.293325]  idpf_xsk_pool_setup+0x7c/0x520 [idpf]
-[ 3179.293803]  idpf_xdp+0x59/0x240 [idpf]
-[ 3179.294275]  xp_disable_drv_zc+0x62/0xb0
-[ 3179.294743]  xp_clear_dev+0x40/0xb0
-[ 3179.295198]  xp_release_deferred+0x1f/0xa0
-[ 3179.295648]  process_one_work+0x226/0x730
-[ 3179.296106]  worker_thread+0x19e/0x340
-[ 3179.296557]  ? __pfx_worker_thread+0x10/0x10
-[ 3179.297009]  kthread+0xf4/0x130
-[ 3179.297459]  ? __pfx_kthread+0x10/0x10
-[ 3179.297910]  ret_from_fork+0x32c/0x410
-[ 3179.298361]  ? __pfx_kthread+0x10/0x10
-[ 3179.298702]  ret_from_fork_asm+0x1a/0x30
-
-Fix the error handling of the soft reset in idpf_xdp_setup_prog() by
-restoring the vport->xdp_prog to the old value. This avoids referencing
-the orphaned prog that was copied to vport->xdp_prog in the soft reset
-and prevents subsequent false positive by idpf_xdp_enabled(). Roll back
-the number of queues as well. Also only call put on the program if the
-soft reset was successful. Returning an error will trigger the core XDP
-stack to handle the put otherwise.
-
-Update the restart check in idpf_xsk_pool_setup() to use IDPF_VPORT_UP bit
-instead of netif_running(). The idpf_vport_stop/start() calls will not
-update the __LINK_STATE_START bit, making this test a false positive
-should the soft reset fail.
-
-Fixes: 3d57b2c00f09 ("idpf: add XSk pool initialization")
-Cc: stable@vger.kernel.org
-Signed-off-by: Emil Tantilov <emil.s.tantilov@intel.com>
-Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v3:
-- call idpf_vport_adjust_qs in case of XDP soft reset failure to restore
-  previous queue configuration, including data queue config
-- change idpf_vport_adjust_qs and idpf_vport_calc_total_qs return types
-  to void since they cannot fail
-- only call bpf_prog_put if soft reset succeeds
----
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |  4 +---
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 12 ++++--------
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  6 +++---
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 19 ++++---------------
- .../net/ethernet/intel/idpf/idpf_virtchnl.h   |  4 ++--
- drivers/net/ethernet/intel/idpf/xdp.c         |  8 +++++---
- drivers/net/ethernet/intel/idpf/xsk.c         |  4 +++-
- 7 files changed, 22 insertions(+), 35 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index cf966fe6c759..56198b417c97 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -2042,9 +2042,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 	/* Adjust resource parameters prior to reallocating resources */
- 	switch (reset_cause) {
- 	case IDPF_SR_Q_CHANGE:
--		err = idpf_vport_adjust_qs(new_vport, new_rsrc);
--		if (err)
--			goto free_vport;
-+		idpf_vport_adjust_qs(new_vport, new_rsrc);
- 		break;
- 	case IDPF_SR_Q_DESC_CHANGE:
- 		/* Update queue parameters before allocating resources */
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 4fc0bb14c5b1..4e0d31023123 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -1568,12 +1568,10 @@ void idpf_vport_calc_num_q_desc(struct idpf_vport *vport,
-  * @vport_idx: vport idx to retrieve vport pointer
-  * @vport_msg: message to fill with data
-  * @max_q: vport max queue info
-- *
-- * Return: 0 on success, error value on failure.
-  */
--int idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_idx,
--			     struct virtchnl2_create_vport *vport_msg,
--			     struct idpf_vport_max_q *max_q)
-+void idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_idx,
-+			      struct virtchnl2_create_vport *vport_msg,
-+			      struct idpf_vport_max_q *max_q)
- {
- 	int dflt_splitq_txq_grps = 0, dflt_singleq_txqs = 0;
- 	int dflt_splitq_rxq_grps = 0, dflt_singleq_rxqs = 0;
-@@ -1624,7 +1622,7 @@ int idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_idx,
- 	}
- 
- 	if (!vport_config)
--		return 0;
-+		return;
- 
- 	user = &vport_config->user_config;
- 	user->num_req_rx_qs = le16_to_cpu(vport_msg->num_rx_q);
-@@ -1640,8 +1638,6 @@ int idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_idx,
- 	vport_msg->num_tx_q = cpu_to_le16(user->num_req_tx_qs + num_xdpsq);
- 	if (idpf_is_queue_model_split(le16_to_cpu(vport_msg->txq_model)))
- 		vport_msg->num_tx_complq = vport_msg->num_tx_q;
--
--	return 0;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index b6836e38f449..22c647d6dd5c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -1084,9 +1084,9 @@ void idpf_vport_init_num_qs(struct idpf_vport *vport,
- 			    struct idpf_q_vec_rsrc *rsrc);
- void idpf_vport_calc_num_q_desc(struct idpf_vport *vport,
- 				struct idpf_q_vec_rsrc *rsrc);
--int idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_index,
--			     struct virtchnl2_create_vport *vport_msg,
--			     struct idpf_vport_max_q *max_q);
-+void idpf_vport_calc_total_qs(struct idpf_adapter *adapter, u16 vport_index,
-+			      struct virtchnl2_create_vport *vport_msg,
-+			      struct idpf_vport_max_q *max_q);
- void idpf_vport_calc_num_q_groups(struct idpf_q_vec_rsrc *rsrc);
- int idpf_vport_queues_alloc(struct idpf_vport *vport,
- 			    struct idpf_q_vec_rsrc *rsrc);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index be66f9b2e101..91af4f298475 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -1578,12 +1578,7 @@ int idpf_send_create_vport_msg(struct idpf_adapter *adapter,
- 	else
- 		vport_msg->rxq_model = cpu_to_le16(VIRTCHNL2_QUEUE_MODEL_SINGLE);
- 
--	err = idpf_vport_calc_total_qs(adapter, idx, vport_msg, max_q);
--	if (err) {
--		dev_err(&adapter->pdev->dev, "Enough queues are not available");
--
--		return err;
--	}
-+	idpf_vport_calc_total_qs(adapter, idx, vport_msg, max_q);
- 
- 	if (!adapter->vport_params_recvd[idx]) {
- 		adapter->vport_params_recvd[idx] = kzalloc(IDPF_CTLQ_MAX_BUF_LEN,
-@@ -4065,24 +4060,18 @@ int idpf_vport_queue_ids_init(struct idpf_vport *vport,
-  * @vport: virtual port data struct
-  * @rsrc: pointer to queue and vector resources
-  *
-- * Renegotiate queues.  Returns 0 on success, negative on failure.
-+ * Renegotiate queues.
-  */
--int idpf_vport_adjust_qs(struct idpf_vport *vport, struct idpf_q_vec_rsrc *rsrc)
-+void idpf_vport_adjust_qs(struct idpf_vport *vport, struct idpf_q_vec_rsrc *rsrc)
- {
- 	struct virtchnl2_create_vport vport_msg;
--	int err;
- 
- 	vport_msg.txq_model = cpu_to_le16(rsrc->txq_model);
- 	vport_msg.rxq_model = cpu_to_le16(rsrc->rxq_model);
--	err = idpf_vport_calc_total_qs(vport->adapter, vport->idx, &vport_msg,
--				       NULL);
--	if (err)
--		return err;
-+	idpf_vport_calc_total_qs(vport->adapter, vport->idx, &vport_msg, NULL);
- 
- 	idpf_vport_init_num_qs(vport, &vport_msg, rsrc);
- 	idpf_vport_calc_num_q_groups(rsrc);
--
--	return 0;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-index 6876e3ed9d1b..76d238fc660c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.h
-@@ -169,8 +169,8 @@ int idpf_send_destroy_vport_msg(struct idpf_adapter *adapter, u32 vport_id);
- int idpf_send_enable_vport_msg(struct idpf_adapter *adapter, u32 vport_id);
- int idpf_send_disable_vport_msg(struct idpf_adapter *adapter, u32 vport_id);
- 
--int idpf_vport_adjust_qs(struct idpf_vport *vport,
--			 struct idpf_q_vec_rsrc *rsrc);
-+void idpf_vport_adjust_qs(struct idpf_vport *vport,
-+			  struct idpf_q_vec_rsrc *rsrc);
- int idpf_vport_alloc_max_qs(struct idpf_adapter *adapter,
- 			    struct idpf_vport_max_q *max_q);
- void idpf_vport_dealloc_max_qs(struct idpf_adapter *adapter,
-diff --git a/drivers/net/ethernet/intel/idpf/xdp.c b/drivers/net/ethernet/intel/idpf/xdp.c
-index dcd867517a5f..f6e6b72169fd 100644
---- a/drivers/net/ethernet/intel/idpf/xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/xdp.c
-@@ -488,11 +488,13 @@ static int idpf_xdp_setup_prog(struct idpf_vport *vport,
- 				   "Could not reopen the vport after XDP setup");
- 
- 		cfg->user_config.xdp_prog = old;
--		old = prog;
--	}
-+		vport->xdp_prog = old;
- 
--	if (old)
-+		/* Restore previous queue config */
-+		idpf_vport_adjust_qs(vport, &vport->dflt_qv_rsrc);
-+	} else if (old) {
- 		bpf_prog_put(old);
-+	}
- 
- 	libeth_xdp_set_redirect(vport->netdev, vport->xdp_prog);
- 
-diff --git a/drivers/net/ethernet/intel/idpf/xsk.c b/drivers/net/ethernet/intel/idpf/xsk.c
-index d95d3efdfd36..3d8c430efd2b 100644
---- a/drivers/net/ethernet/intel/idpf/xsk.c
-+++ b/drivers/net/ethernet/intel/idpf/xsk.c
-@@ -553,6 +553,7 @@ int idpf_xskrq_poll(struct idpf_rx_queue *rxq, u32 budget)
- 
- int idpf_xsk_pool_setup(struct idpf_vport *vport, struct netdev_bpf *bpf)
- {
-+	const struct idpf_netdev_priv *np = netdev_priv(vport->netdev);
- 	struct xsk_buff_pool *pool = bpf->xsk.pool;
- 	u32 qid = bpf->xsk.queue_id;
- 	bool restart;
-@@ -568,7 +569,8 @@ int idpf_xsk_pool_setup(struct idpf_vport *vport, struct netdev_bpf *bpf)
- 		return -EINVAL;
- 	}
- 
--	restart = idpf_xdp_enabled(vport) && netif_running(vport->netdev);
-+	restart = idpf_xdp_enabled(vport) &&
-+		  test_bit(IDPF_VPORT_UP, np->state);
- 	if (!restart)
- 		goto pool;
- 
--- 
-2.39.2
-
+On 4/27/2026 12:32 PM, Michal Schmidt wrote:
+> On Mon, Apr 27, 2026 at 5:30 PM Loktionov, Aleksandr
+> <aleksandr.loktionov@intel.com> wrote:
+>> Why no Cc: stable@vger.kernel.org?
+> 
+> Apparently I still have not internalized the removal of the netdev
+> special stable handling from 5 years ago. Sorry!
+> 
+> Michal
+> 
+Old habbits take a while to change :D
