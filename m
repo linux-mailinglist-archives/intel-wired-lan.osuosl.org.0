@@ -2,108 +2,130 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SDc/BXej72kcDgEAu9opvQ
+	id 4OZeB9+572knFQEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 19:57:11 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 21:32:47 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B42A2477F52
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 19:57:09 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA13A479525
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 21:32:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 04CE7606E0;
-	Mon, 27 Apr 2026 17:57:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D2A0C808C8;
+	Mon, 27 Apr 2026 19:32:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5XD2u9v0Cp8Y; Mon, 27 Apr 2026 17:57:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TvnSHDLlo3_i; Mon, 27 Apr 2026 19:32:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 433B8606DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D1F6808C4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777312627;
-	bh=e5xGL6uuaBWKPAdTLOXHgJTjIoGjalBU+LWxzeOThBE=;
-	h=Date:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1777318362;
+	bh=50dwTOATE1Na5UCaAF9M0vP1RtBQIq5R5kvcUf3ZMyk=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=eZlMPhFn5KVZxYtYQyrSpARyboZ3IJbwwHlZqGUpiZnPeihOc3GBxvoQel0aO5C3O
-	 ZuXOzpggPLZ3n7HenV/0xUVRL3b/434/0ySHDns//W8Wz74xx0C6qN8BSp22jC9+Rj
-	 SLqSegrR1Jzw8u5imr0nHlWcNFkSOhqSMYcxnw2A1Oe4kodxOhWPtCT+pY47q/Gbg1
-	 npF0CAU5ga8ykhVFqOJGKXaxg94t0HnjAk5aKOUQNqur4+gqZn5lKIxRC3UkuDeaHU
-	 jPeb8PTZfb2oz9VTmIEalIx90nvKbIioomBMgi2osyi6foYZJ5ht4/WJdNCDttb1Nw
-	 M+bjrIrD/Nlog==
+	 Cc:From;
+	b=P4fbes9NB2lRA0tHKIU5CF3JzquLfXs8BVh9DtdVkhHXpnIRI1thAugCDXK8glHIB
+	 RfzdvRgu+rVAg/b/nNICVDrGRCHp1ThItBcWaGIamkVYiTh4HWD+L4X91tjOpA2SQP
+	 6dTZ6cWZTVYcaxRKmcRZS1TbJqXIB0GYYpAshvD53dkYVXQHnwli1QcRfnXdXD1S8G
+	 cYXMsj6feBb/0EnXd7Bm8PjaPAKbHM/cVl47BZG6SM31YZdIhTO8Qq8SCJKGFMbcij
+	 hGngPX2y1Ow2WRdb0R29p5n0DDvXsAlT+hjW1Ft3QJrLtIopql8tZj/bR4dOq1MwUf
+	 LwcJt6pYCYTFA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 433B8606DC;
-	Mon, 27 Apr 2026 17:57:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0D1F6808C4;
+	Mon, 27 Apr 2026 19:32:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 200AB231
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 17:57:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id ADF552DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 19:32:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 052A5606DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 17:57:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 93CC3808C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 19:32:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0dWfDJqXCvUX for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2026 17:57:05 +0000 (UTC)
-X-Greylist: delayed 473 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 27 Apr 2026 17:57:04 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A2A28606D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2A28606D7
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=199.89.1.14;
- helo=011.lax.mailroute.net; envelope-from=bvanassche@acm.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xNB5M8wt6daz for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2026 19:32:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
  receiver=<UNKNOWN> 
-Received: from 011.lax.mailroute.net (011.lax.mailroute.net [199.89.1.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A2A28606D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 17:57:04 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by 011.lax.mailroute.net (Postfix) with ESMTP id 4g49zp52Cpz1XLwX6;
- Mon, 27 Apr 2026 17:49:10 +0000 (UTC)
-X-Virus-Scanned: by MailRoute
-Received: from 011.lax.mailroute.net ([127.0.0.1])
- by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
- id D0UElPbxNW_m; Mon, 27 Apr 2026 17:49:07 +0000 (UTC)
-Received: from [100.119.48.131] (unknown [104.135.180.219])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- (Authenticated sender: bvanassche@acm.org)
- by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4g49zk2BZ0z1XLwX5;
- Mon, 27 Apr 2026 17:49:06 +0000 (UTC)
-Message-ID: <32ef1813-b69d-4d9b-80e6-530a6d431d39@acm.org>
-Date: Mon, 27 Apr 2026 10:49:05 -0700
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5D8A5808C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D8A5808C0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5D8A5808C0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 19:32:37 +0000 (UTC)
+Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
+ [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-613-rI3u8GcvNPazAPXGwz-Z_g-1; Mon, 27 Apr 2026 15:32:32 -0400
+X-MC-Unique: rI3u8GcvNPazAPXGwz-Z_g-1
+X-Mimecast-MFC-AGG-ID: rI3u8GcvNPazAPXGwz-Z_g_1777318352
+Received: by mail-ot1-f70.google.com with SMTP id
+ 46e09a7af769-7dbc51bc49bso2430950a34.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 12:32:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777318352; x=1777923152;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=50dwTOATE1Na5UCaAF9M0vP1RtBQIq5R5kvcUf3ZMyk=;
+ b=O7P/vMTMzzUzOwUH7NuZi/jz9iZusCpxALiNi2C0k4AVOlEl8jfUKSIBq3Zvc9dL7T
+ lOYTIkud5azUdQs4O7ncgdpVfZsuWaiOffURHif/TXtJ8Iv75prKJFSoplHxqgvjti9J
+ rJfHTMlaXx6pC7YTiFPi5DBbR/lzjHfmUJUE5xz4hFqzcSyrP9ENyhEc7fV40gekpNuX
+ fHCtP21SNI/Z9o4wRQrXSaHQ3n4Qv5pgnsTy6tCQNL3zZWl7h8KQIxbrEWXyPAIzudak
+ 8oj1lfyrukpxpQsdx2UtcsvMwLYcoWoN6k0fDS/bhR1iVTBigu75zD4WEeFyJFsQJz4V
+ bVGA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8sDJtnVrVAsEWK3vw3p8L+4BwUyywzA7iMYD0yyJNE0aaNYVSGnVj+b8kCzaGldN+1qJx7hCjGaG1JjHZ/H4Y=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yzw6GNgXdlicJ7li2ZdSLBVngP3kGtnhkAIscmsVRWafMFzvhfj
+ PN0Of+MiqEYzO+/rsuOc+MhihzqG76N3IylYOlnHqzEZBTzCf/scRjGwS2QfDBuJto7uVT/Ireq
+ cRYk+4ZtrM99YPYNJjLwewpmHWHzAvsGYa0pmOQov9nv4okfC27AH1IIiSARmQL345LWrs9ycCt
+ 91vwZUW09Y/AF6uQ9BPqvm5jwsCksBtTjpr4LpTXFJxixeIg==
+X-Gm-Gg: AeBDieu9XJ4+yYyHj9S3os1T10wtb2vfaRHBf2+Z+gxC+0Yy2WWyY+S7UZw4gi9rGyc
+ ji0OIRKh6lo9+3iNr8c2rh8LrcgPbqCjCfCQYbG8wUPFDhmOqDDJx4MpGLMvNKKdUljK6LB2xEC
+ KVMW2evfLEUAsubnqmdpJa1jpuLAFkZ4qlHIP/XN8lcPbxsZl5p2xZ+H+Sa3YjdMHgVuLazXGE9
+ C9aX0VY35L0y4iW
+X-Received: by 2002:a05:6830:25c1:b0:7db:c389:6495 with SMTP id
+ 46e09a7af769-7de9869a09bmr178307a34.2.1777318351950; 
+ Mon, 27 Apr 2026 12:32:31 -0700 (PDT)
+X-Received: by 2002:a05:6830:25c1:b0:7db:c389:6495 with SMTP id
+ 46e09a7af769-7de9869a09bmr178295a34.2.1777318351513; Mon, 27 Apr 2026
+ 12:32:31 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-References: <20260320212824.264252-1-bvanassche@acm.org>
-Content-Language: en-US
-In-Reply-To: <20260320212824.264252-1-bvanassche@acm.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20260427151827.43342-1-mschmidt@redhat.com>
+ <IA3PR11MB898650A3226F812E881C1630E5362@IA3PR11MB8986.namprd11.prod.outlook.com>
+In-Reply-To: <IA3PR11MB898650A3226F812E881C1630E5362@IA3PR11MB8986.namprd11.prod.outlook.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Mon, 27 Apr 2026 21:32:19 +0200
+X-Gm-Features: AVHnY4KDkbhBcuI8yDy-sLtNrjJxeDvZsewcQGhCAf5QBE6Z9Z8q8TFZ5-P_4lg
+Message-ID: <CADEbmW0m_4p9XZZYWnX8RmYjtj1YtV2FRVygac1QH8iN8+FpGQ@mail.gmail.com>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: BZXjBIh7oZ4WIyCuLK66uGvp5VDebHtNww2lIGPIsGE_1777318352
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=acm.org; h=
- content-transfer-encoding:content-type:content-type:in-reply-to
- :from:from:content-language:references:subject:subject
- :user-agent:mime-version:date:date:message-id:received:received;
- s=mr01; t=1777312147; x=1779904148; bh=e5xGL6uuaBWKPAdTLOXHgJTj
- IoGjalBU+LWxzeOThBE=; b=VIwe69iVjaKbhV9y9+rFhoOgu5M5RDZHBlNEplZn
- t67cBueXiJILqt5oa/qUyCKlqRsqB8pDp621gVdwkgxOPCw0VkMGuPFp+Pp6cSBJ
- Gg8FO5+MTL/RBAWIfeN22HTJHbj+3xKdnj7XE1RAAfddugwC+9umH1K4P8Rc3CFX
- aurjyidMeZUsw9I6FEL14En21eEyfJ5r4zw+WWOqIuy+05mNnyc7jGE6BC17Jojz
- ZOeQV8M0In4f/yp/RhGdRJUfabgAfoEOiOuUBxPca8ICxzTe2PWvdTuKEvRKFhNP
- wh9WyMCUdvp1HydeUewlFuH5/Ht/dVIbF7k3RHrIX45M9g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=acm.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=acm.org header.i=@acm.org header.a=rsa-sha256
- header.s=mr01 header.b=VIwe69iV
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v4] ice: fix locking in
- ice_dcb_rebuild()
+ d=redhat.com; 
+ s=mimecast20190719; t=1777318356;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=50dwTOATE1Na5UCaAF9M0vP1RtBQIq5R5kvcUf3ZMyk=;
+ b=d0bFtNRtVEpExpn/VjLmS1iyuthsILM9lDN0dYjpv7TwucOC6SOA/hBFlM9tBEZBF1gp+3
+ zjUzkxWd7Rz/07UCDmtdRHwKWRDu777KhCkw0klHyctuAyLI0PPhpMJ3eLIQCHX1x3xF1m
+ VP/YEfpMI18byrnI+D4PQxvKvPh7NDU=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=d0bFtNRt
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix stats array overflow
+ when VF requests more queues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,107 +138,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Bart Van Assche via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Bart Van Assche <bvanassche@acm.org>
+Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Eric Dumazet <edumazet@google.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Keller,
+ Jacob E" <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: B42A2477F52
+X-Rspamd-Queue-Id: EA13A479525
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-1.21 / 15.00];
-	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:przemyslaw.kitszel@intel.com,m:linux-kernel@vger.kernel.org,m:andrew+netdev@lunn.ch,m:edumazet@google.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,mail.gmail.com:mid,osuosl.org:dkim,osuosl.org:email,atlassian.net:url,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
+	FORGED_SENDER(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
 	MIME_TRACE(0.00)[0:+];
-	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	HAS_REPLYTO(0.00)[bvanassche@acm.org];
+	MISSING_XM_UA(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mschmidt@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCPT_COUNT_THREE(0.00)[4];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[9]
 
-On 3/20/26 2:28 PM, Bart Van Assche wrote:
-> Move the mutex_lock() call up to prevent that DCB settings change after
-> the first ice_query_port_ets() call. The second ice_query_port_ets()
-> call in ice_dcb_rebuild() is already protected by pf->tc_mutex.
-> 
-> This also fixes a bug in an error path, as before taking the first
-> "goto dcb_error" in the function jumped over mutex_lock() to
-> mutex_unlock().
-> 
-> This bug has been detected by the clang thread-safety analyzer.
-> 
-> Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Cc: intel-wired-lan@lists.osuosl.org
-> Fixes: 242b5e068b25 ("ice: Fix DCB rebuild after reset")
-> Signed-off-by: Bart Van Assche <bvanassche@acm.org>
-> ---
-> 
-> v4 (this patch): Changed "[PATCH] iwl-net:" into "[PATCH iwl-net]".
-> 
-> v3 (2026-03-20): Modified patch description. See also
->    https://lore.kernel.org/all/20260223220102.2158611-20-bart.vanassche@linux.dev/#t
-> 
-> v2 (2026-02-23): Combined the two patches into one patch and
->    increased the amount of code covered by tc_mutex. See also
->    https://lore.kernel.org/all/20260223220102.2158611-20-bart.vanassche@linux.dev/
-> 
-> v1 (2025-02-06): Two patches. See also
->    https://lore.kernel.org/all/20250206175114.1974171-16-bvanassche@acm.org/
-> 
->   drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> index bd77f1c001ee..78ded6876581 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-> @@ -537,14 +537,14 @@ void ice_dcb_rebuild(struct ice_pf *pf)
->   	struct ice_dcbx_cfg *err_cfg;
->   	int ret;
->   
-> +	mutex_lock(&pf->tc_mutex);
-> +
->   	ret = ice_query_port_ets(pf->hw.port_info, &buf, sizeof(buf), NULL);
->   	if (ret) {
->   		dev_err(dev, "Query Port ETS failed\n");
->   		goto dcb_error;
->   	}
->   
-> -	mutex_lock(&pf->tc_mutex);
-> -
->   	if (!pf->hw.port_info->qos_cfg.is_sw_lldp)
->   		ice_cfg_etsrec_defaults(pf->hw.port_info);
->   
+On Mon, Apr 27, 2026 at 5:30=E2=80=AFPM Loktionov, Aleksandr
+<aleksandr.loktionov@intel.com> wrote:
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Michal Schmidt
+...
+> > See the linked RHEL Jira item for a reproducer.
+> >
+> > Fixes: 2a2cb4c6c181 ("ice: replace ice_vf_recreate_vsi() with
+> > ice_vf_reconfig_vsi()")
+> > Closes: https://redhat.atlassian.net/browse/RHEL-164321
+> Not sure are links to local JIRAs are acceptable in kernel?
 
-Hi Tony,
+The ticket is publicly visible and does not require a login.
 
-It seems like this patch has not made it into Linux kernel v7.1-rc. Do
-you agree that this patch is ready to be merged? I checked that it still
-applies to Linus' master branch.
+> Why no Cc: stable@vger.kernel.org?
 
-Thanks,
+Apparently I still have not internalized the removal of the netdev
+special stable handling from 5 years ago. Sorry!
 
-Bart.
+Michal
+
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>
+> > Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
+> > Assisted-by: Claude:claude-opus-4-6 semcode
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice_lib.c    | 2 +-
+> >  drivers/net/ethernet/intel/ice/ice_lib.h    | 1 +
+> >  drivers/net/ethernet/intel/ice/ice_vf_lib.c | 7 +++++++
+> >  3 files changed, 9 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c
+> > b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > index 837b71b7b2b7..fc78176a2a8d 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > @@ -3015,7 +3015,7 @@ ice_vsi_rebuild_set_coalesce(struct ice_vsi
+> > *vsi,
+> >   * ice_vsi_realloc_stat_arrays - Frees unused stat structures or
+> > alloc new ones
+> >   * @vsi: VSI pointer
+> >   */
+> > -static int
+> > +int
+> >  ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi)  {
+> >       u16 req_txq =3D vsi->req_txq ? vsi->req_txq : vsi->alloc_txq;
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h
+> > b/drivers/net/ethernet/intel/ice/ice_lib.h
+> > index 49454d98dcfe..6f7da84384e5 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_lib.h
+> > +++ b/drivers/net/ethernet/intel/ice/ice_lib.h
+> > @@ -66,6 +66,7 @@ int ice_ena_vsi(struct ice_vsi *vsi, bool locked);
+> > void ice_vsi_decfg(struct ice_vsi *vsi);  void ice_dis_vsi(struct
+> > ice_vsi *vsi, bool locked);
+> >
+> > +int ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi);
+> >  int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags);  int
+> > ice_vsi_cfg(struct ice_vsi *vsi);  struct ice_vsi
+> > *ice_vsi_alloc(struct ice_pf *pf); diff --git
+> > a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> > b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> > index 772f6b07340d..9edb2c14f553 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+> > @@ -268,6 +268,13 @@ static int ice_vf_reconfig_vsi(struct ice_vf *vf)
+> >
+> >       vsi->flags =3D ICE_VSI_FLAG_NO_INIT;
+> >
+> > +     vsi->req_txq =3D vf->num_req_qs;
+> > +     vsi->req_rxq =3D vf->num_req_qs;
+> > +
+> > +     err =3D ice_vsi_realloc_stat_arrays(vsi);
+> > +     if (err)
+> > +             return err;
+> > +
+> >       ice_vsi_decfg(vsi);
+> >       ice_fltr_remove_all(vsi);
+> >
+> > --
+> > 2.54.0
+>
+
