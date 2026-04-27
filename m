@@ -2,63 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mI5oFiaS72nRCwEAu9opvQ
+	id YCLxDlyS72nRCwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 18:43:18 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 18:44:12 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 522CB476977
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 18:43:17 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F6AF4769E8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 18:44:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6719F8120A;
-	Mon, 27 Apr 2026 16:43:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0E0F3405BE;
+	Mon, 27 Apr 2026 16:44:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tIRcrrLQwNSp; Mon, 27 Apr 2026 16:43:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7sK39JcY_1It; Mon, 27 Apr 2026 16:44:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8DE2E81206
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 32B1640A57
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777308194;
-	bh=6NMzplX/z6JFceZNAIer9+Ya48FQkIVFvYJYuBHTqNY=;
+	s=default; t=1777308249;
+	bh=JH3JRmQBpCnWHw3wvFh/nbnoikGnOZuwUHsK0VbEm68=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=we+Gf5KVN6/matb6lWxd9oSAv2gYuphxS2S6mEv7GhpjiiLC/i01E7EHErrvwCwMw
-	 bJ9m16a8pZ1XZiP0Prm1zLYHYrTSJatzHSMEg9dvtkvUZj51d5Zfj7eJ+BAF6b1mTz
-	 pbwzzbH191jdrR4KtAljda/p6bfjCfARk3eExNdyUiPuJiiz4U5pdeinTS8clOF+CM
-	 4BE/0hvW2RAZkSJ7tIWexfb9pWaE73Cx6sdPVynNRz3JMkNKy/uZ03IdrVXzAmCx7D
-	 S7FLReDjGiaUaA8bzQmGxscfLmgcpetoi+wcSXlpropQRFlUkTkGV7jAtlru6suAxU
-	 0GeVDbPT1MfbQ==
+	b=Z7BKxR92u4oos/NcpAefjV+uxB9d1ODrIGuX8f2/41Wk11Lmbrbr3qJnEzG1QQWuK
+	 wbs1cif596YT/mb7pt3v60maeJYmpbjsCvtMByBASAHUb+SgQ3sXCmlTxuhPdqtxKe
+	 DlNND+fiQ62I31G/vvcEfnrZ7RIuAAyE9AjDjNaCnaVbOGXEI4OkrV7qKsOD3AERyr
+	 Blu2DJZgTh4CLvkIpEuh85Qq+joiIWrh0r2Wh83inl1sYdQau5PyfTG1ncXBIqCif+
+	 HiXNEE+ZL8rB9iLCsCni7FCfu1XmOO6YyxNMDrcErhm+LJqEt0jGq20R0+XtEd8OuD
+	 7NZHlx2cHsmqQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8DE2E81206;
-	Mon, 27 Apr 2026 16:43:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 32B1640A57;
+	Mon, 27 Apr 2026 16:44:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 85230231
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:43:12 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 94BE21B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:44:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6B4734008A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:43:12 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 92C834008A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:44:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id s95_w8ISL7U3 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2026 16:43:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9636240086
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9636240086
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9636240086
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:43:11 +0000 (UTC)
+ id kTX4kBp7lOT5 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2026 16:44:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9947740086
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9947740086
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9947740086
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 16:44:06 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id EFCF542B1E;
- Mon, 27 Apr 2026 16:43:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84A9CC19425;
- Mon, 27 Apr 2026 16:43:08 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id DAD6160126;
+ Mon, 27 Apr 2026 16:44:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F0CEC19425;
+ Mon, 27 Apr 2026 16:44:01 +0000 (UTC)
 From: Simon Horman <horms@kernel.org>
 To: jtornosm@redhat.com
 Cc: 'Simon Horman' <horms@kernel.org>, netdev@vger.kernel.org,
@@ -67,32 +68,31 @@ Cc: 'Simon Horman' <horms@kernel.org>, netdev@vger.kernel.org,
  jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
  davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  pabeni@redhat.com
-Date: Mon, 27 Apr 2026 17:25:48 +0100
-Message-ID: <20260427162548.1221245-2-horms@kernel.org>
+Date: Mon, 27 Apr 2026 17:43:57 +0100
+Message-ID: <20260427164357.1227583-1-horms@kernel.org>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260423130405.139568-3-jtornosm@redhat.com>
-References: <20260423130405.139568-3-jtornosm@redhat.com>
+In-Reply-To: <20260423130405.139568-4-jtornosm@redhat.com>
+References: <20260423130405.139568-4-jtornosm@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1777308190;
- bh=sop+jYumr5WtvqsHY9B185SKGiwtvPmTo1JFw0Tpae8=;
+ d=kernel.org; s=k20201202; t=1777308244;
+ bh=wKIY3PMnej7pArpikhLOSs8krStKOs1qix0SOQmNecA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uVfMjh1cSBeqXGQ1jpCQ9zi8y+sTNtFMx7uFJIqELSbHlu3wvQxMojZMmnqDmqbfI
- tFjd2V+4VIB0HgXqW1NBUPrSi6+cDpagxMVB+g47/MnI2pxC0xiASjCYRIbeTKkNJe
- MKCj29fZj+er3mkIukGaLhf9e4b776AdAPqs/T6DDrbkq66nQX4GZBi1XYd4G5S60z
- OLZXEVb4aXabZiunIscGt6OQBGWvSuQNwlaIJbRrhUD6keCnQ+OmH/W8rpdHDMMCT9
- NihTpn9E5yhPUptzF+iUMSD7arywiQ+u7rg+2jcqUHfvEIPsJz3yQyrqOeE1R3ICVz
- dbFc7rxsS052Q==
+ b=tGSOJSFZK7W2BeZeFd0/3P9QJ0274sr8/HSIOVmOy4Li3fTQhVIiJ39Dq/nNoXPNL
+ gZz98ZPZaIqvddoAANT3I1/qEfDO379sOVfmvXQ5vJZc1a0FghNpEDmPTAtM3x4Gf8
+ ghiAtIgaCwlnEv0aSoZCLl9G7tM4/5mvKe3tqnE5Bp4w3Pa+ZhPWHyJRtECbqVkcfU
+ PccYEqgWhdzcqDTzlhGFBhqbPrW7Rwg/MGf4zF/mRwbRU/ytZSKhDqw8unENe6IRYM
+ /b4BkMVAAWMjx5+J9bJrpxEZicfhfiM1bWX1YfGxZar1xKrr2zSVevEqohjgUa5ldM
+ UGFfh1BoeN+kg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=uVfMjh1c
-Subject: Re: [Intel-wired-lan] [PATCH net v4 2/4] i40e: skip unnecessary VF
- reset when setting trust
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=tGSOJSFZ
+Subject: Re: [Intel-wired-lan] [PATCH net v4 3/4] iavf: send MAC change
+ request synchronously
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,38 +107,37 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 522CB476977
+X-Rspamd-Queue-Id: 8F6AF4769E8
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	RCPT_COUNT_TWELVE(0.00)[13];
-	MIME_TRACE(0.00)[0:+];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCVD_TLS_LAST(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS(0.00)[m:jtornosm@redhat.com,m:horms@kernel.org,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:jacob.e.keller@intel.com,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
@@ -150,112 +149,167 @@ This is an AI-generated review of your patch. The human sending this
 email has considered the AI review valid, or at least plausible.
 Full review at: https://sashiko.dev
 ---
-i40e: skip unnecessary VF reset when setting trust
+iavf: send MAC change request synchronously
 
-This commit attempts to reduce the bonding setup delay by skipping the
-synchronous VF reset when changing the trust setting, manually handling
-the capability flag and promiscuous mode instead.
+This commit updates the MAC address setting in the iavf driver to be
+synchronous. It sends the virtchnl message directly and polls the admin
+queue for the response, rather than relying on the watchdog task, to avoid
+deadlocks when holding the netdev instance lock.
 
-> When we do reset (ADQ case), we reset first to clear VF_STATE_ACTIVE
-> (which blocks new cloud filter additions), then delete existing cloud
-> filters safely. This avoids the race condition where VF could add filters
-> during deletion.
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 67aa14350b1b01..bc5994bf2cd99d 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
 
-Is this description accurate?
-
-i40e_vc_reset_vf() is synchronous and restores I40E_VF_STATE_ACTIVE before
-returning. When i40e_del_all_cloud_filters() traverses
-vf->cloud_filter_list locklessly afterwards, the VF is already active again.
-
-Could a concurrent VIRTCHNL_OP_ADD_CLOUD_FILTER message from the guest be
-processed asynchronously and corrupt the list?
-
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> index a26c3d47ec1561..26b62650aac9aa 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
 [ ... ]
-> @@ -4943,6 +4943,30 @@ int i40e_ndo_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool enable)
->  	return ret;
+
+> @@ -1067,25 +1109,20 @@ static int iavf_set_mac(struct net_device *netdev, void *p)
+>  		return -EADDRNOTAVAIL;
+>  
+>  	ret = iavf_replace_primary_mac(adapter, addr->sa_data);
+> -
+>  	if (ret)
+>  		return ret;
+>  
+> -	ret = wait_event_interruptible_timeout(adapter->vc_waitqueue,
+> -					       iavf_is_mac_set_handled(netdev, addr->sa_data),
+> -					       msecs_to_jiffies(2500));
+> -
+> -	/* If ret < 0 then it means wait was interrupted.
+> -	 * If ret == 0 then it means we got a timeout.
+> -	 * else it means we got response for set MAC from PF,
+> -	 * check if netdev MAC was updated to requested MAC,
+> -	 * if yes then set MAC succeeded otherwise it failed return -EACCES
+> -	 */
+> -	if (ret < 0)
+> +	ret = iavf_set_mac_sync(adapter, addr->sa_data);
+> +	if (ret) {
+> +		/* Rollback for local failures (timeout, send error, -EBUSY).
+> +		 * Note: If PF rejects the request (sends error response),
+> +		 * iavf_virtchnl_completion() automatically calls
+> +		 * iavf_mac_add_reject(), ret=0, and this is not executed.
+> +		 * Only local failures (no PF response received) need manual rollback.
+> +		 */
+> +		iavf_mac_add_reject(adapter);
+>  		return ret;
+> -
+> -	if (!ret)
+> -		return -EAGAIN;
+> +	}
+
+Does the manual rollback in iavf_set_mac() need to restore adapter->hw.mac.addr?
+
+Before calling iavf_set_mac_sync(), iavf_replace_primary_mac() optimistically
+updates adapter->hw.mac.addr to the new MAC address and unsets the is_primary
+flag on the old MAC filter. If iavf_set_mac_sync() fails locally,
+iavf_mac_add_reject() deletes the pending new MAC filter but doesn't restore
+adapter->hw.mac.addr back to netdev->dev_addr.
+
+By contrast, the PF-rejection path in iavf_virtchnl_completion() explicitly
+restores it:
+
+	iavf_mac_add_reject(adapter);
+	/* restore administratively set MAC address */
+	ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
+
+If the local failure was a timeout and a delayed success response arrives from
+the PF later, could iavf_virtchnl_completion() blindly copy the corrupted
+adapter->hw.mac.addr into netdev->dev_addr? This seems like it would silently
+change the interface MAC to an address already deleted from the internal list.
+
+Additionally, on subsequent MAC change attempts, wouldn't
+iavf_replace_primary_mac() search for the old filter using the corrupted
+adapter->hw.mac.addr, fail to find it, and permanently leak the old filter in
+the PF's hardware tables?
+
+[ ... ]
+
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> index a52c100dcbc56d..d1afb8261c2412 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+
+[ ... ]
+
+> @@ -2956,3 +2966,76 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+>  	} /* switch v_opcode */
+>  	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
 >  }
->  
+> +
 > +/**
-> + * i40e_setup_vf_trust - Enable/disable VF trust mode without reset
-> + * @vf: VF to configure
-> + * @setting: trust setting
+> + * iavf_poll_virtchnl_response - Poll admin queue for virtchnl response
+> + * @adapter: adapter structure
+> + * @condition: callback to check if desired response received
+> + * @cond_data: context data passed to condition callback
+> + * @timeout_ms: maximum time to wait in milliseconds
 > + *
-> + * Manually handle capability flag and promiscuous mode when changing trust
-> + * without performing a VF reset.
-> + * When reset is performed, this is not necessary as the reset procedure
-> + * already handles this.
+> + * Polls the admin queue and processes all incoming virtchnl messages.
+> + * After processing each valid message, calls the condition callback to check
+> + * if the expected response has been received. The callback receives the opcode
+> + * of the processed message to identify which response was received. Continues
+> + * polling until the callback returns true or timeout expires.
+> + * Clear current_op on timeout to prevent permanent -EBUSY state.
+> + * Caller must hold netdev_lock. This can sleep for up to timeout_ms while
+> + * polling hardware.
+> + *
+> + * Return: 0 on success (condition met), -EAGAIN on timeout, or error code
 > + **/
-> +static void i40e_setup_vf_trust(struct i40e_vf *vf, bool setting)
+> +int iavf_poll_virtchnl_response(struct iavf_adapter *adapter,
+> +				bool (*condition)(struct iavf_adapter *adapter,
+> +						  const void *data,
+> +						  enum virtchnl_ops v_op),
+> +				const void *cond_data,
+> +				unsigned int timeout_ms)
 > +{
-> +	if (setting) {
-> +		set_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
-> +	} else {
-> +		clear_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
+
+[ ... ]
+
+> +		if (iavf_clean_arq_element(hw, &event, &pending) == IAVF_SUCCESS) {
+> +			received_op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+> +			if (received_op != VIRTCHNL_OP_UNKNOWN) {
+> +				v_retval = le32_to_cpu(event.desc.cookie_low);
 > +
-> +		if (test_bit(I40E_VF_STATE_UC_PROMISC, &vf->vf_states) ||
-> +		    test_bit(I40E_VF_STATE_MC_PROMISC, &vf->vf_states))
-> +			i40e_config_vf_promiscuous_mode(vf, vf->lan_vsi_idx,
-> +							false, false);
+> +				iavf_virtchnl_completion(adapter, received_op,
+> +							 (enum iavf_status)v_retval,
+> +							 event.msg_buf, event.msg_len);
+> +
+> +				if (condition(adapter, cond_data, received_op)) {
+> +					ret = 0;
+> +					break;
+> +				}
+> +			}
+> +
+> +			memset(event.msg_buf, 0, IAVF_MAX_AQ_BUF_SIZE);
+> +
+> +			if (pending)
+> +				continue;
+> +		}
+> +
+> +		usleep_range(50, 75);
+> +	} while (time_before(jiffies, timeout));
+> +
+> +	if (ret == -EAGAIN && adapter->current_op != VIRTCHNL_OP_UNKNOWN)
+> +		adapter->current_op = VIRTCHNL_OP_UNKNOWN;
 
-Does this pass the internal software array index (vf->lan_vsi_idx) instead of
-the firmware VSI ID (vf->lan_vsi_id)?
+Could clearing adapter->current_op on timeout cause overlapping virtchnl
+commands and state corruption?
 
-i40e_config_vf_promiscuous_mode() uses i40e_find_vsi_from_id() which matches
-against the firmware ID. Could this cause the lookup to fail and silently
-leave promiscuous mode enabled on the hardware?
+If the timeout expires and adapter->current_op is forced to
+VIRTCHNL_OP_UNKNOWN, the VF watchdog might consider the admin queue free
+and send a new command while the PF is still actively processing the
+timed-out request.
 
-Also, should this clear the I40E_VF_STATE_UC_PROMISC and
-I40E_VF_STATE_MC_PROMISC flags from vf->vf_states?
+If the PF eventually completes the timed-out request and sends a late response,
+iavf_virtchnl_completion() will process it. At the end of
+iavf_virtchnl_completion(), the driver unconditionally clears the state:
 
-If an untrusted VF performs a valid operation like adding a new VLAN, could
-i40e_vc_add_vlan_msg() check the uncleared state bit and automatically issue
-an AdminQ command to re-enable promiscuous mode, bypassing the revocation?
+	adapter->current_op = VIRTCHNL_OP_UNKNOWN;
 
-> +	}
+Would this prematurely clear the tracking state for the newly in-flight
+overlapping command, compounding the state machine corruption and allowing
+even more commands to be sent concurrently?
+
+> +
+> +	kfree(event.msg_buf);
+> +	return ret;
 > +}
-> +
->  /**
->   * i40e_ndo_set_vf_trust
->   * @netdev: network interface device structure of the pf
-> @@ -4987,19 +5011,17 @@ int i40e_ndo_set_vf_trust(struct net_device *netdev, int vf_id, bool setting)
->  	set_bit(__I40E_MACVLAN_SYNC_PENDING, pf->state);
->  	pf->vsi[vf->lan_vsi_idx]->flags |= I40E_VSI_FLAG_FILTER_CHANGED;
->  
-> -	i40e_vc_reset_vf(vf, true);
-> +	/* Reset only if revoking trust with ADQ (for cloud filter cleanup) */
-> +	if (vf->adq_enabled && !setting) {
-> +		i40e_vc_reset_vf(vf, true);
-> +		i40e_del_all_cloud_filters(vf);
-
-Could this lead to a memory leak of the cloud filters?
-
-The synchronous reset in i40e_vc_reset_vf() destroys the VF's VSI and
-allocates a new one with a new firmware SEID. When
-i40e_del_all_cloud_filters() executes afterwards, it looks up the VSI using
-the old SEID from the filters, which might fail and cause it to skip the
-free operation entirely.
-
-> +	} else {
-> +		i40e_setup_vf_trust(vf, setting);
-> +	}
-
-By skipping the reset when revoking trust for non-ADQ VFs, do we leave excess
-hardware filters intact? Trusted VFs can configure MAC and VLAN filters
-beyond standard limits. Without a reset to flush them, does the untrusted
-VF retain its configured spoofed MAC addresses and excessive VLANs
-indefinitely?
-
-Furthermore, when granting trust, skipping the reset prevents sending the
-VIRTCHNL_EVENT_RESET_IMPENDING event to the guest. Since virtchnl VF drivers
-negotiate their capabilities and resource requests during initialization,
-does this mean the guest driver remains unaware of its newly granted
-privileges until the interface is manually restarted?
-
-> +
->  	dev_info(&pf->pdev->dev, "VF %u is now %strusted\n",
->  		 vf_id, setting ? "" : "un");
->
