@@ -2,113 +2,118 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 6GBYDvVJ72lO/wAAu9opvQ
+	id wMkhNuZu72mHBQEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 13:35:17 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 16:12:54 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 25C9C471D1B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 13:35:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B88074741B8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Apr 2026 16:12:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 190A440517;
-	Mon, 27 Apr 2026 11:35:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 203B86F59D;
+	Mon, 27 Apr 2026 14:12:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eL06F9IHjBGD; Mon, 27 Apr 2026 11:35:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KMgIj2dwnaCJ; Mon, 27 Apr 2026 14:12:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B85840511
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7F8606F554
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777289712;
-	bh=zTmOBQOfI2cC6OKRMtTqpwmhqCYyPD1tqmAV3nNBJko=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=CsAORq+olnMv4MLkm6vICtKjAq+FogjEyUla7k+bT8p1qWFRdp+ZwttL3S2j9mEJC
-	 gOSGmWt8ahDiZSkNh7B7TY9cOqGu4JVL1HECfrYNTrjxgSCViiNS4ZAQ801sQj9Mjx
-	 egm0GtiuKN1dF0FGdGcavE/NfRvTDQwY4sdNz+gy0XQVeshWCctK4pwbTyJJ3+8Bcs
-	 Vb/j5+DDbcBEzA1KzbWfUbIaC7WmBIQStra1UzFhYrpZnQaP9hUze1V6DWHSZ3XQEh
-	 h4G2VrswerwJTcRXFhEzkqtHYam87TGzt4Xjw2/wI41ZwoIJGZ+WWi4L+1yOCucjw+
-	 1jOdO/K4Zrm6A==
+	s=default; t=1777299171;
+	bh=dOzEpumC4ADROaHbEK02rKBm85qRWWUWjKYJEPWKf0o=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=F6j8DXX3T3nYK64E0KTbiNBqFLSJVdcV2xUq1WuMlbz/u4h14GpR09FB35r47/8cQ
+	 i1RqCFY1z9/0s5e3XcwJVpOoOZXmlP5yulVhi4fntmzBhMjMx0Yq6w8ETkxy93tJ0D
+	 OJ3g33SDn8G6R4JIjk5dp/cIk8HSj9sbRNUh0PbqwAat8jaEttXpt35e2E1Qs5EevO
+	 2sE/o7QSyI6yeihX10UdZ0dv0EB6Z1DiL2nkpTm2w7LrUPflm5IR+/zH2zGTJzh0hJ
+	 V7y9RDrNBNq0jeUsc9VPB1qi67/rthnVg/sb7nMCDr7wChDHvekBkinF+0L43/LyHt
+	 ZBfqUdaNQQyGg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B85840511;
-	Mon, 27 Apr 2026 11:35:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7F8606F554;
+	Mon, 27 Apr 2026 14:12:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id C07901B8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 11:35:10 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 7ECA31B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 14:12:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9E8FD404E8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 11:35:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 64CE54571A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 14:12:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xOlvF-S7Ij9i for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Apr 2026 11:35:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=jtornosm@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 88AD84047B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 88AD84047B
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 88AD84047B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Apr 2026 11:35:08 +0000 (UTC)
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-5jr6GjTLMJ-8MlD7OXhyrQ-1; Mon,
- 27 Apr 2026 07:35:05 -0400
-X-MC-Unique: 5jr6GjTLMJ-8MlD7OXhyrQ-1
-X-Mimecast-MFC-AGG-ID: 5jr6GjTLMJ-8MlD7OXhyrQ_1777289703
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 20CDF19560BF; Mon, 27 Apr 2026 11:35:03 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.44.32.96])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A457D19560B7; Mon, 27 Apr 2026 11:34:58 +0000 (UTC)
-From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-To: przemyslaw.kitszel@intel.com
-Cc: aleksandr.loktionov@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, horms@kernel.org,
- intel-wired-lan@lists.osuosl.org, jacob.e.keller@intel.com,
- jtornosm@redhat.com, kuba@kernel.org, netdev@vger.kernel.org,
- pabeni@redhat.com
-Date: Mon, 27 Apr 2026 13:34:56 +0200
-Message-ID: <20260427113456.1267171-1-jtornosm@redhat.com>
-In-Reply-To: <d055ed86-89d9-42fd-a881-0384ebfd24f7@intel.com>
-References: <d055ed86-89d9-42fd-a881-0384ebfd24f7@intel.com>
+ id FoBw9wYq0loy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Apr 2026 14:12:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1231; helo=mail-dl1-x1231.google.com;
+ envelope-from=tactii@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B0B5C454B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0B5C454B4
+Received: from mail-dl1-x1231.google.com (mail-dl1-x1231.google.com
+ [IPv6:2607:f8b0:4864:20::1231])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B0B5C454B4
+ for <intel-wired-lan@osuosl.org>; Mon, 27 Apr 2026 14:12:48 +0000 (UTC)
+Received: by mail-dl1-x1231.google.com with SMTP id
+ a92af1059eb24-12c637089ccso736588c88.1
+ for <intel-wired-lan@osuosl.org>; Mon, 27 Apr 2026 07:12:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777299167; x=1777903967;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dOzEpumC4ADROaHbEK02rKBm85qRWWUWjKYJEPWKf0o=;
+ b=iVwEcYC51JtTiEWSQyXzAhgQw6V+AAzQdASb7XSn9hnK4zAoSrD/6gBR8f4sNgMmBs
+ x4xyc6+NHTgQEK+MlZefEWVPRMEL2cSTEdBJx2sMehbrzzn4Bjcp2lcnkY6BUPFAQ1UE
+ NSVoRXkrBv6Ro5clN7+eRp7aS22awMN6w+gSR6V0JF2o5zDrTJGVQhrHs0AsuQF2G3/N
+ QKFQR/npd3GO24QLFa1m96K/UGox5RHqqCT6pqOSbsojQgYdLiQMFA5JCa+c189p6ZuA
+ h2S8nZ4I3Cr8b/7uv9R9cpmXBRWqe/jtla/hvuZ8Tk7UzVjc1CRsNDLa/gs0nlN+OMrY
+ JZ6g==
+X-Gm-Message-State: AOJu0YziudigfJORwBlRJtj1ezEF//1A66YD9pLY+WSEO2ObCr37KyE2
+ JimHOxYYr1y3RYat70oCVk6+Klm2skJvE0KwNtnk5bAFiB+8xZK7YGwH+cqSccP4
+X-Gm-Gg: AeBDiev+KznaA6k4Ja9stShEhe123ya5w637qXAtDAk0mGv/S1K9dT+nNubEUqfQQ5Q
+ 9WiqQ/v8d2AW+4QotKnwRkCG0GD8fbjRrcoF+gTMqFaa1QASU89EIY3mwU02WqhFD5fxeVwqoQy
+ osIT6OEBCiyE87SYzsoGtbbECC/tzHuv57OtbmZbBmmSUzbrBhodUAs4WiZWhIEAR5HUyYljrwT
+ 7OHPXSd8WsG00cwjIADPByWryVap4H/lY/0l7Vvhg3IFH8EridGY4uERGJhNzE7vMZF/A+mX+VN
+ Ys1gznvHgPskL5c24tJnkE28Nm39qXgdjr67xFqTvEXi7wNIrqiHcW8EVknMtQl9tjoOeBkKS6I
+ 22dSPXqrmkAql37NprTEkF7S0NPb4QA3zvKFIlrN52TynVvggdHZUQqQpRcIhe0WZjd+W45amCF
+ yt6+ThccfexeAlsGDu37PVv/4cyoDZl1ZzS6w=
+X-Received: by 2002:a05:7022:6627:b0:11b:f056:a19b with SMTP id
+ a92af1059eb24-12c73f930c1mr24901971c88.18.1777299166693; 
+ Mon, 27 Apr 2026 07:12:46 -0700 (PDT)
+Received: from devobuntu.lan ([2600:6c5c:6b00:ba4:9e82:4279:45e0:a728])
+ by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12dc2dfad8csm18950484c88.3.2026.04.27.07.12.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Apr 2026 07:12:46 -0700 (PDT)
+From: Matt Vollrath <tactii@gmail.com>
+To: intel-wired-lan@osuosl.org
+Cc: Matt Vollrath <tactii@gmail.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Mon, 27 Apr 2026 10:12:27 -0400
+Message-ID: <20260427141227.19965-1-tactii@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: aNGeH6cF174TYpIFpiA9m-EtOwEInvMG3MX-y9kGlSE_1777289703
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1777289707;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zTmOBQOfI2cC6OKRMtTqpwmhqCYyPD1tqmAV3nNBJko=;
- b=PBRNbPxTo+c0U4LkjEZeAx5nKLbGer9c9pFuzaGk7LLKcZESa39iokPQxXF7IEKfnp129o
- S/7xp4OfhIlet0GpVM5YZGj2/IfqSP9ni8FvBBYz/Lt9KI04WO+/QqsnmJap/tFK5DBhx2
- /g7dM28mxQ8dMTf0quRYg+jAOIEHGgQ=
+ d=gmail.com; s=20251104; t=1777299167; x=1777903967; darn=osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=dOzEpumC4ADROaHbEK02rKBm85qRWWUWjKYJEPWKf0o=;
+ b=dPrsK/27340/zfI8Ks/d5veVOSDfP0QVUCbR2oPlR/1dRKzGLssmuOoNmKUzP9npWl
+ 9swiAXtc1MILcQ3YUf1JIUksoFVKJbTOoJpoPK0rOknloqRwLHzrMXflsyNBuMWZH2D1
+ 3ZVDr1wrahELOGwaj8kPGjfixDfu/jBydxIL7FwgnrO0QuUr9wjWXR/XggjpEDnzXLom
+ fpza/t3RBq2oCYbbbi9HkrYLc6NtvsfHExL1pAiYEwuO4Vo60gQQyQh1bfVxYtd5STlN
+ L5cShL52YuHUE3bW6cl4+b9tVJg9D8edoIsvxyNCsQ42a23caiA+N8Fs57oXoBWEdtNl
+ t7vw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=PBRNbPxT
-Subject: Re: [Intel-wired-lan] [PATCH net v4 3/4] iavf: send MAC change
- request synchronously
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20251104 header.b=dPrsK/27
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] e1000e: Avoid DMA re-mapping
+ on RX copybreak
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -123,50 +128,174 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 25C9C471D1B
+X-Rspamd-Queue-Id: B88074741B8
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [0.79 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
-	MAILLIST(-0.20)[mailman];
+	R_MISSING_CHARSET(0.50)[];
 	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:horms@kernel.org,m:jacob.e.keller@intel.com,m:jtornosm@redhat.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:pabeni@redhat.com,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	FORGED_SENDER(0.00)[tactii@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:intel-wired-lan@osuosl.org,m:tactii@gmail.com,m:aleksandr.loktionov@intel.com,s:lists@lfdr.de];
+	FROM_NEQ_ENVFROM(0.00)[tactii@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
-	FORGED_SENDER(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_CC(0.00)[gmail.com,intel.com];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_THREE(0.00)[3];
+	RCVD_COUNT_SEVEN(0.00)[9]
 
-Hello Przemek,
+This patch factors out DMA re-mapping for skbs which were recycled in
+the RX path due to copybreak or errors. There is only one path out of
+the e1000_clean_rx_irq() loop where the skb is consumed and DMA needs
+to be re-mapped, so don't unmap it before checking the conditions.
 
-Thank you again for your comments.
-I will try to include the new ones too in the next version.
-Indeed kdoc "Return:" was already commented by you, I will try to address
-all the occurences now.
+The buffer allocation loop is adjusted to not assume that DMA is
+unmapped, handling mapping errors gracefully.
 
-Thanks
+On systems with IOMMU enabled, the cost of re-mapping DMA is greater
+than the cost of copying data out of the ring buffer. When I use this
+patch and configure e1000e with copybreak=2048, my system with IOMMU
+completes RX twice as fast under load.
 
-Best regards
-Jose Ignacio
+The kludge of unconditional unmapping has existed since this driver was
+introduced in 2007, inherited from the e1000 driver which has since
+factored it out. IOMMU tech was new at the time.
+
+Tested on an I218-V.
+
+Assisted-by: Claude:claude-4-7-opus
+Signed-off-by: Matt Vollrath <tactii@gmail.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v2:
+* proofread description with Aleksandr
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 34 +++++++++++++++-------
+ 1 file changed, 23 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 9befdacd6730..b1d6119171df 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -663,6 +663,8 @@ static void e1000_alloc_rx_buffers(struct e1000_ring *rx_ring,
+ 		skb = buffer_info->skb;
+ 		if (skb) {
+ 			skb_trim(skb, 0);
++			if (likely(buffer_info->dma))
++				goto write_desc;
+ 			goto map_skb;
+ 		}
+ 
+@@ -680,10 +682,12 @@ static void e1000_alloc_rx_buffers(struct e1000_ring *rx_ring,
+ 						  DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(&pdev->dev, buffer_info->dma)) {
+ 			dev_err(&pdev->dev, "Rx DMA map failed\n");
++			buffer_info->dma = 0;
+ 			adapter->rx_dma_failed++;
+ 			break;
+ 		}
+ 
++write_desc:
+ 		rx_desc = E1000_RX_DESC_EXT(*rx_ring, i);
+ 		rx_desc->read.buffer_addr = cpu_to_le64(buffer_info->dma);
+ 
+@@ -941,7 +945,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 		dma_rmb();	/* read descriptor and rx_buffer_info after status DD */
+ 
+ 		skb = buffer_info->skb;
+-		buffer_info->skb = NULL;
+ 
+ 		prefetch(skb->data - NET_IP_ALIGN);
+ 
+@@ -955,9 +958,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 
+ 		cleaned = true;
+ 		cleaned_count++;
+-		dma_unmap_single(&pdev->dev, buffer_info->dma,
+-				 adapter->rx_buffer_len, DMA_FROM_DEVICE);
+-		buffer_info->dma = 0;
+ 
+ 		length = le16_to_cpu(rx_desc->wb.upper.length);
+ 
+@@ -973,8 +973,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 		if (adapter->flags2 & FLAG2_IS_DISCARDING) {
+ 			/* All receives must fit into a single buffer */
+ 			e_dbg("Receive packet consumed multiple buffers\n");
+-			/* recycle */
+-			buffer_info->skb = skb;
+ 			if (staterr & E1000_RXD_STAT_EOP)
+ 				adapter->flags2 &= ~FLAG2_IS_DISCARDING;
+ 			goto next_desc;
+@@ -982,8 +980,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 
+ 		if (unlikely((staterr & E1000_RXDEXT_ERR_FRAME_ERR_MASK) &&
+ 			     !(netdev->features & NETIF_F_RXALL))) {
+-			/* recycle */
+-			buffer_info->skb = skb;
+ 			goto next_desc;
+ 		}
+ 
+@@ -1010,19 +1006,35 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 			struct sk_buff *new_skb =
+ 				napi_alloc_skb(&adapter->napi, length);
+ 			if (new_skb) {
++				dma_sync_single_for_cpu(&pdev->dev,
++							buffer_info->dma,
++							adapter->rx_buffer_len,
++							DMA_FROM_DEVICE);
+ 				skb_copy_to_linear_data_offset(new_skb,
+ 							       -NET_IP_ALIGN,
+ 							       (skb->data -
+ 								NET_IP_ALIGN),
+ 							       (length +
+ 								NET_IP_ALIGN));
+-				/* save the skb in buffer_info as good */
+-				buffer_info->skb = skb;
++				dma_sync_single_for_device(&pdev->dev,
++							   buffer_info->dma,
++							   adapter->rx_buffer_len,
++							   DMA_FROM_DEVICE);
+ 				skb = new_skb;
+ 			}
+ 			/* else just continue with the old one */
+ 		}
+-		/* end copybreak code */
++
++		/* If skb was not replaced by copybreak, we are consuming
++		 * the original buffer and must release the DMA mapping.
++		 */
++		if (skb == buffer_info->skb) {
++			buffer_info->skb = NULL;
++			dma_unmap_single(&pdev->dev, buffer_info->dma,
++					 adapter->rx_buffer_len,
++					 DMA_FROM_DEVICE);
++			buffer_info->dma = 0;
++		}
+ 		skb_put(skb, length);
+ 
+ 		/* Receive Checksum Offload */
+-- 
+2.43.0
 
