@@ -2,81 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id YOKiAVXU8GkSZQEAu9opvQ
+	id YAicD1LU8GkpZgEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:37:57 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:37:54 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5D582488059
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:37:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CDF1488042
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:37:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1A33780F0F;
-	Tue, 28 Apr 2026 15:37:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 50FC183BC1;
+	Tue, 28 Apr 2026 15:37:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NWTxEvrLhmfB; Tue, 28 Apr 2026 15:37:51 +0000 (UTC)
+ id SGY4qfowdBC1; Tue, 28 Apr 2026 15:37:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1226483C03
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBD2280D44
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777390671;
-	bh=h6xmkC20ZZsQfbCXkpbC0mMyClnK0/2HcBfHcMzmLA4=;
+	s=default; t=1777390667;
+	bh=uuFZgw0mJdifU6kaNsN4Q7gVpb3fsZn+E4BKg9kLdII=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=3oAnzIT4w1bl52FejfZjbcbS9zTOZlRXdy/M4Bb61eHQCzg64GSLNwBijc3qbQHih
-	 GUEZEMIAGKB5+cSaph+K6SLgkY2+UUYUrja8J5t3nlZMjboBKqMRLGtxyZKH2sufw4
-	 JLL8spq4EFiFuqw3Jf/xgPC5o9NxABLNCCYn6GtY8rnd+cR0jFNNyV35QpLvhNgIp4
-	 IXi8fjPB9sbQsid7D3pg6quBXrtxClFyEpqnR2uIKHIV9rjb27RGgn7a2X9uvIUKf1
-	 VrChSvDAxg0+RxuD4ImWpZpw4rxXG1qBQd11R1aUa/ZM1DAHQhWH4Q3VnjDC5WeHZL
-	 TaUTBCRGVimkA==
+	b=sfY4V2Z5BcpmcQcxNucIrZvSouZZJIuEdooccBiuDSab/GML3scgAzrbcFaseTP8C
+	 sgj+erVJssePCQbA94k640jpsA8yd0/U9d6g6ed9S/yBU0LMMPDL+RsmDywnW62VEq
+	 uvs5g9FIB+C1xuG6zf5rBpH5yD/04qOxoxBrBknXa6u1A6V7PCEKB9Ji358VfyW0Ew
+	 zEZFvaY7+qDyenwvZJYM7N5foT9DwHv4g3cPHwglWwsxWtARp5d+ceKrcBaAqIb8CB
+	 afZk2F271str4zSiwrNWIRsNODCwyHx/I+9OAj1tIKZB7FRFclaNUFutUuxIxONnZn
+	 yoMyY+TZ70Row==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1226483C03;
-	Tue, 28 Apr 2026 15:37:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DBD2280D44;
+	Tue, 28 Apr 2026 15:37:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id BC2841B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:37:47 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id D7F121B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:37:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6B9C580D44
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:37:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C53598382D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:37:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 83q5zdAa-TJ2 for <intel-wired-lan@lists.osuosl.org>;
+ id 0dG1Vofmsj7y for <intel-wired-lan@lists.osuosl.org>;
  Tue, 28 Apr 2026 15:37:45 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
  helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8B4BA821CE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B4BA821CE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3BBC08236B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3BBC08236B
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8B4BA821CE
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3BBC08236B
  for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:37:45 +0000 (UTC)
-X-CSE-ConnectionGUID: Wx/n2WTaRp2o3qGTpteWww==
-X-CSE-MsgGUID: jxoLPDQpTKKiRlM1WeYFQw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11770"; a="78415124"
-X-IronPort-AV: E=Sophos;i="6.23,204,1770624000"; d="scan'208";a="78415124"
+X-CSE-ConnectionGUID: PotZ+uPwSHmpSmedXPHIDw==
+X-CSE-MsgGUID: cpiEm013SxC1uIq/em233Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11770"; a="78415122"
+X-IronPort-AV: E=Sophos;i="6.23,204,1770624000"; d="scan'208";a="78415122"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  28 Apr 2026 08:37:45 -0700
-X-CSE-ConnectionGUID: m1sAz/B7QwO4aCHjx5KBUg==
-X-CSE-MsgGUID: yVfI1yzESuq7rR6ioXnqzw==
+X-CSE-ConnectionGUID: 4vZsTqtzRVW7vhaXyBEDjA==
+X-CSE-MsgGUID: I6yUkJA8SAiYi/lduNbHrQ==
 X-ExtLoop1: 1
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
  by fmviesa003.fm.intel.com with ESMTP; 28 Apr 2026 08:37:42 -0700
 Received: from gond.igk.intel.com (gond.igk.intel.com [10.123.220.52])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 9AE67312C2;
- Tue, 28 Apr 2026 16:37:40 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 642A3312C3;
+ Tue, 28 Apr 2026 16:37:41 +0100 (IST)
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, paul.greenwalt@intel.com, jacob.e.keller@intel.com,
  Marcin Szycik <marcin.szycik@linux.intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Tue, 28 Apr 2026 16:37:15 +0200
-Message-ID: <20260428143716.9653-3-marcin.szycik@linux.intel.com>
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Tue, 28 Apr 2026 16:37:16 +0200
+Message-ID: <20260428143716.9653-4-marcin.szycik@linux.intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20260428143716.9653-1-marcin.szycik@linux.intel.com>
 References: <20260428143716.9653-1-marcin.szycik@linux.intel.com>
@@ -87,22 +86,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1777390665; x=1808926665;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=VQu2tqSbSW7X25R4xLZsKJJ9VF0GLiJsVVZC1KV7H0g=;
- b=LvgQDHvxdGFweOrDbABjs8+Aaj0oZAdMPYawJSQEf1KrN5YEolBnzUry
- /9oUyZcK8vhOnG4mKnAy0LDbhOsGfIGnoKWF8wbwfvOkM10t/kM8wT4g0
- X6mKd3SMT93CPLeRI5L6qBSPu4PmnOZxfdLO+bMzlzKAURQHVDCgFoNu4
- QFRZJhjblRGlBj/ZCIf01JAPZU9KBOsWnP/+VkBFL8l+wJIOsn/gca3R3
- NFLA92kTDYI7jr2ifTQNvS07yHwHoztGCSh2buGDwfp9WoLf37eN5+//o
- R/ZLAW9oaER/tzUGldqHm9jMEuR7R+3nPAReFU+tdYwi2U0viyca5BxsO
+ bh=iDyuzVdhzoWktc6lJ5s6rwHPmOtA+aBIGReixZ0Jh04=;
+ b=H8nKAr15q+reKiWIbiarApXS6XOH7kZ8ZPXTvfmFzKdxRa6zt6KYziF+
+ aN/52uEZ/lJFyukH+VFjsLPZQrR/zIvup8EcH1GObM/2khKteFm0OZnCy
+ Mk9od6SJ9drAP+HLn9K6zKkUkqJ6xdBTv0iFyQr74QGK5PZJ0jV2UhR9H
+ I5rIatlRv4p5NK8CncxWW5b8EGkMVpl/Rwt22f8T9wB2HDOSexbg8pHUB
+ /L32TKASJyber4K6MQK1Dx14ZqExh1cx0SyLQI0JEjqzw840EvyEHMNi4
+ 63BcWkv97gOKLTor90+8Tbzt5ZR168F55dOvaXP3GfJUZZ7ClIOGATdV+
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LvgQDHvx
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/3] virtchnl, iavf, ice,
- i40e: store VIRTCHNL_VF_* flags in bitmaps
+ header.a=rsa-sha256 header.s=Intel header.b=H8nKAr15
+Subject: [Intel-wired-lan] [PATCH iwl-next 3/3] virtchnl, iavf, ice,
+ i40e: add extended generic VF capability flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -117,1019 +116,802 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5D582488059
+X-Rspamd-Queue-Id: 8CDF1488042
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [0.89 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	ARC_NA(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[6];
 	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,linux.intel.com:mid,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[7];
-	NEURAL_HAM(-0.00)[-0.999];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-0.999];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	RCVD_COUNT_SEVEN(0.00)[10]
 
-As part of preparation to add extended (32nd and more) capability flags,
-change all flags from bitmasks to bit numbers and store them in bitmaps
-instead of u32. Change all bitops to test_bit()/set_bit()/etc.
+VF capability flags in struct virtchnl_vf_resource::vf_cap_flags have
+all been used up, preventing new flags from being added. Note that
+despite not all bits being defined here, they are used by out-of-tree
+releases of Intel drivers, therefore cannot be taken.
 
-Functionally nothing is changed, except that iavf now stores capability
-flags in struct iavf_adapter::vf_cap_flags instead of
-iavf_adapter::vf_res::vf_cap_flags to allow it to grow in the future.
+virtchnl message size and structure must remain unchanged to not break
+reverse compatibility, therefore the existing virtchnl structure cannot
+be extended with additional fields (e.g. flags2). vf_cap_flags type
+cannot be changed to a larger one for the same reason.
+
+Bit 2 of vf_cap_flags was reserved for exactly this case. Its presence
+in message initially sent from VF shall now signal that there are more
+capability flags to be parsed. If the PF driver acknowledges that via
+VIRTCHNL_OP_GET_VF_RESOURCES response, the VF will send a separate
+message: VIRTCHNL_OP_GET_VF_CAPS2, containing more capability flags.
+Note: this mechanism is similar for VIRTCHNL_OP_1588_PTP_GET_CAPS.
+
+The new message supports flexible size, so more flags can be added
+without any architectural changes. Care was taken to ensure that no
+out-of-bounds reads happen in case the bitmap is shorter in one of the
+drivers.
+
+The new message includes the original 32 bits too, for consistency and
+more straightforward parsing.
 
 Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |   4 +-
- drivers/net/ethernet/intel/iavf/iavf.h        |  51 ++++----
- .../net/ethernet/intel/iavf/iavf_prototype.h  |   3 +-
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   5 +-
- include/linux/intel/virtchnl.h                |  62 +++++-----
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  76 ++++++------
- drivers/net/ethernet/intel/iavf/iavf_common.c |   7 +-
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |   2 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  36 +++---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  51 ++++----
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   4 +-
- .../net/ethernet/intel/ice/virt/allowlist.c   |   5 +-
- drivers/net/ethernet/intel/ice/virt/fdir.c    |   2 +-
- drivers/net/ethernet/intel/ice/virt/queues.c  |  13 ++-
- drivers/net/ethernet/intel/ice/virt/rss.c     |   4 +-
- .../net/ethernet/intel/ice/virt/virtchnl.c    | 109 +++++++++---------
- 16 files changed, 227 insertions(+), 207 deletions(-)
+ drivers/net/ethernet/intel/iavf/iavf.h        |  19 ++-
+ .../net/ethernet/intel/ice/virt/virtchnl.h    |   2 +
+ include/linux/intel/virtchnl.h                |  55 ++++++-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  84 +++++++++++
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  60 ++++++++
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 138 +++++++++++++++++-
+ .../net/ethernet/intel/ice/virt/allowlist.c   |   6 +
+ .../net/ethernet/intel/ice/virt/virtchnl.c    |  86 +++++++++++
+ 8 files changed, 444 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-index a03ecddfb956..b2b50c1fccf1 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
-@@ -80,7 +80,9 @@ struct i40e_vf {
- 	/* all VF vsis connect to the same parent */
- 	enum i40e_switch_element_types parent_type;
- 	struct virtchnl_version_info vf_ver;
--	u32 driver_caps; /* reported by VF driver */
-+
-+	/* reported by VF driver */
-+	DECLARE_BITMAP(driver_caps, VIRTCHNL_VF_CAPS_MAX);
- 
- 	/* VF Port Extender (PE) stag if used */
- 	u16 stag;
 diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 1a1a66b3311e..64576cba3a01 100644
+index 64576cba3a01..5d812b0a52a3 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf.h
 +++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -395,7 +395,7 @@ struct iavf_adapter {
- 	bool link_up;
- 	enum virtchnl_link_speed link_speed;
- 	/* This is only populated if the VIRTCHNL_VF_CAP_ADV_LINK_SPEED is set
--	 * in vf_res->vf_cap_flags. Use ADV_LINK_SUPPORT macro to determine if
-+	 * in vf_cap_flags. Use ADV_LINK_SUPPORT macro to determine if
- 	 * this field is valid. This field should be used going forward and the
- 	 * enum virtchnl_link_speed above should be considered the legacy way of
- 	 * storing/communicating link speeds.
-@@ -404,39 +404,32 @@ struct iavf_adapter {
+@@ -343,6 +343,7 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_GET_SUPPORTED_RXDIDS		BIT_ULL(42)
+ #define IAVF_FLAG_AQ_GET_PTP_CAPS			BIT_ULL(43)
+ #define IAVF_FLAG_AQ_SEND_PTP_CMD			BIT_ULL(44)
++#define IAVF_FLAG_AQ_GET_VF_CAP_CAPS2			BIT_ULL(45)
  
- 	enum virtchnl_ops current_op;
- /* RSS by the PF should be preferred over RSS via other methods. */
--#define RSS_PF(_a) ((_a)->vf_res->vf_cap_flags & \
--		    VIRTCHNL_VF_OFFLOAD_RSS_PF)
--#define RSS_AQ(_a) ((_a)->vf_res->vf_cap_flags & \
--		    VIRTCHNL_VF_OFFLOAD_RSS_AQ)
--#define RSS_REG(_a) (!((_a)->vf_res->vf_cap_flags & \
--		       (VIRTCHNL_VF_OFFLOAD_RSS_AQ | \
--			VIRTCHNL_VF_OFFLOAD_RSS_PF)))
--#define VLAN_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
--			  VIRTCHNL_VF_OFFLOAD_VLAN)
--#define VLAN_V2_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
--			     VIRTCHNL_VF_OFFLOAD_VLAN_V2)
--#define CRC_OFFLOAD_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
--				 VIRTCHNL_VF_OFFLOAD_CRC)
--#define TC_U32_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
--			    VIRTCHNL_VF_OFFLOAD_TC_U32)
-+#define RSS_PF(_a) test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PF, (_a)->vf_cap_flags)
-+#define RSS_AQ(_a) test_bit(VIRTCHNL_VF_OFFLOAD_RSS_AQ, (_a)->vf_cap_flags)
-+#define RSS_REG(_a) (!(RSS_PF(_a) || RSS_AQ(_a)))
-+#define VLAN_ALLOWED(_a) test_bit(VIRTCHNL_VF_OFFLOAD_VLAN, (_a)->vf_cap_flags)
-+#define VLAN_V2_ALLOWED(_a)						\
-+	test_bit(VIRTCHNL_VF_OFFLOAD_VLAN_V2, (_a)->vf_cap_flags)
-+#define CRC_OFFLOAD_ALLOWED(_a)						\
-+	test_bit(VIRTCHNL_VF_OFFLOAD_CRC, (_a)->vf_cap_flags)
-+#define TC_U32_SUPPORT(_a)						\
-+	test_bit(VIRTCHNL_VF_OFFLOAD_TC_U32, (_a)->vf_cap_flags)
- #define VLAN_V2_FILTERING_ALLOWED(_a) \
- 	(VLAN_V2_ALLOWED((_a)) && \
- 	 ((_a)->vlan_v2_caps.filtering.filtering_support.outer || \
- 	  (_a)->vlan_v2_caps.filtering.filtering_support.inner))
- #define VLAN_FILTERING_ALLOWED(_a) \
- 	(VLAN_ALLOWED((_a)) || VLAN_V2_FILTERING_ALLOWED((_a)))
--#define ADV_LINK_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
--			      VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
--#define FDIR_FLTR_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
--			       VIRTCHNL_VF_OFFLOAD_FDIR_PF)
--#define ADV_RSS_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
--			     VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF)
--#define QOS_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
--			 VIRTCHNL_VF_OFFLOAD_QOS)
-+#define ADV_LINK_SUPPORT(_a)						\
-+	test_bit(VIRTCHNL_VF_CAP_ADV_LINK_SPEED, (_a)->vf_cap_flags)
-+#define FDIR_FLTR_SUPPORT(_a)						\
-+	test_bit(VIRTCHNL_VF_OFFLOAD_FDIR_PF, (_a)->vf_cap_flags)
-+#define ADV_RSS_SUPPORT(_a)						\
-+	test_bit(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF, (_a)->vf_cap_flags)
-+#define QOS_ALLOWED(_a) test_bit(VIRTCHNL_VF_OFFLOAD_QOS, (_a)->vf_cap_flags)
+ 	/* AQ messages that must be sent after IAVF_FLAG_AQ_GET_CONFIG, in
+ 	 * order to negotiated extended capabilities.
+@@ -350,7 +351,9 @@ struct iavf_adapter {
+ #define IAVF_FLAG_AQ_EXTENDED_CAPS			\
+ 	(IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS |	\
+ 	 IAVF_FLAG_AQ_GET_SUPPORTED_RXDIDS |		\
+-	 IAVF_FLAG_AQ_GET_PTP_CAPS)
++	 IAVF_FLAG_AQ_GET_PTP_CAPS |			\
++	 IAVF_FLAG_AQ_GET_VF_CAP_CAPS2 |		\
++	 0)
+ 
+ 	/* flags for processing extended capability messages during
+ 	 * __IAVF_INIT_EXTENDED_CAPS. Each capability exchange requires
+@@ -366,6 +369,8 @@ struct iavf_adapter {
+ #define IAVF_EXTENDED_CAP_RECV_RXDID			BIT_ULL(3)
+ #define IAVF_EXTENDED_CAP_SEND_PTP			BIT_ULL(4)
+ #define IAVF_EXTENDED_CAP_RECV_PTP			BIT_ULL(5)
++#define IAVF_EXTENDED_CAP_SEND_CAPS2			BIT_ULL(6)
++#define IAVF_EXTENDED_CAP_RECV_CAPS2			BIT_ULL(7)
+ 
+ #define IAVF_EXTENDED_CAPS				\
+ 	(IAVF_EXTENDED_CAP_SEND_VLAN_V2 |		\
+@@ -373,7 +378,10 @@ struct iavf_adapter {
+ 	 IAVF_EXTENDED_CAP_SEND_RXDID |			\
+ 	 IAVF_EXTENDED_CAP_RECV_RXDID |			\
+ 	 IAVF_EXTENDED_CAP_SEND_PTP |			\
+-	 IAVF_EXTENDED_CAP_RECV_PTP)
++	 IAVF_EXTENDED_CAP_RECV_PTP |			\
++	 IAVF_EXTENDED_CAP_SEND_CAPS2 |			\
++	 IAVF_EXTENDED_CAP_RECV_CAPS2 |			\
++	 0)
+ 
+ 	/* Lock to prevent possible clobbering of
+ 	 * current_netdev_promisc_flags
+@@ -430,6 +438,7 @@ struct iavf_adapter {
  #define IAVF_RXDID_ALLOWED(a)						\
--	((a)->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)
--#define IAVF_PTP_ALLOWED(a)						\
--	((a)->vf_res->vf_cap_flags & VIRTCHNL_VF_CAP_PTP)
-+	test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, (a)->vf_cap_flags)
-+#define IAVF_PTP_ALLOWED(a) test_bit(VIRTCHNL_VF_CAP_PTP, (a)->vf_cap_flags)
+ 	test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, (a)->vf_cap_flags)
+ #define IAVF_PTP_ALLOWED(a) test_bit(VIRTCHNL_VF_CAP_PTP, (a)->vf_cap_flags)
++#define IAVF_CAPS2_ALLOWED(a) test_bit(VIRTCHNL_VF_CAPS2, (a)->vf_cap_flags)
  	struct virtchnl_vf_resource *vf_res; /* incl. all VSIs */
  	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
  	struct virtchnl_version_info pf_version;
-@@ -445,6 +438,10 @@ struct iavf_adapter {
- 	struct virtchnl_vlan_caps vlan_v2_caps;
+@@ -439,7 +448,9 @@ struct iavf_adapter {
  	u64 supp_rxdids;
  	struct iavf_ptp ptp;
-+
-+	/* Mirrors vf_res->vf_cap_flags */
-+	DECLARE_BITMAP(vf_cap_flags, VIRTCHNL_VF_CAPS_MAX);
-+
- 	u16 msg_enable;
- 	struct iavf_eth_stats current_stats;
- 	struct virtchnl_qos_cap_list *qos_caps;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_prototype.h b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-index a3348b063723..985111b152d5 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-@@ -42,7 +42,8 @@ enum iavf_status iavf_aq_set_rss_key(struct iavf_hw *hw, u16 seid,
- 				     struct iavf_aqc_get_set_rss_key_data *key);
  
- void iavf_vf_parse_hw_config(struct iavf_hw *hw,
--			     struct virtchnl_vf_resource *msg);
-+			     struct virtchnl_vf_resource *msg,
-+			     const unsigned long *vf_cap_flags);
- enum iavf_status iavf_aq_send_msg_to_pf(struct iavf_hw *hw,
- 					enum virtchnl_ops v_opcode,
- 					enum iavf_status v_retval,
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-index c520e22e3d0a..d44c060d3c91 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-@@ -157,7 +157,10 @@ struct ice_vf {
- 	u64 rss_hashcfg;		/* RSS hash configuration */
- 	struct ice_sw *vf_sw_id;	/* switch ID the VF VSIs connect to */
- 	struct virtchnl_version_info vf_ver;
--	u32 driver_caps;		/* reported by VF driver */
-+
-+	/* reported by VF driver */
-+	DECLARE_BITMAP(driver_caps, VIRTCHNL_VF_CAPS_MAX);
-+
- 	u8 dev_lan_addr[ETH_ALEN];
- 	u8 hw_lan_addr[ETH_ALEN];
- 	struct ice_time_mac legacy_last_added_umac;
+-	/* Mirrors vf_res->vf_cap_flags */
++	/* Negotiated via VIRTCHNL_OP_GET_VF_CAPS2. First 32 bits mirror
++	 * vf_res->vf_cap_flags.
++	 */
+ 	DECLARE_BITMAP(vf_cap_flags, VIRTCHNL_VF_CAPS_MAX);
+ 
+ 	u16 msg_enable;
+@@ -578,6 +589,8 @@ int iavf_send_vf_supported_rxdids_msg(struct iavf_adapter *adapter);
+ int iavf_get_vf_supported_rxdids(struct iavf_adapter *adapter);
+ int iavf_send_vf_ptp_caps_msg(struct iavf_adapter *adapter);
+ int iavf_get_vf_ptp_caps(struct iavf_adapter *adapter);
++int iavf_send_vf_caps2_msg(struct iavf_adapter *adapter);
++int iavf_get_vf_caps2(struct iavf_adapter *adapter);
+ void iavf_set_queue_vlan_tag_loc(struct iavf_adapter *adapter);
+ u16 iavf_get_num_vlans_added(struct iavf_adapter *adapter);
+ void iavf_irq_enable(struct iavf_adapter *adapter, bool flush);
+diff --git a/drivers/net/ethernet/intel/ice/virt/virtchnl.h b/drivers/net/ethernet/intel/ice/virt/virtchnl.h
+index f7f909424098..5b51a5a73708 100644
+--- a/drivers/net/ethernet/intel/ice/virt/virtchnl.h
++++ b/drivers/net/ethernet/intel/ice/virt/virtchnl.h
+@@ -78,6 +78,8 @@ struct ice_virtchnl_ops {
+ 	int (*get_ptp_cap)(struct ice_vf *vf,
+ 			   const struct virtchnl_ptp_caps *msg);
+ 	int (*get_phc_time)(struct ice_vf *vf);
++	int (*get_vf_caps2)(struct ice_vf *vf,
++			    const struct virtchnl_vf_caps2 *msg);
+ };
+ 
+ #ifdef CONFIG_PCI_IOV
 diff --git a/include/linux/intel/virtchnl.h b/include/linux/intel/virtchnl.h
-index bb4737de37fe..577b0549b437 100644
+index 577b0549b437..edaca5ec8fd8 100644
 --- a/include/linux/intel/virtchnl.h
 +++ b/include/linux/intel/virtchnl.h
-@@ -244,35 +244,39 @@ struct virtchnl_vsi_resource {
+@@ -162,6 +162,8 @@ enum virtchnl_ops {
+ 	/* opcode 68 through 111 are reserved */
+ 	VIRTCHNL_OP_CONFIG_QUEUE_BW = 112,
+ 	VIRTCHNL_OP_CONFIG_QUANTA = 113,
++	/* opcode 114 through 135 are reserved */
++	VIRTCHNL_OP_GET_VF_CAPS2 = 136,
+ 	VIRTCHNL_OP_MAX,
+ };
+ 
+@@ -244,13 +246,14 @@ struct virtchnl_vsi_resource {
  
  VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
  
--/* VF capability flags
-- * VIRTCHNL_VF_OFFLOAD_L2 flag is inclusive of base mode L2 offloads including
-- * TX/RX Checksum offloading and TSO for non-tunnelled packets.
-- */
--#define VIRTCHNL_VF_OFFLOAD_L2			BIT(0)
--#define VIRTCHNL_VF_OFFLOAD_RDMA		BIT(1)
--#define VIRTCHNL_VF_OFFLOAD_RSS_AQ		BIT(3)
--#define VIRTCHNL_VF_OFFLOAD_RSS_REG		BIT(4)
--#define VIRTCHNL_VF_OFFLOAD_WB_ON_ITR		BIT(5)
--#define VIRTCHNL_VF_OFFLOAD_REQ_QUEUES		BIT(6)
--/* used to negotiate communicating link speeds in Mbps */
--#define VIRTCHNL_VF_CAP_ADV_LINK_SPEED		BIT(7)
--#define  VIRTCHNL_VF_OFFLOAD_CRC		BIT(10)
--#define VIRTCHNL_VF_OFFLOAD_TC_U32		BIT(11)
--#define VIRTCHNL_VF_OFFLOAD_VLAN_V2		BIT(15)
--#define VIRTCHNL_VF_OFFLOAD_VLAN		BIT(16)
--#define VIRTCHNL_VF_OFFLOAD_RX_POLLING		BIT(17)
--#define VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2	BIT(18)
--#define VIRTCHNL_VF_OFFLOAD_RSS_PF		BIT(19)
--#define VIRTCHNL_VF_OFFLOAD_ENCAP		BIT(20)
--#define VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM		BIT(21)
--#define VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM	BIT(22)
--#define VIRTCHNL_VF_OFFLOAD_ADQ			BIT(23)
--#define VIRTCHNL_VF_OFFLOAD_USO			BIT(25)
--#define VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC	BIT(26)
--#define VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF		BIT(27)
--#define VIRTCHNL_VF_OFFLOAD_FDIR_PF		BIT(28)
--#define VIRTCHNL_VF_OFFLOAD_QOS			BIT(29)
--#define VIRTCHNL_VF_CAP_PTP			BIT(31)
-+/* VF capability flags */
-+enum virtchnl_vf_caps_bitnr {
-+	/* Inclusive of base mode L2 offloads including TX/RX Checksum
-+	 * offloading and TSO for non-tunnelled packets.
-+	 */
-+	VIRTCHNL_VF_OFFLOAD_L2 = 0,
-+	VIRTCHNL_VF_OFFLOAD_RDMA = 1,
-+	VIRTCHNL_VF_OFFLOAD_RSS_AQ = 3,
-+	VIRTCHNL_VF_OFFLOAD_RSS_REG = 4,
-+	VIRTCHNL_VF_OFFLOAD_WB_ON_ITR = 5,
-+	VIRTCHNL_VF_OFFLOAD_REQ_QUEUES = 6,
-+	/* Used to negotiate communicating link speeds in Mbps */
-+	VIRTCHNL_VF_CAP_ADV_LINK_SPEED = 7,
-+	VIRTCHNL_VF_OFFLOAD_CRC = 10,
-+	VIRTCHNL_VF_OFFLOAD_TC_U32 = 11,
-+	VIRTCHNL_VF_OFFLOAD_VLAN_V2 = 15,
-+	VIRTCHNL_VF_OFFLOAD_VLAN = 16,
-+	VIRTCHNL_VF_OFFLOAD_RX_POLLING = 17,
-+	VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 = 18,
-+	VIRTCHNL_VF_OFFLOAD_RSS_PF = 19,
-+	VIRTCHNL_VF_OFFLOAD_ENCAP = 20,
-+	VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM = 21,
-+	VIRTCHNL_VF_OFFLOAD_RX_ENCAP_CSUM = 22,
-+	VIRTCHNL_VF_OFFLOAD_ADQ = 23,
-+	VIRTCHNL_VF_OFFLOAD_USO = 25,
-+	VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC = 26,
-+	VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF = 27,
-+	VIRTCHNL_VF_OFFLOAD_FDIR_PF = 28,
-+	VIRTCHNL_VF_OFFLOAD_QOS = 29,
-+	VIRTCHNL_VF_CAP_PTP = 31,
-+
-+	VIRTCHNL_VF_CAPS_MAX /* must be last */
-+};
+-/* VF capability flags */
++/* Base (first 32) + extended VF capability flags */
+ enum virtchnl_vf_caps_bitnr {
+ 	/* Inclusive of base mode L2 offloads including TX/RX Checksum
+ 	 * offloading and TSO for non-tunnelled packets.
+ 	 */
+ 	VIRTCHNL_VF_OFFLOAD_L2 = 0,
+ 	VIRTCHNL_VF_OFFLOAD_RDMA = 1,
++	VIRTCHNL_VF_CAPS2 = 2,
+ 	VIRTCHNL_VF_OFFLOAD_RSS_AQ = 3,
+ 	VIRTCHNL_VF_OFFLOAD_RSS_REG = 4,
+ 	VIRTCHNL_VF_OFFLOAD_WB_ON_ITR = 5,
+@@ -275,6 +278,8 @@ enum virtchnl_vf_caps_bitnr {
+ 	VIRTCHNL_VF_OFFLOAD_QOS = 29,
+ 	VIRTCHNL_VF_CAP_PTP = 31,
  
- struct virtchnl_vf_resource {
- 	u16 num_vsis;
++	/* Flags greater than 31 are only available via virtchnl_vf_caps2 */
++
+ 	VIRTCHNL_VF_CAPS_MAX /* must be last */
+ };
+ 
+@@ -284,7 +289,14 @@ struct virtchnl_vf_resource {
+ 	u16 max_vectors;
+ 	u16 max_mtu;
+ 
++	/* If both sides support VIRTCHNL_VF_CAPS2, extended flags, along with
++	 * flags from this structure will be sent in VIRTCHNL_OP_GET_VF_CAPS2.
++	 * Drivers should store capabilities negotiated this way in a bitmap,
++	 * instead of directly reading flags from this structure, in order to
++	 * have a unified interface for checking capabilities.
++	 */
+ 	u32 vf_cap_flags;
++
+ 	u32 rss_key_size;
+ 	u32 rss_lut_size;
+ 
+@@ -1572,6 +1584,32 @@ struct virtchnl_ptp_caps {
+ 
+ VIRTCHNL_CHECK_STRUCT_LEN(48, virtchnl_ptp_caps);
+ 
++/**
++ * virtchnl_vf_caps2 - generic extended capability flags
++ *
++ * VF sends this message to negotiate an extended set of capability flags if
++ * VIRTCHNL_VF_CAPS2 is set in virtchnl_vf_resource::vf_cap_flags.
++ *
++ * On send, VF sets what capabilities it requests. On reply, PF indicates what
++ * has been enabled for this VF. The PF shall not set bits which were not
++ * requested by the VF.
++ *
++ * Defines capabilities available to the VF, including the 32 original ones from
++ * vf_cap_flags on the same positions, plus the ones that didn't fit there.
++ * Drivers should construct a bitmap from this message, instead of checking the
++ * first 32 bits sent in VIRTCHNL_OP_GET_VF_RESOURCES, for consistency.
++ *
++ * The VF sends VIRTCHNL_OP_GET_VF_CAPS2 and fills the vf_cap_flags bitmap,
++ * indicating what capabilities it is requesting. The PF responds with the same
++ * message, indicating what is enabled for the VF.
++ */
++struct virtchnl_vf_caps2 {
++	u32 flags_len;
++	u32 vf_cap_flags[] __counted_by(flags_len);
++};
++
++VIRTCHNL_CHECK_STRUCT_LEN(4, virtchnl_vf_caps2);
++
+ /**
+  * struct virtchnl_phc_time - Contains the 64bits of PHC clock time in ns.
+  * @time: PHC time in nanoseconds
+@@ -1929,6 +1967,21 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
+ 	case VIRTCHNL_OP_1588_PTP_GET_TIME:
+ 		valid_len = sizeof(struct virtchnl_phc_time);
+ 		break;
++	case VIRTCHNL_OP_GET_VF_CAPS2: {
++		struct virtchnl_vf_caps2 *caps2 =
++			(struct virtchnl_vf_caps2 *)msg;
++
++		/* Require at least 1 element */
++		if (msglen < struct_size(caps2, vf_cap_flags, 1) ||
++		    msglen != struct_size(caps2, vf_cap_flags,
++					  caps2->flags_len)) {
++			err_msg_format = true;
++			break;
++		}
++
++		valid_len = struct_size(caps2, vf_cap_flags, caps2->flags_len);
++		}
++		break;
+ 	/* These are always errors coming from the VF. */
+ 	case VIRTCHNL_OP_EVENT:
+ 	case VIRTCHNL_OP_UNKNOWN:
 diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-index a26c3d47ec15..519f18dacd4a 100644
+index 519f18dacd4a..9c233c3176c3 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
 +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
-@@ -90,7 +90,7 @@ static void i40e_set_vf_link_state(struct i40e_vf *vf,
- 	if (vf->link_forced)
- 		link_status = vf->link_up;
+@@ -2149,6 +2149,11 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
  
--	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED) {
-+	if (test_bit(VIRTCHNL_VF_CAP_ADV_LINK_SPEED, vf->driver_caps)) {
- 		pfe->event_data.link_event_adv.link_speed = link_status ?
- 			i40e_vc_link_speed2mbps(ls->link_speed) : 0;
- 		pfe->event_data.link_event_adv.link_status = link_status;
-@@ -455,8 +455,8 @@ static void i40e_config_irq_link_list(struct i40e_vf *vf, u16 vsi_id,
- 	/* if the vf is running in polling mode and using interrupt zero,
- 	 * need to disable auto-mask on enabling zero interrupt for VFs.
- 	 */
--	if ((vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_POLLING) &&
--	    (vector_id == 0)) {
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RX_POLLING, vf->driver_caps) &&
-+	    vector_id == 0) {
- 		reg = rd32(hw, I40E_GLINT_CTL);
- 		if (!(reg & I40E_GLINT_CTL_DIS_AUTOMASK_VF0_MASK)) {
- 			reg |= I40E_GLINT_CTL_DIS_AUTOMASK_VF0_MASK;
-@@ -2146,51 +2146,56 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
- 		len = 0;
- 		goto err;
- 	}
--	if (VF_IS_V11(&vf->vf_ver))
--		vf->driver_caps = *(u32 *)msg;
--	else
--		vf->driver_caps = VIRTCHNL_VF_OFFLOAD_L2 |
--				  VIRTCHNL_VF_OFFLOAD_RSS_REG |
--				  VIRTCHNL_VF_OFFLOAD_VLAN;
+ 	bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
+ 	if (VF_IS_V11(&vf->vf_ver)) {
++		/* VIRTCHNL_OP_GET_VF_RESOURCES only sends the first 32 flags.
++		 * If VIRTCHNL_VF_CAPS2 (bit 2) is set, then there are more
++		 * flags. A complete set (including the first 32) is then sent
++		 * via VIRTCHNL_OP_GET_VF_CAPS2.
++		 */
+ 		bitmap_from_arr32(vf->driver_caps, (u32 *)msg,
+ 				  BITS_PER_TYPE(u32));
+ 	} else {
+@@ -2218,6 +2223,10 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
+ 	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, vf->driver_caps))
+ 		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ADQ);
  
--	vfres->vf_cap_flags = VIRTCHNL_VF_OFFLOAD_L2;
--	vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
-+	bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
-+	if (VF_IS_V11(&vf->vf_ver)) {
-+		bitmap_from_arr32(vf->driver_caps, (u32 *)msg,
-+				  BITS_PER_TYPE(u32));
-+	} else {
-+		__set_bit(VIRTCHNL_VF_OFFLOAD_L2, vf->driver_caps);
-+		__set_bit(VIRTCHNL_VF_OFFLOAD_RSS_REG, vf->driver_caps);
-+		__set_bit(VIRTCHNL_VF_OFFLOAD_VLAN, vf->driver_caps);
-+	}
++	/* Indicate that VF can send more flags in VIRTCHNL_OP_GET_VF_CAPS2 */
++	if (test_bit(VIRTCHNL_VF_CAPS2, vf->driver_caps))
++		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAPS2);
 +
-+	vfres->vf_cap_flags = BIT(VIRTCHNL_VF_OFFLOAD_L2);
-+	vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAP_ADV_LINK_SPEED);
- 	vsi = pf->vsi[vf->lan_vsi_idx];
- 	if (!vsi->info.pvid)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_VLAN;
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_VLAN);
- 
- 	if (i40e_vf_client_capable(pf, vf->vf_id) &&
--	    (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RDMA)) {
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RDMA;
-+	    test_bit(VIRTCHNL_VF_OFFLOAD_RDMA, vf->driver_caps)) {
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RDMA);
- 		set_bit(I40E_VF_STATE_RDMAENA, &vf->vf_states);
- 	} else {
- 		clear_bit(I40E_VF_STATE_RDMAENA, &vf->vf_states);
- 	}
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PF) {
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_PF;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PF, vf->driver_caps)) {
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RSS_PF);
- 	} else {
- 		if (test_bit(I40E_HW_CAP_RSS_AQ, pf->hw.caps) &&
--		    (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_AQ))
--			vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_AQ;
-+		    test_bit(VIRTCHNL_VF_OFFLOAD_RSS_AQ, vf->driver_caps))
-+			vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RSS_AQ);
- 		else
--			vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_REG;
-+			vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RSS_REG);
- 	}
- 
- 	if (test_bit(I40E_HW_CAP_MULTI_TCP_UDP_RSS_PCTYPE, pf->hw.caps)) {
--		if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2)
-+		if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2,
-+			     vf->driver_caps))
- 			vfres->vf_cap_flags |=
--				VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2;
-+				BIT(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2);
- 	}
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ENCAP)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ENCAP;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ENCAP);
- 
- 	if (test_bit(I40E_HW_CAP_OUTER_UDP_CSUM, pf->hw.caps) &&
--	    (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM))
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM;
-+	    test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_POLLING) {
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RX_POLLING, vf->driver_caps)) {
- 		if (test_bit(I40E_FLAG_MFP_ENA, pf->flags)) {
- 			dev_err(&pf->pdev->dev,
- 				"VF %d requested polling mode: this feature is supported only when the device is running in single function per port (SFP) mode\n",
-@@ -2198,20 +2203,20 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
- 			aq_ret = -EINVAL;
- 			goto err;
- 		}
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RX_POLLING;
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RX_POLLING);
- 	}
- 
- 	if (test_bit(I40E_HW_CAP_WB_ON_ITR, pf->hw.caps)) {
--		if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_WB_ON_ITR)
-+		if (test_bit(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR, vf->driver_caps))
- 			vfres->vf_cap_flags |=
--					VIRTCHNL_VF_OFFLOAD_WB_ON_ITR;
-+					BIT(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR);
- 	}
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_REQ_QUEUES)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_REQ_QUEUES;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ADQ)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ADQ;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ADQ);
- 
  	vfres->num_vsis = num_vsis;
  	vfres->num_queue_pairs = vf->num_queue_pairs;
-@@ -2227,7 +2232,8 @@ static int i40e_vc_get_vf_resources_msg(struct i40e_vf *vf, u8 *msg)
- 		/* VFs only use TC 0 */
- 		vfres->vsi_res[0].qset_handle
- 					  = le16_to_cpu(vsi->info.qs_handle[0]);
--		if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_USO) && !vf->pf_set_mac) {
-+		if (!test_bit(VIRTCHNL_VF_OFFLOAD_USO, vf->driver_caps) &&
-+		    !vf->pf_set_mac) {
- 			spin_lock_bh(&vsi->mac_filter_hash_lock);
- 			i40e_del_mac_filter(vsi, vf->default_lan_addr.addr);
- 			eth_zero_addr(vf->default_lan_addr.addr);
-@@ -4059,7 +4065,7 @@ static int i40e_vc_add_qch_msg(struct i40e_vf *vf, u8 *msg)
- 		goto err;
- 	}
+ 	vfres->max_vectors = pf->hw.func_caps.num_msix_vectors_vf;
+@@ -4192,6 +4201,78 @@ static int i40e_vc_del_qch_msg(struct i40e_vf *vf, u8 *msg)
+ 				       aq_ret);
+ }
  
--	if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ADQ)) {
-+	if (!test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, vf->driver_caps)) {
- 		dev_err(&pf->pdev->dev,
- 			"VF %d attempting to enable ADq, but hasn't properly negotiated that capability\n",
- 			vf->vf_id);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_common.c b/drivers/net/ethernet/intel/iavf/iavf_common.c
-index 9bc8bdc339c7..97e8b4ac8125 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_common.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_common.c
-@@ -421,12 +421,14 @@ enum iavf_status iavf_aq_send_msg_to_pf(struct iavf_hw *hw,
-  * iavf_vf_parse_hw_config
-  * @hw: pointer to the hardware structure
-  * @msg: pointer to the virtual channel VF resource structure
-+ * @vf_cap_flags: VF capability flags
-  *
-  * Given a VF resource message from the PF, populate the hw struct
-  * with appropriate information.
-  **/
- void iavf_vf_parse_hw_config(struct iavf_hw *hw,
--			     struct virtchnl_vf_resource *msg)
-+			     struct virtchnl_vf_resource *msg,
-+			     const unsigned long *vf_cap_flags)
- {
- 	struct virtchnl_vsi_resource *vsi_res;
- 	int i;
-@@ -437,8 +439,7 @@ void iavf_vf_parse_hw_config(struct iavf_hw *hw,
- 	hw->dev_caps.num_rx_qp = msg->num_queue_pairs;
- 	hw->dev_caps.num_tx_qp = msg->num_queue_pairs;
- 	hw->dev_caps.num_msix_vectors_vf = msg->max_vectors;
--	hw->dev_caps.dcb = msg->vf_cap_flags &
--			   VIRTCHNL_VF_OFFLOAD_L2;
-+	hw->dev_caps.dcb = test_bit(VIRTCHNL_VF_OFFLOAD_L2, vf_cap_flags);
- 	hw->dev_caps.fcoe = 0;
- 	for (i = 0; i < msg->num_vsis; i++) {
- 		if (vsi_res->vsi_type == VIRTCHNL_VSI_SRIOV) {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index dc2503e3c5ba..b14d5c2309cc 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -1726,7 +1726,7 @@ static int iavf_set_channels(struct net_device *netdev,
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
- 	u32 num_req = ch->combined_count;
- 
--	if ((adapter->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ) &&
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags) &&
- 	    adapter->num_tc) {
- 		dev_info(&adapter->pdev->dev, "Cannot set channels since ADq is enabled.\n");
- 		return -EINVAL;
++/**
++ * i40e_vc_get_vf_caps2 - parse extended capability flags
++ * @vf: pointer to the VF info
++ * @msg: pointer to the msg buffer
++ *
++ * Called from the VF to negotiate extended capability flag set if
++ * VIRTCHNL_VF_CAPS2 was set in vf_cap_flags. The PF responds with the
++ * intersection of its supported flags and the VF's requested flags.
++ *
++ * Return: 0 on success, negative on failure
++ **/
++static int i40e_vc_get_vf_caps2(struct i40e_vf *vf, u8 *msg)
++{
++	struct virtchnl_vf_caps2 *vf_msg = (struct virtchnl_vf_caps2 *)msg;
++	DECLARE_BITMAP(msg_caps, VIRTCHNL_VF_CAPS_MAX);
++	struct virtchnl_vf_caps2 *caps2;
++	unsigned int nbits;
++	int aq_ret = 0;
++	int err;
++
++	caps2 = kzalloc_flex(*caps2, vf_cap_flags,
++			     BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX));
++	if (!caps2)
++		return -ENOMEM;
++
++	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
++		aq_ret = -EINVAL;
++		goto send_msg;
++	}
++
++	if (!test_bit(VIRTCHNL_VF_CAPS2, vf->driver_caps)) {
++		aq_ret = -EINVAL;
++		goto send_msg;
++	}
++
++	caps2->flags_len = BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX);
++
++	/* Set extended feature flags. The first 32 bits should be already set
++	 * in VIRTCHNL_OP_GET_VF_RESOURCES
++	 */
++
++	/* Make sure to not read after msg bitmap or local bitmap. The remaining
++	 * bits (if any) should be unset, since one side doesn't know about
++	 * them, therefore cannot support these capabilities.
++	 */
++	nbits = min_t(unsigned int, VIRTCHNL_VF_CAPS_MAX,
++		      BITS_PER_TYPE(u32) * vf_msg->flags_len);
++	bitmap_zero(msg_caps, VIRTCHNL_VF_CAPS_MAX);
++	bitmap_from_arr32(msg_caps, vf_msg->vf_cap_flags, nbits);
++
++	/* Note that msg->vf_cap_flags cannot be directly used, because then
++	 * we'd need to limit the operation range to nbits. If the local caps
++	 * is larger and has some flags set after nbits, then they would be
++	 * incorrectly left set.
++	 */
++	bitmap_and(vf->driver_caps, vf->driver_caps, msg_caps,
++		   VIRTCHNL_VF_CAPS_MAX);
++
++	bitmap_to_arr32(caps2->vf_cap_flags, vf->driver_caps,
++			VIRTCHNL_VF_CAPS_MAX);
++
++send_msg:
++	err = i40e_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_VF_CAPS2, aq_ret,
++				     (u8 *)caps2,
++				     struct_size(caps2, vf_cap_flags,
++						 caps2->flags_len));
++
++	kfree(caps2);
++
++	return err;
++}
++
+ /**
+  * i40e_vc_process_vf_msg
+  * @pf: pointer to the PF structure
+@@ -4316,6 +4397,9 @@ int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode,
+ 	case VIRTCHNL_OP_DEL_CLOUD_FILTER:
+ 		ret = i40e_vc_del_cloud_filter(vf, msg);
+ 		break;
++	case VIRTCHNL_OP_GET_VF_CAPS2:
++		ret = i40e_vc_get_vf_caps2(vf, msg);
++		break;
+ 	case VIRTCHNL_OP_UNKNOWN:
+ 	default:
+ 		dev_err(&pf->pdev->dev, "Unsupported opcode %d from VF %d\n",
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 30ae1a296115..ce2b61e56f9d 100644
+index ce2b61e56f9d..bb9d4b8c4b9b 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1533,7 +1533,7 @@ static int iavf_alloc_queues(struct iavf_adapter *adapter)
+@@ -2038,6 +2038,8 @@ static int iavf_process_aq_command(struct iavf_adapter *adapter)
+ 		return iavf_send_vf_supported_rxdids_msg(adapter);
+ 	if (adapter->aq_required & IAVF_FLAG_AQ_GET_PTP_CAPS)
+ 		return iavf_send_vf_ptp_caps_msg(adapter);
++	if (adapter->aq_required & IAVF_FLAG_AQ_GET_VF_CAP_CAPS2)
++		return iavf_send_vf_caps2_msg(adapter);
+ 	if (adapter->aq_required & IAVF_FLAG_AQ_DISABLE_QUEUES) {
+ 		iavf_disable_queues(adapter);
+ 		return 0;
+@@ -2675,6 +2677,55 @@ static void iavf_init_recv_ptp_caps(struct iavf_adapter *adapter)
+ 	iavf_change_state(adapter, __IAVF_INIT_FAILED);
+ }
+ 
++/**
++ * iavf_init_send_flags2_caps - part of negotiating CAPS2 capabilities
++ * @adapter: board private structure
++ *
++ * Send VIRTCHNL_OP_GET_VF_CAPS2 message to the PF. Clear
++ * IAVF_EXTENDED_CAP_RECV_CAPS2 if the message is not sent, e.g. due to PF not
++ * negotiating VIRTCHNL_VF_CAPS2.
++ */
++static void iavf_init_send_flags2_caps(struct iavf_adapter *adapter)
++{
++	WARN_ON(!(adapter->extended_caps & IAVF_EXTENDED_CAP_SEND_CAPS2));
++
++	if (iavf_send_vf_caps2_msg(adapter) == -EOPNOTSUPP) {
++		/* PF does not support VIRTCHNL_VF_CAPS2. In this case, we
++		 * did not send the capability exchange message and do not
++		 * expect a response.
++		 */
++		adapter->extended_caps &= ~IAVF_EXTENDED_CAP_RECV_CAPS2;
++	}
++
++	/* We sent the message, so move on to the next step */
++	adapter->extended_caps &= ~IAVF_EXTENDED_CAP_SEND_CAPS2;
++}
++
++/**
++ * iavf_init_recv_flags2_caps - part of negotiating CAPS2 capabilities
++ * @adapter: board private structure
++ *
++ * Process receipt of VIRTCHNL_VF_CAPS2 message from PF.
++ */
++static void iavf_init_recv_flags2_caps(struct iavf_adapter *adapter)
++{
++	WARN_ON(!(adapter->extended_caps & IAVF_EXTENDED_CAP_RECV_CAPS2));
++
++	if (iavf_get_vf_caps2(adapter))
++		goto err;
++
++	/* We've processed the PF response to VIRTCHNL_OP_GET_VF_CAPS2 */
++	adapter->extended_caps &= ~IAVF_EXTENDED_CAP_RECV_CAPS2;
++	return;
++
++err:
++	/* We didn't receive a reply. Make sure we try sending again when
++	 * __IAVF_INIT_FAILED attempts to recover.
++	 */
++	adapter->extended_caps |= IAVF_EXTENDED_CAP_SEND_CAPS2;
++	iavf_change_state(adapter, __IAVF_INIT_FAILED);
++}
++
+ /**
+  * iavf_init_process_extended_caps - Part of driver startup
+  * @adapter: board private structure
+@@ -2717,6 +2768,15 @@ static void iavf_init_process_extended_caps(struct iavf_adapter *adapter)
+ 		return;
+ 	}
+ 
++	/* Process capability exchange for CAPS2 */
++	if (adapter->extended_caps & IAVF_EXTENDED_CAP_SEND_CAPS2) {
++		iavf_init_send_flags2_caps(adapter);
++		return;
++	} else if (adapter->extended_caps & IAVF_EXTENDED_CAP_RECV_CAPS2) {
++		iavf_init_recv_flags2_caps(adapter);
++		return;
++	}
++
+ 	/* When we reach here, no further extended capabilities exchanges are
+ 	 * necessary, so we finally transition into __IAVF_INIT_CONFIG_ADAPTER
  	 */
- 	if (adapter->num_req_queues)
- 		num_active_queues = adapter->num_req_queues;
--	else if ((adapter->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ) &&
-+	else if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags) &&
- 		 adapter->num_tc)
- 		num_active_queues = adapter->ch_config.total_qps;
- 	else
-@@ -1736,8 +1736,8 @@ static int iavf_init_rss(struct iavf_adapter *adapter)
- 
- 	if (!RSS_PF(adapter)) {
- 		/* Enable PCTYPES for RSS, TCP/UDP with IPv4/IPv6 */
--		if (adapter->vf_res->vf_cap_flags &
--		    VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2)
-+		if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2,
-+			     adapter->vf_cap_flags))
- 			adapter->rss_hashcfg =
- 				IAVF_DEFAULT_RSS_HASHCFG_EXPANDED;
- 		else
-@@ -1861,7 +1861,7 @@ static int iavf_init_interrupt_scheme(struct iavf_adapter *adapter)
- 	 * resources have been allocated in the reset path.
- 	 * Now we can truly claim that ADq is enabled.
- 	 */
--	if ((adapter->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ) &&
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags) &&
- 	    adapter->num_tc)
- 		dev_info(&adapter->pdev->dev, "ADq Enabled, %u TCs created",
- 			 adapter->num_tc);
-@@ -2436,7 +2436,7 @@ int iavf_parse_vf_resource_msg(struct iavf_adapter *adapter)
- 	adapter->vsi.base_vector = 1;
- 	vsi->netdev = adapter->netdev;
- 	vsi->qs_handle = adapter->vsi_res->qset_handle;
--	if (adapter->vf_res->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_RSS_PF) {
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PF, adapter->vf_cap_flags)) {
- 		adapter->rss_key_size = adapter->vf_res->rss_key_size;
- 		adapter->rss_lut_size = adapter->vf_res->rss_lut_size;
- 	} else {
-@@ -2783,8 +2783,7 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 	if (err)
- 		goto err_sw_init;
- 	iavf_map_rings_to_vectors(adapter);
--	if (adapter->vf_res->vf_cap_flags &
--		VIRTCHNL_VF_OFFLOAD_WB_ON_ITR)
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR, adapter->vf_cap_flags))
- 		adapter->flags |= IAVF_FLAG_WB_ON_ITR_CAPABLE;
- 
- 	err = iavf_request_misc_irq(adapter);
-@@ -3080,7 +3079,6 @@ static void iavf_reconfig_qs_bw(struct iavf_adapter *adapter)
-  */
- void iavf_reset_step(struct iavf_adapter *adapter)
- {
--	struct virtchnl_vf_resource *vfres = adapter->vf_res;
- 	struct net_device *netdev = adapter->netdev;
- 	struct iavf_hw *hw = &adapter->hw;
- 	struct iavf_mac_filter *f, *ftmp;
-@@ -3234,7 +3232,7 @@ void iavf_reset_step(struct iavf_adapter *adapter)
- 
- 	/* check if TCs are running and re-add all cloud filters */
- 	spin_lock_bh(&adapter->cloud_filter_list_lock);
--	if ((vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ) &&
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags) &&
- 	    adapter->num_tc) {
- 		list_for_each_entry(cf, &adapter->cloud_filter_list, list) {
- 			cf->add = true;
-@@ -3675,7 +3673,6 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- {
- 	struct tc_mqprio_qopt_offload *mqprio_qopt = type_data;
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
--	struct virtchnl_vf_resource *vfres = adapter->vf_res;
- 	u8 num_tc = 0, total_qps = 0;
- 	int ret = 0, netdev_tc = 0;
- 	u64 max_tx_rate;
-@@ -3704,7 +3701,7 @@ static int __iavf_setup_tc(struct net_device *netdev, void *type_data)
- 
- 	/* add queue channel */
- 	if (mode == TC_MQPRIO_MODE_CHANNEL) {
--		if (!(vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ)) {
-+		if (!test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags)) {
- 			dev_err(&adapter->pdev->dev, "ADq not supported\n");
- 			return -EOPNOTSUPP;
- 		}
-@@ -4744,7 +4741,7 @@ iavf_get_netdev_vlan_hw_features(struct iavf_adapter *adapter)
- {
- 	netdev_features_t hw_features = 0;
- 
--	if (!adapter->vf_res || !adapter->vf_res->vf_cap_flags)
-+	if (bitmap_empty(adapter->vf_cap_flags, VIRTCHNL_VF_CAPS_MAX))
- 		return hw_features;
- 
- 	/* Enable VLAN features if supported */
-@@ -4809,7 +4806,7 @@ iavf_get_netdev_vlan_features(struct iavf_adapter *adapter)
- {
- 	netdev_features_t features = 0;
- 
--	if (!adapter->vf_res || !adapter->vf_res->vf_cap_flags)
-+	if (bitmap_empty(adapter->vf_cap_flags, VIRTCHNL_VF_CAPS_MAX))
- 		return features;
- 
- 	if (VLAN_ALLOWED(adapter)) {
-@@ -5186,7 +5183,6 @@ static int iavf_check_reset_complete(struct iavf_hw *hw)
-  **/
- int iavf_process_config(struct iavf_adapter *adapter)
- {
--	struct virtchnl_vf_resource *vfres = adapter->vf_res;
- 	netdev_features_t hw_vlan_features, vlan_features;
- 	struct net_device *netdev = adapter->netdev;
- 	netdev_features_t hw_enc_features;
-@@ -5208,7 +5204,7 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 	/* advertise to stack only if offloads for encapsulated packets is
- 	 * supported
- 	 */
--	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ENCAP) {
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP, adapter->vf_cap_flags)) {
- 		hw_enc_features |= NETIF_F_GSO_UDP_TUNNEL	|
- 				   NETIF_F_GSO_GRE		|
- 				   NETIF_F_GSO_GRE_CSUM		|
-@@ -5218,8 +5214,8 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 				   NETIF_F_GSO_PARTIAL		|
- 				   0;
- 
--		if (!(vfres->vf_cap_flags &
--		      VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM))
-+		if (!test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM,
-+			      adapter->vf_cap_flags))
- 			netdev->gso_partial_features |=
- 				NETIF_F_GSO_UDP_TUNNEL_CSUM;
- 
-@@ -5239,11 +5235,11 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 	hw_vlan_features = iavf_get_netdev_vlan_hw_features(adapter);
- 
- 	/* Enable HW TC offload if ADQ or tc U32 is supported */
--	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ ||
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADQ, adapter->vf_cap_flags) ||
- 	    TC_U32_SUPPORT(adapter))
- 		hw_features |= NETIF_F_HW_TC;
- 
--	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_USO)
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_USO, adapter->vf_cap_flags))
- 		hw_features |= NETIF_F_GSO_UDP_L4;
- 
- 	netdev->hw_features |= hw_features | hw_vlan_features;
-@@ -5251,7 +5247,7 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 
- 	netdev->features |= hw_features | vlan_features;
- 
--	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_VLAN)
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_VLAN, adapter->vf_cap_flags))
- 		netdev->features |= NETIF_F_HW_VLAN_CTAG_FILTER;
- 
- 	if (FDIR_FLTR_SUPPORT(adapter)) {
 diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 04dc447bb8b0..38be4caf77f0 100644
+index 38be4caf77f0..4509a1501928 100644
 --- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
 +++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -152,27 +152,27 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- {
- 	u32 caps;
- 
--	caps = VIRTCHNL_VF_OFFLOAD_L2 |
--	       VIRTCHNL_VF_OFFLOAD_RSS_PF |
--	       VIRTCHNL_VF_OFFLOAD_RSS_AQ |
--	       VIRTCHNL_VF_OFFLOAD_RSS_REG |
--	       VIRTCHNL_VF_OFFLOAD_VLAN |
--	       VIRTCHNL_VF_OFFLOAD_WB_ON_ITR |
--	       VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 |
--	       VIRTCHNL_VF_OFFLOAD_ENCAP |
--	       VIRTCHNL_VF_OFFLOAD_TC_U32 |
--	       VIRTCHNL_VF_OFFLOAD_VLAN_V2 |
--	       VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC |
--	       VIRTCHNL_VF_OFFLOAD_CRC |
--	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
--	       VIRTCHNL_VF_OFFLOAD_REQ_QUEUES |
--	       VIRTCHNL_VF_CAP_PTP |
--	       VIRTCHNL_VF_OFFLOAD_ADQ |
--	       VIRTCHNL_VF_OFFLOAD_USO |
--	       VIRTCHNL_VF_OFFLOAD_FDIR_PF |
--	       VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF |
--	       VIRTCHNL_VF_CAP_ADV_LINK_SPEED |
--	       VIRTCHNL_VF_OFFLOAD_QOS;
-+	caps = BIT(VIRTCHNL_VF_OFFLOAD_L2) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_RSS_PF) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_RSS_AQ) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_RSS_REG) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_VLAN) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_ENCAP) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_TC_U32) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_VLAN_V2) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_CRC) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES) |
-+	       BIT(VIRTCHNL_VF_CAP_PTP) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_ADQ) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_USO) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_FDIR_PF) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF) |
-+	       BIT(VIRTCHNL_VF_CAP_ADV_LINK_SPEED) |
-+	       BIT(VIRTCHNL_VF_OFFLOAD_QOS);
+@@ -172,7 +172,8 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
+ 	       BIT(VIRTCHNL_VF_OFFLOAD_FDIR_PF) |
+ 	       BIT(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF) |
+ 	       BIT(VIRTCHNL_VF_CAP_ADV_LINK_SPEED) |
+-	       BIT(VIRTCHNL_VF_OFFLOAD_QOS);
++	       BIT(VIRTCHNL_VF_OFFLOAD_QOS) |
++	       BIT(VIRTCHNL_VF_CAPS2);
  
  	adapter->current_op = VIRTCHNL_OP_GET_VF_RESOURCES;
  	adapter->aq_required &= ~IAVF_FLAG_AQ_GET_CONFIG;
-@@ -296,12 +296,16 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
+@@ -245,6 +246,52 @@ int iavf_send_vf_ptp_caps_msg(struct iavf_adapter *adapter)
+ 				(u8 *)&hw_caps, sizeof(hw_caps));
+ }
+ 
++/**
++ * iavf_send_vf_caps2_msg - send request for second capability flags set
++ * @adapter: adapter structure
++ *
++ * Send VIRTCHNL_OP_GET_VF_CAPS2 to the PF with the VF's desired flags2
++ * bitmap. The PF responds with the intersection of the flags it supports.
++ *
++ * Return: 0 on success, -EOPNOTSUPP if CAPS2 was not negotiated, other error
++ * code on failure
++ */
++int iavf_send_vf_caps2_msg(struct iavf_adapter *adapter)
++{
++	DECLARE_BITMAP(msg_caps, VIRTCHNL_VF_CAPS_MAX);
++	struct virtchnl_vf_caps2 *caps2;
++	int err;
++
++	adapter->aq_required &= ~IAVF_FLAG_AQ_GET_VF_CAP_CAPS2;
++
++	if (!IAVF_CAPS2_ALLOWED(adapter))
++		return -EOPNOTSUPP;
++
++	caps2 = kzalloc_flex(*caps2, vf_cap_flags,
++			     BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX));
++	if (!caps2)
++		return -ENOMEM;
++
++	caps2->flags_len = BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX);
++
++	/* Copy from the local bitmap (should have only first 32 bits set) and
++	 * set extended feature flags to send.
++	 */
++	bitmap_copy(msg_caps, adapter->vf_cap_flags, VIRTCHNL_VF_CAPS_MAX);
++
++	bitmap_to_arr32(caps2->vf_cap_flags, msg_caps, VIRTCHNL_VF_CAPS_MAX);
++
++	adapter->current_op = VIRTCHNL_OP_GET_VF_CAPS2;
++
++	err = iavf_send_pf_msg(adapter, VIRTCHNL_OP_GET_VF_CAPS2, (u8 *)caps2,
++			       struct_size(caps2, vf_cap_flags,
++					   caps2->flags_len));
++
++	kfree(caps2);
++
++	return err;
++}
++
+ /**
+  * iavf_validate_num_queues
+  * @adapter: adapter structure
+@@ -296,7 +343,7 @@ int iavf_get_vf_config(struct iavf_adapter *adapter)
  	err = iavf_poll_virtchnl_msg(hw, &event, VIRTCHNL_OP_GET_VF_RESOURCES);
  	memcpy(adapter->vf_res, event.msg_buf, min(event.msg_len, len));
  
-+	/* mirror to the extended bitmap */
-+	bitmap_from_arr32(adapter->vf_cap_flags, &adapter->vf_res->vf_cap_flags,
-+			  BITS_PER_TYPE(u32));
+-	/* mirror to the extended bitmap */
++	/* mirror the first 32 bits to the extended bitmap */
+ 	bitmap_from_arr32(adapter->vf_cap_flags, &adapter->vf_res->vf_cap_flags,
+ 			  BITS_PER_TYPE(u32));
+ 
+@@ -369,6 +416,78 @@ int iavf_get_vf_ptp_caps(struct iavf_adapter *adapter)
+ 	return err;
+ }
+ 
++/**
++ * iavf_process_caps2 - store received extended caps in adapter
++ * @adapter: adapter structure
++ * @caps2: received extended capabilities message
++ *
++ * Return: 0 on success, negative on failure
++ */
++static int iavf_process_caps2(struct iavf_adapter *adapter,
++			      struct virtchnl_vf_caps2 *caps2)
++{
++	unsigned int nbits;
 +
- 	/* some PFs send more queues than we should have so validate that
- 	 * we aren't getting too many queues
- 	 */
- 	if (!err)
- 		iavf_validate_num_queues(adapter);
--	iavf_vf_parse_hw_config(hw, adapter->vf_res);
-+	iavf_vf_parse_hw_config(hw, adapter->vf_res, adapter->vf_cap_flags);
- 
- 	kfree(event.msg_buf);
- 
-@@ -2579,7 +2583,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 
- 		memcpy(adapter->vf_res, msg, min(msglen, len));
- 		iavf_validate_num_queues(adapter);
--		iavf_vf_parse_hw_config(&adapter->hw, adapter->vf_res);
-+		iavf_vf_parse_hw_config(&adapter->hw, adapter->vf_res,
-+					adapter->vf_cap_flags);
- 		if (is_zero_ether_addr(adapter->hw.mac.addr)) {
- 			/* restore current mac address */
- 			ether_addr_copy(adapter->hw.mac.addr, netdev->dev_addr);
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index 64a4a9eac9db..6570480c13fa 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -792,7 +792,7 @@ void ice_reset_all_vfs(struct ice_pf *pf)
- 		mutex_lock(&vf->cfg_lock);
- 
- 		ice_eswitch_detach_vf(pf, vf);
--		vf->driver_caps = 0;
-+		bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
- 		ice_vc_set_default_allowlist(vf);
- 
- 		ice_vf_fdir_exit(vf);
-@@ -935,7 +935,7 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	if (!rsd)
- 		dev_warn(dev, "VF reset check timeout on VF %d\n", vf->vf_id);
- 
--	vf->driver_caps = 0;
-+	bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
- 	ice_vc_set_default_allowlist(vf);
- 
- 	/* disable promiscuous modes in case they were enabled
++	if (caps2->flags_len == 0)
++		return -EINVAL;
++
++	/* Make sure to not read after msg bitmap or local bitmap. The remaining
++	 * bits (if any) should be unset, since one side doesn't know about
++	 * them, therefore cannot support these capabilities.
++	 */
++	nbits = min_t(unsigned int, VIRTCHNL_VF_CAPS_MAX,
++		      BITS_PER_TYPE(u32) * caps2->flags_len);
++
++	bitmap_zero(adapter->vf_cap_flags, VIRTCHNL_VF_CAPS_MAX);
++	bitmap_from_arr32(adapter->vf_cap_flags, caps2->vf_cap_flags, nbits);
++	/* Assume the first 32 bits were already written to
++	 * adapter->vf_res->vf_cap_flags in VIRTCHNL_OP_GET_VF_RESOURCES. Driver
++	 * should not use these anyway.
++	 */
++
++	return 0;
++}
++
++/**
++ * iavf_get_vf_caps2 - receive second capability flags from PF
++ * @adapter: adapter structure
++ *
++ * Poll the admin queue for a response to VIRTCHNL_OP_GET_VF_CAPS2 and process
++ * the negotiated flags.
++ *
++ * Return: 0 on success, negative on failure
++ */
++int iavf_get_vf_caps2(struct iavf_adapter *adapter)
++{
++	struct iavf_arq_event_info event;
++	struct virtchnl_vf_caps2 *caps2;
++	int err;
++
++	/* Actual length might be larger if PF knows more flags, but we don't
++	 * care about them since they should be unset after the negotiation.
++	 * Even if they were somehow not, VF has no way to store them.
++	 */
++	event.buf_len = struct_size(caps2, vf_cap_flags, VIRTCHNL_VF_CAPS_MAX);
++
++	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
++	if (!event.msg_buf)
++		return -ENOMEM;
++
++	err = iavf_poll_virtchnl_msg(&adapter->hw, &event,
++				     VIRTCHNL_OP_GET_VF_CAPS2);
++	if (err)
++		goto free_msg_buf;
++
++	caps2 = (struct virtchnl_vf_caps2 *)event.msg_buf;
++
++	err = iavf_process_caps2(adapter, caps2);
++
++free_msg_buf:
++	kfree(event.msg_buf);
++
++	return err;
++}
++
+ /**
+  * iavf_configure_queues
+  * @adapter: adapter structure
+@@ -2707,6 +2826,21 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
+ 	case VIRTCHNL_OP_1588_PTP_GET_TIME:
+ 		iavf_virtchnl_ptp_get_time(adapter, msg, msglen);
+ 		break;
++	case VIRTCHNL_OP_GET_VF_CAPS2: {
++		struct virtchnl_vf_caps2 *caps2 =
++			(struct virtchnl_vf_caps2 *)msg;
++
++		/* Require at least 1 element */
++		if (msglen < struct_size(caps2, vf_cap_flags, 1) ||
++		    msglen != struct_size(caps2, vf_cap_flags,
++					  caps2->flags_len))
++			return;
++
++		if (iavf_process_caps2(adapter, caps2))
++			dev_warn(&adapter->pdev->dev,
++				 "Invalid extended flags received from PF\n");
++		}
++		break;
+ 	case VIRTCHNL_OP_ENABLE_QUEUES:
+ 		/* enable transmits */
+ 		iavf_irq_enable(adapter, true);
 diff --git a/drivers/net/ethernet/intel/ice/virt/allowlist.c b/drivers/net/ethernet/intel/ice/virt/allowlist.c
-index a07efec19c45..eb3d3b4e65a9 100644
+index eb3d3b4e65a9..a5c27489a7ff 100644
 --- a/drivers/net/ethernet/intel/ice/virt/allowlist.c
 +++ b/drivers/net/ethernet/intel/ice/virt/allowlist.c
-@@ -102,7 +102,7 @@ struct allowlist_opcode_info {
+@@ -90,6 +90,11 @@ static const u32 ptp_allowlist_opcodes[] = {
+ 	VIRTCHNL_OP_1588_PTP_GET_TIME,
+ };
  
- #define BIT_INDEX(caps) (HWEIGHT((caps) - 1))
- #define ALLOW_ITEM(caps, list) \
--	[BIT_INDEX(caps)] = { \
-+	[caps] = { \
- 		.opcodes = list, \
- 		.size = ARRAY_SIZE(list) \
- 	}
-@@ -190,10 +190,9 @@ void ice_vc_set_working_allowlist(struct ice_vf *vf)
-  */
- void ice_vc_set_caps_allowlist(struct ice_vf *vf)
- {
--	unsigned long caps = vf->driver_caps;
- 	unsigned int i;
- 
--	for_each_set_bit(i, &caps, ARRAY_SIZE(allowlist_opcodes))
-+	for_each_set_bit(i, vf->driver_caps, ARRAY_SIZE(allowlist_opcodes))
- 		ice_vc_allowlist_opcodes(vf, allowlist_opcodes[i].opcodes,
- 					 allowlist_opcodes[i].size);
- }
-diff --git a/drivers/net/ethernet/intel/ice/virt/fdir.c b/drivers/net/ethernet/intel/ice/virt/fdir.c
-index 4f1f3442e52c..74967edf27ad 100644
---- a/drivers/net/ethernet/intel/ice/virt/fdir.c
-+++ b/drivers/net/ethernet/intel/ice/virt/fdir.c
-@@ -105,7 +105,7 @@ ice_vc_fdir_param_check(struct ice_vf *vf, u16 vsi_id)
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
- 		return -EINVAL;
- 
--	if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_FDIR_PF))
-+	if (!test_bit(VIRTCHNL_VF_OFFLOAD_FDIR_PF, vf->driver_caps))
- 		return -EINVAL;
- 
- 	if (!ice_vc_isvalid_vsi_id(vf, vsi_id))
-diff --git a/drivers/net/ethernet/intel/ice/virt/queues.c b/drivers/net/ethernet/intel/ice/virt/queues.c
-index 31be2f76181c..4e2caeb5d642 100644
---- a/drivers/net/ethernet/intel/ice/virt/queues.c
-+++ b/drivers/net/ethernet/intel/ice/virt/queues.c
-@@ -781,7 +781,7 @@ int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 		if (!qci->qpair[i].rxq.crc_disable)
- 			continue;
- 
--		if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_CRC) ||
-+		if (!test_bit(VIRTCHNL_VF_OFFLOAD_CRC, vf->driver_caps) ||
- 		    vf->vlan_strip_ena)
- 			goto error_param;
- 	}
-@@ -868,8 +868,8 @@ int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 			 * format. Legacy 16byte descriptor is not supported.
- 			 * If this RXDID is selected, return error.
- 			 */
--			if (vf->driver_caps &
--			    VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC) {
-+			if (test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC,
-+				     vf->driver_caps)) {
- 				rxdid = qpi->rxq.rxdid;
- 				if (!(BIT(rxdid) & pf->supported_rxdids))
- 					goto error_param;
-@@ -877,9 +877,10 @@ int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
- 				rxdid = ICE_RXDID_LEGACY_1;
- 			}
- 
--			ena_ts = ((vf->driver_caps &
--				  VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC) &&
--				  (vf->driver_caps & VIRTCHNL_VF_CAP_PTP) &&
-+			ena_ts = (test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC,
-+					   vf->driver_caps) &&
-+				  test_bit(VIRTCHNL_VF_CAP_PTP,
-+					   vf->driver_caps) &&
- 				  (qpi->rxq.flags & VIRTCHNL_PTP_RX_TSTAMP));
- 
- 			ice_write_qrxflxp_cntxt(&vsi->back->hw,
-diff --git a/drivers/net/ethernet/intel/ice/virt/rss.c b/drivers/net/ethernet/intel/ice/virt/rss.c
-index 960012ca91b5..b4f6dcce76f6 100644
---- a/drivers/net/ethernet/intel/ice/virt/rss.c
-+++ b/drivers/net/ethernet/intel/ice/virt/rss.c
-@@ -680,9 +680,9 @@ static bool ice_vc_parse_rss_cfg(struct ice_hw *hw,
-  * Return true if VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF capability is set,
-  * else return false
-  */
--static bool ice_vf_adv_rss_offload_ena(u32 caps)
-+static bool ice_vf_adv_rss_offload_ena(const unsigned long *caps)
- {
--	return !!(caps & VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF);
-+	return test_bit(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF, caps);
- }
++/* VIRTCHNL_VF_CAPS2 */
++static const u32 caps2_allowlist_opcodes[] = {
++	VIRTCHNL_OP_GET_VF_CAPS2,
++};
++
+ static const u32 tc_allowlist_opcodes[] = {
+ 	VIRTCHNL_OP_GET_QOS_CAPS, VIRTCHNL_OP_CONFIG_QUEUE_BW,
+ 	VIRTCHNL_OP_CONFIG_QUANTA,
+@@ -117,6 +122,7 @@ static const struct allowlist_opcode_info allowlist_opcodes[] = {
+ 	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_VLAN_V2, vlan_v2_allowlist_opcodes),
+ 	ALLOW_ITEM(VIRTCHNL_VF_OFFLOAD_QOS, tc_allowlist_opcodes),
+ 	ALLOW_ITEM(VIRTCHNL_VF_CAP_PTP, ptp_allowlist_opcodes),
++	ALLOW_ITEM(VIRTCHNL_VF_CAPS2, caps2_allowlist_opcodes),
+ };
  
  /**
 diff --git a/drivers/net/ethernet/intel/ice/virt/virtchnl.c b/drivers/net/ethernet/intel/ice/virt/virtchnl.c
-index 06d2f9be93ae..f15e8c82d52d 100644
+index f15e8c82d52d..37bf02cd4d41 100644
 --- a/drivers/net/ethernet/intel/ice/virt/virtchnl.c
 +++ b/drivers/net/ethernet/intel/ice/virt/virtchnl.c
-@@ -58,7 +58,7 @@ static void
- ice_set_pfe_link(struct ice_vf *vf, struct virtchnl_pf_event *pfe,
- 		 int ice_link_speed, bool link_up)
- {
--	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED) {
-+	if (test_bit(VIRTCHNL_VF_CAP_ADV_LINK_SPEED, vf->driver_caps)) {
- 		pfe->event_data.link_event_adv.link_status = link_up;
- 		/* Speed in Mbps */
- 		pfe->event_data.link_event_adv.link_speed =
-@@ -188,26 +188,26 @@ static int ice_vc_get_ver_msg(struct ice_vf *vf, u8 *msg)
- }
+@@ -267,6 +267,11 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
  
- /**
-- * ice_vc_get_vlan_caps
-+ * ice_vc_get_vlan_caps - get VF capability flags based on driver caps
-  * @hw: pointer to the hw
-  * @vf: pointer to the VF info
-  * @vsi: pointer to the VSI
-  * @driver_caps: current driver caps
-  *
-- * Return 0 if there is no VLAN caps supported, or VLAN caps value
-+ * Return: 0 if there is no VLAN caps supported, or VLAN caps value
-  */
- static u32
- ice_vc_get_vlan_caps(struct ice_hw *hw, struct ice_vf *vf, struct ice_vsi *vsi,
--		     u32 driver_caps)
-+		     const unsigned long *driver_caps)
- {
- 	if (ice_is_eswitch_mode_switchdev(vf->pf))
- 		/* In switchdev setting VLAN from VF isn't supported */
- 		return 0;
+ 	bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
+ 	if (VF_IS_V11(&vf->vf_ver)) {
++		/* VIRTCHNL_OP_GET_VF_RESOURCES only sends the first 32 flags.
++		 * If VIRTCHNL_VF_CAPS2 (bit 2) is set, then there are more
++		 * flags. A complete set (including the first 32) is then sent
++		 * via VIRTCHNL_OP_GET_VF_CAPS2.
++		 */
+ 		bitmap_from_arr32(vf->driver_caps, (u32 *)msg,
+ 				  BITS_PER_TYPE(u32));
+ 	} else {
+@@ -333,6 +338,10 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+ 	if (test_bit(VIRTCHNL_VF_CAP_PTP, vf->driver_caps))
+ 		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAP_PTP);
  
--	if (driver_caps & VIRTCHNL_VF_OFFLOAD_VLAN_V2) {
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_VLAN_V2, driver_caps)) {
- 		/* VLAN offloads based on current device configuration */
--		return VIRTCHNL_VF_OFFLOAD_VLAN_V2;
--	} else if (driver_caps & VIRTCHNL_VF_OFFLOAD_VLAN) {
-+		return BIT(VIRTCHNL_VF_OFFLOAD_VLAN_V2);
-+	} else if (test_bit(VIRTCHNL_VF_OFFLOAD_VLAN, driver_caps)) {
- 		/* allow VF to negotiate VIRTCHNL_VF_OFFLOAD explicitly for
- 		 * these two conditions, which amounts to guest VLAN filtering
- 		 * and offloads being based on the inner VLAN or the
-@@ -215,7 +215,7 @@ ice_vc_get_vlan_caps(struct ice_hw *hw, struct ice_vf *vf, struct ice_vsi *vsi,
- 		 * negotiate VIRTCHNL_VF_OFFLOAD in any other cases
- 		 */
- 		if (ice_is_dvm_ena(hw) && ice_vf_is_port_vlan_ena(vf)) {
--			return VIRTCHNL_VF_OFFLOAD_VLAN;
-+			return BIT(VIRTCHNL_VF_OFFLOAD_VLAN);
- 		} else if (!ice_is_dvm_ena(hw) &&
- 			   !ice_vf_is_port_vlan_ena(vf)) {
- 			/* configure backward compatible support for VFs that
-@@ -223,7 +223,7 @@ ice_vc_get_vlan_caps(struct ice_hw *hw, struct ice_vf *vf, struct ice_vsi *vsi,
- 			 * configured in SVM, and no port VLAN is configured
- 			 */
- 			ice_vf_vsi_cfg_svm_legacy_vlan_mode(vsi);
--			return VIRTCHNL_VF_OFFLOAD_VLAN;
-+			return BIT(VIRTCHNL_VF_OFFLOAD_VLAN);
- 		} else if (ice_is_dvm_ena(hw)) {
- 			/* configure software offloaded VLAN support when DVM
- 			 * is enabled, but no port VLAN is enabled
-@@ -264,13 +264,17 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 		len = 0;
- 		goto err;
- 	}
--	if (VF_IS_V11(&vf->vf_ver))
--		vf->driver_caps = *(u32 *)msg;
--	else
--		vf->driver_caps = VIRTCHNL_VF_OFFLOAD_L2 |
--				  VIRTCHNL_VF_OFFLOAD_VLAN;
- 
--	vfres->vf_cap_flags = VIRTCHNL_VF_OFFLOAD_L2;
-+	bitmap_zero(vf->driver_caps, VIRTCHNL_VF_CAPS_MAX);
-+	if (VF_IS_V11(&vf->vf_ver)) {
-+		bitmap_from_arr32(vf->driver_caps, (u32 *)msg,
-+				  BITS_PER_TYPE(u32));
-+	} else {
-+		__set_bit(VIRTCHNL_VF_OFFLOAD_L2, vf->driver_caps);
-+		__set_bit(VIRTCHNL_VF_OFFLOAD_VLAN, vf->driver_caps);
-+	}
++	/* Indicate that VF can send more flags in VIRTCHNL_OP_GET_VF_CAPS2 */
++	if (test_bit(VIRTCHNL_VF_CAPS2, vf->driver_caps))
++		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAPS2);
 +
-+	vfres->vf_cap_flags = BIT(VIRTCHNL_VF_OFFLOAD_L2);
- 	vsi = ice_get_vf_vsi(vf);
- 	if (!vsi) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -280,54 +284,54 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 	vfres->vf_cap_flags |= ice_vc_get_vlan_caps(hw, vf, vsi,
- 						    vf->driver_caps);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PF)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_PF;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PF, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RSS_PF);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_FDIR_PF)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_FDIR_PF;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_FDIR_PF, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_FDIR_PF);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_TC_U32 &&
--	    vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_FDIR_PF)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_TC_U32;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_TC_U32, vf->driver_caps) &&
-+	    (vfres->vf_cap_flags & BIT(VIRTCHNL_VF_OFFLOAD_FDIR_PF)))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_TC_U32);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ENCAP)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ENCAP;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ENCAP);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_POLLING)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RX_POLLING;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_RX_POLLING, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_RX_POLLING);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_WB_ON_ITR)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_WB_ON_ITR;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_WB_ON_ITR);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_REQ_QUEUES)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_REQ_QUEUES;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_REQ_QUEUES);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_CRC)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_CRC;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_CRC, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_CRC);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_CAP_ADV_LINK_SPEED)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_ADV_LINK_SPEED;
-+	if (test_bit(VIRTCHNL_VF_CAP_ADV_LINK_SPEED, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAP_ADV_LINK_SPEED);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_USO)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_USO;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_USO, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_USO);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_QOS)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_QOS;
-+	if (test_bit(VIRTCHNL_VF_OFFLOAD_QOS, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_OFFLOAD_QOS);
- 
--	if (vf->driver_caps & VIRTCHNL_VF_CAP_PTP)
--		vfres->vf_cap_flags |= VIRTCHNL_VF_CAP_PTP;
-+	if (test_bit(VIRTCHNL_VF_CAP_PTP, vf->driver_caps))
-+		vfres->vf_cap_flags |= BIT(VIRTCHNL_VF_CAP_PTP);
- 
  	vfres->num_vsis = 1;
  	/* Tx and Rx queue are equal for VF */
-@@ -344,7 +348,8 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 			vf->hw_lan_addr);
- 
- 	/* match guest capabilities */
--	vf->driver_caps = vfres->vf_cap_flags;
-+	bitmap_from_arr32(vf->driver_caps, &vfres->vf_cap_flags,
-+			  BITS_PER_TYPE(u32));
- 
- 	ice_vc_set_caps_allowlist(vf);
- 	ice_vc_set_working_allowlist(vf);
-@@ -1027,9 +1032,9 @@ static int ice_vc_del_mac_addr_msg(struct ice_vf *vf, u8 *msg)
-  *
-  * Return true if VIRTCHNL_VF_OFFLOAD_VLAN capability is set, else return false
-  */
--static bool ice_vf_vlan_offload_ena(u32 caps)
-+static bool ice_vf_vlan_offload_ena(const unsigned long *caps)
- {
--	return !!(caps & VIRTCHNL_VF_OFFLOAD_VLAN);
-+	return test_bit(VIRTCHNL_VF_OFFLOAD_VLAN, caps);
+ 	vfres->num_queue_pairs = vsi->num_txq;
+@@ -2453,6 +2462,78 @@ static int ice_vc_dis_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
+ 				     v_ret, NULL, 0);
  }
  
- /**
-@@ -1431,7 +1436,7 @@ static int ice_vc_query_rxdid(struct ice_vf *vf)
- 		goto err;
- 	}
++/**
++ * ice_vc_get_vf_caps2 - handle VIRTCHNL_OP_GET_VF_CAPS2
++ * @vf: pointer to VF
++ * @msg: pointer to the message buffer
++ *
++ * Called from the VF to negotiate extended capability flag set if
++ * VIRTCHNL_VF_CAPS2 was set in vf_cap_flags. The PF responds with the
++ * intersection of its supported flags and the VF's requested flags.
++ *
++ * Return: 0 on success, negative on failure
++ */
++static int ice_vc_get_vf_caps2(struct ice_vf *vf,
++			       const struct virtchnl_vf_caps2 *msg)
++{
++	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
++	DECLARE_BITMAP(msg_caps, VIRTCHNL_VF_CAPS_MAX);
++	struct virtchnl_vf_caps2 *caps2;
++	unsigned int nbits;
++	int err;
++
++	caps2 = kzalloc_flex(*caps2, vf_cap_flags,
++			     BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX));
++	if (!caps2)
++		return -ENOMEM;
++
++	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++		goto send_msg;
++	}
++
++	if (!test_bit(VIRTCHNL_VF_CAPS2, vf->driver_caps)) {
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++		goto send_msg;
++	}
++
++	caps2->flags_len = BITS_TO_U32(VIRTCHNL_VF_CAPS_MAX);
++
++	/* Set extended feature flags. The first 32 bits should be already set
++	 * in VIRTCHNL_OP_GET_VF_RESOURCES
++	 */
++
++	/* Make sure to not read after msg bitmap or local bitmap. The remaining
++	 * bits (if any) should be unset, since one side doesn't know about
++	 * them, therefore cannot support these capabilities.
++	 */
++	nbits = min_t(unsigned int, VIRTCHNL_VF_CAPS_MAX,
++		      BITS_PER_TYPE(u32) * msg->flags_len);
++	bitmap_zero(msg_caps, VIRTCHNL_VF_CAPS_MAX);
++	bitmap_from_arr32(msg_caps, msg->vf_cap_flags, nbits);
++
++	/* Note that msg->vf_cap_flags cannot be directly used, because then
++	 * we'd need to limit the operation range to nbits. If the local caps
++	 * is larger and has some flags set after nbits, then they would be
++	 * incorrectly left set.
++	 */
++	bitmap_and(vf->driver_caps, vf->driver_caps, msg_caps,
++		   VIRTCHNL_VF_CAPS_MAX);
++
++	bitmap_to_arr32(caps2->vf_cap_flags, vf->driver_caps,
++			VIRTCHNL_VF_CAPS_MAX);
++
++send_msg:
++	err = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_VF_CAPS2, v_ret,
++				    (u8 *)caps2,
++				    struct_size(caps2, vf_cap_flags,
++						caps2->flags_len));
++
++	kfree(caps2);
++
++	return err;
++}
++
+ static int ice_vc_get_ptp_cap(struct ice_vf *vf,
+ 			      const struct virtchnl_ptp_caps *msg)
+ {
+@@ -2544,6 +2625,7 @@ static const struct ice_virtchnl_ops ice_virtchnl_dflt_ops = {
+ 	.cfg_q_quanta = ice_vc_cfg_q_quanta,
+ 	.get_ptp_cap = ice_vc_get_ptp_cap,
+ 	.get_phc_time = ice_vc_get_phc_time,
++	.get_vf_caps2 = ice_vc_get_vf_caps2,
+ 	/* If you add a new op here please make sure to add it to
+ 	 * ice_virtchnl_repr_ops as well.
+ 	 */
+@@ -2681,6 +2763,7 @@ static const struct ice_virtchnl_ops ice_virtchnl_repr_ops = {
+ 	.cfg_q_quanta = ice_vc_cfg_q_quanta,
+ 	.get_ptp_cap = ice_vc_get_ptp_cap,
+ 	.get_phc_time = ice_vc_get_phc_time,
++	.get_vf_caps2 = ice_vc_get_vf_caps2,
+ };
  
--	if (!(vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)) {
-+	if (!test_bit(VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, vf->driver_caps)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 		goto err;
- 	}
+ /**
+@@ -2924,6 +3007,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+ 	case VIRTCHNL_OP_1588_PTP_GET_TIME:
+ 		err = ops->get_phc_time(vf);
+ 		break;
++	case VIRTCHNL_OP_GET_VF_CAPS2:
++		err = ops->get_vf_caps2(vf, (const void *)msg);
++		break;
+ 	case VIRTCHNL_OP_UNKNOWN:
+ 	default:
+ 		dev_err(dev, "Unsupported opcode %d from VF %d\n", v_opcode,
 -- 
 2.49.0
 
