@@ -2,126 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CChwLcg68WlyewEAu9opvQ
+	id SCh5GzPN8GkKYwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 00:55:04 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:07:31 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8088948CDCD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 00:55:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F0EF4878BA
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Apr 2026 17:07:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CE2036108F;
-	Tue, 28 Apr 2026 22:54:59 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CF98B81B14;
+	Tue, 28 Apr 2026 15:07:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aB7Pc4Jlqx1e; Tue, 28 Apr 2026 22:54:59 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6Oj5jpARlQLQ; Tue, 28 Apr 2026 15:07:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4BAC961068
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2CA5681D5A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777416898;
-	bh=TD3g81YgYyk+ev+8kkfCadZc9PhNHKB3ZIvkWb2+QeU=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1777388848;
+	bh=n1Mp1qX8xz2ijMkLiFo4CC3dt9q4bTzJ8VvmE5MbnRQ=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=VjrD+YWDj0e8PUwnBYOOJn+8Rr3SYXxZghRhQ0zxZ7udacK50OzHiSL+qfVLgfEqR
-	 fsT5RnSw9ET9AHhGXIS3b1zLOeKnV0VS4oXhcntkkWfhjKVGeT+P2E8KCGZLaaqTjn
-	 WcssRCHMk35dm51Tm2/OU2XJ12fSaIw9CDl1eXa60GZ0vcjw4iBEqidCQUoiQhU5Mz
-	 0+IkpvFby0O42NZsj4X+NwTMPS4pZ5qy9r2GPjHNg07J39PABN+jGWnieKMyjIukgb
-	 Rao+NMgr8OGSCm8EUO49DYx/7fgtFrKLjBkNtXb5rFpcwdGFV9MUruxE2lWnOMhiJ7
-	 NPnE8Ot/rc2IA==
+	b=l6aU3r8KU+stP8zcPElf/t4fsTVPcfuqcrrmL4G9vVHMZT8m5RBd9al0gnp4Hlk5Y
+	 7AqYFVm+7+fbRXrn8OOCGuG0B4vWQ1oEJApvLPG59GMNqo3p/yEdzyIi5Expo97Kxp
+	 FT9I100oeOop0QCdyuFXTjBgmr4sp0E8/cq33YQKfIZ9uzpSzIwAr4lNu4iFW03bxT
+	 ZR3xK5/KOf4HXhRiDWXLZtnHGW12zhgNW3uJGMCA0UmLLl7QBiymrLsE3BSV2BYUGX
+	 YHzFOa35bZr3C6h44PwvYQ9xVcRpIy7Cxcw2DcjgAw4s5m8r437T8rpaMhq4cqI/Iv
+	 b3cAw1rTL24sQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4BAC961068;
-	Tue, 28 Apr 2026 22:54:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2CA5681D5A;
+	Tue, 28 Apr 2026 15:07:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 283FF1B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:01:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 47C72231
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:07:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0881E403D7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:01:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 27C9040F57
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:07:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aCFwWzFQ2pLU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Apr 2026 15:01:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::52f; helo=mail-ed1-x52f.google.com;
- envelope-from=error27@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 44C0E403C3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 44C0E403C3
-Received: from mail-ed1-x52f.google.com (mail-ed1-x52f.google.com
- [IPv6:2a00:1450:4864:20::52f])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 44C0E403C3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:01:47 +0000 (UTC)
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-678e678970fso5429912a12.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 08:01:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777388505; x=1777993305;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=TD3g81YgYyk+ev+8kkfCadZc9PhNHKB3ZIvkWb2+QeU=;
- b=CvliVCF3Kj8nLfamQuIrSjnN+LOax40majFNdqMGt+EAeTj1bA8g8zs9nsJeA0UK+6
- 29ky7DSZWcYS2n8qhLwEuj9QZE3sdU2DbOt5SCvyRNMbxX4ZxXuMkkZbzRRkWbHn4JG0
- 8zkvbQPBV0lF+EBpqJ8womVj9YMdvsE8cr/stbO9T3ki+qPAWiNS4fdA1q29PI0hxfuv
- Anbx7jK1yV05RHV5jt/5+5XsObByH021x7E/Q7AdPABz2bCSKkqDNYeMdhobAxUtK8D2
- pzPWkI8SN4tujtRtiPze1pMaM50ngw1yO4CgDXJi8AAMsHAsgC1ANzb4EiL8RntzWXJa
- /mDg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8r9UUXu+tWgjHbjT+4sk9BdwFJ3juwChkap8C8qzmBMAerRDrjBPgHvyGpq0jVXMenGOkptw0nkEO8jC7kFyE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YycSX9i1cc2wZPXlZAM5RliC3M8kWw2iMNmZq4t4gMn5Whm4IfQ
- Lod2VJbnA/foZMOJOCyugxtbDiEexYibtdFAS7pEYGKxhocHMmxqzBkO
-X-Gm-Gg: AeBDievYpzI48kkjFyrkb5Nc8IwX7kWLwaRrRyOt7Fq/dKBwknanHL0VFEqtUAe1PQL
- QRy1x5cQZGooPtL8h/jCba62NdKE+l57XR2Fe/Y6zLnFRLEHuqHgX6/LZObgT2FExFKgnWW4iU4
- peRX8wzlw1S9PJpgGGwQT/g3VcapQv3KlqWw8jnNoKmXRZ9Z113DxZ/HB+gpOLPyg83/OSFilEH
- KfZ8U7hErXo0tQbuy+NpBDM8qj0N2szFwbA0k8uYJ6dyW7MLbwl4/mz3Jd/epe91Mpf4GYRZwtx
- 9qBcYPhDPAx97yEPDrIAfaNUK27fFnW8UNxNGpAs+SuA3R+mz8/j+hkkZmLwy880RddHYKnfwdO
- d0ABwGhvN8U71QaOZitTVWCcopIMw2wTFCvAfqvMsPi5hRxKO3F2His1CmL1eytNnY+g1Bm9apA
- IHKGGBWJofEXJsceLaFUis6NHL13OsxpcBgPMRmeNg
-X-Received: by 2002:a17:907:3d45:b0:bae:70db:91f5 with SMTP id
- a640c23a62f3a-bb803e5c931mr212259066b.35.1777388504521; 
- Tue, 28 Apr 2026 08:01:44 -0700 (PDT)
-Received: from localhost ([196.207.164.177]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-bb80ba9b8c8sm110829466b.48.2026.04.28.08.01.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2026 08:01:43 -0700 (PDT)
-Date: Tue, 28 Apr 2026 18:01:39 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: Jakub Raczynski <j.raczynski@samsung.com>, netdev@vger.kernel.org,
- kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
-Message-ID: <afDL02Z4QV6G0UxF@stanley.mountain>
-References: <CGME20260428103757eucas1p132f3f1123fae21d596a51cbdce72c931@eucas1p1.samsung.com>
- <20260428103653.3539239-1-j.raczynski@samsung.com>
- <ef61b770-ebf4-406a-90a0-8a49aba02aee@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7m6yArJXOHZ5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 Apr 2026 15:07:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8C21940F4E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8C21940F4E
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8C21940F4E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 15:07:23 +0000 (UTC)
+Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 524524C4431132;
+ Tue, 28 Apr 2026 17:06:26 +0200 (CEST)
+Message-ID: <d3d4915c-1bc5-4e04-bfc4-9d9787849c6f@molgen.mpg.de>
+Date: Tue, 28 Apr 2026 17:06:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ef61b770-ebf4-406a-90a0-8a49aba02aee@intel.com>
-X-Mailman-Approved-At: Tue, 28 Apr 2026 22:54:54 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777388505; x=1777993305; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=TD3g81YgYyk+ev+8kkfCadZc9PhNHKB3ZIvkWb2+QeU=;
- b=oUlBtUYjZ/LElw0Do6x2tSiUOCJ6tM4m1x3INcCvzao88Vi9mMDco3ts7vQ+pNNMpO
- YZf9owZ9ChGt/ddn1keVJqi9CxhTKd+ExUynuEt28rQuQ7tqy1DHu52mSsjhG5vGb2X+
- vQzM1c+kareKBXcDratnpGMucvSNjqGHZkRpYYdXkRum5GlsZDh+tcrx+LOnADknhwTV
- 5I8p/uv52DZrhuMizi/gpgF+tcu6Nks4WDaQuiggX+izmJ40zhe1q6H7D9HKdbvqpKjz
- vJfDMsIuT5mnI9mAuSY5xn8cAQ7dI6D+XyJcCLvctcWolWX0446v1+SLLWZ55Fsajn4e
- IOWQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20251104 header.b=oUlBtUYj
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next] net/intel: Replace manual
- array size calculation with ARRAY_SIZE
+User-Agent: Mozilla Thunderbird
+To: Faizal Abdul Rahim <faizal.abdul.rahim@linux.intel.com>
+Cc: khai.wen.tan@linux.intel.com, anthony.l.nguyen@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ faizal.abdul.rahim@intel.com, hong.aun.looi@intel.com,
+ khai.wen.tan@intel.com, Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+References: <20260428060009.311393-1-khai.wen.tan@linux.intel.com>
+ <20260428060009.311393-2-khai.wen.tan@linux.intel.com>
+ <a9cfe2dc-f4dc-48fb-a374-0d2902baa0c5@molgen.mpg.de>
+ <84b4f8bb-3c8c-4098-bc7f-7e9fd248c5ca@linux.intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <84b4f8bb-3c8c-4098-bc7f-7e9fd248c5ca@linux.intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 1/3] igc: remove unused
+ autoneg_failed field
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -136,72 +99,171 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 8088948CDCD
+X-Rspamd-Queue-Id: 7F0EF4878BA
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.71 / 15.00];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[samsung.com:email,osuosl.org:dkim,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,intel.com:email];
+	FORGED_RECIPIENTS(0.00)[m:faizal.abdul.rahim@linux.intel.com,m:khai.wen.tan@linux.intel.com,m:anthony.l.nguyen@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:faizal.abdul.rahim@intel.com,m:hong.aun.looi@intel.com,m:khai.wen.tan@intel.com,m:aleksandr.loktionov@intel.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:przemyslaw.kitszel@intel.com,m:j.raczynski@samsung.com,m:netdev@vger.kernel.org,m:kuba@kernel.org,m:linux-kernel@vger.kernel.org,m:kernel-janitors@vger.kernel.org,s:lists@lfdr.de];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	FORGED_SENDER(0.00)[error27@gmail.com,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_FROM(0.00)[gmail.com];
-	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[error27@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	DMARC_NA(0.00)[mpg.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim,molgen.mpg.de:mid];
+	FORGED_SENDER(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[15];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	MISSING_XM_UA(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[7];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	NEURAL_HAM(-0.00)[-0.978];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[8]
 
-On Tue, Apr 28, 2026 at 04:06:48PM +0200, Przemek Kitszel wrote:
-> On 4/28/26 12:36, Jakub Raczynski wrote:
-> > There are still places in the code where manual calculation of array size
-> > exist, but it is good to enforce usage of single macro through the whole
-> > code as it makes code bit more readable.
-> > While at it, beautify condition surrounding it by reversing check and remove
-> > unnecessary casting.
-> > 
-> > Signed-off-by: Jakub Raczynski <j.raczynski@samsung.com>
-> > Reviewed-by: Dan Carpenter <error27@gmail.com>
+Dear Faizal,
+
+
+Am 28.04.26 um 12:39 schrieb Abdul Rahim, Faizal:
+
+> On 28/4/2026 2:56 pm, Paul Menzel wrote:
+
+>> Am 28.04.26 um 08:00 schrieb KhaiWenTan:
+>>
+>> (Should spaces be added in your name?)
+>>
+>>> From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+>>>
+>>> autoneg_failed in struct igc_mac_info is never set in the igc driver.
+>>> Remove the field and the dead code checking it in
+>>> igc_config_fc_after_link_up().
+>>
+>> Could you please elaborate. Why is removal the correct fix, and it’s 
+>> not an incomplete feature? Does auto-negotiation always succeed?
 > 
-> thank you,
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Auto-negotiation does not always succeed, but igc does not use
+> autoneg_failed to handle that case, the field was never set anywhere
+> in the igc driver.
 > 
-> (next time use "iwl-next" in the title, no need to repost just for that)
+> Before this patch, the only igc references to autoneg_failed were
+> the struct member declaration and the read in
+> igc_config_fc_after_link_up(). No igc code ever assigned it to true,
+> and git history shows no commit that added a setter since the code
+> creation in 2018.
 > 
+> The field originates from the e1000/e1000e fiber/serdes forced-link
+> path: when MAC-level auto-negotiation on fiber times out, the driver
+> forces link up and sets autoneg_failed so the flow-control code knows
+> pause was not negotiated and must be forced. igc has no fiber or
+> serdes media, it only supports copper (igc_media_type_copper), so
+> the code that sets autoneg_failed was never ported.
+> 
+> On copper, PHY auto-negotiation failure is handled differently:
+> - No link at all: igc_check_for_copper_link() returns before reaching
+>    flow-control configuration, there's nothing to configure FC on.
+> - Link present but autoneg not yet complete:
+>    igc_config_fc_after_link_up() checks MII_SR_AUTONEG_COMPLETE and
+>    returns early without resolving pause. The next link-status event
+>    re-triggers the check.
+> - Autoneg completes (including via parallel detection fallback when
+>    the link partner doesn't autoneg): the PHY still sets
+>    AUTONEG_COMPLETE but LP_ABILITY won't have PAUSE bits since the
+>    partner never sent autoneg pages. The existing flow-control logic
+>    in igc_config_fc_after_link_up() handles that correctly, it falls
+>    through to igc_fc_none or igc_fc_rx_pause based on requested_mode.
+> 
+> None of these paths need autoneg_failed. Keeping the field would be 
+> misleading to reader.
 
-Which sub directories go through iwl-next?  I was trying to update
-my script
+Thank you. For me the information about just supporting copper would be 
+great to have in the commit message.
 
-> > 
-> >   drivers/net/ethernet/intel/i40e/i40e_adminq.h | 2 +-
-> >   drivers/net/ethernet/intel/iavf/iavf_adminq.h | 2 +-
-> >   2 files changed, 2 insertions(+), 2 deletions(-)
+>>> Reviewed-by: Looi, Hong Aun <hong.aun.looi@intel.com>
+>>
+>> Please order it to not use the comma: Hong Aun Looi
+> 
+> Will do, thanks.
+> 
+>>> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>>> Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+>>> Signed-off-by: KhaiWenTan <khai.wen.tan@linux.intel.com>
+>>> ---
+>>>   drivers/net/ethernet/intel/igc/igc_hw.h  |  1 -
+>>>   drivers/net/ethernet/intel/igc/igc_mac.c | 16 +---------------
+>>>   2 files changed, 1 insertion(+), 16 deletions(-)
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ 
+>>> ethernet/intel/igc/igc_hw.h
+>>> index be8a49a86d09..86ab8f566f44 100644
+>>> --- a/drivers/net/ethernet/intel/igc/igc_hw.h
+>>> +++ b/drivers/net/ethernet/intel/igc/igc_hw.h
+>>> @@ -92,7 +92,6 @@ struct igc_mac_info {
+>>>       bool asf_firmware_present;
+>>>       bool arc_subsystem_valid;
+>>>
+>>> -    bool autoneg_failed;
+>>>       bool get_link_status;
+>>>   };
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ 
+>>> ethernet/intel/igc/igc_mac.c
+>>> index 7ac6637f8db7..142beb9ae557 100644
+>>> --- a/drivers/net/ethernet/intel/igc/igc_mac.c
+>>> +++ b/drivers/net/ethernet/intel/igc/igc_mac.c
+>>> @@ -438,28 +438,14 @@ void igc_config_collision_dist(struct igc_hw *hw)
+>>>    * Checks the status of auto-negotiation after link up to ensure 
+>>> that the
 
-but look at these file names. There is no "iwl" anywhere in
-the names!  :(
+Just for your information, that your mailer wraps the lines of the quotes.
 
-regards,
-dan carpenter
+[…]
 
+>>>    * speed and duplex were not forced.  If the link needed to be 
+>>> forced, then
+>>>    * flow control needs to be forced also.  If auto-negotiation is 
+>>> enabled
+>>> - * and did not fail, then we configure flow control based on our link
+>>> - * partner.
+>>> + * then we configure flow control based on our link partner.
+>>>    */
+>>>   s32 igc_config_fc_after_link_up(struct igc_hw *hw)
+>>>   {
+>>>       u16 mii_status_reg, mii_nway_adv_reg, mii_nway_lp_ability_reg;
+>>> -    struct igc_mac_info *mac = &hw->mac;
+>>>       u16 speed, duplex;
+>>>       s32 ret_val = 0;
+>>>
+>>> -    /* Check for the case where we have fiber media and auto-neg failed
+>>> -     * so we had to force link.  In this case, we need to force the
+>>> -     * configuration of the MAC to match the "fc" parameter.
+>>> -     */
+>>> -    if (mac->autoneg_failed)
+>>> -        ret_val = igc_force_mac_fc(hw);
+>>> -
+>>> -    if (ret_val) {
+>>> -        hw_dbg("Error forcing flow control settings\n");
+>>> -        goto out;
+>>> -    }
+>>> -
+>>>       /* In auto-neg, we need to check and see if Auto-Neg has 
+>>> completed,
+>>>        * and if so, how the PHY and link partner has flow control
+>>>        * configured.
+
+Kind regards,
+
+Paul
