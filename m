@@ -2,211 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aJquJiDJ8Wn+kQEAu9opvQ
+	id gPbxLQuJ82mS4wEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 11:02:24 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 18:53:31 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3661C49178F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 11:02:17 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 122294A60B5
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 18:53:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 37DFC84326;
-	Wed, 29 Apr 2026 09:02:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EC97F6E4FA;
+	Thu, 30 Apr 2026 16:53:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0TqdGrUKCZNQ; Wed, 29 Apr 2026 09:02:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id N3MBxSC8X5_b; Thu, 30 Apr 2026 16:53:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A96384322
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A6066E2A9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777453332;
-	bh=he/nndZb+X0VzGUs2nnmmES0s3fvRZL10jYQAQ+VG6I=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1777568007;
+	bh=L7Rr9mTkE3RA3Jx039p22gY3aWES/N/FW2UQ9KGdOR8=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=kJrUp+RqFTMIN884w1laaGKxPqwISf7kbSh+o3koMrCIWs5ZbEhh0PZcPtE267N9m
-	 TyWEobg0hqDxFRkJV+NsFPKRRySidugx+9/wY2yGfue3uxa5Ae91z2r/G9qntBGqvA
-	 N+Y7B8EQJHQfc1EKCoqgisW7pr23jdoPIKMXiZlOfwB1dgwM63N9VRvVPKNNDjOgvW
-	 dsx+10+dNWlca0zr8HsxBNM2OsCPQfexzAJYSuxMkZvGEhUtHLfkla0tKf5hs1B94t
-	 Zid48UYlRg5TYkCrl038ltIJDjgtYUMJMnPvW6RBdshQCqXPzpNfHqi2ygYPanUQSO
-	 UdDs49kFF/BYw==
+	 Cc:From;
+	b=BGEs1AQdPeGyWXbZXIZXUeudWoUA5wXjCIkH1Y0P2UdMI+vKXmsT3D8+cG/uFlWKb
+	 OU+I6njwYXEkuyjFicGLlyZnu3o9YgF4QUzsZ3Jx6TAOn7SC78f4CTu23Xnn0iWDBb
+	 hL06bkDRzv15GeIRaYG6TFX4RuP1/Gf/wmOCnFKQb9BcPRk9CXXa4ujiMlTUEi/gjj
+	 ZJkTF0lEmzIcAyHVEkqeXCgWrRqEWsYOT21S9oHpjjdfAjedP7cRDCoXr9mwB7qCgN
+	 hOw24E8Sqi8+FPVytEk4vkqdI7k5JiIFw+xQR2bMINfbjccPnyfUkXs4H1M49d8Bkz
+	 1/TDHIMUN0SwA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5A96384322;
-	Wed, 29 Apr 2026 09:02:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3A6066E2A9;
+	Thu, 30 Apr 2026 16:53:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id CF3D9231
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:02:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 9DFB4231
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:28:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B444441FE3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:02:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 83A974217C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:28:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FA6KDc03Apt4 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Apr 2026 09:02:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 487E84033E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 487E84033E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 487E84033E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:02:06 +0000 (UTC)
-X-CSE-ConnectionGUID: C+K7xba4RlOwBf06a0uUPQ==
-X-CSE-MsgGUID: q+bSJ7gPSeO5nR7BwuSKyg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11770"; a="103832435"
-X-IronPort-AV: E=Sophos;i="6.23,205,1770624000"; d="scan'208";a="103832435"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2026 02:02:06 -0700
-X-CSE-ConnectionGUID: V4+L/8U6SOavoALdVLyiTg==
-X-CSE-MsgGUID: vuMzaUW+TvCdrg7EqX8rpg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,205,1770624000"; d="scan'208";a="229860861"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Apr 2026 02:02:05 -0700
-Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 29 Apr 2026 02:02:05 -0700
-Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
- FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Wed, 29 Apr 2026 02:02:05 -0700
-Received: from SJ2PR03CU001.outbound.protection.outlook.com (52.101.43.34) by
- edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 29 Apr 2026 02:02:02 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=dRRpOfbbWnKrWwFYG9D0qYOVEIdx98aUApplXWCm42C4F9Gkq78/vWN33lwkLHaPbqEJW1es/BUasa/naMJX6kKdNgu8RBFQNGUwFWu+QAdvAvtzAvackgPNQwqqcDvDnU9G6mMmHOQs1GAb9lzOeL5EFxDfc5C4cBrNtLtvRsfivpp1ev1W1iTIP6DZwAL8H5G/Vj/vZ4lU7x9b3+TjtLdrfqdWDx4a5zhyyxpyA2YnloF9iFfnjV3JAyKVt9x1/4ztWPxXvLlVZixIXWoCr7BGgYdHuzIaNIPhLXjdTAKbWYIeur6oEug1hQ5A1DmDCtuRypesi/itNIxWtbV9Mw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=he/nndZb+X0VzGUs2nnmmES0s3fvRZL10jYQAQ+VG6I=;
- b=T43AP+2R9iQoWUhnnZcx/3gr2qCbpM9JacNe/dj/GfI/htFncguc30N/bD78Muy4GGoAgyEkskmBFZ3kFFpV0EqxSNZJ/7zhkh181nhq537WJt45JHddSO3SKNBfrsOf5eOqqnzaMr8HyP6gErqeERmJE828KzKZiW+mgc6UuGxFu3ZFmO5eeXgPjiV4Krg6RMygLfUWCLJCXyVxldsIJrb1mUy4PWSJwHNo7fOiX58ZkB6jqwHD4bRnqbygpTnrhFbf5Vl5WR8iJ0PkjFYl06Qbw4qhSmxgfrpOO+oUlVT9WPsThbKTtizQZZFY716YcIXeiCB7+PUn75fX2P222g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
- by PH0PR11MB4885.namprd11.prod.outlook.com (2603:10b6:510:35::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.20; Wed, 29 Apr
- 2026 09:01:59 +0000
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::8d98:e538:8d7:6311]) by MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::8d98:e538:8d7:6311%5]) with mapi id 15.20.9870.020; Wed, 29 Apr 2026
- 09:01:59 +0000
-Message-ID: <b0a706e1-2494-40b4-836f-f5d32c6b0fef@intel.com>
-Date: Wed, 29 Apr 2026 11:01:46 +0200
-User-Agent: Mozilla Thunderbird
-To: Dan Carpenter <error27@gmail.com>
-CC: Jakub Raczynski <j.raczynski@samsung.com>, <netdev@vger.kernel.org>,
- <kuba@kernel.org>, <intel-wired-lan@lists.osuosl.org>,
- <linux-kernel@vger.kernel.org>, <kernel-janitors@vger.kernel.org>
-References: <CGME20260428103757eucas1p132f3f1123fae21d596a51cbdce72c931@eucas1p1.samsung.com>
- <20260428103653.3539239-1-j.raczynski@samsung.com>
- <ef61b770-ebf4-406a-90a0-8a49aba02aee@intel.com>
- <afDL02Z4QV6G0UxF@stanley.mountain>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Language: en-US
-In-Reply-To: <afDL02Z4QV6G0UxF@stanley.mountain>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: VI1PR08CA0245.eurprd08.prod.outlook.com
- (2603:10a6:803:dc::18) To MN6PR11MB8102.namprd11.prod.outlook.com
- (2603:10b6:208:46d::9)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id O7m68345KcqV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Apr 2026 09:28:05 +0000 (UTC)
+X-Greylist: delayed 1042 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 29 Apr 2026 09:28:04 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9A55442176
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A55442176
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:edc0:2:b01:1d::104; helo=metis.whiteo.stw.pengutronix.de;
+ envelope-from=mkl@pengutronix.de; receiver=<UNKNOWN> 
+Received: from metis.whiteo.stw.pengutronix.de
+ (metis.whiteo.stw.pengutronix.de [IPv6:2a0a:edc0:2:b01:1d::104])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9A55442176
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 09:28:04 +0000 (UTC)
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.whiteo.stw.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <mkl@pengutronix.de>)
+ id 1wI0wA-0006pG-NU; Wed, 29 Apr 2026 11:10:30 +0200
+Received: from moin.white.stw.pengutronix.de ([2a0a:edc0:0:b01:1d::7b]
+ helo=bjornoya.blackshift.org)
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <mkl@pengutronix.de>) id 1wI0w3-007oJR-0R;
+ Wed, 29 Apr 2026 11:10:23 +0200
+Received: from pengutronix.de (p4ffb2dc6.dip0.t-ipconnect.de [79.251.45.198])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ (Authenticated sender: mkl-all@blackshift.org)
+ by smtp.blackshift.org (Postfix) with ESMTPSA id 668E3526F68;
+ Wed, 29 Apr 2026 09:10:22 +0000 (UTC)
+Date: Wed, 29 Apr 2026 11:10:21 +0200
+From: Marc Kleine-Budde <mkl@pengutronix.de>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
+ <u.kleine-koenig@baylibre.com>
+Message-ID: <20260429-responsible-clever-coyote-6b79f1-mkl@pengutronix.de>
+X-AI: stop_reason: "refusal"
+References: <20260428171845.2288395-2-u.kleine-koenig@baylibre.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|PH0PR11MB4885:EE_
-X-MS-Office365-Filtering-Correlation-Id: 99dae4f0-e241-45ca-36d9-08dea5cdf865
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|366016|1800799024|18002099003|22082099003|56012099003; 
-X-Microsoft-Antispam-Message-Info: puf1aZfzvL00BqbfFmXZ2io5ujlXKMjN4xjWA4D1T1RzpXeKsjxBxzv2gn3mik1glvo95cDwYtyTNpNv5WgVEwL3Le08odp11wHhoAhIHmVeFHFMIsj+oGk5+E+onERNYFRM+UEOh0zbqov4OW5OlRQvLFdxIiAk1TLmae8xf5sK3x8bPoIwChs7GF4QQppwqXv912m9K2yDIIZwXYSQ76cVs9D1ygd9rUQp6L3yIXI1aCHR3nmZX4/c6hioTJNXSWLk/9LMImtqezYFVjfFvglgbuxavTA+EB4wrU83JlgkbQdR0iIyu56oD+pBfJSTPPsi/gFKv50mMt8CdLcVhycCveMxvr5iQkzU5ITP1nEWl3K1RwCcQZWfOMoUMJca4KEEPGEqb91JFlPzgoSKhKwOEzIVZ2U16EaoTZonZXJMRaPpiYKftQrzzlXdwHLypIGt4LOEIijOgd68QxDzpersVVI/2oeivIT3giiW3AQjEWWYLyx/BGr61yXk9041TJnRXFWITcOex0p0wGk+3fBSI/t6Wg/Hd2a101xc+F+Epr3IAHWYCdeJ68CF1WyVvWAJzrJ+nNj/2l74LQb1nbpv+PbRSLIfS7ud6ZiLRvUEiyXdEXc7xa2TKpdsbEzdW6GyYoH7+/6BhTQf49EPbruli8IXco+sV5/uB9a172JlLDPZObINwi00PMvUFJQQRaqivocmY6DmdZBWekHEcs0OxSho2+I7s/z34x2Nqws=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN6PR11MB8102.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(18002099003)(22082099003)(56012099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bytNbGZOMG1tb0hsdDdMZXZJSEN6Z2ZZbzFVY3VMQStCcWsrY0hISTAvMzh5?=
- =?utf-8?B?N1RtdlBDWVNoaDJXTXFhekNhWmxDYUtWMWNMOTNuendOd0RKckhPME5GMlBx?=
- =?utf-8?B?dFNrb1BheFg2UTZuQnNuZHVsbzdMblJQdEg3VVZaekZjaHd1R3JxWVRySnJ5?=
- =?utf-8?B?R3d6Y3hFT0dNbFYzVk1EUEJGVTJXQnFOOTY0eUhFSXB1ZFo3YldEZS9XVXVT?=
- =?utf-8?B?VjdxcmFyK2xwU2t2QS9TZmFGRVJJRDlnb3FoOWxXeHhqQlFyZk1sZ3ozZ3Rl?=
- =?utf-8?B?ZjFyaC9HOFJKdzYxQkl2OW9tdFRTSEpOWllpaFBydjdaK1VtUDNNTzNYM1NE?=
- =?utf-8?B?dStvVzZPbkVNc1ZPcng4OXJDa0ZqSjE1ajBrYXR0ME9nQzgwd25SdnVBQU53?=
- =?utf-8?B?TUtwSk5HOEtjRE80N25GM2F5d0t4MUY4YVl5dVlZRUFQdzhqQlo3Y3d6aDR3?=
- =?utf-8?B?M25yRmh6ci8zNVRqaTdVOTM1RHByVUJQN0RRVUNrSVFjOHJZdHBpNm4zbnBU?=
- =?utf-8?B?TmlES1BzMVQrZU00RWZNdTVSWTFHODExTXhjVjMrL1QzSmpZZEFFeWhua1Q3?=
- =?utf-8?B?MkJmL0QxYnBQQ3dqTG9QR2J5cktiUU1NZDltRXRPVURFc2x5OCsrbXNXREVX?=
- =?utf-8?B?YWlKNi8vYjBUMlhabnlJMElEQzJFUk90NnZ0VndqYmdTVC9sR240dVVTVmp4?=
- =?utf-8?B?ZmRaaU1Pb3hxRGNlSzNRTHNxVmdHbTBkUFR2Z3hMc1RxZFRDUFVkblROU09h?=
- =?utf-8?B?MmE1SFEyQVIyVzRPcjFYcXpHTG5kK2I0T0YwdFljVlBzaHIwY3NWYXQyMmdI?=
- =?utf-8?B?eUwycXIwU3dwUkdEVXFCYmlqTGhjMHBSUGFUR2hRWjJzdFUrNlcvdDVRUGZL?=
- =?utf-8?B?bjNERkJzLytkMDZJQ0xJZGtrSWhFTnVxdWx0Ym9pMTY2a3hBOHBRK2lON291?=
- =?utf-8?B?M0srTDl3R2dEVzk0cXFhdjFPQjFUeHQyRWdSUnhKdzllZzV3R3R1eDdKR0N3?=
- =?utf-8?B?RVJVeFZwVUtCeC84WUZ2T2RmR216RVNpYk1NT2MyaUxSVEJwSFZ4eSs4QW9P?=
- =?utf-8?B?ZmI1QXZ1M1V5YTlOSU5ybVB6SzNpUjB0WkJHY0FxUFdBZW9oY3lqa2d0WjVn?=
- =?utf-8?B?QVVKbHR6VkxWR2V1a1B2K1JGRFNYWjcyMGVOZUZiYS9YRVRRWWkrcmJYTUps?=
- =?utf-8?B?S2hnN2FWeC82S2pPaVpubW9qVjB6ZzFqNjVNZTJ2UFQwWWdVSmlrT1VkMTQ4?=
- =?utf-8?B?N1VyWjUzSHo5c3N0b0FyaExqRHMrSW4rVDd1SXpjWUw1WTBpc1FuUVREaGNN?=
- =?utf-8?B?WDBVcDVUUDg1Q25KUFZkbGlIK2xHMDlHN0VRSDNFQ0hnbnU0bzUxQmxOaGE5?=
- =?utf-8?B?Y0RnOXgyVWcxK2JEWENJcENSRzI3QlNVSXVjWktvVjZFU1Q3WWhqdHJReUVJ?=
- =?utf-8?B?Vi9zQUl5d3pmNFNaMmt5S2hDd21nWWt3LzdMK0xJNlMwSmtmbmtCR2lkbE5Y?=
- =?utf-8?B?Vk5PMFdHaHhqbEQwRktraXhSYW5ZN1ZoeVh3SWlMTmlTWVdIREc1QkhuOGkz?=
- =?utf-8?B?OUM4VG0xMUJXWjZlV2x4SXZRUWhsWDFzaTk1R3hKdGJNTGxIUyt3d2ludCt6?=
- =?utf-8?B?RXBWVzV2Y2VuN2NNRG9lcUROQWZRN01sNnRJNlNjeDRDSHdQTjIwZ09OYytV?=
- =?utf-8?B?d2J2Sy9TRG9rbU9JL2N1ZmJjaVRxYkJ3Y1huQ3N2eVJmS2lEdVNXOUhaUlRr?=
- =?utf-8?B?alByRkhUM3o1T2wxRDhUblFya1pOS1RPalN6OFN2Snlzb0xqUkJnTHN5bDl0?=
- =?utf-8?B?RGV2Y0ZMTFZTcWhTTmplZUVTUzZBcTh4V2dJV2MxZFZXVVBMU1R4djBWdTlQ?=
- =?utf-8?B?UkFoUzRMemNEMExtVDR3Ri9EWkdQTVdEcDlXcmdodDRJcHptejdTdjlDcFM3?=
- =?utf-8?B?OHhvVmJxWUdlVnF5NXMwWWF6QnZHY3lQK2ZpZFRXbDZ2cFN4VFJ0ajNJYUxo?=
- =?utf-8?B?TDRyRDQrSGU2QVZFNG11ZEdxcS9pZ2EzS3BsSTAxSlU1bXpLNWswTE5WNlBT?=
- =?utf-8?B?M0VuYkJucFhFSTA2a0U3L1JZd0R1MmYzRkFzckdobysrbkpXbWo3Y1N0VzA4?=
- =?utf-8?B?by8xVE1HV3dUUnVLSEdra1BINUhUbGh2WkltZ1JrcXNqa1JyUWJmYUMyZWV0?=
- =?utf-8?B?KzlkSjlQajFGTGpHMFJhOEMxZWZCcjNQNEw4eE1WWkR3VCtWS1hIMkRCM25K?=
- =?utf-8?B?MlVUMHk5OEFVK01lNWc1TFF6RXNIZEtNTGxrQ2p6UzkxTW9kcWJpd3p5b0RZ?=
- =?utf-8?B?RThGcWk4MUMyZHcwWUJGYlZwbGp3ekJYN3ZMREZOVCsxM3ZyaWZmSlAzejB0?=
- =?utf-8?Q?rBCTPp7G7/uLbJKA=3D?=
-X-Exchange-RoutingPolicyChecked: hrPnE0tAutWRdx3m7AaTORYewZce5pCGUNJHRZl6yejb6HC9p9a9RbeqVpFffn54nrwoplbxqBRZ3wehQvq1uxcEEkYyNtScPfuuHeCOhcniDJerOdjGbqNO2Cy7RmA9Kln3yb2R7QGBSygOi4j6r6tCAuMB5bk6Wvpx2YNVyWRcpmdKulOr77pGHQv7azCYu+kSbrgifrICZellYrluIdjMIA9kJgFKnXvmdN7ICJTqLwKyyfCFWYPHGl6EPNcH8wYstsuAc1ysA8lfjaKVdQ5q00cGGdh/8aifLd8EPF/zLch5Mo6kGrBG+7NaxYcmcq98grcrlNxGzGhwKte/rg==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 99dae4f0-e241-45ca-36d9-08dea5cdf865
-X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Apr 2026 09:01:58.9819 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FitR0FUtWEvQl5O+ZgTCa6M7hVTRHxIPnO16Wq3qvWWdiCSQZuH/t1iCt8EOWDMj5tUOK2KRio2ocHaO43ioJ0JBnX0WA4fsj4iaKVLqljY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB4885
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1777453327; x=1808989327;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=nMarTOXCsp7aDNihnPFRFLPXTnH4a+yg18qUp/WZPCU=;
- b=HLWGvI3+0YXHufM/Wge+pK3IcpPqyyjXII1rzyqyTTiq2ih7U+pWqlDk
- PuR/OVTKknEeD3xVcMcRBPk4CGVu5sU8nf7f432BMvzMUHi21XkOzIbVr
- GYd2LtO1iUrM159xkfYviJEN3xxLRddrOxbv0PvD+Kry/ptGaZE3T1z/S
- Px2zUoK6jAhKEXVYFIbwIfOJVPcq4JUi9IYEHXb3YAGRXCqf/dLfUKerp
- bkNUtVUpwNTTjTUqvy6n4Gfl2xe/zDVLn7Q2HFJ1Ee0cVbsh6FWetnqa9
- G8uUKvBg6ZOJH62On7AXmerQULyHgBbgCmA6rSH3gvYIs5z3VpDM++l9a
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=HLWGvI3+
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v3 net-next] net/intel: Replace manual
- array size calculation with ARRAY_SIZE
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="v5gtri26mw6juc6y"
+Content-Disposition: inline
+In-Reply-To: <20260428171845.2288395-2-u.kleine-koenig@baylibre.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: mkl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: intel-wired-lan@lists.osuosl.org
+X-Mailman-Approved-At: Thu, 30 Apr 2026 16:53:24 +0000
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=pengutronix.de
+Subject: Re: [Intel-wired-lan] [PATCH net-next] net: Consistently define
+ pci_device_ids using named initializers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -219,98 +110,348 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Richard Cochran <richardcochran@gmail.com>,
+ Marco Crivellari <marco.crivellari@suse.com>,
+ Randy Dunlap <rdunlap@infradead.org>, Yonglong Liu <liuyonglong@huawei.com>,
+ Kees Cook <kees@kernel.org>, linux-wireless@vger.kernel.org,
+ Larysa Zaremba <larysa.zaremba@intel.com>, Joe Damato <joe@dama.to>,
+ brcm80211@lists.linux.dev, Daniele Venzano <venza@brownhat.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ MD Danish Anwar <danishanwar@ti.com>, Samuel Chessman <chessman@tux.org>,
+ Fan Gong <gongfan1@huawei.com>, Mengyuan Lou <mengyuanlou@net-swift.com>,
+ Kevin Curtis <kevin.curtis@farsite.co.uk>, Ingo Molnar <mingo@kernel.org>,
+ Ion Badulescu <ionut@badula.org>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ Yeounsu Moon <yyyynoom@gmail.com>, Manish Chopra <manishc@marvell.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Colin Ian King <colin.i.king@gmail.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Peiyang Wang <wangpeiyang1@huawei.com>,
+ Thomas Fourier <fourier.thomas@gmail.com>,
+ Sai Krishna <saikrishnag@marvell.com>, Denis Kirjanov <kirjanov@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, linux-parisc@vger.kernel.org,
+ Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Steffen Klassert <klassert@kernel.org>,
+ Stanislav Yakovlev <stas.yakovlev@gmail.com>, linux-rdma@vger.kernel.org,
+ Arend van Spriel <arend.vanspriel@broadcom.com>, nic_swsd@realtek.com,
+ Jiri Pirko <jiri@resnulli.us>, Ethan Nelson-Moore <enelsonmoore@gmail.com>,
+ Philipp Stanner <phasta@kernel.org>, Chi-hsien Lin <chi-hsien.lin@cypress.com>,
+ Ido Schimmel <idosch@nvidia.com>, Potnuri Bharat Teja <bharat@chelsio.com>,
+ Double Lo <double.lo@cypress.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ Nathan Chancellor <nathan@kernel.org>, Jiawen Wu <jiawenwu@trustnetic.com>,
+ Cai Huoqing <cai.huoqing@linux.dev>, Bjorn Helgaas <bhelgaas@google.com>,
+ Zilin Guan <zilin@seu.edu.cn>, linux-can@vger.kernel.org,
+ Yibo Dong <dong100@mucse.com>, Andy Shevchenko <andriy.shevchenko@intel.com>,
+ Petr Machata <petrm@nvidia.com>, Kory Maincent <kory.maincent@bootlin.com>,
+ brcm80211-dev-list.pdl@broadcom.com, GR-Linux-NIC-Dev@marvell.com,
+ Vadim Fedorenko <vadim.fedorenko@linux.dev>, Leon Romanovsky <leon@kernel.org>,
+ Denis Benato <benato.denis96@gmail.com>, Rasesh Mody <rmody@marvell.com>,
+ netdev@vger.kernel.org, oss-drivers@corigine.com,
+ Vincent Mailhol <mailhol@kernel.org>, Mark Bloch <mbloch@nvidia.com>,
+ linux-kernel@vger.kernel.org, Tariq Toukan <tariqt@nvidia.com>,
+ Jian Shen <shenjian15@huawei.com>, Jijie Shao <shaojijie@huawei.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Thomas Gleixner <tglx@kernel.org>,
+ Simon Horman <horms@kernel.org>, Yicong Hui <yiconghui@gmail.com>,
+ Mark Einon <mark.einon@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>, Krzysztof Halasa <khc@pm.waw.pl>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 3661C49178F
+X-Rspamd-Queue-Id: 122294A60B5
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.39 / 15.00];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [0.59 / 15.00];
+	SIGNED_PGP(-2.00)[];
+	SUSPICIOUS_RECIPS(1.50)[];
+	DATE_IN_PAST(1.00)[31];
+	MID_CONTAINS_FROM(1.00)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.20)[multipart/signed,text/plain];
+	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:error27@gmail.com,m:j.raczynski@samsung.com,m:netdev@vger.kernel.org,m:kuba@kernel.org,m:linux-kernel@vger.kernel.org,m:kernel-janitors@vger.kernel.org,s:lists@lfdr.de];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_TO(0.00)[gmail.com];
-	FORGED_SENDER(0.00)[przemyslaw.kitszel@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	ASN_FAIL(0.00)[8.3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.3.0.8.c.b.5.0.6.2.asn6.rspamd.com:query timed out];
-	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER(0.00)[mkl@pengutronix.de,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
+	FREEMAIL_CC(0.00)[gmail.com,suse.com,infradead.org,huawei.com,kernel.org,vger.kernel.org,intel.com,dama.to,lists.linux.dev,brownhat.org,google.com,ti.com,tux.org,net-swift.com,farsite.co.uk,badula.org,pengutronix.de,marvell.com,davemloft.net,lists.osuosl.org,redhat.com,broadcom.com,realtek.com,resnulli.us,cypress.com,nvidia.com,chelsio.com,baylibre.com,trustnetic.com,linux.dev,seu.edu.cn,mucse.com,bootlin.com,corigine.com,lunn.ch,sipsolutions.net,pm.waw.pl];
+	RCVD_TLS_LAST(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	ARC_NA(0.00)[];
+	DMARC_NA(0.00)[pengutronix.de];
+	FORGED_RECIPIENTS(0.00)[m:u.kleine-koenig@baylibre.com,m:richardcochran@gmail.com,m:marco.crivellari@suse.com,m:rdunlap@infradead.org,m:liuyonglong@huawei.com,m:kees@kernel.org,m:linux-wireless@vger.kernel.org,m:larysa.zaremba@intel.com,m:joe@dama.to,m:brcm80211@lists.linux.dev,m:venza@brownhat.org,m:edumazet@google.com,m:anthony.l.nguyen@intel.com,m:danishanwar@ti.com,m:chessman@tux.org,m:gongfan1@huawei.com,m:mengyuanlou@net-swift.com,m:kevin.curtis@farsite.co.uk,m:mingo@kernel.org,m:ionut@badula.org,m:m.grzeschik@pengutronix.de,m:yyyynoom@gmail.com,m:manishc@marvell.com,m:davem@davemloft.net,m:colin.i.king@gmail.com,m:przemyslaw.kitszel@intel.com,m:wangpeiyang1@huawei.com,m:fourier.thomas@gmail.com,m:saikrishnag@marvell.com,m:kirjanov@gmail.com,m:linux-parisc@vger.kernel.org,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:klassert@kernel.org,m:stas.yakovlev@gmail.com,m:linux-rdma@vger.kernel.org,m:arend.vanspriel@broadcom.com,m:nic_swsd@realtek.com,m:jiri@resnu
+ lli.us,m:enelsonmoore@gmail.com,m:phasta@kernel.org,m:chi-hsien.lin@cypress.com,m:idosch@nvidia.com,m:bharat@chelsio.com,m:double.lo@cypress.com,m:msp@baylibre.com,m:nathan@kernel.org,m:jiawenwu@trustnetic.com,m:cai.huoqing@linux.dev,m:bhelgaas@google.com,m:zilin@seu.edu.cn,m:linux-can@vger.kernel.org,m:dong100@mucse.com,m:andriy.shevchenko@intel.com,m:petrm@nvidia.com,m:kory.maincent@bootlin.com,m:brcm80211-dev-list.pdl@broadcom.com,m:GR-Linux-NIC-Dev@marvell.com,m:vadim.fedorenko@linux.dev,m:leon@kernel.org,m:benato.denis96@gmail.com,m:rmody@marvell.com,m:netdev@vger.kernel.org,m:oss-drivers@corigine.com,m:mailhol@kernel.org,m:mbloch@nvidia.com,m:linux-kernel@vger.kernel.org,m:tariqt@nvidia.com,m:shenjian15@huawei.com,m:shaojijie@huawei.com,m:andrew+netdev@lunn.ch,m:tglx@kernel.org,m:horms@kernel.org,m:yiconghui@gmail.com,m:mark.einon@gmail.com,m:johannes@sipsolutions.net,m:hkallweit1@gmail.com,m:saeedm@nvidia.com,m:skalluru@marvell.com,m:khc@pm.waw.pl,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_GT_50(0.00)[82];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[przemyslaw.kitszel@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mkl@pengutronix.de,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	NEURAL_HAM(-0.00)[-0.998];
-	RCPT_COUNT_SEVEN(0.00)[7];
-	MID_RHS_MATCH_FROM(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-1.000];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	MISSING_XM_UA(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim]
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[10]
 
-On 4/28/26 17:01, Dan Carpenter wrote:
-> On Tue, Apr 28, 2026 at 04:06:48PM +0200, Przemek Kitszel wrote:
->> On 4/28/26 12:36, Jakub Raczynski wrote:
->>> There are still places in the code where manual calculation of array size
->>> exist, but it is good to enforce usage of single macro through the whole
->>> code as it makes code bit more readable.
->>> While at it, beautify condition surrounding it by reversing check and remove
->>> unnecessary casting.
->>>
->>> Signed-off-by: Jakub Raczynski <j.raczynski@samsung.com>
->>> Reviewed-by: Dan Carpenter <error27@gmail.com>
->>
->> thank you,
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->>
->> (next time use "iwl-next" in the title, no need to repost just for that)
->>
-> 
-> Which sub directories go through iwl-next?  I was trying to update
-> my script
 
-Thank you for all the patches so far you have provided and willingness 
-to continue.
+--v5gtri26mw6juc6y
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH net-next] net: Consistently define pci_device_ids using
+ named initializers
+MIME-Version: 1.0
 
-F:	Documentation/networking/device_drivers/ethernet/intel/
-F:	drivers/net/ethernet/intel/
-F:	drivers/net/ethernet/intel/*/
-F:	include/linux/avf/virtchnl.h
-F:	include/linux/net/intel/*/
+On 28.04.2026 19:18:44, Uwe Kleine-K=C3=B6nig (The Capable Hub) wrote:
+>  drivers/net/can/m_can/m_can_pci.c             |   6 +-
+>  drivers/net/can/sja1000/plx_pci.c             | 167 +++----
+[...]
+> diff --git a/drivers/net/can/sja1000/plx_pci.c b/drivers/net/can/sja1000/=
+plx_pci.c
+> index 08183833c9bc..a03553b80a5d 100644
+> --- a/drivers/net/can/sja1000/plx_pci.c
+> +++ b/drivers/net/can/sja1000/plx_pci.c
+> @@ -272,124 +272,89 @@ static struct plx_pci_card_info plx_pci_card_info_=
+asem_dual_can =3D {
+>  static const struct pci_device_id plx_pci_tbl[] =3D {
+>  	{
+>  		/* Adlink PCI-7841/cPCI-7841 */
+> -		ADLINK_PCI_VENDOR_ID, ADLINK_PCI_DEVICE_ID,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		PCI_CLASS_NETWORK_OTHER << 8, ~0,
+> -		(kernel_ulong_t)&plx_pci_card_info_adlink
+> -	},
+> -	{
+> +		PCI_DEVICE(ADLINK_PCI_VENDOR_ID, ADLINK_PCI_DEVICE_ID),
+> +		.class =3D PCI_CLASS_NETWORK_OTHER << 8,
+> +		.class_mask =3D ~0,
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_adlink,
+> +	}, {
+>  		/* Adlink PCI-7841/cPCI-7841 SE */
+> -		ADLINK_PCI_VENDOR_ID, ADLINK_PCI_DEVICE_ID,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		PCI_CLASS_COMMUNICATION_OTHER << 8, ~0,
+> -		(kernel_ulong_t)&plx_pci_card_info_adlink_se
+> -	},
+> -	{
+> +		PCI_DEVICE(ADLINK_PCI_VENDOR_ID, ADLINK_PCI_DEVICE_ID),
+> +		.class =3D PCI_CLASS_COMMUNICATION_OTHER << 8,
+> +		.class_mask =3D ~0,
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_adlink_se,
+> +	}, {
+>  		/* esd CAN-PCI/200 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9050,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI200,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd200
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9050,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI200),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd200,
+> +	}, {
+>  		/* esd CAN-CPCI/200 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9030,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_CPCI200,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd200
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9030,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_CPCI200),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd200,
+> +	}, {
+>  		/* esd CAN-PCI104/200 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9030,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI104200,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd200
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9030,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI104200),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd200,
+> +	}, {
+>  		/* esd CAN-PCI/266 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9056,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI266,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd266
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9056,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCI266),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd266,
+> +	}, {
+>  		/* esd CAN-PMC/266 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9056,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PMC266,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd266
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9056,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PMC266),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd266,
+> +	}, {
+>  		/* esd CAN-PCIE/2000 */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9056,
+> -		PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCIE2000,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_esd2000
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9056,
+> +				PCI_VENDOR_ID_ESDGMBH, ESD_PCI_SUB_SYS_ID_PCIE2000),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_esd2000,
+> +	}, {
+>  		/* IXXAT PC-I 04/PCI card */
+> -		IXXAT_PCI_VENDOR_ID, IXXAT_PCI_DEVICE_ID,
+> -		PCI_ANY_ID, IXXAT_PCI_SUB_SYS_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_ixxat
+> -	},
+> -	{
+> +		PCI_DEVICE_SUB(IXXAT_PCI_VENDOR_ID, IXXAT_PCI_DEVICE_ID,
+> +			       PCI_ANY_ID, IXXAT_PCI_SUB_SYS_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_ixxat,
+> +	}, {
+>  		/* Marathon CAN-bus-PCI card */
+> -		PCI_VENDOR_ID_PLX, MARATHON_PCI_DEVICE_ID,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_marathon_pci
+> -	},
+> -	{
+> +		PCI_VDEVICE(PLX, MARATHON_PCI_DEVICE_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_marathon_pci,
+> +	}, {
+>  		/* Marathon CAN-bus-PCIe card */
+> -		PCI_VENDOR_ID_PLX, MARATHON_PCIE_DEVICE_ID,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_marathon_pcie
+> -	},
+> -	{
+> +		PCI_VDEVICE(PLX, MARATHON_PCIE_DEVICE_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_marathon_pcie,
+> +	}, {
+>  		/* TEWS TECHNOLOGIES TPMC810 card */
+> -		TEWS_PCI_VENDOR_ID, TEWS_PCI_DEVICE_ID_TMPC810,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_tews
+> -	},
+> -	{
+> +		PCI_DEVICE(TEWS_PCI_VENDOR_ID, TEWS_PCI_DEVICE_ID_TMPC810),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_tews,
+> +	}, {
+>  		/* Connect Tech Inc. CANpro/104-Plus Opto (CRG001) card */
+> -		PCI_VENDOR_ID_PLX, PCI_DEVICE_ID_PLX_9030,
+> -		PCI_SUBVENDOR_ID_CONNECT_TECH, CTI_PCI_DEVICE_ID_CRG001,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_cti
+> -	},
+> -	{
+> +		PCI_VDEVICE_SUB(PLX, PCI_DEVICE_ID_PLX_9030,
+> +				PCI_SUBVENDOR_ID_CONNECT_TECH, CTI_PCI_DEVICE_ID_CRG001),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_cti,
+> +	}, {
+>  		/* Elcus CAN-200-PCI */
+> -		CAN200PCI_VENDOR_ID, CAN200PCI_DEVICE_ID,
+> -		CAN200PCI_SUB_VENDOR_ID, CAN200PCI_SUB_DEVICE_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_elcus
+> -	},
+> -	{
+> +		PCI_DEVICE_SUB(CAN200PCI_VENDOR_ID, CAN200PCI_DEVICE_ID,
+> +			       CAN200PCI_SUB_VENDOR_ID, CAN200PCI_SUB_DEVICE_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_elcus,
+> +	}, {
+>  		/* moxa */
+> -		MOXA_PCI_VENDOR_ID, MOXA_PCI_DEVICE_ID,
+> -		PCI_ANY_ID, PCI_ANY_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_moxa
+> -	},
+> -	{
+> +		PCI_DEVICE(MOXA_PCI_VENDOR_ID, MOXA_PCI_DEVICE_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_moxa,
+> +	}, {
+>  		/* ASEM Dual CAN raw */
+> -		ASEM_RAW_CAN_VENDOR_ID, ASEM_RAW_CAN_DEVICE_ID,
+> -		ASEM_RAW_CAN_SUB_VENDOR_ID, ASEM_RAW_CAN_SUB_DEVICE_ID,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_asem_dual_can
+> -	},
+> -	{
+> +		PCI_DEVICE_SUB(ASEM_RAW_CAN_VENDOR_ID, ASEM_RAW_CAN_DEVICE_ID,
+> +			       ASEM_RAW_CAN_SUB_VENDOR_ID, ASEM_RAW_CAN_SUB_DEVICE_ID),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_asem_dual_can,
+> +	}, {
+>  		/* ASEM Dual CAN raw -new model */
+> -		ASEM_RAW_CAN_VENDOR_ID, ASEM_RAW_CAN_DEVICE_ID,
+> -		ASEM_RAW_CAN_SUB_VENDOR_ID, ASEM_RAW_CAN_SUB_DEVICE_ID_BIS,
+> -		0, 0,
+> -		(kernel_ulong_t)&plx_pci_card_info_asem_dual_can
+> +		PCI_DEVICE_SUB(ASEM_RAW_CAN_VENDOR_ID, ASEM_RAW_CAN_DEVICE_ID,
+> +			       ASEM_RAW_CAN_SUB_VENDOR_ID, ASEM_RAW_CAN_SUB_DEVICE_ID_BIS),
+> +		.driver_data =3D (kernel_ulong_t)&plx_pci_card_info_asem_dual_can,
+>  	},
+> -	{ 0,}
+> +	{ }
 
-Perhaps instead of you managing your script, and everybody else doing
-the same, there could be some extension added to MAINTAINERS file to
-encode the prefix?
+Nitpick: can you convert the terminating entry to follow the same style
+as the rest of the driver:
 
-In our case, the prefix itself is a message for net maintainers:
-iwl or iwl-next means the patch will go first via our tree, and be sent
-later as a PR for net/net-next.
+diff --git a/drivers/net/can/sja1000/plx_pci.c b/drivers/net/can/sja1000/pl=
+x_pci.c
+index a03553b80a5d..d69ff0ccfd94 100644
+--- a/drivers/net/can/sja1000/plx_pci.c
++++ b/drivers/net/can/sja1000/plx_pci.c
+@@ -353,8 +353,8 @@ static const struct pci_device_id plx_pci_tbl[] =3D {
+                 PCI_DEVICE_SUB(ASEM_RAW_CAN_VENDOR_ID, ASEM_RAW_CAN_DEVICE=
+_ID,
+                                ASEM_RAW_CAN_SUB_VENDOR_ID, ASEM_RAW_CAN_SU=
+B_DEVICE_ID_BIS),
+                 .driver_data =3D (kernel_ulong_t)&plx_pci_card_info_asem_d=
+ual_can,
+-        },
+-        { }
++        }, {
++        }
+ };
+ MODULE_DEVICE_TABLE(pci, plx_pci_tbl);
 
-Without the prefix it requires guessing what was the submitter intent.
-Most patches that go through IWL receive additional round of testing on
-real HW too, thanks to our VAL.
-Patches that go straight to net are just merged faster.
-As intel ethernet maintainer, I want our code tested more, instead of
-merged faster (in most cases).
+>  };
+>  MODULE_DEVICE_TABLE(pci, plx_pci_tbl);
+>
 
-> 
->>>
->>>    drivers/net/ethernet/intel/i40e/i40e_adminq.h | 2 +-
->>>    drivers/net/ethernet/intel/iavf/iavf_adminq.h | 2 +-
->>>    2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> but look at these file names. There is no "iwl" anywhere in
-> the names!  :(
-> 
-> regards,
-> dan carpenter
-> 
+regards,
+Marc
 
+--=20
+Pengutronix e.K.                 | Marc Kleine-Budde          |
+Embedded Linux                   | https://www.pengutronix.de |
+Vertretung N=C3=BCrnberg              | Phone: +49-5121-206917-129 |
+Amtsgericht Hildesheim, HRA 2686 | Fax:   +49-5121-206917-9   |
+
+--v5gtri26mw6juc6y
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSl+MghEFFAdY3pYJLMOmT6rpmt0gUCafHK+wAKCRDMOmT6rpmt
+0kuPAP4rY0fDutYzl1X17t0y+XEGDgmxOmjPiXuxZCBfayCaXgD7BrMtvC4i+l07
+M4r5isb3cwO71VZn6lO9ZL8xNJtpyAo=
+=hO9H
+-----END PGP SIGNATURE-----
+
+--v5gtri26mw6juc6y--
