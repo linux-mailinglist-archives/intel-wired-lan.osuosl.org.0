@@ -2,112 +2,128 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id gMANFpbc8WnKkwEAu9opvQ
+	id +NBPCguJ82md4wEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 12:25:26 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 18:53:31 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 192F2492CC6
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 12:25:26 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 975D64A60B2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 18:53:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AEC3961539;
-	Wed, 29 Apr 2026 10:25:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A255442BBC;
+	Thu, 30 Apr 2026 16:53:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NcrNMFOm8OXM; Wed, 29 Apr 2026 10:25:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fnU8kb4aWuaj; Thu, 30 Apr 2026 16:53:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DBACF60DBC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D9E7642BC0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777458323;
-	bh=wFXSuTbArLWA6KgK84tVAXunsrSDHkBByEg9Ue3Lwfs=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1777568007;
+	bh=kGaorEyZYwXUrpqtvF2wYxBfD162OIEpEP/P+Q+kjPA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=79+kvdQAoQUNCJWLTqmH1o2CynAemkvnt3IUmPMxPQ+Gp04F1yZoSG6NLcDTSbB0Y
-	 Dj7JFroJE6erQ70TL1n2nd1lJLjaeOX3k5ZDiAaZRjs7wzQ6MzUTapRBCvSEOo8z4i
-	 RfiF9ob5Lhn4BNN54z2PzJxrm77sH2id65Q7PjPIn6YWlyo196giSObHFRl596zc77
-	 d+BK5wHhPoU+Aj/Sa49N37XgYu9i2V+pTdGzrf4QhWQ7g28YQ23V3wennQFOxhZ96/
-	 k5XMXnL8CqnOfSAGOFg6KBVH8IZCXbPCSIB0eunuAj+eJ7lH2EAz1jHqAlGj33zb/3
-	 hhXrA/jem5bzQ==
+	b=GRhc5WZqo1HLyp4Klg8RzGXgc4WA/M3PRJ6v9VynhiqsXtf43LO1w0jkVbSdYewcm
+	 WtSSS4uF9nDyWX+FbAuuBbI70CHx4WUQJyRHo7DvKRMQFIHTlFEmI7lOvZ0251D9Hb
+	 Z2ElxFn6dq/45oiRtR1WRmbybtNzk03b4qJZGFzufKCApMXwjbIXtpiipBF/ubsfh3
+	 7iBHOkRLn7XeOvuHNgjx7Labyvu+Vl6/G+DjWWv+VhW47zB6CI5x6USkZfCkLi0Yde
+	 Q4WzCmrCAdAhODDtKpCPKpyh6PNW3d3VLF4N26qTQ9CmvcM81dOtwv8uKBnW7aLZmu
+	 n6mCZ5G7YwPmg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DBACF60DBC;
-	Wed, 29 Apr 2026 10:25:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D9E7642BC0;
+	Thu, 30 Apr 2026 16:53:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 6AF5F231
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 3E01E231
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5CCAB42031
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2FDF881A34
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Hzm0IaLUVMnk for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Apr 2026 10:25:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=jtornosm@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 50FBB4202D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 50FBB4202D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 50FBB4202D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:21 +0000 (UTC)
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-133-Jg18yUZpOsORwEPjjFjR5w-1; Wed,
- 29 Apr 2026 06:25:16 -0400
-X-MC-Unique: Jg18yUZpOsORwEPjjFjR5w-1
-X-Mimecast-MFC-AGG-ID: Jg18yUZpOsORwEPjjFjR5w_1777458314
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C2C381800366; Wed, 29 Apr 2026 10:25:14 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.44.32.45])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 421881800446; Wed, 29 Apr 2026 10:25:09 +0000 (UTC)
-From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-To: netdev@vger.kernel.org
-Cc: intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- aleksandr.loktionov@intel.com, jacob.e.keller@intel.com, horms@kernel.org,
- jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
-Date: Wed, 29 Apr 2026 12:24:26 +0200
-Message-ID: <20260429102426.210750-5-jtornosm@redhat.com>
-In-Reply-To: <20260429102426.210750-1-jtornosm@redhat.com>
-References: <20260429102426.210750-1-jtornosm@redhat.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JoGyohurvDRP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Apr 2026 10:25:02 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::32b; helo=mail-wm1-x32b.google.com;
+ envelope-from=error27@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 590CD819F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 590CD819F6
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
+ [IPv6:2a00:1450:4864:20::32b])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 590CD819F6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 10:25:02 +0000 (UTC)
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4852a9c6309so112428565e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 03:25:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777458300; x=1778063100;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kGaorEyZYwXUrpqtvF2wYxBfD162OIEpEP/P+Q+kjPA=;
+ b=UiAcn90JQyRNJWkLEwsBX0sZmkcULfnWq6StwDlbjOObAYeII/GpTxAMt49/JWoq5s
+ QNM+EcRBcEyeWN/4iUwIA64xMOErJS9uF2wfV+WKKwzu+oDgvd7PNCmSYTFsWsm7ryIe
+ rlbkO4vIk7xLfNIMVBPP/nweC81ImvC8ytJAIu+7FJOGoum8Vja9B92Jfgjj85B64UDM
+ fgYijyvspFm4FKMHFps2OFh2FI+DeAdjxJ0ntP2IENL16EP6fvWNl6ySsaZHvsvvrLYX
+ QuIgM6zWBK3svmkGxpafRbclrRm7yKRcmOzXjS37bLboRGHtsnYJ7bReMtP5/sb7p1RW
+ vyuA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+RG4jnsRBGXQBavJlPO2KsaXahKBcrv77YbDwoE/6w6jjhYG2olmMzvoW6uqmpmMN7PvVI6YXtVkT/9DKZVFs=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyHmCbdys5y/NAl4S51mV2JRm2rq+000Rwy7DwbLxBC+2AwFXOj
+ xjFTsJQx2jMD0c3dojrQkrfuR3Oo/30ItwDQV3A6FgS7gbkEBUqgpBrZ
+X-Gm-Gg: AeBDievJM6HsoDlajgv4pj5uMskGbULJGw7vgX3RLjfx7UkAEYXNUAwubHOfC6WpuQh
+ oCosK53WZqNh+OnDLRh0SCuT1rxsJQo3GCZfu1gmknQrmALb1ZcBr/w1FhCc7/DgCtXACmkwh7n
+ jW9UVJBYjOFobqvb6Iu0SS1lvut0AEAmlulhPuAkrQvankbJHmoO65wOBix4AktmRYKAoi1HvL6
+ becpOKkDBUGnImI91Fh638VHz50zKDwDMPjOKK61vR5cTXBJ2+t/lxnLM+IVd7bEihcNYZH9qmF
+ i5mvZQTUq/M9xp+OkPkmaQI+I8WAHKyoiLho5urRtN4fKUoXH25AwabV/pgDVFHA8/JXwGmzl78
+ 2XsnFDj4v/Z2fI3/2L8ZxyDq57sGQDBgHwtceL5eeXxY9+QvUXEViwlGWFwnX2sIDCpwY6AkTru
+ Fy/YZRCLkFvdAVFcWvdWQCsrBOz5PHJFko7wHQRKum
+X-Received: by 2002:a05:600c:1c20:b0:489:1aed:1658 with SMTP id
+ 5b1f17b1804b1-48a77b241admr115999145e9.23.1777458299919; 
+ Wed, 29 Apr 2026 03:24:59 -0700 (PDT)
+Received: from localhost ([196.207.164.177]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48a7b9116efsm18185095e9.4.2026.04.29.03.24.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Apr 2026 03:24:59 -0700 (PDT)
+Date: Wed, 29 Apr 2026 13:24:55 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Jakub Raczynski <j.raczynski@samsung.com>, netdev@vger.kernel.org,
+ kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+Message-ID: <afHcd7BfFx8WzpMn@stanley.mountain>
+References: <CGME20260428103757eucas1p132f3f1123fae21d596a51cbdce72c931@eucas1p1.samsung.com>
+ <20260428103653.3539239-1-j.raczynski@samsung.com>
+ <ef61b770-ebf4-406a-90a0-8a49aba02aee@intel.com>
+ <afDL02Z4QV6G0UxF@stanley.mountain>
+ <b0a706e1-2494-40b4-836f-f5d32c6b0fef@intel.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: h2IKjYliYAMhDoBdBlA20gyZSu1qVZ7wj9aBy105ReA_1777458314
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b0a706e1-2494-40b4-836f-f5d32c6b0fef@intel.com>
+X-Mailman-Approved-At: Thu, 30 Apr 2026 16:53:24 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1777458320;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wFXSuTbArLWA6KgK84tVAXunsrSDHkBByEg9Ue3Lwfs=;
- b=fGIk0aY7JlyGgocQBwmZHSUx12ova1Wi1sI/V3gXa7VhWoZy0gS92TYyyfmEUlREitOXFy
- PPisRoSOIAlti3TdvwPwkD2wkeGux+MgycLaTjo69E2i+mIX+W6qVIUueioy2mV04XbrTv
- W69/luIoXpAEwd39ITVvz2pysHKGyM8=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fGIk0aY7
-Subject: [Intel-wired-lan] [PATCH net v5 4/4] ice: skip unnecessary VF reset
- when setting trust
+ d=gmail.com; s=20251104; t=1777458300; x=1778063100; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=kGaorEyZYwXUrpqtvF2wYxBfD162OIEpEP/P+Q+kjPA=;
+ b=sI2k5WJPsfzuUvDBawy45z2zS9GXxoCjqDPAUsY0qTQRrn1ZCAZQzsyWtqra/0X0iA
+ PCqlHgbH3gpwzS629ndJylu6mrkbWaB2J2LyfImM1DRdo8WsDpMOILwevdvCKaFOK47O
+ gL2q9JYXUbZmFLxKOGH7FjjVfu5PvejoKGwun++5D2wYbxjznDqbwE34Xl016UqWt95g
+ LISA19c06QhfreeGrk54ANGskd0eQy921kaBgEdh9S9LdFzvKPh8ybHcSuHe4ijNTjHd
+ xna7yllGAgBZZFU/0iqPxi0f6U7wSxTv/ZEaIGME9ONu7Sh8t3fs7piPd5WjjJnAadO4
+ 063w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20251104 header.b=sI2k5WJP
+Subject: Re: [Intel-wired-lan] [PATCH v3 net-next] net/intel: Replace manual
+ array size calculation with ARRAY_SIZE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,137 +138,121 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 192F2492CC6
+X-Rspamd-Queue-Id: 975D64A60B2
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.79 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_CONTAINS_FROM(1.00)[];
+X-Spamd-Result: default: False [0.39 / 15.00];
+	DATE_IN_PAST(1.00)[30];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS(0.00)[m:przemyslaw.kitszel@intel.com,m:j.raczynski@samsung.com,m:netdev@vger.kernel.org,m:kuba@kernel.org,m:linux-kernel@vger.kernel.org,m:kernel-janitors@vger.kernel.org,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:jacob.e.keller@intel.com,m:horms@kernel.org,m:jesse.brandeburg@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jtornosm@redhat.com,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,sashiko.dev:url];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FORGED_SENDER(0.00)[error27@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	MISSING_XM_UA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[error27@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	NEURAL_HAM(-0.00)[-1.000];
+	RCPT_COUNT_SEVEN(0.00)[7];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	NEURAL_HAM(-0.00)[-0.999];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	RCVD_COUNT_SEVEN(0.00)[9]
 
-Similar to the i40e fix, ice_set_vf_trust() unconditionally calls
-ice_reset_vf() when the trust setting changes. While the delay is smaller
-than i40e this reset is still unnecessary in most cases.
+On Wed, Apr 29, 2026 at 11:01:46AM +0200, Przemek Kitszel wrote:
+> F:	Documentation/networking/device_drivers/ethernet/intel/
+> F:	drivers/net/ethernet/intel/
+> F:	drivers/net/ethernet/intel/*/
+> F:	include/linux/avf/virtchnl.h
+> F:	include/linux/net/intel/*/
+> 
 
-Additionally, the original code has a race condition: it deletes MAC LLDP
-filters BEFORE resetting the VF. During this deletion, the VF is still
-ACTIVE and can add new MAC LLDP filters concurrently, potentially
-corrupting the filter list.
+Fine.  Thanks.  I can add this.
 
-When granting trust, no reset is needed - we can just set the capability
-flag to allow privileged operations.
+> Perhaps instead of you managing your script, and everybody else doing
+> the same, there could be some extension added to MAINTAINERS file to
+> encode the prefix?
+> 
+> In our case, the prefix itself is a message for net maintainers:
+> iwl or iwl-next means the patch will go first via our tree, and be sent
+> later as a PR for net/net-next.
+> 
+> Without the prefix it requires guessing what was the submitter intent.
 
-When revoking trust, we only need to reset (conservative approach) if
-the VF has actually configured advanced features that require cleanup
-(MAC LLDP filters, promiscuous mode). For VFs in a clean state, we can
-safely change the trust setting without the disruptive reset.
+We don't have any intent.  So long as it gets merged who cares how it
+happens?
 
-When we do reset (MAC LLDP case), we fix the race condition by resetting
-first to clear VF state (which blocks new MAC LLDP filter additions), then
-delete existing filters safely. During cleanup, vf->trusted remains true so
-ice_vf_is_lldp_ena() works properly. Only after cleanup do we set
-vf->trusted = false.
+> Most patches that go through IWL receive additional round of testing on
+> real HW too, thanks to our VAL.
+> Patches that go straight to net are just merged faster.
+> As intel ethernet maintainer, I want our code tested more, instead of
+> merged faster (in most cases).
 
-When we don't reset, we manually handle capability flag via helper
-function, eliminating the delay.
+All of this scripting could be done on your end.  No matter how many
+dozens of people you educate to add a different prefix it's always
+going to be less reliable than just scripting it on your side.
 
-Fixes: 2296345416b0 ("ice: receive LLDP on trusted VFs")
-Signed-off-by: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
----
-v5 Address the comments from Aleksandr Loktionov:
-   - Error handling when ice_setup_vf_trust is called is not necessary
-     because ice_vf_clear_all_promisc_modes is not used due to the
-     conservative approach to solve AI tool review concerns 
-   - kdoc should end with '*/' not '**/' (new function)
-   Address AI review (sashiko.dev) from Simon Horman:
-   - Adopt a conservative approach checking multiple conditions before
-     skipping reset: MAC LLDP filters, promiscuous mode
-   - Simplify helper function to only handle capability flag
-   - No need to export ice_vf_clear_all_promisc_modes
-v4: https://lore.kernel.org/all/20260423130405.139568-5-jtornosm@redhat.com/
+Anyway, here is the relevant bit from my script.  The other subsystem
+that requires these is BPF but I only send bug reports for BPF issues.
+You also need to do a git fetch of all the trees with subsystem rules.
 
- drivers/net/ethernet/intel/ice/ice_sriov.c | 33 +++++++++++++++++++---
- 1 file changed, 29 insertions(+), 4 deletions(-)
+regards,
+dan carpenter
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 7e00e091756d..3c64ed1b41a8 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -1364,6 +1364,23 @@ int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac)
- 	return __ice_set_vf_mac(ice_netdev_to_pf(netdev), vf_id, mac);
- }
- 
-+/**
-+ * ice_setup_vf_trust - Enable/disable VF trust mode without reset
-+ * @vf: VF to configure
-+ * @setting: trust setting
-+ *
-+ * Update VF flags when changing trust without performing a VF reset.
-+ * This is only called when it's safe to skip the reset (VF has no advanced
-+ * features configured that need cleanup).
-+ */
-+static void ice_setup_vf_trust(struct ice_vf *vf, bool setting)
-+{
-+	if (setting)
-+		set_bit(ICE_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
-+	else
-+		clear_bit(ICE_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps);
-+}
-+
- /**
-  * ice_set_vf_trust
-  * @netdev: network interface device structure
-@@ -1399,11 +1416,19 @@ int ice_set_vf_trust(struct net_device *netdev, int vf_id, bool trusted)
- 
- 	mutex_lock(&vf->cfg_lock);
- 
--	while (!trusted && vf->num_mac_lldp)
--		ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
--
-+	/* Reset only if revoking trust and VF has advanced features configured */
-+	if (!trusted &&
-+	    (vf->num_mac_lldp > 0 ||
-+	     test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states) ||
-+	     test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))) {
-+		ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
-+		while (vf->num_mac_lldp)
-+			ice_vf_update_mac_lldp_num(vf, ice_get_vf_vsi(vf), false);
-+	} else {
-+		ice_setup_vf_trust(vf, trusted);
-+	}
- 	vf->trusted = trusted;
--	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
-+
- 	dev_info(ice_pf_to_dev(pf), "VF %u is now %strusted\n",
- 		 vf_id, trusted ? "" : "un");
- 
--- 
-2.53.0
+# Is this networking?
+if grep -q netdev $MAIL_FILE && ! grep -q wireless $MAIL_FILE ; then
+    if [ "$FIXES_COMMIT" != "" ] ; then
+        if git merge-base --is-ancestor $FIXES_COMMIT net/main ; then
+            TREE="net"
+        elif git merge-base --is-ancestor $FIXES_COMMIT net-next/main ; then
+            TREE="net-next"
+        else
+            TREE="net-other"
+        fi
+    else
+        TREE="net-next"
+    fi
+fi
+
+# Is this Intel Wireless
+if grep -q -w /iwlwifi/ $MAIL_FILE ; then
+    if [ "$FIXES_COMMIT" != "" ] ; then
+        if git merge-base --is-ancestor $FIXES_COMMIT iwlwifi/fixes ; then
+            TREE="iwlwifi"
+        elif git merge-base --is-ancestor $FIXES_COMMIT iwlwifi/next ; then
+            TREE="iwlwifi-next"
+        else
+            TREE="iwlwifi-other"
+        fi
+    else
+        TREE="iwlwifi-next"
+    fi
+fi
+
+# Otherwise if the commit is only required in next then put [PATCH next]
+# in the subject.
+if [ "$TREE" == "" ] ; then
+    if [ "$FIXES_COMMIT" != "" ] ; then
+        if ! git merge-base --is-ancestor $FIXES_COMMIT origin/master ; then
+            TREE="next"
+        fi
+    fi
+fi
+
 
