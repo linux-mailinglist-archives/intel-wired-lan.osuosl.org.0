@@ -2,143 +2,120 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mMJ8LT5d8WlrgQEAu9opvQ
+	id OFu9Ilti8WnhgQEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 03:22:06 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 03:43:55 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67B0E48DEF2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 03:22:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DA51B48E0F9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Apr 2026 03:43:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B755283E41;
-	Wed, 29 Apr 2026 01:22:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5142D83E40;
+	Wed, 29 Apr 2026 01:43:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PyFf_mip0EfD; Wed, 29 Apr 2026 01:22:03 +0000 (UTC)
+ id jWwCfszogYSy; Wed, 29 Apr 2026 01:43:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2C0A083E3C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9759383E41
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777425723;
-	bh=6f4tckrLY3J7+4J32u1EKG+jNDMEtwYZPpMg9Iuh0zQ=;
-	h=References:In-Reply-To:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From:Reply-To:From;
-	b=SnYJzSB+VJuFdsQLeTB+c+J2Slvgf8Q2Na1XLP0CeguKdWmQr9DLycUv2GUdYGIRU
-	 f2NWjcJOPnkyIKExSvjQCHJpah+wuZ6XT+8jg/tMXDGaEQWOn+EOz8+5Pnclcu3ojo
-	 q+V6T97KvAZQ+MdhBtMXxkhDSVK1d3A2bxJ8Ets/jOc58qHkpHt+ST6r3cYoCMdxUv
-	 r2WTJaSEBOZscKL9vPw5gcBNrwhhZHSca8XNvBV6kSxAMMppZ8JmBNTssP1emNzczQ
-	 5YQqt4FEwac6EPhZ+kP8zIVrYNpHTYDUron55XhcRBu/soGbnkcmerFM4nFZdtBxUB
-	 m94BX4rvTA7Mw==
+	s=default; t=1777427032;
+	bh=rpU0cyQ60DgnqUIdzfSUqCTUqThzrhySmXUiZxabndk=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=40XhCO4RzbvadqfdIWy/kqCtWOQD9vwO3eOkMLgjAX55lxV84QkA/u77JFR9vAcZ4
+	 lZhr8qoW02kocDVM/1SzR3NWNj/sZpXR9k0t9v5amPFDkofnp5cRdIpQYwcZpdF+JP
+	 4IkVBXOoPEPYul7upsIQ8tFOEz2y6b0liiB/+RUYnzvcJKbtNYcid2XbsWwiM75kPe
+	 +gvw+elR/1Tw0+ehgttQCc9zDXKFY4n3RoRl2eFoUEY7/BQuE3cxaRpG2TR2R+lFd/
+	 z79iA+5hA96QXNYpQUwutnUw5M97yDzSETD2FtGOrUHj/H8xqm/31EYARBpVoW3Y8A
+	 RNfTQ4iGRj/WA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2C0A083E3C;
-	Wed, 29 Apr 2026 01:22:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9759383E41;
+	Wed, 29 Apr 2026 01:43:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 5681D231
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 01:22:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 471D023D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 01:43:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3F7E540854
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 01:22:02 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2BD206110B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 01:43:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2pgxHxC8cF1T for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Apr 2026 01:22:01 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sbRgFpv12BbB for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Apr 2026 01:43:50 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::22c; helo=mail-oi1-x22c.google.com;
- envelope-from=vincent.chen@sifive.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5F88840846
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5F88840846
-Received: from mail-oi1-x22c.google.com (mail-oi1-x22c.google.com
- [IPv6:2607:f8b0:4864:20::22c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5F88840846
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Apr 2026 01:22:01 +0000 (UTC)
-Received: by mail-oi1-x22c.google.com with SMTP id
- 5614622812f47-479d37e7d7fso3085805b6e.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Apr 2026 18:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777425720; cv=none;
- d=google.com; s=arc-20240605;
- b=C1zg+t4SwOP5nhJKPNvgWE2NRdJpMizNxKQvdFPcSgiOaTcwt09SnmNLlr5J+kb/Uh
- yEo3HTzXJfdS9kdjzdA8ki+7tHos0tCY2uugzocvLzPJzNM1GSL1+JHKgznFSt3cTGPF
- 7IgNHlg41bcC0UnTeXJhBBe4FZqnkA5EaOKrEyuTIWkLapjcbIGGa5mwdTWdQEDje/qD
- s+4FQZSsSu96FMD/cqLf+DpsmtCe1A3IYksAKdc8NRgSJL7mokKFvOeHylXhPjPgyswh
- H3gPFc4e0acwmV22OeXED/zU6SHMkE9OmKA4b/KX8hCiarSHnJQNg/snWp+IzqBoKQ4u
- 9Jrw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=6f4tckrLY3J7+4J32u1EKG+jNDMEtwYZPpMg9Iuh0zQ=;
- fh=ciAhGXkhwEsl2eBs7CpTrKf1Jy+bThlyHqEeeirjHME=;
- b=lCzX2txWgVVHNGm+aDjYQS1tP2IjTnBYEiLFFrlSRH8mRu1ZM+OaE6UQ4knMD/g7+P
- t6IFGxtssCGwaLrzeTvxaccFjk3PdRRQgqTNC1BDG1c7TVPBivSYW4/+txJXPbd+2Axu
- ENnwXLT+wg1vsql8BiEAQMqYF5OBnnDr5h8ZMBEtsIdkUXqZ2bUMgiu4rfsgqTkbSZO/
- jMlfFFIyRuCcV7s2yOHvcEk9RlL8j0Jj7/IOPZoT64jDB1lsQNUjNI2Ukam7WvqvKlIU
- 8iaMR2Kt9DT+bYnsDEXfM0asiJj062rT86SL3BaIbpkEmRV/CFoEnoYdPERa4kHkZLKE
- BxAA==; darn=lists.osuosl.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ client-ip=2607:f8b0:4864:20::112e; helo=mail-yw1-x112e.google.com;
+ envelope-from=tactii@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2DBC36110A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2DBC36110A
+Received: from mail-yw1-x112e.google.com (mail-yw1-x112e.google.com
+ [IPv6:2607:f8b0:4864:20::112e])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2DBC36110A
+ for <intel-wired-lan@osuosl.org>; Wed, 29 Apr 2026 01:43:49 +0000 (UTC)
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-79ea87af213so7069787b3.0
+ for <intel-wired-lan@osuosl.org>; Tue, 28 Apr 2026 18:43:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777425720; x=1778030520;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=6f4tckrLY3J7+4J32u1EKG+jNDMEtwYZPpMg9Iuh0zQ=;
- b=GyRP+qM9tnjekQ5pOo5wyge7bWU9DPx4UUeBfpOcRPrNJgQu4q6vTF9MMBqigPnVDK
- yoW9Qedltx+rRPGkgnA0ET51JFkNssyDXCZakofRcJAGqwQ7L6MpewOQDVNLWR1rlD0b
- iEgGOtXsSyusZJIJasjGxHYyk1y8xeeILSylzie1X1vuBGpcpCYcqeFt046EoE+RNGIm
- GjtlzjHfR/QgCmYYLZ7G9qsTpNEu9YrkyG1coc2HnVX3nT2ehi9RUAea2FIVfvakuFeY
- s06D1ITh/2nJf4dsq5UxLyF8JNxFaFdzN5Zw9BWfXmBRLNpgwom3ofzzN8qZ7UlxZ1l4
- d3gw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+08M7V38jfSHz/ycwlVolTgVqssJzJ1eJPLpe6SDAC6H0ACH9xfdiNKJYC89LQET5Lywt00DB7DwWpxH95pBs=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Ywbz9RLj+o22MMVBdOcQZilDbOnxyTcGqQJEbcHdOps3NEpSVvk
- EcGEzktivy1tuvHsLN7XSHNwDRnMShwycSpiAdaPS/c7ldLUi8P3CmfMpxiRdzDkF+gBJToE/Lq
- CW2K7We7Cx42YzdclVWhejgzc09KqI6z1jpB3QE0CPA==
-X-Gm-Gg: AeBDieu+6DULcZRH6QYNS2ripKFfzXGvyuZTsnrz6j+mYZD7LVSkpXS1fb/v82YVvgF
- 8ZAUFG8FSl9FlzeKya6wYHEC9kUnJ5GYnLPGvOqDt4vYId0gxLy3uU9VXGRp9u/+bWmCnlaVU+r
- oTCboSA5ghaAo3ieZJ+xK9qslOdq1JFYFxEl+nUTkOwQUfcO1Ae74u2oOWsMWszlicr8t2wlKcu
- f9g6n8cJ2akRFsxYiiEHMMQM0e7sxu2B0k3WDNhkvzBfn36zn4J382EaOh8lu/jA+5Y/CMDGcsf
- SBRDOJZ99PttlovGxqVv
-X-Received: by 2002:a05:6808:1929:b0:450:bbed:7a75 with SMTP id
- 5614622812f47-47c28f816bcmr3004473b6e.28.1777425720132; Tue, 28 Apr 2026
- 18:22:00 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260427031158.2665916-1-vincent.chen@sifive.com>
- <f9fbc8c3-3b1d-456c-a389-4f95bf07822a@molgen.mpg.de>
-In-Reply-To: <f9fbc8c3-3b1d-456c-a389-4f95bf07822a@molgen.mpg.de>
-Date: Wed, 29 Apr 2026 09:21:49 +0800
-X-Gm-Features: AVHnY4Ldv6uyCJi_ZE8aGxC2v2tla6lK0w3XQ3_fjdXzKK6Ue5badKUDFLkz3tE
-Message-ID: <CABvJ_xhLj+GKpsT2wDNXoS_oWJoydR0h0qxa3BSxSTCvC2-bVA@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, 
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com, 
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org, 
- netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1777425720; x=1778030520; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1777427028; x=1778031828;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6f4tckrLY3J7+4J32u1EKG+jNDMEtwYZPpMg9Iuh0zQ=;
- b=StMbxrOf1QqnlVRa3eDjalxLLscAirVnPLea/HlBQbU4ZvLLpGqX8/UbWvhS6kW4pl
- PJQHdR27IErdH74cZEtsFiRVDyF8now8+go915DXWBoXJnJwrScenPGvjHU3F8hWMwkY
- dg2yi7eYY53iwtqp6ngOj3Q3/09ok8Ijo/LSl2o/ZhtyZNvaB+OnYUNPsaaQrm7ungiB
- eNVDYgf3hHGZw3VkvLw3i1xceZQQIIHyqPGqNYmkYXSxV3eAlhy9W8FpIMvekaT3QhRJ
- x68oEe0TlkBqPbQEoHuujXXQIJGCbTb4jHhOCjwhYpWqIdc3qO/y/Af1dm8GXAwg91XQ
- 989w==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=sifive.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=rpU0cyQ60DgnqUIdzfSUqCTUqThzrhySmXUiZxabndk=;
+ b=qDfkyXcNYF4kPrKeFUEyg+ToEvZg2yXxtOuYcQxMJhf47dQPU6q+3z6wGFCztK87dy
+ IJ2ktKnU3l7Qx3ZxnrwTNhxC5sLF1cuhg2u/j+E4tbcIJmReGYklt3kCe3nW6kDj1CHD
+ irf3Lu3FiGI70yB82tEDjLT06DkclYNnzZnMntUCS1h3V8TeErHN1nP0H8ujMvpiKlq5
+ 1WN5MMViC+xFQ9jueDYD/e7afXB03ZgCVYpQbUQcZagb5Si2OQmTU6axUNfLQma6gFFX
+ RHSv++lMc3mhObHLiudLjebta03bp1aA0qP/e/NbGvmDzZkkzvwpcRJf/mVzf+TAHNdA
+ jj7w==
+X-Gm-Message-State: AOJu0YxzmQHJcvKLf7HTEBQ0byNKngArY+ognVp+iK/2qywSw7NWw3av
+ pOn1t64scGUUmXzAm7c13dXLsIUE/ZEqSf+CbOrfP6y77+/mGsxUGT1Ei3pIf6lMQR4=
+X-Gm-Gg: AeBDiev/+GMXAb7xAoKg3DOqOf5DwbeMXSEhDEnhHUZuKqSdPv4O3XGpZHERxPqNyvV
+ mq8H+bQkcC+SJyD2/KODcBkDKPx3fAA5nN1RU9le2x7e1FLr9gEm7ezVAXqih13GH6DvkIi4W4q
+ VeYhyROz4cRQ2jLgqpiUTB7sbVW4zF/TfQMRcuDKXPF3nunDvjkOW3uOjwvFJA1pJ3dNYwRNpbD
+ +w6FJ/H6IMqhToEjp0ejrVomFfS+dgDitQFeW3kJRoAduoGHhJlQXPCsOJfOnsIeOBc5hl6UUwx
+ f3NtSs7Pwao2VGCNWoSIQopZXbC5Y1/YUPY9Ar67yBoty8hCENP08U2E6F/0a5P8kTvfZWoDGJF
+ osSMEIIpNcuXNDEPyxlrHzFvb+zFnwUzZadsGFj0HcFBkNx7E8dwM71jXvSl1mYOgnQA3TwkMiI
+ 00jt/j+qYg+CX7/2HyCStJoAkpW1btZtLWRjU=
+X-Received: by 2002:a05:690e:1186:b0:654:3fca:3515 with SMTP id
+ 956f58d0204a3-65bff419a5cmr851173d50.30.1777427028327; 
+ Tue, 28 Apr 2026 18:43:48 -0700 (PDT)
+Received: from devobuntu.lan ([2600:6c5c:6b00:ba4:d1cd:6e75:6fa2:1ccf])
+ by smtp.gmail.com with ESMTPSA id
+ 956f58d0204a3-65bff52d232sm600268d50.9.2026.04.28.18.43.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Apr 2026 18:43:47 -0700 (PDT)
+From: Matt Vollrath <tactii@gmail.com>
+To: intel-wired-lan@osuosl.org
+Cc: Matt Vollrath <tactii@gmail.com>,
+ Aleksander Loktionov <aleksandr.loktionov@intel.com>,
+ Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue, 28 Apr 2026 21:43:25 -0400
+Message-ID: <20260429014325.19136-1-tactii@gmail.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1777427028; x=1778031828; darn=osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=rpU0cyQ60DgnqUIdzfSUqCTUqThzrhySmXUiZxabndk=;
+ b=ow5C2CevU6o6uS0XO7ofM7qTZkt1WeBl5A4rvQ0mpXldXrW/XPDrbPVUDnWHSbmg0o
+ sdYOyoA2IpjJGv8iPahGco+281m3McpPPIcIKIiCmDFmal6HeIFL/n3T02nBaEeR8ezX
+ WS/UAbUq/5RE0XwruqpPyWMbvnznChbj75IGjaboxUOliWF7kGJXO4alBCKqvwPzEzKy
+ 8TnTeLuO2l0IARvsGQQccMwEuUqFzcZNgvutEcUgk029LjilY5ijkKc1XVskrrXh9F2k
+ ZzuNM7qBMSzZILItn1JRFO5J4CuXjUzZnjijBApquQDfdfEREcZuqvjXdbYiiYy/LqbW
+ r/+Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=sifive.com header.i=@sifive.com header.a=rsa-sha256
- header.s=google header.b=StMbxrOf
-Subject: Re: [Intel-wired-lan] [RFC PATCH] ice: allow creating VFs when
- !CONFIG_ICE_SWITCHDEV
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20251104 header.b=ow5C2Cev
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] e1000e: Avoid DMA re-mapping
+ on RX copybreak
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -151,155 +128,201 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Vincent Chen via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Vincent Chen <vincent.chen@sifive.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 67B0E48DEF2
+X-Rspamd-Queue-Id: DA51B48E0F9
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.29 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:google.com:reject}];
-	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:intel-wired-lan@osuosl.org,m:tactii@gmail.com,m:aleksandr.loktionov@intel.com,m:pmenzel@molgen.mpg.de,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:pmenzel@molgen.mpg.de,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[mail.gmail.com:mid,mpg.de:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
-	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	SUBJECT_HAS_EXCLAIM(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	HAS_REPLYTO(0.00)[vincent.chen@sifive.com];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.916];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FORGED_SENDER(0.00)[tactii@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[10];
-	MISSING_XM_UA(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,osuosl.org:dkim];
+	FROM_NEQ_ENVFROM(0.00)[tactii@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[gmail.com,intel.com,molgen.mpg.de];
+	NEURAL_HAM(-0.00)[-0.891];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_THREE(0.00)[4];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
 
-On Tue, Apr 28, 2026 at 5:45=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
->
-> Dear Vincent,
->
->
-> Thank you for your patch.
->
-> Am 27.04.26 um 05:11 schrieb Vincent Chen via Intel-wired-lan:
-> > Currently ice_eswitch_attach_vf() is called unconditionally in
-> > ice_start_vfs() and ice_reset_all_vfs(), which causes VF creation
-> > to fail when CONFIG_ICE_SWITCHDEV is not defined or switchdev mode
-> > is not enabled at runtime.
->
-> I=E2=80=99d add a blank line between paragraphs.
+This patch factors out DMA re-mapping for skbs which were recycled in
+the RX path due to copybreak or errors. There is only one path out of
+the e1000_clean_rx_irq() loop where the skb is consumed and DMA needs
+to be re-mapped, so don't unmap it before checking the conditions.
 
-This is a good suggestion. I will modify it in my next version patch.
+The buffer allocation loop is adjusted to not assume that DMA is
+unmapped, handling mapping errors gracefully.
 
->
-> > Fix this by adding switchdev mode checks at the call sites before
-> > calling ice_eswitch_attach_vf(), consistent with how
-> > ice_eswitch_attach_sf() is already handled in ice_devlink_port_new().
-> > Also remove the redundant check inside ice_eswitch_attach_vf() itself.
->
-> *Also* is a good indicator to make it a separate patch. I=E2=80=99d favor=
- this
-> in this case.
->
-OK, I will move the code snippet used to remove the redundant check
-inside ice_eswitch_attach_vf() to a separate patch in my next version
-patch.
+On systems with IOMMU enabled, the cost of re-mapping DMA is greater
+than the cost of copying data out of the ring buffer. When I use this
+patch and configure e1000e with copybreak=2048, my system with IOMMU
+completes RX roughly twice as fast under load.
 
-> > This is similar to commit aacca7a83b97 ("ice: allow creating VFs for
-> > !CONFIG_NET_SWITCHDEV") which fixed the same issue for the previous
-> > ice_eswitch_configure() API.
-> >
-> > Signed-off-by: Vincent Chen <vincent.chen@sifive.com>
-> > ---
-> >   drivers/net/ethernet/intel/ice/ice_eswitch.c |  3 ---
-> >   drivers/net/ethernet/intel/ice/ice_sriov.c   | 14 ++++++++------
-> >   drivers/net/ethernet/intel/ice/ice_vf_lib.c  |  3 ++-
-> >   3 files changed, 10 insertions(+), 10 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net=
-/ethernet/intel/ice/ice_eswitch.c
-> > index 2e4f0969035f..c709decb26d5 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-> > @@ -512,9 +512,6 @@ int ice_eswitch_attach_vf(struct ice_pf *pf, struct=
- ice_vf *vf)
-> >       struct ice_repr *repr;
-> >       int err;
-> >
-> > -     if (!ice_is_eswitch_mode_switchdev(pf))
-> > -             return 0;
-> > -
-> >       repr =3D ice_repr_create_vf(vf);
-> >       if (IS_ERR(repr))
-> >               return PTR_ERR(repr);
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/e=
-thernet/intel/ice/ice_sriov.c
-> > index 843e82fd3bf9..6a0b724e46f9 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> > @@ -484,12 +484,14 @@ static int ice_start_vfs(struct ice_pf *pf)
-> >                       goto teardown;
-> >               }
-> >
-> > -             retval =3D ice_eswitch_attach_vf(pf, vf);
-> > -             if (retval) {
-> > -                     dev_err(ice_pf_to_dev(pf), "Failed to attach VF %=
-d to eswitch, error %d",
-> > -                             vf->vf_id, retval);
-> > -                     ice_vf_vsi_release(vf);
-> > -                     goto teardown;
-> > +             if (ice_is_eswitch_mode_switchdev(pf)) {
-> > +                     retval =3D ice_eswitch_attach_vf(pf, vf);
-> > +                     if (retval) {
-> > +                             dev_err(ice_pf_to_dev(pf), "Failed to att=
-ach VF %d to eswitch, error %d",
-> > +                                     vf->vf_id, retval);
-> > +                             ice_vf_vsi_release(vf);
-> > +                             goto teardown;
-> > +                     }
-> >               }
-> >
-> >               set_bit(ICE_VF_STATE_INIT, vf->vf_states);
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/=
-ethernet/intel/ice/ice_vf_lib.c
-> > index de9e81ccee66..71595410174c 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-> > @@ -807,7 +807,8 @@ void ice_reset_all_vfs(struct ice_pf *pf)
-> >               ice_vf_rebuild_vsi(vf);
-> >               ice_vf_post_vsi_rebuild(vf);
-> >
-> > -             ice_eswitch_attach_vf(pf, vf);
-> > +             if (ice_is_eswitch_mode_switchdev(pf))
-> > +                     ice_eswitch_attach_vf(pf, vf);
-> >
-> >               mutex_unlock(&vf->cfg_lock);
-> >       }
->
-> The diff looks good.
->
->
-> Kind regards,
->
-> Paul
+Informal performance comparisons were based on Asus Gryphon Z97 which
+includes an I218-V and with a Xeon E3-1240 v3 in the socket. ktime_get()
+measurement was injected into e1000e_poll() wrapping the
+adapter->clean_rx() call. The total time spent in clean_rx() was divided
+by work_done to print the average time spent per buffer. iperf3 -R was
+used to saturate the RX path and awk was used for statistics. Control
+revision was set to 7.1-rc1 because iwl-next hadn't been updated yet.
+
+  rev     | iommu | copybreak | samples | mean (ns) |   stdev
+  7.1-rc1 |   off |         0 |    4748 |    453.72 |  155.82
+  7.1-rc1 |   off |      2048 |    4743 |    554.83 |  103.67
+  7.1-rc1 |    on |         0 |    4751 |   1139.22 |  150.56
+* 7.1-rc1 |    on |      2048 |    4737 |   1267.02 |  184.62
+   +patch |   off |         0 |    4739 |    456.30 |  146.33
+   +patch |   off |      2048 |    4739 |    538.56 |  132.97
+   +patch |    on |         0 |    4769 |   1165.97 |  140.19
+*  +patch |    on |      2048 |    4745 |    562.25 |  171.80
+
+No surprises here, IOMMU DMA ops are known to be expensive. For most
+users the kernel default is iommu=on and driver default is
+copybreak=256, so unless the workload is small packets, some tuning of
+either knob would be needed to see the full benefit of this change.
+
+The kludge of unconditional unmapping has existed since this driver was
+introduced in 2007[1], inherited from the e1000 driver which has since
+factored it out[2]. IOMMU tech was new at the time.
+
+[1] Commit bc7f75fa9788 ("[E1000E]: New pci-express e1000 driver (currently for ICH9 devices only)")
+[2] Commit 2b294b18689c ("e1000: perform copybreak ahead of DMA unmap")
+
+Assisted-by: Claude:claude-4-7-opus
+Signed-off-by: Matt Vollrath <tactii@gmail.com>
+---
+v3:
+* refactor unmapping bypass, use goto instead of redundant branch
+* remove Aleksandr's sign-off due to logic change
+* benchmark details
+* cite historic commits
+v2:
+* proofread description with Aleksandr
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 32 ++++++++++++++--------
+ 1 file changed, 21 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 7ce0cc8ab8f4..62bf85c768d6 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -663,6 +663,8 @@ static void e1000_alloc_rx_buffers(struct e1000_ring *rx_ring,
+ 		skb = buffer_info->skb;
+ 		if (skb) {
+ 			skb_trim(skb, 0);
++			if (likely(buffer_info->dma))
++				goto write_desc;
+ 			goto map_skb;
+ 		}
+ 
+@@ -680,10 +682,12 @@ static void e1000_alloc_rx_buffers(struct e1000_ring *rx_ring,
+ 						  DMA_FROM_DEVICE);
+ 		if (dma_mapping_error(&pdev->dev, buffer_info->dma)) {
+ 			dev_err(&pdev->dev, "Rx DMA map failed\n");
++			buffer_info->dma = 0;
+ 			adapter->rx_dma_failed++;
+ 			break;
+ 		}
+ 
++write_desc:
+ 		rx_desc = E1000_RX_DESC_EXT(*rx_ring, i);
+ 		rx_desc->read.buffer_addr = cpu_to_le64(buffer_info->dma);
+ 
+@@ -941,7 +945,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 		dma_rmb();	/* read descriptor and rx_buffer_info after status DD */
+ 
+ 		skb = buffer_info->skb;
+-		buffer_info->skb = NULL;
+ 
+ 		prefetch(skb->data - NET_IP_ALIGN);
+ 
+@@ -955,9 +958,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 
+ 		cleaned = true;
+ 		cleaned_count++;
+-		dma_unmap_single(&pdev->dev, buffer_info->dma,
+-				 adapter->rx_buffer_len, DMA_FROM_DEVICE);
+-		buffer_info->dma = 0;
+ 
+ 		length = le16_to_cpu(rx_desc->wb.upper.length);
+ 
+@@ -973,8 +973,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 		if (adapter->flags2 & FLAG2_IS_DISCARDING) {
+ 			/* All receives must fit into a single buffer */
+ 			e_dbg("Receive packet consumed multiple buffers\n");
+-			/* recycle */
+-			buffer_info->skb = skb;
+ 			if (staterr & E1000_RXD_STAT_EOP)
+ 				adapter->flags2 &= ~FLAG2_IS_DISCARDING;
+ 			goto next_desc;
+@@ -982,8 +980,6 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 
+ 		if (unlikely((staterr & E1000_RXDEXT_ERR_FRAME_ERR_MASK) &&
+ 			     !(netdev->features & NETIF_F_RXALL))) {
+-			/* recycle */
+-			buffer_info->skb = skb;
+ 			goto next_desc;
+ 		}
+ 
+@@ -1010,19 +1006,33 @@ static bool e1000_clean_rx_irq(struct e1000_ring *rx_ring, int *work_done,
+ 			struct sk_buff *new_skb =
+ 				napi_alloc_skb(&adapter->napi, length);
+ 			if (new_skb) {
++				dma_sync_single_for_cpu(&pdev->dev,
++							buffer_info->dma,
++							adapter->rx_buffer_len,
++							DMA_FROM_DEVICE);
+ 				skb_copy_to_linear_data_offset(new_skb,
+ 							       -NET_IP_ALIGN,
+ 							       (skb->data -
+ 								NET_IP_ALIGN),
+ 							       (length +
+ 								NET_IP_ALIGN));
+-				/* save the skb in buffer_info as good */
+-				buffer_info->skb = skb;
++				dma_sync_single_for_device(&pdev->dev,
++							   buffer_info->dma,
++							   adapter->rx_buffer_len,
++							   DMA_FROM_DEVICE);
+ 				skb = new_skb;
++				goto copybreak_done;
+ 			}
+ 			/* else just continue with the old one */
+ 		}
+-		/* end copybreak code */
++
++		buffer_info->skb = NULL;
++		dma_unmap_single(&pdev->dev, buffer_info->dma,
++				 adapter->rx_buffer_len,
++				 DMA_FROM_DEVICE);
++		buffer_info->dma = 0;
++
++copybreak_done:
+ 		skb_put(skb, length);
+ 
+ 		/* Receive Checksum Offload */
+-- 
+2.43.0
+
