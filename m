@@ -2,77 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id CHSrKGhK82ngzAEAu9opvQ
+	id aKKtH2pK82ngzAEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 14:26:16 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 14:26:18 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C8384A2BD1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 14:26:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DB504A2BDF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 Apr 2026 14:26:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7A0460FD9;
-	Thu, 30 Apr 2026 12:26:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1DD0F6179B;
+	Thu, 30 Apr 2026 12:26:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uJTUvvFR8uku; Thu, 30 Apr 2026 12:26:09 +0000 (UTC)
+ id xrI-1o1pZqoN; Thu, 30 Apr 2026 12:26:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 02F976179B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 965C061C1A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777551969;
-	bh=cG2dGev00flescZ6y5TU3H+rWJSgP4T65oPPI9TVdvg=;
+	s=default; t=1777551970;
+	bh=TKDljZ5Zu2iCNLZber9hYnJTEZa7j4BMIymWcM6yW9Y=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=0B5KyCKNg1l87u/YqWHUUJZR7/mwVSJMBjs9lsQs3twfQ4a37XXUuYJdv28FrEgZ8
-	 /Gb6ttRBKlkajk4IhxKdIi1xXVPk8P1MJA6ZRdRGWSdoxDI+1EtTmhKxeYNTxcsIoQ
-	 bIqJo9FKXRI1LiHyd+wRQ2e40PJCzIIjOiNPrK1uBsgwgXCWKKH06gNEKv0TweHrkY
-	 xsKyCIDsqROKhGboNm+Aye3Pv6xBm1sMRKqNLDR5j2rR3KsWkAsEeUt9rbhmf9LzHy
-	 Jn7x3+mQNrSbgx55YMzt5elF7YqCcIVihYb2MS/MunGIr69mJi6AjqLoI7sb0ERUlY
-	 hAAr6H5FaFc1g==
+	b=7UQ4hLl8FQJ7PsNiD9zeGG8K20UixYbdOKg3dnM0MOeOu14EsNc5fkVL3uVvlGiAu
+	 lNBpwaybyGEEnF+Kidmc3NNTNw1OsBK24qaeQp8Wikadr9XQ2FjfYLNfPN76YyjsWu
+	 aYIG8zyxFWvvzqsLQcIxR0lxqX2BF9HpOFXKQg5dPRKNQBSLikYphpr3z5LaF4IVtB
+	 iZjjNOsdZse5wiULVZf+t/NgAiJIDIunStOpMsjvWV8GsXgTx4+PoMz93T2IjCKP1U
+	 VlrfBQXqCbKP6d9/URa+cxNT3cs1GVFtyxsJTJCMQIt9YavWej1r6YLqYPYS+qCrtN
+	 vWgkrr+lw2aaw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 02F976179B;
-	Thu, 30 Apr 2026 12:26:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 965C061C1A;
+	Thu, 30 Apr 2026 12:26:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2031218F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id D8D5B18F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1E683403D6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BF3AC4073C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a-z9Q_nAm-sQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 Apr 2026 12:26:06 +0000 (UTC)
+ id mlwUHGMoiqGf for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 Apr 2026 12:26:07 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7899E4073C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7899E4073C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C957E403D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C957E403D6
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7899E4073C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:06 +0000 (UTC)
-X-CSE-ConnectionGUID: kGXpTR/xSvy4p0xwmZql6A==
-X-CSE-MsgGUID: fUyURqiDQHqhYFt33DiczQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11771"; a="78689182"
-X-IronPort-AV: E=Sophos;i="6.23,208,1770624000"; d="scan'208";a="78689182"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C957E403D6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 Apr 2026 12:26:07 +0000 (UTC)
+X-CSE-ConnectionGUID: 2CvoTBj2SK20e8XQhm+YdQ==
+X-CSE-MsgGUID: uFBgeATMT8CZxxjC/maqpg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11771"; a="78689186"
+X-IronPort-AV: E=Sophos;i="6.23,208,1770624000"; d="scan'208";a="78689186"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2026 05:26:06 -0700
-X-CSE-ConnectionGUID: iGpTe9cgTJqrJcYaeqGlxw==
-X-CSE-MsgGUID: Mfr2tqbKTTGcHSYViPM7Jg==
+ 30 Apr 2026 05:26:07 -0700
+X-CSE-ConnectionGUID: MAPtY//6SAC9yo/g4nHqNA==
+X-CSE-MsgGUID: KMYtALv/QB+btlJa445l+Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,208,1770624000"; d="scan'208";a="233538423"
+X-IronPort-AV: E=Sophos;i="6.23,208,1770624000"; d="scan'208";a="233538429"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by orviesa006.jf.intel.com with ESMTP; 30 Apr 2026 05:26:05 -0700
+ by orviesa006.jf.intel.com with ESMTP; 30 Apr 2026 05:26:06 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  aleksandr.loktionov@intel.com
 Cc: netdev@vger.kernel.org
-Date: Thu, 30 Apr 2026 14:25:58 +0200
-Message-ID: <20260430122602.126722-2-aleksandr.loktionov@intel.com>
+Date: Thu, 30 Apr 2026 14:25:59 +0200
+Message-ID: <20260430122602.126722-3-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260430122602.126722-1-aleksandr.loktionov@intel.com>
 References: <20260430122602.126722-1-aleksandr.loktionov@intel.com>
@@ -80,25 +80,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1777551966; x=1809087966;
+ t=1777551968; x=1809087968;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Y1C501JONhNNAVfQFgCHZpYKC+oUFWqSXemVKft+MIg=;
- b=nayGQg+B7Gc3uO0EQzfKR2gd4XkSwxZtx96EgQCioFfJp16MBZv+LZOo
- r+m/PQbFpz/MSPForFF6Ns7tVckUDn/zRFkoBQPGG8GEhXr52zzM+lS/N
- z1Vj6d6vaYjBDJI2kVsvA7cTPYsDk7ELMOgjUmxcjvBkvit8OrrBx0Xgn
- Nsdo4ul5eWsyKabbr5lsrhk/pMpbqZH+McdC/UkbARZqWDuU4pVaINW6J
- uuQkHPab9CSY8oxp4mHtd+F5wl//0s2/bDFvdmcL4zTp/iBICKqCZvCMz
- iKtjyKcmN2Z2TzV3CBZuI/06R0a6/JkKRuL6k1HM/kTOkX5luyvE1Ze2X
+ bh=WmUk/hzZFJcKObTRWjUXnGHFK9+dUHG3QByEE5jydN8=;
+ b=PCe9/GJJpZWaa9+ShBlk3xpBCGXvj73i6/pnu3bdNbawmxyaGU+XK+fz
+ BzTHT2RvaJjFM6iplWaUalaVJmy3iJdeOwM41QiWSuZMCXp7EqimPJiGI
+ xcfp9IxapYV/ft7Py20ivHgYxwKJz4mLyXAq3ZSQozRJVEzSbCdrh7jpd
+ qaEaTMwpHJ7jWc3o/qHN0cUXjPXILaW2uMx31ZX49P5n1JasyHWtsSWZn
+ KOVZrY/a988Lt4Z+Qj0SCaLz80HpSkd1ZYr52fFKw3rdkbWv/MpjQENTY
+ rsSEnODJdv+99P+AxKPz2dItphaR+BeLIEqnG3ly6zw9dqClDQFHRUsqU
  A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nayGQg+B
-Subject: [Intel-wired-lan] [PATCH 1/5] ice: fix ETH56G Rx offset type
- description in kernel-doc comment
+ header.a=rsa-sha256 header.s=Intel header.b=PCe9/GJJ
+Subject: [Intel-wired-lan] [PATCH 2/5] ice: remove unnecessary
+ PF_SB_REM_DEV_CTL write for E82X
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,7 +113,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 1C8384A2BD1
+X-Rspamd-Queue-Id: 4DB504A2BDF
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [0.89 / 15.00];
@@ -145,33 +145,50 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 
-The ETH56G MAC register configuration Rx offset field stores a signed
-integer, not an unsigned one. Correct the struct comment that incorrectly
-described it as '11 bit unsigned int'. Also update 'unsigned ints' to
-'unsigned integers' for consistency.
+Remove the PF_SB_REM_DEV_CTL register write from ice_ptp_init_phc_e82x().
+PHY access is enabled by default on E82X devices and the driver does not
+need to configure switch device access. The register write was a
+remnant of an earlier SWITCH_MODE workaround for a FIFO issue and is
+no longer needed.
+
+Also update the kernel-doc comment to refer to the E82X family rather than
+E822.
 
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 9bfd3e7..c1aa408 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -144,9 +144,9 @@ struct ice_vernier_info_e82x {
-  * @tx_offset: total Tx offset, fixed point
-  * @rx_offset: total Rx offset, contains value for bitslip/deskew, fixed point
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index 61c0a0d..7b1b402 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -2767,22 +2767,13 @@ static int ice_ptp_set_vernier_wl(struct ice_hw *hw)
+ }
+ 
+ /**
+- * ice_ptp_init_phc_e82x - Perform E822 specific PHC initialization
++ * ice_ptp_init_phc_e82x - Perform E82X specific PHC initialization
+  * @hw: pointer to HW struct
   *
-- * All fixed point registers except Rx offset are 23 bit unsigned ints with
-+ * All fixed point registers except Rx offset are 23 bit unsigned integers with
-  * a 9 bit fractional.
-- * Rx offset is 11 bit unsigned int with a 9 bit fractional.
-+ * Rx offset is 11 bit signed integer with a 9 bit fractional.
+- * Perform PHC initialization steps specific to E822 devices.
++ * Perform PHC initialization steps specific to E82X devices.
   */
- struct ice_eth56g_mac_reg_cfg {
- 	struct {
+ static int ice_ptp_init_phc_e82x(struct ice_hw *hw)
+ {
+-	u32 val;
+-
+-	/* Enable reading switch and PHY registers over the sideband queue */
+-#define PF_SB_REM_DEV_CTL_SWITCH_READ BIT(1)
+-#define PF_SB_REM_DEV_CTL_PHY0 BIT(2)
+-	val = rd32(hw, PF_SB_REM_DEV_CTL);
+-	val |= (PF_SB_REM_DEV_CTL_SWITCH_READ | PF_SB_REM_DEV_CTL_PHY0);
+-	wr32(hw, PF_SB_REM_DEV_CTL, val);
+-
+ 	/* Set window length for all the ports */
+ 	return ice_ptp_set_vernier_wl(hw);
+ }
 -- 
 2.52.0
 
