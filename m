@@ -2,103 +2,111 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id sHhGMUas+GnHxgIAu9opvQ
+	id OKCLHrmw+GkdzAIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 04 May 2026 16:25:10 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 04 May 2026 16:44:09 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78D1F4BF564
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 04 May 2026 16:25:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F1FFD4BFF47
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 04 May 2026 16:44:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 27E8E819B8;
-	Mon,  4 May 2026 14:25:05 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 62D6B845AB;
+	Mon,  4 May 2026 14:44:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KPUnJK5PZ2YJ; Mon,  4 May 2026 14:25:04 +0000 (UTC)
+ id 2JjKDCg5sg79; Mon,  4 May 2026 14:44:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 78D5081EC7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9E9CF845AC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1777904704;
-	bh=jNGxF2l+R9CnVMp6l4YalRL/JZPvQonlHrBei6o9HUg=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=v9qsOx0OdwpI5RcKJvEFt8FS2goC/A5B6qmY7m18xKPI5UFM9vWUOeO8j+QNhPzD+
-	 EkqD8qziYuQ1dctPcnF1AZGnsX8BjGoM7jJp6CWrjK6RGpHNodeGwJG5KYLtMZKcDH
-	 ieXlxp5jIiFFyVAjz9i2jZxR8RbFDRQddwQxpjORaFIJB/TQHwKwr5aPRHIG4TYmLC
-	 +xS7j0XrWUnXgPuIez6Hc8aa10+r86F7AXleAsKcGtrhHI9RbC4If/yqRgTHJC/wIC
-	 JlE2IKveglHYWrBCbK9o0YKX2ZRY05z8e4dq9MnmkKy47j9QY7Zq8wYI3roMQc3dWA
-	 tTy71dY6W6xnw==
+	s=default; t=1777905846;
+	bh=9OJPchOLKnKjF1Giyck+amz4Xh8JCjtrswZ2QTe92YI=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=7YrQZZQJrmEuorAP7vOtFtCe/5pnIRjGvMeBuSohJI+HkVxHh8o72esHREYQeh4Qn
+	 jyumFNHchNa1xDzyI3vM+4u3t6z2+/Pu0udZ6H5MlED98RNApYojefzwRghysiJZe2
+	 A9gFsd0bvp4mjvUEcaAItODOqzisQ0wkqbHsNMV8dtTXieljygRyVx+AMqorxFtsKq
+	 tRr7iSMgK9CzG2pSFB6XQORqOsvgfgqiuW6StbrmRnyT5ehxT/kJ09grMFIetBExmH
+	 uN1C4UiApzKM7WJXIi6qJsvYdyMJFlejE+ubZuVkMHnQq3tWl3seqh5+Xk7wH1kx6g
+	 6fAZjburee+qg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 78D5081EC7;
-	Mon,  4 May 2026 14:25:04 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9E9CF845AC;
+	Mon,  4 May 2026 14:44:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 56728204
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:25:02 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 31246190
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:44:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 48C9340CFE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:25:02 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 16F9641B27
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:44:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yK6gm53CYIYv for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 May 2026 14:25:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ id YPT9QGCdCWbL for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 May 2026 14:44:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 75669408D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 75669408D7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 75669408D7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:25:01 +0000 (UTC)
-X-CSE-ConnectionGUID: Kvzmcnl1TNmDJO9cmjgzXw==
-X-CSE-MsgGUID: 6xrZD4qSTciAKkkN3Zw4jg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="78691617"
-X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; d="scan'208";a="78691617"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 May 2026 07:25:02 -0700
-X-CSE-ConnectionGUID: D9l56hhRQ/254amepnlPYQ==
-X-CSE-MsgGUID: YJgxcTBSSxiDAfkMUbKdjg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F192741B23
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F192741B23
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F192741B23
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 May 2026 14:44:03 +0000 (UTC)
+X-CSE-ConnectionGUID: oVPIxFEfQKan/3ndybgv0A==
+X-CSE-MsgGUID: Gz6N+bltQCavJ46/DjrhpA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11776"; a="104211935"
+X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; d="scan'208";a="104211935"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 May 2026 07:44:02 -0700
+X-CSE-ConnectionGUID: oj3o4ySlTKuiwaDDHYKuVQ==
+X-CSE-MsgGUID: dV99omDhT2OF7cZLzXNe6Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; d="scan'208";a="230935411"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmviesa006.fm.intel.com with ESMTP; 04 May 2026 07:25:00 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org
-Date: Mon,  4 May 2026 16:24:51 +0200
-Message-ID: <20260504142451.4161845-6-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260504142451.4161845-1-aleksandr.loktionov@intel.com>
-References: <20260504142451.4161845-1-aleksandr.loktionov@intel.com>
+X-IronPort-AV: E=Sophos;i="6.23,215,1770624000"; d="scan'208";a="239830499"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa004.jf.intel.com with ESMTP; 04 May 2026 07:44:00 -0700
+Received: from mglak.igk.intel.com (mglak.igk.intel.com [10.237.112.146])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id C17812FC54;
+ Mon,  4 May 2026 15:43:57 +0100 (IST)
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
+Cc: Larysa Zaremba <larysa.zaremba@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Joshua Hay <joshua.a.hay@intel.com>,
+ Willem de Bruijn <willemb@google.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>
+Date: Mon,  4 May 2026 16:43:43 +0200
+Message-ID: <20260504144345.293219-1-larysa.zaremba@intel.com>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1777904702; x=1809440702;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=yPN+lmUC+V9SjMLQPhkRnt+TgdSTwYMAW5C7MIsny0I=;
- b=g/Q3xm3us+yxeP081PcecR52JD4+UI/EWdJRJPyQ5YbHZqMLODKsn8PX
- 40mhEuaDUOzq7cl//5bmqpOGIT2YOwrR3KAMyvicefnGl+dzpLsNKoLsp
- JNBAJ76Zy4AbUa9dFTAdrxi1g9AjQpOLC0Z70Nmtplhjp2EoQD/KEPtO3
- CFuznYjJhrc6AuzOm7IjdoWhYEpxfshssRPLWNpt2/RxxuhCx6f5bHhXe
- OTR0USAK1YMhtug/5pyq4KGAVmtSVtiFlo+0GNwoTMOuGHkBG5irQse2C
- bpzst5yFsuSEdEc2fZxhx8Sqmz+4sHum18JO+0qrRLKvQhN6R+eOy/Ibl
- w==;
+ t=1777905844; x=1809441844;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=YvBSeEFqbbJHPGpcBG9RqC3NXahLfq7pQptie9Q7N2Q=;
+ b=KbmM7AeBbgzmeVHxZbzSezscjUckmWOu1pY0cKJa0xRnExAICVtkRsip
+ w1ddPm8vCDMdeZ0dl/uZh6I4ckYHayMM52ns7K/pASNzt5guZCPENv1hN
+ qRLiCKw0kmRBYDciT2wg7KNQJXGIxPv4X1PTJm/2ajGzjiwwHegCDaC3n
+ GCupWXDVQVCB4Jz86UTd8p3WSzfuZf44VPaQ1W0mK3DvViHl1hoZlRMI1
+ 4Lq7bp4tcBso6rBDsbTfqwUkQ+zzBy7aHoTeUOxajRUMJJ9PMyJk7pU1g
+ HSgh7y2w1w43aWdnnCSoQ9VdUPMRjKFB1G40pPgysgEEm2I5SDwK9RSHV
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=g/Q3xm3u
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 5/5] ice: use
- element-by-element comparison for DCB config changes
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=KbmM7AeB
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] idpf: fix RSS LUT memcpy size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -113,180 +121,100 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 78D1F4BF564
+X-Rspamd-Queue-Id: F1FFD4BFF47
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[16];
+	MIME_TRACE(0.00)[0:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,intel.com:mid,intel.com:email,osuosl.org:dkim,sashiko.dev:url];
+	FROM_NEQ_ENVFROM(0.00)[larysa.zaremba@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	NEURAL_HAM(-0.00)[-0.994];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.998];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	RCVD_COUNT_SEVEN(0.00)[10]
 
-Comparing two ice_dcbx_cfg structs with memcmp() is unreliable on
-non-packed structs due to uninitialised padding bytes.  The HW DCB
-path already has ice_dcb_need_recfg() that compares fields
-individually; export it and use it in the SW DCB netlink setters
-(setets, setpfc, setapp, cee_set_all) instead of the unsafe memcmp.
+Based on the following feedback from Sashiko (received for iXD phase 1
+patchset, but valid for the net tree):
 
-Remove the now-redundant memcmp check from ice_pf_dcb_cfg() so that
-function always attempts the HW reconfiguration when called.
+ "Is the bounds check xn_params.recv_mem.iov_len < lut_buf_size sufficient?
+  Since lut_buf_size only represents the size of the array elements, should
+  this check instead verify that the payload is at least
+  sizeof(struct virtchnl2_rss_lut) + lut_buf_size?
 
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+  [...]
+
+  Does memcpy copy the correct amount of data here? rss_lut_size stores the
+  number of 32-bit entries, not the size in bytes. Should it use
+  lut_buf_size or rss_data->rss_lut_size * sizeof(u32) instead?"
+
+After inspecting the code, it was concluded that RSS memcpy size is in fact
+4 times smaller than it has to be, since a single array entry in a u32, and
+rss_data->rss_lut_size is clearly used as an array size. Required Rx buffer
+size is also too small, but this is a common issue in the idpf code.
+
+Use a full buffer size (lut_buf_size) instead of the array length
+(rss_data->rss_lut_size) when doing memcpy of RSS lookup table.
+While at it, increase required Rx buffer size to a whole flex-array
+containing structure instead of just the array.
+
+Link: https://sashiko.dev/#/patchset/20260323174052.5355-1-larysa.zaremba%40intel.com?part=8
+Fixes: 95af467d9a4e ("idpf: configure resources for RX queues")
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c | 13 ++-------
- drivers/net/ethernet/intel/ice/ice_dcb_lib.h |  2 ++
- drivers/net/ethernet/intel/ice/ice_dcb_nl.c  | 30 ++++++++++++++++++--
- 3 files changed, 32 insertions(+), 13 deletions(-)
+v1 -> v2: replace manual array size calculation with flex_array_size()
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-index bd77f1c..2e85fae 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
-@@ -353,15 +353,11 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
- 	struct ice_dcbx_cfg *old_cfg, *curr_cfg;
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct iidc_rdma_event *event;
--	int ret = ICE_DCB_NO_HW_CHG;
- 	struct ice_vsi *pf_vsi;
-+	int ret;
+v1: https://lore.kernel.org/netdev/20260429074232.180528-1-larysa.zaremba@intel.com/
+
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index be66f9b2e101..0fc7c68447f8 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -2915,8 +2915,9 @@ int idpf_send_get_set_rss_lut_msg(struct idpf_adapter *adapter,
+ 	if (reply_sz < sizeof(struct virtchnl2_rss_lut))
+ 		return -EIO;
  
- 	curr_cfg = &pf->hw.port_info->qos_cfg.local_dcbx_cfg;
+-	lut_buf_size = le16_to_cpu(recv_rl->lut_entries) * sizeof(u32);
+-	if (reply_sz < lut_buf_size)
++	lut_buf_size = flex_array_size(recv_rl, lut,
++				       le16_to_cpu(recv_rl->lut_entries));
++	if (reply_sz < lut_buf_size + sizeof(struct virtchnl2_rss_lut))
+ 		return -EIO;
  
--	/* FW does not care if change happened */
--	if (!pf->hw.port_info->qos_cfg.is_sw_lldp)
--		ret = ICE_DCB_HW_CHG_RST;
--
- 	/* Enable DCB tagging only when more than one TC */
- 	if (ice_dcb_get_num_tc(new_cfg) > 1) {
- 		dev_dbg(dev, "DCB tagging enabled (num TC > 1)\n");
-@@ -377,11 +373,6 @@ int ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked)
- 		clear_bit(ICE_FLAG_DCB_ENA, pf->flags);
+ 	/* size didn't change, we can reuse existing lut buf */
+@@ -2933,7 +2934,7 @@ int idpf_send_get_set_rss_lut_msg(struct idpf_adapter *adapter,
  	}
  
--	if (!memcmp(new_cfg, curr_cfg, sizeof(*new_cfg))) {
--		dev_dbg(dev, "No change in DCB config required\n");
--		return ret;
--	}
--
- 	if (ice_dcb_bwchk(pf, new_cfg))
- 		return -EINVAL;
+ do_memcpy:
+-	memcpy(rss_data->rss_lut, recv_rl->lut, rss_data->rss_lut_size);
++	memcpy(rss_data->rss_lut, recv_rl->lut, lut_buf_size);
  
-@@ -481,7 +472,7 @@ static void ice_cfg_etsrec_defaults(struct ice_port_info *pi)
-  * @old_cfg: current DCB config
-  * @new_cfg: new DCB config
-  */
--static bool
-+bool
- ice_dcb_need_recfg(struct ice_pf *pf, struct ice_dcbx_cfg *old_cfg,
- 		   struct ice_dcbx_cfg *new_cfg)
- {
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-index da9ba81..a7eaa2f9 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.h
-@@ -20,6 +20,8 @@ u8 ice_dcb_get_num_tc(struct ice_dcbx_cfg *dcbcfg);
- void ice_vsi_set_dcb_tc_cfg(struct ice_vsi *vsi);
- bool ice_is_pfc_causing_hung_q(struct ice_pf *pf, unsigned int txqueue);
- u8 ice_dcb_get_tc(struct ice_vsi *vsi, int queue_index);
-+bool ice_dcb_need_recfg(struct ice_pf *pf, struct ice_dcbx_cfg *old_cfg,
-+			struct ice_dcbx_cfg *new_cfg);
- int
- ice_pf_dcb_cfg(struct ice_pf *pf, struct ice_dcbx_cfg *new_cfg, bool locked);
- int ice_dcb_bwchk(struct ice_pf *pf, struct ice_dcbx_cfg *dcbcfg);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-index a10c1c8d..13a52c1 100644
---- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
-@@ -108,11 +108,17 @@ static int ice_dcbnl_setets(struct net_device *netdev, struct ieee_ets *ets)
- 	if (!bwrec)
- 		new_cfg->etsrec.tcbwtable[0] = 100;
- 
-+	if (!ice_dcb_need_recfg(pf, &pf->hw.port_info->qos_cfg.local_dcbx_cfg,
-+				new_cfg)) {
-+		err = ICE_DCB_NO_HW_CHG;
-+		goto ets_out;
-+	}
-+
- 	err = ice_pf_dcb_cfg(pf, new_cfg, true);
- 	/* return of zero indicates new cfg applied */
--	if (err == ICE_DCB_HW_CHG_RST)
-+	if (!err)
- 		ice_dcbnl_devreset(netdev);
--	if (err == ICE_DCB_NO_HW_CHG)
-+	else if (err == ICE_DCB_NO_HW_CHG)
- 		err = ICE_DCB_HW_CHG_RST;
- 
- ets_out:
-@@ -287,11 +293,18 @@ static int ice_dcbnl_setpfc(struct net_device *netdev, struct ieee_pfc *pfc)
- 
- 	new_cfg->pfc.pfcena = pfc->pfc_en;
- 
-+	if (!ice_dcb_need_recfg(pf, &pf->hw.port_info->qos_cfg.local_dcbx_cfg,
-+				new_cfg)) {
-+		err = ICE_DCB_NO_HW_CHG;
-+		goto pfc_out;
-+	}
-+
- 	err = ice_pf_dcb_cfg(pf, new_cfg, true);
- 	if (err == ICE_DCB_HW_CHG_RST)
- 		ice_dcbnl_devreset(netdev);
- 	if (err == ICE_DCB_NO_HW_CHG)
- 		err = ICE_DCB_HW_CHG_RST;
-+pfc_out:
- 	mutex_unlock(&pf->tc_mutex);
- 	return err;
- }
-@@ -845,6 +858,12 @@ static int ice_dcbnl_setapp(struct net_device *netdev, struct dcb_app *app)
- 	new_cfg->dscp_map[app->protocol] = app->priority;
- 	new_cfg->app[new_cfg->numapps++] = new_app;
- 
-+	if (!ice_dcb_need_recfg(pf, &pf->hw.port_info->qos_cfg.local_dcbx_cfg,
-+				new_cfg)) {
-+		ret = ICE_DCB_NO_HW_CHG;
-+		goto setapp_out;
-+	}
-+
- 	ret = ice_pf_dcb_cfg(pf, new_cfg, true);
- 	/* return of zero indicates new cfg applied */
- 	if (ret == ICE_DCB_HW_CHG_RST)
-@@ -991,8 +1010,15 @@ static u8 ice_dcbnl_cee_set_all(struct net_device *netdev)
- 
- 	mutex_lock(&pf->tc_mutex);
- 
-+	if (!ice_dcb_need_recfg(pf, &pf->hw.port_info->qos_cfg.local_dcbx_cfg,
-+				new_cfg)) {
-+		err = ICE_DCB_NO_HW_CHG;
-+		goto out;
-+	}
-+
- 	err = ice_pf_dcb_cfg(pf, new_cfg, true);
- 
-+out:
- 	mutex_unlock(&pf->tc_mutex);
- 	return (err != ICE_DCB_HW_CHG_RST) ? ICE_DCB_NO_HW_CHG : err;
+ 	return 0;
  }
 -- 
-2.52.0
+2.47.0
 
