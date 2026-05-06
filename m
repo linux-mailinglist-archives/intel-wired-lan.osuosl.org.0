@@ -2,161 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id KEW9JSIT+2lLWQMAu9opvQ
+	id GG9yEDc5+2nUXwMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 06 May 2026 12:08:34 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 06 May 2026 14:51:03 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90FA94D920A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 06 May 2026 12:08:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D9BC4DA84E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 06 May 2026 14:51:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3E90160E05;
-	Wed,  6 May 2026 10:08:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B5BEE60DE1;
+	Wed,  6 May 2026 12:51:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XLxZQJgxLSiK; Wed,  6 May 2026 10:08:30 +0000 (UTC)
+ id E1yTJjMjvKnQ; Wed,  6 May 2026 12:50:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B7DED60E07
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D383460E0C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778062110;
-	bh=lipFN5438ALO293y32dqU/+lxmnbSERj1pUvgIbJ2K8=;
+	s=default; t=1778071859;
+	bh=QDT5YAawTztAqQ49DbeSVT0lgbqMvQKNKmbsyZ2De4A=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=V0rl7XEzfBSflaQ4lIe0gBJUnNC1eslZXPE/sNZxBdoq+BodxDJ3cvX5IIVGSHNw0
-	 IBoKsSuaYNomD9epbpDxdTFj1aY0vDKe/xOFVfOMkoGs/SMI7Rm0bCokxVsLZ/3n01
-	 tU1j+rwiQrnKzpPeOCd2S8K1/Svj6qU09klWdCku0JapeOQj9lx4Rv/nxaCZ9Mk37l
-	 FbTBa09qxHhYmvUUjgWs7F8qGf+Bhp2iv3DhwZwlZVVD4yUJQtwEURqoG/BUmgbZ3N
-	 WjEEsAaBgMGQi/TGNDu1ovfFuKMxvp1bovw0NWfX5n+6kFkvz/kZ0qD4YU/hF/LlK0
-	 hcE0Fz6ZKvHWA==
+	b=cAHJDccj1LUw51C94EDPPMOsXFiJBjgzvTbCRNqroHEpGthpeJH5miM+wJan2cUFq
+	 /1/Ey3ZmcntWxoSR9WCRqnRq1bRB4Rnv1c3ue2uhiuNoNO/FMshUC4Q4YWbayTGXYF
+	 iuvxwVYh4TiZtWxn6el00E3sxkiI/Zlh9o3HHu335wW8ii3Vfi8emLz8/Swl0u4CqD
+	 HPryhA53BhygCI4PfF939Db4OKRbzVAknDI90gWi7pWZQ9efr87Zf0yMG4SYhMNeOj
+	 ri9zQHauSPXkVrkvgajHbRQFq16k06D62zHUduhWIxToDUiMm42fTDLWg4XFYEDBI1
+	 kaupgafVJG56w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7DED60E07;
-	Wed,  6 May 2026 10:08:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D383460E0C;
+	Wed,  6 May 2026 12:50:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 7843C317
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 10:08:28 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4D4AD11B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 12:50:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 69D5940565
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 10:08:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3343982350
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 12:50:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id abIckK_jZC4M for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 May 2026 10:08:27 +0000 (UTC)
-X-Greylist: delayed 534 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 06 May 2026 10:08:27 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 106EB40186
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 106EB40186
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=188.68.63.174;
- helo=relay.yourmailgateway.de; envelope-from=regressions@leemhuis.info;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BMAu4VVp8vTj for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 May 2026 12:50:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-Received: from relay.yourmailgateway.de (relay.yourmailgateway.de
- [188.68.63.174])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 106EB40186
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 10:08:26 +0000 (UTC)
-Received: from mors-relay8204.netcup.net (localhost [127.0.0.1])
- by mors-relay8204.netcup.net (Postfix) with ESMTPS id 4g9W7k45rJz8h4g;
- Wed,  6 May 2026 09:59:30 +0000 (UTC)
-Received: from policy01-mors.netcup.net (unknown [46.38.225.35])
- by mors-relay8204.netcup.net (Postfix) with ESMTPS id 4g9W7k3Mlcz8h3k;
- Wed,  6 May 2026 09:59:30 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at policy01-mors.netcup.net
-Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by policy01-mors.netcup.net (Postfix) with ESMTPS id 4g9W7h67kWz8tdd;
- Wed,  6 May 2026 11:59:28 +0200 (CEST)
-Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown
- [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
- by mxe9fb.netcup.net (Postfix) with ESMTPSA id B7BE163304;
- Wed,  6 May 2026 11:59:27 +0200 (CEST)
-Received-SPF: pass (mxe9fb: connection is authenticated)
-Message-ID: <b60a7ab8-dbab-4684-abf4-4dd2a9024f8d@leemhuis.info>
-Date: Wed, 6 May 2026 11:59:27 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B10298234D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B10298234D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B10298234D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 May 2026 12:50:56 +0000 (UTC)
+X-CSE-ConnectionGUID: y0kGFQZZSEWP9FBsqr8qXw==
+X-CSE-MsgGUID: yh2l0/7gTY+PpNhxsQU8mQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11777"; a="78848499"
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; d="scan'208";a="78848499"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 May 2026 05:50:56 -0700
+X-CSE-ConnectionGUID: 158reD9IR/aWxx3kTHcTBg==
+X-CSE-MsgGUID: ShPOC7/pQyO8IN62ZE0ukg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,219,1770624000"; d="scan'208";a="274267198"
+Received: from mszycik-desk.igk.intel.com (HELO [10.217.161.2])
+ ([10.217.161.2])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 May 2026 05:50:54 -0700
+Message-ID: <af025816-d5bb-40b7-a776-36ea4e05221a@linux.intel.com>
+Date: Wed, 6 May 2026 14:50:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@lists.osuosl.org
-Cc: jacob.e.keller@intel.com, anthony.l.nguyen@intel.com,
- Linux kernel regressions list <regressions@lists.linux.dev>
-References: <20260417104330.3031987-1-dima.ruinskiy@intel.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: de-DE, en-US
-X-Enigmail-Draft-Status: N11222
-Autocrypt: addr=linux@leemhuis.info; keydata=
- xsFNBFJ4AQ0BEADCz16x4kl/YGBegAsYXJMjFRi3QOr2YMmcNuu1fdsi3XnM+xMRaukWby47
- JcsZYLDKRHTQ/Lalw9L1HI3NRwK+9ayjg31wFdekgsuPbu4x5RGDIfyNpd378Upa8SUmvHik
- apCnzsxPTEE4Z2KUxBIwTvg+snEjgZ03EIQEi5cKmnlaUynNqv3xaGstx5jMCEnR2X54rH8j
- QPvo2l5/79Po58f6DhxV2RrOrOjQIQcPZ6kUqwLi6EQOi92NS9Uy6jbZcrMqPIRqJZ/tTKIR
- OLWsEjNrc3PMcve+NmORiEgLFclN8kHbPl1tLo4M5jN9xmsa0OZv3M0katqW8kC1hzR7mhz+
- Rv4MgnbkPDDO086HjQBlS6Zzo49fQB2JErs5nZ0mwkqlETu6emhxneAMcc67+ZtTeUj54K2y
- Iu8kk6ghaUAfgMqkdIzeSfhO8eURMhvwzSpsqhUs7pIj4u0TPN8OFAvxE/3adoUwMaB+/plk
- sNe9RsHHPV+7LGADZ6OzOWWftk34QLTVTcz02bGyxLNIkhY+vIJpZWX9UrfGdHSiyYThHCIy
- /dLz95b9EG+1tbCIyNynr9TjIOmtLOk7ssB3kL3XQGgmdQ+rJ3zckJUQapLKP2YfBi+8P1iP
- rKkYtbWk0u/FmCbxcBA31KqXQZoR4cd1PJ1PDCe7/DxeoYMVuwARAQABzSdUaG9yc3RlbiBM
- ZWVtaHVpcyA8bGludXhAbGVlbWh1aXMuaW5mbz7CwZQEEwEKAD4CGwMFCwkIBwMFFQoJCAsF
- FgIDAQACHgECF4AWIQSoq8a+lZZX4oPULXVytubvTFg9LQUCaOO74gUJHfEI0wAKCRBytubv
- TFg9Lc4iD/4omf2z88yGmior2f1BCQTAWxI2Em3S4EJY2+Drs8ZrJ1vNvdWgBrqbOtxN6xHF
- uvrpM6nbYIoNyZpsZrqS1mCA4L7FwceFBaT9CTlQsZLVV/vQvh2/3vbj6pQbCSi7iemXklF7
- y6qMfA7rirvojSJZ2mi6tKIQnD2ndVhSsxmo/mAAJc4tiEL+wkdaX1p7bh2Ainp6sfxTqL6h
- z1kYyjnijpnHaPgQ6GQeGG1y+TSQFKkb/FylDLj3b3efzyNkRjSohcauTuYIq7bniw7sI8qY
- KUuUkrw8Ogi4e6GfBDgsgHDngDn6jUR2wDAiT6iR7qsoxA+SrJDoeiWS/SK5KRgiKMt66rx1
- Jq6JowukzNxT3wtXKuChKP3EDzH9aD+U539szyKjfn5LyfHBmSfR42Iz0sofE4O89yvp0bYz
- GDmlgDpYWZN40IFERfCSxqhtHG1X6mQgxS0MknwoGkNRV43L3TTvuiNrsy6Mto7rrQh0epSn
- +hxwwS0bOTgJQgOO4fkTvto2sEBYXahWvmsEFdLMOcAj2t7gJ+XQLMsBypbo94yFYfCqCemJ
- +zU5X8yDUeYDNXdR2veePdS3Baz23/YEBCOtw+A9CP0U4ImXzp82U+SiwYEEQIGWx+aVjf4n
- RZ/LLSospzO944PPK+Na+30BERaEjx04MEB9ByDFdfkSbM7BTQRSeAENARAAzu/3satWzly6
- +Lqi5dTFS9+hKvFMtdRb/vW4o9CQsMqL2BJGoE4uXvy3cancvcyodzTXCUxbesNP779JqeHy
- s7WkF2mtLVX2lnyXSUBm/ONwasuK7KLz8qusseUssvjJPDdw8mRLAWvjcsYsZ0qgIU6kBbvY
- ckUWkbJj/0kuQCmmulRMcaQRrRYrk7ZdUOjaYmjKR+UJHljxLgeregyiXulRJxCphP5migoy
- ioa1eset8iF9fhb+YWY16X1I3TnucVCiXixzxwn3uwiVGg28n+vdfZ5lackCOj6iK4+lfzld
- z4NfIXK+8/R1wD9yOj1rr3OsjDqOaugoMxgEFOiwhQDiJlRKVaDbfmC1G5N1YfQIn90znEYc
- M7+Sp8Rc5RUgN5yfuwyicifIJQCtiWgjF8ttcIEuKg0TmGb6HQHAtGaBXKyXGQulD1CmBHIW
- zg7bGge5R66hdbq1BiMX5Qdk/o3Sr2OLCrxWhqMdreJFLzboEc0S13BCxVglnPqdv5sd7veb
- 0az5LGS6zyVTdTbuPUu4C1ZbstPbuCBwSwe3ERpvpmdIzHtIK4G9iGIR3Seo0oWOzQvkFn8m
- 2k6H2/Delz9IcHEefSe5u0GjIA18bZEt7R2k8CMZ84vpyWOchgwXK2DNXAOzq4zwV8W4TiYi
- FiIVXfSj185vCpuE7j0ugp0AEQEAAcLBfAQYAQoAJgIbDBYhBKirxr6Vllfig9QtdXK25u9M
- WD0tBQJo47viBQkd8QjTAAoJEHK25u9MWD0tCH8P/1b+AZ8K3D4TCBzXNS0muN6pLnISzFa0
- cWcylwxX2TrZeGpJkg14v2R0cDjLRre9toM44izLaz4SKyfgcBSj9XET0103cVXUKt6SgT1o
- tevoEqFMKKp3vjDpKEnrcOSOCnfH9W0mXx/jDWbjlKbBlN7UBVoZD/FMM5Ul0KSVFJ9Uij0Z
- S2WAg50NQi71NBDPcga21BMajHKLFzb4wlBWSmWyryXI6ouabvsbsLjkW3IYl2JupTbK3viH
- pMRIZVb/serLqhJgpaakqgV7/jDplNEr/fxkmhjBU7AlUYXe2BRkUCL5B8KeuGGvG0AEIQR0
- dP6QlNNBV7VmJnbU8V2X50ZNozdcvIB4J4ncK4OznKMpfbmSKm3t9Ui/cdEK+N096ch6dCAh
- AeZ9dnTC7ncr7vFHaGqvRC5xwpbJLg3xM/BvLUV6nNAejZeAXcTJtOM9XobCz/GeeT9prYhw
- 8zG721N4hWyyLALtGUKIVWZvBVKQIGQRPtNC7s9NVeLIMqoH7qeDfkf10XL9tvSSDY6KVl1n
- K0gzPCKcBaJ2pA1xd4pQTjf4jAHHM4diztaXqnh4OFsu3HOTAJh1ZtLvYVj5y9GFCq2azqTD
- pPI3FGMkRipwxdKGAO7tJVzM7u+/+83RyUjgAbkkkD1doWIl+iGZ4s/Jxejw1yRH0R5/uTaB MEK4
-In-Reply-To: <20260417104330.3031987-1-dima.ruinskiy@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
+Cc: netdev@vger.kernel.org, sandeep.penigalapati@intel.com,
+ ananth.s@intel.com, alexander.duyck@gmail.com
+References: <20260409120003.2719-1-marcin.szycik@linux.intel.com>
+Content-Language: en-US
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20260409120003.2719-1-marcin.szycik@linux.intel.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-PPP-Message-ID: <177806156804.3824900.17782720002740269364@mxe9fb.netcup.net>
-X-NC-CID: Uy9H2qVS4/FdlR3f+QTKW4KxsXW9ZrkWgITiz/w6KRL/37KKqW4=
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=leemhuis.info; s=key2; t=1778061570;
- bh=iis9Zd0SBict4Bak0auwTAhx2IKRF+3FvzhaufxAPBU=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=jS9k94FQElD3vAt9MHNt/7BYg80cUeOT2mQSrTVG+CXbrWrFNF99owS01i/uATM0K
- QlRKCIGcyYxUCmrqE84uh3Xr4vf6yxuHHAhVXODUJ2S/ZKcWMh3ZjxoqYchjD4G8Tj
- 90F1Jd55a/P0rLBPsJe/o1oCI4K3u22uBMxljClq5qTBSU0rQci7SCZX3qseQZpTez
- xpnD8GW8kjgZlppE3gZBIcqKAgIjTyBl6lBrcobBeol4e6FMgv5u+X88eNFejtlytX
- j5E4w9g8FoZjgPD9RF6sQtMbFipnYJqdPo2tfIHCYry8CpSxntnHCxPS2PrktzV04I
- xtsK0eOsDknbg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1778071857; x=1809607857;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=AjOnaNgsiOWj0vDA4OPhCCW+AJRwz5CExSuQwVUS5iY=;
+ b=eavvO+vWPRC3UU+Bwn6k3sZVd6UQ1Od6CnjDN5F8PkY+gmMl1ZZOedgi
+ NCEYuUdADPZdm0A2XkrEyBa1E0miqBSkwNkrgaraTQUl0kRVTbbetOAAL
+ NB5h7wonP74t6sACTYFEbBuviVa+yIIuwRfg8FgxUqfvWp65J+f85gnh0
+ +v4iioVBdUbn4r+fvzFociriudZdRv6zAa9t9TCROCfpGwv/453VFBYZm
+ t1PcYyqOLJTz4uljbs+APOCSNRc72WP+UW7tb8oYl1imcmACHeoMzDsys
+ fRIYHTgoU+yVlCjaIykakSLg1vSE7XtdjRwLaIyVpbF1XIkfiE62gD/Vz
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=leemhuis.info
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=leemhuis.info header.i=@leemhuis.info
- header.a=rsa-sha256 header.s=key2 header.b=jS9k94FQ
-X-Mailman-Original-Authentication-Results: mxe9fb;
- spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f)
- smtp.mailfrom=regressions@leemhuis.info
- smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] e1000e: Reconfigure PLL
- clock gate timeout and re-enable K1 on Meteor Lake
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=eavvO+vW
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 00/10] Add ACL support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -171,129 +117,150 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 90FA94D920A
+X-Rspamd-Queue-Id: 4D9BC4DA84E
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.71 / 15.00];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:dima.ruinskiy@intel.com,m:jacob.e.keller@intel.com,m:anthony.l.nguyen@intel.com,m:regressions@lists.linux.dev,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[leemhuis.info:mid,intel.com:email];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DMARC_NA(0.00)[leemhuis.info];
-	FORGED_SENDER(0.00)[regressions@leemhuis.info,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,linux.intel.com:mid,osuosl.org:dkim];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCPT_COUNT_FIVE(0.00)[5];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	RCPT_COUNT_FIVE(0.00)[6];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[regressions@leemhuis.info,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com];
+	NEURAL_HAM(-0.00)[-0.998];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[11]
+	MID_RHS_MATCH_FROM(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_COUNT_SEVEN(0.00)[9]
 
-On 4/17/26 12:43, Dima Ruinskiy wrote:
-> Commit 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
-> disabled K1 by default on Meteor Lake and newer systems due to packet
-> loss observed on various platforms. However, disabling K1 caused an
-> increase in power consumption.
+This patchset has been applied to dev-queue, however there were a lot of potential
+issues reported by sashiko [1] that I'm currently addressing. In my opinion a lot of them
+are valid, so I'm planning to submit v3 soon.
+
+[1] https://sashiko.dev/#/patchset/20260409120003.2719-1-marcin.szycik%40linux.intel.com
+
+On 09/04/2026 13:59, Marcin Szycik wrote:
+> E8xx hardware provides a Ternary Classifier block for implementing
+> functions such as ACL (Access Control List). In this series it's simply
+> referred to as "ACL".
 > 
-> To mitigate this, reconfigure the PLL clock gate value so that K1 can
-> remain enabled without incurring the additional power consumption.
-> Re-enable K1 by default, but keep the private flag to support disabling
-> it via ethtool. Additionally, introduce a DMI quirk table, so that K1 may
-> be disabled by default on known problematic systems. Currently, this
-> includes the Dell Pro 16 Plus, where the issue has been reported to persist
-> despite the changes to the PLL lock timeout.
+> Implement ACL filtering. This expands support of network flow classification
+> rules for the ethtool ntuple command. ACL filtering allows for an ip or port
+> field's optional mask to be specified.
 > 
-> Link: https://bugzilla.kernel.org/show_bug.cgi?id=220954
-> Link: https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20250623/048860.html
-> Link: https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20260330/054059.html
-
-What happened to this fix for a regression first reported in January? It
-looks like it fell through the cracks. Or was some other solution found?
-
-Ciao, Thorsten
-
-> Signed-off-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> Co-developed-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Fixes: 3c7bf5af21960 ("e1000e: Introduce private flag to disable K1")
-> ---
-> v3: add DMI quirk
-> v2: add comment for the PLL timeout value and revisit the commit message
-> v1: initial version
-> ---
->  drivers/net/ethernet/intel/e1000e/ich8lan.c |  3 +++
->  drivers/net/ethernet/intel/e1000e/netdev.c  | 15 ++++++++++++++-
->  2 files changed, 17 insertions(+), 1 deletion(-)
+> Example filters:
+>   ethtool -N eth0 flow-type tcp4 dst-port 8880 m 0x00ff action 10
+>   ethtool -N eth0 flow-type tcp4 src-ip 192.168.0.55 m 0.0.0.255 action -1
 > 
-> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> index dea208db1be5..aa90e0ce8aca 100644
-> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-> @@ -1594,6 +1594,9 @@ static s32 e1000_check_for_copper_link_ich8lan(struct e1000_hw *hw)
->  			phy_reg &= ~I217_PLL_CLOCK_GATE_MASK;
->  			if (speed == SPEED_100 || speed == SPEED_10)
->  				phy_reg |= 0x3E8;
-> +			else if (hw->mac.type == e1000_pch_mtp ||
-> +				 hw->mac.type == e1000_pch_ptp)
-> +				phy_reg |= 0x1D5;
->  			else
->  				phy_reg |= 0xFA;
->  			e1e_wphy_locked(hw, I217_PLL_CLOCK_GATE_REG, phy_reg);
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 4d553c6edd98..a7605e453382 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -25,6 +25,7 @@
->  #include <linux/pm_runtime.h>
->  #include <linux/prefetch.h>
->  #include <linux/suspend.h>
-> +#include <linux/dmi.h>
->  
->  #include "e1000.h"
->  #define CREATE_TRACE_POINTS
-> @@ -58,6 +59,17 @@ static const struct e1000_info *e1000_info_tbl[] = {
->  	[board_pch_ptp]		= &e1000_pch_ptp_info,
->  };
->  
-> +static const struct dmi_system_id disable_k1_list[] = {
-> +	{
-> +		.ident = "Dell Pro 16 Plus PB16250",
-> +		.matches = {
-> +			DMI_MATCH(DMI_SYS_VENDOR, "Dell Inc."),
-> +			DMI_MATCH(DMI_PRODUCT_NAME, "Dell Pro 16 Plus PB16250"),
-> +		},
-> +	},
-> +	{}
-> +};
-> +
->  struct e1000_reg_info {
->  	u32 ofs;
->  	char *name;
-> @@ -7748,7 +7760,8 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->  	/* init PTP hardware clock */
->  	e1000e_ptp_init(adapter);
->  
-> -	if (hw->mac.type >= e1000_pch_mtp)
-> +	/* disable K1 by default on known problematic systems */
-> +	if (hw->mac.type >= e1000_pch_mtp && dmi_check_system(disable_k1_list))
->  		adapter->flags2 |= FLAG2_DISABLE_K1;
->  
->  	/* reset the hardware with the new settings */
+> This is a resurrection of an old series from 2020 [1] with several
+> improvements, but the fundamental logic unchanged. v1 was almost pulled
+> in, but ultimately it was decided to drop it [2] because of unresolved
+> issues. One issue was too many defensive NULL checks. Second issue is
+> about inconsistency when using multiple input sets. Both are addressed
+> in this patchset.
+> 
+> More about the second issue:
+> 
+> From [3]:
+>> I would argue that you need to have some sort of logic that basically
+>> checks to see if you are going to hit the input set issue and falls
+>> back and applies the ACL rules. Otherwise you are significantly
+>> hampering the usefulness of this filter type. It doesn't make sense
+>> that dropping a field will cause a rule to fail to be added, but
+>> masking a single bit in some field will make it valid. It would make
+>> it a nightmare to use from the user point of view as the rules come
+>> across as arbitrary.
+> 
+> Flow Director (FD) has a hardware limitation where all filters for the same
+> packet type must use identical input sets. Previously, attempting to add the
+> second filter would fail.
+> 
+> Patch 10 adds automatic fallback to ACL block when FD cannot accommodate a
+> filter due to input set conflicts, which resolves this inconsistency.
+> 
+> v2:
+> * Rebase. Notable conflicts were the removal of ice_status and the addition of
+>   libie (which affected AdminQ communication)
+> * Reduce the number of defensive NULL checks
+> * Use = {} instead of memset for definitions
+> * Use kzalloc_obj() instead of plain kzalloc()
+> * Move from devm_ to plain allocation for objects that don't require it
+> * Move iterator declaration to loop start
+> * Move some defines out of structs
+> * Fix kdoc (except untouched ice_ethtool_fdir.c functions)
+> * Adjust style (err for return variable, spacing, rewrite some comments,
+> * commit messages)
+> * Remove overly verbose comments
+> * Add patches 5, 6, 9 and 10
+> * More changes listed in patches (if applicable)
+> 
+> [1] https://lore.kernel.org/intel-wired-lan/20200914153720.48498-1-anthony.l.nguyen@intel.com
+> [2] https://lore.kernel.org/netdev/7192efe4d27c93148b3205e65f37203c89170316.camel@intel.com/#t
+> [3] https://lore.kernel.org/netdev/CAKgT0Ucxd5-gvEwWAdbL04ER2o++RX_oekUV3E0rYquEgFKj1w@mail.gmail.com
+> 
+> Lukasz Czapnik (1):
+>   ice: use ACL for ntuple rules that conflict with FDir
+> 
+> Marcin Szycik (3):
+>   Revert "ice: remove unused ice_flow_entry fields"
+>   ice: use plain alloc/dealloc for ice_ntuple_fltr
+>   ice: re-introduce ice_dealloc_flow_entry() helper
+> 
+> Real Valiquette (5):
+>   ice: initialize ACL table
+>   ice: initialize ACL scenario
+>   ice: create flow profile
+>   ice: create ACL entry
+>   ice: program ACL entry
+> 
+> Tony Nguyen (1):
+>   ice: rename shared Flow Director functions and structs
+> 
+>  drivers/net/ethernet/intel/ice/Makefile       |    5 +-
+>  drivers/net/ethernet/intel/ice/ice.h          |   21 +-
+>  drivers/net/ethernet/intel/ice/ice_acl.h      |  170 +++
+>  drivers/net/ethernet/intel/ice/ice_acl_main.h |    9 +
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  391 +++++-
+>  drivers/net/ethernet/intel/ice/ice_arfs.h     |    2 +-
+>  drivers/net/ethernet/intel/ice/ice_fdir.h     |   18 +-
+>  .../net/ethernet/intel/ice/ice_flex_pipe.h    |    2 +
+>  drivers/net/ethernet/intel/ice/ice_flow.h     |   39 +-
+>  .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |    3 +
+>  drivers/net/ethernet/intel/ice/ice_type.h     |    5 +
+>  drivers/net/ethernet/intel/ice/ice_acl.c      |  486 +++++++
+>  drivers/net/ethernet/intel/ice/ice_acl_ctrl.c | 1111 +++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_acl_main.c |  293 ++++
+>  drivers/net/ethernet/intel/ice/ice_arfs.c     |    8 +-
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c  |    8 +-
+>  ...ce_ethtool_fdir.c => ice_ethtool_ntuple.c} |  641 ++++++---
+>  drivers/net/ethernet/intel/ice/ice_fdir.c     |   30 +-
+>  .../net/ethernet/intel/ice/ice_flex_pipe.c    |   11 +-
+>  drivers/net/ethernet/intel/ice/ice_flow.c     | 1208 ++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_lib.c      |   10 +-
+>  drivers/net/ethernet/intel/ice/ice_main.c     |   91 +-
+>  drivers/net/ethernet/intel/ice/virt/fdir.c    |   32 +-
+>  23 files changed, 4344 insertions(+), 250 deletions(-)
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.h
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.h
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_ctrl.c
+>  create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.c
+>  rename drivers/net/ethernet/intel/ice/{ice_ethtool_fdir.c => ice_ethtool_ntuple.c} (79%)
+> 
 
