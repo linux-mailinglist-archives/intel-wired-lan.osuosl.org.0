@@ -2,71 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id qKbdNyRd/WmLbgAAu9opvQ
+	id 6LV9Aixd/WmLbgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:48:52 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:49:00 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5A5E4F1413
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:48:52 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7BA5E4F1429
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:48:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39380414CC;
-	Fri,  8 May 2026 03:48:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E298860AC0;
+	Fri,  8 May 2026 03:48:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SD8MfKZwaCAo; Fri,  8 May 2026 03:48:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MZMAmEQn1z56; Fri,  8 May 2026 03:48:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B380D414CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E31160B72
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778212130;
-	bh=Na84m9kRzq+PH1GMI4hKGKYJ2RaKgHZOkMxXeleq4tI=;
+	s=default; t=1778212137;
+	bh=KQsaFjlZc7xQucmXUqmh6eg0AqeLIJviziYAaDxtSt4=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=tRBimOi6Ll47wfYe0rlESS2A3GVamTOUzqCOy2A/3yM4JUtOfb47GIgwH2ZpxI3Cd
-	 eAKy9pY9ydTLuYngQFacGnGqoXne2ouNyaZboeCp/daCxMNLuksAUP+UeeLwURowPq
-	 lIsD+9m81M6L6J7M/boG36REL6cx+/EOyzxAnwnENX6lkpoH6gyPOthld9rkVR01wx
-	 +J6zJYOeB9fGvDdhQrnSidpC3JJtk+3D3+0+0CJ9zx+n4mI3lbGadLuc0cunufrDZl
-	 lgV1CB7Dw6bCW5IYdtUoA6z2arHtR10q80XahIe05COTHo9w1UZmlvWuBUoscPR6wA
-	 uK3mHZZD3i0HQ==
+	b=jiHRKVBeSEWhfcJg5wgAjqVFLhJYygurKSnNGUCCTCQq7pC0lUn/i51FkjlSYZVpW
+	 H5vLMqbEO9vEUJ86Hah544u5poYYus6mCD2DQVAZNCp/drCSL6e1iHv2oqrri2AVqZ
+	 rESH3WGtts/jzC1Tc/3czw2aFUN6CBRYIhZTo5HGAjnHpmNCj4/6pUl4jkpcR0jTFJ
+	 NPvy8rQLdGKnuML181KglmvHsdtWEXxCqUOJ5mSZAmPrvVKzZ6QnR5RIKW7Hrbfhfk
+	 JjlIu4k4qcpcYnc7uPjdRkHyn30cZ2Nb84zrNuFKqPKmDRKJOSXk5Iv3Rzju7Gn56R
+	 mPCnKfoFVbBVQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B380D414CA;
-	Fri,  8 May 2026 03:48:50 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4E31160B72;
+	Fri,  8 May 2026 03:48:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id D9CFB272
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:48 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 83C85272
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CBFBF414C8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:48 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6A02460AC0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nrKdc5zlyUyD for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 03:48:48 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZQb5O8tE9dFh for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 03:48:54 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
  helo=mgamail.intel.com; envelope-from=khai.wen.tan@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9FB12414C4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9FB12414C4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5462F60ABD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5462F60ABD
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9FB12414C4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:47 +0000 (UTC)
-X-CSE-ConnectionGUID: ey3Opvb+TaCwjhJoyClOcw==
-X-CSE-MsgGUID: XcM7FjbkQwy8qr+RJxbCzw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="90278858"
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="90278858"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5462F60ABD
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:54 +0000 (UTC)
+X-CSE-ConnectionGUID: MjhI6qF5T+WzVAk+rYSv4Q==
+X-CSE-MsgGUID: wVTe4CVqS2GgPYCfEpi2vQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="90278878"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="90278878"
 Received: from orviesa009.jf.intel.com ([10.64.159.149])
  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2026 20:48:47 -0700
-X-CSE-ConnectionGUID: ZVbTtdOBSTy5opvJ/1Lc1w==
-X-CSE-MsgGUID: vUBzAKXPTDuBEzWjQE7hLQ==
+ 07 May 2026 20:48:54 -0700
+X-CSE-ConnectionGUID: X/QL0LFtS2Kapf7mTNXiKA==
+X-CSE-MsgGUID: cxCc4oY6RE6NTtsN3b8B8w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="236767299"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="236767311"
 Received: from unknown (HELO localhost.png.intel.com) ([10.107.255.61])
- by orviesa009.jf.intel.com with ESMTP; 07 May 2026 20:48:42 -0700
+ by orviesa009.jf.intel.com with ESMTP; 07 May 2026 20:48:49 -0700
 From: KhaiWenTan <khai.wen.tan@linux.intel.com>
 To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
  andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
@@ -77,8 +77,8 @@ Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
  khai.wen.tan@intel.com, Faizal Rahim <faizal.abdul.rahim@linux.intel.com>,
  Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
  Khai Wen Tan <khai.wen.tan@linux.intel.com>
-Date: Fri,  8 May 2026 05:47:03 +0800
-Message-ID: <20260507214706.309984-2-khai.wen.tan@linux.intel.com>
+Date: Fri,  8 May 2026 05:47:04 +0800
+Message-ID: <20260507214706.309984-3-khai.wen.tan@linux.intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260507214706.309984-1-khai.wen.tan@linux.intel.com>
 References: <20260507214706.309984-1-khai.wen.tan@linux.intel.com>
@@ -86,25 +86,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778212128; x=1809748128;
+ t=1778212135; x=1809748135;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=IysmtrfEnBl2FAT/X43D4kfZ0H/PNoYdWVnFXWlv2xE=;
- b=RXRry30oxlfyQ51PH0RZpsjl1iupkmD2W9/aIiQGAJXbP6h2/S4uDZ55
- LxaQA+gQjhFY/+XlTvc4ihQpND4yGbNiRqPTPzCQtzs1Pv52Hkk1v7VOg
- MEJryy678v6aYEluJmwygx4as87JMItebPe0F+QcMW7afZm01uXSdvYuB
- fb3DrvEguwyns/14+AqMC3eZ0jrwX2iMiMKY4/jvgRZPDXOCoa88K6HF+
- MSVDJZA7HQFjidlA9Byal5elEOERVuRB2pE3EMZFP0HBt9TP4vAv1NQFt
- J8hMWUmdr4E2TTtGVrXhSnHXI8II4eOfK2WTLNqxs8Eb2ND3WenxSFnlP
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=OzVx/xeWQnGHVkDtrIL36NcQb5HsBgwSnA/5p4iz8DI=;
+ b=KBrIzQThObjhhlNrQpL1e4iOHfN5YdDNFtsYWkNuO4lTUpMPSE1tA64T
+ OcGkAb/REK849y7UOi4sXJG65iaAipzmTSABfTjHOVhJ/35tSscDNmybn
+ QhnMWQd1QZUisuNCmy3qHlRK/mNOdRQG2Ia3MTOMX/HJ+zdg+bEmqZoxy
+ FDY3kcyIn1H/4XOj7qq+aFnO58H1F1HykzAIjbS2/cZ3SqfZTM4niwfP4
+ s1P3zV6liWVlRdhoqof3DGvU74qnCAoiEPo0Eao4EsxIAw0ksySc9ZJ3+
+ r1cil0QhRndM0ACKw9asuPu5FXEuSESDOI1y/unnKlRi7phPaj8AnIFbB
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RXRry30o
-Subject: [Intel-wired-lan] [PATCH iwl-next v5 1/4] igc: remove unused
- autoneg_failed field
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=KBrIzQTh
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 2/4] igc: move autoneg-enabled
+ settings into igc_handle_autoneg_enabled()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,7 +120,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: A5A5E4F1413
+X-Rspamd-Queue-Id: 7BA5E4F1429
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -142,14 +143,14 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid,osuosl.org:dkim,intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[khai.wen.tan@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	NEURAL_HAM(-0.00)[-0.988];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-0.990];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
@@ -157,70 +158,117 @@ X-Rspamd-Action: no action
 
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 
-autoneg_failed in struct igc_mac_info is never set in the igc driver.
-Remove the field and the dead code checking it in
-igc_config_fc_after_link_up().
+Move the advertised link modes and flow control configuration from
+igc_ethtool_set_link_ksettings() into igc_handle_autoneg_enabled().
 
-The field originates from the e1000/e1000e fiber/serdes forced-link
-path, where MAC-level autoneg timeout sets it to signal the flow-control
-code to force pause. igc supports only copper, so it never needs to set
-this field.
+No functional change.
 
 Reviewed-by: Looi Hong Aun <hong.aun.looi@intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 Signed-off-by: Khai Wen Tan <khai.wen.tan@linux.intel.com>
 ---
- drivers/net/ethernet/intel/igc/igc_hw.h  |  1 -
- drivers/net/ethernet/intel/igc/igc_mac.c | 16 +---------------
- 2 files changed, 1 insertion(+), 16 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 72 ++++++++++++--------
+ 1 file changed, 44 insertions(+), 28 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_hw.h b/drivers/net/ethernet/intel/igc/igc_hw.h
-index be8a49a86d09..86ab8f566f44 100644
---- a/drivers/net/ethernet/intel/igc/igc_hw.h
-+++ b/drivers/net/ethernet/intel/igc/igc_hw.h
-@@ -92,7 +92,6 @@ struct igc_mac_info {
- 	bool asf_firmware_present;
- 	bool arc_subsystem_valid;
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 0122009bedd0..cfcbf2fdad6e 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -2000,6 +2000,49 @@ static int igc_ethtool_get_link_ksettings(struct net_device *netdev,
+ 	return 0;
+ }
  
--	bool autoneg_failed;
- 	bool get_link_status;
- };
++/**
++ * igc_handle_autoneg_enabled - Configure autonegotiation advertisement
++ * @adapter: private driver structure
++ * @cmd: ethtool link ksettings from user
++ *
++ * Records advertised speeds and flow control settings when autoneg
++ * is enabled.
++ */
++static void igc_handle_autoneg_enabled(struct igc_adapter *adapter,
++				       const struct ethtool_link_ksettings *cmd)
++{
++	struct igc_hw *hw = &adapter->hw;
++	u16 advertised = 0;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  2500baseT_Full))
++		advertised |= ADVERTISE_2500_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  1000baseT_Full))
++		advertised |= ADVERTISE_1000_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  100baseT_Full))
++		advertised |= ADVERTISE_100_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  100baseT_Half))
++		advertised |= ADVERTISE_100_HALF;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  10baseT_Full))
++		advertised |= ADVERTISE_10_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  10baseT_Half))
++		advertised |= ADVERTISE_10_HALF;
++
++	hw->phy.autoneg_advertised = advertised;
++	if (adapter->fc_autoneg)
++		hw->fc.requested_mode = igc_fc_default;
++}
++
+ static int
+ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+ 			       const struct ethtool_link_ksettings *cmd)
+@@ -2007,7 +2050,6 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 	struct net_device *dev = adapter->netdev;
+ 	struct igc_hw *hw = &adapter->hw;
+-	u16 advertised = 0;
  
-diff --git a/drivers/net/ethernet/intel/igc/igc_mac.c b/drivers/net/ethernet/intel/igc/igc_mac.c
-index 7ac6637f8db7..142beb9ae557 100644
---- a/drivers/net/ethernet/intel/igc/igc_mac.c
-+++ b/drivers/net/ethernet/intel/igc/igc_mac.c
-@@ -438,28 +438,14 @@ void igc_config_collision_dist(struct igc_hw *hw)
-  * Checks the status of auto-negotiation after link up to ensure that the
-  * speed and duplex were not forced.  If the link needed to be forced, then
-  * flow control needs to be forced also.  If auto-negotiation is enabled
-- * and did not fail, then we configure flow control based on our link
-- * partner.
-+ * then we configure flow control based on our link partner.
-  */
- s32 igc_config_fc_after_link_up(struct igc_hw *hw)
- {
- 	u16 mii_status_reg, mii_nway_adv_reg, mii_nway_lp_ability_reg;
--	struct igc_mac_info *mac = &hw->mac;
- 	u16 speed, duplex;
- 	s32 ret_val = 0;
+ 	/* When adapter in resetting mode, autoneg/speed/duplex
+ 	 * cannot be changed
+@@ -2032,34 +2074,8 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+ 	while (test_and_set_bit(__IGC_RESETTING, &adapter->state))
+ 		usleep_range(1000, 2000);
  
--	/* Check for the case where we have fiber media and auto-neg failed
--	 * so we had to force link.  In this case, we need to force the
--	 * configuration of the MAC to match the "fc" parameter.
--	 */
--	if (mac->autoneg_failed)
--		ret_val = igc_force_mac_fc(hw);
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  2500baseT_Full))
+-		advertised |= ADVERTISE_2500_FULL;
 -
--	if (ret_val) {
--		hw_dbg("Error forcing flow control settings\n");
--		goto out;
--	}
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  1000baseT_Full))
+-		advertised |= ADVERTISE_1000_FULL;
 -
- 	/* In auto-neg, we need to check and see if Auto-Neg has completed,
- 	 * and if so, how the PHY and link partner has flow control
- 	 * configured.
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  100baseT_Full))
+-		advertised |= ADVERTISE_100_FULL;
+-
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  100baseT_Half))
+-		advertised |= ADVERTISE_100_HALF;
+-
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  10baseT_Full))
+-		advertised |= ADVERTISE_10_FULL;
+-
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
+-						  10baseT_Half))
+-		advertised |= ADVERTISE_10_HALF;
+-
+ 	if (cmd->base.autoneg == AUTONEG_ENABLE) {
+-		hw->phy.autoneg_advertised = advertised;
+-		if (adapter->fc_autoneg)
+-			hw->fc.requested_mode = igc_fc_default;
++		igc_handle_autoneg_enabled(adapter, cmd);
+ 	} else {
+ 		netdev_info(dev, "Force mode currently not supported\n");
+ 	}
 -- 
 2.43.0
 
