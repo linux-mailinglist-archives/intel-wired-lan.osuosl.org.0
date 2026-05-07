@@ -2,94 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id qHm4NKQL/WnsWwAAu9opvQ
+	id 6LVeHBtd/WlWbgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 00:01:08 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:48:43 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E9D84EF898
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 00:01:08 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42D984F13F3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:48:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BE63C83D64;
-	Thu,  7 May 2026 22:01:04 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id L8u3_MQ8PYss; Thu,  7 May 2026 22:01:03 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57CA883D5B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778191262;
-	bh=P55pzkwiy0A9H3D7tbqLFDnUSO+K24Ompedf4SSCp/o=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=hJFCqnUGmcMLCaejWw0gMiLYdh8GrEf5eTLq/H+GJxkSGEti35dTxP6oFdOPnNb+J
-	 6OoNwi/n1I1WGPbkE26wY3fyXCEGvxZyZucbBaUCyAT+pQOhT5XCxq4ObFmMfw28kh
-	 HLmfaXsVhl0Atqi4dX1ypqCGZQljXmQrbJKAV3ORyg4PyMmXWshfVX2IULZQxWrW85
-	 /uCKCpRywnPloJLewMY04j5gBKFRVGhwW0shvNEHFvxeNqTJ+M6E/odqQT605koqSX
-	 zo2huljwp8heAP29InzxE+sidSU03LQmLYRYWQZKBwxv0qlfPZ8FDmj0mvB++oTpRH
-	 ds5A0OIQH0JNQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 57CA883D5B;
-	Thu,  7 May 2026 22:01:02 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 91E0C2FA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 18:39:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 781D240F6C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 18:39:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BEE72414CB;
+	Fri,  8 May 2026 03:48:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mkTuGGQqsGGP for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2026 18:39:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=171.64.64.25;
- helo=smtp1.cs.stanford.edu; envelope-from=ouster@cs.stanford.edu;
+ id N7gtJwTcGuGG; Fri,  8 May 2026 03:48:40 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C710414C9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1778212120;
+	bh=Y+Iovo2BX1YOXbf5FlyaNUyEjV/bQI08Zym9OXJLDEQ=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=vnU/bYsZTVv1JsVAa3GtIou0eOp+8zDaDAVBD9mzNSkhDIYmiEfs+JVp7O98Y0N6H
+	 oRDkoO7kcT4VLVWAdt++S87CyGGJ6wswetbXUB1qy+iGAdrxr9ZDzXovWm+N3Rw8K4
+	 WbG4z7PY3Hug6Flbczrgd8UpFlkZDDHOZQzecK4VaA5dsg0cp4sDEufwMrK1i7bmqC
+	 H5y5D9bn0vtD51vX5HO0E4h9yCoxRk9hvfXaxk/8I9+mNCgIvqkvHaLZq7od1NNbxt
+	 3hT06HRSyGCZ3LfY1i+ynTz3TOfhTzGHcqKV5dhRt8yeVj3qdlVBIEZj5vftqSlC1f
+	 rgJYOBChfUTwA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C710414C9;
+	Fri,  8 May 2026 03:48:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 94ACE272
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 86824414C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:38 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id c-Jp6ZCAoVQC for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 03:48:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=khai.wen.tan@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8EFCB40F4C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8EFCB40F4C
-Received: from smtp1.cs.Stanford.EDU (smtp1.cs.stanford.edu [171.64.64.25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8EFCB40F4C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 18:39:34 +0000 (UTC)
-Received: from [70.228.78.207] (port=50044 helo=cs.stanford.edu)
- by smtp1.cs.Stanford.EDU with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ouster@cs.stanford.edu>)
- id 1wL3dF-0005rO-4r; Thu, 07 May 2026 11:39:33 -0700
-From: John Ousterhout <ouster@cs.stanford.edu>
-To: anthony.l.nguyen@intel.com
-Cc: intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- netdev@vger.kernel.org, John Ousterhout <ouster@cs.stanford.edu>
-Date: Thu,  7 May 2026 11:38:43 -0700
-Message-ID: <20260507183843.1457-1-ouster@cs.stanford.edu>
-X-Mailer: git-send-email 2.51.0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 40833414C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 40833414C4
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 40833414C4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:48:36 +0000 (UTC)
+X-CSE-ConnectionGUID: Q6OG2VXpTLK6ybVA/jJAlw==
+X-CSE-MsgGUID: 9re3Cxg8RoasWN+7jTCR3g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="90278833"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="90278833"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2026 20:48:36 -0700
+X-CSE-ConnectionGUID: 3/Z9CBXmTRSYCygsnAIrvw==
+X-CSE-MsgGUID: JiV19TWjR6mRUIHunpGUFg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="236767290"
+Received: from unknown (HELO localhost.png.intel.com) ([10.107.255.61])
+ by orviesa009.jf.intel.com with ESMTP; 07 May 2026 20:48:32 -0700
+From: KhaiWenTan <khai.wen.tan@linux.intel.com>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, faizal.abdul.rahim@intel.com,
+ hong.aun.looi@intel.com, hector.blanco.alcaine@intel.com,
+ khai.wen.tan@intel.com, Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+Date: Fri,  8 May 2026 05:47:02 +0800
+Message-ID: <20260507214706.309984-1-khai.wen.tan@linux.intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scan-Signature: 143d975f4418483bad6282b216f6b212
-X-Mailman-Approved-At: Thu, 07 May 2026 22:00:57 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=cs.stanford.edu; s=cs2308; h=Content-Transfer-Encoding:MIME-Version:
- Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=P55pzkwiy0A9H3D7tbqLFDnUSO+K24Ompedf4SSCp/o=; t=1778179174; x=1779043174; 
- b=dCqt+h8MvDGeLizvFfNjiLPUtFuMRHt01ww943OYjnPRRGg4Qm62NK+/AYq4FEG2yfAZ6xJAlXk
- hjlSBlVf10RpywTFG9DYpQFJPR5VLOT/2J1hz36XM0NgskN9+aJTU2NGaD/d+cMkTqumpJH0sC0M1
- w90VeOzIPH7swRmhdzmO/8G9aQ0wQxFPcUhf1a6fXO3iAEdJsEI+RVDZjqpLCuK4pQljm6+QKCOeZ
- ETNttpj6utyAzrgGsw7Pde8f1nrkuSASYpuyXBB4EJqyw6yHOpeVCQXk8+0c02em1PF5FLrDrmi+o
- 9WfSc/EM8CTLesxHYWRnlHkm8aj4HSGnS/jg==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1778212118; x=1809748118;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=9sJ6IMJ5LymCVMvZk1BOFaSeUfznGdj4PM9e7IORzXI=;
+ b=HJI5z7TWXTK8jsKOK7V41Qop/bJ4aPW5ylK77CU4rFQbfNSRbYg7aJfS
+ BTEuhhPtMuaab86dmiQa6osb3+ynIQatQ7mNeHNPrWMbd+dIrpnkDteGt
+ nrXCk3NxanY00GATLNp9Uj9msSZ0tkqaVoSv7xasjeIHFBEYickOflBzg
+ UB7JpUaA5U9gk/UAErNpYDETQfjvXpfzTlp35ciiz3R3AOLHnb1M/0ax6
+ siEfIh4w9UMRIWoOmbyBEVlW2eTp396e/PBnNwKzOSPpuwFo+4fWYH+k9
+ OiiuRIVMDTE450bNlTSmUH0fkKyQwm6i9HcC3NKepNIz/Qk9Cw1k8OQnL
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=cs.stanford.edu
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=cs.stanford.edu header.i=@cs.stanford.edu
- header.a=rsa-sha256 header.s=cs2308 header.b=dCqt+h8M
-Subject: [Intel-wired-lan] [PATCH net v2] ice: fix packet corruption due to
- extraneous page flip
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=HJI5z7TW
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 0/4] igc: add support for
+ forcing link speed without autonegotiation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,113 +114,100 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5E9D84EF898
+X-Rspamd-Queue-Id: 42D984F13F3
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[cs.stanford.edu : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:ouster@cs.stanford.edu,s:lists@lfdr.de];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
-	FUZZY_RATELIMITED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	RCPT_COUNT_FIVE(0.00)[5];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[15];
+	FORGED_SENDER(0.00)[khai.wen.tan@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:faizal.abdul.rahim@intel.com,m:hong.aun.looi@intel.com,m:hector.blanco.alcaine@intel.com,m:khai.wen.tan@intel.com,m:faizal.abdul.rahim@linux.intel.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,ozlabs.org:url];
+	FROM_NEQ_ENVFROM(0.00)[khai.wen.tan@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	NEURAL_HAM(-0.00)[-0.987];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-Consider the following sequence of events:
-* The bottom half of a buffer page is filled with data from
-  packet A. The page has a net reference count (reference count
-  - bias) of 1. The page is returned to the NIC, flipped to
-  use the top half.
-* Before the reference on the page is released, the NIC returns
-  the page with no data in it ('size' is zero in ice_clean_rx_irq).
-  In this case the bias does not get decremented. The page still
-  has a net reference count of 1, so it gets returned to the NIC.
-  However, ice_put_rx_mbuf flipped the page so that the bottom
-  half is active.
-* If the NIC stores another packet in the page before packet A
-  has released its reference, the data in packet A will be
-  overwritten with data from the new packet.
-The fix is for ice_put_rx_mbuf not to flip pages that have a
-size of 0.
+From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 
-Note: major revisions to the ice driver make this patch irrelevant
-for recent versions. It applies to longterm stable versions
-6.18.27 and 6.12.86; it also seems relevant for 6.6.137, but would
-need modifications for that version. I have not examined earlier
-versions
+This series adds support for forcing 10/100 Mb/s link speed via ethtool
+when autonegotiation is disabled on the igc driver.
 
-Signed-off-by: John Ousterhout <ouster@cs.stanford.edu>
----
- drivers/net/ethernet/intel/ice/ice_txrx.c | 23 ++++++++++++++++++++---
- 1 file changed, 20 insertions(+), 3 deletions(-)
+Changes in v5:
+- add removal justification to include copper context in commit
+  description for igc: remove unused autoneg_failed field (Paul)
+- check that cmd->base.duplex is either DUPLEX_HALF or DUPLEX_FULL
+  in igc_ethtool_set_link_ksettings() (Simon)
+- dynamically override hw->fc.current_mode to igc_fc_none during
+  link configuration instead of mutating requested_mode (Simon)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 51c459a3e722..081c7a7392b7 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -1215,6 +1215,13 @@ static void ice_put_rx_mbuf(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp,
- 		xdp_frags = xdp_get_shared_info_from_buff(xdp)->nr_frags;
- 
- 	while (idx != ntc) {
-+		union ice_32b_rx_flex_desc *rx_desc;
-+		unsigned int size;
-+
-+		rx_desc = ICE_RX_DESC(rx_ring, idx);
-+		size = le16_to_cpu(rx_desc->wb.pkt_len) &
-+		       ICE_RX_FLX_DESC_PKT_LEN_M;
-+
- 		buf = &rx_ring->rx_buf[idx];
- 		if (++idx == cnt)
- 			idx = 0;
-@@ -1224,10 +1231,20 @@ static void ice_put_rx_mbuf(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp,
- 		 * To do this, only adjust pagecnt_bias for fragments up to
- 		 * the total remaining after the XDP program has run.
- 		 */
--		if (verdict != ICE_XDP_CONSUMED)
--			ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
--		else if (i++ <= xdp_frags)
-+		if (verdict != ICE_XDP_CONSUMED) {
-+			/* Don't "flip" the page if size is 0: in this case
-+			 * the data in the current half will not be used so
-+			 * it's OK to reuse that half. And, since the bias
-+			 * didn't get decremented for this half, the page can
-+			 * be returned to the NIC even if the other half is
-+			 * still in use, so flipping the page could cause
-+			 * live packet data to be overwritten.
-+			 */
-+			if (size != 0)
-+				ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
-+		} else if (i++ <= xdp_frags) {
- 			buf->pagecnt_bias++;
-+		}
- 
- 		ice_put_rx_buf(rx_ring, buf);
- 	}
--- 
+Changes in v4:
+- Validate that autoneg is AUTONEG_ENABLE or AUTONEG_DISABLE early
+  in igc_ethtool_set_link_ksettings() to avoid passing unexpected
+  values to igc_handle_autoneg_disabled(). (Simon Horman)
+
+Changes in v3:
+- Modify condition from "if (duplex == DUPLEX_HALF)" to
+  "if (duplex != DUPLEX_FULL)". (Simon Horman)
+
+Changes in v2:
+- When forcing half-duplex, set hw->fc.requested_mode = igc_fc_none,
+  since half-duplex cannot support flow control per IEEE 802.3.
+  (Simon Horman)
+- Split the original single patch into three patches for clarity:
+  patches 1 and 2 are preparatory cleanups; patch 3 carries the
+  functional change.
+
+v4 at:
+https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20260428060009.311393-1-khai.wen.tan@linux.intel.com/
+
+v3 at:
+https://patchwork.ozlabs.org/project/intel-wired-lan/cover/20260422155701.7420-1-khai.wen.tan@linux.intel.com/
+
+v2 at:
+https://patchwork.kernel.org/project/netdevbpf/patch/20260416015520.6090-4-khai.wen.tan@linux.intel.com/
+
+v1 at:
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20260409072747.217836-1-khai.wen.tan@linux.intel.com/
+
+Faizal Rahim (4):
+  igc: remove unused autoneg_failed field
+  igc: move autoneg-enabled settings into igc_handle_autoneg_enabled()
+  igc: replace goto out with direct returns in
+    igc_config_fc_after_link_up()
+  igc: add support for forcing link speed without autonegotiation
+
+ drivers/net/ethernet/intel/igc/igc_base.c    |  35 +++-
+ drivers/net/ethernet/intel/igc/igc_defines.h |   9 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 210 +++++++++++++------
+ drivers/net/ethernet/intel/igc/igc_hw.h      |  10 +-
+ drivers/net/ethernet/intel/igc/igc_mac.c     |  35 ++--
+ drivers/net/ethernet/intel/igc/igc_main.c    |   2 +-
+ drivers/net/ethernet/intel/igc/igc_phy.c     |  65 +++++-
+ drivers/net/ethernet/intel/igc/igc_phy.h     |   1 +
+ 8 files changed, 268 insertions(+), 99 deletions(-)
+
+--
 2.43.0
-
