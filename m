@@ -2,115 +2,138 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eGHLD2pV/GlOOAAAu9opvQ
+	id OHEUBqJc/GndOQAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 11:03:38 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 11:34:26 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 563514E5787
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 11:03:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 003984E6052
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 11:34:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 91160607CD;
-	Thu,  7 May 2026 09:03:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8117B409D4;
+	Thu,  7 May 2026 09:34:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AweXi9DrPm46; Thu,  7 May 2026 09:03:34 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HiM4y-h5Misg; Thu,  7 May 2026 09:34:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A491C60BAA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E416340A47
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778144614;
-	bh=k1Qq9D1EQuF3tTmPALDEACtxkVNx6wDmuDXrzOzvLQI=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1778146462;
+	bh=0RDPZxyyoA+nLVJX1tOhu7GRz/OpeQnLIvnlbEm9kx4=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=XdNs8l61IEaVHcqKYoGRNdxcLtSzVsR+eSBqiValsIOwS4n8hg9ctIfxe3h6ST818
-	 Oj7BTqD10bnDhX3tiH9fKkhJoTrrq/CZl45VzS+yXq8Nir2sSigHPFJGn8lR+At/EW
-	 11chMTnxo11kNP9yXJcemwm5x39hqpqWP0PVUsjsTr6UEbXkHxQH0ccPRyf9ePBEAQ
-	 QC+BUkHVwPXxsEdnHQdx78VfM/BY8L4OElrlu1P1Tdr0NAbRtD/LPtQ5LZ1cmgvzNz
-	 RbJLjHK3p8DBSKrUWM10GyJyPbo7/gvn9Ll6XyZ2u2TmzbwtY+IPHRvClFnKmoYrjp
-	 P9cRIg7wV5yRw==
+	b=gVj7WJpBnv4YSBYhAzcS9fYShSIKNVWfUlCMtr92mqRKjvkDDw6xer6MteHOelVO3
+	 FD/9/8wsrTA3x8ElidTfkJKPf/DCSM8E3/AuNp4UYXMHGUbFxYiL6yvUgpcln2V/rR
+	 ZMZCdxYltbZJmtHVzAUm6jScdtqyWFsT2IDMpHJfLMDeXlsAyaDLHBtH8qaD5WYHd2
+	 gM2X50iPILdjN49z33o11SUKRgKMptZ4s/QtGoWDV679T15vwX5fV11INRwwXSP6pX
+	 WF9TdZ5o09kF/g9GqJPhKsrENl9rd8kmn+HaPXMh8IRkoajFSfjMZvMBXKGF6MmhAm
+	 hlTX7IWaMtHtw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A491C60BAA;
-	Thu,  7 May 2026 09:03:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E416340A47;
+	Thu,  7 May 2026 09:34:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 54960280
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:03:33 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id D0596317
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:34:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 46B0D60EFE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:03:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B60F7409D4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:34:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Y2qN8tPPWMuo for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2026 09:03:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EB10960BAA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB10960BAA
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EB10960BAA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:03:31 +0000 (UTC)
-X-CSE-ConnectionGUID: hpEZdkJoR5Knl24FpZWdRQ==
-X-CSE-MsgGUID: kw8c3P06SPy8cznOLzYReg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11778"; a="96657454"
-X-IronPort-AV: E=Sophos;i="6.23,221,1770624000"; d="scan'208";a="96657454"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2026 02:03:30 -0700
-X-CSE-ConnectionGUID: mE++FukbQSS5ES7bUwLzzA==
-X-CSE-MsgGUID: iJ+FQYjdSGCb5bJMsnXbJg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,221,1770624000"; d="scan'208";a="232042918"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.83.206])
- ([10.247.83.206])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2026 02:03:27 -0700
-Message-ID: <78e48cc4-759f-46e1-83c7-1c9442308ae3@linux.intel.com>
-Date: Thu, 7 May 2026 17:03:25 +0800
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id P2Y9pKloUoVl for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 May 2026 09:34:20 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::434; helo=mail-wr1-x434.google.com;
+ envelope-from=matt@readmodwrite.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 562B7409C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 562B7409C7
+Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com
+ [IPv6:2a00:1450:4864:20::434])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 562B7409C7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 09:34:19 +0000 (UTC)
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-44c350a5b87so384750f8f.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 07 May 2026 02:34:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778146457; x=1778751257;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0RDPZxyyoA+nLVJX1tOhu7GRz/OpeQnLIvnlbEm9kx4=;
+ b=mYAlPpLt8hP9vXZTQ/l0ni4J/byQg2ryvcnWA9qHiFfzMSEswNbQfjvJR6RvYpLyVE
+ 0m3Wdf912V9n21xsS2x6ubTHd/WnjxE7oKtYbkCyPF6wE/2G1tdJmXwq1dEO4dIJr7xm
+ znDZKETVo/d7VDZmSoSxYbyIf6E4ADJJEFZfK0uNgr7G+no+FvVJEWoVyK/+2Ccfa7Tm
+ FlvRap920GHo+xleOVsz+2j4GvzmxM0yB759gf8MdVae0RqMX2BydO9PdFNcld76/glx
+ IWAq7Gg3hIYslwSK0OtN21bESwBnVDOq4Ls2OLfo+HqSXx1oes4PBnP75Lx1jqdmtsYs
+ FgbA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8CGewkwCwsFBeaFMiw0OXaJtsbqabQ24FOPPK3v2HgxnAOzrEE77njdumpmGfbUbZD5fHMLfxk7B9eJAGl3k4=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YxhuoQZ+eBrYZLzSfHQsqlOqCDo5Er7R5kDLJWdvWems0ARrFeq
+ zWD6HSyJxAxvk1Hae8x3QTfiaw/XOaOeEfiDHWq0eILsmZtou7/DxQrG38jpzEccjlo=
+X-Gm-Gg: AeBDieuvcp7Eb+GTI+alhuNxkkpg0DAG82G5yuTmL5terDT8qYkYhAmlXuvR9cMtvD+
+ 9qcwyDq8UGwSToJiiCWt8F9dXbib4H+9WSvkK6Irwy5dllodACaPD9vpBy5LOnIIOMigj3TkcDH
+ lRS4roHui14g251PGsIQGNzkQM4cq3Lx/AmdmbSy1pmIrmukQPFDk2woIaH+KnEJovfp0s/E+lf
+ cg634Kv9oJzSkxwdiRrRp0fqUHB/yn1q/RcAV0Wbe8RLfmQvnixfBWoqe8rbEGm8TbYsmFXrihX
+ RfGtIp6IhkoavHKyRX10deHObBE9oLccI7vOYTI8NdtqE3vbPAk22IPXOTKKiG/XyqUqWTTninE
+ obRbzFRB//4fHaTDOuUXdk5J+wnlPIShNIGuKGyY+v9CkI0ZZk3FQB4fUUpNFLjyHrQWAbjH4je
+ UulqGzeTecN7MED1itKFa0
+X-Received: by 2002:a05:6000:2c0c:b0:43d:7e11:1b72 with SMTP id
+ ffacd0b85a97d-4515a6c32dfmr11386364f8f.9.1778146456983; 
+ Thu, 07 May 2026 02:34:16 -0700 (PDT)
+Received: from localhost ([2a09:bac6:37a8:294b::41d:50])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4505238e7c0sm17157280f8f.3.2026.05.07.02.34.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 May 2026 02:34:16 -0700 (PDT)
+Date: Thu, 7 May 2026 10:34:15 +0100
+From: Matt Fleming <matt@readmodwrite.com>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, kernel-team@cloudflare.com,
+ Matt Fleming <mfleming@cloudflare.com>, stable@vger.kernel.org,
+ Simon Horman <horms@kernel.org>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Eric Joyner <eric.joyner@intel.com>, Paul Greenwalt <paul.greenwalt@intel.com>,
+ Alice Michael <alice.michael@intel.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Message-ID: <afxbZjldi1OC3HmS@matt-Precision-5490>
+References: <20260501095717.1032151-1-matt@readmodwrite.com>
+ <531aec13-c33f-4e77-ab48-de8861f9b6c6@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: David Laight <david.laight.linux@gmail.com>
-Cc: KhaiWenTan <khai.wen.tan@linux.intel.com>, anthony.l.nguyen@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- faizal.abdul.rahim@intel.com, hong.aun.looi@intel.com,
- khai.wen.tan@intel.com, hector.blanco.alcaine@intel.com
-References: <20260428060009.311393-1-khai.wen.tan@linux.intel.com>
- <20260430154105.505739ac@pumpkin>
- <63b186e0-046d-496e-8ae4-d68cd5eb5817@linux.intel.com>
- <20260506104053.7a4f5bf5@pumpkin>
-Content-Language: en-US
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-In-Reply-To: <20260506104053.7a4f5bf5@pumpkin>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778144612; x=1809680612;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=aurcqTPVlJK1XP/Fw5vujWYHj35MrZbEoEPPhpC6Ris=;
- b=MwqVrpOdBw3ukNhcgyJ/X7TEXGIn0wYLE+DVae+jh9jqBG826AKTSkPJ
- QlspPZoteilA9Axq9cOQDLtE4+8L1PeJzKh4yiwIdsCe+e0pq89pRXsGT
- ZAikRCIVEyIFHg4xn+xGj3uqVah2T4/i08edTytKhZPnHrSPXvk+puAV7
- fb0FSS2htaJAfSFHkdcyYf8uj3Ki4lPfUWm/KPE9N5flImjGqMyZpgamn
- cUhqqC4rieVIYG39/IVUztsFntOg1mnOaHriZuTCS5h1Y87oRegax76Wt
- vH5fAvjvvoONCLKqNJ5fA9IrSkP4oyQZVxvKP7TmNdwoIVb4f4nVKtzGG
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <531aec13-c33f-4e77-ab48-de8861f9b6c6@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=readmodwrite-com.20251104.gappssmtp.com; s=20251104; t=1778146457;
+ x=1778751257; darn=lists.osuosl.org; 
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=0RDPZxyyoA+nLVJX1tOhu7GRz/OpeQnLIvnlbEm9kx4=;
+ b=vqh4b6GfryUexW19nKGTeCQzt+vD0GnT7YX96LCWKCdC1R2l6rUMdkwlU74sgswaba
+ zOMQxPepjyH/mpokRtSsr0tzUBIhAbCwWOFgpJv3h2fb6MLCVo4C3MHlbQTBqsJw9wZr
+ JoyOJXeEBNkwUoZeZTumwYndDWrhGnWq9EbNPO0kAji+AZ47QU+L0YI671Fzv/oClY3Z
+ DQ81InMJR9NSuPb2rFGWomT9EoWnUKRfrI7RI1AyUA7jdZy9pOiHO8kpa5XpXPhkqkMX
+ JTBSApEELNNTe44iHQt0SqUkVHXOewm9xCJjNFhc3QvlMtMM3vAwwnBNeCO6LOp4SMja
+ cBNA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=readmodwrite.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=MwqVrpOd
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/3] igc: add support for
- forcing link speed without autonegotiation
+ unprotected) header.d=readmodwrite-com.20251104.gappssmtp.com
+ header.i=@readmodwrite-com.20251104.gappssmtp.com header.a=rsa-sha256
+ header.s=20251104 header.b=vqh4b6Gf
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: Fix missing 1's
+ complement negation in GCS raw checksum
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -125,153 +148,90 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 563514E5787
+X-Rspamd-Queue-Id: 003984E6052
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [1.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	MID_RHS_NOT_FQDN(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:david.laight.linux@gmail.com,m:khai.wen.tan@linux.intel.com,m:anthony.l.nguyen@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:faizal.abdul.rahim@intel.com,m:hong.aun.looi@intel.com,m:khai.wen.tan@intel.com,m:hector.blanco.alcaine@intel.com,m:davidlaightlinux@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	RCPT_COUNT_TWELVE(0.00)[15];
-	ARC_NA(0.00)[];
-	FREEMAIL_TO(0.00)[gmail.com];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER(0.00)[faizal.abdul.rahim@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,osuosl.org:dkim];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:anthony.l.nguyen@intel.com,m:aleksandr.loktionov@intel.com,m:kernel-team@cloudflare.com,m:mfleming@cloudflare.com,m:stable@vger.kernel.org,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:eric.joyner@intel.com,m:paul.greenwalt@intel.com,m:alice.michael@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim];
+	FORGED_SENDER(0.00)[matt@readmodwrite.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[19];
+	DMARC_NA(0.00)[readmodwrite.com];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	MISSING_XM_UA(0.00)[];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[faizal.abdul.rahim@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[matt@readmodwrite.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	NEURAL_HAM(-0.00)[-1.000];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-+ Hector
-
-On 6/5/2026 5:40 pm, David Laight wrote:
-> On Wed, 6 May 2026 14:21:59 +0800
-> "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com> wrote:
+On Mon, May 04, 2026 at 05:10:23PM -0700, Jacob Keller wrote:
 > 
->> On 30/4/2026 10:41 pm, David Laight wrote:
->>> On Tue, 28 Apr 2026 14:00:06 +0800
->>> KhaiWenTan <khai.wen.tan@linux.intel.com> wrote:
->>>   
->>>> From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
->>>>
->>>> This series adds support for forcing 10/100 Mb/s link speed via ethtool
->>>> when autonegotiation is disabled on the igc driver.  
->>>
->>> I'll ask 'why' ?
->>>
->>> In particular forcing half/full duplex has always been a very good way
->>> of 'breaking' a network connection.
->>>
->>> It really is much better to restrict the advertised link modes and let
->>> the autodetect/autonegotiation logic in the phy/mac do its job.
->>>
->>> About the only think I can think of is to force 10M HDX when connected
->>> to a remote system that supports 10M/100M HDX.
->>> In that case you need to send out single link test pulses, not the
->>> burst used to identify 100M HDX, or the pattern encoded on the burst
->>> used by autonegotiation.
->>> But you need to got back to the mid 1990s to find such systems.
->>> Anything that supports FDX will do autonegotiation.
->>>
->>> 	David
->>>   
->>
->> There's a use case requested:
->>
->> Profinet Certification tool reports that forcing a link speed without
->> auto-negotiation is not working.
->> Forcing the link speed is a critical feature for the industrial automation
->> "fast-start" use case. When there is a connection lost, the system must
->> come back up as fast as possible. In PROFINET, that means to force the
->> speed and rejoin the controller loops. Without supporting forcing the speed
->> to 100M in Foxville, the certification tool would not be able to certify
->> the availability of this feature.
->>
->> I'm hoping this context is enough to justify the need?
+> Hi,
 > 
-> Is auto-negotiation of the 'low' speed actually that slow?
-> IIRC detecting 10G and above requires a lot of signal processing.
-> But 10/100 and hdx/fdx just uses the ANAR register value sent in the
-> link test pulses.
-> (IIRC 1G uses the ANAR pattern, but requires extra signal processing as well.
-> The higher speeds didn't exist when I was writing ethernet drivers.)
+> Based on your patch description, I assume that you've tested this on
+> real hardware.
 > 
-> I've been on the 'wrong end' of hdx/fdx mismatches - you really don't
-> want to let people get there, it is terribly confusing.
+> I dug a little through some of our internal changes history and sawe
+> that it looks like the hardware has a register setting in its
+> GL_RDPU_CNTRL register which determines whether the checksum value
+> reported is inverted or not. In E830 hardware, it is supposed to be off
+> (i.e. the checksum value reported already matches the expected setting.
 > 
-
-Thanks for the information.
-
-I agree that for normal Ethernet use, auto-negotiation on both link
-partners is safer and avoids the issues you mentioned.
-
-The reason for this patch is the more specific PROFINET Fast Start Up
-(FSU) use case. For FSU, the requirement is different from normal Ethernet
-use. It is intended for deterministic startup, for example in industrial
-robot/tool-change applications.
-
-One of the startup optimizations is to use "fixed transmission parameters"
-instead of automatic detection in the profinet specification:
-  https://us.profinet.com/profinet_tech/fast-start-up/
-
-I understand your point that 10/100 auto-negotiation is faster than
-higher-speed link training. I don't have a detailed timing breakdown for
-the FSU case comparing 10/100 startup with auto-negotiation enabled versus
-disabled, or enough visibility into the certification criteria to comment
-on additional determinism requirements.
-
-But keeping AutoNeg enabled, even with only specific speed advertised,
-would not cover the same requirement.
-
-This is only meant as an explicit link configuration for controlled
-industrial deployments where both link partners are configured
-consistently. It's not intended as a recommended default for general
-networking.
-
-Also, ethtool already allows users to request speed/duplex configuration
-with auto-negotiation disabled, and some drivers already support this, for
-example igb. This patch just reuses that existing interface and enables igc
-to support the forced modes supported by this hardware.
-
-> There actually ought to be a way of setting the auto-negotiation
-> registers to 100M (HDX and/or FDX) and then transmitting as (say) 100M HDX
-> even before negotiation completes.
-> Then correcting hdx/fdx based on the received ANAR register.
-> Or, at least, sending out an ANAR that only contains what you are using.
+> Perhaps your device somehow got the GL_RDPU_CNTRL register set to the
+> wrong mode and that results in the swap being necessary. Hmm.
 > 
-> The problem I always had was that the actual operating mode of the phy
-> wasn't in one of the standard registers.
-> So if you connected to a system that didn't do auto-negotiation the
-> phy would be using (say) 10M HDX, but the received ANAR register would
-> still contain a value from an earlier connection.
-> If the driver read that register from the phy it used the wrong duplex mode.
-> (The speed for 10/100 doesn't matter, the phy clocks the interface to the
-> mac at the right speed and the mac doesn't care.)
-> 
-> 	David
-> 
-> 
-> 
-> 
-> 
+> I'll ask the team to see if they can confirm this behavior.
 
+Hi Jake,
+
+Thanks for digging into this.
+
+I read GL_RDPU_CNTRL on our affected E830 and the value is the same on
+both ports of the NIC:
+
+  0000:c1:00.0: GL_RDPU_CNTRL = 0x0020a275
+  0000:c1:00.1: GL_RDPU_CNTRL = 0x0020a275
+
+Decoding bit 22 (E830_GL_RDPU_CNTRL_CHECKSUM_COMPLETE_INV) gives 0,
+i.e. the hardware is supposedly in "not inverted" mode, which matches
+the default you described.
+
+However, looking at the data on the wire I see:
+
+  - netdev_rx_csum_fault fires ~65 000 times/sec on this host.
+  - bpftrace at fexit:ice_process_skb_fields shows skb->csum =
+    swab16(raw_csum) directly (no negation), e.g. raw_csum=0xfb4f
+    -> skb->csum=0x4ffb.
+  - At fentry:__skb_checksum_complete the upper 16 bits of skb->csum
+    are 0xFFFF on every TCP/UDP packet -- the signature of nf_ip_checksum
+    adding the pseudo-header to a value that was the un-negated raw_csum.
+  - fold2(skb->csum_at_fentry + skb_checksum(skb,0,len,0)) ≈ 0xFFFF
+    for every packet, which means the two values are ones-complement
+    complements of each other, i.e. the driver stored S where the
+    stack expects ~S.
+
+Negating the checksum makes the failures go away.
+
+Thanks,
+Matt
