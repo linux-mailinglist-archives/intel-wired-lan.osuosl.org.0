@@ -2,93 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id EN+HFbB7/GllQgAAu9opvQ
+	id gAqzMLp7/GkwQgAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 13:46:56 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 13:47:06 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B45C4E7B0C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 13:46:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B01C4E7B14
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 07 May 2026 13:47:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D2753410FD;
-	Thu,  7 May 2026 11:46:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EBB8D410FD;
+	Thu,  7 May 2026 11:47:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q4DV6PzT0p2h; Thu,  7 May 2026 11:46:51 +0000 (UTC)
+ id ZvTT3D0fJRfp; Thu,  7 May 2026 11:47:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A835410FB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 311AC410FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778154411;
-	bh=m6FCCupoIWsmvH6K3sNzVCgdJLI2sbweqUsWhYleiXk=;
+	s=default; t=1778154424;
+	bh=CacD8KaM9P+gf5/RAVfp4kYH7Dy5TsiuDs/z8ccvcf8=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=WNMG7HuI5MsEkmvoOj6Pgun5axBCDjcTPczUGr/m/dSe8ukKJgLftyvfQBmfHOOFI
-	 0qPg8ATLDjTJw0RaqxjyZYSZmLtqPHUOuPP2BB4QY/UfrIOyBc9p4xrIVZLCHDtGd3
-	 dvj8XyE2nMpsbiMBlHvPDQ7uzJh51Ac15xAFhktycnTNviEAr7O1CQ+pulzcKBILgR
-	 qZGfzS5wk0o3oSP7viicAR9P1AukZDR0FoAoYyvY0yWxUCPzzV7A7wK0/2R5mn4mcl
-	 Fgvowi+tugyqfz2aOPDkq80s7+8UBmL3Pg5Ns5gg81/JyGByRf/sPWZ0e0EPsY7TAt
-	 FGDw9H6vEo8Jg==
+	b=ApbAkc8nTm8Fl66WxptoDQGJdC3MS1U+z0ej0Y/TEXD1D0Ok4XV9GQDNT8DV4THvQ
+	 dz16Eushc/h4BDzumUDUVtYlA18i+SC95FH9ugzb2iW98RKph4mVmp5aWiWsxl6xws
+	 1MDfH506uJehRoAC/uw0oEuK1OP1pCPpTgTPwcXv+hyD/pLg8QiB6DnPKd6nmuhrCw
+	 NNBcRfDFP0zGsyDfb2dYmLXLtjjTyVZb4LAla4kA7WEIO5hGHqLwFq+drUFajlt3Cb
+	 6arZmhp/1v27WTonEp9H0jrMTNInqhrXUSFmMSKhuGHAwFI/lOzeVJSrxj8ZxPzLmB
+	 TLY/nm4tlbt8Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1A835410FB;
-	Thu,  7 May 2026 11:46:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 311AC410FB;
+	Thu,  7 May 2026 11:47:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 9819711B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:46:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4219D11B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:47:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7697F83B95
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:46:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 33F20407A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:47:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KSmwbybFO-tW for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 May 2026 11:46:48 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KlUqzz5tGx2L for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 May 2026 11:47:02 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9C14083B94
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C14083B94
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4752B40798
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4752B40798
 Received: from sea.source.kernel.org (sea.source.kernel.org
  [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9C14083B94
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:46:48 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4752B40798
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 May 2026 11:47:02 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id B2EB740A74;
- Thu,  7 May 2026 11:46:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6ED95C2BCB2;
- Thu,  7 May 2026 11:46:46 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id 0160843F45;
+ Thu,  7 May 2026 11:47:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B8E2FC2BCC7;
+ Thu,  7 May 2026 11:47:00 +0000 (UTC)
 From: Simon Horman <horms@kernel.org>
 To: aleksandr.loktionov@intel.com
 Cc: 'Simon Horman' <horms@kernel.org>, intel-wired-lan@lists.osuosl.org,
  anthony.l.nguyen@intel.com, netdev@vger.kernel.org
-Date: Thu,  7 May 2026 12:45:11 +0100
-Message-ID: <20260507114507.910365-5-horms@kernel.org>
+Date: Thu,  7 May 2026 12:46:54 +0100
+Message-ID: <20260507114654.916528-1-horms@kernel.org>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260504142451.4161845-4-aleksandr.loktionov@intel.com>
-References: <20260504142451.4161845-4-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260504142451.4161845-6-aleksandr.loktionov@intel.com>
+References: <20260504142451.4161845-6-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1778154407;
- bh=sfcWi70OrJmTlIsQy/5eBouz7VizDbkkSc+bXyA42Oc=;
+ d=kernel.org; s=k20201202; t=1778154421;
+ bh=h3EAL/S01YS8fybSqcWD1qgy/RTvjx3UPUp6EuoYrGg=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Df6/mn91eCgAO0YqDxN2RNhD9vBAvJNq7Xpipg/plNYuNtnKrCwnnXfj34QEdlkEC
- PTbxPDONSQmhdLpGeC/ra9hLrG/c57ocwP1d/XhWJfwZh1XGlwT8oF7pbyuBDo3s5a
- VzW8CiQR3lKCRxa0LZWpWQm9SKyw6Bpt58UfnMoFnWHb5hR+pnvLK/wufABvKz22Je
- ml29tCUCRWOFpK0gD79VX3Qv4I9nXpVvYD5JdQl/ci204eA9HMYp8afNk6HtXvqpvv
- 5zwx74dYgcz9eQtOQWPAN4gUKHp1Nsjstt9t+vqK4PeMqgFvkTpxTkSNrwahRv4GPG
- y5iF3N84eJmIA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=AxDvMBSR+KTVU1wY7BS+di8mIKjFNZru+csLiT0ysg0yGADHxFtdeA7CuPOmKoLLo
+ 6fXBWGJKD4IpvUZWC8WWNamvfglBJG27bdFHeng9mLttN2ESB5nvTWdtwihqJIYH+P
+ xyRRNc0hmAysyI8Jy75wPwKVZqBAn67IPGQyDlBic1a4Q1cVbxPJK9Lw4Ktnu0uSCG
+ 9BgSEaZ7XcFy2ku0TIUU5kqTD4eHO06nb8z9EOMagvsgqG7dP0Er2deoOgHxBV3mxL
+ BG/bCxf5osAiRtzWJaaiysuMGSXN0H2P4ZvjCmtSKTheLJYJJdJ4m6QPgv8Gp1vG9G
+ guUCimo/JV6EA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Df6/mn91
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 3/5] ice: add correct
- handling of SMA/u.FL states
+ header.a=rsa-sha256 header.s=k20201202 header.b=AxDvMBSR
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 5/5] ice: use
+ element-by-element comparison for DCB config changes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -103,25 +103,25 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5B45C4E7B0C
+X-Rspamd-Queue-Id: 4B01C4E7B14
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:horms@kernel.org,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	FROM_HAS_DN(0.00)[];
@@ -129,7 +129,7 @@ X-Spamd-Result: default: False [2.29 / 15.00];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim,sashiko.dev:url];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
@@ -144,64 +144,110 @@ From: 'Simon Horman' <horms@kernel.org>
 This is an AI-generated review of your patch. The human sending this
 email has considered the AI review valid, or at least plausible.
 Full review at: https://sashiko.dev
-
-Simon says:
-
-I would also like to add that as a fix the patch description should
-describe the user-visible effects of the bug, and how the fix addresses
-them.
-
-Thanks!
 ---
-ice: add correct handling of SMA/u.FL states
+Subject: ice: use element-by-element comparison for DCB config changes
 
-This commit renames ICE_SMA2_UFL2_RX_DIS to ICE_SMA2_UFL2_RX_EN, stating that
-the hardware bit is actually active high for enabling RX. It updates the uses
-of the macro in ice_dpll.c to reflect the new name.
+This commit replaces the use of memcmp() for DCB configurations with an
+element-by-element comparison using ice_dcb_need_recfg(). It exports this
+function and applies it to the SW DCB netlink setters to prevent issues
+with uninitialized padding bytes.
 
->     The ICE_SMA2_UFL2_RX_DIS bit name is wrong: the bit is active high
->     (setting it *enables* RX for u.FL2 / SMA2), not active low.  Rename
->     it to ICE_SMA2_UFL2_RX_EN and invert the use sites in ice_dpll.c so
->     that enabling the u.FL2 pin clears the bit (as it used to do) and
->     disabling sets it.
-
-The commit message claims that setting the bit enables RX (active high), but
-then states that enabling the pin clears the bit (active low). Could this
-description be clarified to explain exactly whether the hardware uses active
-high or active low logic?
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-> index 62f75701d6520..7e8bb63b262a0 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-> @@ -672,7 +672,7 @@ ice_dpll_sw_pins_update(struct ice_pf *pf)
->  		p->active = false;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+> index a10c1c8d86977..13a52c1a4da3e 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_dcb_nl.c
+> @@ -108,11 +108,17 @@ static int ice_dcbnl_setets(struct net_device *netdev, struct ieee_ets *ets)
+>  	if (!bwrec)
+>  		new_cfg->etsrec.tcbwtable[0] = 100;
 >  
->  	p = &d->ufl[ICE_DPLL_PIN_SW_2_IDX];
-> -	p->active = (data & ICE_SMA2_DIR_EN) && !(data & ICE_SMA2_UFL2_RX_DIS);
-> +	p->active = (data & ICE_SMA2_DIR_EN) && !(data & ICE_SMA2_UFL2_RX_EN);
+> +	if (!ice_dcb_need_recfg(pf, &pf->hw.port_info->qos_cfg.local_dcbx_cfg,
+> +				new_cfg)) {
+> +		err = ICE_DCB_NO_HW_CHG;
+> +		goto ets_out;
+> +	}
 
-If the bit is renamed to an _EN suffix and is active high, should the logic be
-inverted here? This code still treats the bit as active low by checking for it
-being cleared (!(data & ICE_SMA2_UFL2_RX_EN)).
+Does ice_dcb_need_recfg() correctly detect bandwidth changes?
+
+Looking at the implementation of ice_dcb_need_recfg(), it only logs a debug
+message but doesn't set need_reconfig to true when only the ETS Bandwidth
+Table or TSA Table changes:
+
+drivers/net/ethernet/intel/ice/ice_dcb_lib.c:ice_dcb_need_recfg() {
+    ...
+    if (memcmp(&new_cfg->etscfg.tcbwtable,
+               &old_cfg->etscfg.tcbwtable,
+               sizeof(new_cfg->etscfg.tcbwtable)))
+        dev_dbg(dev, "ETS TC BW Table changed.\n");
+    ...
+}
+
+Since the function returns false, will this cause ice_dcbnl_setets() to
+abort early and silently drop user-requested bandwidth modifications?
+
+Also, since new_cfg points to the shared desired_dcbx_cfg state, does this
+early return leave uncommitted modifications in the software state?
+
+If a subsequent unrelated operation (like setting PFC) correctly returns
+true from ice_dcb_need_recfg(), it appears it could unintentionally push
+these abandoned ETS bandwidth changes to the hardware.
+
+>  	err = ice_pf_dcb_cfg(pf, new_cfg, true);
+>  	/* return of zero indicates new cfg applied */
+> -	if (err == ICE_DCB_HW_CHG_RST)
+> +	if (!err)
+>  		ice_dcbnl_devreset(netdev);
+
+This isn't a bug introduced by this patch, but can ice_dcbnl_devreset()
+cause a deadlock against hardware reset tasks?
+
+The ice_dcbnl_devreset() function spins in a usleep_range() loop while
+ice_is_reset_in_progress() is true.
+
+Since DCBNL callbacks like ice_dcbnl_setets() run with the global
+rtnl_lock held, and a concurrent hardware or PCIe reset worker likely
+requires rtnl_lock to complete the reset, will the reset task block
+forever while this thread waits for it?
+
+> -	if (err == ICE_DCB_NO_HW_CHG)
+> +	else if (err == ICE_DCB_NO_HW_CHG)
+>  		err = ICE_DCB_HW_CHG_RST;
+>  
+>  ets_out:
+
+Does this change cause the function to return a positive error code to
+userspace when applying an identical configuration?
+
+By bypassing the translation from ICE_DCB_NO_HW_CHG (which is 1) to
+ICE_DCB_HW_CHG_RST (which evaluates to 0) in the early goto added
+above, err remains 1 at the ets_out label.
+
+The DCBNL core evaluates any non-zero return value as an error:
+
+net/dcb/dcbnl.c:dcbnl_ieee_set() {
+    ...
+    err = netdev->dcbnl_ops->ieee_setets(netdev, ets);
+    if (err)
+        goto err;
+    ...
+}
+
+Will this cause tools like lldptool to fail when configuring an
+existing setup?
 
 [ ... ]
 
-> @@ -1264,10 +1264,10 @@ ice_dpll_ufl_pin_state_set(const struct dpll_pin *pin, void *pin_priv,
->  	case ICE_DPLL_PIN_SW_2_IDX:
->  		if (state == DPLL_PIN_STATE_SELECTABLE) {
->  			data |= ICE_SMA2_DIR_EN;
-> -			data &= ~ICE_SMA2_UFL2_RX_DIS;
-> +			data &= ~ICE_SMA2_UFL2_RX_EN;
->  			enable = true;
->  		} else if (state == DPLL_PIN_STATE_DISCONNECTED) {
-> -			data |= ICE_SMA2_UFL2_RX_DIS;
-> +			data |= ICE_SMA2_UFL2_RX_EN;
->  			enable = false;
->  		} else {
+> @@ -845,6 +858,12 @@ static int ice_dcbnl_setapp(struct net_device *netdev, struct dcb_app *app)
+>  	new_cfg->dscp_map[app->protocol] = app->priority;
+>  	new_cfg->app[new_cfg->numapps++] = new_app;
 
-Similarly, does this code still apply active low logic by clearing the _EN bit
-when enable is true, and setting it when enable is false?
+This isn't a bug introduced by this patch, but does this array append
+lack bounds checking against ICE_DCBX_MAX_APPS?
 
-If the bit is truly active high as the commit message suggests ("setting it
-enables RX"), shouldn't the bitwise operations be inverted to match?
+The app array has a capacity of 64. The function restricts duplicate
+DSCP protocols using the dscp_mapped bitmap, but since DSCP_MAX is also
+64, a user could map all 64 unique values.
+
+If numapps starts greater than 0 due to existing EtherType applications,
+adding 64 valid DSCP mappings would cause numapps to exceed 64, leading
+to an out-of-bounds write that overwrites the adjacent dscp_mapped
+bitmap.
