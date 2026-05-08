@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 0D2nNlLe/Wn0jwAAu9opvQ
+	id WEQ9DVbe/WmqkAAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 15:00:02 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 15:00:06 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 762BD4F6AF4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 15:00:02 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 58FD44F6AFB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 15:00:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A6FFC40FCE;
-	Fri,  8 May 2026 12:59:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6130A41068;
+	Fri,  8 May 2026 12:59:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aOGj_q1h2r2V; Fri,  8 May 2026 12:59:54 +0000 (UTC)
+ id eiLpXhRHAT1M; Fri,  8 May 2026 12:59:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00B7D41033
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 908D44100A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778245194;
-	bh=B1W8QdzudrI1jsrtt7PZqOETfek+7FPHPLUTFY84HyQ=;
+	s=default; t=1778245195;
+	bh=/ksOojcXei/TfXFipAqDYeI+OI2GxXRjLV3fr5Yuc44=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=tepH6s39LSOjEyN5mrz0Z/f4KZLjJ8Ex568JmSk1erEw+SL8ypNBe3wMUKO0C60Pg
-	 03MDH1w3JXcIXpu1VJWihhkfKu9DVlhIxAP5Caou3p7Vop1zSB9S2YRP+TtpE7g/7l
-	 uuTAh8RzP9qfIeRI0nq4GBNpJVOfNJlpWg2HC8gkHyxuDQkAQKwBriYwSnUmwohbCc
-	 OhQNJCNsvevblVI0T9HNfJhkLN1NBqHRt+71JuRWlS4yX0RsfgmVDGSqE/N4Al5tpy
-	 pcpk3u2eNCq2L6e3dxLImcJ5SQS+0HSU+wTLewwooF6jbn7HUytxDX6FmA8B8fBJ+H
-	 yi7/qR53r2VYQ==
+	b=p2Vi8A2dX4zaKkMY6fRVyGuhv+tc45PqexFTuCyl2ffa12xTV4671kvNKg5MrW/MB
+	 kN5Z+vJFUyzrVHhi2BIyFlyjxMDppnUMuT+iFEx3hJWGhm6n1+F5urwPqqTOT7u/7S
+	 ngGGRbdNXclFuAescajDIco33DDtFpaZLSFCBLcLHE28GdUekJRZT09AKVXsXu4Vg8
+	 TwTHupHlsrZ5iHxA+nZ5mTfFTEjsrI8lIec0Ac3vS+avzLIq0SsU2h4f49ZK1H7y/a
+	 +51mR/y+NIDZDWsC7FW3edDIgrL6hFok+QJHuGuvqlZJUsyN2Q7uMxXJ+0HGgvqcE2
+	 /Sj1WGeJW+xmw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 00B7D41033;
-	Fri,  8 May 2026 12:59:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 908D44100A;
+	Fri,  8 May 2026 12:59:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 205B1317
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:51 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 251E2317
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AB2BC40F70
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:50 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0ADFA40F2F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4FgA6zydvE-E for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 12:59:49 +0000 (UTC)
+ id 9O-1z6wxxtph for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 12:59:52 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B141D40F5D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B141D40F5D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 01EA540FAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 01EA540FAC
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B141D40F5D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:49 +0000 (UTC)
-X-CSE-ConnectionGUID: ortjGnkRSLm3pFN+RfNtvA==
-X-CSE-MsgGUID: RvKiby7iTpiQqHw5BhfToA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79199898"
-X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="79199898"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 01EA540FAC
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:51 +0000 (UTC)
+X-CSE-ConnectionGUID: bJvLj2AVTEi37aygXWpwDA==
+X-CSE-MsgGUID: m5yP7j6pScqdLgb2/sRzhA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79199908"
+X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="79199908"
 Received: from fmviesa005.fm.intel.com ([10.60.135.145])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 May 2026 05:59:50 -0700
-X-CSE-ConnectionGUID: Px6Abes9SJydlSe1VPKilg==
-X-CSE-MsgGUID: 6OJBYbNuQJaAKbhNfDlFjA==
+ 08 May 2026 05:59:52 -0700
+X-CSE-ConnectionGUID: mKpDa3eOSfGXvqL8lWXsbQ==
+X-CSE-MsgGUID: k7a48ddlTS+z24AiWJ4EGg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="241730119"
+X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="241730122"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa005.fm.intel.com with ESMTP; 08 May 2026 05:59:44 -0700
+ by fmviesa005.fm.intel.com with ESMTP; 08 May 2026 05:59:46 -0700
 Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 908DD2FC41;
- Fri,  8 May 2026 13:59:42 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 353482FC42;
+ Fri,  8 May 2026 13:59:44 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 To: intel-wired-lan@lists.osuosl.org, Michal Schmidt <mschmidt@redhat.com>,
  Jakub Kicinski <kuba@kernel.org>, Jiri Pirko <jiri@resnulli.us>
@@ -87,9 +87,10 @@ Cc: netdev@vger.kernel.org, Simon Horman <horms@kernel.org>,
  Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
  Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
  Tariq Toukan <tariqt@nvidia.com>, Mark Bloch <mbloch@nvidia.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Fri,  8 May 2026 14:41:58 +0200
-Message-Id: <20260508124208.11622-6-przemyslaw.kitszel@intel.com>
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Date: Fri,  8 May 2026 14:41:59 +0200
+Message-Id: <20260508124208.11622-7-przemyslaw.kitszel@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20260508124208.11622-1-przemyslaw.kitszel@intel.com>
 References: <20260508124208.11622-1-przemyslaw.kitszel@intel.com>
@@ -97,25 +98,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778245190; x=1809781190;
+ t=1778245193; x=1809781193;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tcIF3olztzirYuNdibKrjAmw5KKYdetWRVQvzdBOXp4=;
- b=fYgwTyejcGrethv9iLBObX41BiIDBD1J8ihyqHpOZtLfo1dXT7l+y2qk
- W1S5SKFi8+U9MTL9+eot3KJYteankaZC6k/wzmgG2aK1gQNpkEZAYELQb
- 2uuDMtR7+dK9xsA6h+nGvih4+q16/GGhezUcYv6GjOA/N0xNr93oyKkOL
- cs7I/BVJLqWArMjTQDLbVpqsmLKpJfkRnI4/x4pVVz+iG/mhIF60I3mF2
- xGreT9Ehp1r+LnUCYNjy5Nfe6fUvx9Au1C7BVAL0x06gtASbIXRBwdei1
- NC5YERf0VnYA3bhhQXNbf2y1z+mhc5GVjjahAHGStpzkGqevBEaFPStnb
- A==;
+ bh=FWfCl7UBwzOtiab25hIzZzlKGPLqepRD1UjJN8GGfV0=;
+ b=OK/pJlcSHLGNTBlssPi20gVmJTQWaSs4g0JrqZyBJOa+2HuHUQ326SSo
+ rob9uN6ywhhf4UXsWqXLxDNc5AXlEbpPRY+wGrguzsEGQLCay72mGF9vF
+ 0QWziZDXb4EJYX8tDHOiU62BPIY6MpJgCjA099x9TPAiCZ6J5pWIyFHTv
+ Zkdpp4Fa8kzQh/9zlKakybzqbYCP7sJYccXANXjR+D4ZXBYkt9MKnrPrb
+ j7dHLZLSI33MSBdeoZIkvTTGX08TVGgc69h4OHyaSjU2qY0NEipKUw6gC
+ s+OhbsdwK/GgoxWcteDIoG0BxGhJRafnz9wFGBDgJGD+KPVWGW6TuIIjF
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fYgwTyej
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 05/15] ice: add helpers for
- Global RSS LUT alloc, free, vsi_update
+ header.a=rsa-sha256 header.s=Intel header.b=OK/pJlcS
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 06/15] ice: rename
+ ICE_MAX_RSS_QS_PER_VF to ICE_MAX_QS_PER_VF_VCV1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,7 +131,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 762BD4F6AF4
+X-Rspamd-Queue-Id: 58FD44F6AFB
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
@@ -143,14 +144,14 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
 	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[25];
+	RCPT_COUNT_TWELVE(0.00)[26];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TO_DN_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:dkim];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,intel.com:email,intel.com:mid];
 	FROM_NEQ_ENVFROM(0.00)[przemyslaw.kitszel@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
@@ -161,180 +162,255 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-Add AQ commands for RSS Global LUT allocation and free operations.
-Functions will be called since subsequent commit.
+Rename ICE_MAX_RSS_QS_PER_VF to ICE_MAX_QS_PER_VF_VCV1, in preparation for
+the next patch that will extend the max to 256, using old value of 16 for
+the "v1" variant of virtchnl opcodes.
 
-Add programming code for GLOBAL LUT ID of UPDATE VSI AQ,
-do the same for RSS LUT "type", also for PF LUT in case of VF VSI.
-
-Co-developed-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
+Suggested-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Suggested-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |  1 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  1 +
- drivers/net/ethernet/intel/ice/ice_switch.h   |  2 +
- drivers/net/ethernet/intel/ice/ice_lib.c      | 28 +++++++++++--
- drivers/net/ethernet/intel/ice/ice_switch.c   | 41 +++++++++++++++++++
- 5 files changed, 69 insertions(+), 4 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lag.h     |  2 +-
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h  |  9 +++---
+ drivers/net/ethernet/intel/ice/ice_lib.c     |  2 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c   |  4 +--
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c  | 12 ++++----
+ drivers/net/ethernet/intel/ice/virt/queues.c | 30 ++++++++++----------
+ 6 files changed, 30 insertions(+), 29 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index f9a43daf04fe..7f4f299c4d37 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -369,6 +369,7 @@ struct ice_vsi {
- 	u8 *rss_hkey_user;	/* User configured hash keys */
- 	u8 *rss_lut_user;	/* User configured lookup table entries */
- 	u8 rss_lut_type;	/* used to configure Get/Set RSS LUT AQ call */
-+	u8 global_lut_id;       /* valid when lut_type == GLOBAL_LUT */
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
+index f77ebcd61042..4bfffecbdc97 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.h
++++ b/drivers/net/ethernet/intel/ice/ice_lag.h
+@@ -52,7 +52,7 @@ struct ice_lag {
+ 	u8 bond_lport_sec; /* lport values for secondary PF */
  
- 	/* aRFS members only allocated for the PF VSI */
- #define ICE_MAX_ARFS_LIST	1024
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index d41b2427482d..c49896db51c6 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -169,6 +169,7 @@ struct ice_aqc_set_port_params {
- #define ICE_AQC_RES_TYPE_VSI_LIST_PRUNE			0x04
- #define ICE_AQC_RES_TYPE_RECIPE				0x05
- #define ICE_AQC_RES_TYPE_SWID				0x07
-+#define ICE_AQC_RES_TYPE_GLOBAL_RSS_HASH		0x20
- #define ICE_AQC_RES_TYPE_FDIR_COUNTER_BLOCK		0x21
- #define ICE_AQC_RES_TYPE_FDIR_GUARANTEED_ENTRIES	0x22
- #define ICE_AQC_RES_TYPE_FDIR_SHARED_ENTRIES		0x23
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index b442db4a2ce5..ab6a8c78d14a 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -401,6 +401,8 @@ ice_rem_adv_rule_by_id(struct ice_hw *hw,
- 		       struct ice_rule_query_data *remove_entry);
+ 	/* q_home keeps track of which interface the q is currently on */
+-	u8 q_home[ICE_MAX_SRIOV_VFS][ICE_MAX_RSS_QS_PER_VF];
++	u8 q_home[ICE_MAX_SRIOV_VFS][ICE_MAX_QS_PER_VF_VCV1];
  
- int ice_init_def_sw_recp(struct ice_hw *hw);
-+int ice_alloc_rss_global_lut(struct ice_hw *hw, u16 *global_lut_id);
-+int ice_free_rss_global_lut(struct ice_hw *hw, u16 global_lut_id);
- u16 ice_get_hw_vsi_num(struct ice_hw *hw, u16 vsi_handle);
+ 	/* placeholder VSI for hanging VF queues from on secondary interface */
+ 	struct ice_vsi *sec_vf[ICE_MAX_SRIOV_VFS];
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+index cdfc2a558732..36dbe5412336 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+@@ -19,7 +19,8 @@
+ #define ICE_MAX_SRIOV_VFS		256
  
- int ice_replay_vsi_all_fltr(struct ice_hw *hw, u16 vsi_handle);
+ /* VF resource constraints */
+-#define ICE_MAX_RSS_QS_PER_VF	16
++/* for "old" virtchnl opcodes that accept up to 16 queues */
++#define ICE_MAX_QS_PER_VF_VCV1	16
+ 
+ struct ice_pf;
+ struct ice_vf;
+@@ -161,8 +162,8 @@ struct ice_vf {
+ 	u8 dev_lan_addr[ETH_ALEN];
+ 	u8 hw_lan_addr[ETH_ALEN];
+ 	struct ice_time_mac legacy_last_added_umac;
+-	DECLARE_BITMAP(txq_ena, ICE_MAX_RSS_QS_PER_VF);
+-	DECLARE_BITMAP(rxq_ena, ICE_MAX_RSS_QS_PER_VF);
++	DECLARE_BITMAP(txq_ena, ICE_MAX_QS_PER_VF_VCV1);
++	DECLARE_BITMAP(rxq_ena, ICE_MAX_QS_PER_VF_VCV1);
+ 	struct ice_vlan port_vlan_info;	/* Port VLAN ID, QoS, and TPID */
+ 	struct virtchnl_vlan_caps vlan_v2_caps;
+ 	struct ice_mbx_vf_info mbx_info;
+@@ -205,7 +206,7 @@ struct ice_vf {
+ 	u16 lldp_recipe_id;
+ 	u16 lldp_rule_id;
+ 
+-	struct ice_vf_qs_bw qs_bw[ICE_MAX_RSS_QS_PER_VF];
++	struct ice_vf_qs_bw qs_bw[ICE_MAX_QS_PER_VF_VCV1];
+ };
+ 
+ /* Flags for controlling behavior of ice_reset_vf */
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index ac6698a01d2f..2de62cde14ab 100644
+index 2de62cde14ab..09e1dcab2179 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1154,30 +1154,46 @@ static void ice_set_fd_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
- 	ctxt->info.acl_def_act = cpu_to_le16(val);
- }
+@@ -925,7 +925,7 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
+ 		 * For VSI_LUT, LUT size should be set to 64 bytes.
+ 		 */
+ 		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
+-		vsi->rss_size = ICE_MAX_RSS_QS_PER_VF;
++		vsi->rss_size = ICE_MAX_QS_PER_VF_VCV1;
+ 		vsi->rss_lut_type = ICE_LUT_VSI;
+ 		break;
+ 	case ICE_VSI_LB:
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 8686c382404f..0482454f453b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -398,15 +398,15 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
+ 	}
  
-+/* Translate @lut_type used in most of the places to the Admin Queue
-+ * Q_OPT value for RSS.
-+ * Used with VSI ADD and VSI UPDATE AQs (opcodes 0x0210, 0x0211).
-+ */
-+static u8 ice_lut_type_to_aq_qopt_rss_val(enum ice_lut_type lut_type)
-+{
-+	switch (lut_type) {
-+	case ICE_LUT_PF:
-+		return ICE_AQ_VSI_Q_OPT_RSS_LUT_PF;
-+	case ICE_LUT_GLOBAL:
-+		return ICE_AQ_VSI_Q_OPT_RSS_LUT_GBL;
-+	case ICE_LUT_VSI:
-+	default:
-+		return ICE_AQ_VSI_Q_OPT_RSS_LUT_VSI;
-+	}
-+}
-+
- /**
-  * ice_set_rss_vsi_ctx - Set RSS VSI context before adding a VSI
-  * @ctxt: the VSI context being set
-  * @vsi: the VSI being configured
-  */
- void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ 	num_txq = min_t(u16, num_msix_per_vf - ICE_NONQ_VECS_VF,
+-			ICE_MAX_RSS_QS_PER_VF);
++			ICE_MAX_QS_PER_VF_VCV1);
+ 	avail_qs = ice_get_avail_txq_count(pf) / num_vfs;
+ 	if (!avail_qs)
+ 		num_txq = 0;
+ 	else if (num_txq > avail_qs)
+ 		num_txq = rounddown_pow_of_two(avail_qs);
+ 
+ 	num_rxq = min_t(u16, num_msix_per_vf - ICE_NONQ_VECS_VF,
+-			ICE_MAX_RSS_QS_PER_VF);
++			ICE_MAX_QS_PER_VF_VCV1);
+ 	avail_qs = ice_get_avail_rxq_count(pf) / num_vfs;
+ 	if (!avail_qs)
+ 		num_rxq = 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index f1f437b1af1b..8e88ab8547ab 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -535,8 +535,8 @@ static void ice_vf_rebuild_host_cfg(struct ice_vf *vf)
+ static void ice_set_vf_state_qs_dis(struct ice_vf *vf)
  {
- 	u8 lut_type, hash_type;
-+	u8 global_lut_id = 0;
- 	struct device *dev;
- 	struct ice_pf *pf;
- 
- 	pf = vsi->back;
- 	dev = ice_pf_to_dev(pf);
- 
- 	switch (vsi->type) {
- 	case ICE_VSI_CHNL:
--	case ICE_VSI_PF:
--		/* PF VSI will inherit RSS instance of PF */
- 		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_PF;
- 		break;
-+	case ICE_VSI_PF:
- 	case ICE_VSI_VF:
- 	case ICE_VSI_SF:
--		/* VF VSI will gets a small RSS table which is a VSI LUT type */
--		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_VSI;
-+		lut_type = ice_lut_type_to_aq_qopt_rss_val(vsi->rss_lut_type);
- 		break;
- 	default:
- 		dev_dbg(dev, "Unsupported VSI type %s\n",
-@@ -1189,8 +1205,12 @@ void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
- 		vsi->rss_hfunc = ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ;
- 	hash_type = vsi->rss_hfunc;
- 
-+	if (vsi->rss_lut_type == ICE_LUT_GLOBAL)
-+		 global_lut_id = vsi->global_lut_id;
-+
- 	ctxt->info.q_opt_rss =
- 		FIELD_PREP(ICE_AQ_VSI_Q_OPT_RSS_LUT_M, lut_type) |
-+		FIELD_PREP(ICE_AQ_VSI_Q_OPT_RSS_GBL_LUT_M, global_lut_id) |
- 		FIELD_PREP(ICE_AQ_VSI_Q_OPT_RSS_HASH_M, hash_type);
+ 	/* Clear Rx/Tx enabled queues flag */
+-	bitmap_zero(vf->txq_ena, ICE_MAX_RSS_QS_PER_VF);
+-	bitmap_zero(vf->rxq_ena, ICE_MAX_RSS_QS_PER_VF);
++	bitmap_zero(vf->txq_ena, ICE_MAX_QS_PER_VF_VCV1);
++	bitmap_zero(vf->rxq_ena, ICE_MAX_QS_PER_VF_VCV1);
+ 	clear_bit(ICE_VF_STATE_QS_ENA, vf->vf_states);
  }
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 88f1aefc24b3..b783c97f6cfe 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -1527,6 +1527,47 @@ ice_aq_get_sw_cfg(struct ice_hw *hw, struct ice_aqc_get_sw_cfg_resp_elem *buf,
- 	return status;
+@@ -1217,13 +1217,13 @@ bool ice_is_vf_trusted(struct ice_vf *vf)
+  * ice_vf_has_no_qs_ena - check if the VF has any Rx or Tx queues enabled
+  * @vf: the VF to check
+  *
+- * Returns true if the VF has no Rx and no Tx queues enabled and returns false
+- * otherwise
++ * Return: true if the VF has no Rx and no Tx queues enabled and returns false
++ * otherwise.
+  */
+ bool ice_vf_has_no_qs_ena(struct ice_vf *vf)
+ {
+-	return bitmap_empty(vf->rxq_ena, ICE_MAX_RSS_QS_PER_VF) &&
+-		bitmap_empty(vf->txq_ena, ICE_MAX_RSS_QS_PER_VF);
++	return bitmap_empty(vf->rxq_ena, ICE_MAX_QS_PER_VF_VCV1) &&
++	       bitmap_empty(vf->txq_ena, ICE_MAX_QS_PER_VF_VCV1);
  }
  
-+/* Allocate a new Global LUT for the caller.
-+ * LUT ID is returned via @global_lut_id.
-+ */
-+int ice_alloc_rss_global_lut(struct ice_hw *hw, u16 *global_lut_id)
-+{
-+	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
-+	u16 buf_len = __struct_size(buf);
-+	int err;
-+
-+	buf->num_elems = cpu_to_le16(1);
-+	buf->res_type = cpu_to_le16(ICE_AQC_RES_TYPE_GLOBAL_RSS_HASH);
-+
-+	err = ice_aq_alloc_free_res(hw, buf, buf_len, ice_aqc_opc_alloc_res);
-+	if (err)
-+		ice_debug(hw, ICE_DBG_RES, "Failed to allocate RSS global LUT, err %d\n",
-+			  err);
-+	else
-+		*global_lut_id = le16_to_cpu(buf->elem[0].e.sw_resp);
-+
-+	return err;
-+}
-+
-+/* Free Global LUT at @global_lut_id. */
-+int ice_free_rss_global_lut(struct ice_hw *hw, u16 global_lut_id)
-+{
-+	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
-+	u16 buf_len = __struct_size(buf);
-+	int err;
-+
-+	buf->num_elems = cpu_to_le16(1);
-+	buf->res_type = cpu_to_le16(ICE_AQC_RES_TYPE_GLOBAL_RSS_HASH);
-+	buf->elem[0].e.sw_resp = cpu_to_le16(global_lut_id);
-+
-+	err = ice_aq_alloc_free_res(hw, buf, buf_len, ice_aqc_opc_free_res);
-+	if (err)
-+		ice_debug(hw, ICE_DBG_RES, "Failed to free RSS global LUT %d, err %d\n",
-+			  global_lut_id, err);
-+
-+	return err;
-+}
-+
  /**
-  * ice_aq_add_vsi
-  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/virt/queues.c b/drivers/net/ethernet/intel/ice/virt/queues.c
+index 28adc24197b8..7b165ee11a90 100644
+--- a/drivers/net/ethernet/intel/ice/virt/queues.c
++++ b/drivers/net/ethernet/intel/ice/virt/queues.c
+@@ -171,8 +171,8 @@ static int ice_vf_cfg_q_quanta_profile(struct ice_vf *vf, u16 quanta_size,
+ static bool ice_vc_validate_vqs_bitmaps(struct virtchnl_queue_select *vqs)
+ {
+ 	if ((!vqs->rx_queues && !vqs->tx_queues) ||
+-	    vqs->rx_queues >= BIT(ICE_MAX_RSS_QS_PER_VF) ||
+-	    vqs->tx_queues >= BIT(ICE_MAX_RSS_QS_PER_VF))
++	    vqs->rx_queues >= BIT(ICE_MAX_QS_PER_VF_VCV1) ||
++	    vqs->tx_queues >= BIT(ICE_MAX_QS_PER_VF_VCV1))
+ 		return false;
+ 
+ 	return true;
+@@ -317,7 +317,7 @@ int ice_vc_ena_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	 * programmed using ice_vsi_cfg_txqs
+ 	 */
+ 	q_map = vqs->rx_queues;
+-	for_each_set_bit(vf_q_id, &q_map, ICE_MAX_RSS_QS_PER_VF) {
++	for_each_set_bit(vf_q_id, &q_map, ICE_MAX_QS_PER_VF_VCV1) {
+ 		if (!ice_vc_isvalid_q_id(vsi, vf_q_id)) {
+ 			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 			goto error_param;
+@@ -330,7 +330,7 @@ int ice_vc_ena_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	}
+ 
+ 	q_map = vqs->tx_queues;
+-	for_each_set_bit(vf_q_id, &q_map, ICE_MAX_RSS_QS_PER_VF) {
++	for_each_set_bit(vf_q_id, &q_map, ICE_MAX_QS_PER_VF_VCV1) {
+ 		if (!ice_vc_isvalid_q_id(vsi, vf_q_id)) {
+ 			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 			goto error_param;
+@@ -461,7 +461,7 @@ int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	if (vqs->tx_queues) {
+ 		q_map = vqs->tx_queues;
+ 
+-		for_each_set_bit(vf_q_id, &q_map, ICE_MAX_RSS_QS_PER_VF) {
++		for_each_set_bit(vf_q_id, &q_map, ICE_MAX_QS_PER_VF_VCV1) {
+ 			if (!ice_vc_isvalid_q_id(vsi, vf_q_id)) {
+ 				v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 				goto error_param;
+@@ -476,7 +476,7 @@ int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
+ 
+ 	q_map = vqs->rx_queues;
+ 	if (q_map) {
+-		for_each_set_bit(vf_q_id, &q_map, ICE_MAX_RSS_QS_PER_VF) {
++		for_each_set_bit(vf_q_id, &q_map, ICE_MAX_QS_PER_VF_VCV1) {
+ 			if (!ice_vc_isvalid_q_id(vsi, vf_q_id)) {
+ 				v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 				goto error_param;
+@@ -519,7 +519,7 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi,
+ 	q_vector->num_ring_tx = 0;
+ 
+ 	qmap = map->rxq_map;
+-	for_each_set_bit(vsi_q_id_idx, &qmap, ICE_MAX_RSS_QS_PER_VF) {
++	for_each_set_bit(vsi_q_id_idx, &qmap, ICE_MAX_QS_PER_VF_VCV1) {
+ 		vsi_q_id = vsi_q_id_idx;
+ 
+ 		if (!ice_vc_isvalid_q_id(vsi, vsi_q_id))
+@@ -534,7 +534,7 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi,
+ 	}
+ 
+ 	qmap = map->txq_map;
+-	for_each_set_bit(vsi_q_id_idx, &qmap, ICE_MAX_RSS_QS_PER_VF) {
++	for_each_set_bit(vsi_q_id_idx, &qmap, ICE_MAX_QS_PER_VF_VCV1) {
+ 		vsi_q_id = vsi_q_id_idx;
+ 
+ 		if (!ice_vc_isvalid_q_id(vsi, vsi_q_id))
+@@ -658,7 +658,7 @@ int ice_vc_cfg_q_bw(struct ice_vf *vf, u8 *msg)
+ 		goto err;
+ 	}
+ 
+-	if (qbw->num_queues > ICE_MAX_RSS_QS_PER_VF ||
++	if (qbw->num_queues > ICE_MAX_QS_PER_VF_VCV1 ||
+ 	    qbw->num_queues > min_t(u16, vsi->alloc_txq, vsi->alloc_rxq)) {
+ 		dev_err(ice_pf_to_dev(vf->pf), "VF-%d trying to configure more than allocated number of queues: %d\n",
+ 			vf->vf_id, min_t(u16, vsi->alloc_txq, vsi->alloc_rxq));
+@@ -750,7 +750,7 @@ int ice_vc_cfg_q_quanta(struct ice_vf *vf, u8 *msg)
+ 		goto err;
+ 	}
+ 
+-	if (end_qid > ICE_MAX_RSS_QS_PER_VF ||
++	if (end_qid > ICE_MAX_QS_PER_VF_VCV1 ||
+ 	    end_qid > min_t(u16, vsi->alloc_txq, vsi->alloc_rxq)) {
+ 		dev_err(ice_pf_to_dev(vf->pf), "VF-%d trying to configure more than allocated number of queues: %d\n",
+ 			vf->vf_id, min_t(u16, vsi->alloc_txq, vsi->alloc_rxq));
+@@ -818,7 +818,7 @@ int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	if (!vsi)
+ 		goto error_param;
+ 
+-	if (qci->num_queue_pairs > ICE_MAX_RSS_QS_PER_VF ||
++	if (qci->num_queue_pairs > ICE_MAX_QS_PER_VF_VCV1 ||
+ 	    qci->num_queue_pairs > min_t(u16, vsi->alloc_txq, vsi->alloc_rxq)) {
+ 		dev_err(ice_pf_to_dev(pf), "VF-%d requesting more than supported number of queues: %d\n",
+ 			vf->vf_id, min_t(u16, vsi->alloc_txq, vsi->alloc_rxq));
+@@ -996,16 +996,16 @@ int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	if (!req_queues) {
+ 		dev_err(dev, "VF %d tried to request 0 queues. Ignoring.\n",
+ 			vf->vf_id);
+-	} else if (req_queues > ICE_MAX_RSS_QS_PER_VF) {
++	} else if (req_queues > ICE_MAX_QS_PER_VF_VCV1) {
+ 		dev_err(dev, "VF %d tried to request more than %d queues.\n",
+-			vf->vf_id, ICE_MAX_RSS_QS_PER_VF);
+-		vfres->num_queue_pairs = ICE_MAX_RSS_QS_PER_VF;
++			vf->vf_id, ICE_MAX_QS_PER_VF_VCV1);
++		vfres->num_queue_pairs = ICE_MAX_QS_PER_VF_VCV1;
+ 	} else if (req_queues > cur_queues &&
+ 		   req_queues - cur_queues > tx_rx_queue_left) {
+ 		dev_warn(dev, "VF %d requested %u more queues, but only %u left.\n",
+ 			 vf->vf_id, req_queues - cur_queues, tx_rx_queue_left);
+ 		vfres->num_queue_pairs = min_t(u16, max_allowed_vf_queues,
+-					       ICE_MAX_RSS_QS_PER_VF);
++					       ICE_MAX_QS_PER_VF_VCV1);
+ 	} else {
+ 		/* request is successful, then reset VF */
+ 		vf->num_req_qs = req_queues;
 -- 
 2.39.3
 
