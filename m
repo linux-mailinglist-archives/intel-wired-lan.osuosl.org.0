@@ -2,75 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id UB+qBBVf/mmppwAAu9opvQ
+	id uo3oAQhf/mmppwAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:25 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:12 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FD224FC2DB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:24 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40C2E4FC2A1
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A564940DEF;
-	Fri,  8 May 2026 22:09:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D0E5E84A9E;
+	Fri,  8 May 2026 22:09:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qaHTzSNLnqdt; Fri,  8 May 2026 22:09:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kvogDFdwTLsJ; Fri,  8 May 2026 22:09:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5FBBC41104
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E53C884AA0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778278154;
-	bh=uLHzQyOPEJEJGkFH5l7eU5xubxmYqwO7MmVfMNTLNB4=;
-	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=n0/2h+bGj9sNJQIVX+HXOKwp+/W/ELBBvuXuEc5z0mbnasQTLSGtnjh/dBtk3KvVI
-	 PXrlwdBx8y0it9gVHof3kzHkE6p3rPCynrtFO5IrcMlZVfdfGVI3A2wROnFnQ8sCRJ
-	 8dio6bF9fTcGLcb+7QRifZ4jE12JoYC5mWx9h4VZcYdejZ6FFjqTwDRa2VB/5nJ7pX
-	 VkDN+pieoLdYV9SNO4geqy/ASd/ff2Ihqh2f+B7pFESBWNXSnkK+LVLMuxqzxFBqN3
-	 CmzBlGWvKp5drfkA7702xPfHeadMUd1A2iOxGSFw+uygAfRlMOyiNlG55Mz/0qTcRU
-	 uNnndkNx6864w==
+	s=default; t=1778278149;
+	bh=rUaGwj/5EfqjboI6zl6shS2RseKdRrZ9a6Rr/qljoKQ=;
+	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=9bTgwA9COrx7gpBUipzsepCZnFxoFFgpIjZqkCrhhYwWDn864BIRnFsCV9ZG2aeLp
+	 Sp0IvU6TbCok/j5mDnh3fdy1YRvTVZWT4jjElYwuHICheVLlUHhfM7dEHYHV1XE6yH
+	 WuReEasQlq7qYlcsomVrgKEdSzs2XB8CPV0pkAB9i/o2FJxdi9kDKHVrlbjvfgiSZh
+	 o7rSBCPSW0tXbwl0KwixnnyJTH6wXrSWgYq7c/HP7FJZFm7KFjEhUdRx1Yi6HhzNn8
+	 xzh02jq3doTwYJRoXAMkeGW7+pTm1t8F5lz6xg4Ad9l/EmU6aKh104cL+HRIeo+gBA
+	 ZmvN/XIblNm7A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5FBBC41104;
-	Fri,  8 May 2026 22:09:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E53C884AA0;
+	Fri,  8 May 2026 22:09:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id B7B12358
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+ by lists1.osuosl.org (Postfix) with ESMTP id E3096272
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:04:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B56ED409D6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E12FA61286
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:04:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yhiD_hHZ8SG7 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 04:07:50 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Jyts17PBDnQ0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 04:04:51 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=67.231.156.173;
  helo=mx0b-0016f401.pphosted.com;
  envelope-from=prvs=65883a0750=rkannoth@marvell.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A974E404A0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A974E404A0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CF5D46121C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF5D46121C
 Received: from mx0b-0016f401.pphosted.com (mx0b-0016f401.pphosted.com
  [67.231.156.173])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A974E404A0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CF5D46121C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:04:50 +0000 (UTC)
 Received: from pps.filterd (m0431383.ppops.net [127.0.0.1])
  by mx0b-0016f401.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 647NVKu02841680; Thu, 7 May 2026 20:49:30 -0700
+ 647NVKJX2841681; Thu, 7 May 2026 20:49:41 -0700
 Received: from dc6wp-exch02.marvell.com ([4.21.29.225])
- by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 4e14g0gjd3-1
+ by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 4e14g0gjd9-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 07 May 2026 20:49:30 -0700 (PDT)
+ Thu, 07 May 2026 20:49:40 -0700 (PDT)
 Received: from DC6WP-EXCH02.marvell.com (10.76.176.209) by
  DC6WP-EXCH02.marvell.com (10.76.176.209) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.25; Thu, 7 May 2026 20:49:29 -0700
+ 15.2.1544.25; Thu, 7 May 2026 20:49:40 -0700
 Received: from maili.marvell.com (10.69.176.80) by DC6WP-EXCH02.marvell.com
  (10.76.176.209) with Microsoft SMTP Server id 15.2.1544.25 via Frontend
- Transport; Thu, 7 May 2026 20:49:29 -0700
+ Transport; Thu, 7 May 2026 20:49:40 -0700
 Received: from rkannoth-OptiPlex-7090.. (unknown [10.28.36.165])
- by maili.marvell.com (Postfix) with ESMTP id 840263F7041;
- Thu,  7 May 2026 20:49:18 -0700 (PDT)
+ by maili.marvell.com (Postfix) with ESMTP id 9FE603F7041;
+ Thu,  7 May 2026 20:49:29 -0700 (PDT)
 From: Ratheesh Kannoth <rkannoth@marvell.com>
 To: <intel-wired-lan@lists.osuosl.org>, <linux-kernel@vger.kernel.org>,
  <linux-rdma@vger.kernel.org>, <netdev@vger.kernel.org>,
@@ -86,49 +87,52 @@ CC: <akiyano@amazon.com>, <andrew+netdev@lunn.ch>,
  <Prathosh.Satish@microchip.com>, <przemyslaw.kitszel@intel.com>,
  <saeedm@nvidia.com>, <sgoutham@marvell.com>, <tariqt@nvidia.com>,
  <vadim.fedorenko@linux.dev>, Ratheesh Kannoth <rkannoth@marvell.com>
-Date: Fri, 8 May 2026 09:19:03 +0530
-Message-ID: <20260508034912.4082520-1-rkannoth@marvell.com>
+Date: Fri, 8 May 2026 09:19:04 +0530
+Message-ID: <20260508034912.4082520-2-rkannoth@marvell.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260508034912.4082520-1-rkannoth@marvell.com>
+References: <20260508034912.4082520-1-rkannoth@marvell.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Proofpoint-ORIG-GUID: 5XpSRK9UP1TGNbEpxu0D60bRyAkmyrqH
-X-Authority-Analysis: v=2.4 cv=bMUm5v+Z c=1 sm=1 tr=0 ts=69fd5d4a cx=c_pps
+X-Proofpoint-ORIG-GUID: _eoGeqS0d4l6TwKeN7i2iiQxY7-wfsY5
+X-Authority-Analysis: v=2.4 cv=bMUm5v+Z c=1 sm=1 tr=0 ts=69fd5d55 cx=c_pps
  a=gIfcoYsirJbf48DBMSPrZA==:117 a=gIfcoYsirJbf48DBMSPrZA==:17
  a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22 a=l0iWHRpgs5sLHlkKQ1IR:22
- a=qit2iCtTFQkLgVSMPQTB:22 a=VwQbUJbxAAAA:8 a=M5GUcnROAAAA:8
- a=1rdZWFfAsYpIarNArpIA:9 a=OBjm3rFKGHvpk9ecZwUJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA4MDAzMyBTYWx0ZWRfX0obWHJ2emugt
- AVXQQfpG3hallSw2k2v/eUGF6kBD7WYzN8Lr4L6Irl7LfI/sE30VAU2mICRbFYQR7BNYdMInfng
- HU4AbGcGedhuppQHjgYeoRMUpC5IRxbKDcLkUwcmpPuIW2gvw3wDA6CJkVXSnRTqhAPhyP1BvGy
- f0p+ntvnehab0AmLR2sJt9BFcKZuOjq1PLX/kkfBxSdGj6+rEYNUfuy2mBGW308fSIfp/Q8h/ns
- JFoTihTjxTz37k8oKBK+s9Vj8HLz5FoV5Ck/4JfXbgMMgQCRqRakq4F/861JoxE2/3J9iKSlcdG
- poos7BYGByATjXTeOkYwipaVT3Rld2Zkv0uhYF5n6Sg3dQP2e+uPZCIrlyxo0ZC8fKUn7TrekRB
- GJHwmn348ljWKp8DFmNtXIIctRGib6SZH8ZRJvhmd3I5MTeA7vYAmSYVg6tGlrsGchYx/m/GUep
- saBw3cCgXm4Gw1rKKuQ==
-X-Proofpoint-GUID: 5XpSRK9UP1TGNbEpxu0D60bRyAkmyrqH
+ a=qit2iCtTFQkLgVSMPQTB:22 a=M5GUcnROAAAA:8 a=Ci00bJMBAOu-zhm_1uQA:9
+ a=OBjm3rFKGHvpk9ecZwUJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA4MDAzMyBTYWx0ZWRfX4I/ATAgyQFpp
+ w5ylPHsXo3S0u5oH0s7rsnrPTQTJ4y7M51GsDZWiBcJkIqgjS+c76KEa2mwBd9GNuPv0V7ToH+3
+ tdeGQRsc3L38AxDfPKAIxgkLk8TYscIGehbdy0LWbBbVN2VA7Ml+IiL7YEV6Zp3nbqWFYBjl5sj
+ XOOP90gbz3AOZx7TGG/WjtcWrGBu56ySeOHPoM5LCXG1vR6raxVDeXmM799rKsjkr9HMgL+vbhX
+ avrtS9CNI3ykDaUhpkec8t0WnC2pl5y7VUHotctghm5cxsxGPwuNjpht2XKc4yiyNsMiJdjp1Hp
+ ZXB5undlDe5VBk+Md0Pw/OLQla3DM9qm+HH9Sp26p4jzvF7itauQZMrwqDjXKWfdXlQPsDhfUGy
+ LcresW3CiC1Mn+fcSk4v0AV3qMh2XUTurAVJKMOlq3fTcyJXBoSdw7W6dSBruxzmB2jVd8PdWcf
+ TbQxldHt+FKY56h0CwA==
+X-Proofpoint-GUID: _eoGeqS0d4l6TwKeN7i2iiQxY7-wfsY5
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-05-07_02,2026-05-06_01,2025-10-01_01
 X-Mailman-Approved-At: Fri, 08 May 2026 22:09:04 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=marvell.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=pfpt0220; bh=uLHzQyOPEJEJGkFH5l7eU5x
- ubxmYqwO7MmVfMNTLNB4=; b=Ua0S++r0z8AicZemFOkhatok6BTIgGAzvWmBC/O
- 4/OgIAlOKfGewnxyFd6OARXp2nnBuse44bfnDS2rP/QouO34gALJA2fN+5nHgBtq
- PVvAL8mdSbT4aX8L49a6auT/oGFeUfF27ztmq7Sbp4jZvRViClKcys/UCG4ZqR8p
- 9nyoCNpX/pVNC2rbA6HrSw22dC05JJZb2KdDLP3RLxakKAjWbdutvgVIywzhh6BX
- FZ4LP+ZewXcqhCZV5u4QoN9EGwX8PV3B/V+dnt7F1kTNDTUi5ilNG7ibTBeK8uEH
- 3hA+WwV062FlrdieqEDpU6yyJW29ukHmRdchR0MOD6Lr7hA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pfpt0220; bh=r
+ UaGwj/5EfqjboI6zl6shS2RseKdRrZ9a6Rr/qljoKQ=; b=hyLhHuzUvhqsrNYbz
+ 49yfZhWeiKGxdr6v4Mt8FA+bl84ohlY5yY/Qimt/+Jyp3SDC1AKqWzUlTpENLYOp
+ unUARSbKMi5ogAjZtgoUauZuz9ieZ5LrmgZEuX0WvEXIBX71T5D+TK6VMeJn/kde
+ Uwrv2wC7B9Ee+99EjHlvFiVnxOfy+IHv9M8+CTUSaVmj2LJEvORYdV/AYkwN5A7c
+ stUlE9vERPPhPtGy0kCjJ/AXeiNLzL7vX7IzemXLpQANhO4ey4cST+oAIsFLjKbs
+ xFR9iki2o8iw1rh6h5Joqi8R8dZvYwEb6dGBy1WbfZPrx0ZgVJGt6diFanI+t+H3
+ C2BJQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=marvell.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=marvell.com header.i=@marvell.com
- header.a=rsa-sha256 header.s=pfpt0220 header.b=Ua0S++r0
-Subject: [Intel-wired-lan] [PATCH v12 net-next 0/9] octeontx2-af: npc:
- Enhancements.
+ header.a=rsa-sha256 header.s=pfpt0220 header.b=hyLhHuzU
+Subject: [Intel-wired-lan] [PATCH v12 net-next 1/9] octeontx2-af: npc:
+ cn20k: debugfs enhancements
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -143,189 +147,343 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5FD224FC2DB
+X-Rspamd-Queue-Id: 40C2E4FC2A1
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.39 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	DMARC_POLICY_SOFTFAIL(0.10)[marvell.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FREEMAIL_CC(0.00)[amazon.com,lunn.ch,intel.com,amd.com,davemloft.net,gmail.com,google.com,kernel.org,nvidia.com,redhat.com,resnulli.us,broadcom.com,microchip.com,marvell.com,linux.dev];
-	RCPT_COUNT_TWELVE(0.00)[32];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_TLS_LAST(0.00)[];
 	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[32];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_CC(0.00)[amazon.com,lunn.ch,intel.com,amd.com,davemloft.net,gmail.com,google.com,kernel.org,nvidia.com,redhat.com,resnulli.us,broadcom.com,microchip.com,marvell.com,linux.dev];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
 	RCVD_COUNT_TWELVE(0.00)[12];
 	FROM_NEQ_ENVFROM(0.00)[rkannoth@marvell.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	TO_DN_SOME(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	NEURAL_HAM(-0.00)[-0.979];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	NEURAL_HAM(-0.00)[-0.973];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[]
 X-Rspamd-Action: no action
 
-This series extends Marvell octeontx2-af support for CN20K NPC (MCAM
-debuggability, allocation policy, default-rule lifetime, optional KPU
-profiles from firmware files, X2/X4 MCAM keyword handling in flows and
-defaults, and dynamic CN20K NPC private state), adds a devlink mechanism
-for multi-value parameters, and adjusts devlink param netlink helpers
-and mlx5 so stack usage stays within -Wframe-larger-than limits once union
-devlink_param_value grows.
+Improve MCAM visibility and field debugging for CN20K NPC.
 
-Patch 1 improves CN20K MCAM visibility in debugfs: mcam_layout marks
-enabled entries, dstats reports per-entry hit deltas, and mismatch lists
-enabled entries without a PF mapping. MCAM enable state is tracked in a
-bitmap updated from the CN20K enable path.
+- Extend "mcam_layout" to show enabled (+) or disabled state per entry
+  so status can be verified without parsing the full "mcam_entry" dump.
+- Add "dstats" debugfs entry: reports recently hit MCAM indices with
+  packet counts; stats are cleared on read so each read shows deltas.
+- Add "mismatch" debugfs entry: lists MCAM entries that are enabled
+  but not explicitly allocated, helping diagnose allocation/field issues.
 
-Patch 2 reduces stack usage in mlx5e_pcie_cong_get_thresh_config() by
-reusing a single union devlink_param_value and a local result struct
-instead of holding a large array of unions on the stack, so the helper
-stays under the frame-size warning limit as the union grows (patches 3-4).
+Signed-off-by: Ratheesh Kannoth <rkannoth@marvell.com>
+---
+ .../marvell/octeontx2/af/cn20k/debugfs.c      | 157 +++++++++++++++++-
+ .../ethernet/marvell/octeontx2/af/cn20k/npc.c |  16 +-
+ .../ethernet/marvell/octeontx2/af/cn20k/npc.h |   7 +
+ 3 files changed, 169 insertions(+), 11 deletions(-)
 
-Patch 3 changes devlink_nl_param_value_put() and
-devlink_nl_param_value_fill_one() to pass union devlink_param_value by
-pointer instead of by value. Passing two copies of the union by value in
-the param netlink path consumes over 500 bytes of argument stack and risks
-CONFIG_FRAME_WARN as the union grows beyond its historical size (patch 4).
-
-Patch 4 (Saeed) introduces DEVLINK_PARAM_TYPE_U64_ARRAY and nested
-DEVLINK_ATTR_PARAM_VALUE_DATA attributes so drivers and user space can
-exchange bounded u64 arrays; YAML, uapi, and netlink validation are
-updated.
-
-Patch 5 adds a runtime devlink parameter srch_order to reorder CN20K
-subbank search during MCAM allocation.
-
-Patch 6 ties default MCAM entries to NIX LF alloc/free on CN20K, adds
-NIX_LF_DONT_FREE_DFT_IDXS for PF teardown paths that must not drop default
-NPC indexes while the driver still owns state, and tightens nix_lf_alloc
-error propagation.
-
-Patch 7 allows loading a custom KPU profile from /lib/firmware/kpu via
-module parameter kpu_profile, with cam2 / ptype_mask wiring and helpers
-that share firmware-sourced vs filesystem-sourced profile layouts.
-
-Patch 8 makes default-rule allocation, AF flow install, and PF-side RSS,
-defaults, and ethtool flows respect the active CN20K MCAM keyword width
-(X2 vs X4), including X4 reference-index masking and -EOPNOTSUPP when a
-flow needs X4 keys on an X2-only profile.
-
-Patch 9 replaces file-scope npc_priv and static dstats with allocation
-sized from discovered bank/subbank geometry, threads npc_priv_get()
-through CN20K NPC paths, and allocates dstats via devm_kzalloc for the
-debugfs helper.
-
-The mlx5 change sits immediately before the devlink patches so the series
-applies cleanly and stays warning-free when built incrementally;
-pass-by-pointer precedes the U64 array type so helpers are not copying an
-even larger union by value. The CN20K patches keep srch_order ahead of
-NIX LF coordination, KPU-from-filesystem, X2/X4 handling, and the npc_priv
-refactor that touches the same files heavily.
-
-Ratheesh Kannoth (8):
-  octeontx2-af: npc: cn20k: debugfs enhancements
-  net/mlx5e: trim stack use in PCIe congestion threshold helper
-  devlink: pass param values by pointer
-  octeontx2-af: npc: cn20k: add subbank search order control
-  octeontx2: cn20k: Coordinate default rules with NIX LF lifecycle
-  octeontx2-af: npc: Support for custom KPU profile from filesystem
-  octeontx2: cn20k: Respect NPC MCAM X2/X4 profile in flows and DFT
-    alloc
-  octeontx2-af: npc: cn20k: Allocate npc_priv and dstats dynamically.
-
-Saeed Mahameed (1):
-  devlink: Implement devlink param multi attribute nested data values
-
- Documentation/netlink/specs/devlink.yaml          |   4 +
- drivers/dpll/zl3073x/devlink.c                    |   6 ++-
- drivers/net/ethernet/amazon/ena/ena_devlink.c     |   8 ++-
- drivers/net/ethernet/amd/pds_core/core.h          |   2 ++-
- drivers/net/ethernet/amd/pds_core/devlink.c       |   2 ++-
- drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c |   6 ++-
- drivers/net/ethernet/intel/ice/devlink/devlink.c  |  30 ++-
- .../ethernet/marvell/octeontx2/af/cn20k/debugfs.c | 175 ++++-
- .../net/ethernet/marvell/octeontx2/af/cn20k/npc.c | 545 ++++++++-----
- .../net/ethernet/marvell/octeontx2/af/cn20k/npc.h |  13 +++-
- drivers/net/ethernet/marvell/octeontx2/af/mbox.h  |   1 +
- drivers/net/ethernet/marvell/octeontx2/af/npc.h   |  17 +
- drivers/net/ethernet/marvell/octeontx2/af/rvu.h   |  12 ++-
- ...et/ethernet/marvell/octeontx2/af/rvu_devlink.c | 114 ++-
- ...rs/net/ethernet/marvell/octeontx2/af/rvu_nix.c |  69 ++-
- ...rs/net/ethernet/marvell/octeontx2/af/rvu_npc.c | 478 +++++++++--
- ...rs/net/ethernet/marvell/octeontx2/af/rvu_npc.h |  17 +
- ...net/ethernet/marvell/octeontx2/af/rvu_npc_fs.c |  12 +++-
- ...rs/net/ethernet/marvell/octeontx2/af/rvu_reg.h |   1 +
- .../ethernet/marvell/octeontx2/nic/otx2_devlink.c |   4 ++-
- ...et/ethernet/marvell/octeontx2/nic/otx2_flows.c |  48 ++-
- ...s/net/ethernet/marvell/octeontx2/nic/otx2_pf.c |   6 +--
- drivers/net/ethernet/mellanox/mlx4/main.c         |  14 ++-
- drivers/net/ethernet/mellanox/mlx5/core/devlink.c |  72 ++-
- ...hernet/mellanox/mlx5/core/en/pcie_cong_event.c |  36 ++-
- ...ethernet/mellanox/mlx5/core/eswitch_offloads.c |   2 ++-
- drivers/net/ethernet/mellanox/mlx5/core/fs_core.c |   4 ++-
- ...net/ethernet/mellanox/mlx5/core/lib/nv_param.c |  12 ++-
- drivers/net/ethernet/mellanox/mlxsw/core.c        |   8 ++-
- ...ers/net/ethernet/netronome/nfp/devlink_param.c |   6 ++-
- drivers/net/netdevsim/dev.c                       |   4 ++-
- include/net/devlink.h                             |  12 ++-
- include/uapi/linux/devlink.h                      |   1 +
- net/devlink/netlink_gen.c                         |   2 +
- net/devlink/param.c                               | 120 ++-
-
- 35 files changed, 1315 insertions(+), 548 deletions(-)
-
---
-
-v11 -> v12: Addressed Paolo,Jiri comments.
-	https://lore.kernel.org/netdev/20260409025055.1664053-1-rkannoth@marvell.com/
-	Added one patch which was rejected by simon in net (as it was kind of enhancement rather than a bug)
-	Added one more patch- which allocates two variables from heap.
-
-v10 -> v11: Addressed Paolo comments.
-	https://lore.kernel.org/netdev/20260403025533.6250-1-rkannoth@marvell.com/
-
-v9 -> v10: Addressed Paolo comments
-	https://lore.kernel.org/netdev/
-	20260330053105.2722453-1-rkannoth@marvell.com/
-
-v8 -> v9: Addressed Simon comments
-	https://lore.kernel.org/netdev/
-	20260325072159.1126964-1-rkannoth@marvell.com/
-
-v7 -> v8: Addressed Simon comments
-	https://lore.kernel.org/netdev/
-	20260323035110.3908741-1-rkannoth@marvell.com/T/#t
-
-v6 -> v7: Addressed Simon comments
-	https://lore.kernel.org/netdev/20260320165432.98832-1-horms@kernel.org/
-
-v5 -> v6: Addressed Jakub,Jiri comments
-	https://lore.kernel.org/netdev/
-	20260317045623.250187-1-rkannoth@marvell.com/
-
-v4 -> v5: Addressed Jakub comments
-	https://lore.kernel.org/netdev/
-	20260312022754.2029595-6-rkannoth@marvell.com/
-
-v3 -> v4: Addressed Simon comments
-	https://lore.kernel.org/netdev/abDeXLpMMxp7G1v3@rkannoth-OptiPlex-7090/#t
-
-v2 -> v3: Addressed Simon comments.
-	https://lore.kernel.org/netdev/
-	20260304043032.3661647-1-rkannoth@marvell.com/
-
-v1 -> v2: Addressed Jakub comments.
-	https://lore.kernel.org/netdev/
-	20260302085803.2449828-1-rkannoth@marvell.com/#t
-
+diff --git a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/debugfs.c b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/debugfs.c
+index 6f13296303cb..9a4c2ea5b19e 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/debugfs.c
++++ b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/debugfs.c
+@@ -13,6 +13,7 @@
+ #include "struct.h"
+ #include "rvu.h"
+ #include "debugfs.h"
++#include "cn20k/reg.h"
+ #include "cn20k/npc.h"
+ 
+ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+@@ -58,7 +59,8 @@ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+ 						 "v:%u", vidx0);
+ 				}
+ 
+-				seq_printf(s, "\t%u(%#x) %s\n", idx0, pf1,
++				seq_printf(s, "\t%u(%#x)%c %s\n", idx0, pf1,
++					   test_bit(idx0, npc_priv->en_map) ? '+' : ' ',
+ 					   map ? buf0 : " ");
+ 			}
+ 			goto next;
+@@ -101,9 +103,13 @@ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+ 						 vidx1);
+ 				}
+ 
+-				seq_printf(s, "%05u(%#x) %s\t\t%05u(%#x) %s\n",
+-					   idx1, pf2, v1 ? buf1 : "       ",
+-					   idx0, pf1, v0 ? buf0 : "       ");
++				seq_printf(s, "%05u(%#x)%c %s\t\t%05u(%#x)%c %s\n",
++					   idx1, pf2,
++					   test_bit(idx1, npc_priv->en_map) ? '+' : ' ',
++					   v1 ? buf1 : "       ",
++					   idx0, pf1,
++					   test_bit(idx0, npc_priv->en_map) ? '+' : ' ',
++					   v0 ? buf0 : "       ");
+ 
+ 				continue;
+ 			}
+@@ -120,8 +126,9 @@ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+ 						 vidx0);
+ 				}
+ 
+-				seq_printf(s, "\t\t   \t\t%05u(%#x) %s\n", idx0,
+-					   pf1, map ? buf0 : " ");
++				seq_printf(s, "\t\t   \t\t%05u(%#x)%c %s\n", idx0, pf1,
++					   test_bit(idx0, npc_priv->en_map) ? '+' : ' ',
++					   map ? buf0 : " ");
+ 				continue;
+ 			}
+ 
+@@ -134,7 +141,8 @@ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+ 				snprintf(buf1, sizeof(buf1), "v:%05u", vidx1);
+ 			}
+ 
+-			seq_printf(s, "%05u(%#x) %s\n", idx1, pf1,
++			seq_printf(s, "%05u(%#x)%c %s\n", idx1, pf1,
++				   test_bit(idx1, npc_priv->en_map) ? '+' : ' ',
+ 				   map ? buf1 : " ");
+ 		}
+ next:
+@@ -145,6 +153,135 @@ static int npc_mcam_layout_show(struct seq_file *s, void *unused)
+ 
+ DEFINE_SHOW_ATTRIBUTE(npc_mcam_layout);
+ 
++#define __OCTEONTX2_DEBUGFS_ATTRIBUTE_FOPS(__name)			\
++static const struct file_operations __name ## _fops = {			\
++	.owner = THIS_MODULE,						\
++	.open = __name ## _open,					\
++	.read = seq_read,						\
++	.llseek = seq_lseek,						\
++	.release = single_release,					\
++}
++
++#define DEFINE_OCTEONTX2_DEBUGFS_ATTRIBUTE_WITH_SIZE(__name, __size)		\
++static int __name ## _open(struct inode *inode, struct file *file)		\
++{										\
++	return single_open_size(file, __name ## _show, inode->i_private,	\
++				__size);					\
++}										\
++__OCTEONTX2_DEBUGFS_ATTRIBUTE_FOPS(__name)
++
++static DEFINE_MUTEX(stats_lock);
++
++static u64 dstats[MAX_NUM_BANKS][MAX_SUBBANK_DEPTH * MAX_NUM_SUB_BANKS] = {};
++static int npc_mcam_dstats_show(struct seq_file *s, void *unused)
++{
++	struct npc_priv_t *npc_priv;
++	int blkaddr, pf, mcam_idx;
++	u64 stats, delta;
++	struct rvu *rvu;
++	char buff[64];
++	u8 key_type;
++	void *map;
++
++	npc_priv = npc_priv_get();
++	rvu = s->private;
++	blkaddr = rvu_get_blkaddr(rvu, BLKTYPE_NPC, 0);
++	if (blkaddr < 0)
++		return 0;
++
++	mutex_lock(&stats_lock);
++	seq_puts(s, "idx\tpfunc\tstats\n");
++	for (int bank = npc_priv->num_banks - 1; bank >= 0; bank--) {
++		for (int idx = npc_priv->bank_depth - 1; idx >= 0; idx--) {
++			mcam_idx = bank * npc_priv->bank_depth + idx;
++
++			npc_mcam_idx_2_key_type(rvu, mcam_idx, &key_type);
++			if (key_type == NPC_MCAM_KEY_X4 && bank != 0)
++				continue;
++
++			if (!test_bit(mcam_idx, npc_priv->en_map))
++				continue;
++
++			stats = rvu_read64(rvu, blkaddr,
++					   NPC_AF_CN20K_MCAMEX_BANKX_STAT_EXT(idx, bank));
++			if (!stats)
++				continue;
++			if (stats == dstats[bank][idx])
++				continue;
++
++			if (stats < dstats[bank][idx])
++				dstats[bank][idx] = 0;
++
++			pf = 0xFFFF;
++			map = xa_load(&npc_priv->xa_idx2pf_map, mcam_idx);
++			if (map)
++				pf = xa_to_value(map);
++
++			if (stats > dstats[bank][idx])
++				delta = stats - dstats[bank][idx];
++			else
++				delta = stats;
++
++			snprintf(buff, sizeof(buff), "%u\t%#04x\t%llu\n",
++				 mcam_idx, pf, delta);
++			seq_puts(s, buff);
++
++			dstats[bank][idx] = stats;
++		}
++	}
++
++	mutex_unlock(&stats_lock);
++	return 0;
++}
++
++/*  "%u\t%#04x\t%llu\n" needs less than 64 characters to print */
++#define TOTAL_SZ (MAX_NUM_BANKS * MAX_NUM_SUB_BANKS * MAX_SUBBANK_DEPTH * 64)
++DEFINE_OCTEONTX2_DEBUGFS_ATTRIBUTE_WITH_SIZE(npc_mcam_dstats, TOTAL_SZ);
++
++static int npc_mcam_mismatch_show(struct seq_file *s, void *unused)
++{
++	struct npc_priv_t *npc_priv;
++	struct npc_subbank *sb;
++	int mcam_idx, sb_off;
++	struct rvu *rvu;
++	char buff[64];
++	void *map;
++	int rc;
++
++	npc_priv = npc_priv_get();
++	rvu = s->private;
++
++	seq_puts(s, "index\tsb idx\tkw type\n");
++	mutex_lock(&stats_lock);
++	for (int bank = npc_priv->num_banks - 1; bank >= 0; bank--) {
++		for (int idx = npc_priv->bank_depth - 1; idx >= 0; idx--) {
++			mcam_idx = bank * npc_priv->bank_depth + idx;
++
++			if (!test_bit(mcam_idx, npc_priv->en_map))
++				continue;
++
++			map = xa_load(&npc_priv->xa_idx2pf_map, mcam_idx);
++			if (map)
++				continue;
++
++			rc = npc_mcam_idx_2_subbank_idx(rvu, mcam_idx,
++							&sb, &sb_off);
++			if (rc)
++				continue;
++
++			snprintf(buff, sizeof(buff), "%u\t%d\t%u\n",
++				 mcam_idx, sb->idx, sb->key_type);
++
++			seq_puts(s, buff);
++		}
++	}
++	mutex_unlock(&stats_lock);
++	return 0;
++}
++
++/* "%u\t%d\t%u\n" needs less than 64 characters to print. */
++DEFINE_OCTEONTX2_DEBUGFS_ATTRIBUTE_WITH_SIZE(npc_mcam_mismatch, TOTAL_SZ);
++
+ static int npc_mcam_default_show(struct seq_file *s, void *unused)
+ {
+ 	struct npc_priv_t *npc_priv;
+@@ -259,6 +396,12 @@ int npc_cn20k_debugfs_init(struct rvu *rvu)
+ 	debugfs_create_file("vidx2idx", 0444, rvu->rvu_dbg.npc,
+ 			    npc_priv, &npc_vidx2idx_map_fops);
+ 
++	debugfs_create_file("dstats", 0444, rvu->rvu_dbg.npc, rvu,
++			    &npc_mcam_dstats_fops);
++
++	debugfs_create_file("mismatch", 0444, rvu->rvu_dbg.npc, rvu,
++			    &npc_mcam_mismatch_fops);
++
+ 	debugfs_create_file("idx2vidx", 0444, rvu->rvu_dbg.npc,
+ 			    npc_priv, &npc_idx2vidx_map_fops);
+ 
+diff --git a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.c b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.c
+index 6b3f453fd500..e9aad0ad3fa6 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.c
++++ b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.c
+@@ -824,7 +824,7 @@ npc_cn20k_enable_mcam_entry(struct rvu *rvu, int blkaddr,
+ 		rvu_write64(rvu, blkaddr,
+ 			    NPC_AF_CN20K_MCAMEX_BANKX_CFG_EXT(mcam_idx, bank),
+ 			    cfg);
+-		return 0;
++		goto update_en_map;
+ 	}
+ 
+ 	/* For NPC_CN20K_MCAM_KEY_X4 keys, both the banks
+@@ -842,6 +842,12 @@ npc_cn20k_enable_mcam_entry(struct rvu *rvu, int blkaddr,
+ 			    cfg);
+ 	}
+ 
++update_en_map:
++	if (enable)
++		set_bit(index, npc_priv.en_map);
++	else
++		clear_bit(index, npc_priv.en_map);
++
+ 	return 0;
+ }
+ 
+@@ -1789,9 +1795,9 @@ static int npc_subbank_idx_2_mcam_idx(struct rvu *rvu, struct npc_subbank *sb,
+ 	return 0;
+ }
+ 
+-static int npc_mcam_idx_2_subbank_idx(struct rvu *rvu, u16 mcam_idx,
+-				      struct npc_subbank **sb,
+-				      int *sb_off)
++int npc_mcam_idx_2_subbank_idx(struct rvu *rvu, u16 mcam_idx,
++			       struct npc_subbank **sb,
++			       int *sb_off)
+ {
+ 	int bank_off, sb_id;
+ 
+@@ -4605,6 +4611,8 @@ void npc_cn20k_deinit(struct rvu *rvu)
+ 	 */
+ 	kfree(npc_priv.sb);
+ 	kfree(subbank_srch_order);
++	bitmap_clear(npc_priv.en_map, 0, MAX_NUM_BANKS * MAX_NUM_SUB_BANKS *
++		     MAX_SUBBANK_DEPTH);
+ }
+ 
+ static int npc_setup_mcam_section(struct rvu *rvu, int key_type)
+diff --git a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.h b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.h
+index 3d5eb952cc07..9567a2d80b58 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.h
++++ b/drivers/net/ethernet/marvell/octeontx2/af/cn20k/npc.h
+@@ -170,6 +170,7 @@ struct npc_defrag_show_node {
+  * @num_banks:		Number of banks.
+  * @num_subbanks:	Number of subbanks.
+  * @subbank_depth:	Depth of subbank.
++ * @en_map:		Enable/disable status.
+  * @kw:			Kex configured key type.
+  * @sb:			Subbank array.
+  * @xa_sb_used:		Array of used subbanks.
+@@ -193,6 +194,9 @@ struct npc_priv_t {
+ 	const int num_banks;
+ 	int num_subbanks;
+ 	int subbank_depth;
++	DECLARE_BITMAP(en_map, MAX_NUM_BANKS *
++		       MAX_NUM_SUB_BANKS *
++		       MAX_SUBBANK_DEPTH);
+ 	u8 kw;
+ 	struct npc_subbank *sb;
+ 	struct xarray xa_sb_used;
+@@ -336,5 +340,8 @@ u16 npc_cn20k_vidx2idx(u16 index);
+ u16 npc_cn20k_idx2vidx(u16 idx);
+ int npc_cn20k_defrag(struct rvu *rvu);
+ bool npc_is_cgx_or_lbk(struct rvu *rvu, u16 pcifunc);
++int npc_mcam_idx_2_subbank_idx(struct rvu *rvu, u16 mcam_idx,
++			       struct npc_subbank **sb,
++			       int *sb_off);
+ 
+ #endif /* NPC_CN20K_H */
+-- 
 2.43.0
+
