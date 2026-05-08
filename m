@@ -2,79 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mLngJ6xU/WkYawAAu9opvQ
+	id 0APnJqtU/WnZagAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:44 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:43 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5648A4F105A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:44 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 698DC4F1053
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B2EF74144B;
-	Fri,  8 May 2026 03:12:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 12E2C61240;
+	Fri,  8 May 2026 03:12:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gklsoNXBv_ov; Fri,  8 May 2026 03:12:39 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Dh-EUFA2204R; Fri,  8 May 2026 03:12:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9F3441458
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 861926123A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778209959;
-	bh=g4hrBknN2hpyo8cOGKu/tdvAtFTdRy9HOD3QXsye+EA=;
+	s=default; t=1778209961;
+	bh=SAOYT0OoA1NaaPxM6Nxp+tb5sC47gUPUICbsr2lxfGM=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=GgFFLbYwd4UFIDXDD+U/xNeyh3AKxiwGyhSNw/kFd+xCYzWaCRHqGhvcznxDPT3rG
-	 VDKVAagi3xqRQG/1FLc8SffJ586MuTijF1WBvgWyYPpKbATAJ3kk83flzO3lZ1mrpb
-	 1uoEM/9jjjDQVik2GTrY5Len+nEJdex7RvrKazc1yqT0kg+U+ERheGcF80G77l86fW
-	 REmbM2hpthZ948AviIp8iwihKbsub3XlZmeeIIY6lyHrfL54SIXyEUtWZLysRxNBMm
-	 NKmazZfJMaGvRcyAd4KNBMU//uWYTdGI+vqv0MooMG5DTRxSmj2lehtvjLOFtTFRID
-	 HHh9b4V++mItQ==
+	b=CZAP4pqkwGnphBTjRdA5b9tRk5ID4mFW4Q6S1q/wx5IMFZZe2vg1r1UrjkxYik6YN
+	 KRCAbFRTkAdUSzNiyoHH3EiJ/P9OMlUPblvAypUrE3oA13+DUUHZsux1gDpqMTFWdb
+	 r3jhUoCzKGT5KzaAALw/3jQTCeLS74ssW7FgmgIMhrBIkCXLfXLPhNtIbH07cXxuRm
+	 EF1BDhGCz77AycT38am3bppmG5UULv2b6i4HEOsEbpZh9sH929xIMgj4tl7GFny4mm
+	 TW/70FSRRoGjn5AncmtijYE0FDRuEU3GHqBvGLcg/u4Vw6GGW//hcWFGHmEn9tMDNp
+	 mFdTWiq901jRQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E9F3441458;
-	Fri,  8 May 2026 03:12:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 861926123A;
+	Fri,  8 May 2026 03:12:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id EA236272
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:37 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 4F4D9317
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E7939409B3
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 34DB6409B3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qXAcRlINmqwu for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 03:12:36 +0000 (UTC)
+ id Oyg_YCY0vEHz for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 03:12:38 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C94E94030E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C94E94030E
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 37BF84030E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 37BF84030E
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C94E94030E
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:36 +0000 (UTC)
-X-CSE-ConnectionGUID: ns6MP0IVQv+Rb2QyvbiSjw==
-X-CSE-MsgGUID: t/5tGTXSTu6BaNSKyTWq0A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79027507"
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="79027507"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 37BF84030E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:38 +0000 (UTC)
+X-CSE-ConnectionGUID: Q6UezhgQTWO5+c8KCUanaA==
+X-CSE-MsgGUID: mb7U+6/gT4yZeWg+7PiS5Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79027513"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="79027513"
 Received: from fmviesa005.fm.intel.com ([10.60.135.145])
  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2026 20:12:37 -0700
-X-CSE-ConnectionGUID: ZlO2kQE9SYGyGqP1UIPL7Q==
-X-CSE-MsgGUID: nCsr5/F3RrqGPXX54wiubw==
+ 07 May 2026 20:12:38 -0700
+X-CSE-ConnectionGUID: nofhen9zRsOgobpEuWrsaA==
+X-CSE-MsgGUID: 3ivrJew4TH2fPViGhX0S6g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="241623205"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="241623210"
 Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmviesa005.fm.intel.com with ESMTP; 07 May 2026 20:12:35 -0700
+ by fmviesa005.fm.intel.com with ESMTP; 07 May 2026 20:12:37 -0700
 From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Simon Horman <horms@kernel.org>
-Date: Fri,  8 May 2026 05:12:23 +0200
-Message-ID: <20260508031226.3601800-6-aleksandr.loktionov@intel.com>
+Cc: netdev@vger.kernel.org
+Date: Fri,  8 May 2026 05:12:24 +0200
+Message-ID: <20260508031226.3601800-7-aleksandr.loktionov@intel.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
 References: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
@@ -82,25 +80,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778209957; x=1809745957;
+ t=1778209958; x=1809745958;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=9aq3l7pQ7Mjfw3VwJA+8Dhs6YWVZvwwIVUvAlQE2R7Q=;
- b=DbH9sH/ZEGfMM5rL90m1z8MfqCqRANZjdbfQUTHUQcam0IGtjMLu0E2K
- wCLmUVPlfkSH4PNYy+wE4roIXTnMZTUJKuZO/nSFH8l/fsMpaKcV89gdQ
- XaqKh3zPViJvSeZ3MbwqwRaES6HLWkP1aZWQaY7oU8j0dVZD7eebTGDIC
- JyCfbgO6vM/OBtU5WijF/n+2mzzv2zEw3K/G94STQeawMcvNegwhOmRzb
- dlVwtYMO1qyGQ9e8LKxf/f7mZJiY3w3Plw3g8NZw2wDDI+e1BCNweqI1n
- 3s5GjPHazfHvxjZ4bSMT3lsW8r8Wd2cEaiYSKInn5JzV4x73TFnzLscxE
- A==;
+ bh=CBKMlV60ZbulVgXwKgQt5VEkfWvqAFPvIP4/ufqNnDs=;
+ b=evlOix4mZg6gHUbKPjnct0qj0QT6mjo+3gexqkFR3tMgbt0sJRCXb2dL
+ ww7bOkRuiiJu704MdCCKnCYILpfvbZN0BjQEgnnUU0pe1UooxW1yQf7vo
+ Sr7GbrZryBGugoga0HLX5nHEZa8wG2i6DIQhoYMGVrDOnTOfojBQ8CmI6
+ r37qEf+BFnqNC4JLxMrYV4AWB04t3pH7XjixwzZSKCW489qhvqZknHP5x
+ bEyX2nZRqpdGh6sHIJaDNsOcN0hLtHkeaVP9L07Z63+mi226vmaDOtlW7
+ 4XMafA0qoKdTxHFjsWulw0HtTLXCnGrSPtIeygWFUd8j5GjJO+7r7OYz3
+ g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DbH9sH/Z
-Subject: [Intel-wired-lan] [PATCH iwl-next 5/8] ixgbe: use
- ktime_get_real_ns() in ixgbe_ptp_reset()
+ header.a=rsa-sha256 header.s=Intel header.b=evlOix4m
+Subject: [Intel-wired-lan] [PATCH iwl-next 6/8] ixgbe: extract
+ ixgbe_restart_auto_neg() to avoid code duplication
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,9 +113,9 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 5648A4F105A
+X-Rspamd-Queue-Id: 698DC4F1053
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [0.79 / 15.00];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
@@ -125,54 +123,112 @@ X-Spamd-Result: default: False [0.89 / 15.00];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	ARC_NA(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid];
+	TO_DN_NONE(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCPT_COUNT_THREE(0.00)[4];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[7];
-	NEURAL_HAM(-0.00)[-0.999];
+	NEURAL_HAM(-0.00)[-1.000];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+From: Jakub Chylkowski <jakubx.chylkowski@intel.com>
 
-Replace ktime_to_ns(ktime_get_real()) with the direct equivalent
-ktime_get_real_ns() in ixgbe_ptp_reset().  Using the combined helper
-avoids the unnecessary intermediate ktime_t variable and makes the
-intent clearer.
+Both ixgbe_setup_phy_link_generic() and ixgbe_setup_phy_link_tnx()
+end with the same three-line sequence that reads MDIO_CTRL1, sets
+the MDIO_AN_CTRL1_RESTART bit, and writes MDIO_CTRL1 back.
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Factor it out into a static helper ixgbe_restart_auto_neg() and call
+it from both sites.
+
+While at it, also check the return value of phy.ops.read_reg() in the
+helper and skip the write on failure.  The original inlined code
+ignored the read result and would OR MDIO_AN_CTRL1_RESTART into a
+stale autoneg_reg value (left over from the prior MDIO_AN_ADVERTISE
+write) and unconditionally write it back to MDIO_CTRL1 if the read
+failed.  This is a small behavioral change: on read_reg() failure the
+restart write is now skipped instead of being issued with a
+potentially garbage value.
+
+Signed-off-by: Jakub Chylkowski <jakubx.chylkowski@intel.com>
 Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c | 36 ++++++++++++--------
+ 1 file changed, 22 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-index 6885d23..a7d1635 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c
-@@ -1347,7 +1347,7 @@ void ixgbe_ptp_reset(struct ixgbe_adapter *adapter)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+index de8f6c6..c7387a4 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+@@ -1089,6 +1089,26 @@ int ixgbe_mii_bus_init(struct ixgbe_hw *hw)
+ 	return mdiobus_register(bus);
+ }
  
- 	spin_lock_irqsave(&adapter->tmreg_lock, flags);
- 	timecounter_init(&adapter->hw_tc, &adapter->hw_cc,
--			 ktime_to_ns(ktime_get_real()));
-+			 ktime_get_real_ns());
- 	spin_unlock_irqrestore(&adapter->tmreg_lock, flags);
++/**
++ * ixgbe_restart_auto_neg - restart PHY autonegotiation
++ * @hw: pointer to hardware structure
++ *
++ * Sets the restart autoneg bit in MDIO_CTRL1 to trigger a new
++ * autonegotiation cycle.
++ **/
++static void ixgbe_restart_auto_neg(struct ixgbe_hw *hw)
++{
++	u16 autoneg_reg;
++	int status;
++
++	status = hw->phy.ops.read_reg(hw, MDIO_CTRL1, MDIO_MMD_AN,
++				      &autoneg_reg);
++	if (status)
++		return;
++	autoneg_reg |= MDIO_AN_CTRL1_RESTART;
++	hw->phy.ops.write_reg(hw, MDIO_CTRL1, MDIO_MMD_AN, autoneg_reg);
++}
++
+ /**
+  *  ixgbe_setup_phy_link_generic - Set and restart autoneg
+  *  @hw: pointer to hardware structure
+@@ -1156,13 +1176,7 @@ int ixgbe_setup_phy_link_generic(struct ixgbe_hw *hw)
+ 		return 0;
  
- 	adapter->last_overflow_check = jiffies;
+ 	/* Restart PHY autonegotiation and wait for completion */
+-	hw->phy.ops.read_reg(hw, MDIO_CTRL1,
+-			     MDIO_MMD_AN, &autoneg_reg);
+-
+-	autoneg_reg |= MDIO_AN_CTRL1_RESTART;
+-
+-	hw->phy.ops.write_reg(hw, MDIO_CTRL1,
+-			      MDIO_MMD_AN, autoneg_reg);
++	ixgbe_restart_auto_neg(hw);
+ 
+ 	return status;
+ }
+@@ -1386,13 +1400,7 @@ int ixgbe_setup_phy_link_tnx(struct ixgbe_hw *hw)
+ 		return 0;
+ 
+ 	/* Restart PHY autonegotiation and wait for completion */
+-	hw->phy.ops.read_reg(hw, MDIO_CTRL1,
+-			     MDIO_MMD_AN, &autoneg_reg);
+-
+-	autoneg_reg |= MDIO_AN_CTRL1_RESTART;
+-
+-	hw->phy.ops.write_reg(hw, MDIO_CTRL1,
+-			      MDIO_MMD_AN, autoneg_reg);
++	ixgbe_restart_auto_neg(hw);
+ 	return 0;
+ }
+ 
 -- 
 2.52.0
 
