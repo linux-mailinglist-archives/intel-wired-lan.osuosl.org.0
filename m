@@ -2,104 +2,133 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 6CntD7hU/WnZagAAu9opvQ
+	id UB+qBBVf/mmppwAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:56 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:25 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 035F04F106F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:55 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FD224FC2DB
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 09 May 2026 00:09:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9265F41455;
-	Fri,  8 May 2026 03:12:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A564940DEF;
+	Fri,  8 May 2026 22:09:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cqL6pSPyM3gO; Fri,  8 May 2026 03:12:52 +0000 (UTC)
+ id qaHTzSNLnqdt; Fri,  8 May 2026 22:09:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A19A541457
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5FBBC41104
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778209972;
-	bh=2lffoAq7D9TpQl2j94UYYdfnBaIGN3VYqYE00+44220=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=i5FTsm34SEeFtYjWt5ZSEtGjsEz/ziOM+Coyq+bHyEHYkLQIM8dT+swZBCXKvt1Vg
-	 CiIngqUD8Rsq4bSLlxZp4xP8eOO3s52PJAGHsk4dfW4Re6Z9lHpnE230G8Ul5OOiNm
-	 pInFo9oTIThgRSwHbPqmNMwq6aDZxq5rs39BRFWX22pGBQ+/SAsnmDV5yGYgq3Xp9e
-	 oE3deJZI9s2VDeTP/HjuHj6QF8pHaD66P9V+VlFFNgoKRVmSO18mXHr0R9dgkQmt26
-	 6KLDDg2gZPiO07EdvLyq0k4VIsQc1kQ000WlG7ab2TCCdkC07wmtLQF269BaZ3ZPds
-	 EmWLZERQUpfSA==
+	s=default; t=1778278154;
+	bh=uLHzQyOPEJEJGkFH5l7eU5xubxmYqwO7MmVfMNTLNB4=;
+	h=From:To:CC:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=n0/2h+bGj9sNJQIVX+HXOKwp+/W/ELBBvuXuEc5z0mbnasQTLSGtnjh/dBtk3KvVI
+	 PXrlwdBx8y0it9gVHof3kzHkE6p3rPCynrtFO5IrcMlZVfdfGVI3A2wROnFnQ8sCRJ
+	 8dio6bF9fTcGLcb+7QRifZ4jE12JoYC5mWx9h4VZcYdejZ6FFjqTwDRa2VB/5nJ7pX
+	 VkDN+pieoLdYV9SNO4geqy/ASd/ff2Ihqh2f+B7pFESBWNXSnkK+LVLMuxqzxFBqN3
+	 CmzBlGWvKp5drfkA7702xPfHeadMUd1A2iOxGSFw+uygAfRlMOyiNlG55Mz/0qTcRU
+	 uNnndkNx6864w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A19A541457;
-	Fri,  8 May 2026 03:12:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5FBBC41104;
+	Fri,  8 May 2026 22:09:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 199D7272
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id B7B12358
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F39286122A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B56ED409D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MY24Nil8sIrI for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 03:12:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CE9DD61224
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE9DD61224
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CE9DD61224
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:49 +0000 (UTC)
-X-CSE-ConnectionGUID: wR416kRNRjSJ/76EbsGipw==
-X-CSE-MsgGUID: 9+6tXP6sR/KN56XMWLMzGg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79027536"
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="79027536"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2026 20:12:43 -0700
-X-CSE-ConnectionGUID: gRjQGLyDRxKV2To2vvy/2Q==
-X-CSE-MsgGUID: hGpeIGkfT8a06z9L6CP/0Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="241623223"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmviesa005.fm.intel.com with ESMTP; 07 May 2026 20:12:39 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Cc: netdev@vger.kernel.org
-Date: Fri,  8 May 2026 05:12:26 +0200
-Message-ID: <20260508031226.3601800-9-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
-References: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yhiD_hHZ8SG7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 04:07:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=67.231.156.173;
+ helo=mx0b-0016f401.pphosted.com;
+ envelope-from=prvs=65883a0750=rkannoth@marvell.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A974E404A0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A974E404A0
+Received: from mx0b-0016f401.pphosted.com (mx0b-0016f401.pphosted.com
+ [67.231.156.173])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A974E404A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 04:07:50 +0000 (UTC)
+Received: from pps.filterd (m0431383.ppops.net [127.0.0.1])
+ by mx0b-0016f401.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 647NVKu02841680; Thu, 7 May 2026 20:49:30 -0700
+Received: from dc6wp-exch02.marvell.com ([4.21.29.225])
+ by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 4e14g0gjd3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 07 May 2026 20:49:30 -0700 (PDT)
+Received: from DC6WP-EXCH02.marvell.com (10.76.176.209) by
+ DC6WP-EXCH02.marvell.com (10.76.176.209) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.25; Thu, 7 May 2026 20:49:29 -0700
+Received: from maili.marvell.com (10.69.176.80) by DC6WP-EXCH02.marvell.com
+ (10.76.176.209) with Microsoft SMTP Server id 15.2.1544.25 via Frontend
+ Transport; Thu, 7 May 2026 20:49:29 -0700
+Received: from rkannoth-OptiPlex-7090.. (unknown [10.28.36.165])
+ by maili.marvell.com (Postfix) with ESMTP id 840263F7041;
+ Thu,  7 May 2026 20:49:18 -0700 (PDT)
+From: Ratheesh Kannoth <rkannoth@marvell.com>
+To: <intel-wired-lan@lists.osuosl.org>, <linux-kernel@vger.kernel.org>,
+ <linux-rdma@vger.kernel.org>, <netdev@vger.kernel.org>,
+ <oss-drivers@corigine.com>
+CC: <akiyano@amazon.com>, <andrew+netdev@lunn.ch>,
+ <anthony.l.nguyen@intel.com>, <arkadiusz.kubalewski@intel.com>,
+ <brett.creeley@amd.com>, <darinzon@amazon.com>, <davem@davemloft.net>,
+ <donald.hunter@gmail.com>, <edumazet@google.com>, <horms@kernel.org>,
+ <idosch@nvidia.com>, <ivecera@redhat.com>, <jiri@resnulli.us>,
+ <kuba@kernel.org>, <leon@kernel.org>, <mbloch@nvidia.com>,
+ <michael.chan@broadcom.com>, <pabeni@redhat.com>,
+ <pavan.chebbi@broadcom.com>, <petrm@nvidia.com>,
+ <Prathosh.Satish@microchip.com>, <przemyslaw.kitszel@intel.com>,
+ <saeedm@nvidia.com>, <sgoutham@marvell.com>, <tariqt@nvidia.com>,
+ <vadim.fedorenko@linux.dev>, Ratheesh Kannoth <rkannoth@marvell.com>
+Date: Fri, 8 May 2026 09:19:03 +0530
+Message-ID: <20260508034912.4082520-1-rkannoth@marvell.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1778209970; x=1809745970;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=h0VtJiL0CwKRWOzEUXZhkGSdQQXv3Rw/cI6v5v5qFec=;
- b=YT/8NelFWg/AamKGh9yu4fgqCXFxLneURcdN2SFOj+iV60oh2nrNsh4l
- K/t0hZ6QwasZoKlIjnq0+aYRW5xiBsWPhuU3Vs3d7r7PszzsQuaxCewt+
- cnPkfN0tGXk7p5NMLuHfkIqQcZ5hkCnzitudsY65Td+Vy/ABr14B1nj8g
- /GxB1RkpSZaym+73FFaEVGqNvVzMcfQ/oD0c9JBszb1LM6+YP74WYR6h+
- 2qqdaZwtdy7dbFRUa7i9rr7lHa/LNYwylglvYVIIQUmXg2TLNOeRALfSn
- Hr8wWt5CwF/algSdZgxW51uekTGJIptqpxWQXoptoUz46+6AX170GgFv4
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain
+X-Proofpoint-ORIG-GUID: 5XpSRK9UP1TGNbEpxu0D60bRyAkmyrqH
+X-Authority-Analysis: v=2.4 cv=bMUm5v+Z c=1 sm=1 tr=0 ts=69fd5d4a cx=c_pps
+ a=gIfcoYsirJbf48DBMSPrZA==:117 a=gIfcoYsirJbf48DBMSPrZA==:17
+ a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22 a=l0iWHRpgs5sLHlkKQ1IR:22
+ a=qit2iCtTFQkLgVSMPQTB:22 a=VwQbUJbxAAAA:8 a=M5GUcnROAAAA:8
+ a=1rdZWFfAsYpIarNArpIA:9 a=OBjm3rFKGHvpk9ecZwUJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA4MDAzMyBTYWx0ZWRfX0obWHJ2emugt
+ AVXQQfpG3hallSw2k2v/eUGF6kBD7WYzN8Lr4L6Irl7LfI/sE30VAU2mICRbFYQR7BNYdMInfng
+ HU4AbGcGedhuppQHjgYeoRMUpC5IRxbKDcLkUwcmpPuIW2gvw3wDA6CJkVXSnRTqhAPhyP1BvGy
+ f0p+ntvnehab0AmLR2sJt9BFcKZuOjq1PLX/kkfBxSdGj6+rEYNUfuy2mBGW308fSIfp/Q8h/ns
+ JFoTihTjxTz37k8oKBK+s9Vj8HLz5FoV5Ck/4JfXbgMMgQCRqRakq4F/861JoxE2/3J9iKSlcdG
+ poos7BYGByATjXTeOkYwipaVT3Rld2Zkv0uhYF5n6Sg3dQP2e+uPZCIrlyxo0ZC8fKUn7TrekRB
+ GJHwmn348ljWKp8DFmNtXIIctRGib6SZH8ZRJvhmd3I5MTeA7vYAmSYVg6tGlrsGchYx/m/GUep
+ saBw3cCgXm4Gw1rKKuQ==
+X-Proofpoint-GUID: 5XpSRK9UP1TGNbEpxu0D60bRyAkmyrqH
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-07_02,2026-05-06_01,2025-10-01_01
+X-Mailman-Approved-At: Fri, 08 May 2026 22:09:04 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=marvell.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=pfpt0220; bh=uLHzQyOPEJEJGkFH5l7eU5x
+ ubxmYqwO7MmVfMNTLNB4=; b=Ua0S++r0z8AicZemFOkhatok6BTIgGAzvWmBC/O
+ 4/OgIAlOKfGewnxyFd6OARXp2nnBuse44bfnDS2rP/QouO34gALJA2fN+5nHgBtq
+ PVvAL8mdSbT4aX8L49a6auT/oGFeUfF27ztmq7Sbp4jZvRViClKcys/UCG4ZqR8p
+ 9nyoCNpX/pVNC2rbA6HrSw22dC05JJZb2KdDLP3RLxakKAjWbdutvgVIywzhh6BX
+ FZ4LP+ZewXcqhCZV5u4QoN9EGwX8PV3B/V+dnt7F1kTNDTUi5ilNG7ibTBeK8uEH
+ 3hA+WwV062FlrdieqEDpU6yyJW29ukHmRdchR0MOD6Lr7hA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=YT/8NelF
-Subject: [Intel-wired-lan] [PATCH iwl-next 8/8] ixgbe: add
- IXGBE_ITR_ADAPTIVE_MASK_USECS constant
+ header.from=marvell.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=marvell.com header.i=@marvell.com
+ header.a=rsa-sha256 header.s=pfpt0220 header.b=Ua0S++r0
+Subject: [Intel-wired-lan] [PATCH v12 net-next 0/9] octeontx2-af: npc:
+ Enhancements.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -114,79 +143,189 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 035F04F106F
+X-Rspamd-Queue-Id: 5FD224FC2DB
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	DMARC_POLICY_SOFTFAIL(0.10)[marvell.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FREEMAIL_CC(0.00)[amazon.com,lunn.ch,intel.com,amd.com,davemloft.net,gmail.com,google.com,kernel.org,nvidia.com,redhat.com,resnulli.us,broadcom.com,microchip.com,marvell.com,linux.dev];
+	RCPT_COUNT_TWELVE(0.00)[32];
 	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	RCPT_COUNT_THREE(0.00)[4];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[12];
+	FROM_NEQ_ENVFROM(0.00)[rkannoth@marvell.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-1.000];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:email,intel.com:mid];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	NEURAL_HAM(-0.00)[-0.979];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[]
 X-Rspamd-Action: no action
 
-From: Alexander Duyck <alexander.h.duyck@intel.com>
+This series extends Marvell octeontx2-af support for CN20K NPC (MCAM
+debuggability, allocation policy, default-rule lifetime, optional KPU
+profiles from firmware files, X2/X4 MCAM keyword handling in flows and
+defaults, and dynamic CN20K NPC private state), adds a devlink mechanism
+for multi-value parameters, and adjusts devlink param netlink helpers
+and mlx5 so stack usage stays within -Wframe-larger-than limits once union
+devlink_param_value grows.
 
-ixgbe_set_itr() clears the mode flag (IXGBE_ITR_ADAPTIVE_LATENCY, bit 7)
-with the open-coded complement expression ~IXGBE_ITR_ADAPTIVE_LATENCY.
-This is equivalent to keeping only bits [6:0], i.e. the usecs sub-field.
+Patch 1 improves CN20K MCAM visibility in debugfs: mcam_layout marks
+enabled entries, dstats reports per-entry hit deltas, and mismatch lists
+enabled entries without a PF mapping. MCAM enable state is tracked in a
+bitmap updated from the CN20K enable path.
 
-Add IXGBE_ITR_ADAPTIVE_MASK_USECS = IXGBE_ITR_ADAPTIVE_LATENCY - 1 =
-0x7F to name this mask explicitly and replace the open-coded AND-NOT
-operation with the cleaner AND form.  The two expressions are
-arithmetically identical; the change improves readability.
+Patch 2 reduces stack usage in mlx5e_pcie_cong_get_thresh_config() by
+reusing a single union devlink_param_value and a local result struct
+instead of holding a large array of unions on the stack, so the helper
+stays under the frame-size warning limit as the union grows (patches 3-4).
 
-Signed-off-by: Alexander Duyck <alexander.h.duyck@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      | 1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 2 +-
- 2 files changed, 2 insertions(+), 1 deletion(-)
+Patch 3 changes devlink_nl_param_value_put() and
+devlink_nl_param_value_fill_one() to pass union devlink_param_value by
+pointer instead of by value. Passing two copies of the union by value in
+the param netlink path consumes over 500 bytes of argument stack and risks
+CONFIG_FRAME_WARN as the union grows beyond its historical size (patch 4).
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index cf2df18..20e2a97 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -478,6 +478,7 @@ static inline unsigned int ixgbe_rx_pg_order(struct ixgbe_ring *ring)
- #define IXGBE_ITR_ADAPTIVE_MAX_USECS	126
- #define IXGBE_ITR_ADAPTIVE_LATENCY	0x80
- #define IXGBE_ITR_ADAPTIVE_BULK		0x00
-+#define IXGBE_ITR_ADAPTIVE_MASK_USECS	(IXGBE_ITR_ADAPTIVE_LATENCY - 1)
- 
- struct ixgbe_ring_container {
- 	struct ixgbe_ring *ring;	/* pointer to linked list of rings */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index ba7b013..be40655 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -2959,7 +2959,7 @@ static void ixgbe_set_itr(struct ixgbe_q_vector *q_vector)
- 	new_itr = min(q_vector->rx.itr, q_vector->tx.itr);
- 
- 	/* Clear latency flag if set, shift into correct position */
--	new_itr &= ~IXGBE_ITR_ADAPTIVE_LATENCY;
-+	new_itr &= IXGBE_ITR_ADAPTIVE_MASK_USECS;
- 	new_itr <<= 2;
- 
- 	if (new_itr != q_vector->itr) {
--- 
-2.52.0
+Patch 4 (Saeed) introduces DEVLINK_PARAM_TYPE_U64_ARRAY and nested
+DEVLINK_ATTR_PARAM_VALUE_DATA attributes so drivers and user space can
+exchange bounded u64 arrays; YAML, uapi, and netlink validation are
+updated.
 
+Patch 5 adds a runtime devlink parameter srch_order to reorder CN20K
+subbank search during MCAM allocation.
+
+Patch 6 ties default MCAM entries to NIX LF alloc/free on CN20K, adds
+NIX_LF_DONT_FREE_DFT_IDXS for PF teardown paths that must not drop default
+NPC indexes while the driver still owns state, and tightens nix_lf_alloc
+error propagation.
+
+Patch 7 allows loading a custom KPU profile from /lib/firmware/kpu via
+module parameter kpu_profile, with cam2 / ptype_mask wiring and helpers
+that share firmware-sourced vs filesystem-sourced profile layouts.
+
+Patch 8 makes default-rule allocation, AF flow install, and PF-side RSS,
+defaults, and ethtool flows respect the active CN20K MCAM keyword width
+(X2 vs X4), including X4 reference-index masking and -EOPNOTSUPP when a
+flow needs X4 keys on an X2-only profile.
+
+Patch 9 replaces file-scope npc_priv and static dstats with allocation
+sized from discovered bank/subbank geometry, threads npc_priv_get()
+through CN20K NPC paths, and allocates dstats via devm_kzalloc for the
+debugfs helper.
+
+The mlx5 change sits immediately before the devlink patches so the series
+applies cleanly and stays warning-free when built incrementally;
+pass-by-pointer precedes the U64 array type so helpers are not copying an
+even larger union by value. The CN20K patches keep srch_order ahead of
+NIX LF coordination, KPU-from-filesystem, X2/X4 handling, and the npc_priv
+refactor that touches the same files heavily.
+
+Ratheesh Kannoth (8):
+  octeontx2-af: npc: cn20k: debugfs enhancements
+  net/mlx5e: trim stack use in PCIe congestion threshold helper
+  devlink: pass param values by pointer
+  octeontx2-af: npc: cn20k: add subbank search order control
+  octeontx2: cn20k: Coordinate default rules with NIX LF lifecycle
+  octeontx2-af: npc: Support for custom KPU profile from filesystem
+  octeontx2: cn20k: Respect NPC MCAM X2/X4 profile in flows and DFT
+    alloc
+  octeontx2-af: npc: cn20k: Allocate npc_priv and dstats dynamically.
+
+Saeed Mahameed (1):
+  devlink: Implement devlink param multi attribute nested data values
+
+ Documentation/netlink/specs/devlink.yaml          |   4 +
+ drivers/dpll/zl3073x/devlink.c                    |   6 ++-
+ drivers/net/ethernet/amazon/ena/ena_devlink.c     |   8 ++-
+ drivers/net/ethernet/amd/pds_core/core.h          |   2 ++-
+ drivers/net/ethernet/amd/pds_core/devlink.c       |   2 ++-
+ drivers/net/ethernet/broadcom/bnxt/bnxt_devlink.c |   6 ++-
+ drivers/net/ethernet/intel/ice/devlink/devlink.c  |  30 ++-
+ .../ethernet/marvell/octeontx2/af/cn20k/debugfs.c | 175 ++++-
+ .../net/ethernet/marvell/octeontx2/af/cn20k/npc.c | 545 ++++++++-----
+ .../net/ethernet/marvell/octeontx2/af/cn20k/npc.h |  13 +++-
+ drivers/net/ethernet/marvell/octeontx2/af/mbox.h  |   1 +
+ drivers/net/ethernet/marvell/octeontx2/af/npc.h   |  17 +
+ drivers/net/ethernet/marvell/octeontx2/af/rvu.h   |  12 ++-
+ ...et/ethernet/marvell/octeontx2/af/rvu_devlink.c | 114 ++-
+ ...rs/net/ethernet/marvell/octeontx2/af/rvu_nix.c |  69 ++-
+ ...rs/net/ethernet/marvell/octeontx2/af/rvu_npc.c | 478 +++++++++--
+ ...rs/net/ethernet/marvell/octeontx2/af/rvu_npc.h |  17 +
+ ...net/ethernet/marvell/octeontx2/af/rvu_npc_fs.c |  12 +++-
+ ...rs/net/ethernet/marvell/octeontx2/af/rvu_reg.h |   1 +
+ .../ethernet/marvell/octeontx2/nic/otx2_devlink.c |   4 ++-
+ ...et/ethernet/marvell/octeontx2/nic/otx2_flows.c |  48 ++-
+ ...s/net/ethernet/marvell/octeontx2/nic/otx2_pf.c |   6 +--
+ drivers/net/ethernet/mellanox/mlx4/main.c         |  14 ++-
+ drivers/net/ethernet/mellanox/mlx5/core/devlink.c |  72 ++-
+ ...hernet/mellanox/mlx5/core/en/pcie_cong_event.c |  36 ++-
+ ...ethernet/mellanox/mlx5/core/eswitch_offloads.c |   2 ++-
+ drivers/net/ethernet/mellanox/mlx5/core/fs_core.c |   4 ++-
+ ...net/ethernet/mellanox/mlx5/core/lib/nv_param.c |  12 ++-
+ drivers/net/ethernet/mellanox/mlxsw/core.c        |   8 ++-
+ ...ers/net/ethernet/netronome/nfp/devlink_param.c |   6 ++-
+ drivers/net/netdevsim/dev.c                       |   4 ++-
+ include/net/devlink.h                             |  12 ++-
+ include/uapi/linux/devlink.h                      |   1 +
+ net/devlink/netlink_gen.c                         |   2 +
+ net/devlink/param.c                               | 120 ++-
+
+ 35 files changed, 1315 insertions(+), 548 deletions(-)
+
+--
+
+v11 -> v12: Addressed Paolo,Jiri comments.
+	https://lore.kernel.org/netdev/20260409025055.1664053-1-rkannoth@marvell.com/
+	Added one patch which was rejected by simon in net (as it was kind of enhancement rather than a bug)
+	Added one more patch- which allocates two variables from heap.
+
+v10 -> v11: Addressed Paolo comments.
+	https://lore.kernel.org/netdev/20260403025533.6250-1-rkannoth@marvell.com/
+
+v9 -> v10: Addressed Paolo comments
+	https://lore.kernel.org/netdev/
+	20260330053105.2722453-1-rkannoth@marvell.com/
+
+v8 -> v9: Addressed Simon comments
+	https://lore.kernel.org/netdev/
+	20260325072159.1126964-1-rkannoth@marvell.com/
+
+v7 -> v8: Addressed Simon comments
+	https://lore.kernel.org/netdev/
+	20260323035110.3908741-1-rkannoth@marvell.com/T/#t
+
+v6 -> v7: Addressed Simon comments
+	https://lore.kernel.org/netdev/20260320165432.98832-1-horms@kernel.org/
+
+v5 -> v6: Addressed Jakub,Jiri comments
+	https://lore.kernel.org/netdev/
+	20260317045623.250187-1-rkannoth@marvell.com/
+
+v4 -> v5: Addressed Jakub comments
+	https://lore.kernel.org/netdev/
+	20260312022754.2029595-6-rkannoth@marvell.com/
+
+v3 -> v4: Addressed Simon comments
+	https://lore.kernel.org/netdev/abDeXLpMMxp7G1v3@rkannoth-OptiPlex-7090/#t
+
+v2 -> v3: Addressed Simon comments.
+	https://lore.kernel.org/netdev/
+	20260304043032.3661647-1-rkannoth@marvell.com/
+
+v1 -> v2: Addressed Jakub comments.
+	https://lore.kernel.org/netdev/
+	20260302085803.2449828-1-rkannoth@marvell.com/#t
+
+2.43.0
