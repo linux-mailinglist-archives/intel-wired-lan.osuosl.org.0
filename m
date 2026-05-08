@@ -2,112 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id kDC+CJZM/WmUaAAAu9opvQ
+	id 0O95FqNU/WnZagAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 04:38:14 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:35 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BEEEA4F0E05
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 04:38:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D0AE84F1026
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 05:12:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 576C64141B;
-	Fri,  8 May 2026 02:38:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 543F041450;
+	Fri,  8 May 2026 03:12:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dWi6-rPmFAYZ; Fri,  8 May 2026 02:38:10 +0000 (UTC)
+ id Xp0-04ZckXFL; Fri,  8 May 2026 03:12:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B2A2241419
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BA5654144E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778207890;
-	bh=y2xgnUVTSEmtFl7AVjBTgOn4OO+GYRXOx9xXLnwDwhI=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=bap3C/5JI2xn6BSs4mKbp3beY0fnNl3sCKs7fWeIjuKUBsurmbaweCQjA3UrcQeEx
-	 sjrxu7xysVwpiY/qixo7ZDnDCScFfeuz5606OVkVebF4YczWRWkkFsygblYAcmpntE
-	 4yNzvAS4Hc/vjXX+Upf3QMIWZTsH4hghO+RpKYrgZaa9ljRnpZ7YPg3rXjlOI7oGhs
-	 U0B7fCVS5PbiFIJNkDeiR1X/VTGAi/+7uBL97PIWAkbZ4abCKbcSqjJnRY5UmOkOt1
-	 yctmJPOKCq2Ma6o7TNqN6G5vMz9pa83zA7Mw43Yc0VLjbwMnT7cGv9atJAseXUxYjk
-	 +cpyuG5dgODtA==
+	s=default; t=1778209952;
+	bh=egTsxxbjWn8zGicnnWKNrK8Zm/PI2q3+DJgwsDjNA8c=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=u/cZyG80FiBoSJQljvSEGsinfm4f78oPt/YUpNXxcdQL0SzlHXIoGkIzaTFn6+Bm8
+	 7TFUlrKw0EFoEWzgvSBWhGNbUvtvWJT5xcs6cClboibLhRs+LqBhsm3XqCE0EhonAH
+	 OuSnMsnmNXgl+n5V3OGHCXpKSUsBNYf1O1mKoeI6PDf6/K3JpDus8Cu/aWtxKKwFKB
+	 PLI5tCuinsmw1LFAXeLpHpnY8NZlQtxlSxlcIix0AY3wYbQnwC5iACFLUlYC2OjLug
+	 6U2voZo79ubbM6HgMyhtz7qYsCAddP64050T5oiQAMdU8+aejCeU1ezWez7mnyO022
+	 FNb+4Y5gVzsLg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B2A2241419;
-	Fri,  8 May 2026 02:38:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BA5654144E;
+	Fri,  8 May 2026 03:12:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id B1871385
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 02:38:08 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 36A9A272
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 95E6483C6F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 02:38:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1C7FD409B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iR-lt3rJaezg for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 02:38:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=171.64.64.25;
- helo=smtp1.cs.stanford.edu; envelope-from=ouster@cs.stanford.edu;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id WH_IuqgPGNJE for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 03:12:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9524B83DF6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9524B83DF6
-Received: from smtp1.cs.Stanford.EDU (smtp1.cs.stanford.edu [171.64.64.25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9524B83DF6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 02:38:06 +0000 (UTC)
-Received: from mail-yw1-f182.google.com ([209.85.128.182]:52564)
- by smtp1.cs.Stanford.EDU with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <ouster@cs.stanford.edu>) id 1wLB6J-000689-M5
- for intel-wired-lan@lists.osuosl.org; Thu, 07 May 2026 19:38:05 -0700
-Received: by mail-yw1-f182.google.com with SMTP id
- 00721157ae682-7bd810cdc5dso16502567b3.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 07 May 2026 19:38:03 -0700 (PDT)
-X-Forwarded-Encrypted: i=1;
- AFNElJ96Zt/28Klk7bU44sjm8ayjxu6LOHkfjre/Xu81w6r+7oAmHi7U7Wy2A1+kMdlLu72/NNFtsV3jBPw8XrGuct4=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwRK/ifeetLuJ8Zo7GOFou/HtTGFJGxVdiDIMeQr9G3tO1AM/ni
- ziVCqdTx+qPIVE5r8UfdJDPSU24zHSO4xwi57sLW0ozmi+jbcK+JaSi3Zsu1ZJlmDv3MQP9qy3I
- gPsMWTAf8qRJWb9z12Z1HBufXPQU+pjg=
-X-Received: by 2002:a05:690c:e094:b0:7bb:c0f:19d4 with SMTP id
- 00721157ae682-7bdf5d7fff7mr116382837b3.4.1778207882943; Thu, 07 May 2026
- 19:38:02 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 03B8D4030E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03B8D4030E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 03B8D4030E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 03:12:29 +0000 (UTC)
+X-CSE-ConnectionGUID: XebH2Ii7SiyUPhjiE3JnFw==
+X-CSE-MsgGUID: LWxIzmZDTmmnb9XYBybXRw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79027479"
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="79027479"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2026 20:12:29 -0700
+X-CSE-ConnectionGUID: BmjWfNWDQcWypu3CAzhaYw==
+X-CSE-MsgGUID: 2RtA3QfuQIi8gEegXE6y+A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,222,1770624000"; d="scan'208";a="241623170"
+Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
+ by fmviesa005.fm.intel.com with ESMTP; 07 May 2026 20:12:28 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Cc: netdev@vger.kernel.org
+Date: Fri,  8 May 2026 05:12:18 +0200
+Message-ID: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20260507183843.1457-1-ouster@cs.stanford.edu>
- <379cd3dc-aff5-4fcd-bf9f-4878ae21ee74@intel.com>
-In-Reply-To: <379cd3dc-aff5-4fcd-bf9f-4878ae21ee74@intel.com>
-From: John Ousterhout <ouster@cs.stanford.edu>
-Date: Thu, 7 May 2026 19:37:26 -0700
-X-Gmail-Original-Message-ID: <CAGXJAmzqBQha+XRu12ZpLTDBSMgAEANffD2uGKZ+VVdkMk6OVA@mail.gmail.com>
-X-Gm-Features: AVHnY4LeXWVde9sR1jld00r7tS8euPOtaMdbiRvSbEKzDRI4GYQW7FInkNAHXv4
-Message-ID: <CAGXJAmzqBQha+XRu12ZpLTDBSMgAEANffD2uGKZ+VVdkMk6OVA@mail.gmail.com>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Cc: anthony.l.nguyen@intel.com, Jakub Kicinski <kuba@kernel.org>, 
- Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org, 
- przemyslaw.kitszel@intel.com, netdev@vger.kernel.org, stable@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Scan-Signature: e7339ca2e2d71873cd3c16053348112b
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=cs.stanford.edu; s=cs2308; h=Content-Transfer-Encoding:Content-Type:Cc:To:
- Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=y2xgnUVTSEmtFl7AVjBTgOn4OO+GYRXOx9xXLnwDwhI=; t=1778207886; x=1779071886; 
- b=Jqq19GokzWQ7k53fE4YmsKamMuenQVDO4ia0ic8+yZN+X556ewcbDjMMPD2hUfA7PZ5Fw7vXrCp
- 4INBXho1mk7KHb2GZQjx0XDBLbBsqH8Jdq4V5Q+pMC8jD9kzmnJyyH3xTGPQVdgr4YikyfDgQ6uR1
- hnz+LJal3xvAICXRdPeGHBnxKxngsaGmAqMDk9VDDmhh0BsBa5hN4peo1K5W8BEzl4sSLnkqWqjKz
- 5q6BF3xo7FvU08zJnWu0TZX1OTPqrXo10ltyOyfcCKFfMlVhq78xPiQmsF/1wdxo4+k1iM3ltTSFS
- TkZeDDEp/tgsPvLwpzKzlLUUHbXrJ6hi+wwQ==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1778209950; x=1809745950;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=5syTiBGIJkTfSWeQklIrIr7jq5li2r8OQfmkyePbRFQ=;
+ b=jbix+BuYZv4aM0MREo3SfUXbY3eAeS3Ql1nfBg4E2Ht1PyY3oXIwpnR4
+ c9/ghvpaWFXDIfjNCay2HLn0IxRIKs19GQdd5qR6yShaqEiQs7WcW3txt
+ XZuRn7I3H6kGVBGOYGxNB6NgdNwyBjPcgjaoli9wjK/mNeBveW933OXYl
+ 6RzSLVHXCjGQ8ryRiDnLdUWPQOnxGayCx0/bw9pDnDAxFG7lRVw5pQE72
+ XVYziPl1CyA5p/FvfGB/IwmTJLAbr8zf/kd1iY2GjQMm9lar1Yx55yx7E
+ uja08yvrhmgbXboSbzbaq50immzRe8jV3a4FXGvTNMHPPe8IcoQGPfMtx
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=cs.stanford.edu
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=cs.stanford.edu header.i=@cs.stanford.edu
- header.a=rsa-sha256 header.s=cs2308 header.b=Jqq19Gok
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ice: fix packet corruption due
- to extraneous page flip
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=jbix+BuY
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/8] ixgbe: small cleanups and
+ improvements
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,153 +111,116 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: BEEEA4F0E05
+X-Rspamd-Queue-Id: D0AE84F1026
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [-0.61 / 15.00];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [0.89 / 15.00];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[cs.stanford.edu : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:anthony.l.nguyen@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:stable@vger.kernel.org,s:lists@lfdr.de];
-	RCVD_TLS_LAST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[stanford.edu:email,mail.gmail.com:mid,osuosl.org:dkim];
-	FORGED_SENDER(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
-	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
 	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ARC_NA(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_THREE(0.00)[4];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	MISSING_XM_UA(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	NEURAL_HAM(-0.00)[-1.000];
-	RCPT_COUNT_SEVEN(0.00)[8];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,intel.com:mid];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-Correct: this patch only applies to the ice driver before its conversion.
+Eight independent cleanups and improvements for the ixgbe driver,
+grouped by theme:
 
-The patch applies to versions 6.18.27 and 6.12.86. I believe the bug
-may also be present in 6.6.137, but the code has a slightly different
-structure there (the function ice_put_rx_mbuf doesn't yet exist in
-that version) so the patch would need to be reworked a bit.
+Naming / type hygiene (patches 1-2):
+  Patch 1 renames ixgbe_q_vector::numa_node to ::node.  The field name
+  shadows the struct device numa_node accessor, causing a sparse warning.
+  The rename aligns with other Intel drivers (ice, igc).
 
-This situation isn't all that rare. It isn't a zero-length packet that
-triggers it; it seems to happen if a packet uses every available byte
-in a buffer, ending precisely at the end of the buffer. When this
-happens, the NIC seems to generate an extra zero-length "buffer". This
-happens quite frequently (thousands of times per second in some of my
-workloads).
+  Patch 2 changes local error-code variables from u32 to int in six
+  functions across ixgbe_main.c, ixgbe_phy.c and ixgbe_x550.c.  Storing
+  a signed errno in an unsigned type works by accident for truthiness
+  checks but breaks exact comparisons and proper propagation.
 
-What keeps corruption from happening constantly is that there is only
-a problem if the "other half" of the buffer page is still active when
-the 0-length buffer is received from the NIC. I suspect that with TCP
-this is pretty unlikely: packet buffers get recycled quickly. If the
-other half is not in use, then it doesn't matter whether the page gets
-"flipped" while processing the 0-length buffer. I ran into this
-problem because I was testing Homa under conditions that caused some
-packet buffers to stay alive for longer periods of time.
+Bug fix (patch 3):
+  Patch 3 rejects duplicate FDIR perfect-filter rules before programming
+  hardware.  The same 5-tuple with a different sw_idx would silently
+  consume a second scarce FDIR slot and confuse rule deletion.
+  Returns -EEXIST to userspace on duplicate rather than -EINVAL.
 
--John-
+Performance (patch 4):
+  Patch 4 replaces the busy-wait udelay(1000) in the SECRX_RDY poll
+  loop with usleep_range(10, 20) and raises the iteration count from
+  40 to 4000.  Because usleep_range(min, max) is guaranteed to sleep
+  at least 'min' us, 4000 * 10 us preserves the original 40 ms
+  minimum-wait-before-timeout; worst-case grows to ~80 ms (acceptable
+  since SECRX_RDY failing to assert is non-fatal and only logged).
+  Typical stall on fast hardware drops from up to ~1 ms per iteration
+  to ~10-20 us.
 
+Code quality (patches 5-8):
+  Patch 5 replaces ktime_to_ns(ktime_get_real()) with the direct
+  ktime_get_real_ns() helper.
 
-On Thu, May 7, 2026 at 3:11=E2=80=AFPM Jacob Keller <jacob.e.keller@intel.c=
-om> wrote:
->
-> On 5/7/2026 11:38 AM, John Ousterhout wrote:
-> > Note: major revisions to the ice driver make this patch irrelevant
-> > for recent versions. It applies to longterm stable versions
-> > 6.18.27 and 6.12.86; it also seems relevant for 6.6.137, but would
-> > need modifications for that version. I have not examined earlier
-> > versions
-> >
->
-> From this description I take it this only applies to the ice driver
-> prior to its conversion to page pool?
->
-> In that case, I think you need to Cc: stable@vger.kernel.org and include
-> the relevant versions you intend to target.
->
-> I think this case is "unique" since there would not be an upstream
-> equivalent patch. But that is merely because we removed the faulty code
-> before it could be fixed.
->
-> I'm not 100% sure whta method to follow since typical stable rules don't
-> really like taking patches that don't apply to mainline...
->
-> Even with it being somewhat rare to get 0 size packet, it is not
-> impossible and packet corruption is a Big(TM) deal.
->
-> Thanks,
-> Jake
->
-> > Signed-off-by: John Ousterhout <ouster@cs.stanford.edu>
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice_txrx.c | 23 ++++++++++++++++++++---
-> >  1 file changed, 20 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/et=
-hernet/intel/ice/ice_txrx.c
-> > index 51c459a3e722..081c7a7392b7 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> > @@ -1215,6 +1215,13 @@ static void ice_put_rx_mbuf(struct ice_rx_ring *=
-rx_ring, struct xdp_buff *xdp,
-> >               xdp_frags =3D xdp_get_shared_info_from_buff(xdp)->nr_frag=
-s;
-> >
-> >       while (idx !=3D ntc) {
-> > +             union ice_32b_rx_flex_desc *rx_desc;
-> > +             unsigned int size;
-> > +
-> > +             rx_desc =3D ICE_RX_DESC(rx_ring, idx);
-> > +             size =3D le16_to_cpu(rx_desc->wb.pkt_len) &
-> > +                    ICE_RX_FLX_DESC_PKT_LEN_M;
-> > +
-> >               buf =3D &rx_ring->rx_buf[idx];
-> >               if (++idx =3D=3D cnt)
-> >                       idx =3D 0;
-> > @@ -1224,10 +1231,20 @@ static void ice_put_rx_mbuf(struct ice_rx_ring =
-*rx_ring, struct xdp_buff *xdp,
-> >                * To do this, only adjust pagecnt_bias for fragments up =
-to
-> >                * the total remaining after the XDP program has run.
-> >                */
-> > -             if (verdict !=3D ICE_XDP_CONSUMED)
-> > -                     ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
-> > -             else if (i++ <=3D xdp_frags)
-> > +             if (verdict !=3D ICE_XDP_CONSUMED) {
-> > +                     /* Don't "flip" the page if size is 0: in this ca=
-se
-> > +                      * the data in the current half will not be used =
-so
-> > +                      * it's OK to reuse that half. And, since the bia=
-s
-> > +                      * didn't get decremented for this half, the page=
- can
-> > +                      * be returned to the NIC even if the other half =
-is
-> > +                      * still in use, so flipping the page could cause
-> > +                      * live packet data to be overwritten.
-> > +                      */
-> > +                     if (size !=3D 0)
-> > +                             ice_rx_buf_adjust_pg_offset(buf, xdp->fra=
-me_sz);
-> > +             } else if (i++ <=3D xdp_frags) {
-> >                       buf->pagecnt_bias++;
-> > +             }
-> >
-> >               ice_put_rx_buf(rx_ring, buf);
-> >       }
->
+  Patch 6 factors the three-line autoneg-restart sequence duplicated in
+  ixgbe_setup_phy_link_generic() and ixgbe_setup_phy_link_tnx() into a
+  static helper ixgbe_restart_auto_neg().  The helper checks the return
+  value of read_reg() and returns early on error to avoid writing
+  uninitialized data to the PHY register.
+
+  Patches 7-8 improve the adaptive-ITR algorithm in two steps:
+    7/8: Limit ITR decrease in latency mode to at most
+         IXGBE_ITR_ADAPTIVE_MIN_INC (2 us) per step so that ACK-driven
+         workloads do not overdrive interrupt rate.  Uses max_t() to
+         ensure the clamp never drives ITR below the algorithm's own
+         computation.
+    8/8: Add IXGBE_ITR_ADAPTIVE_MASK_USECS (= IXGBE_ITR_ADAPTIVE_LATENCY
+         - 1) to replace the open-coded ~IXGBE_ITR_ADAPTIVE_LATENCY
+         mask in ixgbe_set_itr() with the cleaner AND form.
+
+Aleksandr Loktionov (1):
+  ixgbe: use int instead of u32 for error code variables
+
+Alexander Duyck (2):
+  ixgbe: limit ITR decrease in latency mode to prevent ACK overdrive
+  ixgbe: add IXGBE_ITR_ADAPTIVE_MASK_USECS constant
+
+Jacob Keller (2):
+  ixgbe: rename numa_node to node in struct ixgbe_q_vector
+  ixgbe: use ktime_get_real_ns() in ixgbe_ptp_reset()
+
+Jakub Chylkowski (1):
+  ixgbe: extract ixgbe_restart_auto_neg() to avoid code duplication
+
+Maciej Rabeda (1):
+  ixgbe: increase SECRX_RDY polling frequency in
+    ixgbe_disable_rx_buff_generic
+
+Piotr Skajewski (1):
+  ixgbe: prevent adding duplicate FDIR perfect filter rules
+
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |  5 +--
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 27 +++++++++++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 19 ++++++++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  | 42 +++++++++++--------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ptp.c  |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 12 +++---
+ 8 files changed, 77 insertions(+), 35 deletions(-)
+
+-- 
+2.52.0
+
