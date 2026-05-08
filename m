@@ -2,73 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id iCmXAkfe/Wn0jwAAu9opvQ
+	id qF7pN0ne/Wn0jwAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 14:59:51 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 14:59:53 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D18754F6ABF
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 14:59:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E5CB4F6ACD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 08 May 2026 14:59:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B1D5140E37;
-	Fri,  8 May 2026 12:59:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AD3E640F8C;
+	Fri,  8 May 2026 12:59:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3LslyF10Ap1c; Fri,  8 May 2026 12:59:45 +0000 (UTC)
+ id E3UpLcL757IW; Fri,  8 May 2026 12:59:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52D6640F54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D136B40F5D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778245185;
-	bh=Nv0mTNy+Ubpvvq/b79hQKkvImz/wKWgQN5YDaswWf4w=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=GV2n3/pUo/RVi/0MI4g4OUUD8Ap2x32JbjSYtZN4K0JR3r8eVW+xZruA8Xggj2rz0
-	 LBckbG+AQg+OoW896kWcXdB/qO2Mn6XjByesSl28p6ZuLeDY2cEpfo/HmeonkFMk23
-	 V3aUbwYb/vr/ySOxFVptueUmQIkREmuundoXsj0aBV/lccZ79IuwvrgsqN/7Cea9l5
-	 iIxdCo+RAmNOuL+MR94+Qe2RxQTQq5b3NxocMSL98FomgCJ4hULQm5KmvL9FV1fSUO
-	 NHJKQ0+DWA5cqmuhcXq3b8NcP5HrLYIZhgJn/1Pzrhnyb8mK8CcnKjOnqN05iLSC25
-	 cbBxtGalBd1EQ==
+	s=default; t=1778245188;
+	bh=F5FnkXHSPZ/YAL8xpK6mkTE8WKR4BG1hdPs6xRFgCYU=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=B6qXyC7jvua78m15lBuWcJfQ4/xjSYoai8kOgmlhFlg2CoNgWOlp0dof9DLVJHm10
+	 rI4ikAk7aUuh8gqCaE5wvfQnAlYrt0xtohtb84+ijPEMNzxNmcA1YX6vfpY8P7Gac0
+	 ixMLLstASWVQqcW0jB9L5reEhgeBqWR928r6e8Ae6mwjU/FTOC7PvH2WXOPd9AZmb2
+	 CX4TdlZwcuCiJANUwSINxkM9Wo/QdaN6h9X+H6bmovOWgDuB4yMCfItG/ayfV8aWvl
+	 salx1OEcW7N4cKuXBa1iIzUdhjZRpClb1UjEH3CI0ZQ4UMrsySRy7qG6u/jziKxj6Y
+	 4ce8mW689HU7Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52D6640F54;
-	Fri,  8 May 2026 12:59:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D136B40F5D;
+	Fri,  8 May 2026 12:59:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7FACF358
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 227A8317
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7159E40F00
+ by smtp4.osuosl.org (Postfix) with ESMTP id C377640E37
  for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D1N5MTD1m_eo for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 May 2026 12:59:43 +0000 (UTC)
+ id Lwqxn286oC4B for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 May 2026 12:59:44 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 500F740E37
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 500F740E37
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C766F40E67
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C766F40E67
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 500F740E37
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:42 +0000 (UTC)
-X-CSE-ConnectionGUID: fU7vBHscQZKZEBAt2t3HVg==
-X-CSE-MsgGUID: 2M3S1gzuRnGyRIfh79FPZQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79199852"
-X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="79199852"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C766F40E67
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 May 2026 12:59:43 +0000 (UTC)
+X-CSE-ConnectionGUID: JemHlPfEQluLXq36qf6OvQ==
+X-CSE-MsgGUID: Ryv0zTDBSFG1O8iqQ65v6Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11779"; a="79199861"
+X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="79199861"
 Received: from fmviesa005.fm.intel.com ([10.60.135.145])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  08 May 2026 05:59:43 -0700
-X-CSE-ConnectionGUID: 71w7MdL8REmoYuq4rRbu+Q==
-X-CSE-MsgGUID: KgGuZ4MPQ825zBvYOvUa1w==
+X-CSE-ConnectionGUID: gacRS5sDToWF1t7ZyymUoQ==
+X-CSE-MsgGUID: sGDyEB+NS9yAvETiJTNZ9w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="241730090"
+X-IronPort-AV: E=Sophos;i="6.23,223,1770624000"; d="scan'208";a="241730093"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa005.fm.intel.com with ESMTP; 08 May 2026 05:59:36 -0700
+ by fmviesa005.fm.intel.com with ESMTP; 08 May 2026 05:59:38 -0700
 Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 58E6F28795;
- Fri,  8 May 2026 13:59:34 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 01B0628798;
+ Fri,  8 May 2026 13:59:35 +0100 (IST)
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 To: intel-wired-lan@lists.osuosl.org, Michal Schmidt <mschmidt@redhat.com>,
  Jakub Kicinski <kuba@kernel.org>, Jiri Pirko <jiri@resnulli.us>
@@ -87,33 +88,34 @@ Cc: netdev@vger.kernel.org, Simon Horman <horms@kernel.org>,
  Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
  Tariq Toukan <tariqt@nvidia.com>, Mark Bloch <mbloch@nvidia.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Fri,  8 May 2026 14:41:53 +0200
-Message-Id: <20260508124208.11622-1-przemyslaw.kitszel@intel.com>
+Date: Fri,  8 May 2026 14:41:54 +0200
+Message-Id: <20260508124208.11622-2-przemyslaw.kitszel@intel.com>
 X-Mailer: git-send-email 2.39.3
+In-Reply-To: <20260508124208.11622-1-przemyslaw.kitszel@intel.com>
+References: <20260508124208.11622-1-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1778245184; x=1809781184;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=Cecj/jI4Hf3y5GjyNmlPt5sbEVv1v3dHbPozo7/APAo=;
- b=Z2LcCq8bFmA9To+k4wHoJ6iZz2z8u2TA3zDJ38eDGR5/SPy3UucZkXOj
- U2DddUW/88Sf9hbAnux4+mAxX0LzTLXv9gw2TKv13DOdrO+FU75ttUNSH
- bIRXlWCKqJJH95vjymlRvYqF24yWd2y3G0SOwUlWtuLrlw7T1eDfSUESM
- 4SjuCBtMl9i47CkNRGVIvIIzgX2Pu2WnAAfIWNoPPnZy2eF10Ql+A5Gzv
- peshX1nvXP0fxKBPrybhQ4BAX8JUwpzlEwXHssfp3dprionTSOusc19tv
- 6O+6Y70qm3S2gVBR/hM1SikoaSqLLdcSxY2xiyHYBW2uAIbIBQQ+fFGP4
- A==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=cIgqFDuYpmAQ9O9mjXlj0JybX6yCopnWD3DhBhD2jzA=;
+ b=XDc7Y4dgy0ChQ9nWSqg/Z1+WpkNO9CloPCPG3kIvA5AygGL8B2lto1Ze
+ MA+6XPThW/QMyoF8h7Gd0GLLVLuSzgsfKJbgU7z2dB0Y+pyaszS+uHvnT
+ ZKqgDo2Nykayi8+e+JeKmgdpGQNOpPz5UN9VOpetaPYN+0viXeczQKS+p
+ IF5Ghh5MTboRIEngiwA5N3DfrRLrTZPZBt/RQrOYmpTBMwKc2WFmybvi7
+ QjoodVr9jkU0pA3HLxdpiVIr3s7peShxy4WUo03QdTVN+ycmGoG+r240Q
+ A3VvdljNLwYoWKKT3VU4Is3Sjkhe6nTA13PDgwOkJOw5m6NgLxrMeupNU
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Z2LcCq8b
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 00/15] devlink, mlx5, iavf,
- ice: XLVF for iavf
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=XDc7Y4dg
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 01/15] devlink,
+ mlx5: add init/fini ops for shared devlink
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -128,14 +130,14 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: D18754F6ABF
+X-Rspamd-Queue-Id: 5E5CB4F6ACD
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
@@ -143,10 +145,10 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	MIME_TRACE(0.00)[0:+];
 	RCPT_COUNT_TWELVE(0.00)[25];
 	RCVD_TLS_LAST(0.00)[];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TO_DN_SOME(0.00)[];
 	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
 	FROM_NEQ_ENVFROM(0.00)[przemyslaw.kitszel@intel.com,intel-wired-lan-bounces@osuosl.org];
@@ -154,136 +156,199 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	NEURAL_HAM(-0.00)[-0.978];
+	NEURAL_HAM(-0.00)[-0.969];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-Code is also available here:
-https://github.com/pkitszel/linux/tree/xlvf-iwl
+Add .shd_init() and .shd_fini() ops, that will be called for the first
+devlink_shd_get() (to initialize driver' priv data) and on the last
+devlink_shd_put() (to allow for the cleanup). Both ops are optional.
 
-There are two dependecies:
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20260429102426.210750-4-jtornosm@redhat.com
-https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20260427151827.43342-1-mschmidt@redhat.com
+.shd_init() could return an error, which will stop creation of shd
+instance. The initializer also gets an additional, optional param,
+that driver could use for any needs.
 
-The purpose of this series is to allow iavf to use more than 16 queue pairs,
-in two modes, up to 64 and up to 256 queue pairs.
+If any of the callbacks will need to get devlink instance, it could
+be accessed by shd_priv_to_devlink().
 
-Devlink changes:
-1. Extend devlink by two callbacks used by shared devlink.
-   Callbacks provide option for the driver to have constructor/destructor
-   for the priv data attached to the shared devlink instance.
-   Use the callbacks from ice.
-   mlx5 is just touched to have additional param passed.
-   Non-null additional param for the constructor is used in: "ice: represent RSS
-   LUTs as devlink resources"
-2. Extend devlink resources API to allow user to assign resources.
-   Before it was only the driver to assign resources, without any way for user
-   to interact. ice' RSS LUTs are exposed that way.
+Both callbacks are called with devl_lock held and devlink registered.
 
-More about the interface:
-In order to support more queues for VF, we must give it a bigger RSS table
-(GLOBAL LUT or PF LUT). There are 16 GLOBAL LUTs on E810, and there is one
-PF LUT for every PF on given card. Both kinds of the mentioned LUTs could
-be (re)assigned to VF. PF must hold at least one of the mentioned LUTs at
-any given moment. GLOBAL LUT allows VF to use up to 64 queues, PF LUT lets
-it to use up to 256 queues.
+Next commit will make use of the callbacks, another one will make use also
+of the non-null additional param (outside of this series).
 
-RSS LUTs are exposed for the user for assignment via devlink resources
-API, which I have extended to make it possible.
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+(v0) first discussed at:
+https://lore.kernel.org/netdev/20260325063143.261806-3-przemyslaw.kitszel@intel.com
 
-We have also some "little cleanup" patches, Admin Queue extension
-for GLOBAL RSS alloc/free, and two rather big "new opcodes" patches by Ahmed
-and Brett.
+v1: remove redundant added blank line (Jiri)
+---
+ include/net/devlink.h                         | 26 +++++++++++++
+ .../ethernet/mellanox/mlx5/core/sh_devlink.c  |  2 +-
+ net/devlink/sh_dev.c                          | 38 ++++++++++++++++++-
+ 3 files changed, 63 insertions(+), 3 deletions(-)
 
-I introduce also a "whole device" aggregate over all PFs on
-given card, via shared devlink instance.
-
-I also extend devlink resources to have custom occupancy setters, that allow
-user to modify PF device LUTs assignment.
-
-Finally there is a patch that adds devlink instance for VF and registers
-devlink resources on it, combined with all the glue code to make actual
-use of the whole series and desired larger number of queues accepted to VF
-This (the last) patch contains usage examples.
-
-There is one resource added that just groups GLOBAL and PF LUTs under it -
-there are 3 rows of data for each device (PF/VF/whole-dev):
-$ devlink resource show pci/0000:18:00.0
-pci/0000:18:00.0:
-  name rss size 1 unit entry size_min 0 size_max 2 size_gran 1 dpipe_tables none
-    resources:
-      name lut_512 size 0 unit entry size_min 0 size_max 1 size_gran 1 dpipe_tables none
-      name lut_2048 size 1 unit entry size_min 0 size_max 1 size_gran 1 dpipe_tables none
-technically the aggregate "name rss" line could be eliminated with just
-the two last ones kept (then renamed to "rss_lut_2048" form current
-"rss/lut_2048"), I like it like this, but this was just an opinion.
-The rest of the series is rather much needed, but I'm always open to
-discussion.
-
-Devlink resource changes were RFC-proposed a year ago, link in the patch.
-
-Ahmed Zaki (1):
-  iavf: use new opcodes to request more than 16 queues
-
-Brett Creeley (2):
-  ice: add VF queue ena/dis helper functions
-  ice: introduce handling of virtchnl LARGE VF opcodes
-
-Przemek Kitszel (12):
-  devlink, mlx5: add init/fini ops for shared devlink
-  ice: use shared devlink to store ice_adapters instead of custom xarray
-  ice: simplify ice_vc_dis_qs_msg() a little
-  ice: add helpers for Global RSS LUT alloc, free, vsi_update
-  ice: rename ICE_MAX_RSS_QS_PER_VF to ICE_MAX_QS_PER_VF_VCV1
-  ice: bump to 256qs for VF
-  iavf: extend iavf_configure_queues() to support more queues
-  iavf: temporary rename of IAVF_MAX_REQ_QUEUES to
-    IAVF_MAX_REQ_QUEUES_VCV1
-  iavf: increase max number of queues to 256
-  devlink: give user option to allocate resources
-  ice: represent RSS LUTs as devlink resources
-  ice: support up to 256 VF queues
-
- drivers/net/ethernet/intel/ice/Makefile       |   1 +
- drivers/net/ethernet/intel/iavf/iavf.h        |  18 +-
- .../net/ethernet/intel/ice/devlink/resource.h |  22 +
- drivers/net/ethernet/intel/ice/ice.h          |   1 +
- drivers/net/ethernet/intel/ice/ice_adapter.h  |  52 +-
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   1 +
- drivers/net/ethernet/intel/ice/ice_common.h   |   1 +
- drivers/net/ethernet/intel/ice/ice_lag.h      |   2 +-
- drivers/net/ethernet/intel/ice/ice_lib.h      |   5 +-
- drivers/net/ethernet/intel/ice/ice_switch.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  26 +-
- drivers/net/ethernet/intel/ice/virt/queues.h  |   3 +
- drivers/net/ethernet/intel/ice/virt/rss.h     |   1 +
- .../net/ethernet/intel/ice/virt/virtchnl.h    |   4 +
- include/linux/intel/virtchnl.h                | 136 ++++-
- include/net/devlink.h                         |  33 +
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |   7 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 125 +++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 262 +++++++-
- .../net/ethernet/intel/ice/devlink/devlink.c  |   3 +
- .../net/ethernet/intel/ice/devlink/resource.c | 572 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_adapter.c  | 105 ++--
- drivers/net/ethernet/intel/ice/ice_common.c   |   2 +-
- drivers/net/ethernet/intel/ice/ice_lib.c      |  78 ++-
- drivers/net/ethernet/intel/ice/ice_main.c     |  43 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c    |  14 +-
- drivers/net/ethernet/intel/ice/ice_switch.c   |  41 ++
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  54 +-
- .../net/ethernet/intel/ice/virt/allowlist.c   |   8 +
- drivers/net/ethernet/intel/ice/virt/queues.c  | 480 +++++++++++++--
- drivers/net/ethernet/intel/ice/virt/rss.c     |  36 +-
- .../net/ethernet/intel/ice/virt/virtchnl.c    |  47 +-
- .../ethernet/mellanox/mlx5/core/sh_devlink.c  |   2 +-
- net/devlink/resource.c                        |  98 ++-
- net/devlink/sh_dev.c                          |  38 +-
- 35 files changed, 2102 insertions(+), 221 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/devlink/resource.h
- create mode 100644 drivers/net/ethernet/intel/ice/devlink/resource.c
-
+diff --git a/include/net/devlink.h b/include/net/devlink.h
+index bcd31de1f890..5d3a1337bfa1 100644
+--- a/include/net/devlink.h
++++ b/include/net/devlink.h
+@@ -1586,6 +1586,30 @@ struct devlink_ops {
+ 				    struct devlink_rate *parent,
+ 				    void *priv_child, void *priv_parent,
+ 				    struct netlink_ext_ack *extack);
++
++	/**
++	 * shd_init: Shared devlink instance initializer
++	 * @priv: shd_devlink' priv
++	 * @init_param: additional param to pass to driver callback
++	 *
++	 * Called once when the shared instance is first created (by the first
++	 * devlink_shd_get() call).
++	 * Should initialize the driver's private data embedded in the shared
++	 * devlink. May be NULL.
++	 *
++	 * Return: 0 on success, negative to prevent shared instance usage.
++	 */
++	int (*shd_init)(void *priv, void *init_param);
++	/**
++	 * shd_fini: Shared devlink instance finalizer
++	 * @priv: shd_devlink' priv
++	 *
++	 * Called once when the last reference is dropped and the shared
++	 * instance is destroyed. Should clean up the driver's private data.
++	 * May be NULL.
++	 */
++	void (*shd_fini)(void *priv);
++
+ 	/**
+ 	 * selftests_check() - queries if selftest is supported
+ 	 * @devlink: devlink instance
+@@ -1651,9 +1675,11 @@ void devlink_free(struct devlink *devlink);
+ struct devlink *devlink_shd_get(const char *id,
+ 				const struct devlink_ops *ops,
+ 				size_t priv_size,
++				void *init_param,
+ 				const struct device_driver *driver);
+ void devlink_shd_put(struct devlink *devlink);
+ void *devlink_shd_get_priv(struct devlink *devlink);
++struct devlink *shd_priv_to_devlink(void *priv);
+ 
+ /**
+  * struct devlink_port_ops - Port operations
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/sh_devlink.c b/drivers/net/ethernet/mellanox/mlx5/core/sh_devlink.c
+index b925364765ac..1b8b1ce7e72d 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/sh_devlink.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/sh_devlink.c
+@@ -43,7 +43,7 @@ int mlx5_shd_init(struct mlx5_core_dev *dev)
+ 	*end = '\0';
+ 
+ 	/* Get or create shared devlink instance */
+-	devlink = devlink_shd_get(sn, &mlx5_shd_ops, 0, pdev->dev.driver);
++	devlink = devlink_shd_get(sn, &mlx5_shd_ops, 0, NULL, pdev->dev.driver);
+ 	kfree(sn);
+ 	if (!devlink)
+ 		return -ENOMEM;
+diff --git a/net/devlink/sh_dev.c b/net/devlink/sh_dev.c
+index 85acce97e788..7b9520d3f946 100644
+--- a/net/devlink/sh_dev.c
++++ b/net/devlink/sh_dev.c
+@@ -34,6 +34,7 @@ static struct devlink_shd *devlink_shd_lookup(const char *id)
+ static struct devlink_shd *devlink_shd_create(const char *id,
+ 					      const struct devlink_ops *ops,
+ 					      size_t priv_size,
++					      void *init_param,
+ 					      const struct device_driver *driver)
+ {
+ 	struct devlink_shd *shd;
+@@ -49,16 +50,30 @@ static struct devlink_shd *devlink_shd_create(const char *id,
+ 	if (!shd->id)
+ 		goto err_devlink_free;
+ 	shd->priv_size = priv_size;
+-	refcount_set(&shd->refcount, 1);
+ 
+ 	devl_lock(devlink);
+ 	devl_register(devlink);
++
++	if (ops->shd_init) {
++		int err;
++
++		err = ops->shd_init(shd->priv, init_param);
++		if (err)
++			goto err_unregister;
++	}
++
+ 	devl_unlock(devlink);
+ 
++	refcount_set(&shd->refcount, 1);
+ 	list_add_tail(&shd->list, &shd_list);
+ 
+ 	return shd;
+ 
++err_unregister:
++	devl_unregister(devlink);
++	devl_unlock(devlink);
++	kfree(shd->id);
++
+ err_devlink_free:
+ 	devlink_free(devlink);
+ 	return NULL;
+@@ -70,6 +85,10 @@ static void devlink_shd_destroy(struct devlink_shd *shd)
+ 
+ 	list_del(&shd->list);
+ 	devl_lock(devlink);
++
++	if (devlink->ops->shd_fini)
++		devlink->ops->shd_fini(shd->priv);
++
+ 	devl_unregister(devlink);
+ 	devl_unlock(devlink);
+ 	kfree(shd->id);
+@@ -81,6 +100,7 @@ static void devlink_shd_destroy(struct devlink_shd *shd)
+  * @id: Identifier string (e.g., serial number) for the shared instance
+  * @ops: Devlink operations structure
+  * @priv_size: Size of private data structure
++ * @init_param: Passed to .shd_init() callback alongside driver's priv
+  * @driver: Driver associated with the shared devlink instance
+  *
+  * Get an existing shared devlink instance identified by @id, or create
+@@ -96,16 +116,17 @@ static void devlink_shd_destroy(struct devlink_shd *shd)
+ struct devlink *devlink_shd_get(const char *id,
+ 				const struct devlink_ops *ops,
+ 				size_t priv_size,
++				void *init_param,
+ 				const struct device_driver *driver)
+ {
+ 	struct devlink *devlink;
+ 	struct devlink_shd *shd;
+ 
+ 	mutex_lock(&shd_mutex);
+ 
+ 	shd = devlink_shd_lookup(id);
+ 	if (!shd) {
+-		shd = devlink_shd_create(id, ops, priv_size, driver);
++		shd = devlink_shd_create(id, ops, priv_size, init_param, driver);
+ 		goto unlock;
+ 	}
+ 
+@@ -159,3 +180,16 @@ void *devlink_shd_get_priv(struct devlink *devlink)
+ 	return shd->priv;
+ }
+ EXPORT_SYMBOL_GPL(devlink_shd_get_priv);
++
++/** shd_priv_to_devlink - Get devlink instance from shd_devlink's priv
++ * @priv: Driver's priv data
++ *
++ * Return: pointer to shared devlink instance the @priv belongs to.
++ */
++struct devlink *shd_priv_to_devlink(void *priv)
++{
++	struct devlink_shd *shd = container_of(priv, struct devlink_shd, priv);
++
++	return priv_to_devlink(shd);
++}
++EXPORT_SYMBOL_GPL(shd_priv_to_devlink);
 -- 
 2.39.3
 
