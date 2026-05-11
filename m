@@ -2,96 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id aIWEOO8SAmrangEAu9opvQ
+	id mG2bBKviAWq1lwEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 19:33:35 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 16:07:39 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 703AC5138BC
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 19:33:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id ED32A50FB31
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 16:07:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D0FA1809BB;
-	Mon, 11 May 2026 17:33:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5F307810F0;
+	Mon, 11 May 2026 14:07:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0NIX6ip6ezcP; Mon, 11 May 2026 17:33:24 +0000 (UTC)
+ id pcPsyPPuTI3p; Mon, 11 May 2026 14:07:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D013A80DA6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6ECB6810BE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778520804;
-	bh=Sf1/UiR9Ps90mVJSmmKtta/sIyGJtin4xUFGhet+TYw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=KlufucSmkzZK3Vw3rdL1Ceo0fq5oMK3ihCjnhYUJ5tuaxNncDQajoRQnFGrguAzBE
-	 3RAYL3I46AqD7vLWrvTdJoB2SztkQB22vKvmay3985g6+h0gC5CWx1IrSI3qxXV0Nm
-	 IvqmvAXUU6gBBk+ohKv/3oCc6RLcOT9FFP8+vYRWMUXRH8axJ7w2aYbY5xm/NLb3cv
-	 SlVEr9RWruBaVfTuddy4Qde8Yt0uPU1wQkXwx1zCeg1qMzer5SN6TGQvt+kQcWpO1V
-	 A3Mq+y8LPfuy4Z/QRacin6Wr61SpZ9pyFtkSvn2Bm6sxsSjiOptNdo62VZQ86QODLg
-	 78Hd8rqzCfqyw==
+	s=default; t=1778508454;
+	bh=PWIEX8v7diOonxdISn2ewtoJNC9Zd2c9cqzaBSlCU/4=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=eWm1NTeuRjgqFkgg2vB2dtHuN4CFryzwXnO13ZqAMYoDLka1C+sUnzYUT9UGe3RQk
+	 gKtnET0ui2bogH93WsuYQUKFt3hV2C8lsG6nQI/Ilg6KPkPUjeVq9SIoiQwEbcQwE9
+	 l+x7pzn+EvUF4vmijHkuJJsW21Itm945tVbQ7kdY1xSVCSIDCugKsGbBqb2VD63PRW
+	 PtLYcSwpDcwrK0B4pzZLUFtEwg03WKpo+Rty/QPKxc1Qu2TUX3gvak6LhTn81Ifgmt
+	 fSp0gLyw2ql4dWud8v7a0jYZGacA9Asx4fG6WurWrsYkZZ9sB4mheKtUlNZjZpivPB
+	 rHTiJKsJfxO8w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D013A80DA6;
-	Mon, 11 May 2026 17:33:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6ECB6810BE;
+	Mon, 11 May 2026 14:07:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 6EE97223
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 11:58:09 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 210AF173
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 14:07:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 50ED340338
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 11:58:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 124DC40376
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 14:07:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0vJiUo0SAObi for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 May 2026 11:58:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=mgr@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 329554032B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 329554032B
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 329554032B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 11:58:07 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 44B4C6012B;
- Mon, 11 May 2026 11:58:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD16EC2BCF7;
- Mon, 11 May 2026 11:57:51 +0000 (UTC)
-Date: Mon, 11 May 2026 13:57:49 +0200
-From: Michael Grzeschik <mgr@kernel.org>
-To: Uwe =?iso-8859-15?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?=
- <u.kleine-koenig@baylibre.com>
-Message-ID: <agHEPQ5tLFKW0uum@pengutronix.de>
-References: <20260511090023.1634387-4-u.kleine-koenig@baylibre.com>
- <20260511090023.1634387-6-u.kleine-koenig@baylibre.com>
+ id CPS1sOdbc6SL for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 May 2026 14:07:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E21B740338
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E21B740338
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E21B740338
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 14:07:31 +0000 (UTC)
+X-CSE-ConnectionGUID: KA9C5tK4QqCkfchd9g/gRQ==
+X-CSE-MsgGUID: 9M+0ijkHRGeUjkMGrA22tw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11783"; a="90771753"
+X-IronPort-AV: E=Sophos;i="6.23,229,1770624000"; d="scan'208";a="90771753"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 May 2026 07:07:31 -0700
+X-CSE-ConnectionGUID: iNhMYFJYSASjKTqdridUoA==
+X-CSE-MsgGUID: ulJuyrc1R86R1fI2JnhHXQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,229,1770624000"; d="scan'208";a="267820289"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa002.jf.intel.com with ESMTP; 11 May 2026 07:07:29 -0700
+Received: from gond.igk.intel.com (gond.igk.intel.com [10.123.220.52])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 617EB2FC4A;
+ Mon, 11 May 2026 15:07:28 +0100 (IST)
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, sandeep.penigalapati@intel.com, ananth.s@intel.com,
+ alexander.duyck@gmail.com, Marcin Szycik <marcin.szycik@linux.intel.com>
+Date: Mon, 11 May 2026 15:06:59 +0200
+Message-ID: <20260511130710.38801-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.49.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-15
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260511090023.1634387-6-u.kleine-koenig@baylibre.com>
-X-Mailman-Approved-At: Mon, 11 May 2026 17:33:18 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1778500686;
- bh=KF1t/bRGs16yza3DBTgFCMGGOZGbS2ZRe4/jmsnl72o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=jvjdQJFhfyjs3E/5QNKeFp1jTRAOxDNvz4Mh8U1RxGbjks/gpXVIlmydk3WFacZhD
- l3f9a2vKk3bOmeWc34go+yHhoRM3iBRq3LZ8M7XZ59udEW1MqdS7mKupb4h1wVV4Do
- KkvCSR3C+uHG3tH2YS5uwHfM+9OpvFxe4qYtM2DSiMg7qYdP1QRCHem+lUwMYjOqmr
- X5gNyzzBOvSy7yuBJdyKREHmHjj5av7KbAFq6bfRiAEx+MwwD+2sRATPB1Q8jc1b4u
- FTEA9GZv56qYWosTkb/DEeuVpP3AGfbpItzeaDDDn/7i4IwntV9jTHGbBse/kGCO8p
- EO/cNlRqVgdlg==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1778508452; x=1810044452;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Db/oBTpZ6iiUd+ZhRm7W0Xyps5oD0x3YXFFm6UzEu/I=;
+ b=H+CHzD7fyU74x+BJ7sRN2MqMXntMxCGGpLWZPCs02DhnWqjrrW/hRpXm
+ aM5SFnBkRb9vXT8jsxaehyLDu6ErTaYKqcEUDffXNfCqdXw795Sj3qWWf
+ Kv7GeWj/pDzT5l7zHhoDNwYEaHUjjBnCeqAGoQUSd+cwzLJQSe3g14ser
+ 9RivXsRzxR/eHJb8m3KywzVJd1ltgYPZ8AI3yaAKShrf8yC0wd+LwCNGW
+ GPW1gd9p1VBX/wbZrwSGhh+iv+sSAKKReN0X3o1T5QdPF9QSktaA2Sbnj
+ fWWq9A9G+PBr2O7eCuX50GRGKMY6Z6WFoJ9MavWoeXG5vSvwdQjA6Vhhb
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=jvjdQJFh
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/2] net: Consistently
- define pci_device_ids using named initializers
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=H+CHzD7f
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 00/10] Add ACL support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,380 +110,152 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Richard Cochran <richardcochran@gmail.com>,
- Marco Crivellari <marco.crivellari@suse.com>,
- Randy Dunlap <rdunlap@infradead.org>, Yonglong Liu <liuyonglong@huawei.com>,
- Kees Cook <kees@kernel.org>, linux-wireless@vger.kernel.org,
- Ian Lin <ian.lin@infineon.com>, brcm80211@lists.linux.dev,
- Daniele Venzano <venza@brownhat.org>, Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- MD Danish Anwar <danishanwar@ti.com>, Samuel Chessman <chessman@tux.org>,
- Fan Gong <gongfan1@huawei.com>, Mengyuan Lou <mengyuanlou@net-swift.com>,
- Kevin Curtis <kevin.curtis@farsite.co.uk>, Ingo Molnar <mingo@kernel.org>,
- Ion Badulescu <ionut@badula.org>, Yeounsu Moon <yyyynoom@gmail.com>,
- Manish Chopra <manishc@marvell.com>, Colin Ian King <colin.i.king@gmail.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Thomas Fourier <fourier.thomas@gmail.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Denis Kirjanov <kirjanov@gmail.com>, intel-wired-lan@lists.osuosl.org,
- linux-parisc@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Steffen Klassert <klassert@kernel.org>,
- Stanislav Yakovlev <stas.yakovlev@gmail.com>, linux-rdma@vger.kernel.org,
- Arend van Spriel <arend.vanspriel@broadcom.com>, nic_swsd@realtek.com,
- Jiri Pirko <jiri@resnulli.us>, Larysa Zaremba <larysa.zaremba@intel.com>,
- Ido Schimmel <idosch@nvidia.com>, Potnuri Bharat Teja <bharat@chelsio.com>,
- Double Lo <double.lo@cypress.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- Nathan Chancellor <nathan@kernel.org>, Jiawen Wu <jiawenwu@trustnetic.com>,
- Cai Huoqing <cai.huoqing@linux.dev>, Mark Einon <mark.einon@gmail.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Zilin Guan <zilin@seu.edu.cn>,
- linux-can@vger.kernel.org, Yibo Dong <dong100@mucse.com>,
- Andy Shevchenko <andriy.shevchenko@intel.com>, Petr Machata <petrm@nvidia.com>,
- Kory Maincent <kory.maincent@bootlin.com>, brcm80211-dev-list.pdl@broadcom.com,
- GR-Linux-NIC-Dev@marvell.com, Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Leon Romanovsky <leon@kernel.org>, Denis Benato <benato.denis96@gmail.com>,
- Rasesh Mody <rmody@marvell.com>, David Arinzon <darinzon@amazon.com>,
- oss-drivers@corigine.com, Vincent Mailhol <mailhol@kernel.org>,
- Mark Bloch <mbloch@nvidia.com>, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>, Jian Shen <shenjian15@huawei.com>,
- Jijie Shao <shaojijie@huawei.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Thomas Gleixner <tglx@kernel.org>, Simon Horman <horms@kernel.org>,
- Yicong Hui <yiconghui@gmail.com>, Marc Kleine-Budde <mkl@pengutronix.de>,
- Johannes Berg <johannes@sipsolutions.net>,
- Ethan Nelson-Moore <enelsonmoore@gmail.com>,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 703AC5138BC
+X-Rspamd-Queue-Id: ED32A50FB31
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [2.19 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_SENDER(0.00)[mgr@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[gmail.com,suse.com,infradead.org,huawei.com,kernel.org,vger.kernel.org,infineon.com,lists.linux.dev,brownhat.org,google.com,intel.com,ti.com,tux.org,net-swift.com,farsite.co.uk,badula.org,marvell.com,lists.osuosl.org,redhat.com,broadcom.com,realtek.com,resnulli.us,nvidia.com,chelsio.com,cypress.com,baylibre.com,trustnetic.com,linux.dev,seu.edu.cn,mucse.com,bootlin.com,amazon.com,corigine.com,lunn.ch,pengutronix.de,sipsolutions.net,davemloft.net];
-	FORGED_RECIPIENTS(0.00)[m:u.kleine-koenig@baylibre.com,m:richardcochran@gmail.com,m:marco.crivellari@suse.com,m:rdunlap@infradead.org,m:liuyonglong@huawei.com,m:kees@kernel.org,m:linux-wireless@vger.kernel.org,m:ian.lin@infineon.com,m:brcm80211@lists.linux.dev,m:venza@brownhat.org,m:edumazet@google.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:danishanwar@ti.com,m:chessman@tux.org,m:gongfan1@huawei.com,m:mengyuanlou@net-swift.com,m:kevin.curtis@farsite.co.uk,m:mingo@kernel.org,m:ionut@badula.org,m:yyyynoom@gmail.com,m:manishc@marvell.com,m:colin.i.king@gmail.com,m:przemyslaw.kitszel@intel.com,m:fourier.thomas@gmail.com,m:aleksandr.loktionov@intel.com,m:kirjanov@gmail.com,m:linux-parisc@vger.kernel.org,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:klassert@kernel.org,m:stas.yakovlev@gmail.com,m:linux-rdma@vger.kernel.org,m:arend.vanspriel@broadcom.com,m:nic_swsd@realtek.com,m:jiri@resnulli.us,m:larysa.zaremba@intel.com,m:idosch@nvidia.com,m:bharat@c
- helsio.com,m:double.lo@cypress.com,m:msp@baylibre.com,m:nathan@kernel.org,m:jiawenwu@trustnetic.com,m:cai.huoqing@linux.dev,m:mark.einon@gmail.com,m:bhelgaas@google.com,m:zilin@seu.edu.cn,m:linux-can@vger.kernel.org,m:dong100@mucse.com,m:andriy.shevchenko@intel.com,m:petrm@nvidia.com,m:kory.maincent@bootlin.com,m:brcm80211-dev-list.pdl@broadcom.com,m:GR-Linux-NIC-Dev@marvell.com,m:vadim.fedorenko@linux.dev,m:leon@kernel.org,m:benato.denis96@gmail.com,m:rmody@marvell.com,m:darinzon@amazon.com,m:oss-drivers@corigine.com,m:mailhol@kernel.org,m:mbloch@nvidia.com,m:linux-kernel@vger.kernel.org,m:tariqt@nvidia.com,m:shenjian15@huawei.com,m:shaojijie@huawei.com,m:andrew+netdev@lunn.ch,m:tglx@kernel.org,m:horms@kernel.org,m:yiconghui@gmail.com,m:mkl@pengutronix.de,m:johannes@sipsolutions.net,m:enelsonmoore@gmail.com,m:saeedm@nvidia.com,m:davem@davemloft.net,m:hkallweit1@gmail.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,nvidia.com:email,intel.com:email,baylibre.com:email,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns,huawei.com:email];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_GT_50(0.00)[78];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	ARC_NA(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_FIVE(0.00)[6];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,linux.intel.com:mid,osuosl.org:dkim];
+	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[mgr@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com,linux.intel.com];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-0.997];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	MISSING_XM_UA(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Action: no action
 
-On Mon, May 11, 2026 at 11:00:24AM +0200, Uwe Kleine-König (The Capable Hub) wrote:
-> ... and PCI device helpers.
-> 
-> The various struct pci_device_id arrays were initialized mostly by one
-> the PCI_DEVICE macros and then list expressions. The latter isn't easily
-> readable if you're not into PCI. Using named initializers is more
-> explicit and thus easier to parse.
-> 
-> Also use PCI_DEVICE* helper macros to assign .vendor, .device,
-> .subvendor and .subdevice where appropriate and skip explicit
-> assignments of 0 (which the compiler takes care of).
-> 
-> The secret plan is to make struct pci_device_id::driver_data an
-> anonymous union (similar to
-> https://lore.kernel.org/all/cover.1776579304.git.u.kleine-koenig@baylibre.com/)
-> and that requires named initializers. But it's also a nice cleanup on
-> its own.
-> 
-> This change doesn't introduce changes to the compiled pci_device_id
-> arrays. Tested on x86 and arm64.
-> 
-> Reviewed-by: Jijie Shao <shaojijie@huawei.com>
-> Acked-by: Arend van Spriel <arend.vanspriel@broadcom.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Petr Machata <petrm@nvidia.com> # for mlxsw
-> Acked-by: Jacob Keller <jacob.e.keller@intel.com>
-> Acked-by: Johannes Berg <johannes@sipsolutions.net>
-> Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
-> Forwarded: id:76da4f44d48bdde84580963862bf9616bee5c9e9.1778149923.git.u.kleine-koenig@baylibre.com (v2)
-> ---
->  drivers/net/arcnet/com20020-pci.c             | 242 +++------
+E8xx hardware provides a Ternary Classifier block for implementing
+functions such as ACL (Access Control List). In this series it's simply
+referred to as "ACL".
 
-[...]
+Implement ACL filtering. This expands support of network flow classification
+rules for the ethtool ntuple command. ACL filtering allows for an ip or port
+field's optional mask to be specified.
 
-> diff --git a/drivers/net/arcnet/com20020-pci.c b/drivers/net/arcnet/com20020-pci.c
-> index dbadda08dce2..6474c7be2992 100644
-> --- a/drivers/net/arcnet/com20020-pci.c
-> +++ b/drivers/net/arcnet/com20020-pci.c
-> @@ -459,168 +459,88 @@ static struct com20020_pci_card_info card_info_eae_fb2 = {
->  
->  static const struct pci_device_id com20020pci_id_table[] = {
->  	{
-> -		0x1571, 0xa001,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0,
-> +		PCI_DEVICE(0x1571, 0xa001),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa002),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa003),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa004),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa005),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa006),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa007),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa008),
-> +		.driver_data = 0,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa009),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa00a),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa00b),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa00c),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa00d),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa00e),
-> +		.driver_data = (kernel_ulong_t)&card_info_5mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa201),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa202),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa203),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa204),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa205),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x1571, 0xa206),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE_SUB(0x10B5, 0x9030, 0x10B5, 0x2978),
-> +		.driver_data = (kernel_ulong_t)&card_info_sohard,
-> +	}, {
-> +		PCI_DEVICE_SUB(0x10B5, 0x9050, 0x10B5, 0x2273),
-> +		.driver_data = (kernel_ulong_t)&card_info_sohard,
-> +	}, {
-> +		PCI_DEVICE_SUB(0x10B5, 0x9050, 0x10B5, 0x3263),
-> +		.driver_data = (kernel_ulong_t)&card_info_eae_arc1,
-> +	}, {
-> +		PCI_DEVICE_SUB(0x10B5, 0x9050, 0x10B5, 0x3292),
-> +		.driver_data = (kernel_ulong_t)&card_info_eae_ma1,
-> +	}, {
-> +		PCI_DEVICE_SUB(0x10B5, 0x9050, 0x10B5, 0x3294),
-> +		.driver_data = (kernel_ulong_t)&card_info_eae_fb2,
-> +	}, {
-> +		PCI_DEVICE(0x14BA, 0x6000),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
-> +	}, {
-> +		PCI_DEVICE(0x10B5, 0x2200),
-> +		.driver_data = (kernel_ulong_t)&card_info_10mbit,
->  	},
-> -	{
-> -		0x1571, 0xa002,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0,
-> -	},
-> -	{
-> -		0x1571, 0xa003,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0
-> -	},
-> -	{
-> -		0x1571, 0xa004,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0,
-> -	},
-> -	{
-> -		0x1571, 0xa005,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0
-> -	},
-> -	{
-> -		0x1571, 0xa006,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0
-> -	},
-> -	{
-> -		0x1571, 0xa007,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0
-> -	},
-> -	{
-> -		0x1571, 0xa008,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		0
-> -	},
-> -	{
-> -		0x1571, 0xa009,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa00a,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa00b,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa00c,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa00d,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa00e,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_5mbit
-> -	},
-> -	{
-> -		0x1571, 0xa201,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x1571, 0xa202,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x1571, 0xa203,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x1571, 0xa204,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x1571, 0xa205,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x1571, 0xa206,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x10B5, 0x9030,
-> -		0x10B5, 0x2978,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_sohard
-> -	},
-> -	{
-> -		0x10B5, 0x9050,
-> -		0x10B5, 0x2273,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_sohard
-> -	},
-> -	{
-> -		0x10B5, 0x9050,
-> -		0x10B5, 0x3263,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_eae_arc1
-> -	},
-> -	{
-> -		0x10B5, 0x9050,
-> -		0x10B5, 0x3292,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_eae_ma1
-> -	},
-> -	{
-> -		0x10B5, 0x9050,
-> -		0x10B5, 0x3294,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_eae_fb2
-> -	},
-> -	{
-> -		0x14BA, 0x6000,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{
-> -		0x10B5, 0x2200,
-> -		PCI_ANY_ID, PCI_ANY_ID,
-> -		0, 0,
-> -		(kernel_ulong_t)&card_info_10mbit
-> -	},
-> -	{ 0, }
-> +	{ }
->  };
->  
->  MODULE_DEVICE_TABLE(pci, com20020pci_id_table);
+Example filters:
+  ethtool -N eth0 flow-type tcp4 dst-port 8880 m 0x00ff action 10
+  ethtool -N eth0 flow-type tcp4 src-ip 192.168.0.55 m 0.0.0.255 action -1
 
-For the com20020 arcnet driver:
+This is a resurrection of an old series from 2020 [1] with several
+improvements, but the fundamental logic unchanged. v1 was almost pulled
+in, but ultimately it was decided to drop it [2] because of unresolved
+issues. One issue was too many defensive NULL checks. Second issue is
+about inconsistency when using multiple input sets. Both are addressed
+in this patchset.
 
-Reviewed-by: Michael Grzeschik <mgr@kernel.org>
+More about the second issue:
+
+From [3]:
+>I would argue that you need to have some sort of logic that basically
+>checks to see if you are going to hit the input set issue and falls
+>back and applies the ACL rules. Otherwise you are significantly
+>hampering the usefulness of this filter type. It doesn't make sense
+>that dropping a field will cause a rule to fail to be added, but
+>masking a single bit in some field will make it valid. It would make
+>it a nightmare to use from the user point of view as the rules come
+>across as arbitrary.
+
+Flow Director (FD) has a hardware limitation where all filters for the same
+packet type must use identical input sets. Previously, attempting to add the
+second filter would fail.
+
+Patch 10 adds automatic fallback to ACL block when FD cannot accommodate a
+filter due to input set conflicts, which resolves this inconsistency.
+
+v3:
+* Various minor fixes, mostly reported by sashiko [4] - check individual
+  changelogs. Not all comments were addressed (some were irrelevant)
+v2:
+* Rebase. Notable conflicts were the removal of ice_status and the addition of
+  libie (which affected AdminQ communication)
+* Reduce the number of defensive NULL checks
+* Use = {} instead of memset for definitions
+* Use kzalloc_obj() instead of plain kzalloc()
+* Move from devm_ to plain allocation for objects that don't require it
+* Move iterator declaration to loop start
+* Move some defines out of structs
+* Fix kdoc (except untouched ice_ethtool_fdir.c functions)
+* Adjust style (err for return variable, spacing, rewrite some comments,
+* commit messages)
+* Remove overly verbose comments
+* Add patches 5, 6, 9 and 10
+* More changes listed in patches (if applicable)
+
+[1] https://lore.kernel.org/intel-wired-lan/20200914153720.48498-1-anthony.l.nguyen@intel.com
+[2] https://lore.kernel.org/netdev/7192efe4d27c93148b3205e65f37203c89170316.camel@intel.com/#t
+[3] https://lore.kernel.org/netdev/CAKgT0Ucxd5-gvEwWAdbL04ER2o++RX_oekUV3E0rYquEgFKj1w@mail.gmail.com
+[4] https://sashiko.dev/#/patchset/20260409120003.2719-1-marcin.szycik%40linux.intel.com
+
+Lukasz Czapnik (1):
+  ice: use ACL for ntuple rules that conflict with FDir
+
+Marcin Szycik (3):
+  Revert "ice: remove unused ice_flow_entry fields"
+  ice: use plain alloc/dealloc for ice_ntuple_fltr
+  ice: re-introduce ice_dealloc_flow_entry() helper
+
+Real Valiquette (5):
+  ice: initialize ACL table
+  ice: initialize ACL scenario
+  ice: create flow profile
+  ice: create ACL entry
+  ice: program ACL entry
+
+Tony Nguyen (1):
+  ice: rename shared Flow Director functions and structs
+
+ drivers/net/ethernet/intel/ice/Makefile       |    5 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   21 +-
+ drivers/net/ethernet/intel/ice/ice_acl.h      |  170 +++
+ drivers/net/ethernet/intel/ice/ice_acl_main.h |    9 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  393 +++++-
+ drivers/net/ethernet/intel/ice/ice_arfs.h     |    2 +-
+ drivers/net/ethernet/intel/ice/ice_fdir.h     |   18 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |    2 +
+ drivers/net/ethernet/intel/ice/ice_flow.h     |   39 +-
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |    3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |    5 +
+ drivers/net/ethernet/intel/ice/ice_acl.c      |  486 +++++++
+ drivers/net/ethernet/intel/ice/ice_acl_ctrl.c | 1127 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_acl_main.c |  311 +++++
+ drivers/net/ethernet/intel/ice/ice_arfs.c     |    8 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |    8 +-
+ ...ce_ethtool_fdir.c => ice_ethtool_ntuple.c} |  654 ++++++---
+ drivers/net/ethernet/intel/ice/ice_fdir.c     |   32 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |   11 +-
+ drivers/net/ethernet/intel/ice/ice_flow.c     | 1234 ++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   10 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   94 +-
+ drivers/net/ethernet/intel/ice/virt/fdir.c    |   32 +-
+ 23 files changed, 4420 insertions(+), 254 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_ctrl.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.c
+ rename drivers/net/ethernet/intel/ice/{ice_ethtool_fdir.c => ice_ethtool_ntuple.c} (78%)
+
+-- 
+2.49.0
+
