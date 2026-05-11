@@ -2,95 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SK7DBCn6AWrjmwEAu9opvQ
+	id oJwsFGL7AWomnAEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 17:47:53 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 17:53:06 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D8E451181D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 17:47:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A9D645119D3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 May 2026 17:53:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2469F41773;
-	Mon, 11 May 2026 15:47:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 34B6F41776;
+	Mon, 11 May 2026 15:53:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I_z27eVkkjG9; Mon, 11 May 2026 15:47:50 +0000 (UTC)
+ id fv4tfJITUXQI; Mon, 11 May 2026 15:53:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9312441774
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7DF0641779
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778514470;
-	bh=D7+qEgtTQ0iuAj3dEc61XncdFBlw8sX6JHLFHJH/1Po=;
+	s=default; t=1778514782;
+	bh=rEvlzg1hZ+8Ut3bCvsy9A92KUl4m/27B8sKFGhxTwHU=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ci1t9bvdi6ajl7Q/1qnR5F3A6HsD7qygV4sBUThY3goXiVHSk1g/ThmNpVkFLd5Wt
-	 bPnEsuTVhY/QwxU8/7m8Ze+b6CYSHaJfmGReJtoUtZPeHpmE9958904OkBYmffdeVu
-	 4Qbh4rvS6J8NqnNwpGtWhlj/ynj4XjS3/UZnVxavOqFCPpTMqFuEZnWfuMq5S3tfnF
-	 YoTH2oQ1vyD8bAxM+X5SgzUqVOjyckQ00jRKFTVBGlfIYTbK35kqEM7CQzdiVLxtIr
-	 d+glg93qlNtCb/VWcdNvTJUoPgdG35RbGie89zOH1JkQp79aTcX+tIAbIyE4ot6Pln
-	 D3J3JnTC5qx4Q==
+	b=vtFnCHHA6UoOYGYSBeh9PUY+bmALvhMYIAJB6vOXqwldhDkHfhMRR41iRipyqmAsS
+	 h3ufHaeQuVp3Wl79bGnjHEkXNpIah1VmiyaDSiF8pF4u9GvDcZDfrHDrXdZvBB+Rcr
+	 jA1AfdAdxwKqealFzWbdSHz6N2cBLCkxn7jI/pB6Es9STAK+8A2YsQRFwb2MONYR25
+	 hQvA0O4715IncxsN3ZEICvNgz4+FvjCN9gsRONTr2VyzzTcIyKnE49v6LrOfgi03vY
+	 l30M4+oQ6zm1VWcocof0KhhmHgBiFpRqsWwpKQ6hgvLTBWgMjCB3HhNA/gAr9xZ75n
+	 Beae2E/cFXrmA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9312441774;
-	Mon, 11 May 2026 15:47:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7DF0641779;
+	Mon, 11 May 2026 15:53:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id AEC07223
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:47:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 351C9223
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:53:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A0C1B608CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:47:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 23EFC41774
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:53:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uNXIqNA9zMzt for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 May 2026 15:47:49 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GiJZSrApYI6M for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 May 2026 15:52:59 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 07C6B608CA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07C6B608CA
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B1FD041735
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1FD041735
 Received: from tor.source.kernel.org (tor.source.kernel.org
  [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 07C6B608CA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:47:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B1FD041735
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 May 2026 15:52:59 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id 82C70600CB;
- Mon, 11 May 2026 15:47:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4EF42C2BCB0;
- Mon, 11 May 2026 15:47:46 +0000 (UTC)
-Date: Mon, 11 May 2026 16:47:43 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 91FD46001A;
+ Mon, 11 May 2026 15:52:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 564B6C2BCB0;
+ Mon, 11 May 2026 15:52:57 +0000 (UTC)
+Date: Mon, 11 May 2026 16:52:54 +0100
 From: Simon Horman <horms@kernel.org>
 To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
  netdev@vger.kernel.org
-Message-ID: <20260511154743.GD27589@horms.kernel.org>
+Message-ID: <20260511155254.GE27589@horms.kernel.org>
 References: <20260508031226.3601800-1-aleksandr.loktionov@intel.com>
- <20260508031226.3601800-8-aleksandr.loktionov@intel.com>
+ <20260508031226.3601800-9-aleksandr.loktionov@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260508031226.3601800-8-aleksandr.loktionov@intel.com>
+In-Reply-To: <20260508031226.3601800-9-aleksandr.loktionov@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1778514467;
- bh=wg3sj4YnE54AHzo71NUx2gXbPJJaa+jjk+3YhaTtn2k=;
+ d=kernel.org; s=k20201202; t=1778514778;
+ bh=GhFo6kYdkj/hhSAzd8kvExucZWLwHP9doK3My8Cloeg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=BvNpoFXI3fi7jwGkY+pWzGB1wYn05cTBMtf2Kpj7RTyHJq6h1pPue8F7RwO173Ngr
- 6m+0uZ3W3Jhh6O9cOYnEzxy16U8y0930otjA13SJtsp2NtE0ypnPQG/FoQn8jWsPtR
- KpaMT5d1UWpJbbz86jxDsUPw+jiEmn/icj+xqoNKm1LVpvBr7lVZ3gP0aYQr13Qxjo
- XiY8SaGpgfLwCDroE0/qJJWHdmPl4SxZYcRJK5APgHS7fNNJbf2+HAzi+s4aFRUcyU
- GQTiCzqc48IPD0rhu89keicVmyV6tExe2QBPCdpAAeHvs30A98+RE1gP4qya7zfhnr
- 99uBaZ7+MwEbw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=pmvjtsWUnA/+Wv1/hk8OxOLxwwdOF9RUmJsi2iGmmWAaPI9Nd5LmcSisiKE9SPoeI
+ pna86ZZKsllzgTpH+h5lJm5oJKUpk8q/kEUBioWdEbJf900S40jBi0iZ2mdi/hcMIC
+ iyAuYCmiCWgXff1nPEpJ8u/3Cb1mjESKOGMJTY9TDQk3m9PPa5tAfYnGEzrXy2OOGJ
+ NdSe8WbxlEuQrPy+JFd0i2q/+uAyN2p0g/JDI9CXPeeqxOVGqESkBD1NA7kVszyWdL
+ hh81CwIJpt/HZ4l8nYj67L1QQQTBPJCOxa/1i12K13gPlk++zp8CsYFgag81B3civp
+ EPAwtG83CYxyA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=BvNpoFXI
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 7/8] ixgbe: limit ITR
- decrease in latency mode to prevent ACK overdrive
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=pmvjtsWU
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 8/8] ixgbe: add
+ IXGBE_ITR_ADAPTIVE_MASK_USECS constant
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,7 +104,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 8D8E451181D
+X-Rspamd-Queue-Id: A9D645119D3
 X-Rspamd-Server: lfdr
 X-Spamd-Result: default: False [0.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
@@ -114,7 +113,7 @@ X-Spamd-Result: default: False [0.79 / 15.00];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,horms.kernel.org:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,horms.kernel.org:mid,intel.com:email,osuosl.org:dkim];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
@@ -141,57 +140,46 @@ X-Spamd-Result: default: False [0.79 / 15.00];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-On Fri, May 08, 2026 at 05:12:25AM +0200, Aleksandr Loktionov wrote:
+On Fri, May 08, 2026 at 05:12:26AM +0200, Aleksandr Loktionov wrote:
 > From: Alexander Duyck <alexander.h.duyck@intel.com>
 > 
-> When operating in latency mode and the computed ITR is lower than the
-> current setting, the algorithm can reduce the interrupt rate too
-> aggressively in a single step.  For a TCP workload this means the ACK
-> stream (a latency-sensitive, low-packet-rate workload) can drive the
-> moderation down to very high interrupt rates, starving CPU time from
-> the sender side.
+> ixgbe_set_itr() clears the mode flag (IXGBE_ITR_ADAPTIVE_LATENCY, bit 7)
+> with the open-coded complement expression ~IXGBE_ITR_ADAPTIVE_LATENCY.
+> This is equivalent to keeping only bits [6:0], i.e. the usecs sub-field.
 > 
-> After the speed-based ITR calculation is complete, check whether the
-> result is in latency mode and would decrease below the current setting.
-> If so, limit the decrease to at most IXGBE_ITR_ADAPTIVE_MIN_INC (2 us)
-> per update.  This ensures the number of interrupts grows by no more
-> than 2x per adjustment step for latency-class workloads, dialling in
-> smoothly rather than overshooting.
+> Add IXGBE_ITR_ADAPTIVE_MASK_USECS = IXGBE_ITR_ADAPTIVE_LATENCY - 1 =
+> 0x7F to name this mask explicitly and replace the open-coded AND-NOT
+> operation with the cleaner AND form.  The two expressions are
+> arithmetically identical; the change improves readability.
 > 
 > Signed-off-by: Alexander Duyck <alexander.h.duyck@intel.com>
 > Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
+...
+
 > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index aea76b3..ba7b013 100644
+> index ba7b013..be40655 100644
 > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
 > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -2888,6 +2888,17 @@ static void ixgbe_update_itr(struct ixgbe_q_vector *q_vector,
->  		break;
->  	}
+> @@ -2959,7 +2959,7 @@ static void ixgbe_set_itr(struct ixgbe_q_vector *q_vector)
+>  	new_itr = min(q_vector->rx.itr, q_vector->tx.itr);
+
+FTR: The AI-generated review of this patch points out that
+     the correct comparison above should mask the above values
+     first. I did not look carefully, but given my recollection
+     of this function that does make sense. And perhaps it is something
+     that could be considered as a follow-up. (I am not suggesting
+     expanding the scope of this patch or patch-set.)
+
 >  
-> +	/* In the case of a latency specific workload only allow us to
-> +	 * reduce the ITR by at most 2us. By doing this we should dial
-> +	 * in so that our number of interrupts is no more than 2x the number
-> +	 * of packets for the least busy workload. So for example in the case
-> +	 * of a TCP workload the ACK packets being received would set the
-> +	 * interrupt rate as they are a latency specific workload.
-> +	 */
-> +	if ((itr & IXGBE_ITR_ADAPTIVE_LATENCY) && itr < ring_container->itr)
-> +		itr = max_t(unsigned int, itr,
-> +			    ring_container->itr - IXGBE_ITR_ADAPTIVE_MIN_INC);
-
-nit: I expect this could be min(). And if it could, it should.
-
-> +
->  clear_counts:
->  	/* write back value */
->  	ring_container->itr = itr;
+>  	/* Clear latency flag if set, shift into correct position */
+> -	new_itr &= ~IXGBE_ITR_ADAPTIVE_LATENCY;
+> +	new_itr &= IXGBE_ITR_ADAPTIVE_MASK_USECS;
+>  	new_itr <<= 2;
+>  
+>  	if (new_itr != q_vector->itr) {
 > -- 
 > 2.52.0
 > 
