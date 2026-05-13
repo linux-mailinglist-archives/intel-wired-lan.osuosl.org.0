@@ -2,200 +2,127 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id KP2sAICXBGqrLgIAu9opvQ
+	id sLMjD14/BGoqFgIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 May 2026 17:23:44 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 May 2026 11:07:42 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 412AB536042
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 May 2026 17:23:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 486105303D8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 May 2026 11:07:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9625C416FA;
-	Wed, 13 May 2026 15:23:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9DDBA41450;
+	Wed, 13 May 2026 09:07:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5PnSiY5VrE9N; Wed, 13 May 2026 15:23:40 +0000 (UTC)
+ id w8RzSiP3PQmO; Wed, 13 May 2026 09:07:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 125E8416F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C6264144E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1778685820;
-	bh=zED0R+JxsSER9TSRZZFwlhTOXRjpk8TFf7yR0vqUMV4=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Nd4aRLuBgtWxPfDbVtzBn8Cm5HzmfFy2IUlcFQPpOJlnilRJuicyxYERAM6iDvrKg
-	 H/obdZgf8rrFeuDFFBGxo5AtAxZQSEBUgg+J/M9zrCcb+gfyhE/jtn3oE1EJBiAnkZ
-	 4XPiIu1AdDif1XcgK4XGFnI0ou0AF//KV4uGLixDOkaDc9BjQ+STrudAQULQLx93cz
-	 ArGof47rS7DLXavgA405Gd659ODvyhZmfeVQ2sInenQ0f8/67wQAU6hIPQGFUbbCQ1
-	 XrwF6Xme8cFa+z71/OEbdpBQ65u6CM9fJpOF4eiy4Npu+J/R2m2pkCHFQ9PgYaVNFw
-	 pyVeltCd4WJ9Q==
+	s=default; t=1778663259;
+	bh=qN/W8ebLgutWz02+3OnJOFBU8z3ZOcJD73mdZlWwDCo=;
+	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=K6jKZYy4AjSi+QX+XU2Zdk1n2tCgn940/yUfCdKzqqJ8mQhW8xg1wEWN95ChMZ8vz
+	 BAY+ury7ShOvV3SZ2N+vO8Rc1Y6dOw2QZwNykbyjcZrYgTvyTfE6aIC6RwogLFHPKc
+	 VSYzK7k3XywsvhGNMEZ+L5tiqVSMKQG6uTuOBnTl5xni8CzLjUBwRRbkRRjC5bjl/0
+	 i+Zd2l/3zRGF/invDR3H7neToom1PKsjwE0NDSTMJPnVGe02tn1tK1UJlKl00XgN1j
+	 E8IZ/E3cbG/p2Bwqn+FOzyvdnwSYhbLrWbsR0c+JaYNsbt5IgZB/gL6UENBMfUvina
+	 e6qbDWBQHOf6g==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 125E8416F2;
-	Wed, 13 May 2026 15:23:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0C6264144E;
+	Wed, 13 May 2026 09:07:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id DF658223
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 08:52:48 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B12C4223
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 09:07:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D0CA541447
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 08:52:48 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9730781270
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 09:07:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qI8O41YlQK8k for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 May 2026 08:52:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.103.72.64;
- helo=sy5pr01cu010.outbound.protection.outlook.com;
- envelope-from=moonafterrain@outlook.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DC39441444
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC39441444
-Received: from SY5PR01CU010.outbound.protection.outlook.com
- (mail-australiaeastazolkn19012064.outbound.protection.outlook.com
- [52.103.72.64])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DC39441444
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 08:52:47 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YuxsFjZH8yKvvHYoMkLKOW3N7sF1ZP1yUdSM8FySMsmAsC8YjAfy+EYeoleJi2Mk7hlSaa2+lAYOFYiHirlYG1O4VLE0U13LKEEGsdjX+GCSN2PB3xm8du6Vg+MRfGUKPoWjb80/W6o4kVdDYyE/btRzl2ANJ0nbYAa7/hE54gda5pxqO85VHQ76xcJghBHDVqR4R7iXj/Df8+pO+LS7IHQEhBjnK5YNtxE9W5wnTCy3o73vfiS1YvMyf8RG08TJaRglqpNIPBY1xw76EawNL3BW8r9FFtE1NkCnJck3+lTF1rGkrmNjL9CqAA4KkAZgpm6My6dK5Ev/s12JRlSVag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zED0R+JxsSER9TSRZZFwlhTOXRjpk8TFf7yR0vqUMV4=;
- b=ax45vNkClyOXIwnj5LWSG4ZqeoULHZhdAj7smKxvfqrrBmP717Wp8lzcHXBy/lmARJY7UDdrFKW+hwlzv9Q1EOVBHCUj5p3YWqp7FUBfPyorq4gVTlrekSY7u+Ohgh5YwAlwvur9xEdBKlLUVDWpjBak0R75Y5MRga2VHOK+OD6jbYm/hlRXAg3sLaw1nOWiOQC0lLvszxpuUHDnN/2Ab34gA5btCDhhraloXWlspom7SUb7FEHjctFP9udnUBPwi7UCSwipgqc24Ml0ZdNrcso30wQeH0zgvu76OtwMwZNh6FxSaRDWufP8bWajeaVlIvjJfpkRFwrAhh7WjNadgw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from SYBPR01MB7881.ausprd01.prod.outlook.com (2603:10c6:10:1b0::5)
- by SYBPR01MB5600.ausprd01.prod.outlook.com (2603:10c6:10:e3::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.17; Wed, 13 May
- 2026 08:52:41 +0000
-Received: from SYBPR01MB7881.ausprd01.prod.outlook.com
- ([fe80::7cd2:d6e8:3fa0:5f0c]) by SYBPR01MB7881.ausprd01.prod.outlook.com
- ([fe80::7cd2:d6e8:3fa0:5f0c%3]) with mapi id 15.21.0025.012; Wed, 13 May 2026
- 08:52:41 +0000
-From: Junrui Luo <moonafterrain@outlook.com>
-Date: Wed, 13 May 2026 16:51:50 +0800
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-ID: <SYBPR01MB7881AF11C45AEDC0D4CA89C1AF062@SYBPR01MB7881.ausprd01.prod.outlook.com>
-X-B4-Tracking: v=1; b=H4sIAKU7BGoC/x3KQQqAIBBA0avIrBN0QqGuEi3ExpqNhUYE4t0bW
- j7+b1CpMFWYVYNCD1c+s8AOCuIR8k6aNzGgQW+cHXXil6pGTxGnFJwJDuS9Cv1B1gUy3bD2/gH
- Q8ggxXAAAAA==
-X-Change-ID: 20260513-fixes-26ec29fa50a5
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Mitch Williams <mitch.a.williams@intel.com>, 
- Greg Rose <gregory.v.rose@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Yuhao Jiang <danisjiang@gmail.com>, 
- stable@vger.kernel.org, Junrui Luo <moonafterrain@outlook.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1758;
- i=moonafterrain@outlook.com; h=from:subject:message-id;
- bh=mqMmHe+aw+rPULMGJgGDSNkBzeRU5RPKN2WpWXnM8cg=;
- b=owJ4nJvAy8zAJVb4wiKgu++DA+NptSSGLBbrpataXt3Wu89TwTPX2NJl0Y/EXRLibcazNbJuf
- 9Wa+MFO6FRHKQuDGBeDrJgiy/GCS98sfLfobvHZkgwzh5UJZAgDF6cATETuJSPDMUXVhC3HJ6/I
- EprT9f3B6meNIv8z5gdG3SjZnj95xmab3wz/0y6kfm6W2rbWzOWZQufNsODnBeUqPMeygt7e2zo
- 9anMwPwBRhUyp
-X-Developer-Key: i=moonafterrain@outlook.com; a=openpgp;
- fpr=C770D2F6384DB42DB44CB46371E838508B8EF040
-X-ClientProxiedBy: TY4P286CA0081.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:36d::13) To SYBPR01MB7881.ausprd01.prod.outlook.com
- (2603:10c6:10:1b0::5)
-X-Microsoft-Original-Message-ID: <20260513-fixes-v1-1-e87ba5993191@outlook.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ok2kawrReSTX for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 May 2026 09:07:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::332; helo=mail-wm1-x332.google.com;
+ envelope-from=david.laight.linux@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 974128123D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 974128123D
+Received: from mail-wm1-x332.google.com (mail-wm1-x332.google.com
+ [IPv6:2a00:1450:4864:20::332])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 974128123D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 09:07:36 +0000 (UTC)
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-488ba840146so58527135e9.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 May 2026 02:07:36 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778663254; x=1779268054;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=qN/W8ebLgutWz02+3OnJOFBU8z3ZOcJD73mdZlWwDCo=;
+ b=YafJ82jzqg3CEhIIYdkf5A/6iXZm5TWHpe2ffYN4CApVkOT+a9ecwAyUYFX5QK5PLO
+ FogF8A9RQpMEBGt1CEmm4y6aDDQTMSOf1yfr4Dm9Cr3s0Z8BrucT5m6L0QpwR1mdr8KX
+ eSLJeRuYgbghRXBKP2ZhwpTRQftp+LVXBDbSqZZ5c5waI1fuZUA2+t2ejbcO2EJ6IZgf
+ odOKH7SLONzPsJzD5PwUr6b/wytxdPn4ZG//7Ub/9la9/VkpgtSzfDf0839kldUYJ8u4
+ 5jP6LVH/6FsdmmtDRNSU1G0kmdnALsfQgFtzle0U7ZFYKXXpWeJVv6pphT7pGkSAdcqk
+ gO5w==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ/AXaQUrS+soqmbGoNYIT3rXZk1FRrKj72aKeTz0Py2YOScs021Wm8HlCtXhU4pgQYhAxzIusQb5MCH32tKzUs=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyHNrhDqIFfTsZJnqkJj0fwaaiNRpsH4QXKaQCeeyFMfvH68ejh
+ LxjDQ/c2B2Ce9c511LaZYMiWOd0w9cHbUT4VgTUJpZTz35ZIBZgbKZOb
+X-Gm-Gg: Acq92OHmXfORNBLAKxaG0yePgp6qhdKlpNHCc29sZGCXsWnb1GRJDUHXMQaUgYt614t
+ uID3CJUGp3o5dOkag+rVTJtP2LN7fxuWPIetWxGwsODJeXelCSN455r6PpNdUqBylQoLiB2/UDK
+ rqsakoTOvDGCKdaSg/2eqVTgmcz55FaUyu7UGTyU4wjrWp+Fez4Ojv65DWNvdhfQ3w2mmRXsDrz
+ r0ejQDpqM2F34T+GAesxKS26oXH49OYvexZgP0DWX8fnry6c+6QOK0D1qljwv7n9LteLbm9hoO2
+ 1S6vn3rNontNXMqIGMjZoG7N3nOQ9NVYp6sC/RP8HJPI9ZxEnfNYhYQOQZaFEw33mxas/RLS2Uj
+ uhpwR3v0U11p3MZAdtfvHszIyTrLZ44Q/mqlBo1Ukbo3qQjDsFou9MnwhIGrq/wKXeYCyuXLAkk
+ FV5qQROyRFFeGMDd5YxmWHl5+3C878GsBY4ddWQ6cUdMn1gE5v5WcyGo9Qi6VV
+X-Received: by 2002:a05:600c:3b84:b0:48a:8b02:ae91 with SMTP id
+ 5b1f17b1804b1-48fc9a0e266mr36229105e9.11.1778663254336; 
+ Wed, 13 May 2026 02:07:34 -0700 (PDT)
+Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48fce06ca2csm30681655e9.8.2026.05.13.02.07.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 May 2026 02:07:34 -0700 (PDT)
+Date: Wed, 13 May 2026 10:07:32 +0100
+From: David Laight <david.laight.linux@gmail.com>
+To: John Ousterhout <ouster@cs.stanford.edu>
+Cc: stable@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
+ netdev@vger.kernel.org, jacob.e.keller@intel.com
+Message-ID: <20260513100732.499e3f49@pumpkin>
+In-Reply-To: <20260512181953.1689-1-ouster@cs.stanford.edu>
+References: <20260512181953.1689-1-ouster@cs.stanford.edu>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SYBPR01MB7881:EE_|SYBPR01MB5600:EE_
-X-MS-Office365-Filtering-Correlation-Id: 140bada4-a5f3-4cd8-0a02-08deb0ccfd4c
-X-Microsoft-Antispam: BCL:0;
- ARA:14566002|5062599005|55001999006|24121999003|24021099003|22091999003|5072599009|8060799015|15080799012|6090799003|19110799012|23021999003|52005399003|40105399003|3412199025|440099028|1710799026;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?bGRJZXowN2oyS2FlVGZFVGhVSXRQbzRsTUJRSlhFWit4aUU4eVdWaW85elhL?=
- =?utf-8?B?WFdlYWRoMkxsVzVjNVBqUG4yM1JmWVJ0K1kvcTRYaXFIWlZXdmR5SHVQR2RS?=
- =?utf-8?B?TU83c1RlMDMxbGhtVlIrWlpPNldrMXZhc0xCeldMT1ZPR1pOeHBYMVhCeFkx?=
- =?utf-8?B?K0tlbHdrZUtnTkdncitnNHFubzdlc3lpT3psTmEzaURUTGJxTUR0Zk91VnRV?=
- =?utf-8?B?QktQZW5ucDVLZ0J2ck41K3d1TU5aaVF2Nlkyc0xKbzg0MzdpUkJWRE1OQnpv?=
- =?utf-8?B?SDhzZkZxVWo5Wm1NdlcvenNtSWVGamtYVVpXMGMxd1pDUWVaM1R3UDluOE1T?=
- =?utf-8?B?R3BxWDJnOTc4MEZwYWFWMHpWb0FqY3I1SEV1UUxxNmNZZklueXh1dzdzMnU2?=
- =?utf-8?B?VkRCOGZLNFprd1dvOWdmaTBGT0dYKzBmRFRhYnpxSmlmNnhkbmcxZ3o4Nkgy?=
- =?utf-8?B?cE9tWWFjUlg5d0VpMktZVVRFWEQ2VkJ0US8vVElTWVF5S2tFR3QyajhFWmNj?=
- =?utf-8?B?YXJhL2hVY2E1NlRBY3FyQXdkeGViNU83SlB1ZEFBclcwWUtKL1RnZkdjSk8x?=
- =?utf-8?B?d21iV3pUSVU0Q1c0UllSZHVlSHNtRDZJZnErRU4xanovMFpieEZlZ3dMNFND?=
- =?utf-8?B?TWlCSWNPRTUwcDI3aGd1SThwQVFkOHdPekozMjZQVWErN2VlamwrazZoYmh2?=
- =?utf-8?B?MVpHWUhiKzZ5SjNPTDRlYkNSS29Xa1poMm1UcUo5eWtabmdYQWxXcWpYM2hG?=
- =?utf-8?B?cDVoN2YxbXVwM09ZZEdoWVpMek1tUmdPOHA2cFNkSGxrNEJ2cjlvQ2VtQ3Nz?=
- =?utf-8?B?dFNOTDI3bmp0OFRpdCt6MllHR1VNRXJHbExOTXc1VWpxNm1PTkFkbHpHNTRX?=
- =?utf-8?B?Z2Z2YmFBZWYzaENlNTNoQS8xbUxRWmFHTWdQU0l1RlppM1dBeVZVZ3habWFs?=
- =?utf-8?B?WkR6WU5LMzg3L3hudUs0QUR3ZFRPL1VQQWJxdDlJNldSWXJYN3hyamFIYjU2?=
- =?utf-8?B?N2gyUXVHVSt5cExnK2ZCZEtzUlJZbitjUUNnNnl4T2l3MjF4bW9rMWQ3Ym5E?=
- =?utf-8?B?ak4xT1FjbmF5TGw3T00xRE1jTEdsNFN5eWpGNTNLeUVQVWt4Um5wcGRxbklX?=
- =?utf-8?B?YVozSU5laS9yNjRQeGxScFVJbjdGNjFoY2ZVbWh0TGdOWGVKQXBhWklFTlZP?=
- =?utf-8?B?cWxneHc0OElSckFZSmh5SFRVbTcvUFU0WUFKYkZUbDNTZ28yQXNJUjF1MlQ4?=
- =?utf-8?B?STVUY0tFY1FhMXY5WVJZb1UyVjk1cWxGU0kyZ2NQSXZMN3BmYzdkKzd0SGVR?=
- =?utf-8?B?T2gwMjRSK3p3OWNzT3hqYXhWN2dzUFE5UE1FTnJ3b2kxWTJwMzZtZ1VjbFB0?=
- =?utf-8?B?anRxQkVkbmlaa3M1RXZBZTNEVlRZc2hMNWNWc1l4eVZxOVIyZXlVQXBWcW9p?=
- =?utf-8?B?NCtaNU5ObUd4cTJKUk15ZVlXNitnWGljNUUvYmpxYUx6MCs0Nng0TzZza3V4?=
- =?utf-8?Q?IuDbOuATPXQ2X+SFuFsr9zBuGro?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?M2xLU2RxNFBzeXB3VnFDbHlBTEFxRExGWWFPMktDUzBSaWY2SnZjK2hFYXk2?=
- =?utf-8?B?bkFsOU5icjZkSk5qOG5wSjdnV0ZRT0hscHRHRnRpSFdxNXk3NnE2anhBWEZV?=
- =?utf-8?B?N2ZaRkxmTGFURXkybGhNOXJrbUJ2OEdqMmtsM1NEL3N5OUVla0hGZCtJdlFX?=
- =?utf-8?B?bXl3RlRnN2xoRGJJbGtHZXlMNTNWWUNMRi9nb0dkU2VucGtFb0VaK054RVNX?=
- =?utf-8?B?UmtwS2lCQ25ROWh1bng5ZWlvSkpvcC9TZ3pVMWFTNllzV3oxWG1vbFJVZzF5?=
- =?utf-8?B?eE1ubkZDYXV2QUNiS3Y4SzEvQlkzY3lTZHArM0FwclZvbUxkNjB2VzB3Y3JI?=
- =?utf-8?B?WTZ6YmNJTFZaWE1CYlVSZmp0dUhRcVdQU01oYlY5alBxc2RVdGtVQ3BDSkNk?=
- =?utf-8?B?QXllNVd4K0N3Z2dUcm1WYytyOWt6WWN6Q1RYT3NCb1orZ3dreGp5eC84MDE5?=
- =?utf-8?B?U3VFNjRERS9yRjNtNnNYZk8xOGR4RmVYUXhobG1lbDBqZThoWHlqdGtaYWZx?=
- =?utf-8?B?ZHkxU3pKK0NPU3YyWEttbmJhNVoySW9UU0c2eWRNaGp4eUs4UFNycjdSSlE1?=
- =?utf-8?B?UDd2dnNkcU5KOVNkVUdEaDhISzZMZzlGenBxNmROYVRMTWk2ODlNQjN5MlJp?=
- =?utf-8?B?Q2JGNk9ZTGJZRG1ESVo3UjU0TVZOUjFPVWpEdlZyNVJCQ1B0c2g0SFVEUExI?=
- =?utf-8?B?MXBqOHlXdjc0WE9nQjBqOXhsWi9PbjRrRHg0N2QvcHFPVXBoeDNtaHZ3TEE1?=
- =?utf-8?B?LzdNckNkUW5GWTN6Q0IrSGNubzRLOGZQMU11ODlMU2dyUFFMVmQyaHd1dlJt?=
- =?utf-8?B?bG9CRzlDYXpKZnRKQ3U5YnVJNGU2M1hNeWNIZi9oZUlEeGhDa3FXOWJTd3Vv?=
- =?utf-8?B?Wjk3TWdoa1MyenZIZlk0MStHSDlnbDNNckZXVFZ4Q3pQTzJKVWhRTmpHZXcx?=
- =?utf-8?B?Y3VpOGtLUzUvS3Y5OWlYWTMvZVREdDhXa3BSdTZMcjhoM215WU9WV013UWJ5?=
- =?utf-8?B?TVB3b3o0OEJvUWRHMThacExFNTVFTlZtY0pNditYckxnV2pnV2JUbm9YYy9j?=
- =?utf-8?B?NFRlZjd4OG80UVZoS1VoT2ozeUxFcktiTStScjZKRm1mcVJqTE9CQk02RzNR?=
- =?utf-8?B?VFFmSk1mdzdGRDAxWmhkVEF1S0s1RzBEaFo2RlJxQzNROVp0ZDhPVVFiSnd3?=
- =?utf-8?B?ZlhvVDRHb1RxVGh1ZlRISit4RVVkeWlpTDMrN2RwSk1tblVMK0hKOE9BU01y?=
- =?utf-8?B?bytqZnFUS2QxWXY4djZFanE3Y2RHcHJ1L3Z4OVhoQnc1UE91dkFiRFpvMWV4?=
- =?utf-8?B?YXRJL3l4b0Z0YXJsTVpzcFVyOHhodkZPN0x6UzlKZ1dmMGdLQUppZkV0eWQ5?=
- =?utf-8?B?aG42VE5uOTAzeGZkUXBTMC9oaGRzcU9ReEFNa3Y0RTB3TmZZMWErWndIVFo3?=
- =?utf-8?B?M0dsbGtOYXE2bmNkbUN4QlhWV2RGZlNYUEdXSmRXN0pXc0FVck9GZ252b3lX?=
- =?utf-8?B?Y0lwSVhjMTFNQzJaRTB3cys0ekt6QllaekNDd284L3FTa0xUZER2S0tESVdh?=
- =?utf-8?B?cjc3TDJxTEFZU1F4UURGVk5FV0FOdnNoeVpRU0pxbzRqWWtWWHFrNFJ4NzhC?=
- =?utf-8?B?SlJSNFp0QlBQTmdYN0lhTWkySjROTDR2aVdnK0w0d09nZXdkckFESElhUG5x?=
- =?utf-8?B?dnhaZGw1KzFWb3RHYUc0ZW14L0R3TUpESWFZNmtIeWY5STR6bWQvZWVnSENS?=
- =?utf-8?B?SlZMKzNpS0JqeUJVTm5zTzkxOC9EWGNLVmlJbTY3eWRlQXdMZ0x1WHNYQ0ZO?=
- =?utf-8?B?ZHNPbTljb0lRaGtqRjlxaWhjQ0ErLzNPVmt0cmVVdG4vRXlDR3VtaWJPMGY1?=
- =?utf-8?Q?Myby0QtHAKttp?=
-X-OriginatorOrg: outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 140bada4-a5f3-4cd8-0a02-08deb0ccfd4c
-X-MS-Exchange-CrossTenant-AuthSource: SYBPR01MB7881.ausprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 May 2026 08:52:41.1102 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SYBPR01MB5600
-X-Mailman-Approved-At: Wed, 13 May 2026 15:23:39 +0000
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=outlook.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zED0R+JxsSER9TSRZZFwlhTOXRjpk8TFf7yR0vqUMV4=;
- b=hjKZoq+1ZKcVYQjs6xx2IxaSHjsrFdV1Ns/MUvF+5FAF+tDIc1609nWua0cGm/UWFkxjPziSY7KnOnxnoOkuOu4XbruCGudSA6ByCdqCysHZfUbSAvDtHjvDtDuFXZK9NzOT33ayRN5dHwo63yVGc2BEIH5HGhgRP7HKxreAIpvE02WVKEhEBpKQM7ETbNSy8RVK9zOF0nWzpkVRB4Rfv9xKc48avWJoEqI03scSHBPS78oLZsIJGmgiFFkuDGMZo1cWCIuvGfHdPLEgeopr6E5fhKMLKjDWxxyE249+UAuFG9/6jVg/l/ld4w7fCpcX53FO8dg4y/0fSBIA5/xtuA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=gmail.com; s=20251104; t=1778663254; x=1779268054; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qN/W8ebLgutWz02+3OnJOFBU8z3ZOcJD73mdZlWwDCo=;
+ b=MKs30MeoYJU+JLI+0wDHfgEMObXQ5HyuhpZylSUGFFTF48700dVSlPZW7XIewV9Q2I
+ pYSuGYIsPXKx1ggmrvxFtUY/9b/UIO1YlxYsElWSA/LpD6RuauH0J3YXM1SyzaJjCj+l
+ F+lwu0DQLckdkrRRCmxTDMSp+pPNLZSLjl00fDJ0tdRSwM3y9O1scw2DVUOGhyNw+Ljt
+ nKXrOpJ+XOe3+OsKPyP0mtRVNKYZ8eaoccfVN3ydSsanWnIkL2PyL/tCXmdQSavJQqNY
+ 0VFlUiZwtrrFRwWwd888+OubcOUSjj2/zudjFde7cgDHqmi1uNXOy7b0JGarZH0K+zhd
+ LLjA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=outlook.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=outlook.com header.i=@outlook.com header.a=rsa-sha256
- header.s=selector1 header.b=hjKZoq+1
-Subject: [Intel-wired-lan] [PATCH net] iavf: validate num_vsis in
- VIRTCHNL_OP_GET_VF_RESOURCES response
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20251104 header.b=MKs30Meo
+Subject: Re: [Intel-wired-lan] [PATCH net v3] ice: fix packet corruption due
+ to extraneous page flip
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -210,85 +137,134 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 412AB536042
+X-Rspamd-Queue-Id: 486105303D8
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.89 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+X-Spamd-Result: default: False [-0.11 / 15.00];
+	MID_RHS_NOT_FQDN(0.50)[];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[outlook.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:mitch.a.williams@intel.com,m:gregory.v.rose@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:danisjiang@gmail.com,m:stable@vger.kernel.org,m:moonafterrain@outlook.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_FROM(0.00)[outlook.com];
-	FORGED_SENDER(0.00)[moonafterrain@outlook.com,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[15];
-	MIME_TRACE(0.00)[0:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,outlook.com:email,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS(0.00)[m:ouster@cs.stanford.edu,m:stable@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:jacob.e.keller@intel.com,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,stanford.edu:email];
+	ARC_NA(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FORGED_SENDER(0.00)[davidlaightlinux@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	TAGGED_FROM(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[moonafterrain@outlook.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[davidlaightlinux@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[lists.osuosl.org,vger.kernel.org,gmail.com,outlook.com];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	NEURAL_HAM(-0.00)[-1.000];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[7];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-The VF allocates a fixed-size buffer for IAVF_MAX_VF_VSI (3) VSI
-entries when processing a VIRTCHNL_OP_GET_VF_RESOURCES response from
-the PF. However, num_vsis from the PF response is used unchecked as
-the loop bound when iterating over vsi_res[] in multiple functions.
+On Tue, 12 May 2026 11:19:53 -0700
+John Ousterhout <ouster@cs.stanford.edu> wrote:
 
-A PF sending num_vsis greater than IAVF_MAX_VF_VSI leads to
-out-of-bounds accesses on the vsi_res[] array.
+> Consider the following sequence of events:
+> * The bottom half of a buffer page is filled with data from
+>   packet A. The page has a net reference count (reference count
+>   - bias) of 1. The page is returned to the NIC, flipped to
+>   use the top half.
+> * Before the reference on the page is released, the NIC returns
+>   the page with no data in it ('size' is zero in ice_clean_rx_irq).
+>   In this case the bias does not get decremented. The page still
+>   has a net reference count of 1, so it gets returned to the NIC.
+>   However, ice_put_rx_mbuf flipped the page so that the bottom
+>   half is active.
+> * If the NIC stores another packet in the page before packet A
+>   has released its reference, the data in packet A will be
+>   overwritten with data from the new packet.
+> * Unfortunately zero-length buffers occur frequently: they seem
+>   to occur whenever a packet uses every available byte in a
+>   buffer, ending precisely at the end of the buffer. When this
+>   happens the NIC seems to generate an extra zero-length
+>   buffer.
+> The fix is for ice_put_rx_mbuf not to flip pages that have a
+> size of 0.
 
-Clamp num_vsis to IAVF_MAX_VF_VSI in iavf_validate_num_queues(),
-following the same pattern already used for num_queue_pairs.
+How is this different from packet B (in the top half) being
+freed before packet A (in the bottom half)?
 
-Fixes: 5eae00c57f5e ("i40evf: main driver core")
-Reported-by: Yuhao Jiang <danisjiang@gmail.com>
-Cc: stable@vger.kernel.org
-Signed-off-by: Junrui Luo <moonafterrain@outlook.com>
----
- drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+> This patch applies directly to longterm stable versions 6.18.27
+> and 6.12.86; it also seems relevant for 6.6.137 but would need
+> modifcations for that version. I have not examined earlier
+> versions.
+> 
+> Unfortunately there is no upstream commit id for this patch because
+> the ICE driver has undergone a major revision (libeth refactor and
+> pagepool conversion) that eliminated the buggy code. Thus the
+> problem no longer exists in the main line.
+> 
+> Cc: stable@vger.kernel.org # 6.12+
+> Signed-off-by: John Ousterhout <ouster@cs.stanford.edu>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_txrx.c | 23 ++++++++++++++++++++---
+>  1 file changed, 20 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> index 51c459a3e722..081c7a7392b7 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> @@ -1215,6 +1215,13 @@ static void ice_put_rx_mbuf(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp,
+>  		xdp_frags = xdp_get_shared_info_from_buff(xdp)->nr_frags;
+>  
+>  	while (idx != ntc) {
+> +		union ice_32b_rx_flex_desc *rx_desc;
+> +		unsigned int size;
+> +
+> +		rx_desc = ICE_RX_DESC(rx_ring, idx);
+> +		size = le16_to_cpu(rx_desc->wb.pkt_len) &
+> +		       ICE_RX_FLX_DESC_PKT_LEN_M;
+> +
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index a52c100dcbc5..2ebfb65a6f3b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -254,6 +254,12 @@ int iavf_send_vf_ptp_caps_msg(struct iavf_adapter *adapter)
-  **/
- static void iavf_validate_num_queues(struct iavf_adapter *adapter)
- {
-+	if (adapter->vf_res->num_vsis > IAVF_MAX_VF_VSI) {
-+		dev_info(&adapter->pdev->dev, "Received %d VSIs, but can only have a max of %d\n",
-+			 adapter->vf_res->num_vsis, IAVF_MAX_VF_VSI);
-+		adapter->vf_res->num_vsis = IAVF_MAX_VF_VSI;
-+	}
-+
- 	if (adapter->vf_res->num_queue_pairs > IAVF_MAX_REQ_QUEUES) {
- 		struct virtchnl_vsi_resource *vsi_res;
- 		int i;
+Looks like you only need to calculate 'size' for the !ICE_XDP_CONSUMED path.
+You could also use the (likely cheaper) test for zero:
+		if (!(rx_desc->wb.pkt_len & cpu_to_le16(ICE_RX_FLX_DESC_PKT_LEN_M))
 
----
-base-commit: 7aaa8047eafd0bd628065b15757d9b48c5f9c07d
-change-id: 20260513-fixes-26ec29fa50a5
+-- David
 
-Best regards,
--- 
-Junrui Luo <moonafterrain@outlook.com>
+>  		buf = &rx_ring->rx_buf[idx];
+>  		if (++idx == cnt)
+>  			idx = 0;
+> @@ -1224,10 +1231,20 @@ static void ice_put_rx_mbuf(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp,
+>  		 * To do this, only adjust pagecnt_bias for fragments up to
+>  		 * the total remaining after the XDP program has run.
+>  		 */
+> -		if (verdict != ICE_XDP_CONSUMED)
+> -			ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
+> -		else if (i++ <= xdp_frags)
+> +		if (verdict != ICE_XDP_CONSUMED) {
+> +			/* Don't "flip" the page if size is 0: in this case
+> +			 * the data in the current half will not be used so
+> +			 * it's OK to reuse that half. And, since the bias
+> +			 * didn't get decremented for this half, the page can
+> +			 * be returned to the NIC even if the other half is
+> +			 * still in use, so flipping the page could cause
+> +			 * live packet data to be overwritten.
+> +			 */
+> +			if (size != 0)
+> +				ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
+> +		} else if (i++ <= xdp_frags) {
+>  			buf->pagecnt_bias++;
+> +		}
+>  
+>  		ice_put_rx_buf(rx_ring, buf);
+>  	}
 
