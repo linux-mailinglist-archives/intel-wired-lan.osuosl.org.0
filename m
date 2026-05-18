@@ -2,97 +2,103 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id QBZzNlNbC2oCGAUAu9opvQ
+	id cInIGtdgC2pgGQUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 May 2026 20:32:51 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 May 2026 20:56:23 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D51495724C4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 May 2026 20:32:50 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D16775727B0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 May 2026 20:56:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 45781606C0;
-	Mon, 18 May 2026 18:32:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 77FFA6071D;
+	Mon, 18 May 2026 18:56:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UankkI9GQBVS; Mon, 18 May 2026 18:32:47 +0000 (UTC)
+ id wIq_37UZwA74; Mon, 18 May 2026 18:56:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EAA576070D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B880860722
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779129167;
-	bh=55pspnq4vaqq2Tx53zBMhbfmf3FZ2LXpvndEzZlPMcg=;
+	s=default; t=1779130580;
+	bh=T8/9D8CVG3ffJO9tvFqEo2HmibwVZ1m8cvpQN5Dl0kA=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=mkfUlAx4yf22WWUFptMbah9aVMaQdaHgqffmAaOe1G3AWsB5obmfLRSxFWgoArr59
-	 U0OsPpmmsZNoFUytd360c9qDNQtRcaDiDbulnmQYzIP2euR1GAmbmZo9vbChay1ouI
-	 SHDn0NEx2tfImExXjGCYYoPnTs17UMgULm78lSmxYv9sb1Yk/wWSPOttoxwiV+xX4g
-	 BOxt32DRoS5TyWzmveSF0TMaEEwYH1aNysBTDaA0ugyAP0YW2lt0cfUaERiOfQeTK2
-	 IkMAbXJ2PefRBfOhpQNGMsfzvKNTVOfdfCYK2c8myltYlvUNNEmdztfV05bMvd6Om+
-	 WsCkUsz67ivOA==
+	b=58aZdvLTE4osDFYreLi3SxRpcgzdtUQh69O8neYN+us2rk7Iz7W3zqzKyC2PixKyd
+	 x0hleU94z0jw4Ios/MkU62pFoWTQ6KAaStBXPOCkehoSnPDOSqSXNQJWcYg6gpVzpw
+	 +Q2d5ruEK/GIIl4HOnAEhvleWpoW/POfwbKJFU7zknqozNdNmGV+c/LV1lrj/WApfv
+	 gOlFuCSCUn42zfdxwfsI+V3KnIRm22/7Hg/Ie5Tf/DE/pnj1JbedOQA8ArusmWBNRs
+	 nSub26zYF4vv4kuf4DDk7tr5bUo07zx2Ww1Gc8ha6FikgqLhmou0DlkhvfxbmpD7rY
+	 0WoIW7gTUDsLw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EAA576070D;
-	Mon, 18 May 2026 18:32:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B880860722;
+	Mon, 18 May 2026 18:56:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id C99491B2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:32:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1EB821B2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:56:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BA47040921
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:32:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0467D80F65
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:56:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TGDTyiCqbYbA for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 May 2026 18:32:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 201104091E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 201104091E
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 201104091E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:32:44 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0BlrvE14Zuqv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 May 2026 18:56:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2E11980F63
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2E11980F63
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2E11980F63
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 May 2026 18:56:17 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 6214D44518;
- Mon, 18 May 2026 18:32:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99763C2BCB7;
- Mon, 18 May 2026 18:32:41 +0000 (UTC)
-Date: Mon, 18 May 2026 19:32:38 +0100
+ by tor.source.kernel.org (Postfix) with ESMTP id 00A66600CB;
+ Mon, 18 May 2026 18:56:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC0BEC2BCB7;
+ Mon, 18 May 2026 18:56:13 +0000 (UTC)
+Date: Mon, 18 May 2026 19:56:11 +0100
 From: Simon Horman <horms@kernel.org>
-To: Chris Packham <chris.packham@alliedtelesis.co.nz>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, aleksander.lobakin@intel.com,
+To: Junrui Luo <moonafterrain@outlook.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Mitch Williams <mitch.a.williams@intel.com>,
+ Greg Rose <gregory.v.rose@intel.com>,
  intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- Blair Steven <blair.steven@alliedtelesis.co.nz>,
- Carl Smith <carl.smith@alliedtelesis.co.nz>
-Message-ID: <20260518183238.GE98116@horms.kernel.org>
-References: <20260514003733.1718771-1-chris.packham@alliedtelesis.co.nz>
+ linux-kernel@vger.kernel.org, Yuhao Jiang <danisjiang@gmail.com>,
+ stable@vger.kernel.org
+Message-ID: <20260518185611.GF98116@horms.kernel.org>
+References: <SYBPR01MB7881AF11C45AEDC0D4CA89C1AF062@SYBPR01MB7881.ausprd01.prod.outlook.com>
+ <SYBPR01MB788139F8F31129E4B64E66D4AF072@SYBPR01MB7881.ausprd01.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260514003733.1718771-1-chris.packham@alliedtelesis.co.nz>
+In-Reply-To: <SYBPR01MB788139F8F31129E4B64E66D4AF072@SYBPR01MB7881.ausprd01.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1779129164;
- bh=0RaJhtpEWtU3k0n7Y9j7Zkx9qNKgrBCTo8uIa101wog=;
+ d=kernel.org; s=k20201202; t=1779130576;
+ bh=9xSWq3/p42ZAOBsEQMtxfJEQE/1Guk1SM/niBcloTd4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JyhlgZovN73HWmKI3crtE6jK8YSJhJP+DNC3a1VBckhD1IKOpEmOM1s/YK5NN7B97
- 100R11BiJv5d6rHzoLNaEXlKwmi+hcwisSfLhkQJ7sX7m6qBgK9Lz/WmxrjBXaluxS
- lCb+x1KubsFK3dJK7Q51n0ZMijfTS75+zhXQgBxmgbwuDZQ4Upn+DuC8uRxyAPqKQG
- y79+ghnrAAg304oZh6quO0j4Vr7oBOBW17Y5AlWQ1NWYWLoqxq0mJhfjUpwQHyrv/v
- cpxJwVojC4dBE88xdSIIMQ3pW4Vw3/uiN0Ywt9XOZ3trslPcVpi5cBwo3V/gIeAUWN
- nfmQ2rBRZDJeA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=kAtO3ksrzt7DJjrHpNTpug1TB9x9vec33F++NIpJ2TO9rfd7gv4EDSobrmmcE0fIy
+ O3gxjbOPlVdjfHdnTioK5F9u48ds8Biz1rsxVKg1LSSOC52e+85qCTtj+S2dcNRdeW
+ 6FKKfd1o/GNCHwA0x2ugS7FfI6MCcnIcmRv2ZEIMMRuBT9YsUt4j3o/fuv8Cdyizaw
+ 1S0Ta1gT/NykobMjlRWWKR/MR9ujwgwuAGFvbZUeEm+uIhV1uQ0DyzZj65qaYf8Xtq
+ Ow3X5F+5suIqWaMVYP23JeWSFykQkqeCczX8v6rhxZA9JrfZMQza+ak7eI+DHyFRRu
+ VVQhYETjNxlvw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=JyhlgZov
-Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: Avoid repeating RX
- filter warning
+ header.a=rsa-sha256 header.s=k20201202 header.b=kAtO3ksr
+Subject: Re: [Intel-wired-lan] [PATCH net v2] iavf: validate num_vsis in
+ VIRTCHNL_OP_GET_VF_RESOURCES response
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,70 +114,69 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [2.19 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUSPICIOUS_RECIPS(1.50)[];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	FORGED_RECIPIENTS(0.00)[m:moonafterrain@outlook.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:mitch.a.williams@intel.com,m:gregory.v.rose@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:danisjiang@gmail.com,m:stable@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:chris.packham@alliedtelesis.co.nz,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksander.lobakin@intel.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:blair.steven@alliedtelesis.co.nz,m:carl.smith@alliedtelesis.co.nz,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,alliedtelesis.co.nz:email];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[14];
+	FREEMAIL_TO(0.00)[outlook.com];
 	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[15];
+	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,lists.osuosl.org,vger.kernel.org,gmail.com];
 	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[outlook.com:email,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,sashiko.dev:url,osuosl.org:dkim,horms.kernel.org:mid];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	MISSING_XM_UA(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: D51495724C4
+X-Rspamd-Queue-Id: D16775727B0
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Thu, May 14, 2026 at 12:37:33PM +1200, Chris Packham wrote:
-> When the i40e runs out of space for RX filters the driver switches to
-> promiscuous mode and warns that it has done so. In scenarios with a
-> large number of these filters this can generate a lot of warnings. For
-> example:
+On Thu, May 14, 2026 at 02:55:04PM +0800, Junrui Luo wrote:
+> The VF allocates a fixed-size buffer for IAVF_MAX_VF_VSI (3) VSI
+> entries when processing a VIRTCHNL_OP_GET_VF_RESOURCES response from
+> the PF. However, num_vsis from the PF response is used unchecked as
+> the loop bound when iterating over vsi_res[] in multiple functions.
 > 
->   $ dmesg -c > /dev/null
->   $ ip link add dev br0 type bridge vlan_filtering 1 vlan_default_pvid 1
->   $ ip link set dev eth7 master br0
->   $ bridge vlan add vid 1 dev eth7 pvid untagged self
->   $ bridge vlan add vid 2-4094 dev eth7 tagged
->   $ dmesg
->   [   25.601705] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   [   25.601833] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   [   25.601961] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   [   25.602088] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   [   25.602216] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   [   25.602344] i40e 0000:01:00.1: Error LIBIE_AQ_RC_ENOSPC, forcing overflow promiscuous on PF
->   ...
+> A PF sending num_vsis greater than IAVF_MAX_VF_VSI, or the received
+> message is shorter than num_vsis claims leads to out-of-bounds accesses
+> on the vsi_res[] array.
 > 
-> Use test_and_set_bit() so that the warning is only issued when the
-> driver enables promiscuous mode and not on the addition of subsequent RX
-> filters.
+> Clamp num_vsis based on the actual bytes copied from the PF response.
 > 
-> Signed-off-by: Chris Packham <chris.packham@alliedtelesis.co.nz>
+> Fixes: 5eae00c57f5e ("i40evf: main driver core")
+> Reported-by: Yuhao Jiang <danisjiang@gmail.com>
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Junrui Luo <moonafterrain@outlook.com>
 > ---
-> 
-> Resend with net-next tag
+> Changes in v2:
+> - Clamp num_vsis based on actual received message length instead of
+> IAVF_MAX_VF_VSI suggested by Przemek
+> - Link to v1: https://lore.kernel.org/r/SYBPR01MB7881AF11C45AEDC0D4CA89C1AF062@SYBPR01MB7881.ausprd01.prod.outlook.com
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
+There is an AI-generated review of this patchset available on sashiko.dev.
+However, I believe that the issues raised there can be considered in
+the context of possible follow-up. I do not believe they should block
+progress of this patch.
