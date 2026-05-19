@@ -2,107 +2,223 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SLClAtpLDGrHdgUAu9opvQ
+	id YEDNKMOHDGo1iwUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2026 13:39:06 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2026 17:54:43 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E50057DCBA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2026 13:39:04 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 69803581CD0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 May 2026 17:54:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 362C34062C;
-	Tue, 19 May 2026 11:39:02 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A58A60AEA;
+	Tue, 19 May 2026 15:54:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u45hqGrvWHD0; Tue, 19 May 2026 11:39:00 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZEllS9fqwGzu; Tue, 19 May 2026 15:54:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D5CD6405DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EBA460AEC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779190740;
-	bh=5F1bMI17kRYHb8PJHmvShGbAFsiW30BzJ/xfYQz3Rh8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1779206078;
+	bh=9+35NCJZsa/XSInFwatwDNxThOaj34Hx+gXMVydtSa8=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=8hKtcFfY/6HPYhjN5NChG3+cpSQOzZ2sE3101ylOFMMeoRNLZYWi5sH33xTQxcYZR
-	 3V21wwP3yciQ1hYqrj8af6baFcSyDJ30XOugcqmVhWvK1h/zhfv746huYOsD/NImHY
-	 3c1mWyHfHWZzXnYGjc0cbB4wWpsWToHPgciO0NIBOZiZ6SXsi17D9eJvlkDv44xwjp
-	 IuAtcgkcp0BGsPy/KOy/NMoYRFteGUr96jtvD3qFzGljNbVjbxf2bYRWuxkMFXVUtS
-	 V9C/0qIBCYRVWpvrlpAxEVFvBE/WhEr1Lp+9bf7ZpPPu99zzqs1LFU/90ga14rUEx4
-	 yTyKZShfl4DCg==
+	 From;
+	b=Tzj+8Y+d2DaJJajFeZCVWiIL9QQtEuShEA0Pmk07TZ0VXlwySM87W4oCD6mi/5UHl
+	 spFJRJG6tomnXKNr6bqjf30L5aDkS48FNdJExTk+2tiqLlBAUMytaUcC5ZHhvUU8Yd
+	 pM6aiodpDBvL5boWBPoOnxb3DZvLRs9t+EicjV4aKLMugTnByzOs+Aoo1Ca8i+0IUe
+	 +s4PT4Sptw/k9S9cU6vhXVtOj9ohB/4NYUPJ7OOoXT7J81u4ePEr20EnePFzU96tx5
+	 7Am51s0KIGNeeRm5NkL6ZQfFge/sIyhd4KtKVj/W+A6zFBjJuo4XzJPt2DQ78Gshk8
+	 6u9A3kR+FPLmg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D5CD6405DC;
-	Tue, 19 May 2026 11:39:00 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5EBA460AEC;
+	Tue, 19 May 2026 15:54:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id EDD24265
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 11:38:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5E672282
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 15:54:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DEF2681364
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 11:38:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 53CA34042E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 15:54:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NkT8PBk_2CgE for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 May 2026 11:38:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id A8jELHPxrs9B for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 May 2026 15:54:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=samuel.salin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4B94581357
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B94581357
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4B94581357
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 11:38:56 +0000 (UTC)
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-277-Hjcup8OwNNSenuDVpJeCIQ-1; Tue,
- 19 May 2026 07:38:51 -0400
-X-MC-Unique: Hjcup8OwNNSenuDVpJeCIQ-1
-X-Mimecast-MFC-AGG-ID: Hjcup8OwNNSenuDVpJeCIQ_1779190728
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B057C1800367; Tue, 19 May 2026 11:38:47 +0000 (UTC)
-Received: from gerbillo.redhat.com (unknown [10.44.33.47])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E06531800352; Tue, 19 May 2026 11:38:40 +0000 (UTC)
-From: Paolo Abeni <pabeni@redhat.com>
-To: grzegorz.nitka@intel.com
-Date: Tue, 19 May 2026 13:38:31 +0200
-Message-ID: <20260519113831.152957-1-pabeni@redhat.com>
-In-Reply-To: <20260514225946.2885623-9-grzegorz.nitka@intel.com>
-References: <20260514225946.2885623-9-grzegorz.nitka@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 61C2940416
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61C2940416
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 61C2940416
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 May 2026 15:54:34 +0000 (UTC)
+X-CSE-ConnectionGUID: BsxvO2yUSNuXvjfEGIuY/w==
+X-CSE-MsgGUID: xX4dNlFTQ+igp6ZH62WHgw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11791"; a="79111858"
+X-IronPort-AV: E=Sophos;i="6.23,243,1770624000"; d="scan'208";a="79111858"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2026 08:54:34 -0700
+X-CSE-ConnectionGUID: JYvAIzCtRcC3hmxck4YVGw==
+X-CSE-MsgGUID: 4sCXJxLrToeM9eTWQCllXw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,243,1770624000"; d="scan'208";a="244100699"
+Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
+ by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 May 2026 08:54:34 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 19 May 2026 08:54:33 -0700
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Tue, 19 May 2026 08:54:33 -0700
+Received: from BL0PR03CU003.outbound.protection.outlook.com (52.101.53.6) by
+ edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 19 May 2026 08:54:33 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oLXQOyTdKqihi34U9Fio5RY+Icuxycp4CeydDlc3tzzLe125mwfr2I50ebsxjUNzMXdjextgvNedePObre+xgDZvmFCLyImCrfv3DKVg8lrPdQ3HPrDaz0xvfw48e8ms1otqggxky5cAmTp80BNS7VJkqGrAEl6BqjXVcdCUq6WIrtMXdu7AeoHxbVJrclRbe0hAdyrvqQyv/A27EC3CRzW+/wd6r+Dzus9P4ECEQ/L9iwjz+qTjEdZGH/repeDCxerHzlaW4VdhiG1ywAow595v8TF9oiVYIHgv2D1NgcmEEUlyxT6VGWrF2DJ6AEOJPwhqmJapA7Yjv4C8sZwu5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=9+35NCJZsa/XSInFwatwDNxThOaj34Hx+gXMVydtSa8=;
+ b=mo9JsZu9CtbVXdg/Yuv9mI0MF6W+ma6vDKR+8VQ/Utu8Nz69RVduKwxvFep1N01GwpwQRAI1bHXsEbZ4BG0dtyGTsPupr8I4khn2SlCacx1n4CRvAitxNuUa6FZORBO9f78wIXkkAIohRmgwxCMieoOX3jyE3WYI27AwNHjEY6oV4o57B+4YnN5h1A15sVXuhIobdeZkeUdNR8wiUsdNR1vM4d3Bh4tyGxqEfSHfhoczGHBmpLLm/sYK7rOMEhaTv9zGB/vCthpM+0Lw823aRJuG801Ktac9LKkrtqBzPwBKy6VuUxAFypKJp8ax3eu1ToM8LHGqWRzvlDYKFdANqA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com (2603:10b6:a03:458::8)
+ by DM4PR11MB6264.namprd11.prod.outlook.com (2603:10b6:8:a5::9) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.48.14; Tue, 19 May 2026 15:54:29 +0000
+Received: from SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::6f05:5b37:2440:556e]) by SJ1PR11MB6297.namprd11.prod.outlook.com
+ ([fe80::6f05:5b37:2440:556e%5]) with mapi id 15.21.0025.020; Tue, 19 May 2026
+ 15:54:29 +0000
+From: "Salin, Samuel" <samuel.salin@intel.com>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Tantilov, Emil S"
+ <emil.s.tantilov@intel.com>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, "Bhat, Jay" <jay.bhat@intel.com>, "Barrera,
+ Ivan D" <ivan.d.barrera@intel.com>, "Zaremba, Larysa"
+ <larysa.zaremba@intel.com>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, 
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
+ <davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>, 
+ "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "Chittim, Madhu"
+ <madhu.chittim@intel.com>, "decot@google.com" <decot@google.com>,
+ "willemb@google.com" <willemb@google.com>, "sheenamo@google.com"
+ <sheenamo@google.com>, "lukas@wunner.de" <lukas@wunner.de>
+Thread-Topic: [PATCH iwl-next v2 2/2] idpf: implement pci error handlers
+Thread-Index: AQHczLVerem+08lbnUGONuiaFqgThbYVtdrA
+Date: Tue, 19 May 2026 15:54:29 +0000
+Message-ID: <SJ1PR11MB629733E4508CC0A4569A5C9B9B002@SJ1PR11MB6297.namprd11.prod.outlook.com>
+References: <20260414031631.2107-1-emil.s.tantilov@intel.com>
+ <20260414031631.2107-3-emil.s.tantilov@intel.com>
+ <IA3PR11MB8986C6EC840268F14C44B28CE5252@IA3PR11MB8986.namprd11.prod.outlook.com>
+ <eb07b21f-0133-40c3-ae86-338572e2a64a@intel.com>
+ <PH3PPF7A88A980AAF619A7C8EAC3550269BE5222@PH3PPF7A88A980A.namprd11.prod.outlook.com>
+In-Reply-To: <PH3PPF7A88A980AAF619A7C8EAC3550269BE5222@PH3PPF7A88A980A.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ1PR11MB6297:EE_|DM4PR11MB6264:EE_
+x-ms-office365-filtering-correlation-id: 2482a325-dd16-47d4-2e97-08deb5bee95f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|7416014|366016|38070700021|4143699003|22082099003|18002099003|56012099003|11063799006;
+x-microsoft-antispam-message-info: nxiJ2pwUqfNvLCUe+5dN+0g5nl868bcUwOsvri46b0J7rWyo5/lORwbfZpniQC9PrpL0ihtzi8JF8fuH1/xuxG3FVABGt3++HrXuaj039lsPCBP6ZZxoi2AgavC3rjnoq21aq+6N3LmEPByd738X7gYtCZqeAgIcbLvDe2zrMFNQGIs2Hilo/zwHVJXJK+KkKyedQa299RBwMxGqng7LaTdgoFEXf8HL35bNKcW9VV/j8QPDJSDrvpfD0H9PI+w2EC7KYAVztrprOfcxoq3JTrd+ub7rb3wUWk8Titl3soXcpURYkcJfbvi2xPa3NbaYRVcCxsZIJ2UC5usT/zTxCWxBNRgn2vR0xnPCt4T20TfBjQVPRhv91QxB1ME/s8oErE9V5cmOp266gHL1gzpnSS9y9pSioAOvkuHsNmadj12R28QRx2mJWvawl/st29SwslB1IGgDNDHKjBbFVkkGFoHrMBvYFBXFty0Kh3qC4UqDdtrlXyGD6AB9hzoTylaju+z0V2xe7dS1yeggaMya/jcnMNy75n91U3Dv1+fOOtZCX/XED4jjqIenmDVS2YDRCCxm2bn56VCE8MVPq3NuHfiqCsNx5TsRP3w1Dbzy5TPKBgWtO+2A+LFfvS2GqGWiSkmM8wb7K1IlpYZGbzFdnhlvtrhrZmq7mGKw/PHfD3EKc9kdXRmlCkaBh0YGV5XE90rOPi9Etov7g3qqDthR51A3eEta6eIiud0oioYPmuEgIgMRWko7x+1FJbC2NDXe
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ1PR11MB6297.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016)(38070700021)(4143699003)(22082099003)(18002099003)(56012099003)(11063799006);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?LzZRaHJLS1N1M0N4WlM5S1paZkg5TkxRdjArWVI2bzBYU2dDY0lieWpzL1NU?=
+ =?utf-8?B?WTVHWGliRGFrcUNvWC9OL0hYRWtUdlpZejRSalB2azlvbWhvUXI1THIwcTIr?=
+ =?utf-8?B?THlpZ3ZSTnVQb3NvY0Y2WnVQcmNWZTBmSDdvc0ZlS1FocDFvaG10WGo0Lytl?=
+ =?utf-8?B?NTcxVkFjc1VIRWNJcWpKT2dsL21JYURNY3VrbWx2cnNSa0xpb21jSytNUWE4?=
+ =?utf-8?B?b1MrckZQNHYyL0dLU1ZPSWw5SllqVThndXg1RWpvZWxLOXdhbEFBVGY1ZEZm?=
+ =?utf-8?B?MTNWQmtSUXM5RXQ4K0p4R05sRnlEd1RmbysxNHlES0lYWm9VN3d2TkJyS1Zl?=
+ =?utf-8?B?d09RSCtDdDZvYXAwZGxidFlVNmd0UndWMTM0aEhERkJHODRpK3l0SjlkbjA3?=
+ =?utf-8?B?WEZCNVMwdzhVdGgxOG9idFBNMjNiZ0xFaFFXRmVERFJMUGJtbFB0UXNFMmRU?=
+ =?utf-8?B?WlJRVENDemlYWlQ5amtMUW92amlSNEV6eFBDVzJQc0lwSXphT0xQWWFBanQ2?=
+ =?utf-8?B?RzYrcHF4bEpQRXJrbFJQeERXY1NocUtKOFhxc2RYcC8yK3RiQ2dNejZLQXdD?=
+ =?utf-8?B?V1Rxamg3Q1U0SjhBT2d6QlQ0ZENhUWFGK0NobjJucVBlYVUzQVphbEgrUjVJ?=
+ =?utf-8?B?bzkzSFZjdEptc25tSS9qNk4zUXpxT1YvUWppQmYrcGp3TGt3am5hR3hsT1pl?=
+ =?utf-8?B?WUFUODVJSUVIcG1Ma3dva25zTWtyNk1hVEsrY1N6c2Z4aXpWdkFrVjE5RUgz?=
+ =?utf-8?B?Qmp0b3hSWFVteVA1L0IxbytEVFQ0N1hNMEpHNmdhRHlCd3JTdzBzTUZkakxJ?=
+ =?utf-8?B?ZlM2eHpJUFpwR21OZXJpSE0rRFNZbitUeGE4MVlxN2FSSjZvd01uajNkMjF4?=
+ =?utf-8?B?MFJBNG9teVArNFhtVGFMR29oRTF3RVlDM0pzd1RES1NQdUsxa2FxdlRsdSty?=
+ =?utf-8?B?SFpscjN3ZGEzdXFUbDBySmJ3eWgvVGl2RE41Q3MxUVlxVXBoMUV5Z1J3eDN6?=
+ =?utf-8?B?NnJPY2wraHBOaUtOREl1ZnRYTmhTQlREZDl0QzEybEZVUUhxaXNrS010a1R5?=
+ =?utf-8?B?VU1GZDBac1dkQ2pacnVBVEM3UEw4RkJhOFRiM1lzQWtzUytFcDRpOWNoMXdm?=
+ =?utf-8?B?MXk4NDZ0bFVzVjFBcWx1UDhkdUc2bkszaENKZVNGUmRvRTljcHppR2swdHFm?=
+ =?utf-8?B?N3UrU2lNdWcweVRCYmN3U2RsU2dSV3VnTnJSbXJKbXQrQ1dWeFJLdHpGQ0RF?=
+ =?utf-8?B?VlBZSFlLelFBQmFUaVlyNktUbnlXUU50aFNVaDY1M2ZsQkRVdS94Sklma2hP?=
+ =?utf-8?B?bjBvT2gyQmFyVTVxUTFHaWxaWHI5Skd3OVQ4QTZncG1TMnc4YlVzWWRSdDVI?=
+ =?utf-8?B?RTVVZ3Z1UmxmQ0VZMzl1K0JicE9PVzRiYmFITWJpUFgrYWd6YnN4MWtKTkVy?=
+ =?utf-8?B?QnFPQW5UV3NjaGcrbFhOQkNGSCtBVDZkSVRYU3VMMHBVVkFtaDFDL0JRL3hm?=
+ =?utf-8?B?MGtBL3RBdW05Q25tRi91dFhnZCtKMWt0SklHVHg4ZXhHUVJHODJYcVg1Tm5P?=
+ =?utf-8?B?TytzbXh6bEtkY0RTM2VNSFBaWTFHMGFPbUhpeFU4V2tZOGRIaDNMZnhDYkRw?=
+ =?utf-8?B?WG5ZQjk0NTNNODZGbGR4T1k5TjNMM0FCYnlweGZGeFNGR0JNdWhVdVVscUN3?=
+ =?utf-8?B?ZXRRVTEyNWpYTi91bm1qN09pMFhzc3pDd3NwWDFMc0FaVFF0WG5IS0VVNkJz?=
+ =?utf-8?B?RVhnNFE5VTNrUXNjb3phNHVIM3MzcHBBRUE5YkUycERpOGg5KzJXeUE1VHRB?=
+ =?utf-8?B?RXozM2JQV3VpbTNwNXJsOHF6K2xXV3VKZ05zdlYwOGVVUS9HMnVjRTBFNUpI?=
+ =?utf-8?B?SHBsUzlxbkcxa0V0V2ZQcmJhSy9WckZ0a2dBYi9ncWliajZmL29RZlE2ZmN3?=
+ =?utf-8?B?TUU5VXBBU3BrdkVNVGc1R3Y0b21sL3M1MGZzSWc2dFhoNTZ2YllHSEJINnZx?=
+ =?utf-8?B?b0NqS1p6TjJlUmFIa1NWcnk3eklycU1tajdKaXNnMlNCWUtuV0JQNUNsZERT?=
+ =?utf-8?B?T3pma3l2ZEJQSzdSbVZxbHM3eDdGbkJ2dlFadkM5YkhpYlA5anY2Z3lyRTRl?=
+ =?utf-8?B?RFE4ZHMyN1JZRGtBTjdTdVIwMDNrTWNhRGhTcnhPOHd0N2xDMWp0NVlFY2hH?=
+ =?utf-8?B?YnpIMkk0Y3JMMTNKV0J0emFSNlFTeHFQam1jSS9HZ284TXFGWitjRXNjQ2N5?=
+ =?utf-8?B?MjJOZk9YUWtGTkFTWHVHTHBzUldUdDlUcnl4WWQ2d1ZiNHdtNnl6MnErTUEv?=
+ =?utf-8?Q?ixLwNgckTQ9WVvL6R9?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: UaO31GKUE1h1jUxFYbtxQ1iwvWtDk55B1_GWqtQ79xg_1779190728
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1779190734;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5F1bMI17kRYHb8PJHmvShGbAFsiW30BzJ/xfYQz3Rh8=;
- b=Rvm/v/MJfH/nP8P3PO3NZ0HC90M65n7q3qAKqfwZl9yDT3rmfrJwv5ZNqYmbjxEdYjyZo6
- gYC4vK+jJ/3N8M4ZWODzBnZKG5Vicy0Qn7oiRQE8rsSQMLx9joJ3lj67KRcvXou81sMVmE
- X+jcD03owxvHDhN63bIXmbWQ3O2IWVQ=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Rvm/v/MJ
-Subject: Re: [Intel-wired-lan] [PATCH v9 net-next 8/8] ice: implement E825
- TX ref clock control and TXC hardware sync status
+X-Exchange-RoutingPolicyChecked: GLa2S2O7e2CAe+vOPt4dliKS2fuynIWf86Nw+WlIHGt8W8p6+fpJbvGsHGlmQna+sLssoSpdUzSC/KyklmW5aRBWLZ5Y/UR6mGhfXd+OixWS/soRzWZyDkm/K8xemqri2zPjBASGteU3gKP7A01ki8hHV73CGybYQIC0YXAsm6kNnX84UN0Ea2fBM88qfJugPoyCC1Xloa7SOcXtJXq+6nrLS7wqbbiiuzOt5l9VAeychbuJOKJ8VHENAInu+i3SEbX0csdGSBCr7/5D1vfVBJe9fCWYh19J1ne2XxXvzTR+u+NKiAFk1flzsJxfiNILmI1Lrc61CrBqKjilWkFZZg==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PR11MB6297.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2482a325-dd16-47d4-2e97-08deb5bee95f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 May 2026 15:54:29.6511 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: QNjsulU63C/bqc2jqr8OoR4ZTA5V3EtsWyIUCxj/4PFs5a3WhtVc1oXGaL28tujnuJY1czKkHbQT+vdU8VWwQg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6264
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1779206075; x=1810742075;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=9+35NCJZsa/XSInFwatwDNxThOaj34Hx+gXMVydtSa8=;
+ b=HxhvpJvjfVyvoKbW5NaLdpsQBGjrjpeOh4NQagENxucBQLJPtklIEmgn
+ VWNbicCY9gFSUvGOlZbO62VpPv7L3uRYYaerCQn7QR/eQfIcv71kLW6wt
+ 5zZtbhLpGl1v2IipCbsVUGS9c/ik7/uZRuHB8hDxKrYc1g8IKE3QqlZaR
+ 8A93SdClRtVF7gbUEOEBEecMLqJ0s6q7h/XE0m/qwpTok4fZhO0i0sZKu
+ u1jyLGPH4B7wenZS2AyZOWSXDt7sT509szA+Gpecte8pXIP1cYUcc+wNF
+ JO9uRNAj+VGTpOYs4+KkxHo89WW+ytAdCcKLOidMKFt9PnsyLK+T2dyHS
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=HxhvpJvj
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/2] idpf: implement pci
+ error handlers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,595 +231,169 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, kuba@kernel.org,
- jiri@resnulli.us, edumazet@google.com, netdev@vger.kernel.org,
- richardcochran@gmail.com, donald.hunter@gmail.com,
- linux-kernel@vger.kernel.org, arkadiusz.kubalewski@intel.com,
- Prathosh.Satish@microchip.com, andrew+netdev@lunn.ch,
- intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
- davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [3.29 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.99 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MIME_BASE64_TEXT_BOGUS(1.00)[];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	MIME_BASE64_TEXT(0.10)[];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER(0.00)[pabeni@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
-	RCPT_COUNT_TWELVE(0.00)[19];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:Prathosh.Satish@microchip.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,vger.kernel.org,gmail.com,intel.com,microchip.com,lunn.ch,lists.osuosl.org,davemloft.net];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:url,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[pabeni@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER(0.00)[samuel.salin@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[21];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:emil.s.tantilov@intel.com,m:netdev@vger.kernel.org,m:przemyslaw.kitszel@intel.com,m:jay.bhat@intel.com,m:ivan.d.barrera@intel.com,m:larysa.zaremba@intel.com,m:anthony.l.nguyen@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksander.lobakin@intel.com,m:linux-pci@vger.kernel.org,m:madhu.chittim@intel.com,m:decot@google.com,m:willemb@google.com,m:sheenamo@google.com,m:lukas@wunner.de,m:andrew@lunn.ch,s:lists@lfdr.de];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	FROM_NEQ_ENVFROM(0.00)[samuel.salin@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	MISSING_XM_UA(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 4E50057DCBA
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo]
+X-Rspamd-Queue-Id: 69803581CD0
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-From: AI Reviewer <ai@example.com>
-
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
-Full review at: https://netdev-ai.bots.linux.dev/sashiko/
----
-ice: implement E825 TX ref clock control and TXC hardware sync status
-
-This change implements TX reference clock switching for E825 devices via
-a deferred worker triggered by DPLL TXCLK pin operations, and reconciles
-software state from hardware after link-up using a new TXC DPLL lock
-status indicator.
-
-A few questions inline below.
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-> index 1b193e0c35ab..c9b101613fbf 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-
-[ ... ]
-
-> +static void ice_dpll_txclk_work(struct work_struct *work)
-> +{
-> +	struct ice_dplls *dplls =
-> +		container_of(work, struct ice_dplls, txclk_work);
-> +	struct ice_pf *pf = container_of(dplls, struct ice_pf, dplls);
-> +	enum ice_e825c_ref_clk clk;
-> +	bool do_switch;
-> +	int err;
-> +
-> +	mutex_lock(&pf->dplls.lock);
-> +	do_switch = pf->dplls.txclk_switch_requested;
-> +	clk = pf->ptp.port.tx_clk_req;
-> +	mutex_unlock(&pf->dplls.lock);
-> +
-> +	if (!do_switch)
-> +		return;
-> +
-> +	err = ice_txclk_set_clk(pf, clk);
-> +
-> +	mutex_lock(&pf->dplls.lock);
-> +	pf->dplls.txclk_switch_requested = false;
-
-[High]
-Can a request that arrives while the worker is running be silently
-dropped here?
-
-The worker samples tx_clk_req under the lock, drops the lock to call
-the slow ice_txclk_set_clk() (CPI commands plus an AN restart), then
-unconditionally clears txclk_switch_requested. Consider this
-interleaving:
-
-  CPU0 (callback A)         CPU1 (worker run #1)        CPU2 (callback B)
-  set tx_clk_req = A
-  set flag = true
-  queue_work
-                            sample do_switch=true,clk=A
-                            unlock
-                            ice_txclk_set_clk(A)...
-                                                        lock
-                                                        set tx_clk_req = B
-                                                        flag still true
-                                                        queue_work
-                                                        unlock
-                            lock
-                            flag = false  <-- B's flag cleared
-                            unlock
-                            (re-queued run #2)
-                            do_switch=false; return
-
-The hardware stays at A while pf->ptp.port.tx_clk_req == B, and the
-next link-up will misinterpret B as a failed switch and revert
-software state.
-
-Would clearing the flag before invoking ice_txclk_set_clk(), or only
-clearing it if pf->ptp.port.tx_clk_req still equals the snapshotted
-clk under the lock, address this?
-
-> +	if (err) {
-> +		/* Roll back the requested clock to match the current hardware
-> +		 * state so that ice_txclk_update_and_notify() does not
-> +		 * misinterpret a future link-up as a failed switch.
-> +		 */
-> +		dev_err(ice_pf_to_dev(pf),
-> +			"TX clock switch to %u failed, err=%d; reverting\n",
-> +			clk, err);
-> +		pf->ptp.port.tx_clk_req = pf->ptp.port.tx_clk;
-> +	}
-> +	mutex_unlock(&pf->dplls.lock);
-> +}
-> +
-
-[ ... ]
-
-> @@ -2635,11 +2690,29 @@ ice_dpll_txclk_state_on_dpll_set(const struct dpll_pin *pin, void *pin_priv,
->  				 void *dpll_priv, enum dpll_pin_state state,
->  				 struct netlink_ext_ack *extack)
->  {
-> -	/*
-> -	 * TODO: set HW accordingly to selected TX reference clock.
-> -	 * To be added in the follow up patches.
-> -	 */
-> -	return -EOPNOTSUPP;
-> +	struct ice_dpll_pin *p = pin_priv;
-> +	struct ice_pf *pf = p->pf;
-> +	enum ice_e825c_ref_clk new_clk;
-> +
-> +	if (ice_dpll_is_reset(pf, extack))
-> +		return -EBUSY;
-> +
-> +	mutex_lock(&pf->dplls.lock);
-> +	if (state == DPLL_PIN_STATE_DISCONNECTED &&
-> +	    p->tx_ref_src != pf->ptp.port.tx_clk_req)
-> +		goto unlock;
-
-[Low]
-Should this early path return something other than 0? The kerneldoc
-update for this function says "0 - success / negative - failure", but
-this branch silently returns success for a DISCONNECT request that is
-ignored because the pin's tx_ref_src does not match the currently
-requested clock. Userspace cannot distinguish "request honored",
-"request ignored", and "no-op already in target state" via the return
-value.
-
-> +
-> +	new_clk = (state == DPLL_PIN_STATE_DISCONNECTED) ? ICE_REF_CLK_ENET :
-> +			p->tx_ref_src;
-
-[Low]
-Should non-DISCONNECTED values besides DPLL_PIN_STATE_CONNECTED also
-be accepted as a connect request? Any state value other than
-DPLL_PIN_STATE_DISCONNECTED (including DPLL_PIN_STATE_SELECTABLE) is
-silently treated as a connect here. Other pin-set callbacks in this
-file (ice_dpll_input_state_set, ice_dpll_pin_state_set_sma) explicitly
-reject unsupported states with -EINVAL.
-
-> +	if (new_clk == pf->ptp.port.tx_clk_req)
-> +		goto unlock;
-> +
-> +	pf->ptp.port.tx_clk_req = new_clk;
-> +	pf->dplls.txclk_switch_requested = true;
-> +	queue_work(pf->dplls.wq, &pf->dplls.txclk_work);
-> +unlock:
-> +	mutex_unlock(&pf->dplls.lock);
-> +	return 0;
-
-[Medium]
-Once the worker has been queued, this returns 0 unconditionally. If
-ice_txclk_set_clk() in the worker fails, the only feedback is a
-dev_err and a silent rollback of tx_clk_req to tx_clk in
-ice_dpll_txclk_work(). There is no extack message to userspace and no
-dpll_pin_change_ntf() emitted on the rollback. After failure the next
-pin-get can still report a different pin as CONNECTED because
-tx_clk_req was reverted.
-
-Would emitting a dpll_pin_change_ntf() from the worker's error path
-help userspace observe that the requested switch did not occur?
-
->  }
->  
->  /**
-> @@ -2651,10 +2724,21 @@ ice_dpll_txclk_state_on_dpll_set(const struct dpll_pin *pin, void *pin_priv,
-
-[ ... ]
-
->  static int
->  ice_dpll_txclk_state_on_dpll_get(const struct dpll_pin *pin, void *pin_priv,
-> @@ -2663,11 +2747,18 @@ ice_dpll_txclk_state_on_dpll_get(const struct dpll_pin *pin, void *pin_priv,
->  				 enum dpll_pin_state *state,
->  				 struct netlink_ext_ack *extack)
->  {
-> -	/*
-> -	 * TODO: query HW status to determine if the TX reference is selected.
-> -	 * To be added in the follow up patches.
-> -	 */
-> -	*state = DPLL_PIN_STATE_DISCONNECTED;
-> +	struct ice_dpll_pin *p = pin_priv;
-> +	struct ice_pf *pf = p->pf;
-> +
-> +	if (ice_dpll_is_reset(pf, extack))
-> +		return -EBUSY;
-> +
-> +	mutex_lock(&pf->dplls.lock);
-> +	if (pf->ptp.port.tx_clk_req == p->tx_ref_src)
-> +		*state = DPLL_PIN_STATE_CONNECTED;
-> +	else
-> +		*state = DPLL_PIN_STATE_DISCONNECTED;
-> +	mutex_unlock(&pf->dplls.lock);
-
-[Medium]
-The commit message says "TX reference selection and synchronization
-status must be observed from hardware rather than inferred from user
-intent", but this get callback derives state from tx_clk_req (the
-user-requested value) rather than from tx_clk (the
-hardware-reconciled value) or from ice_get_serdes_ref_sel_e825c().
-
-If a switch is requested but firmware/AN never accepts it (link never
-comes up, or AN restart fails after the worker rolls back tx_clk_req
-to tx_clk), how long can userspace keep observing the requested pin as
-CONNECTED?
-
->  
->  	return 0;
->  }
-
-[ ... ]
-
-> @@ -4674,10 +4767,21 @@ void ice_dpll_deinit(struct ice_pf *pf)
->  {
->  	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
->  
-> +	/* Clear the flag under the lock so that concurrent callers of
-> +	 * ice_txclk_update_and_notify() either see the cleared flag and
-> +	 * return early, or are already past the check and will finish
-> +	 * before we proceed to free pins and DPLL devices below.
-> +	 */
-> +	mutex_lock(&pf->dplls.lock);
->  	clear_bit(ICE_FLAG_DPLL, pf->flags);
-> +	mutex_unlock(&pf->dplls.lock);
-> +
->  	if (cgu)
->  		ice_dpll_deinit_worker(pf);
->  
-> +	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
-> +		cancel_work_sync(&pf->dplls.txclk_work);
-> +
-
-[High]
-Is the comment above accurate? It claims concurrent callers "will
-finish before we proceed to free pins and DPLL devices", but
-ice_txclk_update_and_notify() drops pf->dplls.lock before invoking
-dpll_pin_change_ntf(old_pin), dpll_pin_change_ntf(new_pin), and
-dpll_device_change_ntf(pf->dplls.txc.dpll). Consider:
-
-  CPU0 (link-up)                        CPU1 (rmmod)
-  ice_txclk_update_and_notify()
-    lock; ICE_FLAG_DPLL set; capture
-    old_pin/new_pin/txc.dpll; unlock
-                                        ice_dpll_deinit()
-                                          lock; clear flag; unlock
-                                          cancel_work_sync (drains
-                                            worker only)
-                                          ice_dpll_deinit_pins()
-                                            -> dpll_pin_put on
-                                               txclks pins
-                                          ice_dpll_deinit_dpll()
-                                            -> dpll_device_put
-    dpll_pin_change_ntf(old_pin)  <-- UAF
-    dpll_device_change_ntf(...)   <-- UAF
-
-cancel_work_sync drains the txclk_work, but the link-change caller
-that invoked ice_txclk_update_and_notify() is not synchronized.
-
-[Medium]
-Separately, this teardown cancels the worker but never invokes
-ice_cpi_ena_dis_clk_ref(..., false) to undo the CPI enables performed
-by ice_txclk_set_clk()/ice_txclk_enable_peer() during the driver's
-lifetime. After unload, do external SyncE/EREF0 references stay
-enabled in hardware on both PHYs across rmmod/modprobe?
-ice_get_serdes_ref_sel_e825c() detects the currently selected clock on
-re-init but cannot detect clocks that were CPI-enabled but never
-AN-selected.
-
->  	ice_dpll_deinit_pins(pf, cgu);
->  	if (!IS_ERR_OR_NULL(pf->dplls.pps.dpll))
->  		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
-
-[ ... ]
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-
-[ ... ]
-
-> @@ -3073,6 +3072,7 @@ static int ice_ptp_setup_pf(struct ice_pf *pf)
->  {
->  	struct ice_ptp *ctrl_ptp = ice_get_ctrl_ptp(pf);
->  	struct ice_ptp *ptp = &pf->ptp;
-> +	u8 port_num, phy;
->  
->  	if (!ctrl_ptp) {
->  		dev_info(ice_pf_to_dev(pf),
-> @@ -3090,6 +3090,10 @@ static int ice_ptp_setup_pf(struct ice_pf *pf)
->  		 &pf->adapter->ports.ports);
->  	mutex_unlock(&pf->adapter->ports.lock);
->  
-> +	port_num = ptp->port.port_num;
-> +	phy = port_num / pf->hw.ptp.ports_per_phy;
-> +	set_bit(port_num, &ctrl_ptp->tx_refclks[phy][pf->ptp.port.tx_clk]);
-> +
->  	return 0;
->  }
-
-[Low]
-Should this set_bit be guarded by a mac_type check? The tx_refclks
-bitmap is sized as [ICE_E825_MAX_PHYS][ICE_REF_CLK_MAX] for the E825
-feature, but this runs unconditionally on every PF. Today phy <= 1
-and tx_clk == ICE_REF_CLK_ENET == 0 for non-E825 platforms, so the
-write stays in bounds, but any future change to ports_per_phy or
-num_lports could push phy beyond ICE_E825_MAX_PHYS.
-
-Would adding an "if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)"
-guard match the rest of the feature?
-
-[Medium]
-Also, is this write protected by any lock? Other writers in
-ice_txclk_update_and_notify() take pf->dplls.lock (which is a
-different mutex from ctrl_pf->dplls.lock when pf != ctrl_pf), and
-readers via ice_txclk_any_port_uses() take ctrl_pf->dplls.lock. The
-writer here holds neither. See related question on the writers below.
-
->  
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txclk.c b/drivers/net/ethernet/intel/ice/ice_txclk.c
-> new file mode 100644
-> index 000000000000..7b3cf8fc399e
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/ice/ice_txclk.c
-
-[ ... ]
-
-> +int ice_txclk_set_clk(struct ice_pf *pf, enum ice_e825c_ref_clk clk)
-> +{
-> +	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-> +	struct ice_port_info *port_info;
-> +	bool clk_in_use;
-> +	u8 port_num, phy;
-> +	int err;
-> +
-> +	if (pf->ptp.port.tx_clk == clk)
-> +		return 0;
-
-[Medium]
-Should this read of pf->ptp.port.tx_clk be done under
-pf->dplls.lock? The field is written under that lock in
-ice_txclk_update_and_notify() and the worker's rollback path. The
-worker invokes ice_txclk_set_clk() after dropping pf->dplls.lock, so
-a concurrent link-up on another CPU may be updating tx_clk
-concurrently here.
-
-If a stale value matches clk and this returns 0, the worker proceeds
-to clear txclk_switch_requested unconditionally, silently abandoning
-the AN restart the request needed.
-
-> +
-> +	if (IS_ERR_OR_NULL(ctrl_pf)) {
-> +		dev_err(ice_pf_to_dev(pf),
-> +			"Can't set tx-clk: no controlling PF\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	port_num = pf->ptp.port.port_num;
-> +	phy = port_num / pf->hw.ptp.ports_per_phy;
-> +	port_info = pf->hw.port_info;
-> +	mutex_lock(&ctrl_pf->dplls.lock);
-> +	clk_in_use = ice_txclk_any_port_uses(ctrl_pf, phy, clk);
-> +	mutex_unlock(&ctrl_pf->dplls.lock);
-> +
-> +	/* Check if the TX clk is enabled for this PHY, if not - enable it */
-> +	if (!clk_in_use) {
-
-[Medium]
-Is this TOCTOU intentional? The lock is dropped between reading
-clk_in_use and acting on it. When pf != ctrl_pf and two PFs
-concurrently switch to the same clock on the same PHY, both observe
-clk_in_use == false (the tx_refclks bits are only set later by
-ice_txclk_update_and_notify() after link-up), and both proceed to
-call ice_cpi_ena_dis_clk_ref().
-
-> +		err = ice_cpi_ena_dis_clk_ref(&pf->hw, phy, clk, true);
-> +		if (err) {
-> +			dev_err(ice_pf_to_dev(pf), "Failed to enable the %u TX clock for the %u PHY\n",
-> +				clk, phy);
-> +			return err;
-> +		}
-> +		err = ice_txclk_enable_peer(pf, clk);
-> +		if (err)
-> +			return err;
-> +	}
-> +
-> +	/* We are ready to switch to the new TX clk. */
-> +	err = ice_aq_set_link_restart_an(port_info, true, NULL,
-> +					 ICE_REFCLK_USER_TO_AQ_IDX(clk));
-> +	if (err)
-> +		dev_err(ice_pf_to_dev(pf),
-> +			"AN restart AQ command failed with err %d\n",
-> +			err);
-> +
-> +	return err;
-
-[Medium]
-If ice_aq_set_link_restart_an() fails, the CPI enables performed
-above on both the local PHY and (for SYNCE/EREF0) the peer PHY are
-not undone. The worker's rollback only resets software state
-(tx_clk_req = tx_clk) and never invokes ice_cpi_ena_dis_clk_ref(...,
-false). tx_refclks for this port is also not yet updated, so
-subsequent code has no record that the clock was enabled in
-hardware.
-
-Would adding rollback of the CPI enables on the AN-restart error
-path keep driver state consistent with hardware?
-
-> +}
-> +
-> +/**
-> + * ice_txclk_update_and_notify - Validate TX reference clock switching
-
-[ ... ]
-
-> +void ice_txclk_update_and_notify(struct ice_pf *pf)
-> +{
-> +	struct ice_ptp_port *ptp_port = &pf->ptp.port;
-> +	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-> +	struct dpll_pin *old_pin = NULL;
-> +	struct dpll_pin *new_pin = NULL;
-
-[ ... ]
-
-> +	if (clk != pf->ptp.port.tx_clk_req) {
-> +		dev_warn(ice_pf_to_dev(pf),
-> +			 "Failed to switch tx-clk for phy %d and clk %u (current: %u)\n",
-> +			 phy, pf->ptp.port.tx_clk_req, clk);
-> +		old_pin = ice_txclk_get_pin(pf, pf->ptp.port.tx_clk_req);
-> +		new_pin = ice_txclk_get_pin(pf, clk);
-> +		pf->ptp.port.tx_clk = clk;
-> +		pf->ptp.port.tx_clk_req = clk;
-> +		/* Update the reference clock bitmap to match the hardware
-> +		 * clock that was actually accepted, so that
-> +		 * ice_txclk_any_port_uses() reflects reality even on failure.
-> +		 */
-> +		if (!IS_ERR_OR_NULL(ctrl_pf))
-> +			for (int i = 0; i < ICE_REF_CLK_MAX; i++)
-> +				(clk == i) ?
-> +				 set_bit(ptp_port->port_num,
-> +					 &ctrl_pf->ptp.tx_refclks[phy][i]) :
-> +				 clear_bit(ptp_port->port_num,
-> +					   &ctrl_pf->ptp.tx_refclks[phy][i]);
-> +		goto err_notify;
-> +	}
-
-[Medium]
-On the firmware-override branch, the bitmap is overwritten to
-reflect the accepted clock, but ice_cpi_ena_dis_clk_ref(..., false)
-is not invoked for the rejected clock that ice_txclk_set_clk() had
-just enabled. After this point, future ice_txclk_any_port_uses()
-checks will not see the rejected clock, so it will never be disabled
-by subsequent code. Is this a hardware-state leak in the cross-PHY
-clock-routing case?
-
-[Medium]
-Also, the writes to ctrl_pf->ptp.tx_refclks[phy][i] here happen under
-pf->dplls.lock, but ice_txclk_any_port_uses() in ice_txclk_set_clk()
-and ice_txclk_enable_peer() takes ctrl_pf->dplls.lock for reads.
-When pf != ctrl_pf those are different mutexes. The multi-iteration
-loop briefly clears the port bit in old slots before setting it in
-the new slot; can a concurrent reader on ctrl_pf observe a torn
-state and call ice_cpi_ena_dis_clk_ref redundantly?
-
-> +
-> +	old_pin = ice_txclk_get_pin(pf, pf->ptp.port.tx_clk);
-> +	pf->ptp.port.tx_clk = clk;
-> +	pf->ptp.port.tx_clk_req = clk;
-> +
-> +	if (IS_ERR_OR_NULL(ctrl_pf)) {
-> +		dev_err(ice_pf_to_dev(pf),
-> +			"Can't set tx-clk: no controlling PF\n");
-> +		goto err_notify;
-> +	}
-> +
-> +	/* update Tx reference clock usage map */
-> +	for (int i = 0; i < ICE_REF_CLK_MAX; i++)
-> +		(clk == i) ?
-> +		 set_bit(ptp_port->port_num,
-> +			 &ctrl_pf->ptp.tx_refclks[phy][i]) :
-> +		 clear_bit(ptp_port->port_num,
-> +			   &ctrl_pf->ptp.tx_refclks[phy][i]);
-> +
-> +err_notify:
-> +	/* Update TXC DPLL lock status based on effective TX clk, while still
-> +	 * holding the lock to prevent concurrent link-up events from racing
-> +	 * on dpll_state.
-> +	 */
-> +	if (!IS_ERR_OR_NULL(pf->dplls.txc.dpll)) {
-> +		enum dpll_lock_status new_lock = ice_txclk_lock_status(clk);
-> +
-> +		if (pf->dplls.txc.dpll_state != new_lock)
-> +			pf->dplls.txc.dpll_state = new_lock;
-> +		else
-> +			/* No change; suppress the notification below */
-> +			pf->dplls.txc.dpll = ERR_PTR(-ENODEV);
-> +	}
-
-[High]
-Is overwriting pf->dplls.txc.dpll with ERR_PTR(-ENODEV) here intended
-as a lasting state change?
-
-This is the only handle to the registered dpll_device returned by
-dpll_device_get() during ice_dpll_init_dpll(); it is never restored
-anywhere. After the first time this branch is taken:
-
-  - Every subsequent ice_txclk_update_and_notify() will see
-    IS_ERR_OR_NULL(pf->dplls.txc.dpll) true and skip the dpll_state
-    update and notification. The feature becomes a permanent no-op.
-
-  - ice_dpll_deinit() guards
-    "if (!IS_ERR_OR_NULL(pf->dplls.txc.dpll))
-        ice_dpll_deinit_dpll(pf, &pf->dplls.txc, false);"
-    so dpll_device_unregister() and dpll_device_put() are skipped on
-    unload, leaking the registered DPLL device.
-
-  - ice_dpll_deinit_pins() calls ice_dpll_deinit_txclk_pins() which
-    feeds dt->dpll into ice_dpll_unregister_pins(); that becomes
-    ERR_PTR(-ENODEV) passed into the dpll subsystem.
-
-The trigger is mundane: any TX-clk switch where the new effective
-clock has the same lock status as the old one (for example, both
-SYNCE and EREF0 are LOCKED).
-
-Would a local boolean ("emit_dpll_ntf") instead of mutating the
-long-lived txc.dpll pointer express the suppress-one-notification
-intent without these side effects?
-
-> +	mutex_unlock(&pf->dplls.lock);
-> +
-> +	/* Notify TX clk pins state transition */
-> +	if (old_pin)
-> +		dpll_pin_change_ntf(old_pin);
-> +	if (new_pin)
-> +		dpll_pin_change_ntf(new_pin);
-> +
-> +	if (!IS_ERR_OR_NULL(pf->dplls.txc.dpll))
-> +		dpll_device_change_ntf(pf->dplls.txc.dpll);
-> +}
-
-[High]
-These three notifications run after dropping pf->dplls.lock. The
-old_pin and new_pin pointers, and the txc.dpll pointer, were
-captured under the lock. If ice_dpll_deinit() runs concurrently
-between this unlock and the calls below, ice_dpll_deinit_pins() and
-ice_dpll_deinit_dpll() can free the underlying objects before these
-notification calls dereference them. cancel_work_sync() in
-ice_dpll_deinit() drains the worker but does not synchronize with
-the link-change caller of ice_txclk_update_and_notify(). Is some
-additional synchronization needed before issuing these notifications?
--- 
-This is an AI-generated review.
-
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogSW50ZWwtd2lyZWQtbGFu
+IDxpbnRlbC13aXJlZC1sYW4tYm91bmNlc0Bvc3Vvc2wub3JnPiBPbiBCZWhhbGYgT2YNCj4gTG9r
+dGlvbm92LCBBbGVrc2FuZHINCj4gU2VudDogV2VkbmVzZGF5LCBBcHJpbCAxNSwgMjAyNiAxOjUz
+IEFNDQo+IFRvOiBUYW50aWxvdiwgRW1pbCBTIDxlbWlsLnMudGFudGlsb3ZAaW50ZWwuY29tPjsg
+aW50ZWwtd2lyZWQtDQo+IGxhbkBsaXN0cy5vc3Vvc2wub3JnDQo+IENjOiBuZXRkZXZAdmdlci5r
+ZXJuZWwub3JnOyBLaXRzemVsLCBQcnplbXlzbGF3DQo+IDxwcnplbXlzbGF3LmtpdHN6ZWxAaW50
+ZWwuY29tPjsgQmhhdCwgSmF5IDxqYXkuYmhhdEBpbnRlbC5jb20+OyBCYXJyZXJhLA0KPiBJdmFu
+IEQgPGl2YW4uZC5iYXJyZXJhQGludGVsLmNvbT47IFphcmVtYmEsIExhcnlzYQ0KPiA8bGFyeXNh
+LnphcmVtYmFAaW50ZWwuY29tPjsgTmd1eWVuLCBBbnRob255IEwNCj4gPGFudGhvbnkubC5uZ3V5
+ZW5AaW50ZWwuY29tPjsgYW5kcmV3K25ldGRldkBsdW5uLmNoOw0KPiBkYXZlbUBkYXZlbWxvZnQu
+bmV0OyBlZHVtYXpldEBnb29nbGUuY29tOyBrdWJhQGtlcm5lbC5vcmc7DQo+IHBhYmVuaUByZWRo
+YXQuY29tOyBMb2Jha2luLCBBbGVrc2FuZGVyIDxhbGVrc2FuZGVyLmxvYmFraW5AaW50ZWwuY29t
+PjsNCj4gbGludXgtcGNpQHZnZXIua2VybmVsLm9yZzsgQ2hpdHRpbSwgTWFkaHUgPG1hZGh1LmNo
+aXR0aW1AaW50ZWwuY29tPjsNCj4gZGVjb3RAZ29vZ2xlLmNvbTsgd2lsbGVtYkBnb29nbGUuY29t
+OyBzaGVlbmFtb0Bnb29nbGUuY29tOw0KPiBsdWthc0B3dW5uZXIuZGUNCj4gU3ViamVjdDogUmU6
+IFtJbnRlbC13aXJlZC1sYW5dIFtQQVRDSCBpd2wtbmV4dCB2MiAyLzJdIGlkcGY6IGltcGxlbWVu
+dCBwY2kNCj4gZXJyb3IgaGFuZGxlcnMNCj4gDQo+IA0KPiANCj4gPiAtLS0tLU9yaWdpbmFsIE1l
+c3NhZ2UtLS0tLQ0KPiA+IEZyb206IFRhbnRpbG92LCBFbWlsIFMgPGVtaWwucy50YW50aWxvdkBp
+bnRlbC5jb20+DQo+ID4gU2VudDogVHVlc2RheSwgQXByaWwgMTQsIDIwMjYgNTowMSBQTQ0KPiA+
+IFRvOiBMb2t0aW9ub3YsIEFsZWtzYW5kciA8YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb20+
+OyBpbnRlbC13aXJlZC0NCj4gPiBsYW5AbGlzdHMub3N1b3NsLm9yZw0KPiA+IENjOiBuZXRkZXZA
+dmdlci5rZXJuZWwub3JnOyBLaXRzemVsLCBQcnplbXlzbGF3DQo+ID4gPHByemVteXNsYXcua2l0
+c3plbEBpbnRlbC5jb20+OyBCaGF0LCBKYXkgPGpheS5iaGF0QGludGVsLmNvbT47DQo+ID4gQmFy
+cmVyYSwgSXZhbiBEIDxpdmFuLmQuYmFycmVyYUBpbnRlbC5jb20+OyBaYXJlbWJhLCBMYXJ5c2EN
+Cj4gPiA8bGFyeXNhLnphcmVtYmFAaW50ZWwuY29tPjsgTmd1eWVuLCBBbnRob255IEwNCj4gPiA8
+YW50aG9ueS5sLm5ndXllbkBpbnRlbC5jb20+OyBhbmRyZXcrbmV0ZGV2QGx1bm4uY2g7DQo+ID4g
+ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldDsgZWR1bWF6ZXRAZ29vZ2xlLmNvbTsga3ViYUBrZXJuZWwub3Jn
+Ow0KPiA+IHBhYmVuaUByZWRoYXQuY29tOyBMb2Jha2luLCBBbGVrc2FuZGVyIDxhbGVrc2FuZGVy
+LmxvYmFraW5AaW50ZWwuY29tPjsNCj4gPiBsaW51eC1wY2lAdmdlci5rZXJuZWwub3JnOyBDaGl0
+dGltLCBNYWRodSA8bWFkaHUuY2hpdHRpbUBpbnRlbC5jb20+Ow0KPiA+IGRlY290QGdvb2dsZS5j
+b207IHdpbGxlbWJAZ29vZ2xlLmNvbTsgc2hlZW5hbW9AZ29vZ2xlLmNvbTsNCj4gPiBsdWthc0B3
+dW5uZXIuZGUNCj4gPiBTdWJqZWN0OiBSZTogW1BBVENIIGl3bC1uZXh0IHYyIDIvMl0gaWRwZjog
+aW1wbGVtZW50IHBjaSBlcnJvcg0KPiA+IGhhbmRsZXJzDQo+ID4NCj4gPg0KPiA+DQo+ID4gT24g
+NC8xNC8yMDI2IDQ6MDkgQU0sIExva3Rpb25vdiwgQWxla3NhbmRyIHdyb3RlOg0KPiA+ID4NCj4g
+PiA+DQo+ID4gPj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gPiA+PiBGcm9tOiBUYW50
+aWxvdiwgRW1pbCBTIDxlbWlsLnMudGFudGlsb3ZAaW50ZWwuY29tPg0KPiA+ID4+IFNlbnQ6IFR1
+ZXNkYXksIEFwcmlsIDE0LCAyMDI2IDU6MTcgQU0NCj4gPiA+PiBUbzogaW50ZWwtd2lyZWQtbGFu
+QGxpc3RzLm9zdW9zbC5vcmcNCj4gPiA+PiBDYzogbmV0ZGV2QHZnZXIua2VybmVsLm9yZzsgS2l0
+c3plbCwgUHJ6ZW15c2xhdw0KPiA+ID4+IDxwcnplbXlzbGF3LmtpdHN6ZWxAaW50ZWwuY29tPjsg
+QmhhdCwgSmF5IDxqYXkuYmhhdEBpbnRlbC5jb20+Ow0KPiA+ID4+IEJhcnJlcmEsIEl2YW4gRCA8
+aXZhbi5kLmJhcnJlcmFAaW50ZWwuY29tPjsgTG9rdGlvbm92LCBBbGVrc2FuZHINCj4gPiA+PiA8
+YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb20+OyBaYXJlbWJhLCBMYXJ5c2ENCj4gPiA+PiA8
+bGFyeXNhLnphcmVtYmFAaW50ZWwuY29tPjsgTmd1eWVuLCBBbnRob255IEwNCj4gPiA+PiA8YW50
+aG9ueS5sLm5ndXllbkBpbnRlbC5jb20+OyBhbmRyZXcrbmV0ZGV2QGx1bm4uY2g7DQo+ID4gPj4g
+ZGF2ZW1AZGF2ZW1sb2Z0Lm5ldDsgZWR1bWF6ZXRAZ29vZ2xlLmNvbTsga3ViYUBrZXJuZWwub3Jn
+Ow0KPiA+ID4+IHBhYmVuaUByZWRoYXQuY29tOyBMb2Jha2luLCBBbGVrc2FuZGVyDQo+ID4gPj4g
+PGFsZWtzYW5kZXIubG9iYWtpbkBpbnRlbC5jb20+OyBsaW51eC1wY2lAdmdlci5rZXJuZWwub3Jn
+OyBDaGl0dGltLA0KPiA+ID4+IE1hZGh1IDxtYWRodS5jaGl0dGltQGludGVsLmNvbT47IGRlY290
+QGdvb2dsZS5jb207DQo+ID4gPj4gd2lsbGVtYkBnb29nbGUuY29tOyBzaGVlbmFtb0Bnb29nbGUu
+Y29tOyBsdWthc0B3dW5uZXIuZGUNCj4gPiA+PiBTdWJqZWN0OiBbUEFUQ0ggaXdsLW5leHQgdjIg
+Mi8yXSBpZHBmOiBpbXBsZW1lbnQgcGNpIGVycm9yIGhhbmRsZXJzDQo+ID4gPj4NCj4gPiA+PiBB
+ZGQgY2FsbGJhY2tzIHRvIGhhbmRsZSBQQ0kgZXJyb3JzIGFuZCBGTFIgcmVzZXQuIFdoZW4gcHJl
+cGFyaW5nIHRvDQo+ID4gPj4gaGFuZGxlIHJlc2V0IG9uIHRoZSBidXMsIHRoZSBkcml2ZXIgbXVz
+dCBzdG9wIGFsbCBvcGVyYXRpb25zIHRoYXQNCj4gPiBjYW4NCj4gPiA+PiBsZWFkIHRvIE1NSU8g
+YWNjZXNzIGluIG9yZGVyIHRvIHByZXZlbnQgSFcgZXJyb3JzLiBUbyBhY2NvbXBsaXNoDQo+ID4g
+dGhpcw0KPiA+ID4+IGludHJvZHVjZSBoZWxwZXINCj4gPiA+PiBpZHBmX3Jlc2V0X3ByZXBhcmUo
+KSB0aGF0IGdldHMgY2FsbGVkIHByaW9yIHRvIEZMUiBvciB3aGVuIFBDSQ0KPiA+IGVycm9yDQo+
+ID4gPj4gaXMgZGV0ZWN0ZWQuIFVwb24gcmVzdW1lIHRoZSByZWNvdmVyeSBpcyBkb25lIHRocm91
+Z2ggdGhlIGV4aXN0aW5nDQo+ID4gPj4gcmVzZXQgcGF0aCBieSBzdGFydGluZyB0aGUgZXZlbnQg
+dGFzay4NCj4gPiA+Pg0KPiA+ID4+IFRoZSBmb2xsb3dpbmcgY2FsbGJhY2tzIGFyZSBpbXBsZW1l
+bnRlZDoNCj4gPiA+PiAucmVzZXRfcHJlcGFyZSBydW5zIHRoZSBmaXJzdCBwb3J0aW9uIG9mIHRo
+ZSBnZW5lcmljIHJlc2V0IHBhdGgNCj4gPiA+PiBsZWFkaW5nIHVwIHRvIHRoZSBwYXJ0IHdoZXJl
+IHdlIHdhaXQgZm9yIHRoZSByZXNldCB0byBjb21wbGV0ZS4NCj4gPiA+PiAucmVzZXRfZG9uZS9y
+ZXN1bWUgcnVucyB0aGUgcmVjb3ZlcnkgcGFydCBvZiB0aGUgcmVzZXQgaGFuZGxpbmcuDQo+ID4g
+Pj4gLmVycm9yX2RldGVjdGVkIGlzIHRoZSBjYWxsYmFjayBkZWFsaW5nIHdpdGggUENJIGVycm9y
+cywgc2ltaWxhciB0bw0KPiA+ID4+IHRoZSBwcmVwYXJlIGNhbGwsIHdlIHN0b3AgYWxsIG9wZXJh
+dGlvbnMsIHByaW9yIHRvIGF0dGVtcHRpbmcgYQ0KPiA+ID4+IHJlY292ZXJ5Lg0KPiA+ID4+IC5z
+bG90X3Jlc2V0IGlzIHRoZSBjYWxsYmFjayBhdHRlbXB0aW5nIHRvIHJlc3RvcmUgdGhlIGRldmlj
+ZSwNCj4gPiA+PiBwcm92aWRlZCBhIFBDSSByZXNldCB3YXMgaW5pdGlhdGVkIGJ5IHRoZSBBRVIg
+ZHJpdmVyLg0KPiA+ID4+DQo+ID4gPj4gV2hlcmVhcyBwcmV2aW91c2x5IHRoZSBpbml0IGxvZ2lj
+IGd1YXJhbnRlZWQgbmV0ZGV2cyBkdXJpbmcgcmVzZXQsDQo+ID4gPj4gdGhlIGFkZGl0aW9uIG9m
+IGlkcGZfZGV0YWNoX2FuZF9jbG9zZSgpIHRvIHRoZSBQQ0kgY2FsbGJhY2tzIGZsb3cNCj4gPiA+
+PiBtYWtlcyBpdCBwb3NzaWJsZSBmb3IgdGhlIGZ1bmN0aW9uIHRvIGJlIGNhbGxlZCB3aXRob3V0
+IG5ldGRldnMuDQo+ID4gQWRkDQo+ID4gPj4gY2hlY2sgdG8gYXZvaWQgTlVMTCBwb2ludGVyIGRl
+cmVmZXJlbmNlIGluIHRoYXQgY2FzZS4NCj4gPiA+Pg0KPiA+ID4+IENvLWRldmVsb3BlZC1ieTog
+QWxhbiBCcmFkeSA8YWxhbi5icmFkeUBpbnRlbC5jb20+DQo+ID4gPj4gU2lnbmVkLW9mZi1ieTog
+QWxhbiBCcmFkeSA8YWxhbi5icmFkeUBpbnRlbC5jb20+DQo+ID4gPj4gU2lnbmVkLW9mZi1ieTog
+RW1pbCBUYW50aWxvdiA8ZW1pbC5zLnRhbnRpbG92QGludGVsLmNvbT4NCj4gPiA+PiBSZXZpZXdl
+ZC1ieTogSmF5IEJoYXQgPGpheS5iaGF0QGludGVsLmNvbT4NCj4gPiA+PiBSZXZpZXdlZC1ieTog
+TWFkaHUgQ2hpdHRpbSA8bWFkaHUuY2hpdHRpbUBpbnRlbC5jb20+DQo+ID4gPj4gLS0tDQo+ID4g
+Pj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGYuaCAgICAgIHwgICAzICsN
+Cj4gPiA+PiAgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZl9saWIuYyAgfCAg
+MTMgKystDQo+ID4gPj4gZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWRwZi9pZHBmX21haW4u
+YyB8IDExMg0KPiA+ICsrKysrKysrKysrKysrKysrKysrDQo+ID4gPj4gICAzIGZpbGVzIGNoYW5n
+ZWQsIDEyNiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPiA+ID4+DQo+ID4gPj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZi5oDQo+ID4gPj4g
+Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZHBmL2lkcGYuaA0KPiA+ID4+IGluZGV4IDFk
+MGUzMmU0N2U4Ny4uMTY0ZDJmM2UyMzNhIDEwMDY0NA0KPiA+ID4+IC0tLSBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2lkcGYvaWRwZi5oDQo+ID4gPj4gKysrIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWRwZi9pZHBmLmgNCj4gPiA+PiBAQCAtODgsNiArODgsNyBAQCBlbnVtIGlk
+cGZfc3RhdGUgew0KPiA+ID4+ICAgICogQElEUEZfUkVNT1ZFX0lOX1BST0c6IERyaXZlciByZW1v
+dmUgaW4gcHJvZ3Jlc3MNCj4gPiA+PiAgICAqIEBJRFBGX01CX0lOVFJfTU9ERTogTWFpbGJveCBp
+biBpbnRlcnJ1cHQgbW9kZQ0KPiA+ID4+ICAgICogQElEUEZfVkNfQ09SRV9JTklUOiB2aXJ0Y2hu
+bCBjb3JlIGhhcyBiZWVuIGluaXQNCj4gPiA+PiArICogQElEUEZfUENJX0NCX1JFU0VUOiBSZXNl
+dCB2aWEgdGhlIFBDSSBjYWxsYmFja3MNCj4gPiA+PiAgICAqIEBJRFBGX0ZMQUdTX05CSVRTOiBN
+dXN0IGJlIGxhc3QNCj4gPiA+PiAgICAqLw0KPiA+ID4+ICAgZW51bSBpZHBmX2ZsYWdzIHsNCj4g
+PiA+PiBAQCAtOTcsNiArOTgsNyBAQCBlbnVtIGlkcGZfZmxhZ3Mgew0KPiA+ID4+ICAgCUlEUEZf
+UkVNT1ZFX0lOX1BST0csDQo+ID4gPj4gICAJSURQRl9NQl9JTlRSX01PREUsDQo+ID4gPj4gICAJ
+SURQRl9WQ19DT1JFX0lOSVQsDQo+ID4gPg0KPiA+ID4gLi4uDQo+ID4gPg0KPiA+ID4+ICsvKioN
+Cj4gPiA+PiArICogaWRwZl9wY2lfZXJyX3Jlc3VtZSAtIFJlc3VtZSBvcGVyYXRpb25zIGFmdGVy
+IFBDSSBlcnJvcg0KPiA+IHJlY292ZXJ5DQo+ID4gPj4gKyAqIEBwZGV2OiBQQ0kgZGV2aWNlIHN0
+cnVjdA0KPiA+ID4+ICsgKi8NCj4gPiA+PiArc3RhdGljIHZvaWQgaWRwZl9wY2lfZXJyX3Jlc3Vt
+ZShzdHJ1Y3QgcGNpX2RldiAqcGRldikgew0KPiA+ID4+ICsJc3RydWN0IGlkcGZfYWRhcHRlciAq
+YWRhcHRlciA9IHBjaV9nZXRfZHJ2ZGF0YShwZGV2KTsNCj4gPiA+PiArDQo+ID4gPj4gKwkvKiBG
+b3JjZSBhIFBGUiB3aGVuIHJlc3VtaW5nIGZyb20gUENJIGVycm9yLiAqLw0KPiA+ID4+ICsJaWYg
+KHRlc3RfYW5kX3NldF9iaXQoSURQRl9QQ0lfQ0JfUkVTRVQsIGFkYXB0ZXItPmZsYWdzKSkNCj4g
+PiA+PiArCQlhZGFwdGVyLT5kZXZfb3BzLnJlZ19vcHMudHJpZ2dlcl9yZXNldChhZGFwdGVyLA0K
+PiA+ID4+IElEUEZfSFJfRlVOQ19SRVNFVCk7DQo+ID4gPiBZb3Ugc2F5ICJGb3JjZSBhIFBGUiIs
+IGJ1dCBQRlIgaXMgb25seSB0cmlnZ2VyZWQgb24gdGhlIEFFUiBwYXRoLA0KPiA+IG5vdCBvbiB0
+aGUgRkxSIHBhdGguDQo+ID4NCj4gPiBIZW5jZSB0aGUgImZvcmNlIiAtIHRoZSBjYWxsIHRvIGB0
+cmlnZ2VyX3Jlc2V0YCByZXN1bHRzIGluIGEgUEZSIGFuZA0KPiA+IGlzIG9ubHkgbmVlZGVkIGlu
+IHRoZSBjYXNlIG9mIGEgUENJIGVycm9yLiBJZiB0aGlzIGZ1bmN0aW9uIHdhcyBjYWxsZWQNCj4g
+PiBiZWNhdXNlIGEgdXNlciBpc3N1ZWQgYW4gRkxSLCB0aGUga2VybmVsIHdpbGwgdHJpZ2dlciBp
+dCBmb3IgdXMuIFRoaXMNCj4gPiB3YXkgd2UgY2FuIHJldXNlIHRoZSByZXNldCBoYW5kbGluZyBw
+YXRoIHRvIHJlc3RvcmUgdGhlIG9wZXJhdGlvbiBvZg0KPiA+IHRoZSBuZXRkZXZzLg0KPiA+DQo+
+ID4gVGhvdWdoIEkgbWF5IGJlIG1pc3VuZGVyc3RhbmRpbmcgLSBhcmUgeW91IHJlZmVycmluZyB0
+byB0aGUgd29yZGluZyBvcg0KPiA+IHRoZSBsb2dpYz8NCj4gRnJvbSB0aGUgZmlyc3QgZ2xhbmNl
+IHRoZSBjb21tZW50IGxvb2tzIG1pc2xlYWRpbmcgZnJvbSBteSBwb2ludCBvZiB2aWV3Lg0KPiBQ
+bGVhc2UgY29uc2lkZXIgcmV3b3JkaW5nLg0KPiANCj4gPg0KPiA+IFRoYW5rcywNCj4gPiBFbWls
+DQo+ID4NCj4gPiA+DQo+ID4gPiBFdmVyeXRoaW5nIGVsc2UgbG9va3MgZmluZQ0KPiA+ID4gUmV2
+aWV3ZWQtYnk6IEFsZWtzYW5kciBMb2t0aW9ub3YgPGFsZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwu
+Y29tPg0KPiA+ID4NCj4gPiA+PiArDQo+ID4gPj4gKwlxdWV1ZV9kZWxheWVkX3dvcmsoYWRhcHRl
+ci0+dmNfZXZlbnRfd3EsDQo+ID4gPj4gKwkJCSAgICZhZGFwdGVyLT52Y19ldmVudF90YXNrLA0K
+PiA+ID4+ICsJCQkgICBtc2Vjc190b19qaWZmaWVzKDMwMCkpOw0KPiA+ID4+ICt9DQo+ID4gPg0K
+PiA+ID4gLi4uDQo+ID4gPg0KPiA+ID4+ICAgfTsNCj4gPiA+PiAgIG1vZHVsZV9wY2lfZHJpdmVy
+KGlkcGZfZHJpdmVyKTsNCj4gPiA+PiAtLQ0KPiA+ID4+IDIuMzcuMw0KPiA+ID4NCg0KVGVzdGVk
+LWJ5OiBTYW11ZWwgU2FsaW4gPFNhbXVlbC5zYWxpbkBpbnRlbC5jb20+DQo=
