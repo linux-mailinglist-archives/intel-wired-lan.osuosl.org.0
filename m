@@ -2,81 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mOx7LKH/DmomEAYAu9opvQ
+	id qMpmNZ//DmomEAYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:41 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:39 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7C7565A5268
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CCEC5A5253
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AC37D61778;
-	Thu, 21 May 2026 12:50:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F2B616177E;
+	Thu, 21 May 2026 12:50:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g_qjeqbeoeKo; Thu, 21 May 2026 12:50:33 +0000 (UTC)
+ id NtxP8Y51lSHW; Thu, 21 May 2026 12:50:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9EE6D61762
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3051F61780
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779367833;
-	bh=Iqttwhom+JmYRJxxYtp6HS+wZ+diq/V/HcCw9GotZKA=;
+	s=default; t=1779367834;
+	bh=jcmu0q6NWZAe0K4VVfYwyc3xNvmZHvmqOBbu8OfvQ9U=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=AiYmergARWg9WaWO0zb4wbIKDU0lhhIWR5yZ8ZCcuUvjNiXpg7OHt26+nf4mI8nUF
-	 sHOwW5hk9yvv1ICDE4j0jv1Z/Z0EjEJW8+oHurE+3HovjbQewSyF23DoFUUwfmUaQz
-	 4d0Tp+YwfaFgWPf4ddq8DPqPoObahO04n0JRdRxXvovJghNLHgZMq+/j4n67eP6g/s
-	 5ew9hJrVQfIhSmkDTtEnqA8l0xUVEsF5jyaSOoFXTORIHGE2q/7UNLV/Zr2xuf+qdz
-	 xMDORaYhOwVpIjYGKOZRnayFx0LkhuC2puSybIJSp/uBFIQg52Ejjj1hUugkOgaJ0J
-	 ss8JtJ+xv9wMg==
+	b=L8+QQAQlZ6HfsP6cdWMw5/UMYFcfJkBwVnZo25fepKQFL9aqgxFHRqriE89RErnD/
+	 BDfRnvgXEeVzhPUOKrWUWGfnhYrvToOebYNtFMRk2XUoV8W8UInp6TshjeBJ3icuWA
+	 sPVFRkmohnE193QhQC9Dg2UCC83HffPf6ylTxiCnGIGjAwM4ZAfGhNJHrfV4A35wLh
+	 XUDIg4/VdDrDcpVAnYuGtoXT57oWFUBxPnSoAPnmf533JGWT3ydhvMDoVbjbrqHSLc
+	 4+s3fgM9VGZNk0koxlYdVVTFDsSkfR2244uimzpn0O1QZ11mTQDGWU6vSDsubckOmP
+	 N/OaBsKIDQmJw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9EE6D61762;
-	Thu, 21 May 2026 12:50:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3051F61780;
+	Thu, 21 May 2026 12:50:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 11156282
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:30 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 10777282
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EA365846FB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6038084706
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iUvKU88FMgdL for <intel-wired-lan@lists.osuosl.org>;
+ id DeefzOMjcIjL for <intel-wired-lan@lists.osuosl.org>;
  Thu, 21 May 2026 12:50:28 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
  helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E82AC8470D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E82AC8470D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9132484703
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9132484703
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E82AC8470D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:27 +0000 (UTC)
-X-CSE-ConnectionGUID: /RXRxlqpRM+K2lEc7P0Ttg==
-X-CSE-MsgGUID: bm4Km1huTdixtM7/dyqixQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11792"; a="80013517"
-X-IronPort-AV: E=Sophos;i="6.23,246,1770624000"; d="scan'208";a="80013517"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9132484703
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:28 +0000 (UTC)
+X-CSE-ConnectionGUID: brNIj8D8S+WhBGaA2Icn7g==
+X-CSE-MsgGUID: LAtYWiK/QdeH2pt/+PZP1g==
+X-IronPort-AV: E=McAfee;i="6800,10657,11792"; a="80013520"
+X-IronPort-AV: E=Sophos;i="6.23,246,1770624000"; d="scan'208";a="80013520"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 May 2026 05:50:28 -0700
-X-CSE-ConnectionGUID: ITwO7C4GTq65DMcywsA68A==
-X-CSE-MsgGUID: cathPGAuTIyEWNYo+73SSw==
+ 21 May 2026 05:50:29 -0700
+X-CSE-ConnectionGUID: dvqGcTPBRgiC5Lg2IX3c9A==
+X-CSE-MsgGUID: 4lQw7ib+S7eem2wetP8Jaw==
 X-ExtLoop1: 1
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
  by fmviesa003.fm.intel.com with ESMTP; 21 May 2026 05:50:26 -0700
 Received: from gond.igk.intel.com (gond.igk.intel.com [10.123.220.52])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id A13F32877E;
- Thu, 21 May 2026 13:50:24 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 5A75528780;
+ Thu, 21 May 2026 13:50:25 +0100 (IST)
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, sandeep.penigalapati@intel.com, ananth.s@intel.com,
- alexander.duyck@gmail.com, Marcin Szycik <marcin.szycik@linux.intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Thu, 21 May 2026 13:49:59 +0200
-Message-ID: <20260521115000.4637-10-marcin.szycik@linux.intel.com>
+ alexander.duyck@gmail.com, Lukasz Czapnik <lukasz.czapnik@intel.com>
+Date: Thu, 21 May 2026 13:50:00 +0200
+Message-ID: <20260521115000.4637-11-marcin.szycik@linux.intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20260521115000.4637-1-marcin.szycik@linux.intel.com>
 References: <20260521115000.4637-1-marcin.szycik@linux.intel.com>
@@ -84,25 +82,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1779367828; x=1810903828;
+ t=1779367829; x=1810903829;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=sITYQjZ0WIGE3ESLmkp3SutNMCglo4JI24ljeE+NWH0=;
- b=FmBu2mXMdHxuzbonHqRw1lGSkZasBKA1MrmgZ4LBEHZG6UlBUflhWNxm
- 5E4+YnaUZjbt9WH9GIrNgFd6zGJpKJ99g5xoK8p/CHWYbEtPCyRQZidVA
- DfKvFMpbcbAMkHpzyV4rbS+uUqqSN+i/pSpp92sM8vtwWLG2FIoCHzVTg
- xaCD8BpzuSE+RulSS279E2c8ZDg/w61CvRyF0SNwFVHXrn7n4eIIh+QRA
- GdW3lv0AH9hZGFWa7EwTDm3r7oc3fJg34pk1bS/lOrk3252nh2L+xTlqx
- GlTPcpRcAFDz7EDY2xROhq6IpHNGwSdHNmWffXlnTxN/KvTYMfhr+fYqm
+ bh=nKAESxCQVmQaD4JAO0u2kGq2Irs5fn9TuYYR3JEdBQ0=;
+ b=nWbC075M1MIv2U4T30D5V7gT+XHCP8oFL315dGxBmKrAo2FazXYfe4bA
+ VIH2RmXWT5KyKvzpRaxS75f7JISY0F63Eq9NmEr0oZAzuZeERV3P9sXcS
+ GRrJHQzrZ21G6MzVh52ITguVoPj8effZxDiZIQyxj+qzzFUzH+9q6dahH
+ ooFxgAVEycVuqaEfuPma+M6U77m+GtCKDFUF3RfT9MGaq2sZEN+GjapX+
+ 52fuyXZAkls+0/MREhzflDyS+Pvv52wuuJZtv1+6gOp5PUKi4tkeO+tPB
+ kcP7yl2nUqK8puO0Tk6s8eoXc1WswYNTYij1/Y9ZdgcOR5m0YN0GP+kbF
  g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FmBu2mXM
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 09/10] ice: re-introduce
- ice_dealloc_flow_entry() helper
+ header.a=rsa-sha256 header.s=Intel header.b=nWbC075M
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 10/10] ice: use ACL for ntuple
+ rules that conflict with FDir
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,171 +119,261 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com,linux.intel.com];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid,osuosl.org:dkim,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
+	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	ARC_NA(0.00)[];
+	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim];
 	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCPT_COUNT_FIVE(0.00)[6];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[8];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
 	NEURAL_HAM(-0.00)[-1.000];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 7C7565A5268
+X-Rspamd-Queue-Id: 4CCEC5A5253
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-It was removed in commit ad667d626825 ("ice: remove null checks before
-devm_kfree() calls"). Now it's useful again.
+From: Lukasz Czapnik <lukasz.czapnik@intel.com>
 
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Flow Director can keep only one input set per flow type. After ACL support
+was added for ethtool ntuple rules, the driver still only selected ACL for
+rules with partial masks.
+
+That leaves a gap for rules with full masks that still require a different
+input set than the one already programmed for Flow Director. Such rules go
+through the FDir path, build a different extraction sequence and then fail
+because the existing FDir profile cannot be reused.
+
+Detect this case before programming the rule. Build the candidate IP flow
+segment, compare it with the active non-tunneled FDir profile and, when the
+input sets differ, offload the rule through ACL if ACL is available.
+
+Refactor the IP flow segment setup into a helper so the same logic can be
+used both by the extraction-sequence configuration path and by the conflict
+check.
+
+Signed-off-by: Lukasz Czapnik <lukasz.czapnik@intel.com>
 ---
 v3:
-* ice_flow_acl_add_scen_entry_sync(), ice_flow_add_entry(): call
-  ice_flow_acl_free_act_cntr() in unroll
+* Include flex fields in test_seg to avoid false conflict detection
+* Skip conflict check early for ETHER_FLOW
 v2:
 * Add this patch
 ---
- drivers/net/ethernet/intel/ice/ice_flow.c | 61 +++++++++++++++--------
- 1 file changed, 39 insertions(+), 22 deletions(-)
+ .../ethernet/intel/ice/ice_ethtool_ntuple.c   | 168 +++++++++++++-----
+ 1 file changed, 121 insertions(+), 47 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
-index df82cb36a58b..d3e8e7d1ec89 100644
---- a/drivers/net/ethernet/intel/ice/ice_flow.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flow.c
-@@ -1589,6 +1589,23 @@ ice_flow_find_prof_id(struct ice_hw *hw, enum ice_block blk, u64 prof_id)
- 	return NULL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c b/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
+index 955dca313a8d..aabcbf224731 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
+@@ -1428,6 +1428,115 @@ ice_set_fdir_vlan_seg(struct ice_flow_seg_info *seg,
+ 	return 0;
  }
  
 +/**
-+ * ice_dealloc_flow_entry - Deallocate flow entry memory
-+ * @hw: pointer to the HW struct
-+ * @entry: flow entry to be removed
++ * ice_set_fdir_ip_flow_seg - set IP flow segment based on ethtool flow type
++ * @fsp: pointer to ethtool Rx flow specification
++ * @seg: flow segment for programming
++ * @perfect_fltr: valid on success; returns true if perfect fltr, false if not
++ *
++ * Return: 0 on success and errno in case of error.
 + */
-+static void
-+ice_dealloc_flow_entry(struct ice_hw *hw, struct ice_flow_entry *entry)
++static int ice_set_fdir_ip_flow_seg(struct ethtool_rx_flow_spec *fsp,
++				    struct ice_flow_seg_info *seg,
++				    bool *perfect_fltr)
 +{
-+	if (!entry)
-+		return;
++	switch (fsp->flow_type & ~FLOW_EXT) {
++	case TCP_V4_FLOW:
++		return ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
++					    ICE_FLOW_SEG_HDR_TCP, perfect_fltr);
++	case UDP_V4_FLOW:
++		return ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
++					    ICE_FLOW_SEG_HDR_UDP, perfect_fltr);
++	case SCTP_V4_FLOW:
++		return ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
++					    ICE_FLOW_SEG_HDR_SCTP,
++					    perfect_fltr);
++	case IPV4_USER_FLOW:
++		return ice_set_fdir_ip4_usr_seg(seg, &fsp->m_u.usr_ip4_spec,
++						perfect_fltr);
++	case TCP_V6_FLOW:
++		return ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
++					    ICE_FLOW_SEG_HDR_TCP, perfect_fltr);
++	case UDP_V6_FLOW:
++		return ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
++					    ICE_FLOW_SEG_HDR_UDP, perfect_fltr);
++	case SCTP_V6_FLOW:
++		return ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
++					    ICE_FLOW_SEG_HDR_SCTP,
++					    perfect_fltr);
++	case IPV6_USER_FLOW:
++		return ice_set_fdir_ip6_usr_seg(seg, &fsp->m_u.usr_ip6_spec,
++						perfect_fltr);
++	default:
++		return -EINVAL;
++	}
++}
 +
-+	kfree(entry->entry);
-+	kfree(entry->range_buf);
-+	kfree(entry->acts);
-+	devm_kfree(ice_hw_to_dev(hw), entry);
++/**
++ * ice_fdir_has_input_set_conflict - Check conflict with existing FD filters
++ * @pf: PF structure
++ * @fsp: pointer to ethtool Rx flow specification
++ * @user: user-defined data parsed from flow specification
++ *
++ * Checks if adding this filter to Flow Director would cause an input set
++ * mismatch with existing filters for the same flow type by building
++ * the segment and comparing with existing profiles.
++ *
++ * Return: true if there's a conflict (use ACL), false otherwise (can use FD)
++ */
++static bool
++ice_fdir_has_input_set_conflict(struct ice_pf *pf,
++				struct ethtool_rx_flow_spec *fsp,
++				const struct ice_rx_flow_userdef *user)
++{
++	struct ice_flow_seg_info *test_seg, *old_seg;
++	bool perfect_fltr = false, conflict = false;
++	struct ice_fd_hw_prof *hw_prof;
++	struct ice_hw *hw = &pf->hw;
++	enum ice_fltr_ptype flow;
++	int err;
++
++	if ((fsp->flow_type & ~FLOW_EXT) == ETHER_FLOW)
++		return false;
++
++	flow = ice_ethtool_flow_to_fltr(fsp->flow_type & ~FLOW_EXT);
++	if (flow >= ICE_FLTR_PTYPE_MAX || !hw->fdir_prof ||
++	    !hw->fdir_prof[flow]) {
++		return false;
++	}
++
++	hw_prof = hw->fdir_prof[flow];
++	old_seg = hw_prof->fdir_seg[ICE_FD_HW_SEG_NON_TUN];
++
++	if (!old_seg || hw->fdir_fltr_cnt[flow] == 0)
++		return false;
++
++	test_seg = kzalloc_obj(*test_seg);
++	if (!test_seg)
++		return false;
++
++	err = ice_set_fdir_ip_flow_seg(fsp, test_seg, &perfect_fltr);
++
++	if (err) {
++		kfree(test_seg);
++		return false;
++	}
++
++	if (user && user->flex_fltr)
++		ice_flow_add_fld_raw(test_seg, user->flex_offset,
++				     ICE_FLTR_PRGM_FLEX_WORD_SIZE,
++				     ICE_FLOW_FLD_OFF_INVAL,
++				     ICE_FLOW_FLD_OFF_INVAL);
++
++	/* Compare the test segment with the existing segment */
++	if (memcmp(old_seg, test_seg, sizeof(*test_seg)) != 0)
++		conflict = true;
++
++	kfree(test_seg);
++
++	return conflict;
 +}
 +
  /**
-  * ice_flow_get_hw_prof - return the HW profile for a specific profile ID handle
-  * @hw: pointer to the HW struct
-@@ -1759,11 +1776,7 @@ static int ice_flow_rem_entry_sync(struct ice_hw *hw, enum ice_block blk,
+  * ice_cfg_fdir_xtrct_seq - Configure extraction sequence for the given filter
+  * @pf: PF structure
+@@ -1458,57 +1567,16 @@ ice_cfg_fdir_xtrct_seq(struct ice_pf *pf, struct ethtool_rx_flow_spec *fsp,
+ 		return -ENOMEM;
  	}
  
- 	list_del(&entry->l_entry);
--
--	kfree(entry->entry);
--	kfree(entry->range_buf);
--	kfree(entry->acts);
--	devm_kfree(ice_hw_to_dev(hw), entry);
-+	ice_dealloc_flow_entry(hw, entry);
- 
- 	return 0;
- }
-@@ -2877,6 +2890,9 @@ static int ice_flow_acl_add_scen_entry_sync(struct ice_hw *hw,
- 			/* For the action memory info, update the SW's copy of
- 			 * exist entry with e's action memory info
- 			 */
-+			if (exist->acts_cnt && exist->acts)
-+				ice_flow_acl_free_act_cntr(hw, exist->acts,
-+							   exist->acts_cnt);
- 			kfree(exist->acts);
- 			exist->acts = kzalloc_objs(*exist->acts, e->acts_cnt);
- 			if (!exist->acts) {
-@@ -2906,13 +2922,13 @@ static int ice_flow_acl_add_scen_entry_sync(struct ice_hw *hw,
- 				goto out;
+-	switch (fsp->flow_type & ~FLOW_EXT) {
+-	case TCP_V4_FLOW:
+-		ret = ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
+-					   ICE_FLOW_SEG_HDR_TCP,
+-					   &perfect_filter);
+-		break;
+-	case UDP_V4_FLOW:
+-		ret = ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
+-					   ICE_FLOW_SEG_HDR_UDP,
+-					   &perfect_filter);
+-		break;
+-	case SCTP_V4_FLOW:
+-		ret = ice_set_fdir_ip4_seg(seg, &fsp->m_u.tcp_ip4_spec,
+-					   ICE_FLOW_SEG_HDR_SCTP,
+-					   &perfect_filter);
+-		break;
+-	case IPV4_USER_FLOW:
+-		ret = ice_set_fdir_ip4_usr_seg(seg, &fsp->m_u.usr_ip4_spec,
+-					       &perfect_filter);
+-		break;
+-	case TCP_V6_FLOW:
+-		ret = ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
+-					   ICE_FLOW_SEG_HDR_TCP,
+-					   &perfect_filter);
+-		break;
+-	case UDP_V6_FLOW:
+-		ret = ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
+-					   ICE_FLOW_SEG_HDR_UDP,
+-					   &perfect_filter);
+-		break;
+-	case SCTP_V6_FLOW:
+-		ret = ice_set_fdir_ip6_seg(seg, &fsp->m_u.tcp_ip6_spec,
+-					   ICE_FLOW_SEG_HDR_SCTP,
+-					   &perfect_filter);
+-		break;
+-	case IPV6_USER_FLOW:
+-		ret = ice_set_fdir_ip6_usr_seg(seg, &fsp->m_u.usr_ip6_spec,
+-					       &perfect_filter);
+-		break;
+-	case ETHER_FLOW:
++	if ((fsp->flow_type & ~FLOW_EXT) == ETHER_FLOW) {
+ 		ret = ice_set_ether_flow_seg(dev, seg, &fsp->m_u.ether_spec);
+ 		if (!ret && (fsp->m_ext.vlan_etype || fsp->m_ext.vlan_tci)) {
+-			if (!ice_fdir_vlan_valid(dev, fsp)) {
++			if (!ice_fdir_vlan_valid(dev, fsp))
+ 				ret = -EINVAL;
+-				break;
+-			}
+-			ret = ice_set_fdir_vlan_seg(seg, &fsp->m_ext);
++			else
++				ret = ice_set_fdir_vlan_seg(seg, &fsp->m_ext);
  		}
- 
--		/* As we don't add the new entry to our SW DB, deallocate its
--		 * memories, and return the exist entry to the caller
-+		/* As we don't add the new entry to our SW DB, free its HW
-+		 * counter resources and deallocate its memory, then return
-+		 * the exist entry to the caller
- 		 */
--		kfree(e->entry);
--		kfree(e->range_buf);
--		kfree(e->acts);
--		devm_kfree(ice_hw_to_dev(hw), e);
-+		if (e->acts_cnt && e->acts)
-+			ice_flow_acl_free_act_cntr(hw, e->acts, e->acts_cnt);
-+		ice_dealloc_flow_entry(hw, e);
- 		*entry = exist;
+-		break;
+-	default:
+-		ret = -EINVAL;
++	} else {
++		ret = ice_set_fdir_ip_flow_seg(fsp, seg, &perfect_filter);
  	}
- out:
-@@ -2993,7 +3009,7 @@ int ice_flow_add_entry(struct ice_hw *hw, enum ice_block blk, u64 prof_id,
+ 	if (ret)
+ 		goto err_exit;
+@@ -2239,6 +2307,12 @@ int ice_add_ntuple_ethtool(struct ice_vsi *vsi, struct ethtool_rxnfc *cmd)
+ 	if (pf->hw.acl_tbl && ice_is_acl_filter(fsp))
+ 		return ice_acl_add_rule_ethtool(vsi, cmd);
  
- 	mutex_unlock(&hw->fl_profs_locks[blk]);
- 	if (status)
--		goto out;
-+		goto dealloc_entry;
- 
- 	e->id = entry_id;
- 	e->vsi_handle = vsi_handle;
-@@ -3009,15 +3025,15 @@ int ice_flow_add_entry(struct ice_hw *hw, enum ice_block blk, u64 prof_id,
- 		status = ice_flow_acl_frmt_entry(hw, prof, e, (u8 *)data, acts,
- 						 acts_cnt);
- 		if (status)
--			goto out;
-+			goto dealloc_entry;
- 
- 		status = ice_flow_acl_add_scen_entry(hw, prof, &e);
- 		if (status)
--			goto out;
-+			goto free_cntrs;
- 		break;
- 	default:
- 		status = -EOPNOTSUPP;
--		goto out;
-+		goto dealloc_entry;
- 	}
- 
- 	if (blk != ICE_BLK_ACL) {
-@@ -3029,13 +3045,14 @@ int ice_flow_add_entry(struct ice_hw *hw, enum ice_block blk, u64 prof_id,
- 
- 	*entry_h = ICE_FLOW_ENTRY_HNDL(e);
- 
--out:
--	if (status && e) {
--		kfree(e->entry);
--		kfree(e->range_buf);
--		kfree(e->acts);
--		devm_kfree(ice_hw_to_dev(hw), e);
--	}
-+	return 0;
++	/* Check if this would cause input set conflict with existing FD filters
++	 */
++	if (pf->hw.acl_tbl && ice_fdir_has_input_set_conflict(pf, fsp,
++							      &userdata))
++		return ice_acl_add_rule_ethtool(vsi, cmd);
 +
-+free_cntrs:
-+	if (blk == ICE_BLK_ACL && e->acts_cnt && e->acts)
-+		ice_flow_acl_free_act_cntr(hw, e->acts, e->acts_cnt);
-+dealloc_entry:
-+	if (e)
-+		ice_dealloc_flow_entry(hw, e);
- 
- 	return status;
- }
+ 	ret = ice_cfg_fdir_xtrct_seq(pf, fsp, &userdata);
+ 	if (ret)
+ 		return ret;
 -- 
 2.49.0
 
