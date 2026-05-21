@@ -2,81 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SPtCBpf/DmomEAYAu9opvQ
+	id mIomL53/DmomEAYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:31 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:37 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B84B5A522C
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79CA25A524C
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 May 2026 14:50:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BC4E68470C;
-	Thu, 21 May 2026 12:50:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3370F6175B;
+	Thu, 21 May 2026 12:50:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SHuBHc32vLr3; Thu, 21 May 2026 12:50:28 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aW7LKrQ3P3eZ; Thu, 21 May 2026 12:50:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2FC5D84691
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E95F61774
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779367828;
-	bh=u3s8SFo99oi8+JbbCgvtb5qeEvxlsMgT/LDLNj65x/I=;
+	s=default; t=1779367831;
+	bh=4VzZpmIXUxO7PcAykW7TM120rp/gpAwFDwdK+0mgFUc=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=zq2r3pmTxxmKjl7rSXBNQmdXNP1gPTs2oWDkpCoGgz0YYMZBBMxIRqRfWIcNjGEkZ
-	 vgVSjtcJm8Uhpfy6YyDKvZPAkaaUVIdhamFhwUIGIxekhDSZqz+Mq+i4vtNXDxHzQD
-	 TbKDqyM2yQJvm1awG0CPJNz+7BeLnxMDxv6AZXG1/Nvk1LDQngeB1MD/zmX97mIgLO
-	 jDDE2a4ranzcm+Yvp0XetEv1FIi2iRspIFYHfqBRpNN4clqRnncyV3eBncjs+wzpNd
-	 jsc7jmlrKiFskm7pcajyF7z8U0ZJmPaB/hnsKnQWUqXJ32TZbOMOvxUbiiGMNkNQxs
-	 Qcet6m/LAX+Tw==
+	b=AqlLhpnVE8guWkYNsW69UkIDDG4PRXeml4+9KFpERqEyJ0D879W5LRkgekBx5XmAe
+	 RtuJWL3v8dE/Jzg4/r/yXRs/bnh6eQ+1KSt32o5x6fGCRm7gnPOEHZOlOkw+8Jnv4A
+	 ybdDSq8rMzZsEEWgWas5/epLpMHX+EbFGxEeHPWUDK8Ja5NJ0u7I37jOl3NDbvtZ1m
+	 GXdAfkS/UQUxVSLlx+cDRqwb4GQ+dZRxwUAi3UOSFhEyAa6J8HJyHeFNqDfAaGRd1Q
+	 NUJ8TH8tpbOR1Wf1EcdM5JaM7NRcvVQX/mZK0hQ43ACDKDafbS8yQqsMK5T/DZQiTS
+	 F8l/5s9ph+zDg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2FC5D84691;
-	Thu, 21 May 2026 12:50:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4E95F61774;
+	Thu, 21 May 2026 12:50:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 0EEE9282
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0D628D3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E9627846B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:25 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3930284706
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MvgGijFmSsOL for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 May 2026 12:50:25 +0000 (UTC)
+ id A9_UfQpiYOTV for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 May 2026 12:50:26 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
  helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DE2DC84691
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE2DC84691
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B102384708
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B102384708
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DE2DC84691
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:24 +0000 (UTC)
-X-CSE-ConnectionGUID: fHlRIN8WQNmF4KWt22WQag==
-X-CSE-MsgGUID: mgJrOqOBSBO+5RQxHWXYGg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11792"; a="80013503"
-X-IronPort-AV: E=Sophos;i="6.23,246,1770624000"; d="scan'208";a="80013503"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B102384708
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 May 2026 12:50:25 +0000 (UTC)
+X-CSE-ConnectionGUID: G86AIauMS3q+Xm1P2wreEA==
+X-CSE-MsgGUID: ayNlcIMNSwCxd4zmf2JwgQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11792"; a="80013510"
+X-IronPort-AV: E=Sophos;i="6.23,246,1770624000"; d="scan'208";a="80013510"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  21 May 2026 05:50:25 -0700
-X-CSE-ConnectionGUID: 2Ma4q3aqQNK0CPb6rQFlIQ==
-X-CSE-MsgGUID: TtJa94XfQNS5ey65QWJLFw==
+X-CSE-ConnectionGUID: d4cW2P5uRp6oPoICV8f7Hg==
+X-CSE-MsgGUID: nKYbTJ+9TqO/o6iP4CkkWA==
 X-ExtLoop1: 1
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa003.fm.intel.com with ESMTP; 21 May 2026 05:50:22 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 21 May 2026 05:50:23 -0700
 Received: from gond.igk.intel.com (gond.igk.intel.com [10.123.220.52])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 6A7B828780;
- Thu, 21 May 2026 13:50:21 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 1152328781;
+ Thu, 21 May 2026 13:50:22 +0100 (IST)
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
 Cc: netdev@vger.kernel.org, sandeep.penigalapati@intel.com, ananth.s@intel.com,
  alexander.duyck@gmail.com, Marcin Szycik <marcin.szycik@linux.intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Date: Thu, 21 May 2026 13:49:55 +0200
-Message-ID: <20260521115000.4637-6-marcin.szycik@linux.intel.com>
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Date: Thu, 21 May 2026 13:49:56 +0200
+Message-ID: <20260521115000.4637-7-marcin.szycik@linux.intel.com>
 X-Mailer: git-send-email 2.49.0
 In-Reply-To: <20260521115000.4637-1-marcin.szycik@linux.intel.com>
 References: <20260521115000.4637-1-marcin.szycik@linux.intel.com>
@@ -84,26 +83,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1779367825; x=1810903825;
+ t=1779367826; x=1810903826;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=icADDd2KOT855mztfX2cI/CHcPBzXRh4dlK5GAnzF6c=;
- b=evaGSkE9rOth+6t0RUaq8uNvoayaaBYwGnC8Z5lRUYyJVratpeyuwxwh
- FY0t2u//XUl17f7rdOfAVpQX7MtcfYTtDexHyQ88xyGHsw5nBecbTNNI5
- n1cA7NoFQcXW1uyzNwuJilqobt9ElshoPFnhhvq5Di79O/F4Q/oAHUpuY
- G6dRy3fzA0p2eQNEml3i+YSQmBfbt9dzQsSrJ5UxcZPBPquTtO3gEKU03
- mmbDug4rUdhdmReirb/3Ik2A/fmjuQwaBhkdNHlzX1oPDNk8n85YaFz38
- ZSNDge5CRZR2gnUALx/EFkyB7A+j8Z8Y4Et7CJumJXcjoxc2JkvUi2Rhx
+ bh=XPjgjfXxDJbAO1pCwf5tCCchzCnZ52KDl1yvvyI+Y54=;
+ b=Lu3bPFoZtMhkbNRerdaD4xP3hT/KpCpe84Qxn/Wc52Uae7dCHWjoHXy4
+ 48RfUkoGzacW3cSxMgLBoxVNiaef0Q8jn2rPOoP9HuCmzklDUFbAleN5T
+ i0qWzLz8Q4II8Gtd6p7f+Ri8Dkbu/a0S/M05+8Xf83+MOLZPpdHUlX1xJ
+ OXiWrlHbYpnnNoPUaZgwg0RaB8GvFXb+6bR4kF+HTYtBWbUkv/b2hTTqv
+ zI8rcnFNvtY5uIDlyA50M1I1K1qBObrEm5KClVlUwu/nEF07whcbUF7bj
+ kMdaAKURyJYKqNmKFWymEtkHfMTqDmbQQ9HN1veB2nTUOUSWKM0Cx+apZ
  g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=evaGSkE9
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 05/10] Revert "ice: remove
- unused ice_flow_entry fields"
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Lu3bPFoZ
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 06/10] ice: use plain
+ alloc/dealloc for ice_ntuple_fltr
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,92 +116,91 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com,linux.intel.com];
 	MIME_TRACE(0.00)[0:+];
 	ARC_NA(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.intel.com:mid,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
 	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[8];
+	RCPT_COUNT_SEVEN(0.00)[7];
 	NEURAL_HAM(-0.00)[-1.000];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
 	RCVD_COUNT_SEVEN(0.00)[10]
-X-Rspamd-Queue-Id: 7B84B5A522C
+X-Rspamd-Queue-Id: 79CA25A524C
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-This reverts commit 4cd7bc7144ec2c0bb27208c3bb1f153dfd44b1c7.
-These fields will be needed in the following commits.
+Change struct ice_ntuple_fltr allocation from devm_ to plain alloc,
+since its lifetime is not tied to the device. All such objects are being
+removed on device remove via ice_deinit_features() -> ice_deinit_fdir()
+-> ice_vsi_manage_fdir() -> ice_fdir_del_all_fltrs()
 
 Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
 v2:
 * Add this patch
 ---
- drivers/net/ethernet/intel/ice/ice_flow.h | 3 +++
- drivers/net/ethernet/intel/ice/ice_flow.c | 5 ++++-
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
-index bbfc7b4a432e..ff6af6589862 100644
---- a/drivers/net/ethernet/intel/ice/ice_flow.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flow.h
-@@ -458,8 +458,11 @@ struct ice_flow_entry {
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c b/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
+index b8014a0e7df4..44c3e4f50146 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool_ntuple.c
+@@ -1750,7 +1750,7 @@ void ice_fdir_del_all_fltrs(struct ice_vsi *vsi)
+ 			ice_fdir_write_all_fltr(pf, f_rule, false);
+ 		ice_fdir_update_cntrs(hw, f_rule, false);
+ 		list_del(&f_rule->fltr_node);
+-		devm_kfree(ice_pf_to_dev(pf), f_rule);
++		kfree(f_rule);
+ 	}
+ }
  
- 	u64 id;
- 	struct ice_flow_prof *prof;
-+	/* Flow entry's content */
-+	void *entry;
- 	enum ice_flow_priority priority;
- 	u16 vsi_handle;
-+	u16 entry_sz;
- };
+@@ -1853,7 +1853,7 @@ ice_ntuple_update_list_entry(struct ice_pf *pf, struct ice_ntuple_fltr *input,
+ 			 */
+ 			ice_fdir_do_rem_flow(pf, old_fltr->flow_type);
+ 		list_del(&old_fltr->fltr_node);
+-		devm_kfree(ice_hw_to_dev(hw), old_fltr);
++		kfree(old_fltr);
+ 	}
+ 	if (!input)
+ 		return err;
+@@ -2204,7 +2204,7 @@ int ice_add_ntuple_ethtool(struct ice_vsi *vsi, struct ethtool_rxnfc *cmd)
+ 		return -ENOSPC;
+ 	}
  
- #define ICE_FLOW_ENTRY_HNDL(e)	((u64)(uintptr_t)e)
-diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
-index 855d296aeed8..e42367853253 100644
---- a/drivers/net/ethernet/intel/ice/ice_flow.c
-+++ b/drivers/net/ethernet/intel/ice/ice_flow.c
-@@ -1604,6 +1604,7 @@ ice_flow_rem_entry_sync(struct ice_hw *hw, enum ice_block __always_unused blk,
+-	input = devm_kzalloc(dev, sizeof(*input), GFP_KERNEL);
++	input = kzalloc_obj(*input);
+ 	if (!input)
+ 		return -ENOMEM;
  
- 	list_del(&entry->l_entry);
+@@ -2248,7 +2248,7 @@ int ice_add_ntuple_ethtool(struct ice_vsi *vsi, struct ethtool_rxnfc *cmd)
+ 	mutex_unlock(&hw->fdir_fltr_lock);
+ free_input:
+ 	if (ret)
+-		devm_kfree(dev, input);
++		kfree(input);
  
-+	devm_kfree(ice_hw_to_dev(hw), entry->entry);
- 	devm_kfree(ice_hw_to_dev(hw), entry);
- 
- 	return 0;
-@@ -2024,8 +2025,10 @@ ice_flow_add_entry(struct ice_hw *hw, enum ice_block blk, u64 prof_id,
- 	*entry_h = ICE_FLOW_ENTRY_HNDL(e);
- 
- out:
--	if (status)
-+	if (status && e) {
-+		devm_kfree(ice_hw_to_dev(hw), e->entry);
- 		devm_kfree(ice_hw_to_dev(hw), e);
-+	}
- 
- 	return status;
+ 	return ret;
  }
 -- 
 2.49.0
