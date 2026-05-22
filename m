@@ -2,132 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id wCFQHukREGryTAYAu9opvQ
+	id +M3UKFAVEGphTQYAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 May 2026 10:20:57 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 May 2026 10:35:28 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66D775B06F7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 May 2026 10:20:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 19E2D5B0A4D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 May 2026 10:35:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0E4BF4259F;
-	Fri, 22 May 2026 08:20:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 05FE8429AD;
+	Fri, 22 May 2026 08:35:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Z48mneMQNwnp; Fri, 22 May 2026 08:20:54 +0000 (UTC)
+ id rAj-QLmodQ98; Fri, 22 May 2026 08:35:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 783A5425A6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E055428D8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779438054;
-	bh=FtBUHZ5NTfzEhm+9SPa+wbOEFPDSpIs8MinMBuqfMJM=;
-	h=Date:From:To:Cc:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1779438925;
+	bh=JoM/uClrQl+2MRZinFsOHtBmLH1eKT3bd0enlbi9aRY=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=frAbix5OplL+fE/Rc+tMNE2UfI1QyKUIT8fEw9B7SLbQ7XrECM4utnIFRK8lv1CZ7
-	 +lidh4LoMxVkCbynw/MneEd92EGwuJNdXpp9g24qEm8jiBobeE2gLoz8eqV2ElFml3
-	 SZr3C7Y52G0TXOSpAWRbc4kh1yEmDIN90GAD+VvXG/ZS9VkHHYuF8tlr/s2dRvDey8
-	 c5x/ysB2nRW4lhrwdhwFQOKGZup+sl71CB7BxWC7oAa/CizGlUUbu3kVP0xK0JPwsw
-	 SdAC/br/47r1Uq+F5zT0rMNhPTB0ZmKTeSUPGTjosTyKBtHuRqQ7pFcedBegaU+lo3
-	 ETOxZxgr10KAw==
+	b=0wW8n0rZbUy4TPNnpQk6kgz+kp7CzZvk/5exLCJAdu6LDaJZoNtC8A3j8WlZK53c3
+	 iJN7HcVTk0oBTnENJnsDvUgnn+c9gzJQAr/s1dbS3q2J3U6UfgEgoRMhpmT0vAUwcc
+	 Mfv/eKAWYOBGHh1XLoN1Bpkkm4fGWG5mKuYpRqWMBbe4smNuHJxO3l7hsS2Ieskuiw
+	 GF0Cow3csIc1Ac61LlDRX5hSPmQB9AAM7l7bzSjwk3liScGgMHOQo5jLq8ouLcQzK1
+	 2JpB9JeOX8x/Ved1zZ3mIvvwyouSdnKMUk6IX2Ol1SRyTSTItVZq3HA9yV/WVf9Q9w
+	 hXWy6ygqYcahQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 783A5425A6;
-	Fri, 22 May 2026 08:20:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3E055428D8;
+	Fri, 22 May 2026 08:35:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 81AD9282
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:20:52 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 48F5D265
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:35:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7350E4259F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:20:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3A0FE85353
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:35:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hfkSgIygbCMd for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 May 2026 08:20:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42f; helo=mail-wr1-x42f.google.com;
- envelope-from=david.laight.linux@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 873B542599
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 873B542599
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
- [IPv6:2a00:1450:4864:20::42f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 873B542599
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:20:51 +0000 (UTC)
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-452169ae568so4558174f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 01:20:51 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779438049; x=1780042849;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=FtBUHZ5NTfzEhm+9SPa+wbOEFPDSpIs8MinMBuqfMJM=;
- b=eR/4pXKqOeuRbAotQiftNkWEgc+vh5dQbHOWUBK+r6v7T1CrYWvGlnVBXfRmGEfKf3
- FxdMTMyUQ+QZke60ES21LIJ/kqeIJv0gd+1fi2Xm3mRgakfYI6F4zbe9K2GlJvBHV5lw
- ynBSnjxhA53608kJlmBWcSbX5qg5e6E0TzpTMOEKsmWeCk8eSdGknwEQ7sFP4lHkOy1v
- XVSVcjfLA5Sly1XWApU6ACQo1JnpPWI/jX+VwQguUjMFdkz8ElfiyApY8zC4h6mjqlu1
- jmxqltycNpoyVHNJ4BkDOr+pqFm2arvPS6TxaiNXs7cApNkMLML3baE160SmFhK7AXAA
- ySww==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9ySNyOyB5YqEFyuI4LjY5v61ZafnuoyorH8XQF+w8w1bM8uCf8xKr1n93D8rseqWWza0HRGEx25S+Mq0vzerc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyCZ9r6oT6Z0wTuYWg8FoWCcObY4ra+VRFpEpyzlJoBOEfGet3H
- 87H40oseU7d7p7nPO3CHVFmJAxDVevbQ517mdd0epT8jYFiVyHPOWOKH
-X-Gm-Gg: Acq92OHiu9NVnhgrCLlzvDo4s4Ufddg1fw4RtadaOJLxDhtBQuD1hUBVifzncwtRio8
- f3ucvQG1oJOMDU2Z+wSqvb0XfDv+568DcniqVcC329+y4RvddHKRQaakvs+NAEABVWzm5NHlS6i
- P6YcxBM3nDTumULYHtu4dL38KX6qDqKHdEagnvJLhXSYRrAsL8ge+c5yXM68bwxh+Av8ASZm3F5
- rxi6yX3wZpNQdCMIqKaiDpvydOZRdOdDrFBKyaJ3mXs5FMD8hKzby8RCqo3iNIdAc/5+cpdY4Kh
- s2RYnbOUYKkzE77Ahv+8C5EHCIm+sY+NZXW7j9ODbqFC/FlWhkw2W1J3ZeBL5bFDQcG9JNSMR5r
- UDoWNcZF+QsyGQwMxQjMa0kXORGwOV9qcYGWg6/cqGlTYJGc5143AHqVVOYi1+T+obNTh4Bdm/b
- 8nKylyTEfBF2HvBj+C7wGdv+c365gY/7r4Iap6zSu23raY3dFZzDYGW0A25H6/6uSahjXmUIMT6
- oo=
-X-Received: by 2002:a05:6000:1446:b0:43d:7a97:78af with SMTP id
- ffacd0b85a97d-45eb38e04e3mr3459686f8f.42.1779438048957; 
- Fri, 22 May 2026 01:20:48 -0700 (PDT)
-Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45eb6d49132sm2187929f8f.24.2026.05.22.01.20.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 22 May 2026 01:20:48 -0700 (PDT)
-Date: Fri, 22 May 2026 09:20:42 +0100
-From: David Laight <david.laight.linux@gmail.com>
-To: Ashwin Gundarapu <linuxuser509@zohomail.in>
-Cc: "anthonylnguyen" <anthony.l.nguyen@intel.com>,
- "anthony.l.nguyen@intel.com" <przemyslaw.kitszel@intel.com>, "andrewnetdev"
- <andrew+netdev@lunn.ch>, "davem" <davem@davemloft.net>, "edumazet"
- <edumazet@google.com>, "kuba" <kuba@kernel.org>, "pabeni"
- <pabeni@redhat.com>, "intel-wired-lan" <intel-wired-lan@lists.osuosl.org>,
- "netdev" <netdev@vger.kernel.org>, "linux-kernel"
- <linux-kernel@vger.kernel.org>
-Message-ID: <20260522092042.5773213f@pumpkin>
-In-Reply-To: <19e4e74ff40.601fab765713.9212104302286035517@zohomail.in>
-References: <19e4e74ff40.601fab765713.9212104302286035517@zohomail.in>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aQBUKMdhAj0R for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 May 2026 08:35:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4E31385351
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E31385351
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4E31385351
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 May 2026 08:35:22 +0000 (UTC)
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id D12C860138;
+ Fri, 22 May 2026 08:35:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C792E1F000E9;
+ Fri, 22 May 2026 08:35:18 +0000 (UTC)
+Date: Fri, 22 May 2026 09:35:16 +0100
+From: Simon Horman <horms@kernel.org>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ magnus.karlsson@intel.com, kuba@kernel.org, pabeni@redhat.com,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ Sunitha Mekala <sunithax.d.mekala@intel.com>
+Message-ID: <20260522083516.GH1506108@horms.kernel.org>
+References: <20260519105637.839438-1-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260519105637.839438-1-maciej.fijalkowski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1779438049; x=1780042849; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FtBUHZ5NTfzEhm+9SPa+wbOEFPDSpIs8MinMBuqfMJM=;
- b=PccLHEsTUPB1VXnOeMlEAQnOTZlt7riqqDv+ho4u5brIVaPETctLU2Fzg7Q1+r1ANx
- pb5B8VXakiWk5E4bBaHOrsJSGJ+JFuNHgHYYmIz21+y+lZEq9y5FZJAP7TcXlyPpp6bl
- kU8KsTZ5pet3t2qiHgksf2vrM9lffQcAvkf1S2nKmpLoZPiyEQcYJE9ySQt/2GXOmVhj
- PuGLQmy6iMogPqIi9/Tqfrm3vRR9+r4o3uP4zySZWQY1suBkvTTVJvTpO+zxxLk1tM2p
- VK95WbjH7NY4RhQ4dtLhynn7EYDGldmeMaiuGO9ddepF/ItsgHZxdvnXKzARM3BYHVTR
- YBmQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20260515; t=1779438920;
+ bh=JoM/uClrQl+2MRZinFsOHtBmLH1eKT3bd0enlbi9aRY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=c1K5dVotxN+kvD2QRcHywC3QMDJryMa3IF96pTlLSzJtMPiHJzqP3tq53QoGcF0tM
+ +sTkOq3xVOMmm2QYxL9hbP7m7UC+fx649XFdhj76rJ37W9rj+PkhMOe1qHj413hWju
+ 6FSagutMcXPu6ibeE+MAlx7MDZb5NcdLuG2sJsd9zVnGCC6w3y53HALI8SiGg0rwH6
+ Jmm0S/bTIne/zjIVxnjNj+AVFH1deGtY8K3vEDZv2uJsaxpM3mldrG24I3K/JT6TkB
+ OYcyekqCCwLeN2LSshpEZgQ6jJIjH3L2J/jsQbTuBSE93Q+SOtDIWYJz/cmNDg94kq
+ WGQ5Grs0dWupg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20251104 header.b=PccLHEsT
-Subject: Re: [Intel-wired-lan] [PATCH net-next] net: e100: remove redundant
- static variable initializations
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20260515 header.b=c1K5dVot
+Subject: Re: [Intel-wired-lan] [PATCH v3 iwl-net] i40e: keep q_vectors array
+ in sync with channel count changes
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -142,82 +105,98 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.39 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_RHS_NOT_FQDN(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_ALL(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:linuxuser509@zohomail.in,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[checkpatch.pl:url,zohomail.in:email,osuosl.org:dkim,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS(0.00)[m:maciej.fijalkowski@intel.com,m:netdev@vger.kernel.org,m:magnus.karlsson@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:przemyslaw.kitszel@intel.com,m:jacob.e.keller@intel.com,m:sunithax.d.mekala@intel.com,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	FREEMAIL_FROM(0.00)[gmail.com];
-	FORGED_SENDER(0.00)[davidlaightlinux@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_FROM(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[sashiko.dev:url,intel.com:email,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,horms.kernel.org:mid];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[davidlaightlinux@gmail.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	NEURAL_HAM(-0.00)[-0.994];
-	RCPT_COUNT_SEVEN(0.00)[11];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	NEURAL_HAM(-0.00)[-0.999];
+	RCPT_COUNT_SEVEN(0.00)[9];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 66D775B06F7
+X-Rspamd-Queue-Id: 19E2D5B0A4D
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, 22 May 2026 12:22:30 +0530
-Ashwin Gundarapu <linuxuser509@zohomail.in> wrote:
-
-> From: Ashwin Gundarapu <linuxuser509@zohomail.in>
-> Date: Fri, 22 May 2026 12:20:23 +0530
-> Subject: [PATCH] net: e100: remove redundant static variable initializations
+On Tue, May 19, 2026 at 12:56:38PM +0200, Maciej Fijalkowski wrote:
+> For the main VSI, i40e_set_num_rings_in_vsi() always derives
+> num_q_vectors from pf->num_lan_msix. At the same time, ethtool -L stores
+> the user requested channel count in vsi->req_queue_pairs and the queue
+> setup path uses that value for the effective number of queue pairs.
 > 
-> Remove '= 0' from static variables eeprom_bad_csum_allow and use_io.
-> Static variables are zero-initialized by default.
+> This leaves queue and vector counts out of sync after shrinking channel
+> count via ethtool -L. The active queue configuration is reduced, but the
+> VSI still keeps the full PF-sized q_vector topology.
 > 
-> Found by checkpatch.pl
-
-Not worth the churn for existing code.
-
--- David
-
+> That mismatch breaks reconfiguration flows which rely on vector/NAPI
+> state matching the effective channel configuration. In particular,
+> toggling /sys/class/net/<dev>/threaded after reducing the channel count
+> can hang, and later channel-count changes can fail because VSI reinit
+> does not rebuild q_vectors to match the new vector count.
 > 
-> Signed-off-by: Ashwin Gundarapu <linuxuser509@zohomail.in>
+> Fix this by making the main VSI num_q_vectors follow the effective
+> requested channel count, capped by the available MSI-X vectors. Update
+> i40e_vsi_reinit_setup() to rebuild q_vectors during VSI reinit so the
+> vector topology is refreshed together with the ring arrays when channel
+> count changes.
+> 
+> Keep alloc_queue_pairs unchanged and based on pf->num_lan_qps so the VSI
+> retains its full queue capacity.
+> 
+> Selftest napi_threaded.py was originally used when Jakub reported hang
+> on /sys/class/net/<dev>/threaded toggle. In order to make it pass on
+> i40e, use persistent NAPI configuration for q_vector NAPIs so NAPI
+> identity and threaded settings survive q_vector reallocation across
+> channel-count changes. This is achieved by using netif_napi_add_config()
+> when configuring q_vectors.
+> 
+> $ export NETIF=ens259f1np1
+> $ sudo -E env PATH="$PATH" ./tools/testing/selftests/drivers/net/napi_threaded.py
+> TAP version 13
+> 1..3
+> ok 1 napi_threaded.napi_init
+> ok 2 napi_threaded.change_num_queues
+> ok 3 napi_threaded.enable_dev_threaded_disable_napi_threaded
+> Totals: pass:3 fail:0 xfail:0 xpass:0 skip:0 error:0
+> 
+> Reported-by: Jakub Kicinski <kuba@kernel.org>
+> Closes: https://lore.kernel.org/intel-wired-lan/20260316133100.6054a11f@kernel.org/
+> Fixes: d2a69fefd756 ("i40e: Fix changing previously set num_queue_pairs for PFs")
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Tested-by: Sunitha Mekala <sunithax.d.mekala@intel.com>
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 > ---
->  drivers/net/ethernet/intel/e100.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-> index bfacf877ca40..bdddd4315cbb 100644
-> --- a/drivers/net/ethernet/intel/e100.c
-> +++ b/drivers/net/ethernet/intel/e100.c
-> @@ -167,8 +167,8 @@ MODULE_FIRMWARE(FIRMWARE_D101S);
->  MODULE_FIRMWARE(FIRMWARE_D102E);
-> 
->  static int debug = 3;
-> -static int eeprom_bad_csum_allow = 0;
-> -static int use_io = 0;
-> +static int eeprom_bad_csum_allow;
-> +static int use_io;
->  module_param(debug, int, 0);
->  module_param(eeprom_bad_csum_allow, int, 0444);
->  module_param(use_io, int, 0444);
-> --
-> 2.43.0
-> 
+> v3:
+> - address UAF when ring arrays where freed before q_vector's ring
+>   containers (Sashiko, Jacob)
+> - remove bool params from alloc/free array routines (Simon)
+> v2:
+> - NULL vsi->tx_rings in i40e_vsi_alloc_arrays() (Sashiko)
 
+I notice that there is an AI review of this patch available on sashiko.dev.
+However, I believe that flags a pre-existing problem that is orthogonal to
+this patch. o I do no think that review should block progress of this
+patch but rather be looked at in the context of possible follow-up.
