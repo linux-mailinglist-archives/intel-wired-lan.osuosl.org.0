@@ -2,103 +2,212 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 4B/OJ39qFWrgUwcAu9opvQ
+	id mH28BR1rFWoBVAcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:40:15 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:42:53 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA2DE5D37E6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:40:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 66E035D38B5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:42:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4B9D440F70;
-	Tue, 26 May 2026 09:40:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A20AE40F74;
+	Tue, 26 May 2026 09:42:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Zyo9Aw6bR17k; Tue, 26 May 2026 09:40:07 +0000 (UTC)
+ id zuWLQp6usdZY; Tue, 26 May 2026 09:42:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD34E40F67
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E992B40F6B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779788407;
-	bh=xYnMf7PbwovyukCB4o37+lc8dmmV+6MzmnC9B76WU5I=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1779788568;
+	bh=1nn7AUupkN/NSaLASz81qTi1sAPRk5lRdRh21dA7z8U=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=RXnk9MyZ8OxxvWGnUucdyhUFkdJjOzuxdptSmvtsDRwqANX6RMfYSMONBfq5K37v+
-	 hQX+m2ANQcOf9y+9A+nCw7LQMAJuyQ5lEZT8puEbrji16f0kyUeOwPFvaiSDonIrkU
-	 Rp6wA0xSkWGTpPMw42WX9N+8aBBANEeDdSf6LdAZmTReNnlnF4OPTfaNuIycoMZ0ib
-	 j64RQqVN38qAPxNdH66yh5xsSc340N5rpkW/ZEFsgnrO4SvSAORbDXBqETBbP+pIMB
-	 vBvBaEHkpZwSQkf2Eyx+sNHbxSuNCGdevD4LJ5QfQHq8nTdXIHcQNElbHayVsW+0m+
-	 Ey+Ui6uTWKcXQ==
+	 From;
+	b=CJu10CTFb70CCGkE6odvcekPuJjio53WhjP8sCfVpBTUK4WbhNRhoAB9u0fv/zaex
+	 tatiJ7K+0XWaQ+1Otaz85s1HMyyFf1BshZ/4cgtv+87Uo8ay0uyZG7alBQmcADEiOH
+	 NcneTKLpU/4HbII4oqKGpKSUGiLJg/h7L0DGHucqYk6n93BkcFj5J/sZvf9E8navXl
+	 eK/YoEs1nrKRWGr7nPyK67W4pTSzdfhRqbma1Hm04ftNPxvMixZ6L7UL7lchBHuc4+
+	 qlflrgrUdmF++vBK+DhuMYNXbw+3w2CJ7dzGSpgvFCCv8MmqIIk9T7B1pPnD8u5OVg
+	 RQbEvhSHMrBoA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AD34E40F67;
-	Tue, 26 May 2026 09:40:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E992B40F6B;
+	Tue, 26 May 2026 09:42:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 837A4297
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:40:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4D87221F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:42:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7509060DB7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:40:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3BB02407BF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:42:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qvf_LNlClbQL for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 09:40:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qWq5DdrxXBQk for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 May 2026 09:42:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9E11460BA7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9E11460BA7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9E11460BA7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:40:04 +0000 (UTC)
-X-CSE-ConnectionGUID: UWWvUmJFTA2j/TSDDkwlBg==
-X-CSE-MsgGUID: jY9kh7keQHOHKpf9ZocTrA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11797"; a="90897372"
-X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="90897372"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2026 02:40:03 -0700
-X-CSE-ConnectionGUID: 86rkt1HDTmmpTY+Tq9TucQ==
-X-CSE-MsgGUID: LwqOmzd8RGm6ODiKWGHkKw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 50E0140183
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 50E0140183
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 50E0140183
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:42:46 +0000 (UTC)
+X-CSE-ConnectionGUID: l0CEv/tIRdCcTFD6oHwbKw==
+X-CSE-MsgGUID: zkFBKiXrR1mKSB+o3WffNQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11797"; a="92068419"
+X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="92068419"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2026 02:42:46 -0700
+X-CSE-ConnectionGUID: 10CgvIu5Ti2EbLtFnBjL+A==
+X-CSE-MsgGUID: u8X7kvNbRqCAtQ0jN3iYyg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="241027345"
-Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa010.jf.intel.com with ESMTP; 26 May 2026 02:39:57 -0700
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
-To: netdev@vger.kernel.org
-Date: Tue, 26 May 2026 11:34:19 +0200
-Message-Id: <20260526093419.639220-9-grzegorz.nitka@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20260526093419.639220-1-grzegorz.nitka@intel.com>
-References: <20260526093419.639220-1-grzegorz.nitka@intel.com>
+X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="237454803"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 May 2026 02:42:45 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 26 May 2026 02:42:44 -0700
+Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Tue, 26 May 2026 02:42:44 -0700
+Received: from SN4PR0501CU005.outbound.protection.outlook.com (40.93.194.42)
+ by edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Tue, 26 May 2026 02:42:43 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EXTKRzHsGD0PBlNLYPboWE+RxyMSM5Uxw/TU1LxM3v52usomvmLnk2dQlfF0yO1tyAyd1+wm4MSQ1JV0A76wRFjGeTOUrqmaiqLFXuUgMq1OoaW37IMsIZrhzi5ER8Fw4ybca20LdECCUccBFsERetA7uIyWUzKbcFcmE0PpBhUTUTb1PYADMMncQasGc7nyIr+iKMMfVDup4Bwlod362bqhfeFvLS2kWdxLue4BqHrlWtkDAll/yiQWmzU+DtZtp001gn9/o1Xg6njrkrhXT3hN5dtor4/6ye3kHbHIb2AwqjyOjK0ywLYMV5TKRQHSVKNJ8tBB0bvmhsARPL+JNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1nn7AUupkN/NSaLASz81qTi1sAPRk5lRdRh21dA7z8U=;
+ b=LRw6/p2BRX3pikz77Q1Ns5Z6tryRo+3GoRrjUC0oSFdIbc5yhbyiniD+R9Pyvtv1U9MHq80b+vaPvHv9muAYpEZhgQrpVrxr1rhFhZZCxneerP+e5emOrV1Yx0Zv5aAh7veRpDi13EG5ufDXUnlhcPuCqghAR7kp6EvTC/Qfghkqd2hzDOnqosWSC7xUFEWgYx89l7r6d4t14MgEnhaLw1vsZH/Nl7umJmOb5Leyyztc6dFgKYvGc15tLvXh69a/iOSdtsNOhlGLjiDn8wYou18oD9xWvZHSWnndtXFsv/BHrW/U9mTQgrCVa/petlFHujBrvSop0dJ/d1CZ0ngUfQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA1PR11MB6219.namprd11.prod.outlook.com (2603:10b6:208:3e9::15)
+ by SA3PR11MB7555.namprd11.prod.outlook.com (2603:10b6:806:311::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.20; Tue, 26 May
+ 2026 09:42:38 +0000
+Received: from IA1PR11MB6219.namprd11.prod.outlook.com
+ ([fe80::a2b9:8e8:c48b:ea31]) by IA1PR11MB6219.namprd11.prod.outlook.com
+ ([fe80::a2b9:8e8:c48b:ea31%5]) with mapi id 15.21.0048.016; Tue, 26 May 2026
+ 09:42:38 +0000
+From: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+CC: "Vecera, Ivan" <ivecera@redhat.com>, "vadim.fedorenko@linux.dev"
+ <vadim.fedorenko@linux.dev>, "kuba@kernel.org" <kuba@kernel.org>,
+ "jiri@resnulli.us" <jiri@resnulli.us>, "edumazet@google.com"
+ <edumazet@google.com>, "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
+ Arkadiusz" <arkadiusz.kubalewski@intel.com>, "andrew+netdev@lunn.ch"
+ <andrew+netdev@lunn.ch>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "horms@kernel.org" <horms@kernel.org>,
+ "Prathosh.Satish@microchip.com" <Prathosh.Satish@microchip.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, "pabeni@redhat.com"
+ <pabeni@redhat.com>, "davem@davemloft.net" <davem@davemloft.net>
+Thread-Topic: [Intel-wired-lan] [PATCH v10 net-next 8/8] ice: implement E825
+ TX ref clock control and TXC hardware sync status
+Thread-Index: AQHc6D414cb+am6eS0GRknMI2tbQz7YW1vKAgAlAXqA=
+Date: Tue, 26 May 2026 09:42:38 +0000
+Message-ID: <IA1PR11MB621921F1D42E54263072AA34920B2@IA1PR11MB6219.namprd11.prod.outlook.com>
+References: <20260520094618.3934384-1-grzegorz.nitka@intel.com>
+ <IA3PR11MB8986654A0580BB728596FDCDE5012@IA3PR11MB8986.namprd11.prod.outlook.com>
+In-Reply-To: <IA3PR11MB8986654A0580BB728596FDCDE5012@IA3PR11MB8986.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA1PR11MB6219:EE_|SA3PR11MB7555:EE_
+x-ms-office365-filtering-correlation-id: 0a403c86-4ff9-4e18-da9e-08debb0b1fd3
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|1800799024|366016|376014|38070700021|22082099003|56012099003|18002099003|3023799007|4143699003|11063799006|6133799003;
+x-microsoft-antispam-message-info: iN/mjXnLBIIF55CRVetdZ3nyS30t1T7YES1voF5E5/1M0bHkEvzZ6J42e5s9hTI9h4QOzYLEyurDMXuywtG4qPsAmP3V6Opl1vqwe416Yel64g/RyfzYKjm+XiIeZOXLfXxuFBV8Vrmf+ZqWYJC2BaCdCQ12BorFGCnyKTmZQBk3IYiAp9yh22ZdKYGtJUwzknoojwyTuEHZMGYwOtdf30+VbmTJGl0SDk9Frte7dhHATsj8ESUPRE+zHduXgb+wKMEfmHWkuU8mSeblMwo+3jJ5ye50eJu9YYTBpnE+erwzEN5uPyToFtu1wUeWXQpclD2uuOcKQ5cR+8A56Uh21mlqzsQHCIfBvSyttyTxpOGZ9cx+GU215RQGL7eu7K2c/xOkKoiX+l92SkOVySw/fIhHBeUY+8zH0l4wYBFLjkn2H2ViPrKiUtFx7nJCRT9KzXUSK/529P26oPsyb9Hn2Z8df1z9YFp1Rk/ckKe6RthXJSOEr6+ZH3an0C9hIuCar3/aQ8B2EDG1pGGNatDiu+zpj5LqnIWkIUV9X5BX+8fwlC+ZdEvT2XHXEOc66ubSdodrMrqx0HZBn1ZfTT7r+N5nOhgJrmjhRWi87hIDmbdvFLxGeWWALaTk+SQC69GH3JP5JaocP2Cfju2pWYdNBhU7HFGDyA6x2fEVLHmZM5Gqvh0MBzbWQFKQa8K87Yq3JVLfQpC3/5eTDEC9Md0wRDifeoLfY8ifK0y2TGb/MkgFXLIs5yoyRuROzqlecs+8
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA1PR11MB6219.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(1800799024)(366016)(376014)(38070700021)(22082099003)(56012099003)(18002099003)(3023799007)(4143699003)(11063799006)(6133799003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oha6C492Q+7U+aha+2vQt0ibQZfIRGqyrvhFgbFlRZSs/RcOGs6sEyDUBA/8?=
+ =?us-ascii?Q?UFkRnj+ehoQWHHaUPc9xGCoTvIqC777xgg/8MHC1FhkMZO+9+Iso8GLf+qk1?=
+ =?us-ascii?Q?Hbia2iu/v/qaZMP0JuONWCBTLyoEMhQNvsaC6rEf1qWoWhdUosv7tcGNggJp?=
+ =?us-ascii?Q?Mgiy9lDJhsqyMY57UPBXLeBa7M0Kqh7/HS0vZP3aWa/QIkS5d8eRRtVNK2Bh?=
+ =?us-ascii?Q?ckfzGIG46fsp15QISCgpdwGGJXLk0SPGEqc4B8TnbwJNu6onAGqSliGxbnMY?=
+ =?us-ascii?Q?LAaXWpjdcrztacHuZB0x1j0J/dE+e5sVH+TXfvT+kbp5V39csxnD4oUZv49A?=
+ =?us-ascii?Q?GuYZ8po8YTc1woGK4gmjvt9QTQ4B3Qz5dwiKpfJdBcJOfcvj7aaeZydhpKSz?=
+ =?us-ascii?Q?2GkYdHlZaHUnRhlEzRcnYZc4vJivuXfToqDk+6ipuPqtRKauebLsWLFr7Mi5?=
+ =?us-ascii?Q?YJe8BuyZ2Br5Cf2/+SR2hTBVKvd99vj48v7r6eMjtY5XdzmszJwZ+WyhVnOx?=
+ =?us-ascii?Q?uDNYqjk0um8RqG+ijmMzEKucixLuFCzt1q500ToNtEwldSIyfScVwGafnCsx?=
+ =?us-ascii?Q?ol50s7FZSIpyrvzWb2xXZOe9kulUa3M8h57akqyw0jq1UIj82qKTjpuWlrVI?=
+ =?us-ascii?Q?veMN5vHj8AipD7h6rgZQx+8ruBocT+NkDlcL7QHIcwuydn4u+3BBjpyFDU4r?=
+ =?us-ascii?Q?bID5e4ElDDC3UZMATZLabCRVX68RjnbD3Ny4SxGZUnNUNursEWzfTIaCxMnI?=
+ =?us-ascii?Q?jG7yVwqUatGwCvzs7z05tQ29ZbNJdTPCw6bMuKru2QQhOs6U0J8YAV13IUfv?=
+ =?us-ascii?Q?iDuleEAI2+PcQ+3xL7y19IKr62ATGzIZ3ErIMyca3qetGi7iumWfKLlPNFna?=
+ =?us-ascii?Q?hovgur1M8PnVzDagEd+oRML6IvagnQhYdAPuXJbHQMtTsAodpu5bhXJsEp7F?=
+ =?us-ascii?Q?3YYz615VcYkktOxWk5Jg8eqNV+6bFLp6YMdhqPGsZJFIKNVB2YwtF62MNmef?=
+ =?us-ascii?Q?Gj6F7BSyrhP0faGQZxruzKQMGyCr2ISg26BJfIHuSXiCK3OXk7t2EU9T/aI6?=
+ =?us-ascii?Q?0aa79nuIYFuNPlq26okRjJhLiHOzCuaiYHb5I74UfINWL8Cntw+2gxHCZBC2?=
+ =?us-ascii?Q?1dYHTQjooVywQbTTfZHTAprbqkpoiSg+N8ihby9wQ3opcXLGGFOoqcG+CiPW?=
+ =?us-ascii?Q?WcIosahYE9i0A/KxzNMJrRWKu4at9W12q06yoXbL++vkdGDG9MXLlBPbHV5X?=
+ =?us-ascii?Q?WHOEXodEs71nuvYdgpstTf7ywsQM4dfS7N32/YhSYXZK+Ta/9xHig/0/zkvF?=
+ =?us-ascii?Q?yLlK8Q43dx/jOocn6wlQoZHjFkMnhse0LQrOCjdBlIccy2w68mOFyt7Jy/LF?=
+ =?us-ascii?Q?FxFLAVRo+o3rLqfVlxRp740eaYG/ykDYIcFZyboYHdkSyVCeJQjUgVvnUqOZ?=
+ =?us-ascii?Q?i05G5WNhyA0YxJ5tArzyol4l6eU8uPx7/+Xz7kW4CqlwsiJ7+REqTrSDpMc4?=
+ =?us-ascii?Q?X3mtGGM60m1Zd4o8K8SRidWC6M6P/3qw9oxl11M/G6eOw96QCtm2rNaWxeea?=
+ =?us-ascii?Q?s36EGU14i9Mw2mkTGq1kc9XXHRw0+9r2UvIgtBra4Ivv8Bb6W8u4gqJt3wA0?=
+ =?us-ascii?Q?q48KRAk0RDpK+oS0/xLi9wh7H/nH56W9d92RLLgyhoekm3J9WN0XL6kXilw8?=
+ =?us-ascii?Q?PLJAldNdEsQCkhCUc7HpJVRJ3G4w5rfwH1ZC9b36UR1y/LjRk/putPwLthi1?=
+ =?us-ascii?Q?MfY9GaCVig=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=y
-Content-Transfer-Encoding: 8bit
+X-Exchange-RoutingPolicyChecked: QgvEIAvSxmGI6i5PYdoeiAMYDE6aqzojIqU1UixZ2MCK59IBu2ypdCdbuxGovkdzFebPnLtHXLWEE2AqgUThXCis+e9TCKW3EZMQf2WJxK7rMGlTpbjL2SglL1wgxIX1rYzQS5zLIpH1bwJHt9Cz2xir8VWpdH9ULV/p+mewPJ6T0ZNHnq010Wx3DDWwJx9oSCRLXDRlglpwx4TR3QcaP7UTHvd79bMmx5ma731XcDxYbGjno/fkv2tDvkV76C6GdEZuUqNiFTIPcTLoMDtd1IYmH5cVQlarY9NxerQPPwxZ8rhXVizqh+mxuIgyN0hl6oCvHEH+W8nh0FPopbWZfg==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6219.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0a403c86-4ff9-4e18-da9e-08debb0b1fd3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 May 2026 09:42:38.6040 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: LdGJ7CZDhIkdeS05NNKpUrihUsVpiGhdRwoGOprqjvfUJ7eY4x0Tp2hfbMJFQh8K6zNL+zA967ijH+lIFzdL5jM6n6d2PeGGIr/Ha+AZYnQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7555
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1779788404; x=1811324404;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=fModgQHBNf8X+h8xy8/2csR/VLRvCAwt+ZvtzNa22aI=;
- b=WazS9ZuRc3/A+xBc+B9WbEt161zmTmqs3KIaUQqM/HZaUNBQTl1DvXw1
- jDrCyTLHmaEpuRufizjYYCSR+tldWRffjbLfpYA/GTimEfP1oaoDA+evI
- ddmBERjdNOsHfyJSlvcVtbeARgom602LB/mDYz1tVehNGFu7UoKdfM9KC
- wAZPM+lFISn0psc5Q8bQUwBFW+9D6i7KX+/uWtKiiHih5MigetCcCSnbJ
- eTJQeV+KxINrB7m4kpFISREXS54upnkVKFSq7SHSdSY1rNBpw/F5nSqqp
- Hs8Xcg55U+TOTjhvimTTIlqFXO4KcqE56wuy25Xu6nRhRidTM7cMOLnMS
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1779788566; x=1811324566;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=X6eXgL0yhf2cj4r0sZF6ovxgmyfm2fiYUy19VOtq5Ss=;
+ b=fUU5WtHNH6B2At4eGawBBOHBVm8DGdP7z2OGAVTZIL0XRGNk+clmy4+a
+ FTuw8iiFcgKVldlI2JdGMxFjA2d9Amc8O95pdhptFZVW0mMfu7Zg6yG96
+ tH1fg3ZO1+QsSGE3uA6ncY3QLFr+La/7EoU8NDVFU+9WISzxPgKBn+SKm
+ SEaRQIZWw8Xcz/x8zoc28yMcNf/WTjw58NE19QboL8TRgdSqZjR2qHqZh
+ xwUD+gooxLhw2PuMoWA9cRB7mhad7OZSEHM0xnOZ78P/61x1jiRYaUdQb
+ prnJ51B2H61RVHjNsDnc4iUo7T6Z0TGJ0XpCVfEx7/sLKYui2WtzS11Zw
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=WazS9ZuR
-Subject: [Intel-wired-lan] [PATCH v11 net-next 8/8] ice: implement E825 TX
- ref clock control and TXC hardware sync status
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=fUU5WtHN
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v10 net-next 8/8] ice: implement E825
+ TX ref clock control and TXC hardware sync status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -111,1007 +220,207 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, kuba@kernel.org,
- jiri@resnulli.us, edumazet@google.com, przemyslaw.kitszel@intel.com,
- richardcochran@gmail.com, donald.hunter@gmail.com,
- linux-kernel@vger.kernel.org, arkadiusz.kubalewski@intel.com,
- andrew+netdev@lunn.ch, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- Prathosh.Satish@microchip.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
- davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Spamd-Result: default: False [1.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,osuosl.org:dkim];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[19];
 	FORGED_SENDER(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[18];
-	ARC_NA(0.00)[];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net];
-	DKIM_TRACE(0.00)[osuosl.org:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	TO_DN_NONE(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
 	FROM_NEQ_ENVFROM(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	NEURAL_HAM(-0.00)[-0.997];
+	MISSING_XM_UA(0.00)[];
+	NEURAL_HAM(-0.00)[-0.994];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: DA2DE5D37E6
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo]
+X-Rspamd-Queue-Id: 66E035D38B5
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Build on the previously introduced TXC DPLL framework and implement
-full TX reference clock control and hardware-backed synchronization
-status reporting for E825 devices.
 
-E825 firmware may accept or override TX reference clock requests based
-on device-wide routing constraints and link conditions. Because the
-final selection becomes visible only after a link-up event, the driver
-splits the observation into two complementary signals:
 
-  - TXCLK pin state reflects the requested TX reference clock
-    (pf->ptp.port.tx_clk_req). After a link-up, the value is reconciled
-    against the SERDES reference selector by
-    ice_txclk_update_and_notify(); if firmware or auto-negotiation
-    selected a different clock, tx_clk_req is overwritten so that pin
-    state converges to the actual hardware selection.
+> -----Original Message-----
+> From: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> Sent: Wednesday, May 20, 2026 2:25 PM
+> To: Nitka, Grzegorz <grzegorz.nitka@intel.com>; netdev@vger.kernel.org
+> Cc: Vecera, Ivan <ivecera@redhat.com>; vadim.fedorenko@linux.dev;
+> kuba@kernel.org; jiri@resnulli.us; edumazet@google.com; Kitszel,
+> Przemyslaw <przemyslaw.kitszel@intel.com>; richardcochran@gmail.com;
+> donald.hunter@gmail.com; linux-kernel@vger.kernel.org; Kubalewski,
+> Arkadiusz <arkadiusz.kubalewski@intel.com>; andrew+netdev@lunn.ch;
+> intel-wired-lan@lists.osuosl.org; horms@kernel.org;
+> Prathosh.Satish@microchip.com; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; pabeni@redhat.com;
+> davem@davemloft.net
+> Subject: RE: [Intel-wired-lan] [PATCH v10 net-next 8/8] ice: implement E8=
+25
+> TX ref clock control and TXC hardware sync status
+>=20
+>=20
+>=20
+> > -----Original Message-----
+> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > Of Grzegorz Nitka
+> > Sent: Wednesday, May 20, 2026 11:46 AM
+> > To: netdev@vger.kernel.org
+> > Cc: Vecera, Ivan <ivecera@redhat.com>; vadim.fedorenko@linux.dev;
+> > kuba@kernel.org; jiri@resnulli.us; edumazet@google.com; Kitszel,
+> > Przemyslaw <przemyslaw.kitszel@intel.com>; richardcochran@gmail.com;
+> > donald.hunter@gmail.com; linux-kernel@vger.kernel.org; Kubalewski,
+> > Arkadiusz <arkadiusz.kubalewski@intel.com>; andrew+netdev@lunn.ch;
+> > intel-wired-lan@lists.osuosl.org; horms@kernel.org;
+> > Prathosh.Satish@microchip.com; Nguyen, Anthony L
+> > <anthony.l.nguyen@intel.com>; pabeni@redhat.com;
+> davem@davemloft.net
+> > Subject: [Intel-wired-lan] [PATCH v10 net-next 8/8] ice: implement
+> > E825 TX ref clock control and TXC hardware sync status
+> >
+> > Build on the previously introduced TXC DPLL framework and implement
+> > full TX reference clock control and hardware-backed synchronization
+> > status reporting for E825 devices.
+> >
+> > E825 firmware may accept or override TX reference clock requests based
+> > on device-wide routing constraints and link conditions. Because the
+> > final selection becomes visible only after a link-up event, the driver
+> > splits the observation into two complementary signals:
+> >
+> >   - TXCLK pin state reflects the requested TX reference clock
+> >     (pf->ptp.port.tx_clk_req). After a link-up, the value is
+> > reconciled
+> >     against the SERDES reference selector by
+> >     ice_txclk_update_and_notify(); if firmware or auto-negotiation
+> >     selected a different clock, tx_clk_req is overwritten so that pin
+> >     state converges to the actual hardware selection.
+> >
+> >   - TXC DPLL lock status reflects hardware synchronization:
+> >       * LOCKED   when an external TX reference is in use
+> >       * UNLOCKED when falling back to ENET/TXCO, or when a requested
+> >         external reference has not (yet) been accepted by hardware.
+> >
+> > Userspace observing only pin state therefore sees user intent, while
+> > lock status is the authoritative indicator of whether the requested
+> > clock is actually selected and synchronizing. This matches the DPLL
+> > subsystem model where pin state describes topology and device lock
+> > status describes signal quality.
+> >
+> > TX reference selection topology:
+> >   - External references (SYNCE, EREF0) are represented as TXCLK pins
+> >   - The internal ENET/TXCO clock has no pin representation; when
+> >     selected, all TXCLK pins are reported DISCONNECTED
+> >
+> > With this change, TX reference clocks on E825 devices can be reliably
+> > selected, observed via standard DPLL interfaces, and monitored for
+> > effective synchronization through TXC DPLL lock status.
+> >
+> > Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/ice/Makefile     |   2 +-
+> >  drivers/net/ethernet/intel/ice/ice.h        |  12 +
+> >  drivers/net/ethernet/intel/ice/ice_dpll.c   | 172 ++++++++++-
+> >  drivers/net/ethernet/intel/ice/ice_dpll.h   |  30 +-
+> >  drivers/net/ethernet/intel/ice/ice_ptp.c    |  37 ++-
+> >  drivers/net/ethernet/intel/ice/ice_ptp.h    |   7 +
+> >  drivers/net/ethernet/intel/ice/ice_ptp_hw.c |  37 +++
+> > drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  10 +
+> > drivers/net/ethernet/intel/ice/ice_txclk.c  | 320 ++++++++++++++++++++
+> > drivers/net/ethernet/intel/ice/ice_txclk.h  |  40 +++
+> >  10 files changed, 647 insertions(+), 20 deletions(-)  create mode
+> > 100644 drivers/net/ethernet/intel/ice/ice_txclk.c
+> >  create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.h
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/Makefile
+> > b/drivers/net/ethernet/intel/ice/Makefile
+> > index 38db476ab2ec..95fd0c49800f 100644
+> > --- a/drivers/net/ethernet/intel/ice/Makefile
+> > +++ b/drivers/net/ethernet/intel/ice/Makefile
+> > @@ -54,7 +54,7 @@ ice-$(CONFIG_PCI_IOV) +=3D	\
+> >  	ice_vf_mbx.o		\
+> >  	ice_vf_vsi_vlan_ops.o	\
+> >  	ice_vf_lib.o
+> > -ice-$(CONFIG_PTP_1588_CLOCK) +=3D ice_ptp.o ice_ptp_hw.o ice_dpll.o
+> > ice_tspll.o ice_cpi.o
+> > +ice-$(CONFIG_PTP_1588_CLOCK) +=3D ice_ptp.o ice_ptp_hw.o ice_dpll.o
+> > +ice_tspll.o ice_cpi.o ice_txclk.o
+> >  ice-$(CONFIG_DCB) +=3D ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
+> >  ice-$(CONFIG_RFS_ACCEL) +=3D ice_arfs.o
+> >  ice-$(CONFIG_XDP_SOCKETS) +=3D ice_xsk.o
+> > diff --git a/drivers/net/ethernet/intel/ice/ice.h
+> > b/drivers/net/ethernet/intel/ice/ice.h
+> > index 725b130dd3a2..f72bb1aa4067 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice.h
+> > +++ b/drivers/net/ethernet/intel/ice/ice.h
+> > @@ -1155,4 +1155,16 @@ static inline struct ice_hw
+> > *ice_get_primary_hw(struct ice_pf *pf)
+> >  	else
+> >  		return &pf->adapter->ctrl_pf->hw;
+> >  }
+>=20
+> ...
+>=20
+> >
+> >  enum ice_ptp_tx_interrupt {
+> > @@ -236,6 +240,7 @@ struct ice_ptp_pin_desc {
+> >   * @info: structure defining PTP hardware capabilities
+> >   * @clock: pointer to registered PTP clock device
+> >   * @tstamp_config: hardware timestamping configuration
+> > + * @tx_refclks: bitmaps table to store the information about TX
+> > + reference clocks
+> >   * @reset_time: kernel time after clock stop on reset
+> >   * @tx_hwtstamp_good: number of completed Tx timestamp requests
+> >   * @tx_hwtstamp_skipped: number of Tx time stamp requests skipped
+> @@
+> > -261,6 +266,8 @@ struct ice_ptp {
+> >  	struct ptp_clock_info info;
+> >  	struct ptp_clock *clock;
+> >  	struct kernel_hwtstamp_config tstamp_config;
+> > +#define ICE_E825_MAX_PHYS 2
+> Duplicate #define ICE_E825_MAX_PHYS, previous one in patch 6/8
+> ice_type.h:
+>=20
 
-  - TXC DPLL lock status reflects hardware synchronization:
-      * LOCKED   when an external TX reference is in use
-      * UNLOCKED when falling back to ENET/TXCO, or when a requested
-        external reference has not (yet) been accepted by hardware.
+duplicated definition removed in v11
 
-Userspace observing only pin state therefore sees user intent, while
-lock status is the authoritative indicator of whether the requested
-clock is actually selected and synchronizing. This matches the DPLL
-subsystem model where pin state describes topology and device lock
-status describes signal quality.
-
-TX reference selection topology:
-  - External references (SYNCE, EREF0) are represented as TXCLK pins
-  - The internal ENET/TXCO clock has no pin representation; when
-    selected, all TXCLK pins are reported DISCONNECTED
-
-With this change, TX reference clocks on E825 devices can be reliably
-selected, observed via standard DPLL interfaces, and monitored for
-effective synchronization through TXC DPLL lock status.
-
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
----
- drivers/net/ethernet/intel/ice/Makefile     |   2 +-
- drivers/net/ethernet/intel/ice/ice.h        |  12 +
- drivers/net/ethernet/intel/ice/ice_dpll.c   | 172 ++++++++++-
- drivers/net/ethernet/intel/ice/ice_dpll.h   |  30 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c    |  37 ++-
- drivers/net/ethernet/intel/ice/ice_ptp.h    |   6 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c |  37 +++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  10 +
- drivers/net/ethernet/intel/ice/ice_txclk.c  | 320 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_txclk.h  |  40 +++
- 10 files changed, 646 insertions(+), 20 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.h
-
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 38db476ab2ec..95fd0c49800f 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -54,7 +54,7 @@ ice-$(CONFIG_PCI_IOV) +=	\
- 	ice_vf_mbx.o		\
- 	ice_vf_vsi_vlan_ops.o	\
- 	ice_vf_lib.o
--ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o ice_cpi.o
-+ice-$(CONFIG_PTP_1588_CLOCK) += ice_ptp.o ice_ptp_hw.o ice_dpll.o ice_tspll.o ice_cpi.o ice_txclk.o
- ice-$(CONFIG_DCB) += ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
- ice-$(CONFIG_RFS_ACCEL) += ice_arfs.o
- ice-$(CONFIG_XDP_SOCKETS) += ice_xsk.o
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 725b130dd3a2..f72bb1aa4067 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -1155,4 +1155,16 @@ static inline struct ice_hw *ice_get_primary_hw(struct ice_pf *pf)
- 	else
- 		return &pf->adapter->ctrl_pf->hw;
- }
-+
-+/**
-+ * ice_get_ctrl_pf - Get pointer to Control PF of the adapter
-+ * @pf: pointer to the current PF structure
-+ *
-+ * Return: A pointer to ice_pf structure which is Control PF,
-+ * NULL if it's not initialized yet.
-+ */
-+static inline struct ice_pf *ice_get_ctrl_pf(struct ice_pf *pf)
-+{
-+	return !pf->adapter ? NULL : pf->adapter->ctrl_pf;
-+}
- #endif /* _ICE_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-index 1b193e0c35ab..fcc70a7add3b 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-@@ -4,6 +4,7 @@
- #include "ice.h"
- #include "ice_lib.h"
- #include "ice_trace.h"
-+#include "ice_txclk.h"
- #include <linux/dpll.h>
- #include <linux/property.h>
- 
-@@ -19,8 +20,6 @@
- #define ICE_DPLL_SW_PIN_INPUT_BASE_QSFP		6
- #define ICE_DPLL_SW_PIN_OUTPUT_BASE		0
- 
--#define E825_EXT_EREF_PIN_IDX			0
--#define E825_EXT_SYNCE_PIN_IDX			1
- #define E825_RCLK_PARENT_0_PIN_IDX		0
- #define E825_RCLK_PARENT_1_PIN_IDX		1
- 
-@@ -2615,6 +2614,82 @@ ice_dpll_rclk_state_on_pin_get(const struct dpll_pin *pin, void *pin_priv,
- 	return ret;
- }
- 
-+/**
-+ * ice_dpll_txclk_work - apply a pending TX reference clock change
-+ * @work: work_struct embedded in struct ice_dplls
-+ *
-+ * This worker executes an outstanding TX reference clock switch request
-+ * that was previously queued via the DPLL TXCLK pin set callback.
-+ *
-+ * The worker performs only the operational part of the switch, issuing
-+ * the necessary firmware commands to request a new TX reference clock
-+ * selection (e.g. triggering an AN restart). It does not verify whether
-+ * the requested clock was ultimately accepted by the hardware.
-+ *
-+ * Hardware verification, software state reconciliation, pin state
-+ * notification, and TXC DPLL lock-status updates are performed later,
-+ * after link-up, by ice_txclk_update_and_notify().
-+ *
-+ * Context:
-+ *   - Runs in process context on pf->dplls.wq and may sleep.
-+ *   - Serializes access to shared TXCLK state using pf->dplls.lock.
-+ */
-+static void ice_dpll_txclk_work(struct work_struct *work)
-+{
-+	struct ice_dplls *dplls =
-+		container_of(work, struct ice_dplls, txclk_work);
-+	struct ice_pf *pf = container_of(dplls, struct ice_pf, dplls);
-+	struct dpll_pin *old_pin = NULL;
-+	struct dpll_pin *new_pin = NULL;
-+	enum ice_e825c_ref_clk clk;
-+	bool do_switch;
-+	int err;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	do_switch = pf->dplls.txclk_switch_requested;
-+	clk = pf->ptp.port.tx_clk_req;
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	if (!do_switch)
-+		return;
-+
-+	err = ice_txclk_set_clk(pf, clk);
-+
-+	mutex_lock(&pf->dplls.lock);
-+	/* Only clear the request flag if no newer request arrived while
-+	 * the lock was dropped. Otherwise leave it set so the re-queued
-+	 * worker run picks up the updated tx_clk_req value.
-+	 */
-+	if (pf->ptp.port.tx_clk_req == clk)
-+		pf->dplls.txclk_switch_requested = false;
-+	if (err) {
-+		/* Roll back the requested clock to match the current hardware
-+		 * state so that ice_txclk_update_and_notify() does not
-+		 * misinterpret a future link-up as a failed switch. Only roll
-+		 * back if no newer request arrived in the meantime; otherwise
-+		 * the re-queued worker run will apply the updated value.
-+		 */
-+		dev_err(ice_pf_to_dev(pf),
-+			"TX clock switch to %u failed, err=%d; reverting\n",
-+			clk, err);
-+		if (pf->ptp.port.tx_clk_req == clk) {
-+			/* Capture pins for post-unlock notification so that
-+			 * userspace observes the requested pin flipping back
-+			 * to DISCONNECTED and the effective pin to CONNECTED.
-+			 */
-+			new_pin = ice_txclk_get_pin(pf, clk);
-+			old_pin = ice_txclk_get_pin(pf, pf->ptp.port.tx_clk);
-+			pf->ptp.port.tx_clk_req = pf->ptp.port.tx_clk;
-+		}
-+	}
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	if (old_pin)
-+		dpll_pin_change_ntf(old_pin);
-+	if (new_pin)
-+		dpll_pin_change_ntf(new_pin);
-+}
-+
- /**
-  * ice_dpll_txclk_state_on_dpll_set - set a state on TX clk pin
-  * @pin: pointer to a pin
-@@ -2626,7 +2701,9 @@ ice_dpll_rclk_state_on_pin_get(const struct dpll_pin *pin, void *pin_priv,
-  *
-  * Dpll subsystem callback, set a state of a Tx reference clock pin
-  *
-+ * Context: Acquires and releases pf->dplls.lock
-  * Return:
-+ * * 0 - success
-  * * negative - failure
-  */
- static int
-@@ -2635,11 +2712,36 @@ ice_dpll_txclk_state_on_dpll_set(const struct dpll_pin *pin, void *pin_priv,
- 				 void *dpll_priv, enum dpll_pin_state state,
- 				 struct netlink_ext_ack *extack)
- {
--	/*
--	 * TODO: set HW accordingly to selected TX reference clock.
--	 * To be added in the follow up patches.
--	 */
--	return -EOPNOTSUPP;
-+	struct ice_dpll_pin *p = pin_priv;
-+	struct ice_pf *pf = p->pf;
-+	enum ice_e825c_ref_clk new_clk;
-+
-+	if (ice_dpll_is_reset(pf, extack))
-+		return -EBUSY;
-+
-+	if (state != DPLL_PIN_STATE_CONNECTED &&
-+	    state != DPLL_PIN_STATE_DISCONNECTED) {
-+		NL_SET_ERR_MSG(extack,
-+			       "unsupported pin state for TX reference clock");
-+		return -EINVAL;
-+	}
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (state == DPLL_PIN_STATE_DISCONNECTED &&
-+	    p->tx_ref_src != pf->ptp.port.tx_clk_req)
-+		goto unlock;
-+
-+	new_clk = (state == DPLL_PIN_STATE_DISCONNECTED) ? ICE_REF_CLK_ENET :
-+			p->tx_ref_src;
-+	if (new_clk == pf->ptp.port.tx_clk_req)
-+		goto unlock;
-+
-+	pf->ptp.port.tx_clk_req = new_clk;
-+	pf->dplls.txclk_switch_requested = true;
-+	queue_work(pf->dplls.wq, &pf->dplls.txclk_work);
-+unlock:
-+	mutex_unlock(&pf->dplls.lock);
-+	return 0;
- }
- 
- /**
-@@ -2651,10 +2753,21 @@ ice_dpll_txclk_state_on_dpll_set(const struct dpll_pin *pin, void *pin_priv,
-  * @state: on success holds pin state on parent pin
-  * @extack: error reporting
-  *
-- * dpll subsystem callback, get a state of a TX clock reference pin.
-+ * TXCLK DPLL pin state is derived and not stored explicitly.
-+ *
-+ * Only external TX reference clocks (SYNCE, EREF0) are modeled
-+ * as DPLL pins. The internal ENET (TXCO) clock has no pin and,
-+ * when selected, all TXCLK pins are reported DISCONNECTED.
-+ *
-+ * During a pending TXCLK switch, the requested pin may be
-+ * reported as CONNECTED before hardware verification.
-+ * Hardware acceptance and synchronization are reported
-+ * exclusively via TXC DPLL lock-status.
-  *
-+ * Context: Acquires and releases pf->dplls.lock
-  * Return:
-  * * 0 - success
-+ * * negative - failure
-  */
- static int
- ice_dpll_txclk_state_on_dpll_get(const struct dpll_pin *pin, void *pin_priv,
-@@ -2663,11 +2776,18 @@ ice_dpll_txclk_state_on_dpll_get(const struct dpll_pin *pin, void *pin_priv,
- 				 enum dpll_pin_state *state,
- 				 struct netlink_ext_ack *extack)
- {
--	/*
--	 * TODO: query HW status to determine if the TX reference is selected.
--	 * To be added in the follow up patches.
--	 */
--	*state = DPLL_PIN_STATE_DISCONNECTED;
-+	struct ice_dpll_pin *p = pin_priv;
-+	struct ice_pf *pf = p->pf;
-+
-+	if (ice_dpll_is_reset(pf, extack))
-+		return -EBUSY;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (pf->ptp.port.tx_clk_req == p->tx_ref_src)
-+		*state = DPLL_PIN_STATE_CONNECTED;
-+	else
-+		*state = DPLL_PIN_STATE_DISCONNECTED;
-+	mutex_unlock(&pf->dplls.lock);
- 
- 	return 0;
- }
-@@ -4674,10 +4794,30 @@ void ice_dpll_deinit(struct ice_pf *pf)
- {
- 	bool cgu = ice_is_feature_supported(pf, ICE_F_CGU);
- 
-+	/* Clear ICE_FLAG_DPLL under the lock so that any new caller of
-+	 * ice_txclk_update_and_notify() observes the cleared flag and
-+	 * returns early. In-flight callers that already passed the flag
-+	 * check hold txclk_notify_rwsem for read across the out-of-lock
-+	 * dpll_*_change_ntf() calls; the down_write/up_write barrier
-+	 * below waits for them to finish before pins and the TXC DPLL
-+	 * device may be freed.
-+	 */
-+	mutex_lock(&pf->dplls.lock);
- 	clear_bit(ICE_FLAG_DPLL, pf->flags);
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	/* Wait for in-flight ice_txclk_update_and_notify() readers */
-+	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
-+		down_write(&pf->dplls.txclk_notify_rwsem);
-+		up_write(&pf->dplls.txclk_notify_rwsem);
-+	}
-+
- 	if (cgu)
- 		ice_dpll_deinit_worker(pf);
- 
-+	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825)
-+		cancel_work_sync(&pf->dplls.txclk_work);
-+
- 	ice_dpll_deinit_pins(pf, cgu);
- 	if (!IS_ERR_OR_NULL(pf->dplls.pps.dpll))
- 		ice_dpll_deinit_dpll(pf, &pf->dplls.pps, cgu);
-@@ -4706,6 +4846,12 @@ static void ice_dpll_init_e825(struct ice_pf *pf)
- 	int err;
- 
- 	mutex_init(&d->lock);
-+	/* Initialize the txclk worker and its notification rwsem before any
-+	 * code path can fail: ice_dpll_deinit() runs unconditionally on
-+	 * failure and calls cancel_work_sync() / down_write() on these.
-+	 */
-+	INIT_WORK(&d->txclk_work, ice_dpll_txclk_work);
-+	init_rwsem(&d->txclk_notify_rwsem);
- 	init_completion(&d->dpll_init);
- 
- 	err = ice_dpll_init_info_e825c(pf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
-index 85e38752056d..103ba3e49068 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
-@@ -8,6 +8,8 @@
- 
- #define ICE_DPLL_RCLK_NUM_MAX	4
- #define ICE_DPLL_TXCLK_NUM_MAX	2
-+#define E825_EXT_EREF_PIN_IDX	0
-+#define E825_EXT_SYNCE_PIN_IDX	1
- 
- #define ICE_CGU_R10			0x28
- #define ICE_CGU_R10_SYNCE_CLKO_SEL	GENMASK(8, 5)
-@@ -126,7 +128,8 @@ struct ice_dpll {
- /** ice_dplls - store info required for CCU (clock controlling unit)
-  * @kworker: periodic worker
-  * @work: periodic work
-- * @lock: locks access to configuration of a dpll
-+ * @wq: workqueue used to schedule DPLL-related deferred work
-+ * @lock: protects DPLL configuration (see Locking below)
-  * @eec: pointer to EEC dpll dev
-  * @pps: pointer to PPS dpll dev
-  * @txc: pointer to TXC dpll dev
-@@ -142,6 +145,28 @@ struct ice_dpll {
-  * @input_phase_adj_max: max phase adjust value for an input pins
-  * @output_phase_adj_max: max phase adjust value for an output pins
-  * @periodic_counter: counter of periodic work executions
-+ * @generic: true when generic DPLL ops are used
-+ * @txclk_work: deferred TX reference clock switch worker
-+ * @txclk_switch_requested: a TX ref clock switch is queued in @txclk_work
-+ * @txclk_notify_rwsem: drains in-flight TXCLK notifications on teardown
-+ *
-+ * Locking:
-+ *   Acquisition order (top to bottom):
-+ *
-+ *     txclk_notify_rwsem (read)
-+ *       -> pf->dplls.lock
-+ *         -> ctrl_pf->dplls.lock
-+ *
-+ *   - @lock serializes all DPLL state mutations on this PF. When the
-+ *     controlling PF's lock must also be taken (e.g. updating the shared
-+ *     tx_refclks usage map), acquire pf->dplls.lock first, then
-+ *     ctrl_pf->dplls.lock. Skip the second acquire when pf == ctrl_pf
-+ *     to avoid recursive locking.
-+ *   - @txclk_notify_rwsem is held for read across
-+ *     ice_txclk_update_and_notify(), including the out-of-lock
-+ *     dpll_*_change_ntf() calls. ice_dpll_deinit() takes the write side
-+ *     standalone (not nested under any other lock) to drain in-flight
-+ *     readers before pins and the TXC DPLL device are freed.
-  */
- struct ice_dplls {
- 	struct kthread_worker *kworker;
-@@ -168,6 +193,9 @@ struct ice_dplls {
- 	s32 output_phase_adj_max;
- 	u32 periodic_counter;
- 	bool generic;
-+	struct work_struct txclk_work;
-+	bool txclk_switch_requested;
-+	struct rw_semaphore txclk_notify_rwsem;
- };
- 
- #if IS_ENABLED(CONFIG_PTP_1588_CLOCK)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 36df742c326c..380833a24327 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -4,6 +4,7 @@
- #include "ice.h"
- #include "ice_lib.h"
- #include "ice_trace.h"
-+#include "ice_txclk.h"
- 
- static const char ice_pin_names[][64] = {
- 	"SDP0",
-@@ -54,11 +55,6 @@ static const struct ice_ptp_pin_desc ice_pin_desc_dpll[] = {
- 	{  SDP3, {  3, -1 }, { 0, 0 }},
- };
- 
--static struct ice_pf *ice_get_ctrl_pf(struct ice_pf *pf)
--{
--	return !pf->adapter ? NULL : pf->adapter->ctrl_pf;
--}
--
- static struct ice_ptp *ice_get_ctrl_ptp(struct ice_pf *pf)
- {
- 	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-@@ -1328,6 +1324,9 @@ void ice_ptp_link_change(struct ice_pf *pf, bool linkup)
- 			}
- 		}
- 		mutex_unlock(&pf->dplls.lock);
-+
-+		if (linkup)
-+			ice_txclk_update_and_notify(pf);
- 	}
- 
- 	switch (hw->mac_type) {
-@@ -3090,6 +3089,21 @@ static int ice_ptp_setup_pf(struct ice_pf *pf)
- 		 &pf->adapter->ports.ports);
- 	mutex_unlock(&pf->adapter->ports.lock);
- 
-+	/* Seed the per-PHY Tx reference clock usage map for this port.
-+	 * Only meaningful on E825 (other MAC types don't expose tx-clk
-+	 * selection). No locking is needed because this runs during
-+	 * ice_ptp_init() before pf->dplls.lock exists and before any
-+	 * link event or DPLL callback can observe the map.
-+	 */
-+	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
-+		u8 port_num, phy;
-+
-+		port_num = ptp->port.port_num;
-+		phy = port_num / pf->hw.ptp.ports_per_phy;
-+		set_bit(port_num,
-+			&ctrl_ptp->tx_refclks[phy][pf->ptp.port.tx_clk]);
-+	}
-+
- 	return 0;
- }
- 
-@@ -3318,6 +3332,19 @@ void ice_ptp_init(struct ice_pf *pf)
- 			goto err_exit;
- 	}
- 
-+	ptp->port.tx_clk = ICE_REF_CLK_ENET;
-+	ptp->port.tx_clk_req = ICE_REF_CLK_ENET;
-+	if (hw->mac_type == ICE_MAC_GENERIC_3K_E825) {
-+		enum ice_e825c_ref_clk tx_ref_clk;
-+
-+		err = ice_get_serdes_ref_sel_e825c(hw, ptp->port.port_num,
-+						   &tx_ref_clk);
-+		if (!err) {
-+			ptp->port.tx_clk = tx_ref_clk;
-+			ptp->port.tx_clk_req = tx_ref_clk;
-+		}
-+	}
-+
- 	err = ice_ptp_setup_pf(pf);
- 	if (err)
- 		goto err_exit;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 8c44bd758a4f..c4b0da7ce20e 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -144,6 +144,8 @@ struct ice_ptp_tx {
-  * @link_up: indicates whether the link is up
-  * @tx_fifo_busy_cnt: number of times the Tx FIFO was busy
-  * @port_num: the port number this structure represents
-+ * @tx_clk: currently active Tx reference clock source
-+ * @tx_clk_req: requested Tx reference clock source (new target)
-  */
- struct ice_ptp_port {
- 	struct list_head list_node;
-@@ -153,6 +155,8 @@ struct ice_ptp_port {
- 	bool link_up;
- 	u8 tx_fifo_busy_cnt;
- 	u8 port_num;
-+	enum ice_e825c_ref_clk tx_clk;
-+	enum ice_e825c_ref_clk tx_clk_req;
- };
- 
- enum ice_ptp_tx_interrupt {
-@@ -236,6 +240,7 @@ struct ice_ptp_pin_desc {
-  * @info: structure defining PTP hardware capabilities
-  * @clock: pointer to registered PTP clock device
-  * @tstamp_config: hardware timestamping configuration
-+ * @tx_refclks: bitmaps table to store the information about TX reference clocks
-  * @reset_time: kernel time after clock stop on reset
-  * @tx_hwtstamp_good: number of completed Tx timestamp requests
-  * @tx_hwtstamp_skipped: number of Tx time stamp requests skipped
-@@ -261,6 +266,7 @@ struct ice_ptp {
- 	struct ptp_clock_info info;
- 	struct ptp_clock *clock;
- 	struct kernel_hwtstamp_config tstamp_config;
-+	unsigned long tx_refclks[ICE_E825_MAX_PHYS][ICE_REF_CLK_MAX];
- 	u64 reset_time;
- 	u64 tx_hwtstamp_good;
- 	u32 tx_hwtstamp_skipped;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 2c18e16fe053..8e5f97835954 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -486,6 +486,43 @@ static int ice_read_phy_eth56g(struct ice_hw *hw, u8 port, u32 addr, u32 *val)
- 	return err;
- }
- 
-+/**
-+ * ice_get_serdes_ref_sel_e825c - Read current Tx ref clock source
-+ * @hw: pointer to the HW struct
-+ * @port: port number for which Tx reference clock is read
-+ * @clk: Tx reference clock value (output)
-+ *
-+ * Return: 0 on success, other error codes when failed to read from PHY
-+ */
-+int ice_get_serdes_ref_sel_e825c(struct ice_hw *hw, u8 port,
-+				 enum ice_e825c_ref_clk *clk)
-+{
-+	u8 lane = port % hw->ptp.ports_per_phy;
-+	u32 serdes_rx_nt, serdes_tx_nt;
-+	u32 val;
-+	int ret;
-+
-+	ret = ice_read_phy_eth56g(hw, port,
-+				  SERDES_IP_IF_LN_FLXM_GENERAL(lane, 0),
-+				  &val);
-+	if (ret)
-+		return ret;
-+
-+	serdes_rx_nt = FIELD_GET(CFG_ICTL_PCS_REF_SEL_RX_NT, val);
-+	serdes_tx_nt = FIELD_GET(CFG_ICTL_PCS_REF_SEL_TX_NT, val);
-+
-+	if (serdes_tx_nt == REF_SEL_NT_SYNCE &&
-+	    serdes_rx_nt == REF_SEL_NT_SYNCE)
-+		*clk = ICE_REF_CLK_SYNCE;
-+	else if (serdes_tx_nt == REF_SEL_NT_EREF0 &&
-+		 serdes_rx_nt == REF_SEL_NT_EREF0)
-+		*clk = ICE_REF_CLK_EREF0;
-+	else
-+		*clk = ICE_REF_CLK_ENET;
-+
-+	return 0;
-+}
-+
- /**
-  * ice_phy_res_address_eth56g - Calculate a PHY port register address
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 10795d023f44..16b1988e993d 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -383,6 +383,8 @@ int ice_start_phy_timer_eth56g(struct ice_hw *hw, u8 port);
- int ice_phy_cfg_intr_eth56g(struct ice_hw *hw, u8 port, bool ena, u8 threshold);
- int ice_phy_cfg_ptp_1step_eth56g(struct ice_hw *hw, u8 port);
- int ice_ptp_phy_soft_reset_eth56g(struct ice_hw *hw, u8 port);
-+int ice_get_serdes_ref_sel_e825c(struct ice_hw *hw, u8 port,
-+				 enum ice_e825c_ref_clk *clk);
- 
- #define ICE_ETH56G_NOMINAL_INCVAL	0x140000000ULL
- #define ICE_ETH56G_NOMINAL_PCS_REF_TUS	0x100000000ULL
-@@ -795,4 +797,12 @@ static inline u64 ice_get_base_incval(struct ice_hw *hw)
- #define PHY_PTP_1STEP_PD_DELAY_M	GENMASK(30, 1)
- #define PHY_PTP_1STEP_PD_DLY_V_M	BIT(31)
- 
-+#define SERDES_IP_IF_LN_FLXM_GENERAL(n, m) \
-+	(0x32B800 + (m) * 0x100000 + (n) * 0x8000)
-+#define CFG_ICTL_PCS_REF_SEL_RX_NT		GENMASK(9, 6)
-+#define CFG_ICTL_PCS_REF_SEL_TX_NT		GENMASK(28, 25)
-+#define REF_SEL_NT_ENET				0
-+#define REF_SEL_NT_EREF0			1
-+#define REF_SEL_NT_SYNCE			2
-+
- #endif /* _ICE_PTP_HW_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_txclk.c b/drivers/net/ethernet/intel/ice/ice_txclk.c
-new file mode 100644
-index 000000000000..5230081c53b9
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_txclk.c
-@@ -0,0 +1,320 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (C) 2026 Intel Corporation */
-+
-+#include "ice.h"
-+#include "ice_cpi.h"
-+#include "ice_txclk.h"
-+
-+#define ICE_PHY0	0
-+#define ICE_PHY1	1
-+
-+/**
-+ * ice_txclk_get_pin - map TX reference clock to its DPLL pin
-+ * @pf: pointer to the PF structure
-+ * @ref_clk: TX reference clock selection
-+ *
-+ * Return the DPLL pin corresponding to a given external TX reference
-+ * clock. Only external TX reference clocks (SYNCE and EREF0) are
-+ * represented as DPLL pins. The internal ENET (TXCO) clock has no
-+ * associated DPLL pin and therefore yields %NULL.
-+ *
-+ * This helper is used when emitting DPLL pin change notifications
-+ * after TX reference clock transitions have been verified.
-+ *
-+ * Return: Pointer to the corresponding struct dpll_pin, or %NULL if
-+ *         the TX reference clock has no DPLL pin representation.
-+ */
-+struct dpll_pin *
-+ice_txclk_get_pin(struct ice_pf *pf, enum ice_e825c_ref_clk ref_clk)
-+{
-+	switch (ref_clk) {
-+	case ICE_REF_CLK_SYNCE:
-+		return pf->dplls.txclks[E825_EXT_SYNCE_PIN_IDX].pin;
-+	case ICE_REF_CLK_EREF0:
-+		return pf->dplls.txclks[E825_EXT_EREF_PIN_IDX].pin;
-+	case ICE_REF_CLK_ENET:
-+	default:
-+		return NULL;
-+	}
-+}
-+
-+/**
-+ * ice_txclk_enable_peer - Enable required TX reference clock on peer PHY
-+ * @pf: pointer to the PF structure
-+ * @clk: TX reference clock that must be enabled
-+ *
-+ * Some TX reference clocks on E825-class devices (SyncE and EREF0) must
-+ * be enabled on both PHY complexes to allow proper routing:
-+ *
-+ *   - SyncE must be enabled on both PHYs when used by PHY0
-+ *   - EREF0 must be enabled on both PHYs when used by PHY1
-+ *
-+ * If the requested clock is not yet enabled on the peer PHY, enable it.
-+ * ENET does not require duplication and is ignored.
-+ *
-+ * Return: 0 on success or negative error code on failure.
-+ */
-+static int ice_txclk_enable_peer(struct ice_pf *pf, enum ice_e825c_ref_clk clk)
-+{
-+	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-+	bool peer_clk_in_use;
-+	u8 port_num, phy;
-+	int err;
-+
-+	if (clk == ICE_REF_CLK_ENET)
-+		return 0;
-+
-+	if (IS_ERR_OR_NULL(ctrl_pf)) {
-+		dev_err(ice_pf_to_dev(pf),
-+			"Can't enable tx-clk on peer: no controlling PF\n");
-+		return -EINVAL;
-+	}
-+
-+	port_num = pf->ptp.port.port_num;
-+	phy = port_num / pf->hw.ptp.ports_per_phy;
-+	peer_clk_in_use = true;
-+
-+	/* Hold ctrl_pf->dplls.lock across both the peer-usage check and
-+	 * the enable AQ command so that two PFs racing to enable the same
-+	 * peer-PHY clock cannot both observe peer_clk_in_use == false and
-+	 * issue duplicate enables.
-+	 */
-+	mutex_lock(&ctrl_pf->dplls.lock);
-+	if (clk == ICE_REF_CLK_SYNCE && phy == ICE_PHY0)
-+		peer_clk_in_use = ice_txclk_any_port_uses(ctrl_pf,
-+							  ICE_PHY1,
-+							  clk);
-+	else if (clk == ICE_REF_CLK_EREF0 && phy == ICE_PHY1)
-+		peer_clk_in_use = ice_txclk_any_port_uses(ctrl_pf,
-+							  ICE_PHY0,
-+							  clk);
-+
-+	if ((clk == ICE_REF_CLK_SYNCE && phy == ICE_PHY0 && !peer_clk_in_use) ||
-+	    (clk == ICE_REF_CLK_EREF0 && phy == ICE_PHY1 && !peer_clk_in_use)) {
-+		u8 peer_phy = phy ? ICE_PHY0 : ICE_PHY1;
-+
-+		err = ice_cpi_ena_dis_clk_ref(&pf->hw, peer_phy, clk, true);
-+		if (err) {
-+			mutex_unlock(&ctrl_pf->dplls.lock);
-+			dev_err(ice_pf_to_dev(pf),
-+				"Failed to enable the %u TX clock for the %u PHY\n",
-+				clk, peer_phy);
-+			return err;
-+		}
-+	}
-+	mutex_unlock(&ctrl_pf->dplls.lock);
-+
-+	return 0;
-+}
-+
-+#define ICE_REFCLK_USER_TO_AQ_IDX(x) ((x) + 1)
-+
-+/**
-+ * ice_txclk_set_clk - Set Tx reference clock
-+ * @pf: pointer to pf structure
-+ * @clk: new Tx clock
-+ *
-+ * Return: 0 on success, negative value otherwise.
-+ */
-+int ice_txclk_set_clk(struct ice_pf *pf, enum ice_e825c_ref_clk clk)
-+{
-+	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-+	struct ice_port_info *port_info;
-+	bool clk_in_use;
-+	u8 port_num, phy;
-+	int err;
-+
-+	if (pf->ptp.port.tx_clk == clk)
-+		return 0;
-+
-+	if (IS_ERR_OR_NULL(ctrl_pf)) {
-+		dev_err(ice_pf_to_dev(pf),
-+			"Can't set tx-clk: no controlling PF\n");
-+		return -EINVAL;
-+	}
-+
-+	port_num = pf->ptp.port.port_num;
-+	phy = port_num / pf->hw.ptp.ports_per_phy;
-+	port_info = pf->hw.port_info;
-+
-+	/* Hold ctrl_pf->dplls.lock across both the usage check and the
-+	 * enable AQ command so that two PFs racing to switch to the same
-+	 * (phy, clk) cannot both observe clk_in_use == false and issue
-+	 * duplicate enables. The tx_refclks bitmap is updated only later
-+	 * by ice_txclk_update_and_notify() after link-up, so without this
-+	 * the check-then-act window is wide open.
-+	 */
-+	mutex_lock(&ctrl_pf->dplls.lock);
-+	clk_in_use = ice_txclk_any_port_uses(ctrl_pf, phy, clk);
-+	if (!clk_in_use) {
-+		err = ice_cpi_ena_dis_clk_ref(&pf->hw, phy, clk, true);
-+		if (err) {
-+			mutex_unlock(&ctrl_pf->dplls.lock);
-+			dev_err(ice_pf_to_dev(pf), "Failed to enable the %u TX clock for the %u PHY\n",
-+				clk, phy);
-+			return err;
-+		}
-+	}
-+	mutex_unlock(&ctrl_pf->dplls.lock);
-+
-+	if (!clk_in_use) {
-+		err = ice_txclk_enable_peer(pf, clk);
-+		if (err)
-+			return err;
-+	}
-+
-+	/* We are ready to switch to the new TX clk. */
-+	err = ice_aq_set_link_restart_an(port_info, true, NULL,
-+					 ICE_REFCLK_USER_TO_AQ_IDX(clk));
-+	if (err)
-+		dev_err(ice_pf_to_dev(pf),
-+			"AN restart AQ command failed with err %d\n",
-+			err);
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_txclk_update_and_notify - Validate TX reference clock switching
-+ * @pf: pointer to PF structure
-+ *
-+ * After a link-up event, verify whether the previously requested TX reference
-+ * clock transition actually succeeded. The SERDES reference selector reflects
-+ * the effective hardware choice, which may differ from the requested clock
-+ * when Auto-Negotiation or firmware applies additional policy.
-+ *
-+ * If the hardware-selected clock differs from the requested one, update the
-+ * software state accordingly and stop further processing.
-+ *
-+ * When the switch is successful, update the per‑PHY usage bitmaps so that the
-+ * driver knows which reference clock is currently in use by this port.
-+ *
-+ * This function does not initiate a clock switch; it only validates the result
-+ * of a previously triggered transition and performs cleanup of unused clocks.
-+ */
-+void ice_txclk_update_and_notify(struct ice_pf *pf)
-+{
-+	struct ice_ptp_port *ptp_port = &pf->ptp.port;
-+	struct ice_pf *ctrl_pf = ice_get_ctrl_pf(pf);
-+	struct dpll_pin *old_pin = NULL;
-+	struct dpll_pin *new_pin = NULL;
-+	struct ice_hw *hw = &pf->hw;
-+	enum ice_e825c_ref_clk clk;
-+	bool notify_dpll = false;
-+	int err;
-+	u8 phy;
-+
-+	phy = ptp_port->port_num / hw->ptp.ports_per_phy;
-+
-+	/* Hold txclk_notify_rwsem for read across the entire critical
-+	 * region, including the out-of-lock dpll_*_change_ntf() calls
-+	 * below. ice_dpll_deinit() takes the write side to wait for all
-+	 * in-flight notifications to complete before freeing pins and the
-+	 * TXC DPLL device, preventing a use-after-free on rmmod.
-+	 */
-+	down_read(&pf->dplls.txclk_notify_rwsem);
-+	mutex_lock(&pf->dplls.lock);
-+	/* Bail out if DPLL subsystem is being torn down. ice_dpll_deinit()
-+	 * clears ICE_FLAG_DPLL before freeing pins and the dpll device, so a
-+	 * cleared flag under the lock means those objects can no longer be
-+	 * safely dereferenced.
-+	 */
-+	if (!test_bit(ICE_FLAG_DPLL, pf->flags)) {
-+		mutex_unlock(&pf->dplls.lock);
-+		goto out;
-+	}
-+	/* If a switch is still pending, the link-up event preceded the
-+	 * worker's AN restart. Hardware hasn't applied the new clock yet,
-+	 * so reading the SERDES selector now would produce a false failure.
-+	 * Let the worker run first; the link-up that follows the AN restart
-+	 * will trigger the verification.
-+	 */
-+	if (pf->dplls.txclk_switch_requested) {
-+		mutex_unlock(&pf->dplls.lock);
-+		goto out;
-+	}
-+	/* no TX clock change requested */
-+	if (pf->ptp.port.tx_clk == pf->ptp.port.tx_clk_req) {
-+		mutex_unlock(&pf->dplls.lock);
-+		goto out;
-+	}
-+	/* verify current Tx reference settings */
-+	err = ice_get_serdes_ref_sel_e825c(hw,
-+					   ptp_port->port_num,
-+					   &clk);
-+	if (err) {
-+		mutex_unlock(&pf->dplls.lock);
-+		goto out;
-+	}
-+
-+	if (clk != pf->ptp.port.tx_clk_req) {
-+		dev_warn(ice_pf_to_dev(pf),
-+			 "Failed to switch tx-clk for phy %d and clk %u (current: %u)\n",
-+			 phy, pf->ptp.port.tx_clk_req, clk);
-+		old_pin = ice_txclk_get_pin(pf, pf->ptp.port.tx_clk_req);
-+		new_pin = ice_txclk_get_pin(pf, clk);
-+		pf->ptp.port.tx_clk = clk;
-+		pf->ptp.port.tx_clk_req = clk;
-+		/* Update the reference clock bitmap to match the hardware
-+		 * clock that was actually accepted, so that
-+		 * ice_txclk_any_port_uses() reflects reality even on failure.
-+		 */
-+		if (!IS_ERR_OR_NULL(ctrl_pf)) {
-+			for (int i = 0; i < ICE_REF_CLK_MAX; i++) {
-+				if (clk == i)
-+					set_bit(ptp_port->port_num,
-+						&ctrl_pf->ptp.tx_refclks[phy][i]);
-+				else
-+					clear_bit(ptp_port->port_num,
-+						  &ctrl_pf->ptp.tx_refclks[phy][i]);
-+			}
-+		}
-+		goto err_notify;
-+	}
-+
-+	old_pin = ice_txclk_get_pin(pf, pf->ptp.port.tx_clk);
-+	pf->ptp.port.tx_clk = clk;
-+	pf->ptp.port.tx_clk_req = clk;
-+
-+	if (IS_ERR_OR_NULL(ctrl_pf)) {
-+		dev_err(ice_pf_to_dev(pf),
-+			"Can't set tx-clk: no controlling PF\n");
-+		goto err_notify;
-+	}
-+
-+	/* update Tx reference clock usage map */
-+	for (int i = 0; i < ICE_REF_CLK_MAX; i++)
-+		if (clk == i)
-+			set_bit(ptp_port->port_num,
-+				&ctrl_pf->ptp.tx_refclks[phy][i]);
-+		else
-+			clear_bit(ptp_port->port_num,
-+				  &ctrl_pf->ptp.tx_refclks[phy][i]);
-+
-+err_notify:
-+	/* Update TXC DPLL lock status based on effective TX clk, while still
-+	 * holding the lock to prevent concurrent link-up events from racing
-+	 * on dpll_state.
-+	 */
-+	if (!IS_ERR_OR_NULL(pf->dplls.txc.dpll)) {
-+		enum dpll_lock_status new_lock = ice_txclk_lock_status(clk);
-+
-+		if (pf->dplls.txc.dpll_state != new_lock) {
-+			pf->dplls.txc.dpll_state = new_lock;
-+			notify_dpll = true;
-+		}
-+	}
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	/* Notify TX clk pins state transition */
-+	if (old_pin)
-+		dpll_pin_change_ntf(old_pin);
-+	if (new_pin)
-+		dpll_pin_change_ntf(new_pin);
-+
-+	if (notify_dpll && !IS_ERR_OR_NULL(pf->dplls.txc.dpll))
-+		dpll_device_change_ntf(pf->dplls.txc.dpll);
-+
-+out:
-+	up_read(&pf->dplls.txclk_notify_rwsem);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_txclk.h b/drivers/net/ethernet/intel/ice/ice_txclk.h
-new file mode 100644
-index 000000000000..21d97afb2afc
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_txclk.h
-@@ -0,0 +1,40 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (C) 2026 Intel Corporation */
-+
-+#ifndef _ICE_TXCLK_H_
-+#define _ICE_TXCLK_H_
-+
-+/**
-+ * ice_txclk_any_port_uses - check if any port on a PHY uses this TX refclk
-+ * @ctrl_pf: control PF (owner of the shared tx_refclks map)
-+ * @phy: PHY index
-+ * @clk: TX reference clock
-+ *
-+ * Return: true if any bit (port) is set for this clock on this PHY
-+ */
-+static inline bool
-+ice_txclk_any_port_uses(const struct ice_pf *ctrl_pf, u8 phy,
-+			enum ice_e825c_ref_clk clk)
-+{
-+	return find_first_bit(&ctrl_pf->ptp.tx_refclks[phy][clk],
-+			BITS_PER_LONG) < BITS_PER_LONG;
-+}
-+
-+static inline enum dpll_lock_status
-+ice_txclk_lock_status(enum ice_e825c_ref_clk clk)
-+{
-+	switch (clk) {
-+	case ICE_REF_CLK_SYNCE:
-+	case ICE_REF_CLK_EREF0:
-+		return DPLL_LOCK_STATUS_LOCKED;
-+	case ICE_REF_CLK_ENET:
-+	default:
-+		return DPLL_LOCK_STATUS_UNLOCKED;
-+	}
-+}
-+
-+int ice_txclk_set_clk(struct ice_pf *pf, enum ice_e825c_ref_clk clk);
-+void ice_txclk_update_and_notify(struct ice_pf *pf);
-+struct dpll_pin *ice_txclk_get_pin(struct ice_pf *pf,
-+				   enum ice_e825c_ref_clk ref_clk);
-+#endif /* _ICE_TXCLK_H_ */
--- 
-2.39.3
+> > +	unsigned long tx_refclks[ICE_E825_MAX_PHYS][ICE_REF_CLK_MAX];
+> >  	u64 reset_time;
+> >  	u64 tx_hwtstamp_good;
+> >  	u32 tx_hwtstamp_skipped;
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > index 24fb7a3e14d6..f7f82aef9f40 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > @@ -486,6 +486,43 @@ static int ice_read_phy_eth56g(struct ice_hw *hw,
+> > u8 port, u32 addr, u32 *val)
+> >  	return err;
+> >  }
+> >
+>=20
+> ...
+>=20
+> > /* _ICE_TXCLK_H_ */
+> > --
+> > 2.39.3
 
