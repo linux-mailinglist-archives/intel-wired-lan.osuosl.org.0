@@ -2,102 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id GCDKBwIsFmqdigcAu9opvQ
+	id MC8bNS3TFWrRcgcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 01:25:54 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 19:06:53 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C83C5DD88E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 01:25:52 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A01B15DA576
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 19:06:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6E06241DB5;
-	Tue, 26 May 2026 23:25:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 17A3640FE8;
+	Tue, 26 May 2026 17:06:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rRNYlzPL0QKs; Tue, 26 May 2026 23:25:49 +0000 (UTC)
+ id nYUI3XBMR4xD; Tue, 26 May 2026 17:06:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EB9FD41DBA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F32D40FEE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779837949;
-	bh=apju2p0f/aWBx8V2W0fgLJ1MXEDYtaxRyrYFJTf0UCM=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=iTzQ9ev1uYPzk/iWc6yjdMImnXM37I+aHr7wGqkc27aU86C6HQJPtfZ2q/rV/SFSo
-	 Jar28HC2kpRdKjqNE8dpqLG2y6L0yiDj0+4SgaB4FQSGNW5wxH3ryTOPMCLYIJcT6N
-	 Oel02MjuuQK5TYqJtqtQcu/wcm9TYkMM3ka8CQKE2nAyTgAOhUXrlQ4OFqSKanvCsk
-	 hsefoi589mlC4P08766QomdY+5aFpNZeWvE56xWalFMkpijRDqmMsbWxCDy4P0aHdW
-	 FMeOmL/1ANZYGmRzjQwLCZs7Ps6rG51FOoVXNXdRf6eT+WZRc1ftiAGyvdYSxFpxDk
-	 wiDMetvopdtKw==
+	s=default; t=1779815210;
+	bh=n11Yvwqz+rqZT/ZKP/UpHkRhFhWQS/84ypYO7E9okBA=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=tYDY2faBx+Fw7JKiXjXIf1EzYENlsXAaTdvlIdpC5IT/IUKMAQCKkdExRKQ01757l
+	 54UED8MHWdZ8tLPlnBMS+mlN9/10D8lWSVqSxIoDLdH1rW/xwS60nH5J8nqpi+sLP7
+	 9aBZkGI6FEB9tpDeE28vCnfZKlbHtWVAxUt1PVoqucHdbLcFEfC1UOhpTtTxhngUJF
+	 vLrWxErXs1QFfudXVgWJq1ixldLk3ntWxorxR7FyeAmPz1rnso64B+Raa01WADILDK
+	 PU9kDu9V+VQGgxN705YUbzDE9/oNJ5Jel4uiZp80F8T5Q1zZveqAeEMp2HV/RixSHT
+	 xNlzB5gkEHTvQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB9FD41DBA;
-	Tue, 26 May 2026 23:25:48 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6F32D40FEE;
+	Tue, 26 May 2026 17:06:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id BA91B21F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 23:25:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id D47D6297
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 17:06:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AC90940B3E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 23:25:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BA05981E00
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 17:06:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HKMIpj9vALSQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 23:25:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=paul.greenwalt@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NNG0lvr2yYV0 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 May 2026 17:06:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F00E440B3B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F00E440B3B
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F00E440B3B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 23:25:46 +0000 (UTC)
-X-CSE-ConnectionGUID: zH6/YcylSI6R2McPyLGAbQ==
-X-CSE-MsgGUID: MPqnJfwuQ4WOHFa6yBfeZg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11798"; a="80648855"
-X-IronPort-AV: E=Sophos;i="6.24,170,1774335600"; d="scan'208";a="80648855"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2026 16:25:46 -0700
-X-CSE-ConnectionGUID: kn057v1DQc6PS2R4wGJ14w==
-X-CSE-MsgGUID: FRLt+nZBTK2o7V7DOriE5g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,170,1774335600"; d="scan'208";a="265930282"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.5.147])
- by fmviesa001.fm.intel.com with ESMTP; 26 May 2026 16:25:45 -0700
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: Paul Greenwalt <paul.greenwalt@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Tue, 26 May 2026 11:47:55 -0400
-Message-ID: <20260526154755.362476-1-paul.greenwalt@intel.com>
-X-Mailer: git-send-email 2.52.0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DB1E881DFD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DB1E881DFD
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DB1E881DFD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 17:06:47 +0000 (UTC)
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id 60CA660018;
+ Tue, 26 May 2026 17:06:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2B761F000E9;
+ Tue, 26 May 2026 17:06:44 +0000 (UTC)
+Date: Tue, 26 May 2026 18:06:42 +0100
+From: Simon Horman <horms@kernel.org>
+To: Przemyslaw Korba <przemyslaw.korba@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ aleksandr.loktionov@intel.com, arkadiusz.kubalewski@intel.com
+Message-ID: <20260526170642.GA2256768@horms.kernel.org>
+References: <20260520105311.5336-1-przemyslaw.korba@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1779837947; x=1811373947;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=VZ7qMkv43v9yuBsep5hGA52TxAa1wLYHlGWublICJb4=;
- b=EN/ZihuKZeC7Zs0hwqnqBKKyHbMXkkfuzW2/oMhCYz21ZDuGdPkguWGX
- Ab4WCFqRJvEponmHBlHZwZ0qcXXvnTeqAl5mXT3jTfsuznZJ3PxUwAnBc
- yEHu5lyE4686LbCSoDNzIVNOFJy4NmhYDIfJM7/ATGExgfuirygTBzj/Y
- FWBeQ/rkaIVJXfkCxKSoYQPa6GXyRFJqgp3/PGR76oTk53YsGig2sxO1Q
- l2kSYUCjxMdxDfJMZihZy//IDrfSUYtGhWjkSEg6hSVdUJ2eLOzO9joPO
- YTF5tmrcOuCm/jX3DP4sI7gWwhJQtmwQvAUC/lLZdVu82pFsqBgV5WdFT
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <20260520105311.5336-1-przemyslaw.korba@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel.org; s=k20260515; t=1779815206;
+ bh=n11Yvwqz+rqZT/ZKP/UpHkRhFhWQS/84ypYO7E9okBA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=L74nACt4vDpTQ1KQExp061+LDxI5s2krwDeWN78xNPBref7J6thsPR6qAf/5kO7kt
+ aATz9hKovOTTaQ18g359htOPn+NvTMcKe5Zj7+Y4riJ69VD2G5Zj0I+y73i/kw4i/c
+ I1B7rE1i/SG/cTjLHasSy0Uzvlwvq2z4UY3abPM/aXqwNXeHtr2ju1RDb8oYLuPY7k
+ zZwRWW/x5tGsL/Zyr7yFBhWodkABOjqWKrcCAZNPHeww9UtJxMcygKVOv9u0ILCaeb
+ 9XlGnd7Nt8g5V8n8mUkISvrfIsxvK12QrFfWvhkw3c192PUHaABUUg1qxhUeOPH6DQ
+ 8iCfyYm8QmLWw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=EN/ZihuK
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: prevent tstamp ring
- allocation for non-PF VSI types
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20260515 header.b=L74nACt4
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] ice: support SBQ posted
+ writes with non-posted support for CGU
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -112,81 +105,96 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
+X-Spamd-Result: default: False [0.79 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:email,osuosl.org:dkim];
-	FROM_NEQ_ENVFROM(0.00)[paul.greenwalt@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS(0.00)[m:przemyslaw.korba@intel.com,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:arkadiusz.kubalewski@intel.com,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[horms.kernel.org:mid,osuosl.org:dkim];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	NEURAL_HAM(-0.00)[-1.000];
+	RCPT_COUNT_SEVEN(0.00)[7];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan];
-	NEURAL_HAM(-0.00)[-0.997];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 0C83C5DD88E
+X-Rspamd-Queue-Id: A01B15DA576
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-The pf->txtime_txqs bitmap tracks which Tx queues have ETF (Earliest
-TxTime First) offload enabled. This bitmap is indexed by queue number
-and is set by ice_offload_txtime(), which only operates on PF VSI
-queues.
+On Wed, May 20, 2026 at 12:52:03PM +0200, Przemyslaw Korba wrote:
+> From: Karol Kolacinski <karol.kolacinski@intel.com>
+> 
+> Sideband queue (SBQ) is a HW queue with very short completion time. All
+> SBQ writes were posted by default, which means that the driver did not
+> have to wait for completion from the neighbor device, because there was
+> none. This introduced unnecessary delays, where only those delays were
+> "ensuring" that the command is "completed" and this was a potential race
+> condition.
+> 
+> Add the possibility to perform non-posted writes where it's necessary to
+> wait for completion, instead of relying on fake completion from the FW,
+> where only the delays are guarding the writes.
+> 
+> Flush the SBQ by reading address 0 from the PHY 0 before issuing SYNC
+> command to ensure that writes to all PHYs were completed and skip SBQ
+> message completion if it's posted.
+> 
+> E810 only supports opcode 0x01, but its FW always sends completion
+> responses for this opcode, so the driver waits for each write to complete.
+> This makes E810 writes synchronous and eliminates the need for SBQ flush.
+> 
+> To analyze if delays are gone, look for and compare time spent in
+> ice_sq_send_cmd — posted writes should return immediately after the wr32.
+> That can be done for example by adjusting phc time with phc_ctl on E830
+> device, for less than 2 seconds to use this new mechanism. Without it,
+> command below will fail.
+> 
+> Reproduction steps:
+> phc_ctl eth13 adj 1
+> phc_ctl[4478170.994]: adjusted clock by 1.000000 seconds
+> 
+> Check trace for timing for comparisions:
+> echo ice_sbq_send_cmd > /sys/kernel/debug/tracing/set_ftrace_filter
+> echo function_graph > /sys/kernel/debug/tracing/current_tracer
+> cat /sys/kernel/debug/tracing/trace
+> 
+> Tested on:
+>   - Intel E830 NIC (FW version 1.00)
+>   - Kernel 6.19.0+
+> 
+> Fixes: 8f5ee3c477a8 ("ice: add support for sideband messages")
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Signed-off-by: Przemyslaw Korba <przemyslaw.korba@intel.com>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> ---
+> v3:
+> - include information in comments and commit message about different
+> E810 behavior
+> v2:
+> https://lore.kernel.org/intel-wired-lan/20260508102247.826375-1-przemyslaw.korba@intel.com/
 
-However, ice_is_txtime_ena() does not check the VSI type before
-consulting the bitmap. When ETF offload is enabled on PF Tx queue 0,
-bit 0 is set in pf->txtime_txqs. During a subsequent PCI reset
-rebuild, the CTRL VSI's Tx queue 0 is reconfigured and
-ice_is_txtime_ena() is called for that ring. Since it only checks
-pf->txtime_txqs by queue index without distinguishing VSI type, it
-finds bit 0 set and returns true, matching the PF VSI's ETF queue,
-not the CTRL VSI's. This causes ice_vsi_cfg_txq() to spuriously
-allocate a tstamp_ring for the CTRL VSI ring.
+Thanks for the update.
 
-Since CTRL VSI rings have no associated netdev, ice_clean_tx_ring()
-takes an early return at the !netdev check before reaching
-ice_free_tx_tstamp_ring(), leaking the allocation. Each PCI reset
-leaks one 64-byte tstamp_ring.
-
-Fix this by restricting ice_is_txtime_ena() to return true only for
-PF VSI rings, since txtime_txqs is only meaningful for PF VSI queues.
-
-Fixes: ccde82e90946 ("ice: add E830 Earliest TxTime First Offload support")
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 725b130dd3a2..f6671a653f21 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -767,6 +767,9 @@ static inline bool ice_is_txtime_ena(const struct ice_tx_ring *ring)
- 	struct ice_vsi *vsi = ring->vsi;
- 	struct ice_pf *pf = vsi->back;
- 
-+	if (vsi->type != ICE_VSI_PF)
-+		return false;
-+
- 	return test_bit(ring->q_index,  pf->txtime_txqs);
- }
- 
--- 
-2.52.0
+Reviewed-by: Simon Horman <horms@kernel.org>
 
