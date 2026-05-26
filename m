@@ -2,213 +2,148 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id 8Cj3IXxrFWoBVAcAu9opvQ
+	id yNxqNn2WFWp9WgcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:44:28 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 14:47:57 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 116055D396E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 11:44:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 94AE15D5C00
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 14:47:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0D3B2830A8;
-	Tue, 26 May 2026 09:44:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A644240FCC;
+	Tue, 26 May 2026 12:47:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iZSYM9oozFHW; Tue, 26 May 2026 09:44:22 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QzFntBRLQ1z0; Tue, 26 May 2026 12:47:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 66A9383046
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C9E7D40FC4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779788662;
-	bh=fOpQ0YHtaFgkpBY0T/sYxanN+o0EDh0XAIzrhVeEbtM=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1779799673;
+	bh=5kwiZ88aMCCOMgCKv+ZUerR8iXVNCA9hIs6rASmQTCk=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=JaqUTx3iCmY380SlJgzC10IWePqCpnovTZAmGir6CEaPoLu0RYcPHBQ/DLjbax5hx
-	 3WotykEhGa2qPveWdvDLlAS2wtzvTEFU4OY8Ut+BZ0dyocAzea0lhmiKIpQeNWr5U/
-	 ybQtiR6MMsgsSpohsFoW9daIvHqzuBWnYThCL2dSIY2/xuLVQ7TxfhqarpP0ETAT1Z
-	 BiZnC/vkswsx85+/c44owPJGpeV7twfPjp+BdrKvr/dlv9iwyJAzCAl2mHWYo9na8V
-	 ssks961cEJS5bJf9U/OmNsZiOK6pdrUVpNywPK/qJMxGXXlkHYpV3HISiJR89ygKSt
-	 d3sXZEdvQY/9Q==
+	b=AFxmjmvL+uBA+C1hT8WgCiH1Ng3GXc8CVGiRuf57ooIp9LWFD34mY7Ej9dDY7/B2k
+	 67veMIQkWS7Ssc98RaCSu09Ri/E9sTGoCwYkuXcRFmBEH8bI1tirz0p/cC/s/CFVcQ
+	 J0zEmmmrYzHUmg/9ihxvggQkcQN0zYT5Yn9O9l9GayfFD/PsMaAMjQiFsoerdd9JbB
+	 Q+U3ysGUmtJ2S8pIOhs4csFyZnyJsMo/xgLdjWcuvYsUpaAs+VxAlCK7Xe0GLEaSAm
+	 UmHEhXxXM/Hp6n6SjDRqp//4a9t2eX0Dx7CCCPAXNLmGiF0R0d9nSDTShOf8OEUnU9
+	 x2aFgT8Eg19ag==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 66A9383046;
-	Tue, 26 May 2026 09:44:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C9E7D40FC4;
+	Tue, 26 May 2026 12:47:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id C330C297
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:44:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id C61D5265
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 12:47:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A8A0640786
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:44:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A67824087D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 12:47:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2BlF1SIYeYZh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 09:44:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
+ id egxMyWolgd0A for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 May 2026 12:47:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C9BA440183
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C9BA440183
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C9BA440183
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 09:44:19 +0000 (UTC)
-X-CSE-ConnectionGUID: ze4n9TTzTw6rWYBk6Cj6DQ==
-X-CSE-MsgGUID: mqYRGLQGQqqmSqP6Y0ysrA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11797"; a="98173380"
-X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="98173380"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2026 02:44:17 -0700
-X-CSE-ConnectionGUID: H9cwEsD/QFCQPFsQztuO2w==
-X-CSE-MsgGUID: SDvq2JD7Qk246GLFZ57lzA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,169,1774335600"; d="scan'208";a="237687059"
-Received: from fmsmsx901.amr.corp.intel.com ([10.18.126.90])
- by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 May 2026 02:44:19 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Tue, 26 May 2026 02:44:18 -0700
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Tue, 26 May 2026 02:44:18 -0700
-Received: from PH7PR06CU001.outbound.protection.outlook.com (52.101.201.53) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Tue, 26 May 2026 02:44:16 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RyghZcD/5SRFy8xvwMs9T2ujVZX4BK50UfyDlotVyXFgPvnohRbZEK0pp5HDYsR65vFVEwijqTp3ScA0EZ1W1YGpIBg+g7GSlChWhiKYR/13NWXOo43dcsxL1KIcequpOsoedf7jiCJ3rhWRsZ+OC61nxsEBEIMDg57ydB6mAoV+myWZaQNa1D89nxFh6dj1UFD9tB0N3kXzTzP7sxoRSlr8r312i0jnP2Dtmla6oDDjnsq6RlorK0bd5G1GM6XszXJiKPcgKzZrjSh9vDaFaFLIIwCB5R0jNxnpUe7YOLGBrWINaJ3Eh/r2TCjcHEKgbiCX/X0nxjp+Yto0aIqqJQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fOpQ0YHtaFgkpBY0T/sYxanN+o0EDh0XAIzrhVeEbtM=;
- b=TAWjnFXzR0pBH58sGB4K5x9WVX06z28kmYYgpBOSKkHGAYC5CQ0elrCf9k0idk2jdqrXc/si9YR99I0gaBPzjE13U46JLhv+sEgzZVi4ogH2iU8mtY7Nrzfdl7g7DihnXpEs8ITa6qta37zZFkG3vt0eHzdamaGwKtg8sLsVvjGV6m6jEVq8/L20MkNhprFlSLFsKAHyNMCFsV7DoIEUx0koEm3p6XPidjFIx03/iQ88Dm1pPKZgvYYYK4LmTFEuJq1zloIjbvRTLj3Hed/+bdo/S1+UPj8sXNk6c/i7sfvrCbfZ0obnz3AANW9DYFAV5am2+hRdksC2YVCqlVxE5w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA1PR11MB6219.namprd11.prod.outlook.com (2603:10b6:208:3e9::15)
- by SA3PR11MB7555.namprd11.prod.outlook.com (2603:10b6:806:311::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.20; Tue, 26 May
- 2026 09:44:07 +0000
-Received: from IA1PR11MB6219.namprd11.prod.outlook.com
- ([fe80::a2b9:8e8:c48b:ea31]) by IA1PR11MB6219.namprd11.prod.outlook.com
- ([fe80::a2b9:8e8:c48b:ea31%5]) with mapi id 15.21.0048.016; Tue, 26 May 2026
- 09:44:07 +0000
-From: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-CC: "Vecera, Ivan" <ivecera@redhat.com>, "vadim.fedorenko@linux.dev"
- <vadim.fedorenko@linux.dev>, "kuba@kernel.org" <kuba@kernel.org>,
- "jiri@resnulli.us" <jiri@resnulli.us>, "edumazet@google.com"
- <edumazet@google.com>, "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
- Arkadiusz" <arkadiusz.kubalewski@intel.com>, "andrew+netdev@lunn.ch"
- <andrew+netdev@lunn.ch>, "intel-wired-lan@lists.osuosl.org"
- <intel-wired-lan@lists.osuosl.org>, "horms@kernel.org" <horms@kernel.org>,
- "Prathosh.Satish@microchip.com" <Prathosh.Satish@microchip.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "davem@davemloft.net" <davem@davemloft.net>
-Thread-Topic: [Intel-wired-lan] [PATCH v10 net-next 6/8] ice: implement CPI
- support for E825C
-Thread-Index: AQHc6DzsQ0uD5J3Sm0qO3G11Gyv84rYW2maAgAk9a6A=
-Date: Tue, 26 May 2026 09:44:07 +0000
-Message-ID: <IA1PR11MB6219C195C03B2D5FF1A951F1920B2@IA1PR11MB6219.namprd11.prod.outlook.com>
-References: <20260520093628.3930705-1-grzegorz.nitka@intel.com>
- <20260520093628.3930705-7-grzegorz.nitka@intel.com>
- <IA3PR11MB89869D3D47DE538225AD222BE5012@IA3PR11MB8986.namprd11.prod.outlook.com>
-In-Reply-To: <IA3PR11MB89869D3D47DE538225AD222BE5012@IA3PR11MB8986.namprd11.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR11MB6219:EE_|SA3PR11MB7555:EE_
-x-ms-office365-filtering-correlation-id: ae30377e-fa39-4f6a-a635-08debb0b54ce
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|1800799024|366016|376014|38070700021|22082099003|56012099003|18002099003|3023799007|4143699003|11063799006|6133799003;
-x-microsoft-antispam-message-info: bzlnww3kZnXskunXOlcyy0TjwPYA3nmuH6GBnCtsyNHsIUJPJOPmFda+OGOKfhgBEcsvTbFWJ5vktgiFTTNcjBQqvsypDS2LnZAPkzwph969FDmJs6PI7doWdqiqP9TV9PQSoqk4E7Y/Af7Gw3r8b1vdzkwApUNMl+msK5PFTchO0jh5FE51dWilvJXyfNy5ira8eIBMaYbczSHUB8RlbtBjML9hOTKFMEF3ehkZt8vv/mMINB3nGslt/eztCK1xb2QqE/V0RrUIpKW2Dtt8OZvfz9VGfBnMHnr70QDWDwUfNJgBIOygbBoh29ze/KI0PopIBgXMxWpTPE3p7m3UZSKxyHgsSaDuj5xI2BAWR2RWS2qrDL+eWfWxDqTScAYEcirwYq77dTGsQH1W8RiTJhXRy0iJSQCEjvBoveOfVXNG1/7BsLyL74oAxIOrtuiSAuYL49y6DbrsNoZ0T7gbQhVqcJs59BhlH/OmE+sCjTA1ns4jsxbk2ertlrmAUm6getQcWKCrwB/wFGrHwQoOf+ms3bwvgssPvOi6lBP1EFYruwmN0srIZeKmxRMiG5HxfmLmadt2f3TQCKCH76TgagdJozAn/JI6QmPzWs9ocGq/PtTfdsp0f5/1Ne7pEP4zLf+mfmCY8xC/tJVfbL5d/6JyMVMeI91WOVRs6YAD4STj8VYwd8su/w0HB8L+/RN0XNkwZMeyQ0Q75rQ3J//jUlSJzKGCUtnN11ijEW/12j45Nj0rU1ql7NmVIvjCmZrF
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR11MB6219.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(1800799024)(366016)(376014)(38070700021)(22082099003)(56012099003)(18002099003)(3023799007)(4143699003)(11063799006)(6133799003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?9m5gEy10ANTolyDoBMMZWkJyySX3kwYBOVXurQJYu7eJpNhptbOCoost6AjX?=
- =?us-ascii?Q?N96zr40yP0in/lTrKUDMZ5vYTE8gDXTjRIK8QpXN8dd1mgrNvujNfT8c0CbG?=
- =?us-ascii?Q?nZdgrucWBuU59UYUjrYFEejjP/YrgdVoIXiOEKpWRs2H6eY/ePO8T0ZbIk0a?=
- =?us-ascii?Q?OStP4Pnq2EF9h8QO4eJv7z56cNh0Oxh48KsW7aJfq8HWjULigknMYZuvH9Cr?=
- =?us-ascii?Q?fblkvDdPm2T2Pi2+oKMc0jj53Q6pFSN86gEeBqxtftHYsdZRQPrd5ESY0XYR?=
- =?us-ascii?Q?VsBnja3INGOh2mj37aKUPikXSjz5fGQeJ+fpOsk2WBM0izUg1ruMs7gjV0KT?=
- =?us-ascii?Q?O14CJLUqjQFl2fh46gXfZnyUeO0UzQre+aMN3jzrt/z1BTehM+xSHWwLbjpd?=
- =?us-ascii?Q?TqEiV1+vuyYtvpIyFMrEhpd4h+06DvMCdzHwMhZycxSeBe7L+NcIVn9fJnEn?=
- =?us-ascii?Q?b+QYXqU6P0keb+5/D4nNROGmLIOgXqfJN9BwEF43ReD+0fTpuyO0QRhvfNLp?=
- =?us-ascii?Q?kAFZifcLTfpP7mxbRoaISZJp4vT1HaUTxfi8kDLlpG90loeOF/5+he6XU4TD?=
- =?us-ascii?Q?SAF4Hic3aho1SmV7Agr0W/gEn1x7p7csoon16m8/0FoTHoNhUSdKX/lkIP2D?=
- =?us-ascii?Q?HAwaBu/v+PjPcjAb9EGZ+Wu4MmcXFTxk+Spqnii++gKQIddo+i88HghRHj/7?=
- =?us-ascii?Q?KkAuiWWLiNmDA30i6NhyoVkblCsOCf0JcLFVHRpBIREXFPkIBf6tufmx7P6i?=
- =?us-ascii?Q?0+FvDXlc2JOnIHxmgZoFQuD4cReGm/eX7hCBgugQD3niRaXNndN/2oFF35EW?=
- =?us-ascii?Q?eIlnBucBHRLCihld+anSR7o3XWvzze90U/1AsR7+4dgRtZsYa0U4okbuAzug?=
- =?us-ascii?Q?JZHNS6kYS8prQ/z6hQl3JuRYSQjjI9R31TL8bpkMi3Eu8qM+zAqhubXKcNvs?=
- =?us-ascii?Q?DAtNKOGWYU5WxlVyR2nDoQhTB7hzySM6B0XeboQc9I8CNcKMz9bmyyED5fVb?=
- =?us-ascii?Q?uq7o/JdS4iSrNBAPBTUxIfYq6bRsjM4iT/SiD2OIMFhL/57ec6eL4tZZR0eL?=
- =?us-ascii?Q?Zbpcqr2kRHFnemVOBHYDElFAZ7qkd8x/y5uGTcDINVo+KRCH+pDh6h7zUGQk?=
- =?us-ascii?Q?afesGppyefbIGpt+PLmJOsOviDU0ET4HdYsSb8asPU6uYaYZxTTSF2aFAqTd?=
- =?us-ascii?Q?KUO5VYyXbN0fjB8stDj4r632v1+1jHWFUZvHKrRdQw1jVTvpAaYIk3mr9IYA?=
- =?us-ascii?Q?hrEWtFrCFOKpi5v+EdGDpic2tVMtyvx30Bl4/fpoO5z78/MjTwexm8JRGu6O?=
- =?us-ascii?Q?zEVRWusBxFIZli36Oq9pJM6KeYlIWYcFLDBGQVvt9oYa5wfFAXz7GOp7FyMi?=
- =?us-ascii?Q?mtH6n+kyjedlnSv7kM9gQthreEV9dGkaAN7TFkVAkxIHBtUfGelRh0MXrOKP?=
- =?us-ascii?Q?0RqF2zakXG8NSN3c5OvoiHN5GE63BhMbXG+g/ICSoSslcA92RODX1KLSrmap?=
- =?us-ascii?Q?mawlWWmeu98T/hWT0ipfhu/+0dpWM2ZcF+FetONwQ9GhGDvc8MWFCpPIRfMw?=
- =?us-ascii?Q?c4MAijdACZQZdU5MmzR9sFmHHCP/5aLQB6l5AXzK47VPbohjLdZLwZFAH0z3?=
- =?us-ascii?Q?ZY4kgccI2/34vmCwb7tLSNtOuzkMLw5tYY9OSu1zOBaV16iI9z/eaebIn3aE?=
- =?us-ascii?Q?jdRph0ItvxzbVJSKm6gcxK/b6or/7AdGmTVmB8+XLBmGgwcZcjw44TdxRHPe?=
- =?us-ascii?Q?K18cDYa55A=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8A1F74045D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A1F74045D
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8A1F74045D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 12:47:49 +0000 (UTC)
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-282-bg1HAInXNjm4Jce7TCjgNA-1; Tue, 26 May 2026 08:47:46 -0400
+X-MC-Unique: bg1HAInXNjm4Jce7TCjgNA-1
+X-Mimecast-MFC-AGG-ID: bg1HAInXNjm4Jce7TCjgNA_1779799665
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-45ea38c03a1so4470712f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 05:47:46 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779799665; x=1780404465;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5kwiZ88aMCCOMgCKv+ZUerR8iXVNCA9hIs6rASmQTCk=;
+ b=FK3u6cBc5c1BbQNkeqh6uNtRbo2dgw7E3R1Fy7W1kwplRIWaMh5xtPdvzdNPluC3yk
+ fg/GnBrB2GI+RUVpz4c8c3BaqoqYHQIN6IvDgIPjViMZpKtrpvdZ1uBdofEl8TsyowKo
+ H39Cp5ct5QP7qfTvLJs/Pa1P7otOlbP7HieJc1sex93rKA/uJmI9Iw6I/8AUVtEvJyG6
+ 1FaJTkxdfWJzQekhdoqfWfOOeXVu6wWjSv1CsIkoatsjuzbiQZUdnG79JGfSMXqqIb3u
+ dQpUHqPZnZ8N8KLvqJZg2YTeP0tRRgIGpHdIGKMxyghxIkultdrBONjLTV28ApYTLfn6
+ 20yw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9LDpiiydUpi5mMW6uhhzJ+R7/Zm+1EXy0YMVdDcu7N9zX2c7vHh1RWDlZG0p+2fEU9nlSAVn7SVvMWVofCS5Y=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YzxYAlv+C0BJTPIf7kYxLg6vFkgTwcT18bSLd40hTBezG1REZI/
+ i37DBKlV9Y7chLcnwXKcjyFqO5f+4uqi0iIh6wgGtPYXVLhBu6E3H9hTT2PKUfkeWGLKqrq8uWr
+ lX9mnVTR5+GtmxgR2fPlSdkR5CI9nJa17MG4hBjdmsEzbMFURFsODPK1JIuKyxXFbiuBDV9s=
+X-Gm-Gg: Acq92OHV3ZcPfeJ7Jj4yJhCF8EUoxyjY9DlZTEB62fclvclC32kaMrVsxBqSikpuUnQ
+ OezW0dk4QHlZNvzYcwPRQNPGUAOuKeTfWmME1cBZp94rg9pXkB4hFWHb8/TEN6jbUTnu4v6Tbss
+ +arZzcFylEecQ9xH6ixXZoo0ojUkspG5hUoBQRshzLnqUakKfijkjCO1zoveJDLaKS1IJuO+65Y
+ kyoDurUbbTjh0CyD2KsBjtUomdUrsMWDIC7avRsl4+CmHt8OJepqRXfXy1nzmCwUr9y2JCCd/3j
+ 0Vs6JMteDrStns+1RK2dkMBv3hNcR3KdXO+4Q/HDLwz7GVHWUHSXStbjj9i65POZzZlEkDm+4lP
+ xRlzErxuI
+X-Received: by 2002:a05:6000:1a85:b0:43d:762e:76ba with SMTP id
+ ffacd0b85a97d-45eb367fb35mr31041323f8f.17.1779799665250; 
+ Tue, 26 May 2026 05:47:45 -0700 (PDT)
+X-Received: by 2002:a05:6000:1a85:b0:43d:762e:76ba with SMTP id
+ ffacd0b85a97d-45eb367fb35mr31041262f8f.17.1779799664691; 
+ Tue, 26 May 2026 05:47:44 -0700 (PDT)
+Received: from [10.43.3.161] ([213.175.37.14])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45eb6c9f6ffsm35518540f8f.1.2026.05.26.05.47.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 26 May 2026 05:47:43 -0700 (PDT)
+Message-ID: <e1ce1387-ae6b-4b43-b5d8-a1141c4a4f1c@redhat.com>
+Date: Tue, 26 May 2026 14:47:42 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: HV5EyggIBxzwsZvITZkT50yytonxhYs6nx5mvfoZATUgYzMRiTQyAHij/m2H0WMkxIYDtHbgjwgfcaoCzu/fhGnBJXw7P5MzEFtO5SyIilR0zqS4KdvHUGq54TU+o2c3I3SMP5FQd7I3qwhc3F3fieYOFgjJR9D5a+HPrI4NJIHWm1S96jRXfLiLoge4mI8h6MM7as0noek4uKEDOT2u1pt/MNGVZMY13+vM0xVan80VEHQegusqDOMd3j4RqSLXTckQK0K7N4fusvKNkVIOx+JnEeoOX7RpY5hCPjDvTCWbFkQTrpzwfv0jkBfI0FXuD8mjsYNqHW/XUQWnSkanMw==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB6219.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ae30377e-fa39-4f6a-a635-08debb0b54ce
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 May 2026 09:44:07.4965 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 03M8uLnzzDZUZOOZq8U6i99zEczCqjyPElXD0TOVAMDSnhV0WTEzKCuibO7FyPC46j8KDEvceT3mrSS5motSS8RFQwPM9SThWCA9s1gs1lI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7555
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1779788658; x=1811324658;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=jradOPT+BRD0pKgyi6ksQPQItXQwwhALo6bRpO7N/1I=;
- b=LqTkzyLHqNZryJqDBEPRnbCe2b9JqTxfReL2wK8Qps00k26q3RgWLnbB
- Fx9kxpXw9kCTD9fNf8JzpyUi4zOGdQHN+7tFlf9cveFoyqceu1E2MGssb
- MXOropxPYW6bGoCli0IkuOlBt/B10fTx8v5x/HVAn0i+rJFTOg0WOGs3y
- RqksBtOyYM5WENVkjKPAUdtoU2oeoc6/ZEQRVql3+Cv2WoOuT5hQWc8n5
- Ka4aYJwze+2LYASCu8x6bEfEgaekeg8sePpqLGMEZlD64iZfdRxg3KTXz
- vMv/ym8fPcrbgADWshw+BC/8Tb+Lt9nzRPEmj7e+ZjvDaV3dGDDDWBtBF
- A==;
+User-Agent: Mozilla Thunderbird
+To: Jacob Keller <jacob.e.keller@intel.com>,
+ David Laight <david.laight.linux@gmail.com>,
+ John Ousterhout <ouster@cs.stanford.edu>
+Cc: stable@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
+ netdev@vger.kernel.org
+References: <20260512181953.1689-1-ouster@cs.stanford.edu>
+ <20260513100732.499e3f49@pumpkin>
+ <CAGXJAmzK+56DHnitD1g263mPSgWg9jZyq2z6R+vd8bV_c4ZbuQ@mail.gmail.com>
+ <20260513214927.17a8dd45@pumpkin>
+ <CAGXJAmx4LaVv=QJ=SanvF6iayJ8+SiLyUqht+jMxouXPX=54-g@mail.gmail.com>
+ <20260514110112.12bdf5ff@pumpkin>
+ <30dc284c-8cc0-4bae-b7b0-99d6d71a66e3@intel.com>
+From: Petr Oros <poros@redhat.com>
+In-Reply-To: <30dc284c-8cc0-4bae-b7b0-99d6d71a66e3@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: xCR-GRIbP_1hZI2cZfMYq6q6qJK1mQ6fL63nMuW6Nu4_1779799665
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1779799668;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5kwiZ88aMCCOMgCKv+ZUerR8iXVNCA9hIs6rASmQTCk=;
+ b=LqPHbZWp3BAQftfqI91wcoKp5iuwUg0kCxRipZS1iNrKTdB/x1JECNfLjPpsxb5m/sksgl
+ R7jpnE8YpD8fOI3K7+j7ifqHrPOsBi6Kt3wyBx9ljwM7jhwee5o0cvG8/Vo9ZLiwDlfOTn
+ fTvGIQ+uXN0+wGEXPHRC9DqdjvpVtzI=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LqTkzyLH
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v10 net-next 6/8] ice: implement CPI
- support for E825C
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=LqPHbZWp
+Subject: Re: [Intel-wired-lan] [PATCH net v3] ice: fix packet corruption due
+ to extraneous page flip
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -223,190 +158,209 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [1.79 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	R_SPF_ALLOW(-0.20)[+mx];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[19];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_SENDER(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:david.laight.linux@gmail.com,m:ouster@cs.stanford.edu,m:stable@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:davidlaightlinux@gmail.com,s:lists@lfdr.de];
+	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FREEMAIL_TO(0.00)[intel.com,gmail.com,cs.stanford.edu];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net];
-	NEURAL_HAM(-0.00)[-0.993];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	NEURAL_HAM(-0.00)[-0.975];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo]
-X-Rspamd-Queue-Id: 116055D396E
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCPT_COUNT_SEVEN(0.00)[8];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[10]
+X-Rspamd-Queue-Id: 94AE15D5C00
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
 
+On 5/14/26 18:43, Jacob Keller wrote:
+> On 5/14/2026 3:01 AM, David Laight wrote:
+>> On Wed, 13 May 2026 21:47:11 -0700
+>> John Ousterhout <ouster@cs.stanford.edu> wrote:
+>>
+>>> On Wed, May 13, 2026 at 1:49 PM David Laight
+>>> <david.laight.linux@gmail.com> wrote:
+>>>> On Wed, 13 May 2026 09:28:40 -0700
+>>>> John Ousterhout <ouster@cs.stanford.edu> wrote:
+>>>>   
+>>>>> On Wed, May 13, 2026 at 2:07 AM David Laight
+>>>>> <david.laight.linux@gmail.com> wrote:
+>>>>>> On Tue, 12 May 2026 11:19:53 -0700
+>>>>>> John Ousterhout <ouster@cs.stanford.edu> wrote:
+>>>>>>   
+>>>>>>> Consider the following sequence of events:
+>>>>>>> * The bottom half of a buffer page is filled with data from
+>>>>>>>    packet A. The page has a net reference count (reference count
+>>>>>>>    - bias) of 1. The page is returned to the NIC, flipped to
+>>>>>>>    use the top half.
+>>>>>>> * Before the reference on the page is released, the NIC returns
+>>>>>>>    the page with no data in it ('size' is zero in ice_clean_rx_irq).
+>>>>>>>    In this case the bias does not get decremented. The page still
+>>>>>>>    has a net reference count of 1, so it gets returned to the NIC.
+>>>>>>>    However, ice_put_rx_mbuf flipped the page so that the bottom
+>>>>>>>    half is active.
+>>>>>>> * If the NIC stores another packet in the page before packet A
+>>>>>>>    has released its reference, the data in packet A will be
+>>>>>>>    overwritten with data from the new packet.
+>>>>>>> * Unfortunately zero-length buffers occur frequently: they seem
+>>>>>>>    to occur whenever a packet uses every available byte in a
+>>>>>>>    buffer, ending precisely at the end of the buffer. When this
+>>>>>>>    happens the NIC seems to generate an extra zero-length
+>>>>>>>    buffer.
+>>>>>>> The fix is for ice_put_rx_mbuf not to flip pages that have a
+>>>>>>> size of 0.
+>>>>>> How is this different from packet B (in the top half) being
+>>>>>> freed before packet A (in the bottom half)?
+>>>>> I'm not sure exactly what you're referring to here. Are you asking
+>>>>> about a situation where both halves of the page get filled with packet
+>>>>> data and then the second half to be filled is the first to be freed? I
+>>>>> believe that the ICE driver abandons a page if both halves are ever
+>>>>> occupied simultaneously; the page will be returned to the system once
+>>>>> both halves have dropped their references. Thus it doesn't matter
+>>>>> which half is freed first.
+>>>> That is what I was thinking, seems like the logic is over complicated.
+>>>>
+>>>> If you need to put 4k pages into some kind of iommu rather than 2k buffers
+>>>> (to contain 1536 byte ethernet packets) then I'd have thought you'd
+>>>> initially put both halves into adjacent tx ring entries.
+>>>> If a rx buffer is discarded (eg a zero length fragment or a CRC error,
+>>>> or even 'copy break' for short packets) then, as an optimisation,
+>>>> you could reuse the buffer for another receive.
+>>>> The same could be done if the page is freed by an application.
+>>>>
+>>>> However it sounds like it doesn't use the 2nd half until the first
+>>>> completes - otherwise you'd never 'flip' to make the other half
+>>>> active.
+>>>>
+>>>> Thinks...
+>>>> By only putting half of each 4k 'page' into the rx ring the code
+>>>> will usually save (expensive) iommu setup in the (probably) normal
+>>>> case where the buffers are freed 'reasonably quickly'.
+>>>> But that really requires a 'free/with_nic/busy' state for each half
+>>>> rather then trying to guess from a reference count.
+>>>>
+>>>> But if the low-level code is recycling the rx buffer (for any reason)
+>>>> it wants to use the same buffer.
+>>>>
+>>>> The ethernet driver I wrote (a long time ago, early 90s) allocated
+>>>> 64k as 128 512byte buffers and did an aligned word-sized copy of
+>>>> every receive frame - most frames were in contiguous memory.
+>>>> The simplicity of it made up for the cost of the copy, especially
+>>>> since that was an iommu system.
+>>> I'm not here to defend the logic (and it has been replaced with
+>>> something that is probably simpler and more efficient); I'm just
+>>> suggesting a bug fix for the stable releases that still have this
+>>> logic.
+> Right. We definitely want a fix for the possible data corruption in
+> stable. Ideally one as simple as possible.
+>
+>> You've forced me to look at all of the function :-)
+>> I've noticed a few things:
+>> - If ice_add_xdp_frag() fails (because there are too many fragments)
+>>    then the rest of the fragments are left in the tx ring (instead
+>>    of being discarded) - so are likely to be treated as a full packet
+>>    later on.
+>> - Frames with status errors (crc, framing etc) are discarded after
+>>    the skb is built - surely that should happen before the xdp 'program'
+>>    is called.
+>> - If the remote system send a very very long frame (traditionally the PHY's
+>>    'jabber detect' didn't always work) you can end up with all of the rx
+>>    ring being full of a single partial packet.
+>>
+>> I think you need to avoid calling ice_add_xdp_frag() when 'size == 0'.
+>> Then in ice_put_rx_mbuf() unconditionally call ice_put_rx_buf() for
+>> zero length fragments.
+>> The comment would be 'zero length fragments can always be reused'.
+>>
+> That seems correct.
+>
+>> The zero length fragments almost certainly exist because the mac hardware
+>> advances the the new buffer expecting more data - but only gets the
+>> 4 byte CRC. So the zero length buffer contains the receive status.
+>>
+> That matches my understanding.
+Hi John,
 
-> -----Original Message-----
-> From: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> Sent: Wednesday, May 20, 2026 2:38 PM
-> To: Nitka, Grzegorz <grzegorz.nitka@intel.com>; netdev@vger.kernel.org
-> Cc: Vecera, Ivan <ivecera@redhat.com>; vadim.fedorenko@linux.dev;
-> kuba@kernel.org; jiri@resnulli.us; edumazet@google.com; Kitszel,
-> Przemyslaw <przemyslaw.kitszel@intel.com>; richardcochran@gmail.com;
-> donald.hunter@gmail.com; linux-kernel@vger.kernel.org; Kubalewski,
-> Arkadiusz <arkadiusz.kubalewski@intel.com>; andrew+netdev@lunn.ch;
-> intel-wired-lan@lists.osuosl.org; horms@kernel.org;
-> Prathosh.Satish@microchip.com; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; pabeni@redhat.com;
-> davem@davemloft.net
-> Subject: RE: [Intel-wired-lan] [PATCH v10 net-next 6/8] ice: implement CP=
-I
-> support for E825C
->=20
->=20
->=20
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > Of Grzegorz Nitka
-> > Sent: Wednesday, May 20, 2026 11:36 AM
-> > To: netdev@vger.kernel.org
-> > Cc: Vecera, Ivan <ivecera@redhat.com>; vadim.fedorenko@linux.dev;
-> > kuba@kernel.org; jiri@resnulli.us; edumazet@google.com; Kitszel,
-> > Przemyslaw <przemyslaw.kitszel@intel.com>; richardcochran@gmail.com;
-> > donald.hunter@gmail.com; linux-kernel@vger.kernel.org; Kubalewski,
-> > Arkadiusz <arkadiusz.kubalewski@intel.com>; andrew+netdev@lunn.ch;
-> > intel-wired-lan@lists.osuosl.org; horms@kernel.org;
-> > Prathosh.Satish@microchip.com; Nguyen, Anthony L
-> > <anthony.l.nguyen@intel.com>; pabeni@redhat.com;
-> davem@davemloft.net
-> > Subject: [Intel-wired-lan] [PATCH v10 net-next 6/8] ice: implement CPI
-> > support for E825C
-> >
-> > Add full CPI (Converged PHY Interface) command handling required for
-> > E825C devices. The CPI interface allows the driver to interact with
-> > PHY-side control logic through the LM/PHY command registers, including
-> > enabling/disabling/selection of PHY reference clock.
-> >
-> > This patch introduces:
-> >  - a new CPI subsystem (ice_cpi.c / ice_cpi.h) implementing the CPI
-> >    request/acknowledge state machine, including REQ/ACK protocol,
-> >    command execution, and response handling
-> >  - helper functions for reading/writing PHY registers over Sideband
-> >    Queue
-> >  - CPI command execution API (ice_cpi_exec) and a helper for enabling
-> > or
-> >    disabling Tx reference clocks (CPI 0xF1 opcode 'Config PHY
-> > clocking')
-> >  - assurance of CPI transaction serialization into the CPI core.
-> >    CPI REQ/ACK is a multi-step handshake    and must be executed
-> >    atomically per PHY. Centralize the lock in ice_cpi_exec() and
-> >    use adapter-scoped per-PHY mutexes, which match the hardware
-> > sharing
-> >    model across PFs.
-> >  - addition of the non-posted write opcode (wr_np) to SBQ
-> >  - Makefile integration to build CPI support together with the PTP
-> > stack
-> >
-> > This provides the infrastructure necessary to support PHY-side
-> > configuration flows on E825C and is required for advanced link control
-> > and Tx reference clock management.
-> >
-> > Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-> > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> > ---
-> >  drivers/net/ethernet/intel/ice/Makefile      |   2 +-
-> >  drivers/net/ethernet/intel/ice/ice_adapter.c |   4 +
-> >  drivers/net/ethernet/intel/ice/ice_adapter.h |   7 +
-> >  drivers/net/ethernet/intel/ice/ice_cpi.c     | 362
-> > +++++++++++++++++++
-> >  drivers/net/ethernet/intel/ice/ice_cpi.h     |  58 +++
-> >  drivers/net/ethernet/intel/ice/ice_sbq_cmd.h |   5 +-
-> >  drivers/net/ethernet/intel/ice/ice_type.h    |   2 +
-> >  7 files changed, 437 insertions(+), 3 deletions(-)  create mode
-> > 100644 drivers/net/ethernet/intel/ice/ice_cpi.c
-> >  create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.h
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/Makefile
-> > b/drivers/net/ethernet/intel/ice/Makefile
-> > index 5b2c666496e7..38db476ab2ec 100644
-> > --- a/drivers/net/ethernet/intel/ice/Makefile
-> > +++ b/drivers/net/ethernet/intel/ice/Makefile
-> > @@ -54,7 +54,7 @@ ice-$(CONFIG_PCI_IOV) +=3D	\
-> >  	ice_vf_mbx.o		\
-> >  	ice_vf_vsi_vlan_ops.o	\
-> >  	ice_vf_lib.o
-> > -ice-$(CONFIG_PTP_1588_CLOCK) +=3D ice_ptp.o ice_ptp_hw.o ice_dpll.o
-> > ice_tspll.o
-> > +ice-$(CONFIG_PTP_1588_CLOCK) +=3D ice_ptp.o ice_ptp_hw.o ice_dpll.o
-> > +ice_tspll.o ice_cpi.o
-> >  ice-$(CONFIG_DCB) +=3D ice_dcb.o ice_dcb_nl.o ice_dcb_lib.o
-> >  ice-$(CONFIG_RFS_ACCEL) +=3D ice_arfs.o
-> >  ice-$(CONFIG_XDP_SOCKETS) +=3D ice_xsk.o
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c
-> > b/drivers/net/ethernet/intel/ice/ice_adapter.c
-> > index cbb57060bd56..2dc3629d6d0f 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_adapter.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
-> > @@ -62,6 +62,8 @@ static struct ice_adapter *ice_adapter_new(struct
-> > pci_dev *pdev)
-> >  	adapter->index =3D ice_adapter_index(pdev);
-> >  	spin_lock_init(&adapter->ptp_gltsyn_time_lock);
-> >  	spin_lock_init(&adapter->txq_ctx_lock);
->=20
-> ...
->=20
->=20
-> > +/* CPI PHY CMD DATA register (CPI0_PHY1_CMD_DATA) */
-> > +#define CPI_PHY_CMD_DATA_M	GENMASK(15, 0)
-> > +#define CPI_PHY_CMD_OPCODE_M	GENMASK(23, 16)
-> > +#define CPI_PHY_CMD_PORTLANE_M	GENMASK(26, 24)
-> > +#define CPI_PHY_CMD_RSVD_M	GENMASK(29, 27)
-> > +#define CPI_PHY_CMD_ERROR_M	BIT(30)
-> > +#define CPI_PHY_CMD_ACK_M	BIT(31)
-> > +
-> > +/* CPI LM CMD DATA register (CPI0_LM1_CMD_DATA) */
-> > +#define CPI_LM_CMD_DATA_M	GENMASK(15, 0)
-> > +#define CPI_LM_CMD_OPCODE_M	GENMASK(23, 16)
-> > +#define CPI_LM_CMD_PORTLANE_M	GENMASK(26, 24)
-> > +#define CPI_LM_CMD_RSVD_M	GENMASK(28, 27)
-> > +#define CPI_LM_CMD_GET_SET_M	BIT(29)
-> > +#define CPI_LM_CMD_REQ_M        BIT(31)
-> Indent inconsistency spaces instead of TAB
+I have been looking at the same area in the pre-page-pool ice code and
+I want to ask whether you observed memory growth during your Homa runs
+that exposed the corruption, because in my testing the same bias mismatch
+also produces a slow page leak that your v3 does not close.
 
-Fixed in v11.
+Short version of the leak path, in the PASS (!CONSUMED) branch:
 
->=20
-> > +
-> > +#define CPI_OPCODE_PHY_CLK			0xF1
-> > +#define CPI_OPCODE_PHY_CLK_PHY_SEL_M		GENMASK(9, 6)
-> > +#define CPI_OPCODE_PHY_CLK_REF_CTRL_M		GENMASK(5,
-> 4)
-> > +#define CPI_OPCODE_PHY_CLK_DISABLE		1
-> > +#define CPI_OPCODE_PHY_CLK_ENABLE		2
-> > +#define CPI_OPCODE_PHY_CLK_REF_SEL_M		GENMASK(3, 0)
->=20
-> ...
->=20
-> >  /* Port hardware description */
-> >  struct ice_hw {
-> >  	u8 __iomem *hw_addr;
-> > --
-> > 2.39.3
+   1. ice_get_rx_buf(size=0) does pagecnt_bias-- unconditionally
+      (added by commit ef68094cb09e ("ice: Fix kernel panic due to page
+      refcount underflow") as the fix for the matching panic).
+   2. ice_add_xdp_frag() then returns 0 for size==0, so that page is
+      never attached to the xdp_buff/SKB. Nobody downstream will ever
+      call put_page() to balance the pagecnt_bias-- from step 1.
+   3. Your v3 in ice_put_rx_mbuf() correctly skips the page flip for
+      size==0, which closes the corruption window. But it does not
+      restore pagecnt_bias for that zero size buffer, so the page is
+      handed back to ice_reuse_rx_page() with a permanent deficit of 1.
+   4. On the next reuse of that page with size > 0, pagecnt_bias drops
+      again. ice_can_reuse_rx_page() now sees pgcnt - bias == 2 and
+      drains via __page_frag_cache_drain(page, pagecnt_bias). Because
+      pagecnt_bias is one too low, the drain undershoots by 1: page
+      refcount stays at 2 instead of 1.
+   5. The SKB eventually releases its reference (refcount -> 1), but
+      nothing ever brings it to 0. The page is leaked.
+      ice_alloc_rx_bufs() just allocates a fresh page to fill the slot.
+
+At the zero size frequency you mentioned (thousands per second), this
+adds up to roughly MB/s of leaked page cache, which Jaroslav Pulchart
+originally reported against 6.13.y on NUMA nodes and which motivated
+the libeth/page_pool conversion in mainline. So in stable trees the
+leak side of this bug is still live.
+
+Two questions:
+
+   - Did you monitor RSS / page allocator stats over the duration of
+     your Homa runs? If you did and did not see growth, I would like
+     to understand what is different about your setup, because by my
+     reading of the code the leak should fire whenever both halves of
+     a page end up in SKBs simultaneously and one of them carried a
+     zero size descriptor along the way.
+
+   - If your focus was specifically the corruption, would you be open
+     to extending v3 (or replacing it) with a fix that also restores
+     pagecnt_bias for the size==0 case? The minimal extension is one
+     extra branch in ice_put_rx_mbuf:
+
+         if (verdict != ICE_XDP_CONSUMED && size != 0)
+                 ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
+         else
+                 buf->pagecnt_bias++;
+
+     which restores bias on every path where the page is not actually
+     going out to an SKB. (I have a slightly different variant that
+     tracks has_data in struct ice_rx_buf to also handle the broken
+     positional 'i <= xdp_frags' counter in the CONSUMED path, where
+     zero size descriptors in the middle of a frame steal bias++ slots
+     from real fragments. Happy to share it if useful.)
+
+Regards,
+Petr
 
