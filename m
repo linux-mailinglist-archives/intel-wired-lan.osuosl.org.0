@@ -2,124 +2,124 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id SA7jEeWfFWr9WgcAu9opvQ
+	id 6CxmGxOgFWr9WgcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 15:28:05 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 15:28:51 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B52C5D6782
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 15:28:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 066745D67B7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 15:28:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3DEF640FE5;
-	Tue, 26 May 2026 13:28:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 91CCE40FE5;
+	Tue, 26 May 2026 13:28:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AbiUp3biy9qq; Tue, 26 May 2026 13:28:00 +0000 (UTC)
+ id E2PMB_DpKMcd; Tue, 26 May 2026 13:28:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5508E40FE7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7B85440FFC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779802080;
-	bh=AF9tJ1amhlOtaGqlNAAzlZV5h8kKDyKt4veK2cMLXSI=;
+	s=default; t=1779802128;
+	bh=/tryWe3YGVmPy2bnscHQmtWVBpbnu81ctvwLdXdUsQA=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yk4crW2HwduDCt8PeDpp19o1aZt4/3RMkGlqyuKJApIncT92oCE8dfhCEEsIyAFwy
-	 NVF+5ZCaxB1Hy7BJZedjB+6+tr4ROW8d/l87UemFzBZPCMMg9CoK1KhSuW0SULcz2N
-	 5gOzQklAIE5/rARXhN9pp4l/QlI/7JUgsbbh3qF6MXtNpED/uX7jarRsVlARQyRBP+
-	 4FybVHRd4VrTa1C5MQD5Domzi8Z429EJj2H7PBqTCP2+/NAV8KM0pbltMlqOMlxeP6
-	 I8mOFYODytG9cnIaL46GbpmSxDyYOT+OB44q2k/DvCxQOOvTWWBx1/4ZiPhyfiVl26
-	 Q9PkmSckGwFZA==
+	b=owxohogq+GnmiFXDViIquCNDYhiTvO+gze97XvsVPmi75GT8OkzLKQhS9crbBIhR/
+	 gTpkMrm+dP2A0lEYFMSC8iAc8HBBDxaK0MgD8UscJeOYVTZVzmTlZbLMtxhlysp5kI
+	 9d5leUrLqrVHThXYj/HxDUt48u9cfxsaF4McOzKMOgqladXiDcZt+Ad2EpoU/V2kwJ
+	 vW6UZZhylROunAaWucRc/XfAjR0+4BnoB8vjVVKipG02DDp/BO+D0VIjr+7/8P7Xwp
+	 yxURozgZp3HfoPd3xafdC/tBQEuPvfjDhxV4Gh9xJd81aaKwdwkBq97E394exAwCn0
+	 w3a2tOka5Miog==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5508E40FE7;
-	Tue, 26 May 2026 13:28:00 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7B85440FFC;
+	Tue, 26 May 2026 13:28:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id D3271297
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:27:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 4E7AF265
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:28:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B857C40885
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:27:57 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 404AF830A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:28:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BtUyfJM3ieDK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 13:27:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xp8ugYlDTs4R for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 May 2026 13:28:45 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32b; helo=mail-wm1-x32b.google.com;
+ client-ip=2a00:1450:4864:20::42f; helo=mail-wr1-x42f.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 187B64087B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 187B64087B
-Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com
- [IPv6:2a00:1450:4864:20::32b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 187B64087B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:27:55 +0000 (UTC)
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-49041e84237so34237485e9.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 06:27:55 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D1AF981E12
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D1AF981E12
+Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
+ [IPv6:2a00:1450:4864:20::42f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D1AF981E12
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 13:28:44 +0000 (UTC)
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-4585a116a4aso8803749f8f.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 06:28:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779802074; x=1780406874;
+ d=1e100.net; s=20251104; t=1779802123; x=1780406923;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AF9tJ1amhlOtaGqlNAAzlZV5h8kKDyKt4veK2cMLXSI=;
- b=QRjTUoo1PVPXr5bpBqEYd3U3g+ZlJHuDY4lKje498/5ar7eLX0wfOfFz9Gp57P3cK0
- JBVyDQkSpuD2GTt9IXLbH18XteU+MaUSUkECeot+C8msFALMmxFdr0hYADvWsdNubQ5r
- CuMoXaF5FLZ2NEhELqozB0trlet3vW/52+BjYas0btBoUaFxzFlIbF/0zsDQULgknFse
- 6hmhpZAqlhc/kKpfTCtwAZDwXDc0NXhGreLGxbvUt8nVa7bY/aRM9x0tiqoJvq+j/ZU/
- wj6XbayPdRFQjIuuf6949YGCLSQDZ3aPWqF4f345DoO1O9vGqCaQqBmNLHI4pDBjp7R/
- EIkQ==
+ bh=/tryWe3YGVmPy2bnscHQmtWVBpbnu81ctvwLdXdUsQA=;
+ b=ePejiSKtckr44xRSxgfzNTRyJ4m9yF2rTpGjgmTGF1oqCE9zVJWhmPi9OC+iXPSsiv
+ PbO2cd9Rz3ZsPFLjI9qis2v/hSLWDppRJhg1YVAWijA6DjjbFIXB8oq0QOAYGKxzZATB
+ qFh9HrSRKqDLnsNGU8X9CJy2ZKtabs+mZTW/68J+oehhNrkPPzOWCF0zN7OZlXcxbtm7
+ GeKLJxr+EuDEK3gjDLAh+/uDEUhuLn5Y7XYHWDkG5jfDgBnNFTu8RysDID8//e0olrbb
+ aqYti2oBfPRLx6mFNTBGtjdcZb+9WBlNvtwNrRp8UOLgnHS/1NUuRW5Om6lz6zIqUZih
+ k0NQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/Md/jBigDsqCyjzx7drcbY60Kf9NfN5Y7pI1tCA6SNlpZ+m3RheRL6qGWkzuSrHoKa2sW/+/yYr7OAT/0MBDk=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxrUgwSoIkAeX6hvj/NCOIjFjfXBLkS3/aQVd7z4AW6C8LoMKz/
- bWhP+50lhPzFhOKs41b0/4GeBwhnnPUbrNXkj/8SOqG2pmmp4KMV6l68h9YIxci8CPk=
-X-Gm-Gg: Acq92OF1LTKiplGebTX4N+vJSucCMUC10SLAd2Caigbuzkad35x90s6+rID3ktT7YSa
- +oldDigrdaZiUuD2A9UYPTdmHqMvVk7eUP5Yi26E/6xiO1XIde8fkEE6+kfntmT+pHhkRJeWXZd
- Oqr0qvvoxG6ok8j5/bDKR9UcHZAoRAKzg+9bY7YUhaBERNLMOCZCknePSTZT95aiorlvdkdzlli
- UWr5hut6jHsAwGeJOxkpenOb33L/vKlOiLq8gkUMTmsIp23PRhN3JbqZBRp/nr4+KClie3QvVna
- pR8hKaR1SvQrZg5Fj3Qs/MCJjeVdn/jYosTFDX6OpAntdNIKN12gc/DZIHnspY+KKqXD5KhYiAa
- Ad8hQRfVElsGfTptYiDH4LFARIg38UtkfPMyi45dtWr5C2QZsUGLG8sbTN3efgrlOIcrvZQG/w1
- MFJvLrrYj+ud1nNv6h9EC9x4dhI3IxvHJbQyA9ITysRLU=
-X-Received: by 2002:a05:600d:4448:20b0:48f:d620:c27f with SMTP id
- 5b1f17b1804b1-490422687c3mr189986545e9.4.1779802073553; 
- Tue, 26 May 2026 06:27:53 -0700 (PDT)
+ AFNElJ/fGNGSrIaGCcDfbwWv1uEidHQh1eYxHnWmqj0rcYSv0ki5tacY8RpuJd1qfkWWWEktKwhZ8ZBFtcgF7Gzok40=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyHncdBwT64PQxRPGtTG4L4Bp9Pc+XSwUK00jX41YkYn0aXscVh
+ X3m07E2WFM3oxoQ4OWfxTciNpj0/HK3QffDhGUkdg7s+Q0D3COYnv/sUFLjp5baBc0M=
+X-Gm-Gg: Acq92OFS5NmCGdNQSxvExMFdhQfsp1OkFWEy5eFjG55i0MtgiRnpzsFvlEcKeM4rI9n
+ GiclR0B8/nd3NEFUHwzFGrWcj2M7sNvAaLdY5nyRoKVY3QBD1znbYsUxMmR+lqGnwz9YnCEbxIa
+ kag0TOI6483jLC6AsesEdr7wtFbzN7Lp2Yevh6Ws1mYOi25a52VE2aAyhScmm+oogDInkLyhUVK
+ qRvXWPFyijkbYIqzPDDFk+IjtwCVtZRKczrVdE7rpmc1bKBxpmRawx1VCaB42fZ/H44Roh1XBwT
+ eqZYT5RkpjEvBF5x+PuJOyRUBqpDDxUE5ZzDd3MvGXTviSXd+4L5UOlvDhm0cdOKMq5ftEAUtMQ
+ zeyw9t05bhO/iS3oLWa1A6OIispzoU0kwNZ/79NYaGzFl38v5ErZRSBOuQz+GZGZY0dzTZEp22/
+ FTvDFipLp060BD3mDHne3yug2BjrvExCFATN+qPozfLVg=
+X-Received: by 2002:a05:6000:1a85:b0:43d:762e:76ba with SMTP id
+ ffacd0b85a97d-45eb367fb35mr31350080f8f.17.1779802122476; 
+ Tue, 26 May 2026 06:28:42 -0700 (PDT)
 Received: from localhost ([140.209.217.212]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49045284855sm330056955e9.0.2026.05.26.06.27.52
+ ffacd0b85a97d-45eb6d4741bsm37119736f8f.22.2026.05.26.06.28.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 May 2026 06:27:53 -0700 (PDT)
-Date: Tue, 26 May 2026 15:27:49 +0200
+ Tue, 26 May 2026 06:28:42 -0700 (PDT)
+Date: Tue, 26 May 2026 15:28:38 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Message-ID: <ahWf0HAr3sRfXw0Q@FV6GYCPJ69>
+Message-ID: <ahWgAPoysfluToIf@FV6GYCPJ69>
 References: <20260526093419.639220-1-grzegorz.nitka@intel.com>
- <20260526093419.639220-5-grzegorz.nitka@intel.com>
+ <20260526093419.639220-2-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260526093419.639220-5-grzegorz.nitka@intel.com>
+In-Reply-To: <20260526093419.639220-2-grzegorz.nitka@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20251104.gappssmtp.com; s=20251104; t=1779802074; x=1780406874;
+ d=resnulli-us.20251104.gappssmtp.com; s=20251104; t=1779802123; x=1780406923;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=AF9tJ1amhlOtaGqlNAAzlZV5h8kKDyKt4veK2cMLXSI=;
- b=bk8eIfmpzpxHcvRaBiZBagZlgKFHX20sIxNrAu6bAoLwDYBbmNGFmm9FXKKzyteX0w
- OVZoWlxGx3aimxTLdCVeT6SIoQgkdxalliWaspE8SjDTnNgGnAniPYzpejOaZrYNp88m
- zV+pFHJkJv94WPiudUE/yh21WWHmMzOR3/AKelR68r8CG8oN5Yf4suoLTyselR+N7F2C
- hNbshC6PLUQnQUNbidbpbIsQ9Vz3rAl/940kkxy7kTprfJTJCzNDuJshMUFfg6wDFZFv
- 6e2UTkCYqtbwrJxXqYaD5I3EO2AAlzvPcj4aUKyVUGq6Gh8kGMOoaOIOwb1YecLXvka+
- lMDw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=/tryWe3YGVmPy2bnscHQmtWVBpbnu81ctvwLdXdUsQA=;
+ b=b5A8/XE3o14YsC06YPZYcpwNYHSQqwW8YkvtgvfxJVpnxye4sbHJ2BXe+Hr2y9eHzs
+ XMeRqmhHqL8luxu9r7gm1OBtXIvOXqNWZHMk7cGA5eCle5svV6ROWnwykvr/EGQU+lKk
+ 0od7UF3mjrj59+UNMQFIjiZSAiuhPRIToZX9w/UZSOwW8G+RM6KQChZynxsy5Ie83GPK
+ XZy2e+t8eDpYS53ajToDUvMUdN0ZD1eBKhOw6OSYfRXfaJ/UxNMI5CuJrmibd5W+RKYS
+ pKHAoUQLBwRkyIp6ZYvKz5o7iFHLA5tOiaFYTFARfIkaIFO2BMdnSeNEwPPtmfsEraka
+ HCNA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=resnulli-us.20251104.gappssmtp.com
  header.i=@resnulli-us.20251104.gappssmtp.com header.a=rsa-sha256
- header.s=20251104 header.b=bk8eIfmp
-Subject: Re: [Intel-wired-lan] [PATCH v11 net-next 4/8] dpll: allow fwnode
- pins to attempt state change without capability bit
+ header.s=20251104 header.b=b5A8/XE3
+Subject: Re: [Intel-wired-lan] [PATCH v11 net-next 1/8] dpll: add generic
+ DPLL type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -150,8 +150,8 @@ X-Spamd-Result: default: False [1.29 / 15.00];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[nvidia.com:email,intel.com:email];
-	URIBL_MULTI_FAIL(0.00)[nvidia.com:server fail,osuosl.org:server fail,smtp4.osuosl.org:server fail,intel.com:server fail];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[nvidia.com:email,intel.com:email,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,osuosl.org:dkim];
+	URIBL_MULTI_FAIL(0.00)[nvidia.com:server fail,osuosl.org:server fail,intel.com:server fail,smtp4.osuosl.org:server fail];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
 	DMARC_NA(0.00)[resnulli.us];
@@ -177,24 +177,26 @@ X-Spamd-Result: default: False [1.29 / 15.00];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 7B52C5D6782
+X-Rspamd-Queue-Id: 066745D67B7
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-Tue, May 26, 2026 at 11:34:15AM +0200, grzegorz.nitka@intel.com wrote:
->Pins registered with an fwnode may have .state_on_dpll_set implemented
->without advertising DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE upfront.
->Requiring the bit for fwnode pins ties firmware description to driver
->implementation details unnecessarily.
+Tue, May 26, 2026 at 11:34:12AM +0200, grzegorz.nitka@intel.com wrote:
+>Add DPLL_TYPE_GENERIC to represent DPLL devices which do not fit the
+>existing PPS or EEC classes.
 >
->Relax the capability check in dpll_pin_state_set() and
->dpll_pin_on_pin_state_set(): when a pin has an associated fwnode, bypass
->the capability gate and let the ops layer decide, returning -EOPNOTSUPP
->if .state_on_dpll_set is absent. Non-fwnode pins retain the original
->strict behavior.
+>The UAPI type is intentionally generic. During netdev discussion,
+>maintainers pointed out that introducing identifiers tied to a specific
+>placement or single design does not scale across ASICs and vendors.
+>The role of a DPLL is already inferable from the spawning driver,
+>bus device, and pin topology, without encoding additional
+>purpose-specific taxonomy in the type name.
 >
->This is used later in the series by the SyncE_Ref output pin, which
->relies on the fwnode path for state control.
+>Using a generic type keeps the UAPI extensible and avoids premature
+>naming that may become incorrect as new hardware topologies are
+>exposed through the DPLL subsystem.
+>
+>Expose the new type through UAPI and netlink specification as "generic".
 >
 >Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 >Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
