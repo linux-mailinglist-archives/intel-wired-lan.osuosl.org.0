@@ -2,95 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id eHXBHlD3FWpxgQcAu9opvQ
+	id GGmhMhb8FWovggcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 21:41:04 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 22:01:26 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C10F5DC13E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 21:41:03 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 309CF5DC2ED
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 May 2026 22:01:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26E538207A;
-	Tue, 26 May 2026 19:41:01 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nqjK-m_Budtf; Tue, 26 May 2026 19:40:59 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A47028207E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779824459;
-	bh=3dc3s5FcGv5TWeqnsXrMMOMRbRrCCsMuvBGziG/wGiQ=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=qPNO2XF/meKimPnOUGEFWjqS6NLBC1fwPe+hV80190GAA4qCVqFUZevjdrGNowkO/
-	 XB4xkQI/8vwFnG3eoQsTPFvWv44OpNeXljvOit+1hL0jHjt5iKLNsDt0WF7z1o3uXG
-	 2mgQq8m1cwStmD+/Eu6Iv2ixpDLNNDMKAJ7gzzkrRkrHGLpRFWF4newDaSS8oJyPbz
-	 cpJuCfxWo1yYwYEIJ889pzHuB5iT89luSrDMzVyV2a3518fnQi9k7SiyrkGsXxlQTi
-	 lwet5aRZWMkZC5S3l3xK2jnc0rwXq+hockj6XrKAy+2zc/yZUZPmbuKN/hvuRAvYSZ
-	 lNpzLbiFpvdeg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A47028207E;
-	Tue, 26 May 2026 19:40:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 59905297
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 19:40:57 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3FA0640FC1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 19:40:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2046B4055F;
+	Tue, 26 May 2026 20:01:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eRfRS3ghg187 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 19:40:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 59D2340F79
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59D2340F79
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 59D2340F79
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 19:40:56 +0000 (UTC)
+ id jdF98ycCXcNh; Tue, 26 May 2026 20:01:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69C6840562
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1779825682;
+	bh=1qxnmKQGUKtoFj3/nGD5Rn2Gfy5r6REEQNVEGh2K3ms=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=hN4irev6mq/Mgqpqqai6YYwt4+SsTTv0Wdl1HuRbhjVD3OH30ZyIIgX3k72cq5w9n
+	 MC+bdKOH0HWQs5hzh/IX2UFC5pkuXXp6t1RlrAwEpNFZOr/jKOgqbphY36eDBNhzvw
+	 /y+9ywvoxkDmDqY/o2sWjp0IDL+9+oQ0KW5iQcLbBuQA9MOMyTDhcSJFv4Eu9ICExP
+	 7i7kqRk8TsVN4r7eKcRWF0OtSyTOE+6HIaS79vNPtGryipIMkr8qXitqv6Xb3Y9pq8
+	 Xs7G+bn0SY0GNTYTNvK8g02VRuEfu4JWySTp88xc98NKntermGdKFduc3/BlN1kIrp
+	 w6dhchdVDzBEg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 69C6840562;
+	Tue, 26 May 2026 20:01:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 37303265
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 20:01:21 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1CCA080ED7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 20:01:21 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id URIrF0Kefs6D for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 May 2026 20:01:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 82DCB80E9F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 82DCB80E9F
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 82DCB80E9F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 20:01:19 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by tor.source.kernel.org (Postfix) with ESMTP id DCF2D60018;
- Tue, 26 May 2026 19:40:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A53231F000E9;
- Tue, 26 May 2026 19:40:52 +0000 (UTC)
-Date: Tue, 26 May 2026 20:40:50 +0100
+ by sea.source.kernel.org (Postfix) with ESMTP id E701742ACD;
+ Tue, 26 May 2026 20:01:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AC84F1F000E9;
+ Tue, 26 May 2026 20:01:16 +0000 (UTC)
+Date: Tue, 26 May 2026 21:01:14 +0100
 From: Simon Horman <horms@kernel.org>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org
-Message-ID: <20260526194050.GC2256768@horms.kernel.org>
-References: <20260522025702.1764129-1-aleksandr.loktionov@intel.com>
- <20260522025702.1764129-2-aleksandr.loktionov@intel.com>
+To: Ashwin Gundarapu <linuxuser509@zohomail.in>
+Cc: anthonylnguyen <anthony.l.nguyen@intel.com>,
+ "anthony.l.nguyen@intel.com" <przemyslaw.kitszel@intel.com>,
+ andrewnetdev <andrew+netdev@lunn.ch>, davem <davem@davemloft.net>,
+ edumazet <edumazet@google.com>, kuba <kuba@kernel.org>,
+ pabeni <pabeni@redhat.com>,
+ intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
+ netdev <netdev@vger.kernel.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>
+Message-ID: <20260526200114.GD2256768@horms.kernel.org>
+References: <19e537fa55c.56218d6244367.1765806925055659075@zohomail.in>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260522025702.1764129-2-aleksandr.loktionov@intel.com>
+In-Reply-To: <19e537fa55c.56218d6244367.1765806925055659075@zohomail.in>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1779824453;
- bh=3dc3s5FcGv5TWeqnsXrMMOMRbRrCCsMuvBGziG/wGiQ=;
+ d=kernel.org; s=k20260515; t=1779825678;
+ bh=1qxnmKQGUKtoFj3/nGD5Rn2Gfy5r6REEQNVEGh2K3ms=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=RInNDfHPD2F13iiBXuM2riLL4luuizpzpHuIIMCA+VQ5qip00sf7n+PbDrNZAfECb
- XOzErwmPBYnRivhowJTiOrxIHHvy7qydP/OOsyJET/rRa6J6vXDv7iVQRiUTz3T2Lu
- 5+zN1G+dl+DjtCFIJWRg3f7mHTMqU4s8t/47XPQPvwbojeAQNC4EYMMpU/cqmo7+B+
- 2t4N70AmhbPelQtIYzFaTDB51lIAyDOqxXAwMsQpuft3J3JuaHMR28wyNckXNZ6D6Q
- WBF9YHmX1VnZUpC093zsFGmqiCPZauViIpbpIP17jo7Kguz3+MFIHSi282jPgVQEST
- Lu+9RtCOrq/3w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=XUAlP0dm/G60yd+smYcUeLELrUuSSrHXbnAXU/Q1+cjxZlg/jZGq5x/8aQ9k/lp2/
+ 75qT1tMlIyHUDx14RtalRuKuqkKqC8XTO4xf40eSqk8kGMSRI1W/sLGMy6+tmmDErx
+ sSZAyp3JucSrQEkEjIY2KLW6wuLFNU0dXlzak8CdRg/LcUk+jdCg2btwH3M4NAXuIo
+ ta1bepz6hgmjF13VWpiqaDUZ8cnOzG8cEDiz1Iam/Pw3sN7Lep0xIjKRNYHBq9fD/G
+ Amr42UO8/ZtBc1rqraAWIzPxzn0wqy/AanF5JMxvlsm7V6WQB/s+SQ01uD/mbePgGu
+ 0E+JZaGxaZsPg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=RInNDfHP
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] iavf: log PF diagnostic
- message on cloud filter add failure
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20260515 header.b=XUAlP0dm
+Subject: Re: [Intel-wired-lan] [PATCH net-next] e1000e: fix memory leak of
+ msix_entries on MSI-X failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -105,102 +108,95 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.69 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_SPF_ALLOW(-0.20)[+mx];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	TO_DN_ALL(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:linuxuser509@zohomail.in,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:url,intel.com:email,sashiko.dev:url,osuosl.org:dkim];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	ARC_NA(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:url,sashiko.dev:url,osuosl.org:dkim,horms.kernel.org:mid,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
-	NEURAL_HAM(-0.00)[-0.999];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	MID_RHS_MATCH_FROMTLD(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	NEURAL_HAM(-0.00)[-0.991];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	MID_RHS_MATCH_FROMTLD(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 5C10F5DC13E
+X-Rspamd-Queue-Id: 309CF5DC2ED
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Fri, May 22, 2026 at 04:57:01AM +0200, Aleksandr Loktionov wrote:
-> When the PF rejects a cloud filter add request it may include a
-> diagnostic string in the virtchnl response. Use dev_info() to log it
-> so operators can diagnose offload failures without enabling verbose
-> tracing.
+On Sat, May 23, 2026 at 11:52:14AM +0530, Ashwin Gundarapu wrote:
+> From: Ashwin Gundarapu <linuxuser509@zohomail.in>
+> Date: Sat, 23 May 2026 11:49:40 +0530
+> Subject: [PATCH] e1000e: fix memory leak of msix_entries on MSI-X failure
 > 
-> Use %.*s with an explicit length bound to avoid reading past the end of
-> the message buffer when the PF fills all 4096 bytes and leaves no NUL
-> terminator. Add the missing cloud_filter_list_lock around both the
-> VIRTCHNL_OP_ADD_CLOUD_FILTER and VIRTCHNL_OP_DEL_CLOUD_FILTER error
-> paths to close a pre-existing race against iavf_add_cloud_filter() and
-> iavf_del_cloud_filter(). Apply the same %.*s fix to the equivalent
-> VIRTCHNL_OP_ADD_FDIR_FILTER error path which carried the same bug.
-
-This seems to be doing several things. So I would suggest it warrants
-being split into several patches.
-
-And, if they are fixes, some consideration should be given
-to targeting iwl and including Fixes tags in the patches.
-
-Partially flagged by: https://netdev-ai.bots.linux.dev/sashiko/
-
-
-Also, the locking fix here is made to the error path,
-but not the non-error path (v_retval == 0) where
-the VIRTCHNL_OP_ADD_CLOUD_FILTER and VIRTCHNL_OP_DEL_CLOUD_FILTER cases
-traverse and update  cloud_filter_list.
-
-Flagged by https://sashiko.dev/
-
-
-> Suggested-by: Grzegorz Szczurek <grzegorzx.szczurek@intel.com>
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> When MSI-X initialization fails, the driver falls through to try
+> MSI or legacy interrupts. However, the msix_entries array allocated
+> earlier is not freed, causing a memory leak. Free it and set to
+> NULL before falling through to the MSI fallback path.
+> 
+> Found by code inspection.
+> 
+> Signed-off-by: Ashwin Gundarapu <linuxuser509@zohomail.in>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 15 +++++++++++++--
->  1 file changed, 13 insertions(+), 2 deletions(-)
+>  drivers/net/ethernet/intel/e1000e/netdev.c | 10 ++++++----
+>  1 file changed, 6 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+> index 7ce0cc8ab8f4..1526069d7fc1 100644
+> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+> @@ -2065,10 +2065,12 @@ void e1000e_set_interrupt_capability(struct e1000_adapter *adapter)
+>  							    a->num_vectors);
+>  				if (err > 0)
+>  					return;
+> -			}
+> -			/* MSI-X failed, so fall through and try MSI */
+> -			e_err("Failed to initialize MSI-X interrupts.  Falling back to MSI interrupts.\n");
+> -			e1000e_reset_interrupt_capability(adapter);
+> +                        }
+> +                        /* MSI-X failed, so fall through and try MSI */
+> +                        e_err("Failed to initialize MSI-X interrupts.  Falling back to MSI interrupts.\n");
+> +                        kfree(adapter->msix_entries);
+> +                        adapter->msix_entries = NULL;
+> +                        e1000e_reset_interrupt_capability(adapter);
 
-...
+Hi Ashwin,
 
-> @@ -2434,8 +2443,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
->  							       v_retval));
->  					iavf_print_fdir_fltr(adapter, fdir);
->  					if (msglen)
-> -						dev_err(&adapter->pdev->dev,
-> -							"%s\n", msg);
-> +						dev_info(&adapter->pdev->dev,
-> +							 "%.*s\n",
-> +							 (int)msglen,
-> +							 (const char *)msg);
+e1000e_reset_interrupt_capability() already handles freeing (and NULLing)
+msix_entries, and it does so after calling pci_disable_msix().
 
-As well as addressing the length of msg, ad described in the commit
-message, this also changes the priority of the message from err to info.
-This seems to be a separate change that is not mentioned in the commit
-message.
+This patch seems to have the effect of bypassing the call to
+pci_disable_msix().
 
-Also flagged by: https://sashiko.dev/
+Are you sure this is fixing a memory leak as described?
 
->  					list_del(&fdir->list);
->  					iavf_dec_fdir_active_fltr(adapter, fdir);
->  					kfree(fdir);
+Flagged by https://sashiko.dev/ and https://netdev-ai.bots.linux.dev/sashiko/
+
+>  		}
+>  		adapter->int_mode = E1000E_INT_MODE_MSI;
+>  		fallthrough;
+> --
+> 2.43.0
+> 
+> 
