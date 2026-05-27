@@ -2,120 +2,204 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id mJATMiEcFmrBhgcAu9opvQ
+	id YEcvFbKZFmq1ngcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 00:18:09 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 09:13:54 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1D5175DD274
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 00:18:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 514F85E049B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 May 2026 09:13:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 523A26061D;
-	Tue, 26 May 2026 22:18:07 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4726261315;
+	Wed, 27 May 2026 07:13:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GDL9qAfhsWoh; Tue, 26 May 2026 22:18:06 +0000 (UTC)
+ id qXlXFfW87cYy; Wed, 27 May 2026 07:13:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D29C6061F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B2A6A61339
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779833886;
-	bh=NJqWELah5fN6kC7HlpvsVp3NB/5DJZ/YkbrusZMNXr8=;
-	h=References:In-Reply-To:From:Date:To:Cc:Subject:List-Id:
+	s=default; t=1779866030;
+	bh=w51Qm/lPQJoE2e1PiicG5/MznTmLMAIGTiwEezjEyUQ=;
+	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=tmHuIatdg1IAZ4rWKKqblF+y7tuYzj4ZiJBdTpg1FpExe0AzqR8FwmlBCbzOGVUiW
-	 qIHw6mZpKPEOmz2sUcLzwbqTMJVYuFXURzvH2YCLlfwfq7VWm25lajCxQ93+CYZRiy
-	 RlR3GVNSoH94Z9TNnlaLV+X931/8Pb1xMIOYeMwtYQksXRwTlZTKRToCPi1pC1EFOd
-	 1vwnZPrqARjsOBgQzUSkWk3EJjFzfzZfTwAWViBm8OFVuhZ7ownejTwu9rHa68+pA6
-	 bPTWQetSX58JpZZoGoab3WHspNd6xx2Tfgij1y1gMbMWsRUkRE7CDGentVteZjKLH/
-	 cp7SOOxcqMuVQ==
+	b=xOVw1QDk7t83Rs/t2xpPAJZ1qwwCnBPvn4GAJczac7PZ+AJ1Pmhk0bst2w6NJUnZ2
+	 zycvXV8WruM4NALUvuxLjC6Pr0JOCFom1kFObdhRjPC4okqUgfv3IhMYHjVpUHWdx1
+	 MpQJXIMZb2/X+SYjdqw73SUP93kL8pw91tydHvYgDH/dRXbybOQ6F5fgniguPwxQLi
+	 Wglg0kbOClEEH8VwbnSFUF97YhyqzbM5ClUXU9W21P4BmJfnny21lNxdV5DX+C3w95
+	 aJEAvmQP9+TCgZ08sglRw9vDxEhQudZzha13IABlQ3iL8gYRvQR2MbGFBLL25KHYCL
+	 VusWrgV3XDb0Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5D29C6061F;
-	Tue, 26 May 2026 22:18:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B2A6A61339;
+	Wed, 27 May 2026 07:13:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 61B7E297
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 22:18:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id A18A323F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2026 07:13:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4729F40AEB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 22:18:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 88AF741F34
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2026 07:13:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HPzz-E4Dko0r for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 May 2026 22:18:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=171.64.64.25;
- helo=smtp1.cs.stanford.edu; envelope-from=ouster@cs.stanford.edu;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id w9znqie6lx0N for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 May 2026 07:13:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 41D4940206
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 41D4940206
-Received: from smtp1.cs.Stanford.EDU (smtp1.cs.stanford.edu [171.64.64.25])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 41D4940206
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 22:18:02 +0000 (UTC)
-Received: from mail-yw1-f177.google.com ([209.85.128.177]:50645)
- by smtp1.cs.Stanford.EDU with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <ouster@cs.stanford.edu>) id 1wS062-000616-F8
- for intel-wired-lan@lists.osuosl.org; Tue, 26 May 2026 15:18:02 -0700
-Received: by mail-yw1-f177.google.com with SMTP id
- 00721157ae682-7c58e6eb2c8so109926717b3.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 May 2026 15:17:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=1;
- AFNElJ9u60Ev3equBT47HcXsc+lLk3nVit34Gppa/OEfazSoJz6A4n1e7P1Y+jZy/MV+cEgzvvAJlly8ou62fVG6jX0=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy0+x0h2RQQ6ElYa1PECOBnLacB8o5nxnwWYOMUfN+TQvIwZLM2
- 3zwBffZvo5N8+WVRBFdnbAbSDyEk8MO4OEAJpIkDbKaEwrj2awRS60V6hnDX23zUasHC4F9XStk
- 1PDD8NTca0gPrlWrQXCIeva/a/pNVv/M=
-X-Received: by 2002:a05:690c:b05:b0:799:198d:8c78 with SMTP id
- 00721157ae682-7d337dac2b7mr212869987b3.46.1779833877680; Tue, 26 May 2026
- 15:17:57 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260512181953.1689-1-ouster@cs.stanford.edu>
- <20260513100732.499e3f49@pumpkin>
- <CAGXJAmzK+56DHnitD1g263mPSgWg9jZyq2z6R+vd8bV_c4ZbuQ@mail.gmail.com>
- <20260513214927.17a8dd45@pumpkin>
- <CAGXJAmx4LaVv=QJ=SanvF6iayJ8+SiLyUqht+jMxouXPX=54-g@mail.gmail.com>
- <20260514110112.12bdf5ff@pumpkin>
- <30dc284c-8cc0-4bae-b7b0-99d6d71a66e3@intel.com>
- <e1ce1387-ae6b-4b43-b5d8-a1141c4a4f1c@redhat.com>
-In-Reply-To: <e1ce1387-ae6b-4b43-b5d8-a1141c4a4f1c@redhat.com>
-From: John Ousterhout <ouster@cs.stanford.edu>
-Date: Tue, 26 May 2026 15:17:20 -0700
-X-Gmail-Original-Message-ID: <CAGXJAmwa4OQJV1O+Zn8KYBH9wJEVrqefuJQ6NRjbBTmLqF4vwA@mail.gmail.com>
-X-Gm-Features: AVHnY4InlTCmtsr01wWr_JUtpPbh3ksqqJ8UpLXEL8kdVSMNoGuSjEu4uz-pvUU
-Message-ID: <CAGXJAmwa4OQJV1O+Zn8KYBH9wJEVrqefuJQ6NRjbBTmLqF4vwA@mail.gmail.com>
-To: Petr Oros <poros@redhat.com>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- David Laight <david.laight.linux@gmail.com>, 
- stable@vger.kernel.org, anthony.l.nguyen@intel.com, 
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com, 
- netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D626641E8F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D626641E8F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D626641E8F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 May 2026 07:13:48 +0000 (UTC)
+X-CSE-ConnectionGUID: ipla1Z0wQU+TvhcgeJT6rQ==
+X-CSE-MsgGUID: zRk6ne1KTvS8XvB5r3RITg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11798"; a="84314304"
+X-IronPort-AV: E=Sophos;i="6.24,171,1774335600"; d="scan'208";a="84314304"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2026 00:13:47 -0700
+X-CSE-ConnectionGUID: anRzIwZwTf+VyB9RYg2C3A==
+X-CSE-MsgGUID: lekOaCqOTWu8PQG3dR6jFw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,171,1774335600"; d="scan'208";a="246178152"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+ by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2026 00:13:47 -0700
+Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Wed, 27 May 2026 00:13:47 -0700
+Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
+ FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Wed, 27 May 2026 00:13:47 -0700
+Received: from CY3PR05CU001.outbound.protection.outlook.com (40.93.201.22) by
+ edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Wed, 27 May 2026 00:13:46 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EV1ku9BiATJO9LpEiPHlg4HHYp9lAzNegRiCeLn/TraZg/ZauZ96Pdy1kLt24yvYqDBqI5K9AFiNGcd9O/b/YfOTRIM0rTh6I+tt5uzhvJMDGqZAirYwEcCl0Z1MRP5oJpc0kyOFSl8SsZLirD/D/jhJlifS/JkDGC3PnezdsBoKdZ3cVstjL9JcHt72PlhkQR2dOCpOzJrjY3kofVSiso8zhcvClb9u301Sb1iYs6QqunRJ0a3Rve/DbtaMraUIHElyQkaUri04+OZ8HzFtZ+49d1JYWI1m3aUpiDmZcHR/bIDQ7TTE+ZEVcpdBYZvXSMC3NdhpwH4C561dGT9raA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=w51Qm/lPQJoE2e1PiicG5/MznTmLMAIGTiwEezjEyUQ=;
+ b=xzOh/MDhI6UC85CXPfDOutIl9381AQ3RmZmOMbRfkeSsoTYggLwdKS1N8R+kuTVynSEQRF8iR+uNEK+5eYsIwlEi7Y+Q6gfJyHh5Y62/dzSP7ojgrPyNvUN83OQksH+xByrdVw5LDrmHa8wG+X80TEeind5Y1iwqM0bweOJjjmrZfHP32dUK8QMU9AnLxpDxZSb5Dhf9bpqK/4e+dIq4qZ+Au2hRApZbAjZZTMiKUDaZm0048ai/HKn05Geff3nBNBDVbKezn1u1jILtjVDSl7HS2yl6YBqw6yIzq29jiDRhXzernl2Yn00TeZEX2qa2vHFORmy9Utxer8vOXC8Cbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by SN7PR11MB8281.namprd11.prod.outlook.com (2603:10b6:806:26b::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.12; Wed, 27 May
+ 2026 07:13:43 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%6]) with mapi id 15.21.0071.010; Wed, 27 May 2026
+ 07:13:37 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: ZhaoJinming <zhaojinming@uniontech.com>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
+ <przemyslaw.kitszel@intel.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S
+ . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
+ Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+CC: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH net] ice: dpll: fix memory leak in
+ ice_dpll_init_info error paths
+Thread-Index: AQHc7SQyWbXOjEfmTESGqx4igTzGhLYhdkbw
+Date: Wed, 27 May 2026 07:13:37 +0000
+Message-ID: <IA3PR11MB89866105E1DFFAD917A80B64E5082@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20260526021154.2774526-1-zhaojinming@uniontech.com>
+In-Reply-To: <20260526021154.2774526-1-zhaojinming@uniontech.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|SN7PR11MB8281:EE_
+x-ms-office365-filtering-correlation-id: 50171fff-0711-4c27-3a62-08debbbf78c4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|366016|18002099003|22082099003|3023799007|56012099006|5023799004|11063799006|38070700021|921020;
+x-microsoft-antispam-message-info: QLW/il1FIz+rYDS/7v5yM0A0CPbYcydn05eAuSAVl1vEEojPcN5AfRTR2fUsA4lP4RWMJrr/F0GWwhMI6XnJhAmyyLsxAdfVUHchG0Rybzs/pWbvKOMqRvts9JhOqy2CYOojf2pgoVVBvyTSwftC8Q0i154KHV6DmKrdlkh6NGkjlqr7iUtX5BuIw84qn3aSBHbg1V4YPtkLXnJNnMzTpPE26JpT4v/XMI0y8tX7LQ1Qz45pzIMJ/SkriVAZZLpzO6NYcbXxoxxY3Wg5Rk4qOLEVMf2nIRd0DdZASw2S5UlmDa4w1O/RnnLTpT/cIDwE/DBaxT+vs4IJz2NRfhfvFycx6bGqJx3TATKqWTRh5ZesaCqE6aurH50ClgWxDJV0l9a6SgVSo4IMsemqoVczF5kSGXJUmMg+ITYBXmT1hBnO+TaAgFoNx8gVog6f81R3tQMGfKjgH5NoBP3cYRrouxiUGS900w90QlFq4uE1TMZVJxg0e/jVewGG1ahc5DU2LVuCHrG5RN3RLMD6OUUDMz3LlbY9No3388nNanDii0nirgkkz6KeHHs5M2jM5DBkeGL+dII4Ptf3KousGoV3nHKCk2TpJfOApJpGwgE8D4NBe2lb9skuWaTJVBFC8dp0zUviRACmm0xmEo+Lkhp4d6ttrByDZldjdhvS8ePi6VXYXgWXYVTCJ8W6acSavsjWX4DgKzeD9UPmJwkms8AKiE3kmJSZKLp5RBF0hHpfnl5WzdNB4DhyPSO1Ho8XbFkepQ+PMLROE8+RQgW5pOKk1A==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(18002099003)(22082099003)(3023799007)(56012099006)(5023799004)(11063799006)(38070700021)(921020);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?DSWsG5Nsm6jLYbpJTAlabRpWOk+BLRL1It+ykah8RMI08E60jviduxkG7jOa?=
+ =?us-ascii?Q?GacmY7vSI2iT68dl01HsIZ1cgBGB+5KQMttNBy8jhmDecUy3YC/jqP1d3b81?=
+ =?us-ascii?Q?nQN2bRjKLGOdMthrSQIM8xGuQxvAIHydJeSBJt6VUySfgjv3StqkClnEWXin?=
+ =?us-ascii?Q?99rDsOcmKCUhUuty9/L8k1i+gf0F90ZR0UZbEuMdjWyA1rH7YSs9svzgHTau?=
+ =?us-ascii?Q?Y5HSo6yf7pn9UeJgNxY83EycvYAZCP8oxF8dj1BEc1cIj4b8qGS6kpFcdmWK?=
+ =?us-ascii?Q?GCuHme2uwAHctYsH0MLhNrLPcs1GqshJhlloB93sceQYsn/i5WlmmypeMlXD?=
+ =?us-ascii?Q?VxH04j/wHQkt87x3UjIXF429GKiAv0hS5fM5Lk206ntpPALCsAdbjmHtYL/K?=
+ =?us-ascii?Q?nmFXztOP+i5Me7vY0QHmUoVhGW5dfr0za4X3tbkvr0x+bBU8tomOL9AY3LJX?=
+ =?us-ascii?Q?dlc8hg9EQOxl6r7+2Zqz+9g6MzmDPbJYgMLpjLwMli2UwK+x/oalokOdjViP?=
+ =?us-ascii?Q?coDf+A/tuYysKta3JQYRybuOPkHUmI/pH5KUQEG02wdrsyrFZp8ItEs+sr9J?=
+ =?us-ascii?Q?4R1wHBOYDCooGQInH0Yn096Iht3m7O4S6bf3EiUtUlJKX1UoQdAOK8iVsR94?=
+ =?us-ascii?Q?1taH9GmHZifNsazP9/NutDlg6yVHQmyK2Ir9BfHHaEpdbzcxTQH8qTnD8WHJ?=
+ =?us-ascii?Q?E917OEuOtW9u7G7PItNTrQ7qS3A5NZYBX5aarOVaCgD9oUb/KZV/sPzkG8Fp?=
+ =?us-ascii?Q?g6OAhRgnI8kzOI9wKZe2crzNcFXS3nnx1z2Q+oanmTYU7hlP3DEmqJj4gJ0U?=
+ =?us-ascii?Q?i7cIV8YLacVzdzpriUpZ4m5A2+KDtOcN6R47NdBf8PrqOOESrIA9i4oWi9XU?=
+ =?us-ascii?Q?M6lq0/7zO2NDS5Rxz7Gv16S0NaYneTTblhiQfh34//PFrlOKzfb54stK7nma?=
+ =?us-ascii?Q?Ae5nq9mxH+fuXS0l6/sz3k62Pc7ny1PlnaYHP5jSgHaZBCAj/yh7lc0YSY12?=
+ =?us-ascii?Q?vB3mniE7Yo5S0+hXxo6IoIJpyISyS5oXdElFeU/vqf3FTEzw512oiph7lIZI?=
+ =?us-ascii?Q?Oy7sBtiuu3SjBkU+4R90XtYHtDo36/cwqeaToxWUxnQ7oOTRLOkEhIm3/YFl?=
+ =?us-ascii?Q?cK1cWAbbc2vVK6A4NMkc61iL/eFwxErQJxTtJHOtmTmx/Nae0pviDlXZFmZL?=
+ =?us-ascii?Q?E1GFoVxNSRKNrvO/ifenclk/ko27zXjWBwnFixDjEf1Q2uoQ1vB5KYHDlGAe?=
+ =?us-ascii?Q?LdgMjIOVwOaw1KvayEFuI2MjnlYpheJiO747ntT4JUzw9Z+qIJauWtr/imBs?=
+ =?us-ascii?Q?asteUN+mNQmEolz9PsAE/JVTUOecnIiNHRtDSK+eE1P5pwoTfmc8moWX/GZX?=
+ =?us-ascii?Q?tDTGpP8B+Dgbcod+VFhdmHkgAEnHwQkHxQEMbqTZiqQUw5KgUtrl4apu2VoX?=
+ =?us-ascii?Q?AhjGgCU8dKAP3dleIP65QwFqCgqsf+wWqI+sMkxkAJ+Ce4D6n1Ql6/nDA5IV?=
+ =?us-ascii?Q?tZZUv2Gow1v2VfxMug03mVd12ZGgwNlOFsLZhNxZXYBf/En9qwoSx2eex6wZ?=
+ =?us-ascii?Q?pjRcWh4dKgiDgKaKj5O0/CfF2GwzJozo9msEf42pLYw8NcEQ2ipP0SQBAnKx?=
+ =?us-ascii?Q?rB7zxSEDfWyFGf/IZxK+gH04irV+xvSPjxlgo+I0yRt/grb7ODly2nZoXXWy?=
+ =?us-ascii?Q?M4Cik9lWvig0nrdSoufpjXCdSIjyWHFt7QMlnDwgnh1ASgMAxGuVDGHyHsxl?=
+ =?us-ascii?Q?x3mNpLVXpU4P75COX0N2ZaybYLzHmkE=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-X-Scan-Signature: f381877c06e33db9b8e2eda11595152b
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=cs.stanford.edu; s=cs2308; h=Content-Transfer-Encoding:Content-Type:Cc:To:
- Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=NJqWELah5fN6kC7HlpvsVp3NB/5DJZ/YkbrusZMNXr8=; t=1779833883; x=1780697883; 
- b=Wzi9VKT4sfdK8ry1raASjOJmyblQ3aYclp2CAvjiIBY9mTWwua1+OIEQO3dh8A9Zakw/m5NNRnU
- ZTR8a5cykkUem85Kc21XSzROw3t/klhezqDKLOC7JyABVUvvk993fhDEhEkHxjWBodXUS9NKsqsad
- qNziU+q1ONl5Oj0+N2G+QDBuxT2TtztL6tt/+Zb1wIxlCC4/tkr9diQte17o1GFwIm23U1apiIYQU
- CXmy+lIX7nmZzR1wEIg6LDXTY63zJ/k4imIA1TMlghhSuzihFGDpF9P163nL27Y3v+rmPWc0AgF8q
- Q0659t0FkcNdZ8ZDeirxPpzKI++hBex61k3A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: YjXw1+fJ7O0VhVNQxeZPsQwwZA+VAXfEp8w6OEv5s/L6gECGuiu/k2+Dbd7J0xZimES3Av7LSh0X+ZAPG9HZrO6n+lZJMRj9Vttp8CZLQDbDKNEN13tF34c7CuSs2R9H9KK5XCUK5hMTC3M+WpWTjJghtTtTP2SbPMFDdJigVabgFY/aMSPt7vwKz7VKTE2afQP6Ho/wOsz8TX63EbgsRXe2e+2s/lxYmkL+ygwc5Zhg4kJ1go37XKjxM+Bh21twV4uGGhMmFTQe0u5qcq8OL0nN/VNOaK7e0BZzui6c0jz2eYhKBITxZNdCtTmdj23khAGg5Y3+CtJ45MyJOIawlw==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 50171fff-0711-4c27-3a62-08debbbf78c4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 May 2026 07:13:37.2404 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: pA58YU/+PA1KHah6H3Fa6YaP/TAIGJWNN3w8gkHU+Fg7lhITD1oK+NiYcAYcTdH3IPgodH+bnlCFJ1AatXpSXSnhzd1PLOROdmjLelul/BY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB8281
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1779866028; x=1811402028;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=V+Xw0FzUfvjBnu8Q9WZGIyqwAXh932zJxsAtJt4YHTg=;
+ b=L7bKTwLxzPYV803lAxnjs3OIhksjHMZrFYZDrik36Lo6dt5Tb7mC92TM
+ awRG+BBW66mjYuAr+PdCtatg8C2XPXVWoFLE5fHQto+pGobk0pOaMN3UK
+ wrxv27gID/A3Y+FoEEdUoil6zJZ76ThtGLyNHxYesdGcRVN8Abd2o/+W2
+ NyWsc/gjn9E1fMBhH+FioPgv3LTEbeivYRjdiaNd7vzb3u8SFNmekc7C0
+ bFBb7kvh8pxmmym9b2q6Oej4WZVMlAGtzslYBjqUH9phGBUNvSmbbu4fv
+ K/rVzVGkItCGoOKi76Zoj2Kct0mdXOaMTrljUef0goi5BDdYVmRGtU6Qe
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=cs.stanford.edu
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=cs.stanford.edu header.i=@cs.stanford.edu
- header.a=rsa-sha256 header.s=cs2308 header.b=Wzi9VKT4
-Subject: Re: [Intel-wired-lan] [PATCH net v3] ice: fix packet corruption due
- to extraneous page flip
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=L7bKTwLx
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: dpll: fix memory leak in
+ ice_dpll_init_info error paths
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -130,235 +214,124 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [1.79 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
 	MAILLIST(-0.20)[mailman];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
-	DMARC_POLICY_SOFTFAIL(0.10)[cs.stanford.edu : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim,mail.gmail.com:mid,stanford.edu:email];
-	RCVD_TLS_LAST(0.00)[];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:poros@redhat.com,m:jacob.e.keller@intel.com,m:david.laight.linux@gmail.com,m:stable@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,m:davidlaightlinux@gmail.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	FREEMAIL_CC(0.00)[intel.com,gmail.com,vger.kernel.org,lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	NEURAL_HAM(-0.00)[-0.994];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:zhaojinming@uniontech.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[ouster@cs.stanford.edu,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWELVE(0.00)[14];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	NEURAL_HAM(-0.00)[-0.981];
+	RCPT_COUNT_SEVEN(0.00)[11];
 	MISSING_XM_UA(0.00)[];
-	RCPT_COUNT_SEVEN(0.00)[8];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 1D5175DD274
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_SENDER_MAILLIST(0.00)[]
+X-Rspamd-Queue-Id: 514F85E049B
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
-On Tue, May 26, 2026 at 5:47=E2=80=AFAM Petr Oros <poros@redhat.com> wrote:
->
->
-> On 5/14/26 18:43, Jacob Keller wrote:
-> > On 5/14/2026 3:01 AM, David Laight wrote:
-> >> On Wed, 13 May 2026 21:47:11 -0700
-> >> John Ousterhout <ouster@cs.stanford.edu> wrote:
-> >>
-> >>> On Wed, May 13, 2026 at 1:49=E2=80=AFPM David Laight
-> >>> <david.laight.linux@gmail.com> wrote:
-> >>>> On Wed, 13 May 2026 09:28:40 -0700
-> >>>> John Ousterhout <ouster@cs.stanford.edu> wrote:
-> >>>>
-> >>>>> On Wed, May 13, 2026 at 2:07=E2=80=AFAM David Laight
-> >>>>> <david.laight.linux@gmail.com> wrote:
-> >>>>>> On Tue, 12 May 2026 11:19:53 -0700
-> >>>>>> John Ousterhout <ouster@cs.stanford.edu> wrote:
-> >>>>>>
-> >>>>>>> Consider the following sequence of events:
-> >>>>>>> * The bottom half of a buffer page is filled with data from
-> >>>>>>>    packet A. The page has a net reference count (reference count
-> >>>>>>>    - bias) of 1. The page is returned to the NIC, flipped to
-> >>>>>>>    use the top half.
-> >>>>>>> * Before the reference on the page is released, the NIC returns
-> >>>>>>>    the page with no data in it ('size' is zero in ice_clean_rx_ir=
-q).
-> >>>>>>>    In this case the bias does not get decremented. The page still
-> >>>>>>>    has a net reference count of 1, so it gets returned to the NIC=
-.
-> >>>>>>>    However, ice_put_rx_mbuf flipped the page so that the bottom
-> >>>>>>>    half is active.
-> >>>>>>> * If the NIC stores another packet in the page before packet A
-> >>>>>>>    has released its reference, the data in packet A will be
-> >>>>>>>    overwritten with data from the new packet.
-> >>>>>>> * Unfortunately zero-length buffers occur frequently: they seem
-> >>>>>>>    to occur whenever a packet uses every available byte in a
-> >>>>>>>    buffer, ending precisely at the end of the buffer. When this
-> >>>>>>>    happens the NIC seems to generate an extra zero-length
-> >>>>>>>    buffer.
-> >>>>>>> The fix is for ice_put_rx_mbuf not to flip pages that have a
-> >>>>>>> size of 0.
-> >>>>>> How is this different from packet B (in the top half) being
-> >>>>>> freed before packet A (in the bottom half)?
-> >>>>> I'm not sure exactly what you're referring to here. Are you asking
-> >>>>> about a situation where both halves of the page get filled with pac=
-ket
-> >>>>> data and then the second half to be filled is the first to be freed=
-? I
-> >>>>> believe that the ICE driver abandons a page if both halves are ever
-> >>>>> occupied simultaneously; the page will be returned to the system on=
-ce
-> >>>>> both halves have dropped their references. Thus it doesn't matter
-> >>>>> which half is freed first.
-> >>>> That is what I was thinking, seems like the logic is over complicate=
-d.
-> >>>>
-> >>>> If you need to put 4k pages into some kind of iommu rather than 2k b=
-uffers
-> >>>> (to contain 1536 byte ethernet packets) then I'd have thought you'd
-> >>>> initially put both halves into adjacent tx ring entries.
-> >>>> If a rx buffer is discarded (eg a zero length fragment or a CRC erro=
-r,
-> >>>> or even 'copy break' for short packets) then, as an optimisation,
-> >>>> you could reuse the buffer for another receive.
-> >>>> The same could be done if the page is freed by an application.
-> >>>>
-> >>>> However it sounds like it doesn't use the 2nd half until the first
-> >>>> completes - otherwise you'd never 'flip' to make the other half
-> >>>> active.
-> >>>>
-> >>>> Thinks...
-> >>>> By only putting half of each 4k 'page' into the rx ring the code
-> >>>> will usually save (expensive) iommu setup in the (probably) normal
-> >>>> case where the buffers are freed 'reasonably quickly'.
-> >>>> But that really requires a 'free/with_nic/busy' state for each half
-> >>>> rather then trying to guess from a reference count.
-> >>>>
-> >>>> But if the low-level code is recycling the rx buffer (for any reason=
-)
-> >>>> it wants to use the same buffer.
-> >>>>
-> >>>> The ethernet driver I wrote (a long time ago, early 90s) allocated
-> >>>> 64k as 128 512byte buffers and did an aligned word-sized copy of
-> >>>> every receive frame - most frames were in contiguous memory.
-> >>>> The simplicity of it made up for the cost of the copy, especially
-> >>>> since that was an iommu system.
-> >>> I'm not here to defend the logic (and it has been replaced with
-> >>> something that is probably simpler and more efficient); I'm just
-> >>> suggesting a bug fix for the stable releases that still have this
-> >>> logic.
-> > Right. We definitely want a fix for the possible data corruption in
-> > stable. Ideally one as simple as possible.
-> >
-> >> You've forced me to look at all of the function :-)
-> >> I've noticed a few things:
-> >> - If ice_add_xdp_frag() fails (because there are too many fragments)
-> >>    then the rest of the fragments are left in the tx ring (instead
-> >>    of being discarded) - so are likely to be treated as a full packet
-> >>    later on.
-> >> - Frames with status errors (crc, framing etc) are discarded after
-> >>    the skb is built - surely that should happen before the xdp 'progra=
-m'
-> >>    is called.
-> >> - If the remote system send a very very long frame (traditionally the =
-PHY's
-> >>    'jabber detect' didn't always work) you can end up with all of the =
-rx
-> >>    ring being full of a single partial packet.
-> >>
-> >> I think you need to avoid calling ice_add_xdp_frag() when 'size =3D=3D=
- 0'.
-> >> Then in ice_put_rx_mbuf() unconditionally call ice_put_rx_buf() for
-> >> zero length fragments.
-> >> The comment would be 'zero length fragments can always be reused'.
-> >>
-> > That seems correct.
-> >
-> >> The zero length fragments almost certainly exist because the mac hardw=
-are
-> >> advances the the new buffer expecting more data - but only gets the
-> >> 4 byte CRC. So the zero length buffer contains the receive status.
-> >>
-> > That matches my understanding.
-> Hi John,
->
-> I have been looking at the same area in the pre-page-pool ice code and
-> I want to ask whether you observed memory growth during your Homa runs
-> that exposed the corruption, because in my testing the same bias mismatch
-> also produces a slow page leak that your v3 does not close.
->
-> Short version of the leak path, in the PASS (!CONSUMED) branch:
->
->    1. ice_get_rx_buf(size=3D0) does pagecnt_bias-- unconditionally
->       (added by commit ef68094cb09e ("ice: Fix kernel panic due to page
->       refcount underflow") as the fix for the matching panic).
->    2. ice_add_xdp_frag() then returns 0 for size=3D=3D0, so that page is
->       never attached to the xdp_buff/SKB. Nobody downstream will ever
->       call put_page() to balance the pagecnt_bias-- from step 1.
->    3. Your v3 in ice_put_rx_mbuf() correctly skips the page flip for
->       size=3D=3D0, which closes the corruption window. But it does not
->       restore pagecnt_bias for that zero size buffer, so the page is
->       handed back to ice_reuse_rx_page() with a permanent deficit of 1.
->    4. On the next reuse of that page with size > 0, pagecnt_bias drops
->       again. ice_can_reuse_rx_page() now sees pgcnt - bias =3D=3D 2 and
->       drains via __page_frag_cache_drain(page, pagecnt_bias). Because
->       pagecnt_bias is one too low, the drain undershoots by 1: page
->       refcount stays at 2 instead of 1.
->    5. The SKB eventually releases its reference (refcount -> 1), but
->       nothing ever brings it to 0. The page is leaked.
->       ice_alloc_rx_bufs() just allocates a fresh page to fill the slot.
->
-> At the zero size frequency you mentioned (thousands per second), this
-> adds up to roughly MB/s of leaked page cache, which Jaroslav Pulchart
-> originally reported against 6.13.y on NUMA nodes and which motivated
-> the libeth/page_pool conversion in mainline. So in stable trees the
-> leak side of this bug is still live.
->
-> Two questions:
->
->    - Did you monitor RSS / page allocator stats over the duration of
->      your Homa runs? If you did and did not see growth, I would like
->      to understand what is different about your setup, because by my
->      reading of the code the leak should fire whenever both halves of
->      a page end up in SKBs simultaneously and one of them carried a
->      zero size descriptor along the way.
 
-I have not monitored the page allocator stats. I'm not sure I know the
-best way to do this; I tried slabtop but it didn't seem to show
-significant growth in memory usage.
 
->    - If your focus was specifically the corruption, would you be open
->      to extending v3 (or replacing it) with a fix that also restores
->      pagecnt_bias for the size=3D=3D0 case? The minimal extension is one
->      extra branch in ice_put_rx_mbuf:
->
->          if (verdict !=3D ICE_XDP_CONSUMED && size !=3D 0)
->                  ice_rx_buf_adjust_pg_offset(buf, xdp->frame_sz);
->          else
->                  buf->pagecnt_bias++;
->
->      which restores bias on every path where the page is not actually
->      going out to an SKB. (I have a slightly different variant that
->      tracks has_data in struct ice_rx_buf to also handle the broken
->      positional 'i <=3D xdp_frags' counter in the CONSUMED path, where
->      zero size descriptors in the middle of a frame steal bias++ slots
->      from real fragments. Happy to share it if useful.)
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of ZhaoJinming
+> Sent: Tuesday, May 26, 2026 4:12 AM
+> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel,
+> Przemyslaw <przemyslaw.kitszel@intel.com>; Andrew Lunn
+> <andrew+netdev@lunn.ch>; David S . Miller <davem@davemloft.net>; Eric
+> Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
+> Abeni <pabeni@redhat.com>
+> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; linux-
+> kernel@vger.kernel.org; ZhaoJinming <zhaojinming@uniontech.com>
+> Subject: [Intel-wired-lan] [PATCH net] ice: dpll: fix memory leak in
+> ice_dpll_init_info error paths
+>=20
+> Several error return paths in ice_dpll_init_info() directly return
+> without freeing previously allocated resources, causing memory leaks:
+>=20
+> - When de->input_prio allocation fails, d->inputs is leaked
+> - When dp->input_prio allocation fails, d->inputs and de->input_prio
+>   are leaked
+> - When ice_get_cgu_rclk_pin_info() fails, all previously allocated
+>   inputs/outputs/input_prio are leaked
+> - When ice_dpll_init_pins_info(RCLK_INPUT) fails, same resources
+>   are leaked
+>=20
+> Fix this by jumping to the deinit_info label which properly calls
+> ice_dpll_deinit_info() to free all allocated resources.
+>=20
+> Fixes: d7999f5ea64b ("ice: implement dpll interface to control cgu")
+> Signed-off-by: ZhaoJinming <zhaojinming@uniontech.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_dpll.c | 16 ++++++++++------
+>  1 file changed, 10 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c
+> b/drivers/net/ethernet/intel/ice/ice_dpll.c
+> index 892bc7c2e28b..3cf098e67563 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_dpll.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+> @@ -4341,12 +4341,16 @@ static int ice_dpll_init_info(struct ice_pf
+> *pf, bool cgu)
+>=20
+>  	alloc_size =3D sizeof(*de->input_prio) * d->num_inputs;
+>  	de->input_prio =3D kzalloc(alloc_size, GFP_KERNEL);
+> -	if (!de->input_prio)
+> -		return -ENOMEM;
+> +	if (!de->input_prio) {
+> +		ret =3D -ENOMEM;
+> +		goto deinit_info;
+> +	}
+>=20
+>  	dp->input_prio =3D kzalloc(alloc_size, GFP_KERNEL);
+> -	if (!dp->input_prio)
+> -		return -ENOMEM;
+> +	if (!dp->input_prio) {
+> +		ret =3D -ENOMEM;
+> +		goto deinit_info;
+> +	}
+>=20
+>  	ret =3D ice_dpll_init_pins_info(pf, ICE_DPLL_PIN_TYPE_INPUT);
+>  	if (ret)
+> @@ -4371,12 +4375,12 @@ static int ice_dpll_init_info(struct ice_pf
+> *pf, bool cgu)
+>  	ret =3D ice_get_cgu_rclk_pin_info(&pf->hw, &d->base_rclk_idx,
+>  					&pf->dplls.rclk.num_parents);
+>  	if (ret)
+> -		return ret;
+> +		goto deinit_info;
+>  	for (i =3D 0; i < pf->dplls.rclk.num_parents; i++)
+>  		pf->dplls.rclk.parent_idx[i] =3D d->base_rclk_idx + i;
+>  	ret =3D ice_dpll_init_pins_info(pf,
+> ICE_DPLL_PIN_TYPE_RCLK_INPUT);
+>  	if (ret)
+> -		return ret;
+> +		goto deinit_info;
+>  	de->mode =3D DPLL_MODE_AUTOMATIC;
+>  	dp->mode =3D DPLL_MODE_AUTOMATIC;
+>=20
+> --
+> 2.20.1
 
-My understanding of the ice driver is extremely limited. You may be
-right about the proposed fix, but I don't currently know enough to get
-comfortable with it. I think it might be better to separate your
-change into a different patch, which can be shepherded by people with
-appropriate understanding.
 
--John-
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
