@@ -2,97 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id KJl1BeV3GGo8kQgAu9opvQ
+	id iMSSAmF7GGrbkQgAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2026 19:14:13 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2026 19:29:05 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7ECF45F5766
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2026 19:14:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74DE75F5A14
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 28 May 2026 19:29:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 846FB61BBB;
-	Thu, 28 May 2026 17:14:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 82EDE61BD5;
+	Thu, 28 May 2026 17:29:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5hyuk_EebTzx; Thu, 28 May 2026 17:14:09 +0000 (UTC)
+ id jE5mNT0co17e; Thu, 28 May 2026 17:29:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C405D61BBC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CAB1B61BD7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1779988449;
-	bh=x3XecCey7V1jOhn3zE1GAiTBEWrdYTpPoYi4jvRTnPE=;
+	s=default; t=1779989341;
+	bh=h5u2QCA4IQHZmMF+M7+9tjgQWrAvtLUoEFMzcuaOtCE=;
 	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=KWxQa6fsf5GsQfxqlLKt8fFTnpy0al1QFQPOP6hN6bZOvTcBdV0oWEzvfCQvWvQU8
-	 FVsFazjXaupWr9tDCl6PcWsM/QvnWP1RqoVejgLL3QjY0P17zS4WBwAYddoI7gcVsQ
-	 D42czenNjK81dnIIq4VOKZjsKO+f/Y/6f7NrYIh0FW4JwspXzifErDqL99rBmuWeuE
-	 uU7PVBwRPFyHYdKWyS3CsULsywsBZ5Bh1s3SNFtNE3ZrU1kqzgxHanRdlSI77EZJRn
-	 aM5Q6x8tMFL5uBX9wkq1wPPc/8NryJdFwsyMYIqDQ1IUyjGuKIZPhjlrs6oBPs/Vq/
-	 WJBxKDGqwykkQ==
+	b=z4xSjF5HP9pgF/1gdag4+T/GLpE/uPjyCQp5WMgFjdxKEI64bzChAsizRCaU3k2YY
+	 RF7zKWJ7e+5pbLDbq6JH0l7XAd/cfQUE36NLJxWwyUNOt4Jg0wsCxvh8OBE9S5huWv
+	 rai7Go5Eyz0DA5sJejwxR2juoCtbgZAOr7YSzw+eWoOU5+oXKJB/9PjmGiG71K55AB
+	 jPx6CkJF9/A1ze/nSEbPmC2g7wFm3Wp7iSyd3RdHlNsN4PKZqIgSiYI07kWgTJJZ+D
+	 jPs/8vV7HluJQBYhYHhqvrjW6c/IHvWFFydYnEUDJpgDgLBt467pF+I1Fh5n748Dif
+	 OUUYkiJhGHtaw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C405D61BBC;
-	Thu, 28 May 2026 17:14:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CAB1B61BD7;
+	Thu, 28 May 2026 17:29:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
- by lists1.osuosl.org (Postfix) with ESMTP id 153312E9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:14:08 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 8CB39288
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:29:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EF3CD61BBA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:14:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7E16F84E0E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:29:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mjEHpk4RXiRy for <intel-wired-lan@lists.osuosl.org>;
- Thu, 28 May 2026 17:14:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 16QAplSG8xaw for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 28 May 2026 17:28:59 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 292B961BB9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 292B961BB9
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 292B961BB9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:14:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C4E9B84E0D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C4E9B84E0D
+Received: from tor.source.kernel.org (tor.source.kernel.org
+ [IPv6:2600:3c04:e001:324:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C4E9B84E0D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 28 May 2026 17:28:59 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 51644419C1;
- Thu, 28 May 2026 17:14:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBE5B1F000E9;
- Thu, 28 May 2026 17:14:03 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id 3EE5C601E4;
+ Thu, 28 May 2026 17:28:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AFDBF1F000E9;
+ Thu, 28 May 2026 17:28:55 +0000 (UTC)
 From: Simon Horman <horms@kernel.org>
-To: zhaojinming@uniontech.com
-Cc: 'Simon Horman' <horms@kernel.org>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Thu, 28 May 2026 18:12:04 +0100
-Message-ID: <20260528171202.2659491-3-horms@kernel.org>
+To: kshitiz.bartariya@zohomail.in
+Cc: 'Simon Horman' <horms@kernel.org>, kuba@kernel.org,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Thu, 28 May 2026 18:26:52 +0100
+Message-ID: <20260528172649.2666600-4-horms@kernel.org>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260526021154.2774526-1-zhaojinming@uniontech.com>
-References: <20260526021154.2774526-1-zhaojinming@uniontech.com>
+In-Reply-To: <20260526074744.36315-1-kshitiz.bartariya@zohomail.in>
+References: <20260526074744.36315-1-kshitiz.bartariya@zohomail.in>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1779988446;
- bh=x3XecCey7V1jOhn3zE1GAiTBEWrdYTpPoYi4jvRTnPE=;
+ d=kernel.org; s=k20260515; t=1779989337;
+ bh=h5u2QCA4IQHZmMF+M7+9tjgQWrAvtLUoEFMzcuaOtCE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=cdooFQ0tmujdG4wbgACHhQWY7nU+DQjiOofHK77kakdcPnTvUlOrkTzlgFBK56u8m
- T1mN2I/7L9oV1WmUv/090/d7j0P44pp/Np4HIDfb4xI/UmyGablZQV9/SjbePDwN8r
- C3OQtuUCRDhNirwPdOnV2ODN4m2zgYtw+ZuVCG9opek5uyeuHfCa75gG6Uwu3pFF+s
- i8vde1HivO3Y1DIKfy1BzUQN2B/ibVpjrE5XjMlIAcgyM7ErDHL/unEDDxP9OtlZ9T
- /eo7ebv/frvML8UJQsy/517fldAj8GBsAFIIbQgG8uWVyKBpDnQ5hgtyDgKoINXTa4
- Rb/FebhNCedyw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=nivTUmWSUMLEztUCqRnyXAEKc7FeaZ/gbHkDoDAhHF5Foea+qxckdfpaaGrCXES7n
+ aKXOmmCMA7ujDQW7hQr+JV+UF6QFWcqegoTv4TKLSZizCPd2CRF8I8Zau0tzjMl2xu
+ ixpsrsU+aAgBnKkrrczIWeDc76cdt/YsjrcQ83ZFT9UuMW/cpm1VoOud34SpcbU4xG
+ ICJVHK0tiorBFO2ZTsxNUW6YiU6abuAee25YwR+EvjiZNIdDHmI40SUvKnvnDLm98T
+ 2hkloN+3/aUBt/qDEVotlpspVrBsUa4gdmxyfZv6sWFWMKY7ard/OqltE8CuGkPJVM
+ /N+SFcHxDTbzw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=cdooFQ0t
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: dpll: fix memory leak in
- ice_dpll_init_info error paths
+ header.s=k20260515 header.b=nivTUmWS
+Subject: Re: [Intel-wired-lan] [PATCH net v2] ixgbe: implement
+ get_queue_stats_rx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -107,40 +107,40 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Spamd-Result: default: False [3.69 / 15.00];
+X-Spamd-Result: default: False [3.79 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:zhaojinming@uniontech.com,m:horms@kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
 	MIME_TRACE(0.00)[0:+];
-	FROM_HAS_DN(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[12];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	ARC_NA(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:kshitiz.bartariya@zohomail.in,m:horms@kernel.org,m:kuba@kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	NEURAL_HAM(-0.00)[-1.000];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,sashiko.dev:url];
+	FROM_NEQ_ENVFROM(0.00)[horms@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	NEURAL_HAM(-0.00)[-1.000];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
-X-Rspamd-Queue-Id: 7ECF45F5766
+X-Rspamd-Queue-Id: 74DE75F5A14
 X-Rspamd-Action: no action
 X-Rspamd-Server: lfdr
 
@@ -150,48 +150,58 @@ This is an AI-generated review of your patch. The human sending this
 email has considered the AI review valid, or at least plausible.
 Full review at: https://sashiko.dev
 ---
-ice: dpll: fix memory leak in ice_dpll_init_info error paths
+ixgbe: implement get_queue_stats_rx
 
-This commit fixes memory leaks in several error return paths of
-ice_dpll_init_info() by routing them to the deinit_info label. This
-ensures previously allocated resources are correctly freed.
+This commit hooks into the netdev_stat_ops interface to expose per RX queue
+statistics through the netdev generic netlink API.
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-> --- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index 2646ee6f295f0..2184213727c7d 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
 [ ... ]
-> @@ -4341,12 +4341,16 @@ static int ice_dpll_init_info(struct ice_pf *pf, bool cgu)
+> @@ -9740,6 +9740,21 @@ static void ixgbe_get_stats64(struct net_device *netdev,
+>  	stats->rx_missed_errors	= netdev->stats.rx_missed_errors;
+>  }
 >  
->  	alloc_size = sizeof(*de->input_prio) * d->num_inputs;
->  	de->input_prio = kzalloc(alloc_size, GFP_KERNEL);
-> -	if (!de->input_prio)
-> -		return -ENOMEM;
-> +	if (!de->input_prio) {
-> +		ret = -ENOMEM;
-> +		goto deinit_info;
-> +	}
+> +static void ixgbe_get_queue_stats_rx(struct net_device *dev, int idx,
+> +				     struct netdev_queue_stats_rx *stats)
+> +{
+> +	struct ixgbe_adapter *adapter = ixgbe_from_netdev(dev);
+> +	struct ixgbe_ring *ring = adapter->rx_ring[idx];
+> +
 
-Simon says: Although this is a pre-existing issue I believe it needs
-            to be assessed in the context of this patch.
+Simon says: The issue flagged below does seem to warrant investigation.
 
-	    If it is valid then I would suggest a separate patch,
-	    preceding this one in a patch-set, to address it.
+[Severity: High]
+Does this code risk a NULL pointer dereference?
 
-[Severity: Critical]
-This is a pre-existing issue, but does jumping to deinit_info here expose a
-double-free risk during driver resets?
+The generic netlink queue stat dump executes under RCU without holding the
+rtnl_lock. During device reconfigurations (e.g., changing the number of channels
+via ethtool -L), the driver temporarily tears down the queues and sets
+adapter->rx_ring[idx] to NULL.
 
-When a driver reset occurs, ice_dpll_deinit_info() frees the pointers in
-pf->dplls (like d->inputs, d->outputs, de->input_prio, and dp->input_prio)
-but does not set them to NULL.
+Because this happens while the interface is still marked up and before
+dev->real_num_rx_queues is updated, a concurrent queue stats dump could invoke
+ixgbe_get_queue_stats_rx() while the ring pointer is NULL.
 
-During the subsequent reset recovery, ice_dpll_init_info() is called. If
-allocation fails here at de->input_prio, the code jumps to deinit_info
-and calls ice_dpll_deinit_info() again.
+> +	stats->alloc_fail = ring->rx_stats.alloc_rx_page_failed +
+> +			    ring->rx_stats.alloc_rx_buff_failed;
+> +	stats->csum_bad = ring->rx_stats.csum_err;
 
-Because d->outputs and dp->input_prio have not yet been overwritten with
-new allocations during this init sequence, they still hold the old dangling
-pointers from before the reset. Will calling ice_dpll_deinit_info() again
-attempt to kfree() these old pointers, resulting in a double-free?
+Simon says: While it seems to me that the heart of the issue flagged below is
+            a subjective decision around the scope of this work.
 
-[ ... ]
+[Severity: Medium]
+Are we missing the packet and byte counts here?
+
+The driver tracks these fundamental metrics in ring->stats.packets and
+ring->stats.bytes, and they can be safely read using the ring->syncp
+u64_stats_sync lock.
+
+Since they are omitted from struct netdev_queue_stats_rx, the generic netlink
+API will treat them as NETDEV_STAT_NOT_SET, leaving userspace tools without
+packet and byte counts for the RX queues.
+
+> +}
+> +
