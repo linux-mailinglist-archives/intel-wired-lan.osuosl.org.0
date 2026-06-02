@@ -2,100 +2,114 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by lfdr with LMTP
-	id kBaXKyqsHmq3IwAAu9opvQ
+	id YBBIAUitHmq3IwAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Jun 2026 12:10:50 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Jun 2026 12:15:36 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32B1E62C3EC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Jun 2026 12:10:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 425F462C5DF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 02 Jun 2026 12:15:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A8A8781F1E;
-	Tue,  2 Jun 2026 10:10:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1FB5360BCE;
+	Tue,  2 Jun 2026 10:15:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Rk5MNc6iCY_W; Tue,  2 Jun 2026 10:10:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hhuMQcd_7o2k; Tue,  2 Jun 2026 10:15:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EDCCD81F1F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 520D160BC7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1780395047;
-	bh=MR0Lsgq+PHZRBwFD+0O5DuR2QLpLWp2we9s5q3tK/G8=;
-	h=To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From:Reply-To:From;
-	b=cAUQBgj4Rdfpx39vgLb895NNGo1/sHyVdAWwsXM8Zf8GqZNfwafW1pxNTX7SPIIp8
-	 wN6TUwo8JTGz95AiHHOJX85dIYk2by4tPFD2Y0cMAcWnYIKUlc+JDHipIwzPce6127
-	 a8zg8EeIjz5lT3bO8bf5+02pSg99SE6+OzsAvG0vPZmj80DE/3oyw5S8oImmPsXG0I
-	 8NA7KoFuDJFVZoyW1lzn51t95vQyEdXls3zOViiMc8YxFos6ZAuqIeMxWrWF5YvmTJ
-	 fXsZY4JXztY+WvumJVmvjTSa16FI27KP31MkyTy47BzY9rStT1C6KbzLdJ++yO01WM
-	 eDp7OEyQZc0GA==
+	s=default; t=1780395331;
+	bh=P/Wpc0g6L/lq2WK0KD2ekVhSlXg+M023lee5AZhSbP0=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=3R94YcgBPsDioxgU7uh9HL1TDZphZINihR6okDvS9FLlC/kpvzPqU/ZKUf9Q0WPuu
+	 sFxR3bN82J9WpvVNg1WVkUi86lF+Ealwt0FmZMLj95Ihqk/HLFTe9x6DGBSLCwkQVc
+	 /UCVG7TKxe/5BYyfR6mrDdU/WjYgsuFMwodtMssvW3NiSptCReYxGtHbZ1S0JzeNtk
+	 kW7mIw8rGxd4ewd2Brcw0oijB6ruresAT81LkOf8hTB83h0VZo7KUIdKbxKt64f68R
+	 OkEPurGIYssx+FOgmGd0PF9qXtr4SDNbVLgAH2xKKShsBbX4w+f43m/SnKFjaKKWAv
+	 k0iaY6t39ZOKg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EDCCD81F1F;
-	Tue,  2 Jun 2026 10:10:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 520D160BC7;
+	Tue,  2 Jun 2026 10:15:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2D23BF4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:10:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 0CA5933C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:15:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1F04040188
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:10:45 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 072B140F2E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:15:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8DEIUFtfZhck for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jun 2026 10:10:44 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=103.117.158.93;
- helo=sender-pp-o93.zoho.in; envelope-from=kshitiz.bartariya@zohomail.in;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yCwj6e0fjLYO for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jun 2026 10:15:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4BCA940184
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4BCA940184
-Received: from sender-pp-o93.zoho.in (sender-pp-o93.zoho.in [103.117.158.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4BCA940184
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:10:42 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; t=1780394986; cv=none; d=zohomail.in; s=zohoarc; 
- b=MUy3vAfdYE8/oKhAoPXB20T8Wp3vAJFoOrQY90RUMfAtgm6QhP3LX28qsT3EIJ4DCLBKlLtfq1lEFqZW5X5NNz5vZWWSb8yrMjqLNwrh82FhkvXoRrYXyU0XlKydJCKEKQPqTsD6rwwupdVcs13Nl85nXDkNFgsX8TCbmWt6aro=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.in;
- s=zohoarc; t=1780394986;
- h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=MR0Lsgq+PHZRBwFD+0O5DuR2QLpLWp2we9s5q3tK/G8=; 
- b=f81NkU5bMuN5Far+phTq4Dbf+pQxWpbTCH1bEBvBN8FhuR1LzisWfHQs4czzwHoBP2ATzXFhRylswX+skFPjxSWkAm9ma6NbaNItEuMZ8bUIdaH0EvW7p5r8ut+YYfQ2ty0ZYjuhe83sCd1jlN+DLx9bcQJbdQtFbVpWP/W7aRU=
-ARC-Authentication-Results: i=1; mx.zohomail.in;
- dkim=pass  header.i=zohomail.in;
- spf=pass  smtp.mailfrom=kshitiz.bartariya@zohomail.in;
- dmarc=pass header.from=<kshitiz.bartariya@zohomail.in>
-Received: by mx.zoho.in with SMTPS id 1780394978142936.8750900178738;
- Tue, 2 Jun 2026 15:39:38 +0530 (IST)
-To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, aleksandr.loktionov@intel.com,
- jacob.e.keller@intel.com
-Cc: Kshitiz Bartariya <kshitiz.bartariya@zohomail.in>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Date: Tue,  2 Jun 2026 15:39:26 +0530
-Message-ID: <20260602100932.21838-1-kshitiz.bartariya@zohomail.in>
-X-Mailer: git-send-email 2.50.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5F7D740F2D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F7D740F2D
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F7D740F2D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jun 2026 10:15:26 +0000 (UTC)
+X-CSE-ConnectionGUID: 3lL/tc/nSXGilhQPSBw7lQ==
+X-CSE-MsgGUID: gcJYwUfQQYm1GOiyjylNhQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11804"; a="80320785"
+X-IronPort-AV: E=Sophos;i="6.24,183,1774335600"; d="scan'208";a="80320785"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2026 03:15:26 -0700
+X-CSE-ConnectionGUID: QOxO0qGNTGGxUPsJZYMb0g==
+X-CSE-MsgGUID: ZpNGIpfISR2Bw0Ck6nKUqg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,183,1774335600"; d="scan'208";a="281976068"
+Received: from mszycik-desk.igk.intel.com (HELO [10.217.160.157])
+ ([10.217.160.157])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jun 2026 03:15:24 -0700
+Message-ID: <961dca76-3025-45a4-b11e-0ee8f241d290@linux.intel.com>
+Date: Tue, 2 Jun 2026 12:15:21 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-ZohoMailClient: External
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; t=1780394986; 
- s=zoho; d=zohomail.in; i=kshitiz.bartariya@zohomail.in;
- h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
- bh=MR0Lsgq+PHZRBwFD+0O5DuR2QLpLWp2we9s5q3tK/G8=;
- b=gu7wyZxO32BKCCtl7ZC8jt03EON9frmf+0KqjDUz6AzgL2Rk5U7VvWhi0WcWJK3L
- UNP4P3f7JBoecN3c0SlFeJ06Jx+pH6G6Y5zSykjDr5jhf00qwRapj+eiVS6dKQfdqrA
- 7fZcf0ENFOXQSTneY3nVDUptH5i5xGu5WD1cyxJI=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=zohomail.in
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=zohomail.in header.i=kshitiz.bartariya@zohomail.in
- header.a=rsa-sha256 header.s=zoho header.b=gu7wyZxO
-Subject: [Intel-wired-lan] [PATCH net-next] ixgbe: implement
- get_queue_stats_rx
+User-Agent: Mozilla Thunderbird
+To: Jacob Keller <jacob.e.keller@intel.com>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Grzegorz Nitka <grzegorz.nitka@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Przemyslaw Korba <przemyslaw.korba@intel.com>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>
+Cc: netdev@vger.kernel.org
+References: <20260529-jk-fix-e810-ll-interface-function-v1-1-ec84a408af7e@intel.com>
+Content-Language: en-US
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20260529-jk-fix-e810-ll-interface-function-v1-1-ec84a408af7e@intel.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1780395328; x=1811931328;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=1BFtdgLgx1WuF9HW/LWBdynSaVB4mxxZa6n9opIQPRM=;
+ b=kP7qi/CFzhM9O6I3B6VfGKeWZclCsMJN4+wEii7GOMQhgFQYFs1i7S7L
+ J/hjxvkqGQKeboj3U5j9xYN/RybcdFPLapyt5BsLNEBOpjvOYG0Rhx5bg
+ STQjE1rgiD19GGC5sNRfbzmKjna+1OjKKf2L4C4eMXVwzAYj2xUyYQxRx
+ 6xJHNHVddo2RNeb8YUpSGByudq00EqTIGoouIvxcgMu/2y3ANML4jB+aX
+ pxIwYThovIy45vZrL9n6Emt+PC9jqPq5AAp1GdFhb5QzFk99PXAS5NdD+
+ NXQ4f2RTCegxbgdG6V2PjYzjWfzeFY0l+F4VZirmZsCe2O5EFH9RLJYaQ
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=kP7qi/CF
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix E810 low latency
+ timestamp interrupt handling
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -108,103 +122,267 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-From: Kshitiz Bartariya via Intel-wired-lan <intel-wired-lan@osuosl.org>
-Reply-To: Kshitiz Bartariya <kshitiz.bartariya@zohomail.in>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-X-Rspamd-Queue-Id: 32B1E62C3EC
+X-Rspamd-Queue-Id: 425F462C5DF
 X-Rspamd-Server: lfdr
-X-Spamd-Result: default: False [1.69 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:zohomail.in:reject}];
-	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
-	R_MISSING_CHARSET(0.50)[];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [-0.61 / 15.00];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:jacob.e.keller@intel.com,m:grzegorz.nitka@intel.com,m:arkadiusz.kubalewski@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:przemyslaw.korba@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,linux.intel.com:mid,osuosl.org:dkim,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
+	FORGED_SENDER(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	TO_DN_SOME(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCVD_TLS_LAST(0.00)[];
 	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:aleksandr.loktionov@intel.com,m:jacob.e.keller@intel.com,m:kshitiz.bartariya@zohomail.in,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
-	REPLYTO_DOM_NEQ_TO_DOM(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[zohomail.in:mid,zohomail.in:email,zohomail.in:replyto,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
-	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	HAS_REPLYTO(0.00)[kshitiz.bartariya@zohomail.in];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_SEVEN(0.00)[9];
+	MID_RHS_MATCH_FROM(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Action: no action
 
-Hook into the netdev_stat_ops interface to expose per RX queue
-statistics through the netdev generic netlink API.
-
-The following counters are filled:
-
- - alloc_fail: sum of alloc_rx_page_failed and alloc_rx_buff_failed
-
- - csum_bad: maps directly to csum_err, which is incremented for both
-   IP header and L4 checksum errors in ixgbe_rx_checksum().
-
-Signed-off-by: Kshitiz Bartariya <kshitiz.bartariya@zohomail.in>
----
-This patch was previously discussed for the net tree:
-Link: https://lore.kernel.org/lkml/20260526074744.36315-1-kshitiz.bartariya@zohomail.in/
-
-Sending to net-next as suggested by Jacob Keller and Aleksandr Loktionov.
 
 
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+On 29/05/2026 22:22, Jacob Keller wrote:
+> The driver has supported a low latency timestamp interface since commit
+> 82e71b226e0e ("ice: Enable SW interrupt from FW for LL TS").
+> 
+> This interface is triggered by calling ice_ptp_req_tx_single_tstamp(),
+> which is called by ice_ptp_ts_irq(), which in turn is called when the
+> driver gets an interrupt from hardware indicating that a timestamp is
+> available.
+> 
+> This function doesn't check if a timestamp request is already in progress,
+> and as a result could trash an existing outstanding requests when called.
+> It turns out that this is unlikely in practice due to a number of
+> circumstances that prevent most of the ways that could happen.
+> 
+> 1. The ice_misc_intr_thread_fn() might trigger a software-generated
+>    interrupt with the PFINT_OICR_TSYN_TX flag. However, we don't enter the
+>    thread function since ice_ptp_ts_irq() always returns IRQ_HANDLED for
+>    E810 devices which support the low latency firmware interface.
+> 
+> 2. The ice_ptp_maybe_trigger_tx_interrupt() function might trigger a
+>    software-generated interrupt if it detects waiting timetstamps. However
+>    it checks ptp.port.tx.has_ready_bitmap which is always false for E810,
+>    so never enters the code path.
+> 
+> However, it is still possible that another Tx timestamp request could
+> happen and complete and race with the firmware completing the outstanding
+> low latency timestamp request.
+> 
+> This doesn't happen often in practice because many applications only
+> trigger a single outstanding Tx timestamp at once. However, if the user
+> runs multiple copies of ptp4l or uses other userspace stack which does,
+> they might miss timestamps or get corrupted timestamp data.
+> 
+> To fix this, have the ice_ptp_req_tX_single_tstamp() function check and
+> only begin the operation if the ATQBAL_FLAGS_INTR_IN_PROGRESS flag was not
+> yet set. This prevents a new possible request from trashing an outstanding
+> request. Note that on completion of a request, the ice_ll_ts_intr()
+> function will initiate a request for the next outstanding timestamp, so no
+> timestamps will be lost.
+> 
+> Additionally, although the ice_ptp_tx_tstamps_pending() function doesn't
+> currently get called for E810 devices, it should still not return true for
+> devices which support the low latency interrupt. If for some reason code is
+> refactored and the miscellaneous thread function does execute, it should
+> not trigger a new software interrupt for devices using the low latency
+> interrupt interface. Add an explicit check to make this function always
+> return false when the device is operating in this mode.
+> 
+> Finally, convert the atqbal_flags to DECLARE_BITMAP and use test/set bit
+> functions. This helps in clarity as we can use test_and_set_bit and
+> test_and_clear_bit.
+> 
+> Fixes: 82e71b226e0e ("ice: Enable SW interrupt from FW for LL TS")
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index bc16e4c93fd4..05d4b8aff1fc 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -9759,6 +9759,21 @@ static void ixgbe_get_stats64(struct net_device *netdev,
- 	stats->rx_missed_errors	= netdev->stats.rx_missed_errors;
- }
- 
-+static void ixgbe_get_queue_stats_rx(struct net_device *dev, int idx,
-+				     struct netdev_queue_stats_rx *stats)
-+{
-+	struct ixgbe_adapter *adapter = ixgbe_from_netdev(dev);
-+	struct ixgbe_ring *ring = adapter->rx_ring[idx];
-+
-+	stats->alloc_fail = ring->rx_stats.alloc_rx_page_failed +
-+			    ring->rx_stats.alloc_rx_buff_failed;
-+	stats->csum_bad = ring->rx_stats.csum_err;
-+}
-+
-+static const struct netdev_stat_ops ixgbe_stat_ops = {
-+	.get_queue_stats_rx	= ixgbe_get_queue_stats_rx,
-+};
-+
- static int ixgbe_ndo_get_vf_stats(struct net_device *netdev, int vf,
- 				  struct ifla_vf_stats *vf_stats)
- {
-@@ -11662,6 +11677,7 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	hw->phy.mdio.mdio_write = ixgbe_mdio_write;
- 
- 	netdev->netdev_ops = &ixgbe_netdev_ops;
-+	netdev->stat_ops   = &ixgbe_stat_ops;
- 	ixgbe_set_ethtool_ops(netdev);
- 	netdev->watchdog_timeo = 5 * HZ;
- 	strscpy(netdev->name, pci_name(pdev), sizeof(netdev->name));
--- 
-2.50.1 (Apple Git-155)
+Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
++ some nits
+
+> ---
+> This was originally motivated by changes in our out-of-tree release where
+> the issue of a software-generated interrupt was causing significantly more
+> issues. After further investigation it seems that the upstream
+> implementation is more robust, preventing the thread function from running
+> for E810. However, there appears to be a small window where issues can crop
+> up if multiple outstanding timestamps are requested near concurrently. This
+> change is motivated at closing that gap and ensuring consistency of
+> timestamps returned through the low latency interface.
+> 
+> To trigger the issue you will need to issue multiple Tx timestamp requests
+> near but not quite simultaneously, and it may be quite a rare race
+> condition.
+> ---
+>  drivers/net/ethernet/intel/ice/ice_type.h   |  8 ++++++--
+>  drivers/net/ethernet/intel/ice/ice_ptp.c    | 24 +++++++++++++++++++-----
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 12 ++++++------
+>  3 files changed, 31 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+> index 1e82f4c40b32..7035ea6c59db 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_type.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
+> @@ -859,12 +859,16 @@ struct ice_mbx_data {
+>  #define ICE_PORTS_PER_QUAD	4
+>  #define ICE_GET_QUAD_NUM(port) ((port) / ICE_PORTS_PER_QUAD)
+>  
+> -#define ATQBAL_FLAGS_INTR_IN_PROGRESS	BIT(0)
+> +enum ice_atqbal_flags {
+> +	ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +
+> +	ATQBAL_FLAGS_NBITS, /* must be last */
+
+Nit: no comma
+
+> +};
+>  
+>  struct ice_e810_params {
+>  	/* The wait queue lock also protects the low latency interface */
+>  	wait_queue_head_t atqbal_wq;
+> -	unsigned int atqbal_flags;
+> +	DECLARE_BITMAP(atqbal_flags, ATQBAL_FLAGS_NBITS);
+>  };
+>  
+>  struct ice_eth56g_params {
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> index 36df742c326c..11059deb5d41 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -382,6 +382,7 @@ void ice_ptp_req_tx_single_tstamp(struct ice_ptp_tx *tx, u8 idx)
+>  	struct ice_ptp_port *ptp_port;
+>  	unsigned long flags;
+>  	struct sk_buff *skb;
+> +	struct device *dev;
+>  	struct ice_pf *pf;
+>  
+>  	if (!tx->init)
+> @@ -389,6 +390,7 @@ void ice_ptp_req_tx_single_tstamp(struct ice_ptp_tx *tx, u8 idx)
+>  
+>  	ptp_port = container_of(tx, struct ice_ptp_port, tx);
+>  	pf = ptp_port_to_pf(ptp_port);
+> +	dev = ice_pf_to_dev(pf);
+>  	params = &pf->hw.ptp.phy.e810;
+>  
+>  	/* Drop packets which have waited for more than 2 seconds */
+> @@ -408,7 +410,13 @@ void ice_ptp_req_tx_single_tstamp(struct ice_ptp_tx *tx, u8 idx)
+>  
+>  	spin_lock_irqsave(&params->atqbal_wq.lock, flags);
+>  
+> -	params->atqbal_flags |= ATQBAL_FLAGS_INTR_IN_PROGRESS;
+> +	if (test_and_set_bit(ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +			     params->atqbal_flags)) {
+> +		dev_dbg(dev, "%s: low latency interrupt request already in progress?\n",
+
+Why the '?', are we not certain it's in progress?
+
+> +			__func__);
+> +		spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
+> +		return;
+
+Nit: could be an unroll.
+
+> +	}
+>  
+>  	/* Write TS index to read to the PF register so the FW can read it */
+>  	wr32(&pf->hw, REG_LL_PROXY_H,
+> @@ -449,7 +457,8 @@ void ice_ptp_complete_tx_single_tstamp(struct ice_ptp_tx *tx)
+>  
+>  	spin_lock_irqsave(&params->atqbal_wq.lock, flags);
+>  
+> -	if (!(params->atqbal_flags & ATQBAL_FLAGS_INTR_IN_PROGRESS))
+> +	if (!test_and_clear_bit(ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +				params->atqbal_flags))
+>  		dev_dbg(dev, "%s: low latency interrupt request not in progress?\n",
+>  			__func__);
+>  
+> @@ -459,8 +468,6 @@ void ice_ptp_complete_tx_single_tstamp(struct ice_ptp_tx *tx)
+>  	reg_ll_high = rd32(&pf->hw, REG_LL_PROXY_H);
+>  
+>  	/* Wake up threads waiting on low latency interface */
+> -	params->atqbal_flags &= ~ATQBAL_FLAGS_INTR_IN_PROGRESS;
+> -
+>  	wake_up_locked(&params->atqbal_wq);
+>  
+>  	spin_unlock_irqrestore(&params->atqbal_wq.lock, flags);
+> @@ -2712,7 +2719,14 @@ bool ice_ptp_tx_tstamps_pending(struct ice_pf *pf)
+>  	struct ice_hw *hw = &pf->hw;
+>  	int ret;
+>  
+> -	/* Check software indicator */
+> +	/* E810 devices with support for the low latency timestamp interrupt
+> +	 * have specialized handling for timestamps. They should not
+> +	 * re-schedule the miscellaneous interrupt.
+> +	 */
+> +	if (hw->mac_type == ICE_MAC_E810 &&
+> +	    hw->dev_caps.ts_dev_info.ts_ll_int_read)
+> +		return false;
+> +
+>  	switch (pf->ptp.tx_interrupt_mode) {
+>  	case ICE_PTP_TX_INTERRUPT_NONE:
+>  		return false;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> index 2c18e16fe053..02d4cc942c8d 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> @@ -4521,8 +4521,8 @@ ice_read_phy_tstamp_ll_e810(struct ice_hw *hw, u8 idx, u8 *hi, u32 *lo)
+>  
+>  	/* Wait for any pending in-progress low latency interrupt */
+>  	err = wait_event_interruptible_locked_irq(params->atqbal_wq,
+> -						  !(params->atqbal_flags &
+> -						    ATQBAL_FLAGS_INTR_IN_PROGRESS));
+> +						  !test_bit(ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +							    params->atqbal_flags));
+>  	if (err) {
+>  		spin_unlock_irq(&params->atqbal_wq.lock);
+>  		return err;
+> @@ -4754,8 +4754,8 @@ static int ice_ptp_prep_phy_adj_ll_e810(struct ice_hw *hw, s32 adj)
+>  
+>  	/* Wait for any pending in-progress low latency interrupt */
+>  	err = wait_event_interruptible_locked_irq(params->atqbal_wq,
+> -						  !(params->atqbal_flags &
+> -						    ATQBAL_FLAGS_INTR_IN_PROGRESS));
+> +						  !test_bit(ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +							    params->atqbal_flags));
+>  	if (err) {
+>  		spin_unlock_irq(&params->atqbal_wq.lock);
+>  		return err;
+> @@ -4846,8 +4846,8 @@ static int ice_ptp_prep_phy_incval_ll_e810(struct ice_hw *hw, u64 incval)
+>  
+>  	/* Wait for any pending in-progress low latency interrupt */
+>  	err = wait_event_interruptible_locked_irq(params->atqbal_wq,
+> -						  !(params->atqbal_flags &
+> -						    ATQBAL_FLAGS_INTR_IN_PROGRESS));
+> +						  !test_bit(ATQBAL_FLAGS_INTR_IN_PROGRESS,
+> +							    params->atqbal_flags));
+>  	if (err) {
+>  		spin_unlock_irq(&params->atqbal_wq.lock);
+>  		return err;
+> 
+> ---
+> base-commit: 2412591cfe66e681374c5265e691695cd913d099
+> change-id: 20260528-jk-fix-e810-ll-interface-function-5dad155217d8
+> 
+> Best regards,
+> --  
+> Jacob Keller <jacob.e.keller@intel.com>
+> 
+> 
 
