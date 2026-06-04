@@ -2,102 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id iz+PLuClIGoa6QAAu9opvQ
+	id dvAPMkbVIGo58QAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Jun 2026 00:08:32 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Jun 2026 03:30:46 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E2EB63B806
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Jun 2026 00:08:31 +0200 (CEST)
-Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=g0MUKu3C;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F03B142A38;
-	Wed,  3 Jun 2026 22:08:29 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dfEkjYsQKXq3; Wed,  3 Jun 2026 22:08:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C40242A35
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1780524508;
-	bh=rt+KR9NillM4xqouucggg/5vgB+8uotO/l1xdUP8oVI=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=g0MUKu3CnCy+36s2NoExGQiPHyCCJLpH0WlLgow/VzBzvXyExWkWWSi+H8o8t0FhT
-	 VYzh9LlaOIQ+boUCxJ2JHvslFbdM0dI76cf8lAnh4bRMpX3Rx5q7BK2tyESBVkHWVQ
-	 OvNdLEXOuvhZsc8SgtgOCgJ8IY3zYac/mDd9w8cZXF97h0kqn4d2CTt7bmmm+eZeRk
-	 KI78+X0dpChFbNQCMpQ/KA4sabDEuZLADvGRr9k6NVHfFY1iITj4+zAeUyFGlREN8o
-	 15/Ps88gP290bIR3PSJWydLRrRgSfQ8nwjANxXsB/Fej1rTR5AahoEjur60JXqNco4
-	 NkL3mRb7p+rHQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0C40242A35;
-	Wed,  3 Jun 2026 22:08:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 06383192
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jun 2026 22:08:26 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B31B063C346
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 04 Jun 2026 03:30:45 +0200 (CEST)
+Authentication-Results: mail.lfdr.de;
+	dkim=pass header.d=osuosl.org header.s=default header.b=3KKTe1mG;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EBBC5849BD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jun 2026 22:08:25 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5485384865;
+	Thu,  4 Jun 2026 01:30:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w_NaB8P1OueE for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Jun 2026 22:08:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E4102849B8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4102849B8
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E4102849B8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jun 2026 22:08:24 +0000 (UTC)
-X-CSE-ConnectionGUID: Fhn2ZcSmSDak9SuUANUxIQ==
-X-CSE-MsgGUID: vASEodk8TKO4PW1tfNWhjg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11806"; a="85200621"
-X-IronPort-AV: E=Sophos;i="6.24,186,1774335600"; d="scan'208";a="85200621"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2026 15:08:24 -0700
-X-CSE-ConnectionGUID: 8N5f1qB7RMul2gJ7MMLwFA==
-X-CSE-MsgGUID: PqPpiFyjTQiow1jP2RNU1g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,186,1774335600"; d="scan'208";a="249451525"
-Received: from lkp-server01.sh.intel.com (HELO f0d55cb201f0) ([10.239.97.150])
- by fmviesa005.fm.intel.com with ESMTP; 03 Jun 2026 15:08:23 -0700
-Received: from kbuild by f0d55cb201f0 with local (Exim 4.98.2)
- (envelope-from <lkp@intel.com>) id 1wUtl7-00000000DwK-0EeQ;
- Wed, 03 Jun 2026 22:08:21 +0000
-Date: Thu, 04 Jun 2026 06:08:04 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202606040656.Uyf043QJ-lkp@intel.com>
-User-Agent: s-nail v14.9.25
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1780524505; x=1812060505;
- h=date:from:to:subject:message-id;
- bh=XGR3qZVEjwJlGf4UY/nTttL/x47d7KD+Rh7KsjYIwpk=;
- b=bfmK3ihQ2koRsqvfQIFXLcM8GmiDq0cRxpuK4W5ubnOBbB+ThJWu1TtF
- QiWxPMBc74ud2cukk4B0/3gB+PTJEZPYKk8fzIJvQQ3VjjgO7cggatmeY
- mxvASVsSF8M+QGokpFXx7aoZ9Rj5X4tCcjRLCxDRoEoaGTaShYpUNaq95
- DepTWUT/2J7TbJbETOOLy+IZHHXmuyI9E4810a7SFJtHYuaMOk42SKkb/
- p3i1vWeqZkMlJ1Jjd/8FyVlgSNXOlVswtVSJ+8S4gJPFsxYCvVWo1I9t2
- /+tXh4dEZWzPmzhByJD39w8A0tNHxrZluSgYGDRU1Tal7p9lm8V9rHNy1
- A==;
+ id if0nIJAyv4gs; Thu,  4 Jun 2026 01:30:41 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D46D58487C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1780536641;
+	bh=QGiIv2EogEHFCZ6gLG2NuS35JHQ8K9sawD/XXjwoGF0=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=3KKTe1mGuZQyWle0QUOIVVICTbGs5qLEWOto788QVZ4NF3FbqT9N68lxLVWKDAmR9
+	 QWZW/60jdTLXLVKakNbpB+Sj7kJmAXqY1tr+mkZ61LIS1Yv9UDbYybZWaoEBy3uKWo
+	 rrArwU+e+ts+dzOUKxKIEUPSQn0mdxqhW7cWOz9hO/V4e2+9KtkcA+sT/RNnV0fCNZ
+	 7i6nr3Q243F+GV8RQWP8k/H551rJcg9Xsd68Xz0guvbwJlq6TjSnUX7sY10RVh12Om
+	 Ds3ckEMOMQS6dRh5kMp6porPlnBOKn473DfH0pZ30Yp3J1Kcf5x+s4q2+uXB35awxC
+	 ZSfidcwjNcpbw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id D46D58487C;
+	Thu,  4 Jun 2026 01:30:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id A0E33192
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2026 01:30:39 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 89C3684865
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2026 01:30:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LlI36WPoy4RI for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jun 2026 01:30:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DF10A8482B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DF10A8482B
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DF10A8482B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jun 2026 01:30:38 +0000 (UTC)
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by sea.source.kernel.org (Postfix) with ESMTP id D7C39401BF;
+ Thu,  4 Jun 2026 01:30:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F40C41F00893;
+ Thu,  4 Jun 2026 01:30:36 +0000 (UTC)
+Date: Wed, 3 Jun 2026 18:30:36 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Message-ID: <20260603183036.7c4762d2@kernel.org>
+In-Reply-To: <20260529142628.1678955-1-grzegorz.nitka@intel.com>
+References: <20260529142628.1678955-1-grzegorz.nitka@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel.org; s=k20260515; t=1780536637;
+ bh=QGiIv2EogEHFCZ6gLG2NuS35JHQ8K9sawD/XXjwoGF0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References;
+ b=mDXMH5T+YgYjpWjeRD9wgaNvXS+A9PsVLasvd3/bHaBsfDJpmwoIC6+SxyE6T4jc9
+ FKSTZuH8YzcVuGuxLHf6SGTHraEQTvY/vwfbGSe66Yin1QwmFaHdQKY4I5dLiuqvZR
+ O3z9MmlO8QnjkahcqgmBvTsXzeGqtanyd6BsUevMZxZu0g1cn0WcIURVUIVsZsaWBC
+ DWS3c6ng2vdLM+3FR+N7TfhrCNncFBy4bVxr3eNpLVRqgIHjGPZd9HRvgUYWI67wR4
+ L4N1B27UGhpI93qDtmqoRd9kR6R59ZT4Mk/WtIwjXroHHYS85fqkthPi1lVxHFVxze
+ kIy/MCgZlQXdg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=bfmK3ihQ
-Subject: [Intel-wired-lan] [tnguy-net-queue:200GbE] BUILD SUCCESS
- 3522b21fd7e1863d0734537737bd59f1b90d0190
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20260515 header.b=mDXMH5T+
+Subject: Re: [Intel-wired-lan] [PATCH v12 net-next 0/8] dpll/ice: Add
+ generic DPLL type and full TX reference clock control for E825
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -110,270 +104,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, jiri@resnulli.us,
+ edumazet@google.com, netdev@vger.kernel.org, richardcochran@gmail.com,
+ donald.hunter@gmail.com, linux-kernel@vger.kernel.org,
+ arkadiusz.kubalewski@intel.com, Prathosh.Satish@microchip.com,
+ andrew+netdev@lunn.ch, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
+ przemyslaw.kitszel@intel.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	MAILLIST(-0.20)[mailman];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:from_mime,intel.com:mid,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
-	FROM_HAS_DN(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_ONE(0.00)[1];
-	MIME_TRACE(0.00)[0:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FREEMAIL_CC(0.00)[redhat.com,linux.dev,resnulli.us,google.com,vger.kernel.org,gmail.com,intel.com,microchip.com,lunn.ch,lists.osuosl.org,kernel.org,davemloft.net];
 	RCVD_TLS_LAST(0.00)[];
-	TO_DN_ALL(0.00)[];
-	DKIM_TRACE(0.00)[osuosl.org:+];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[lkp@intel.com,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:from_smtp,osuosl.org:dkim];
+	FORGED_SENDER(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[18];
+	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:jiri@resnulli.us,m:edumazet@google.com,m:netdev@vger.kernel.org,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:Prathosh.Satish@microchip.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	MIME_TRACE(0.00)[0:+];
+	ARC_NA(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[kuba@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 8E2EB63B806
+X-Rspamd-Queue-Id: B31B063C346
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 200GbE
-branch HEAD: 3522b21fd7e1863d0734537737bd59f1b90d0190  devlink: Release nested relation on devlink free
+On Fri, 29 May 2026 16:26:20 +0200 Grzegorz Nitka wrote:
+> NOTE: This series is intentionally submitted on net-next (not
+> intel-wired-lan) as early feedback of DPLL subsystem changes is
+> welcomed. In the past possible approaches were discussed in [1].
 
-elapsed time: 2569m
-
-configs tested: 220
-configs skipped: 3
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig    gcc-15.2.0
-alpha                            allyesconfig    gcc-15.2.0
-alpha                               defconfig    gcc-16.1.0
-arc                              allmodconfig    clang-17
-arc                              allmodconfig    gcc-15.2.0
-arc                               allnoconfig    gcc-15.2.0
-arc                              allyesconfig    clang-23
-arc                              allyesconfig    gcc-15.2.0
-arc                                 defconfig    gcc-16.1.0
-arc                   randconfig-001-20260603    gcc-8.5.0
-arc                   randconfig-002-20260603    gcc-8.5.0
-arm                               allnoconfig    clang-23
-arm                               allnoconfig    gcc-15.2.0
-arm                              allyesconfig    clang-17
-arm                              allyesconfig    gcc-15.2.0
-arm                                 defconfig    gcc-16.1.0
-arm                   randconfig-001-20260603    gcc-8.5.0
-arm                   randconfig-002-20260603    gcc-8.5.0
-arm                   randconfig-003-20260603    gcc-8.5.0
-arm                   randconfig-004-20260603    gcc-8.5.0
-arm64                            allmodconfig    clang-19
-arm64                            allmodconfig    clang-23
-arm64                             allnoconfig    gcc-15.2.0
-arm64                               defconfig    gcc-16.1.0
-arm64                 randconfig-001-20260603    gcc-15.2.0
-arm64                 randconfig-002-20260603    gcc-15.2.0
-arm64                 randconfig-003-20260603    gcc-15.2.0
-arm64                 randconfig-004-20260603    gcc-15.2.0
-csky                             allmodconfig    gcc-15.2.0
-csky                              allnoconfig    gcc-15.2.0
-csky                                defconfig    gcc-16.1.0
-csky                  randconfig-001-20260603    gcc-15.2.0
-csky                  randconfig-002-20260603    gcc-15.2.0
-hexagon                          allmodconfig    clang-17
-hexagon                          allmodconfig    gcc-15.2.0
-hexagon                           allnoconfig    clang-23
-hexagon                           allnoconfig    gcc-15.2.0
-hexagon                             defconfig    gcc-16.1.0
-hexagon                        randconfig-001    gcc-11.5.0
-hexagon               randconfig-001-20260603    gcc-11.5.0
-hexagon                        randconfig-002    gcc-11.5.0
-hexagon               randconfig-002-20260603    gcc-11.5.0
-i386                             allmodconfig    gcc-14
-i386                              allnoconfig    gcc-14
-i386                              allnoconfig    gcc-15.2.0
-i386        buildonly-randconfig-001-20260603    clang-20
-i386        buildonly-randconfig-002-20260603    clang-20
-i386        buildonly-randconfig-003-20260603    clang-20
-i386        buildonly-randconfig-004-20260603    clang-20
-i386        buildonly-randconfig-005-20260603    clang-20
-i386        buildonly-randconfig-006-20260603    clang-20
-i386                                defconfig    gcc-16.1.0
-i386                  randconfig-001-20260603    clang-22
-i386                  randconfig-002-20260603    clang-22
-i386                  randconfig-003-20260603    clang-22
-i386                  randconfig-004-20260603    clang-22
-i386                  randconfig-005-20260603    clang-22
-i386                  randconfig-006-20260603    clang-22
-i386                  randconfig-007-20260603    clang-22
-i386                  randconfig-011-20260603    clang-22
-i386                  randconfig-012-20260603    clang-22
-i386                  randconfig-013-20260603    clang-22
-i386                  randconfig-014-20260603    clang-22
-i386                  randconfig-015-20260603    clang-22
-i386                  randconfig-016-20260603    clang-22
-i386                  randconfig-017-20260603    clang-22
-loongarch                        allmodconfig    clang-19
-loongarch                        allmodconfig    clang-23
-loongarch                         allnoconfig    clang-23
-loongarch                         allnoconfig    gcc-15.2.0
-loongarch                           defconfig    clang-23
-loongarch                      randconfig-001    gcc-11.5.0
-loongarch             randconfig-001-20260603    gcc-11.5.0
-loongarch                      randconfig-002    gcc-11.5.0
-loongarch             randconfig-002-20260603    gcc-11.5.0
-m68k                             allmodconfig    gcc-15.2.0
-m68k                              allnoconfig    gcc-15.2.0
-m68k                             allyesconfig    clang-17
-m68k                             allyesconfig    gcc-15.2.0
-m68k                                defconfig    clang-23
-microblaze                        allnoconfig    gcc-15.2.0
-microblaze                       allyesconfig    gcc-15.2.0
-microblaze                          defconfig    clang-23
-mips                             allmodconfig    gcc-15.2.0
-mips                              allnoconfig    gcc-15.2.0
-mips                             allyesconfig    gcc-15.2.0
-nios2                            allmodconfig    clang-23
-nios2                            allmodconfig    gcc-11.5.0
-nios2                             allnoconfig    clang-17
-nios2                             allnoconfig    gcc-11.5.0
-nios2                               defconfig    clang-23
-nios2                          randconfig-001    gcc-11.5.0
-nios2                 randconfig-001-20260603    gcc-11.5.0
-nios2                          randconfig-002    gcc-11.5.0
-nios2                 randconfig-002-20260603    gcc-11.5.0
-openrisc                         allmodconfig    clang-23
-openrisc                         allmodconfig    gcc-15.2.0
-openrisc                          allnoconfig    clang-17
-openrisc                          allnoconfig    gcc-15.2.0
-openrisc                            defconfig    gcc-16.1.0
-parisc                           allmodconfig    gcc-15.2.0
-parisc                            allnoconfig    clang-17
-parisc                            allnoconfig    gcc-15.2.0
-parisc                           allyesconfig    clang-19
-parisc                           allyesconfig    gcc-15.2.0
-parisc                              defconfig    gcc-16.1.0
-parisc                randconfig-001-20260603    gcc-8.5.0
-parisc                randconfig-002-20260603    gcc-8.5.0
-parisc64                            defconfig    clang-23
-powerpc                          allmodconfig    gcc-15.2.0
-powerpc                           allnoconfig    clang-17
-powerpc                           allnoconfig    gcc-15.2.0
-powerpc               randconfig-001-20260603    gcc-8.5.0
-powerpc               randconfig-002-20260603    gcc-8.5.0
-powerpc64             randconfig-001-20260603    gcc-8.5.0
-powerpc64             randconfig-002-20260603    gcc-8.5.0
-riscv                            allmodconfig    clang-23
-riscv                             allnoconfig    clang-17
-riscv                             allnoconfig    gcc-15.2.0
-riscv                            allyesconfig    clang-16
-riscv                            allyesconfig    clang-17
-riscv                               defconfig    gcc-16.1.0
-riscv                    nommu_virt_defconfig    clang-23
-riscv                 randconfig-001-20260603    gcc-14.3.0
-riscv                 randconfig-002-20260603    gcc-14.3.0
-s390                             allmodconfig    clang-18
-s390                             allmodconfig    clang-19
-s390                              allnoconfig    clang-17
-s390                              allnoconfig    clang-23
-s390                             allyesconfig    gcc-15.2.0
-s390                                defconfig    gcc-16.1.0
-s390                  randconfig-001-20260603    gcc-14.3.0
-s390                  randconfig-002-20260603    gcc-14.3.0
-sh                               allmodconfig    gcc-15.2.0
-sh                                allnoconfig    clang-17
-sh                                allnoconfig    gcc-15.2.0
-sh                               allyesconfig    clang-19
-sh                               allyesconfig    gcc-15.2.0
-sh                                  defconfig    gcc-14
-sh                    randconfig-001-20260603    gcc-14.3.0
-sh                    randconfig-002-20260603    gcc-14.3.0
-sparc                             allnoconfig    clang-17
-sparc                             allnoconfig    gcc-15.2.0
-sparc                               defconfig    gcc-16.1.0
-sparc                 randconfig-001-20260603    gcc-15.2.0
-sparc                 randconfig-002-20260603    gcc-15.2.0
-sparc64                          allmodconfig    clang-23
-sparc64                             defconfig    gcc-14
-sparc64               randconfig-001-20260603    gcc-15.2.0
-sparc64               randconfig-002-20260603    gcc-15.2.0
-um                               allmodconfig    clang-19
-um                                allnoconfig    clang-17
-um                                allnoconfig    clang-23
-um                               allyesconfig    gcc-14
-um                               allyesconfig    gcc-15.2.0
-um                                  defconfig    gcc-14
-um                             i386_defconfig    gcc-14
-um                    randconfig-001-20260603    gcc-15.2.0
-um                    randconfig-002-20260603    gcc-15.2.0
-um                           x86_64_defconfig    gcc-14
-x86_64                           allmodconfig    clang-20
-x86_64                            allnoconfig    clang-17
-x86_64                            allnoconfig    clang-20
-x86_64                           allyesconfig    clang-20
-x86_64               buildonly-randconfig-001    clang-20
-x86_64      buildonly-randconfig-001-20260603    clang-20
-x86_64               buildonly-randconfig-002    clang-20
-x86_64      buildonly-randconfig-002-20260603    clang-20
-x86_64               buildonly-randconfig-003    clang-20
-x86_64      buildonly-randconfig-003-20260603    clang-20
-x86_64               buildonly-randconfig-004    clang-20
-x86_64      buildonly-randconfig-004-20260603    clang-20
-x86_64               buildonly-randconfig-005    clang-20
-x86_64      buildonly-randconfig-005-20260603    clang-20
-x86_64               buildonly-randconfig-006    clang-20
-x86_64      buildonly-randconfig-006-20260603    clang-20
-x86_64                              defconfig    gcc-14
-x86_64                                  kexec    clang-22
-x86_64                         randconfig-001    clang-20
-x86_64                randconfig-001-20260603    clang-20
-x86_64                         randconfig-002    clang-20
-x86_64                randconfig-002-20260603    clang-20
-x86_64                         randconfig-003    clang-20
-x86_64                randconfig-003-20260603    clang-20
-x86_64                         randconfig-004    clang-20
-x86_64                randconfig-004-20260603    clang-20
-x86_64                         randconfig-005    clang-20
-x86_64                randconfig-005-20260603    clang-20
-x86_64                         randconfig-006    clang-20
-x86_64                randconfig-006-20260603    clang-20
-x86_64                         randconfig-011    clang-22
-x86_64                randconfig-011-20260603    clang-22
-x86_64                         randconfig-012    clang-22
-x86_64                randconfig-012-20260603    clang-22
-x86_64                         randconfig-013    clang-22
-x86_64                randconfig-013-20260603    clang-22
-x86_64                         randconfig-014    clang-22
-x86_64                randconfig-014-20260603    clang-22
-x86_64                         randconfig-015    clang-22
-x86_64                randconfig-015-20260603    clang-22
-x86_64                         randconfig-016    clang-22
-x86_64                randconfig-016-20260603    clang-22
-x86_64                randconfig-071-20260603    clang-22
-x86_64                randconfig-072-20260603    clang-22
-x86_64                randconfig-073-20260603    clang-22
-x86_64                randconfig-074-20260603    clang-22
-x86_64                randconfig-075-20260603    clang-22
-x86_64                randconfig-076-20260603    clang-22
-x86_64                               rhel-9.4    clang-22
-x86_64                           rhel-9.4-bpf    gcc-14
-x86_64                          rhel-9.4-func    clang-22
-x86_64                    rhel-9.4-kselftests    clang-22
-x86_64                         rhel-9.4-kunit    gcc-14
-x86_64                           rhel-9.4-ltp    gcc-14
-x86_64                          rhel-9.4-rust    clang-20
-xtensa                            allnoconfig    clang-17
-xtensa                            allnoconfig    gcc-15.2.0
-xtensa                           allyesconfig    clang-23
-xtensa                randconfig-001-20260603    gcc-15.2.0
-xtensa                randconfig-002-20260603    gcc-15.2.0
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+I dug into 3 of the issues reported by Claude here and I think all
+are really preexisting. But I don't see why we wouldn't fix those
+first, and have a clean AI scan. Please send the fixes ASAP if you
+have them, if they are trivial they may make it for tomorrow's PR.
+-- 
+pw-bot: cr
