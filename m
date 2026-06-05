@@ -2,103 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id bm2JOk3qImq3fAEAu9opvQ
+	id CTXwC1HqImq5fAEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Jun 2026 17:25:01 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Jun 2026 17:25:05 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E708649439
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Jun 2026 17:25:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8B8FA649441
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 05 Jun 2026 17:25:04 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b="KP/J+6Zx";
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b=i7efvGe8;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0267360BF3;
-	Fri,  5 Jun 2026 15:24:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9CAF260BA5;
+	Fri,  5 Jun 2026 15:25:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vrBx_suYnPqQ; Fri,  5 Jun 2026 15:24:56 +0000 (UTC)
+ id PBIRn4zypLCy; Fri,  5 Jun 2026 15:25:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B609E60BBE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1D66160C07
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1780673096;
-	bh=qzGBkwEn4Mhd/kpgP4trG6xYgvTJnFa11sfaUOH35yc=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=KP/J+6ZxJPRlIKeEzO/6XXuWfWUTY5dzwACWtSzFWahN+/5N0zJrt03K4FhZeYist
-	 cowDu4e4JxBfUYfo4/QeSIVtl7aKff95Z3BZWRv56WLfYaJK/jleueFJncUSenBvDw
-	 gVRz3YNZnsQ5mbD8jkPrviJfGWozYNzavG2yPL7vVajHd9doPEcDYTURm0MDbk/WpK
-	 +2MIPeIp+Pr95uItHqCwR2bu7OAQvD1zaNIuIX5Sb4nKrXoRTKdoj/xF3lmP2ukEUg
-	 lii+xjoGigO5D9H+aEwUDZzAkHfbyDfgZ3etwbmeF5CVyUIZKOlrPMXET90HykjmAu
-	 gUldrxHFGToqw==
+	s=default; t=1780673102;
+	bh=VmBW/uhWD/1jw/JeXTNkNYLb0WuY0wYLi7Jz5l6awlc=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=i7efvGe8CTHIfcbkM0EKsrkpDCMi/Xvy8rZJljqlJRyjpLPgNCXSDAoeGDuR2DWkC
+	 o+tYMjgCeYS9lG/goZFTMZU1jS+WF4FAMw8wf25Ja6wNtsp2Rz+MckzRBWdSmVb0So
+	 0hN1L5Rd0aRmcBrTBZd+mtnkPeB/CwpCEX8lkBSh23uSfom7IZgFhLD4K2KrmzweiE
+	 R2hvnlxMgP7fHcS71WkCMOp4mXpjc30e11IWmUDyJDUd53H8EI10XWWdHO7y//znkp
+	 2WOjo7eL30YzWhldMbqkAGAI7iRbwNH642g+/PVei4qUQmBjNRVTUU+EyzDRsLnZRI
+	 fMoiDgtfX8v+A==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B609E60BBE;
-	Fri,  5 Jun 2026 15:24:56 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1D66160C07;
+	Fri,  5 Jun 2026 15:25:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 30C42F4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:55 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id B8C71F4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 20BE7410DF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B60DE410ED
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZnzWqi35hd9w for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Jun 2026 15:24:54 +0000 (UTC)
+ id yPE88WWGFZxt for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Jun 2026 15:24:58 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CC7EF40FF6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC7EF40FF6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B18AB40FF6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B18AB40FF6
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CC7EF40FF6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:53 +0000 (UTC)
-X-CSE-ConnectionGUID: kSEig5LUQ8ORFICST+tz/A==
-X-CSE-MsgGUID: Kh2EG2lQTLuDeG/II/yDaA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11807"; a="106948900"
-X-IronPort-AV: E=Sophos;i="6.24,188,1774335600"; d="scan'208";a="106948900"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B18AB40FF6
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jun 2026 15:24:58 +0000 (UTC)
+X-CSE-ConnectionGUID: zenntpcXTlSV7zA2yxDDlg==
+X-CSE-MsgGUID: 03jsxP2MSwC4VFdDza9Mhw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11807"; a="106948909"
+X-IronPort-AV: E=Sophos;i="6.24,188,1774335600"; d="scan'208";a="106948909"
 Received: from orviesa005.jf.intel.com ([10.64.159.145])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jun 2026 08:24:53 -0700
-X-CSE-ConnectionGUID: P9gA1J+BTu6AKSb6sfTMHg==
-X-CSE-MsgGUID: kmhn5D48TVG5KSNirbs+wQ==
+ 05 Jun 2026 08:24:58 -0700
+X-CSE-ConnectionGUID: gvrxHxLqSLqVo9aWzKBHhQ==
+X-CSE-MsgGUID: 6E4nhqgKRZuFZssbvi720Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,189,1774335600"; d="scan'208";a="249798564"
+X-IronPort-AV: E=Sophos;i="6.24,189,1774335600"; d="scan'208";a="249798571"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa005.jf.intel.com with ESMTP; 05 Jun 2026 08:24:48 -0700
+ by orviesa005.jf.intel.com with ESMTP; 05 Jun 2026 08:24:54 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: netdev@vger.kernel.org
-Date: Fri,  5 Jun 2026 17:20:19 +0200
-Message-Id: <20260605152030.891570-1-grzegorz.nitka@intel.com>
+Date: Fri,  5 Jun 2026 17:20:20 +0200
+Message-Id: <20260605152030.891570-2-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
+In-Reply-To: <20260605152030.891570-1-grzegorz.nitka@intel.com>
+References: <20260605152030.891570-1-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1780673094; x=1812209094;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=8OxUDQ3/e0Fu095IQe8eyi8DfotROE8t9tHxgHyiBcQ=;
- b=T5yPbBDCF4K6c3ZwopnLCt9YZYQMckTG8AFFSGvNhG+u6eVCquZ4Ep4o
- mTSuC5RHVDreMgd1NoDfzRu6IPtI456gC099hc7Kg3mbOkKxnjSbTVo8k
- W7aupwhvv7h6ilCxhqGjOLarBe3JgSG1Nxr3rHE20JYNMg0cRZBshaBI3
- XHYByXNcD5LQBeDYXZkbiL+U4jB/zW+VKIglb19WV3u+bB/HTzkcqpb0Q
- fPPsRdIAXp95mM++s0dBOhSKUXDYdLcHQfm2WVzghZEhMZ+4rn9ZRhT9e
- BMWlGE36HaCqhN2WIFj1HluqvOfqIWrYiZg2x5tJq7Tkf8f4yhnqxyj9i
+ t=1780673099; x=1812209099;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=iUOOCQLHdnrNfXF3HMHs/v47S8LPHgGnXOXq/FTBrw4=;
+ b=iHAinWZC5sh65qutjyQnSEAwreW6dgqgULtrsS4OqSAm6UIzCjylMRMh
+ MUKXa+zBaIQdqW+s5ZPs3r2VRA6ZrOE6VU3Q0gPbjrbRGJA2ZnlVHSv4G
+ veawgGtTgifxQ53POSoZ4VB85Gvn8jlD2dP3ZABYEES3UJae634ZzfCX9
+ UxkATQKTks7cFRnDUP7a0z4CPytHJLiKB6U6SmHbeb+V58aIE2GgLH6OU
+ 6E6fo7Jsk1sGfnOBaFaMAeOU/ujRA/Q+0hiCE0k26M2aowbMvYar5tdpY
+ cVTLsgITrjznUvJVaqMmGCijVRk2sCaWIk6wuGZUUdNsfNDB78J3koL+b
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=T5yPbBDC
-Subject: [Intel-wired-lan] [PATCH v13 net-next 00/11] dpll/ice: Add generic
- DPLL type and full TX reference clock control for E825
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=iHAinWZC
+Subject: [Intel-wired-lan] [PATCH v13 net-next 01/11] dpll: add generic DPLL
+ type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -115,421 +117,118 @@ Cc: ivecera@redhat.com, vadim.fedorenko@linux.dev, kuba@kernel.org,
  jiri@resnulli.us, edumazet@google.com, przemyslaw.kitszel@intel.com,
  richardcochran@gmail.com, donald.hunter@gmail.com,
  linux-kernel@vger.kernel.org, arkadiusz.kubalewski@intel.com,
- andrew+netdev@lunn.ch, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, andrew+netdev@lunn.ch,
+ intel-wired-lan@lists.osuosl.org, horms@kernel.org,
  Prathosh.Satish@microchip.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
- davem@davemloft.net
+ davem@davemloft.net, Jiri Pirko <jiri@nvidia.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
 	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
-	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
+	MAILLIST(-0.20)[mailman];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
 	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[18];
-	FORGED_SENDER(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[20];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:jiri@nvidia.com,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net,nvidia.com];
 	MIME_TRACE(0.00)[0:+];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:pabeni@redhat.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	ARC_NA(0.00)[];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net];
-	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_SENDER(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	TO_DN_NONE(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:mid,intel.com:from_mime,intel.com:email,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns,nvidia.com:email];
 	FROM_NEQ_ENVFROM(0.00)[grzegorz.nitka@intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	ALIAS_RESOLVED(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:from_mime,intel.com:mid,smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ALIAS_RESOLVED(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 2E708649439
+X-Rspamd-Queue-Id: 8B8FA649441
 
-NOTE: This series is intentionally submitted on net-next (not
-intel-wired-lan) as early feedback of DPLL subsystem changes is
-welcomed. In the past possible approaches were discussed in [1].
+Add DPLL_TYPE_GENERIC to represent DPLL devices which do not fit the
+existing PPS or EEC classes.
 
-This series adds TX reference clock support for E825 devices and exposes
-TX clock selection and synchronization status via the Linux DPLL
-subsystem.
+The UAPI type is intentionally generic. During netdev discussion,
+maintainers pointed out that introducing identifiers tied to a specific
+placement or single design does not scale across ASICs and vendors.
+The role of a DPLL is already inferable from the spawning driver,
+bus device, and pin topology, without encoding additional
+purpose-specific taxonomy in the type name.
 
-Here is the high-level connection diagram for E825 device:
-  +------------------------------------------------------------------+
-  |                                                                  |
-  |                           +-----------------------------+        |
-  |                           |                             |        |
-  |                           |         MAC                 |        |
-  |                           |+------------+-----+         |        |
-  |                           ||RX/1588 |PHC|tspll<----\    |        |
-+---+----+                    ||MUX     +---+-^---|    |    |        |
-| E | RX >--------------------->              |   >--\ |    |        |
-| T |    |    /---------------->              |   >-\| |    |        |
-| H |----+    |               |+---------+----^---+ || |    |        |
-| 1 | TX <----|----------------+TX MUX   < OCXO   | || |    |        |
-|   |PLL |    |               ||         |--------| || |    |        |
-+---+----+    |           /----+         <-ext_ref<-||-|----|------ext_ref
-| E | RX >----/           |   ||         |--------+ || |    |        |
-| T |    |                |   ||         <  SyncE | || |    |        |
-| H |----+                |   |+-----------^------+ || |    |        |
-| 2 | TX <----------------/   |            | /------||-/    |        |
-|   |PLL |                    +------------|-|------||------+        |
-+---+----+                              /--/ |      ||               |
-| . | RX >---                           |    |      ||               |
-| . |    |                   +----------|----|------||--+            |
-| . |----+                   |        +-^-+--^+     ||  |            |
-|   | TX <---                |        |EEC|PPS|     ||  |            |
-|   |PLL |                   |        +-------+     ||  |            |
-+---+----+                   |        |       <-CLK0/|  |            |
-| E | RX >---                |        |  DPLL |      |  |            |
-| T |    |                   |        |       <-CLK1-/  |            |
-| H |----+                   |        |       |         |            |
-| X | TX <---                |        |       <---SMA---<            |
-|   |PLL |                   |        |       |         |            |
-+---+----+                   |        |       <---GPS---<            |
-  |                          |        |       |         |            |
-  |                          |        |       <---...---<            |
-  |                          |        |       |         |            |
-  |                          |        +-------+         |            |
-  |                          | External timing module   |            |
-  |                          +--------------------------+            |
-  +------------------------------------------------------------------+
+Using a generic type keeps the UAPI extensible and avoids premature
+naming that may become incorrect as new hardware topologies are
+exposed through the DPLL subsystem.
 
-E825 hardware contains a dedicated TX clock domain with per-port source
-selection behavior that is distinct from PPS handling and from board-level
-EEC distribution. TX reference clock selection is device-wide, shared
-across ports, and mediated by firmware as part of link bring-up. As a
-result, TX clock selection intent may differ from effective hardware
-configuration, and software must verify outcome after link-up.
+Expose the new type through UAPI and netlink specification as "generic".
 
-To support this, the series extends the DPLL core and the ice driver
-incrementally. The series also introduces DPLL_TYPE_GENERIC as a broad
-UAPI class for DPLL instances outside PPS/EEC categories. The intent is
-to keep type naming reusable and scalable across different ASIC
-topologies while preserving functional discoverability via
-driver/device context and pin topology.
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Jiri Pirko <jiri@nvidia.com>
+Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+---
+ Documentation/netlink/specs/dpll.yaml | 3 +++
+ drivers/dpll/dpll_nl.c                | 2 +-
+ include/uapi/linux/dpll.h             | 2 ++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-This follows netdev discussion guidance that UAPI type naming should avoid
-location-specific or vendor-specific taxonomy, because such labels do not
-scale across different ASIC designs. The function of a given DPLL instance
-is already discoverable from driver/device context and pin topology, and
-does not require an additional narrow type identifier in UAPI.
-
-At the same time, a separate DPLL object is still needed for E825 TX clock
-control/reporting semantics. Using DPLL_TYPE_GENERIC provides a reusable
-class for devices outside PPS/EEC without overfitting UAPI naming to one
-topology.
-
-The relevant discussion is in [2].
-
-Series content
-- add a new generic DPLL type for devices outside PPS/EEC classes;
-- relax DPLL pin registration rules for firmware-described shared pins
-  and extend pin notifications with a source identifier;
-- allow dynamic state control of SyncE reference pins where hardware
-  supports it;
-- add CPI infrastructure for PHY-side TX clock control on E825C;
-- introduce a TX-clock DPLL device and TX reference clock pins
-  (EXT_EREF0 and SYNCE) in the ice driver;
-- extend the Restart Auto-Negotiation command to carry a TX reference
-  clock index;
-- implement hardware-backed TX reference clock switching, post-link
-  verification, and TX synchronization reporting.
-
-TXCLK pins report TX reference topology only. Actual synchronization
-success is reported via DPLL lock status, updated after hardware
-verification: external TX references report LOCKED, while the internal
-ENET/TXCO source reports UNLOCKED.
-
-This provides reliable TX reference selection and observability on E825
-devices using standard DPLL interfaces, without conflating user intent
-with effective hardware behavior.
-
-[1] https://lore.kernel.org/netdev/20250905160333.715c34ac@kernel.org/
-[2] https://lore.kernel.org/netdev/20260402230626.3826719-1-grzegorz.nitka@intel.com/
-
-Changes in v13:
-- rebased
-- addressed AI review comments:
-  New dpll-core fixes (prerequisites for the ice patches; surfaced
-  under rmmod/rebind with zl3073x sharing the fwnode RCLK parent):
-
-  * 3/11 dpll: fix stale iteration in dpll_pin_on_pin_unregister().
-    Walk pin->dpll_refs and filter by
-    dpll_pin_registration_find(cookie=parent); both
-    parent->dpll_refs and an unfiltered pin->dpll_refs are unsafe
-    when another driver (un)registers the parent against more
-    DPLLs after the child was attached, leaving WARN_ON(!reg) and
-    dangling registrations.
-
-  * 4/11 dpll: send delete notification before unregister in
-    on-pin rollback. Otherwise the last unregister clears
-    DPLL_REGISTERED and the notification fails
-    dpll_pin_available() with -ENODEV.
-
-  * 5/11 dpll: emit per-dpll delete notifications in
-    dpll_pin_on_pin_unregister(). Register emits N creates over
-    parent->dpll_refs; unregister now emits N matching deletes.
-
-  Fix possible deadlock on flush_workqueue() on error path:
-  * 8/11 (was 5/8) ice: introduce TXC DPLL device...: signal
-    pf->dplls.dpll_init from the error path of
-    ice_dpll_init_fwnode_pins() so a notifier worker blocked on it
-    can drain, avoiding a flush_workqueue() deadlock during teardown.
-
-- Renumbered v12 3-4/8 and 6-8/8; rebased on net-next; no
-  functional change in those.
-
-Changes in v12:
-- rebased
-- rename the second parameter of ice_cpi_ena_dis_clk_ref() from
-  "port" to "phy"; the value is a PHY index, not a port number (patch 6/8)
-- Addressed AI review concerns (patch 8/8):
-  - Close UAF on rmmod in ice_dpll_txclk_state_on_dpll_set(): hold
-    pf->dplls.txclk_notify_rwsem for read and gate on ICE_FLAG_DPLL
-    under pf->dplls.lock so a late netlink set call cannot queue
-    txclk_work after cancel_work_sync() and touch freed pins.
-
-  - ice_dpll_deinit_txclk_pins(): NULL the EREF pin slot after
-    ice_dpll_release_pins() (the SYNCE path already does this via
-    ice_dpll_release_fwnode_pin()), so ice_txclk_get_pin() cannot
-    return a dangling pointer to late callers.
-
-  - ice_dpll_init_info_e825c(): seed dt->dpll_state from
-    ice_txclk_lock_status(pf->ptp.port.tx_clk) so boards that boot
-    with SYNCE or EREF0 already selected report LOCKED at probe
-    instead of staying UNLOCKED until the next switch.
-
-  - ice_txclk_set_clk() and ice_txclk_enable_peer(): hold
-    ctrl_pf->dplls.lock across the any_port_uses() check and the
-    ice_cpi_ena_dis_clk_ref() enable AQ, closing the cross-PF
-    check-then-act window that allowed duplicate enables.
-
-  - ice_txclk_set_clk(): clear pf->dplls.txclk_switch_requested
-    before submitting the AN restart so the post-AN link-up running
-    ice_txclk_update_and_notify() does not bail on a stale
-    "switch still pending" check.
-
-  - ice_txclk_update_and_notify(): take ctrl_pf->dplls.lock
-    (conditionally when ctrl_pf != pf) across the tx_refclks[phy][i]
-    update loops per the documented order
-    pf->dplls.lock -> ctrl_pf->dplls.lock, so writers and readers
-    on non-controlling PFs share a non-empty lockset.
-
-Patches 1-5, 7: no functional change
-
-Changes in v11:
-- rebased
-- changed 'opcode' argument type to u8 (patch 6/8)
-- fixed white spaces (changed to TAB) in ice_cpi.h (patch 6/8)
-- removed duplicated definition of ICE_E825_MAX_PHYS (patch 8/8)
-
-Changes in v10:
-- rebased
-Addressed AI review (Sashiko) concerns (all in patch 8/8):
-- moved INIT_WORK(txclk_work) and added init_rwsem(txclk_notify_rwsem)
-  next to mutex_init(&d->lock) in ice_dpll_init_e825() so both are
-  initialized before any path that can fail and trigger ice_dpll_deinit()
-- added struct rw_semaphore txclk_notify_rwsem to struct ice_dplls and
-  used it (down_read across the whole critical region of
-  ice_txclk_update_and_notify(), including the out-of-lock dpll_*_change_ntf()
-  calls; down_write/up_write barrier in ice_dpll_deinit() to drain
-  in-flight notifiers before pins and the TXC DPLL device are freed) -
-  closes a use-after-free window on rmmod
-- ice_dpll_txclk_state_on_dpll_set(): reject pin states other than
-  CONNECTED/DISCONNECTED with -EINVAL and NL_SET_ERR_MSG() instead of
-  silently treating them as a connect request
-- ice_dpll_txclk_work(): on a failed switch, capture old/new pin pointers
-  under the lock and emit dpll_pin_change_ntf() after dropping it, so
-  userspace sees the requested pin flip back to DISCONNECTED and the
-  effective pin to CONNECTED
-- ice_dpll_txclk_work(): only clear txclk_switch_requested / roll back
-  tx_clk_req when no newer request arrived while the lock was dropped,
-  so a re-queued worker run picks up the updated value
-- ice_txclk_update_and_notify(): replaced the
-  pf->dplls.txc.dpll = ERR_PTR(-ENODEV) "suppress notification" hack
-  with an explicit local bool notify_dpll; the dpll_state update and
-  the notification decision are made under the lock, the notification
-  itself is emitted after unlock
-- ice_ptp_setup_pf(): seed the per-PHY Tx reference clock usage map
-  only on E825 and explained the "no locking needed" invariant in a
-  comment (runs before pf->dplls.lock exists and before any link event
-  or DPLL callback can observe the map)
-- moved port_num/phy and tx_ref_clk locals into the E825-only branches
-  where they are actually used
-- ice_txclk_enable_peer(): use ice_pf_to_dev(pf) for dev_err() to match
-  the rest of the file (was ice_hw_to_dev(&pf->hw))
-- extended ctrl_pf->dplls.lock coverage in ice_txclk_set_clk() and
-  ice_txclk_enable_peer() across both the usage check and the
-  ice_cpi_ena_dis_clk_ref() AQ command so two PFs racing to switch to
-  the same (phy, clk) cannot both observe clk_in_use == false and issue
-  duplicate enables
-Other:
-- replaced ternary-for-statement-effect (`(clk == i) ? set_bit() :
-  clear_bit();`) with plain if/else in the two tx_refclks bitmap loops
-- dropped 15 unused CFG_*/CFG_RESERVED* SERDES field defines in
-  ice_ptp_hw.h; kept only CFG_ICTL_PCS_REF_SEL_RX_NT,
-  CFG_ICTL_PCS_REF_SEL_TX_NT and REF_SEL_NT_ENET/EREF0/SYNCE which are
-  actually consumed
-- updated kernel-doc for struct ice_dpll
-Patch 7/8:
-- cosmetic: removed a stray double space in the
-  ice_aq_set_link_restart_an() prototype
-Patches 1-6: unchanged
-
-Changes in v9:
-- rebased
-- fixed kernel-doc: member 'module_name' not described in 'dpll_pin' (patch 2/8)
-Addressed AI review concerns:
-- reworded commit message to use 'src_clock_id' instead 'src_id' (patch 3/8)
-- use rclk.num_parents when setting is_rclk_parent (patch 5/8)
-- fixed retry mechanism in ice_cpi_wait_ack (patch 6/8)
-- fixed txclk_switch_requested, tx_clk, tx_clk_req settings on HW
-  failure (patch 8/8)
-- use cancel_work_sync instead flush_work (patch 8/8)
-- protect clearing ICE_FLAG_DPLL flag with mitex on DPLL
-  deinit (patch 8/8)
-- dpll_state update and the notify_dpll decision are made inside
-  the lock (patch 8/8)
-
-Changes in v8:
-- rebased
-Addressed AI review concerns:
-- caching the module name in the pin object at allocation time and using
-  the cached string in netlink paths (patch 2/8)
-- dropped references to netlink in the commit message for (patch 3/8, it's
-  internal notification only)
-- replaced the commit 4/8 with the new one (relax the capability check in
-  dpll_pin_state_set)
-- resolved potential teradown race between ice_dpll_deinit_txclk_pins and
-  ice_dpll_pin_notify_work() that is about to register the SYNCE pin
-  (patch 5/8)
-- resolved potential path deadlock during driver probe and error path
-  (patch 5/8)
-- relaxed kernel-doc regarding cpi mutex usage (patch 6/8)
-- fixed ice_cpi.c header (patch 6/8)
-- fix retry mechanism in ice_cpi_wait_req0_ack0 (patch 6/8)
-- fix potrntial leaving LM.REQ stuck asserted on the hardware (patch 6/8)
-- fix kernel-doc for ice_cpi_ena_dis_clk_ref
-- removed unused CPI definitions (patch 6/8)
-- fix header inclusion (patch 6/8)
-- addressed Sashiko issues for patch (8/8)
-
-Changes in v7:
-- rebased
-- replace TXC-specific DPLL type with DPLL_TYPE_GENERIC (patch 1/8)
-- update TXC framework to use DPLL_TYPE_GENERIC instead of DPLL_TYPE_GENERIC
-  (patch 5/8)
-- AI-review: added short trailing comment to the local mutex declaration
-  to satisfy checkpatch report (patch 6/8)
-
-Changes in v6:
- - rebased
- - AI-review: fix unprotected concurrent access to shared clock
-   bitmap (patch 8/8)
- - AI-review: fix potential issue in tx-clk pin state request handling
-   ('already set' early-exit based now on tx_clk_req comparison, patch 8/8)
- - AI-review: CPI transaction serialization (patch 6/8) 
-
-Changes in v5:
- - rebased
- - reworded cover letter
- - replace 'ntfy_src' new argument name with 'src_clk_id' and use it
-   consistently in DPLL notification calls (patch 3/8)
- - reworded commit message (patch 5/8)
- - use FIELD_PREP/GENMSK macros instead of struct bitfields (patch 6/8)
- - reworded commit message (patch 5/8, patch 8/8)
- - refactor the code to avoid sleeping while DPLL mutex is held (using
-   work_queue, patch 8/8)
- - added TXCLK pins and TXC DPLL notifications (patch 8/8)
- - removed 'unused clock disable' mechanism from the scope of this series
-
-Changes in v4:
- - rebased
- - edited, shortened the commit message in 3/8 patch
- - moved ice_get_ctrl_pf to the header file (patch 8/8) and
-   removed duplicated static definitions from ice_ptp and ice_txlck
-   modules
- - add NULL/invalid pointer checker for returned pointer from
-   ice_get_ctrl_pf (patch 8/8)
- - edited error message in case AN restart failure (patch 8/8)
-
-Changes in v3:
-- improved commit message (patch 1/8, AI review comment)
-- improved deinitialization path in ice_dpll_deinit_txclk_pins to
-  avoid potential NULL dereference. NULL checking moved to
-  ice_dpll_unregister_pins (patch 5/8, found by AI review)
-- removed redundant semicolon (patch 6/8)
-
-Changes in v2:
-- rebased
-- added autogenerated DPLL files (patch 1/8)
-- fixed checkpatch 'parenthesis alignment' warning (patch 2/8)
-- fixed error path in ice_dpll_init_txclk_pins (AI warning, patch 5/8)
-- fixed kdoc warnings (patch 6/8, patch 8/8)
-
-Grzegorz Nitka (11):
-  dpll: add generic DPLL type
-  dpll: allow registering FW-identified pin with a different DPLL
-  dpll: fix stale iteration in dpll_pin_on_pin_unregister()
-  dpll: send delete notification before unregister in on-pin rollback
-  dpll: emit per-dpll delete notifications in
-    dpll_pin_on_pin_unregister()
-  dpll: extend pin notifier with notification source ID
-  dpll: allow fwnode pins to attempt state change without capability bit
-  ice: introduce TXC DPLL device and TX ref clock pin framework for E825
-  ice: implement CPI support for E825C
-  ice: add Tx reference clock index handling to AN restart command
-  ice: implement E825 TX ref clock control and TXC hardware sync status
-
- Documentation/netlink/specs/dpll.yaml         |   3 +
- drivers/dpll/dpll_core.c                      |  43 +-
- drivers/dpll/dpll_core.h                      |   5 +-
- drivers/dpll/dpll_netlink.c                   |  26 +-
- drivers/dpll/dpll_netlink.h                   |   4 +-
- drivers/dpll/dpll_nl.c                        |   2 +-
- drivers/net/ethernet/intel/ice/Makefile       |   2 +-
- drivers/net/ethernet/intel/ice/ice.h          |  12 +
- drivers/net/ethernet/intel/ice/ice_adapter.c  |   4 +
- drivers/net/ethernet/intel/ice/ice_adapter.h  |   7 +
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_common.c   |   5 +-
- drivers/net/ethernet/intel/ice/ice_common.h   |   2 +-
- drivers/net/ethernet/intel/ice/ice_cpi.c      | 362 +++++++++++++
- drivers/net/ethernet/intel/ice/ice_cpi.h      |  58 +++
- drivers/net/ethernet/intel/ice/ice_dpll.c     | 493 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_dpll.h     |  36 +-
- drivers/net/ethernet/intel/ice/ice_lib.c      |   3 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  37 +-
- drivers/net/ethernet/intel/ice/ice_ptp.h      |   6 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  37 ++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  17 +
- drivers/net/ethernet/intel/ice/ice_sbq_cmd.h  |   5 +-
- drivers/net/ethernet/intel/ice/ice_txclk.c    | 347 ++++++++++++
- drivers/net/ethernet/intel/ice/ice_txclk.h    |  40 ++
- drivers/net/ethernet/intel/ice/ice_type.h     |   2 +
- include/linux/dpll.h                          |   1 +
- include/uapi/linux/dpll.h                     |   2 +
- 28 files changed, 1500 insertions(+), 63 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_cpi.h
- create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_txclk.h
-
-
-base-commit: bfa3d89cc15c09f7d1581c834a5ed725189ec19f
+diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
+index 91a172617b3a..2bf83f6732ab 100644
+--- a/Documentation/netlink/specs/dpll.yaml
++++ b/Documentation/netlink/specs/dpll.yaml
+@@ -138,6 +138,9 @@ definitions:
+       -
+         name: eec
+         doc: dpll drives the Ethernet Equipment Clock
++      -
++        name: generic
++        doc: generic dpll type for devices outside PPS/EEC classes
+     render-max: true
+   -
+     type: enum
+diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
+index b1d9182c7802..ed3bbe9841ea 100644
+--- a/drivers/dpll/dpll_nl.c
++++ b/drivers/dpll/dpll_nl.c
+@@ -37,7 +37,7 @@ const struct nla_policy dpll_reference_sync_nl_policy[DPLL_A_PIN_STATE + 1] = {
+ static const struct nla_policy dpll_device_id_get_nl_policy[DPLL_A_TYPE + 1] = {
+ 	[DPLL_A_MODULE_NAME] = { .type = NLA_NUL_STRING, },
+ 	[DPLL_A_CLOCK_ID] = { .type = NLA_U64, },
+-	[DPLL_A_TYPE] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
++	[DPLL_A_TYPE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
+ };
+ 
+ /* DPLL_CMD_DEVICE_GET - do */
+diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
+index cb363cccf2e2..55eaa82f5f98 100644
+--- a/include/uapi/linux/dpll.h
++++ b/include/uapi/linux/dpll.h
+@@ -109,10 +109,12 @@ enum dpll_clock_quality_level {
+  * enum dpll_type - type of dpll, valid values for DPLL_A_TYPE attribute
+  * @DPLL_TYPE_PPS: dpll produces Pulse-Per-Second signal
+  * @DPLL_TYPE_EEC: dpll drives the Ethernet Equipment Clock
++ * @DPLL_TYPE_GENERIC: generic dpll type for devices outside PPS/EEC classes
+  */
+ enum dpll_type {
+ 	DPLL_TYPE_PPS = 1,
+ 	DPLL_TYPE_EEC,
++	DPLL_TYPE_GENERIC,
+ 
+ 	/* private: */
+ 	__DPLL_TYPE_MAX,
 -- 
 2.39.3
 
