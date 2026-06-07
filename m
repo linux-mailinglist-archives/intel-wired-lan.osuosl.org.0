@@ -2,79 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id cJICCxC6JWr5KwIAu9opvQ
+	id WEtrCB+6JWr9KwIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 07 Jun 2026 20:36:00 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 07 Jun 2026 20:36:15 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 906A9651411
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 07 Jun 2026 20:35:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8AEB965141F
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 07 Jun 2026 20:36:14 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b="Xy/W/GLg";
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b=LN5Anpq+;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 002E580DC1;
-	Sun,  7 Jun 2026 18:35:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8DB2740873;
+	Sun,  7 Jun 2026 18:36:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zYLm5JpzhoCM; Sun,  7 Jun 2026 18:35:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PLHYfbFoaRca; Sun,  7 Jun 2026 18:36:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7771D80D89
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1367A4088F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1780857357;
-	bh=jBrVuQTiQ0PRe67o3hXBgP8rf9+xVUVFrtMI7Ip6ksU=;
+	s=default; t=1780857371;
+	bh=MyL+eofIi3BL6aPxZGcmJDRlRuUxTfhatFhqvwBMtI8=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Xy/W/GLgMYFg2dBhg0e+9lH+KqvN7Xy52betUsRbI5Dg43pjOUz/jidO88wRxHuoR
-	 rO5aAEvmmao2jpKB9evKVge2vj3ZdBjt4qTkcVJdgZxO4tw3JhvnA6ThN5xeYHM7Ao
-	 dYScKo+7fJtFpqHZbov3omFAtSwNywK7xZRVHifDvLYcbR+RmQvLuUIiBAWmNCclf8
-	 IJ6JZmgvJEItI8cGDPu0vFb6l/M9S6G/2f369WfjygNMfkMzVEj9seveEEMhy/rIeB
-	 e4UKC4Kc1IdEbu5Cmq8TNM2wqWwHDcclzmMHfMUMyBSsVITebvNvgirY1PNA4svHYL
-	 xsusNsBtZnvnQ==
+	b=LN5Anpq+ej1avz9qJQ0UnQ0u7+pH+r+PxOBgwDPWCT6Wn0QyEVpRfxtt66aPTWZi9
+	 Ezc3ZD1Jufi8RekOQ71Lu5OeKCPOkbHEvs6Gpi8vqfM6u/ZPYyetyNaaRNXE4QGieM
+	 hTvn2QWIN2ftG8HralYukVSZpaHXfEw1wxts7UPG+4VzDP0xtug7AZmM/AbQrAAlV/
+	 Y6hy6NxNp9E29DS0PweuBi2MeHPxtcLAcqTBMlbc+HwSeeQQt+5Q3nM0gLSXc+Yi5d
+	 qzDuEM5txPrGoRgEBPfTfvd77M7hxdJfeHeMijkUjv9kBpuSX4NsYB8b5Yvb5j098S
+	 Xd5s1T3qt6YUw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7771D80D89;
-	Sun,  7 Jun 2026 18:35:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1367A4088F;
+	Sun,  7 Jun 2026 18:36:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 3B97A187
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:35:56 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id B5461345
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:36:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 28E20808C9
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:35:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A6CB280D89
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:36:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lVkwBrMu3meq for <intel-wired-lan@lists.osuosl.org>;
- Sun,  7 Jun 2026 18:35:55 +0000 (UTC)
+ id BdZRwWFJ8ff2 for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  7 Jun 2026 18:36:07 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=grzegorz.nitka@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3C1358067D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C1358067D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A15AC80D43
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A15AC80D43
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3C1358067D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:35:55 +0000 (UTC)
-X-CSE-ConnectionGUID: 8wPv6j7GTT6QBlJGUBM72w==
-X-CSE-MsgGUID: liD+STsiSaaOFVYOtQEulg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11810"; a="81602090"
-X-IronPort-AV: E=Sophos;i="6.24,193,1774335600"; d="scan'208";a="81602090"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A15AC80D43
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jun 2026 18:36:07 +0000 (UTC)
+X-CSE-ConnectionGUID: 6MPm/1OOTGyctGuyW0gO8A==
+X-CSE-MsgGUID: wcRimpWwTROR6gLL5DJdVg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11810"; a="81602109"
+X-IronPort-AV: E=Sophos;i="6.24,193,1774335600"; d="scan'208";a="81602109"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jun 2026 11:35:55 -0700
-X-CSE-ConnectionGUID: kN4bIwhQQESQ/V3SHYmDsA==
-X-CSE-MsgGUID: p/BsSjwHSKi2Xk0JgKC0qg==
+ 07 Jun 2026 11:36:07 -0700
+X-CSE-ConnectionGUID: G0bckApxSPGY16CCQQxCtQ==
+X-CSE-MsgGUID: iPgD75WXQA6PCGKwvcSMPw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,193,1774335600"; d="scan'208";a="245171426"
+X-IronPort-AV: E=Sophos;i="6.24,193,1774335600"; d="scan'208";a="245171448"
 Received: from gklab-003-001.igk.intel.com ([10.91.173.48])
- by orviesa008.jf.intel.com with ESMTP; 07 Jun 2026 11:35:50 -0700
+ by orviesa008.jf.intel.com with ESMTP; 07 Jun 2026 11:36:02 -0700
 From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 To: netdev@vger.kernel.org
-Date: Sun,  7 Jun 2026 20:30:38 +0200
-Message-Id: <20260607183045.1213735-7-grzegorz.nitka@intel.com>
+Date: Sun,  7 Jun 2026 20:30:39 +0200
+Message-Id: <20260607183045.1213735-8-grzegorz.nitka@intel.com>
 X-Mailer: git-send-email 2.39.3
 In-Reply-To: <20260607183045.1213735-1-grzegorz.nitka@intel.com>
 References: <20260607183045.1213735-1-grzegorz.nitka@intel.com>
@@ -82,25 +82,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1780857355; x=1812393355;
+ t=1780857368; x=1812393368;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=koRmLbjpHuPzm/2NQMVrOJQo87jCXzC8O7hMggcIDO4=;
- b=DQRasCrlpr5xN29Y/YEkV/vFxjb4/kLnHvoOh0qj5fo4iiaCK3c5Fnsl
- Di+Iw4w24/GZpBXmOhn6QHIW051UNQqi/tpEjMvAZOCDf6CNK/7gremCJ
- RJC/kZ8vF9OfurMTZBt0ZGhHm2PGmPjfZyB+w7DueEbj/so9AhUxNFOaT
- nTVwVYN6AhYvqtr5giqiLPyNW11Wu21FN2lVBeojxXfz4Hn5KNGTepCns
- rFul3sMmRuOW0nZVeRZW7PyZLwd6CnD+gLDIC+L69/VZb6ZsriNrpiJzI
- O7AXAv+6bo7xmFqnbnQzQUa5CT8DpoD3rq9g44sBPq+o7TGIFpZgia6hH
- w==;
+ bh=fwCPDXwHX50TF2F6sSd9ftV4aMKEeCNes1mJGAuv0KE=;
+ b=QiGtcYcgPp8CFgqBkhg+0WHClRO2PGO6Vo8AkveBdKM6MDcRnN6F8IBR
+ MUCCImdq9+k2nd+j3LGebxC1JXLFpdLCorX8nZGBhWgxHYCrOowVaM76n
+ L5ZIsV6cjIn2lvT80wbqNQc3caLvCstftuZII1l5eTZtVMlQaKJwWI8xc
+ BbZs8e4xdNsCi/gG0BYEAbvLjWoshOctBfVeLd4y9TUemYdZi1gJq9eDj
+ qlKM1Ms5y1xvAw0gNCbYeyLVPJ7Ixv5RhMQLVHuGqlRBQ/cewDkinOjKZ
+ WE6ZCVuA8O4g19Iw+8CCKytIRkfvxZ9oljWuXoXV4V5ewLTcegTXywD5G
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DQRasCrl
-Subject: [Intel-wired-lan] [PATCH v14 net-next 06/13] dpll: guard sync-pair
- removal on full pin unregister
+ header.a=rsa-sha256 header.s=Intel header.b=QiGtcYcg
+Subject: [Intel-wired-lan] [PATCH v14 net-next 07/13] dpll: balance
+ create/delete notifications in __dpll_pin_(un)register
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -152,48 +152,47 @@ X-Spamd-Result: default: False [2.39 / 15.00];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	ALIAS_RESOLVED(0.00)[];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:from_smtp,osuosl.org:dkim,smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns,osuosl.org:from_smtp,osuosl.org:dkim];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 906A9651411
+X-Rspamd-Queue-Id: 8AEB965141F
 
-__dpll_pin_unregister() wiped the global sync-pair state on every
-(dpll, ops, priv, cookie) tuple removed from a pin. When a pin is
-registered multiple times and only one registration is being torn
-down, this dropped sync-pair pairings still in use by the surviving
-registrations.
+__dpll_pin_register() emits dpll_pin_create_ntf() internally, but
+__dpll_pin_unregister() left the matching delete to its callers. The
+counts then diverge on dpll_pin_on_pin_register() rollback and on
+dpll_pin_on_pin_unregister(), leaking stale notifications.
 
-Move dpll_pin_ref_sync_pair_del() inside the xa_empty(&pin->dpll_refs)
-branch so it only runs when the last registration is gone, alongside
-clearing the DPLL_REGISTERED mark.
+Emit dpll_pin_delete_ntf() inside __dpll_pin_unregister() and drop the
+now-redundant call in dpll_pin_unregister().
 
-Fixes: 58256a26bfb3 ("dpll: add reference sync get/set")
+Fixes: 9431063ad323 ("dpll: core: Add DPLL framework base functions")
 Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 ---
- drivers/dpll/dpll_core.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/dpll/dpll_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/dpll/dpll_core.c b/drivers/dpll/dpll_core.c
-index 58034be07080..ea45bb41376c 100644
+index ea45bb41376c..1aaf62775408 100644
 --- a/drivers/dpll/dpll_core.c
 +++ b/drivers/dpll/dpll_core.c
-@@ -926,11 +926,12 @@ __dpll_pin_unregister(struct dpll_device *dpll, struct dpll_pin *pin,
+@@ -926,6 +926,7 @@ __dpll_pin_unregister(struct dpll_device *dpll, struct dpll_pin *pin,
  		      const struct dpll_pin_ops *ops, void *priv, void *cookie)
  {
  	ASSERT_DPLL_PIN_REGISTERED(pin);
--	dpll_pin_ref_sync_pair_del(pin->id);
++	dpll_pin_delete_ntf(pin);
  	dpll_xa_ref_pin_del(&dpll->pin_refs, pin, ops, priv, cookie);
  	dpll_xa_ref_dpll_del(&pin->dpll_refs, dpll, ops, priv, cookie);
--	if (xa_empty(&pin->dpll_refs))
-+	if (xa_empty(&pin->dpll_refs)) {
-+		dpll_pin_ref_sync_pair_del(pin->id);
- 		xa_clear_mark(&dpll_pin_xa, pin->id, DPLL_REGISTERED);
-+	}
- }
+ 	if (xa_empty(&pin->dpll_refs)) {
+@@ -953,7 +954,6 @@ void dpll_pin_unregister(struct dpll_device *dpll, struct dpll_pin *pin,
+ 		return;
  
- /**
+ 	mutex_lock(&dpll_lock);
+-	dpll_pin_delete_ntf(pin);
+ 	__dpll_pin_unregister(dpll, pin, ops, priv, NULL);
+ 	mutex_unlock(&dpll_lock);
+ }
 -- 
 2.39.3
 
