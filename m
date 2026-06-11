@@ -2,144 +2,151 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id PPK2JxLJKmrxwwMAu9opvQ
+	id MBp/GRDQKmqPxQMAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jun 2026 16:41:22 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jun 2026 17:11:12 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8337D672C8F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jun 2026 16:41:21 +0200 (CEST)
-Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=ThBW4ROs;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70310607EA;
-	Thu, 11 Jun 2026 14:41:18 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nW465qCKRwGZ; Thu, 11 Jun 2026 14:41:17 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A08D4607EF
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781188877;
-	bh=tyjEG+W9Hat2flkhk/jrtX0PYeov58aCgm5xfgox1ic=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ThBW4ROsMbQ4Leq7vXj3p7FpwflruJ2Z6aHg5d+yu2m+wcINbuzUmAcPGybnEq7Sn
-	 /uZudxYPiCa97Du7oqE9MMgMpKEmoIxb0RIUMF0eqEAx2uxS4QW0iYGOYuy+4b8w6A
-	 6RaVrN7MI9zQE2JCetQcnKDHbFmhjPZKdNBHav/sv0mGS9GbWC1SVLwzniVc8pi+AO
-	 ck6NKoLQr9k32SSQA1fraCCOebqUOcVaz/SOHD4IOMvjNeQx1k+KXaDbbh/6yjYnMG
-	 5FlS9kWwiDBaYaRvFdrPCZOWylbhpic7HhsHjEYbLrnrwN1OQSd44uiQwSUFWY7Va2
-	 Y27rhca2aoZSQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A08D4607EF;
-	Thu, 11 Jun 2026 14:41:17 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 85DC1192
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 14:41:16 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id B083D672F6A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jun 2026 17:11:11 +0200 (CEST)
+Authentication-Results: mail.lfdr.de;
+	dkim=pass header.d=osuosl.org header.s=default header.b=7Zdy5l+b;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=pass (policy=none) header.from=osuosl.org;
+	arc=reject ("signature check failed: fail, {[1] = sig:google.com:reject}")
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 75997813AB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 14:41:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4F0DB8174F;
+	Thu, 11 Jun 2026 15:11:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pLP0oWt1dOyt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Jun 2026 14:41:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 57732813AC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57732813AC
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 57732813AC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 14:41:14 +0000 (UTC)
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-355-T02vdJWPPbe4ndYiCDNFvQ-1; Thu, 11 Jun 2026 10:41:12 -0400
-X-MC-Unique: T02vdJWPPbe4ndYiCDNFvQ-1
-X-Mimecast-MFC-AGG-ID: T02vdJWPPbe4ndYiCDNFvQ_1781188871
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-46010392f89so7251593f8f.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 07:41:12 -0700 (PDT)
+ id rsATNeCKRD45; Thu, 11 Jun 2026 15:11:07 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 000AE81754
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1781190667;
+	bh=lxKXtOKyjTv+sAJ/+Fz+4at9+0jNf2gFTtOvWpxVwCw=;
+	h=References:In-Reply-To:Date:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From:Reply-To:From;
+	b=7Zdy5l+biBLAZFOg8o6fh3jItibk7gMbS8lxzBmndJQAG1ufUHFQKQKCz9x+n5vDI
+	 eqDmlYaVQGeTWoT2vPtbaL7RVHStk34Ucy4T+j7yiPaDRykgjxAG8iCKRvqRwWiEic
+	 8AzEm1MG0SQk4lYUYk8iE7Lhvc9d4dsCyYKDaPYs7xfMRodEM7rkbhB7RipiP2QZeb
+	 iNRFXjkYn2w4Z9MpvQVKeLYctCVYKeCd8DYcKltXjVSreMJ3dOzsiTl4sXY1XSnRw4
+	 5NAIusiv24Hb0iie5GN78Gy65hq15MbdS5rGUc2d3ve/yaypOMsWpWO60sFA7Sb/yC
+	 9qwwj/MDJuhFA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 000AE81754;
+	Thu, 11 Jun 2026 15:11:06 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id A07B112F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 15:11:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 90B99401FE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 15:11:04 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 33kwMd6T1wmM for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Jun 2026 15:11:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1235; helo=mail-dl1-x1235.google.com;
+ envelope-from=brianvv@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D5AB940243
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5AB940243
+Received: from mail-dl1-x1235.google.com (mail-dl1-x1235.google.com
+ [IPv6:2607:f8b0:4864:20::1235])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D5AB940243
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 15:11:03 +0000 (UTC)
+Received: by mail-dl1-x1235.google.com with SMTP id
+ a92af1059eb24-137dd523634so12724693c88.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jun 2026 08:11:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781190663; cv=none;
+ d=google.com; s=arc-20240605;
+ b=HA2gYhwRfo8qNlmxij9rxI0I4Gh+3YpncigRTZuG6DQN78WC1RaPGoHOL/z9XfOEUs
+ D2C/baqSwmrh5/P9p0IY5nKhyEuxEo9XlFaLvv9vjJO90y6PRgdz/sRuxMWOEmCADEo/
+ Qccu4ASdc5iVoz8Ok/PJmO9bT0KPh9rw/iPdxgky1DU2CNIVPJxm2ebFIWp1/I7IkESG
+ DW+N4cZiM4zJhhtdvmf9R/Q6HMSUDIK78rxUpC7tKm7eLsXGN7QcRf2N90BZaMsNqGhD
+ DOzw/EqN1j+4h4db5cFAzyYxquu0UlLBJpAPGSjLTxUkiFJEb0ivYOTnQPiocxbFmA/P
+ kwQw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=lxKXtOKyjTv+sAJ/+Fz+4at9+0jNf2gFTtOvWpxVwCw=;
+ fh=GmyPshop3ABGxrUG+wY2RwD/+MiCUSbAFIegzS9pdpE=;
+ b=lGrYhET1MQSYy00uDWceVrJzLV0J3cm20Kl294cS4+WbUN7wBZLu0SgWMvExT560Cc
+ il7jHBrW6QpD17m3ovGl4j/sb1Iz7FdoS25Xm8V42VYXfPCMJoR8Np1UlZ/d4h1np78p
+ a8CXX5Ac7OKbu4KGnsVUeipO0+w348SLbFwJUtBzVDf9IhCtF9a3Gq5QZ9f+UUNoBJ+v
+ /UOWIVEnKxxVRyydKptC4Sbch1wBhQkRFSEpyyoFbAhAD6c3wCtF/6aWlsO4d6udwV35
+ W1BsF6DQze2gWTObqD0biwerGfmmXyCQAR4ijtRtz8QXdTbpu5Gf/sMTlKgSara9eQC1
+ dWNA==; darn=lists.osuosl.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781188871; x=1781793671;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tyjEG+W9Hat2flkhk/jrtX0PYeov58aCgm5xfgox1ic=;
- b=b74Ba7mbWtXUdkWyzy3aESA9rV/rLLaVWv3k9azx6f8mVKwsE0JdM/Y8zfIKQwJzvT
- 4CFilpVHOjfb34DNXRHz6oASF2HnIo6+X/xbVMWt0vqBqLYqorNIfJRotZA1+ggXIyFw
- 5zdktiAKo+2i9YNlY6v/E99Jt0MBLBCvdqP+m5PGepsh/1oAlJeAdEPadjmWUWtaZ2nD
- 6n41wWDvos92bDPaFqPoqJgi7rHU/B2gPAiHt3Z1wTDucOu7FC19BIvhNsYvYePcLnte
- wEj4HD3j18in/vMwfIjpLF7IzCCR/dMxXlKJ8N1T9JyzdCSAu/HK9yQoEkXIHAOx4UEI
- bquA==
+ d=1e100.net; s=20251104; t=1781190663; x=1781795463;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=lxKXtOKyjTv+sAJ/+Fz+4at9+0jNf2gFTtOvWpxVwCw=;
+ b=GmnTVvZhSbVCp5SnMTcLEa6TcFf14Fc0Ba2VWSM+Ki2mf7n2f37T84YgzyCRRrzgQs
+ a197R3qysfViZyhZ96fhHm3zdfDoi//K2IbeGSDPas5OJgGiljsnRcIA0CW4Yptb0vNY
+ aUzlYDkBenL7bUaAB0P1Eh7D3hiwRNliuNzRnJczJszQhoO6m55iDeCWlPZ1CLkVS9TL
+ PFwIIivXaAM5V6ac2aex5wuR8YBw3b/MaGl0HE76NrdJltUq+HxJ65wz/aEJoTLAssZP
+ GFs6rTV7km0rRUuESvjTLuv+uu3sQdTmu16xd4VXP7INZon0aj3OiWzeD24Kna0o9MA0
+ fNjA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/hJ1Uv47loxsJoTBD4INTu8Cg2g33nGltOo22sTl1v+z2Z81YzzNvDjpdEJyvK+/RRE+DlaDlGc8rUDMVxTVQ=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzmVNyrmMshNGwBRntkqhfwHdHIZskbyt/hX+ae0tK2qwcckm5y
- yOtg3jDGRJ0i26rfqYMq1LGfAFeH1eXLHau7uSUJa31MYneeEmnIPoY8MTAgvCLXnRGNu9eSqwu
- Yybnl2FznKxN468OH9gXEsLL7LfGEj6ppEnwrgqzEEZyHLdvwObzAIHLsa550rtcLz19OwUc=
-X-Gm-Gg: Acq92OEigsj0c1WmUuRkzZmeHvQV1oM0yyhIOdgjcwrn9nYQCwqDTvodX6xOeNtrDT4
- 0i10y3dyC9lMWg4HZ7GQIY9pV4iSjHgvej0nCWwxIAJ+iqzbdBhBpPlSORx50wGKTSydWRzy028
- Hdx08Tioedt++U7MZeJdpE7OrSjY7yO06D4HnxZyXr52RZEybRzxOXHJ12C0j5dVkBI5FssUYFz
- 8AaiRWBa7QEinLUVjK26Oj1PeQS6VHbqYPXIBFdE29UAt18VGtNvwkZeyteQ7o8ybVy3f+gVJS7
- pJSVg74bdobqGmdO/V4Fm5n7IhDxF6zovO08Q+ZyAlwNsL/UAlARzlANo4pS36MFG81nPm8qhp+
- D3NpRH9/R3hP+e3bRPVWgExeP0sNWzpN+OMnI8RAtaZAFmFGO7fyOzTh+RnlxYfgUDg==
-X-Received: by 2002:adf:e844:0:b0:43d:1c21:ead5 with SMTP id
- ffacd0b85a97d-460675ab3f4mr3862516f8f.22.1781188870997; 
- Thu, 11 Jun 2026 07:41:10 -0700 (PDT)
-X-Received: by 2002:adf:e844:0:b0:43d:1c21:ead5 with SMTP id
- ffacd0b85a97d-460675ab3f4mr3862474f8f.22.1781188870377; 
- Thu, 11 Jun 2026 07:41:10 -0700 (PDT)
-Received: from [192.168.88.32] ([150.228.93.44])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4601f2dcad5sm90601715f8f.5.2026.06.11.07.41.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Jun 2026 07:41:09 -0700 (PDT)
-Message-ID: <20be8f49-4d85-430b-a651-c4aecd172a57@redhat.com>
-Date: Thu, 11 Jun 2026 16:41:07 +0200
+ AFNElJ/h/KlWWyJzQhBssASLXm33bFBYp/C6fxaHHDz8UPoF0LWPF2R2hbOAPXypTL1QAz3HCeDhvK/+SjlQTxiueYg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyR7qT0yv/zXLb+s+E3DCJTtPKQ1fJqxARJWTR7VHokI1LpifQP
+ gl6TmQd1TQj1vQLGuqdbEFIAETd6u0wsboKshoRvgKIgf2P/nfW2AvZXizi+ojVEvPVlB4gNglG
+ MTSMI0vKpYVFiMWcRjZt7weZ414T350NDjqWKqodM
+X-Gm-Gg: Acq92OEDlBd7R2zT6+uBzHwGtyDw4nxXkmop6K45AxpqejxwxehNFO+aj5K7Opd5BwG
+ 4gOIZzi900W1ZREJmJ2efthVL8/qkQy215NAMzP26pP8lWwsG8sJ4smKozt6yDjN/3gyWRtEe1J
+ VsSmd9BTzPvpUWY2jUYOe/6ND7VfmecZUbwGR2JKPxkOqSkOdddYd94pyTIfbR/f70gyPfjSroc
+ x3aaLUWOdLYw7CwYoCIKxbYUeq2pNqmysLtcJpifiofZ2hzi9nLjy0gkpiklkYYEIOUJo3RIkaF
+ OWffXTlN7ZE5UW81/IvWQPFU7Kb7O3t1IZSKZhoqueZsRvX0bhVNUPQW0hE=
+X-Received: by 2002:a05:701b:4552:20b0:138:44ab:75f7 with SMTP id
+ a92af1059eb24-13844ab773cmr770322c88.21.1781190658662; Thu, 11 Jun 2026
+ 08:10:58 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: "Nitka, Grzegorz" <grzegorz.nitka@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
-References: <20260607183045.1213735-1-grzegorz.nitka@intel.com>
- <20260607183045.1213735-4-grzegorz.nitka@intel.com>
- <5ad977af-9bbb-4376-b0a6-2b1867223145@redhat.com>
- <IA1PR11MB6219E71E2581AE3A4C91F870921B2@IA1PR11MB6219.namprd11.prod.outlook.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <IA1PR11MB6219E71E2581AE3A4C91F870921B2@IA1PR11MB6219.namprd11.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: u_h70Tihwv23jnS8-rk4F26bZsl4r4InK_EQZFwfz-w_1781188871
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20260611002437.1671401-1-digonzal@google.com>
+In-Reply-To: <20260611002437.1671401-1-digonzal@google.com>
+Date: Thu, 11 Jun 2026 11:10:46 -0400
+X-Gm-Features: AVVi8Cd9uZgzE9Vtr2KiKxKuSPVMf5kiWug4xcnQibRwcwPz9EwHUXafig-7Bv0
+Message-ID: <CAMzD94SgL2QtQqu26icixW4MVL1D-UsauKbFF6qrtZ7TxCgNfA@mail.gmail.com>
+To: Danny Gonzalez <digonzal@google.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, 
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, 
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ David Decotigny <decot@google.com>, Anjali Singhai <anjali.singhai@intel.com>, 
+ Sridhar Samudrala <sridhar.samudrala@intel.com>, Li Li <boolli@google.com>, 
+ emil.s.tantilov@intel.com, stable@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1781188873;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tyjEG+W9Hat2flkhk/jrtX0PYeov58aCgm5xfgox1ic=;
- b=XEw8c8kTU+2nQ8oTRuo/5i8F0bQ1ZQNgKcZtjhiGYYoWOIqQyotoxnO1OAjiVFmucGlVeK
- QmVF0dTwW5r+l85U6mj80aDEykdtMO0FFubeeigvsZaIfM+TpbZiNG/5xC2YhvJblMjFvr
- RRT4LemSgcBRVWdG9ZqfWeOecRS1c5I=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=XEw8c8kT
-Subject: Re: [Intel-wired-lan] [PATCH v14 net-next 03/13] dpll: fix stale
- iteration in dpll_pin_on_pin_unregister()
+ d=google.com; s=20251104; t=1781190663; x=1781795463; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lxKXtOKyjTv+sAJ/+Fz+4at9+0jNf2gFTtOvWpxVwCw=;
+ b=bD0+FdizsjAmyE4ghJO6pSOlrMLPgk9zngyPGXw+BRNP3VudwnThA4KqSE9DngCgLC
+ cO2J2i1nOG/hCTgateRmwBsKZm9geulml4NxkRFxk0+vfNiR4ZiH3ZlitnzFN9ZBi+CV
+ yldZmdsAUTPlXG/zBAOOebGWg2ZQKRqaVjfLAklY1rTPXQG28g+MGs5n3+PvDBsJjg81
+ XUv+ICZQq48zqoMAI000EwPLGvTwyK1eWta/cDzxe2Cdv7XdtlOtF1WawE0gbf1pbYvU
+ yGXJ0sW/QcsLXUiFuhZgEQ9kT19hYM81sx+BL6sq6wid0YDT22GDLToBdVReDhnpMP1m
+ ojZA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20251104 header.b=bD0+Fdiz
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: decrease statistics
+ refresh interval
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -152,143 +159,149 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Vecera, Ivan" <ivecera@redhat.com>,
- "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "kuba@kernel.org" <kuba@kernel.org>, "jiri@resnulli.us" <jiri@resnulli.us>,
- "edumazet@google.com" <edumazet@google.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "richardcochran@gmail.com" <richardcochran@gmail.com>,
- "donald.hunter@gmail.com" <donald.hunter@gmail.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
- Arkadiusz" <arkadiusz.kubalewski@intel.com>,
- "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "horms@kernel.org" <horms@kernel.org>,
- "Prathosh.Satish@microchip.com" <Prathosh.Satish@microchip.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+From: Brian Vazquez via Intel-wired-lan <intel-wired-lan@osuosl.org>
+Reply-To: Brian Vazquez <brianvv@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.29 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [-0.21 / 15.00];
+	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:google.com:reject}];
+	DMARC_POLICY_ALLOW(-0.50)[osuosl.org,none];
 	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[redhat.com,linux.dev,kernel.org,resnulli.us,google.com,intel.com,gmail.com,vger.kernel.org,lunn.ch,lists.osuosl.org,microchip.com,davemloft.net];
-	ARC_NA(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:grzegorz.nitka@intel.com,m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:vadim.fedorenko@linux.dev,m:kuba@kernel.org,m:jiri@resnulli.us,m:edumazet@google.com,m:przemyslaw.kitszel@intel.com,m:richardcochran@gmail.com,m:donald.hunter@gmail.com,m:linux-kernel@vger.kernel.org,m:arkadiusz.kubalewski@intel.com,m:andrew+netdev@lunn.ch,m:horms@kernel.org,m:Prathosh.Satish@microchip.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:donaldhunter@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[18];
-	FORGED_SENDER(0.00)[pabeni@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	REPLYTO_DOM_EQ_TO_DOM(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:digonzal@google.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:davem@davemloft.net,m:kuba@kernel.org,m:edumazet@google.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:decot@google.com,m:anjali.singhai@intel.com,m:sridhar.samudrala@intel.com,m:boolli@google.com,m:emil.s.tantilov@intel.com,m:stable@vger.kernel.org,s:lists@lfdr.de];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[15];
+	FORGED_SENDER(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[pabeni@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[mail.gmail.com:mid,uso.py:url];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	HAS_REPLYTO(0.00)[brianvv@google.com];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[intel-wired-lan@osuosl.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	REPLYTO_DOM_NEQ_FROM_DOM(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	MISSING_XM_UA(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_COUNT_SEVEN(0.00)[8]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 8337D672C8F
+X-Rspamd-Queue-Id: B083D672F6A
 
-On 6/11/26 12:01 PM, Nitka, Grzegorz wrote:
->> -----Original Message-----
->> From: Paolo Abeni <pabeni@redhat.com>
->> Sent: Thursday, June 11, 2026 10:50 AM
->> To: Nitka, Grzegorz <grzegorz.nitka@intel.com>; netdev@vger.kernel.org
->> Cc: linux-kernel@vger.kernel.org; intel-wired-lan@lists.osuosl.org; Oros, Petr
->> <poros@redhat.com>; richardcochran@gmail.com;
->> andrew+netdev@lunn.ch; Kitszel, Przemyslaw
->> <przemyslaw.kitszel@intel.com>; Nguyen, Anthony L
->> <anthony.l.nguyen@intel.com>; Prathosh.Satish@microchip.com; Vecera,
->> Ivan <ivecera@redhat.com>; jiri@resnulli.us; Kubalewski, Arkadiusz
->> <arkadiusz.kubalewski@intel.com>; vadim.fedorenko@linux.dev;
->> donald.hunter@gmail.com; horms@kernel.org; kuba@kernel.org;
->> davem@davemloft.net; edumazet@google.com
->> Subject: Re: [PATCH v14 net-next 03/13] dpll: fix stale iteration in
->> dpll_pin_on_pin_unregister()
->>
->> On 6/7/26 8:30 PM, Grzegorz Nitka wrote:
->>> Neither parent->dpll_refs nor pin->dpll_refs on its own is a correct
->>> iteration target at unregister time:
->>>
->>>   - pin->dpll_refs includes DPLLs the child was registered against
->>>     via a different parent or directly; blind unregister WARNs on
->>>     the cookie miss in dpll_xa_ref_pin_del().
->>>   - parent->dpll_refs reflects the parent's current attachments, not
->>>     those at child-register time. Another driver may have (un)reg'd
->>>     the parent against additional DPLLs in the meantime, so we miss
->>>     registrations that exist and visit DPLLs that have none.
->>>
->>> Walk pin->dpll_refs and use dpll_pin_registration_find() to filter
->>> to entries whose cookie is this parent. Symmetric with
->>> dpll_pin_on_pin_register(), correct under any subsequent change to
->>> parent->dpll_refs.
->>>
->>> Fixes: 9431063ad323 ("dpll: core: Add DPLL framework base functions")
->>> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
->>
->> The current guidance is to avoid the Fixes tag for net-next patches,
->> when such tag refers to code already into Linus's tree.
->>
->> If it's a real user-visible issue, the patch should target net.
->> Otherwise if the intended target is really net-next, no fixes tag please.
->>
->> Unrelated important node: sashiko (gemini) still has some comments, some
->> of them looks new and relevant to me i.e. the possible divide by zero
->> bug in patch 11, see:
->>
->> https://sashiko.dev/#/patchset/20260607183045.1213735-1-
->> grzegorz.nitka%40intel.com
->>
->> /P
-> 
-> Hi Paolo
-> 
-> Thanks for your feedback.
-> Regarding patches with 'Fixes' tag ...
-> Actually patches from 3 to 7 in this series are indeed fix patches for the existing code.
-> It was reported by Sashiko earlier for this series as pre-existing issues.
-> Kuba suggested, at least this is how I understood it, to include it in the series to see
-> a clean AI scan. 
-> So please advise on the next steps ...
-> Should I simply remove 'Fixes' tag from the commits and keep those patches in the series?
-> Or ...  to remove them from the series and re-send as regular fix patches on 'net'?
+Tested-by: Brian Vazquez <brianvv@google.com>
 
-The current guidance for the Fixes tag is to avoid it in net-next
-patches, unless fixed patch is only present on net-next. My reading of
-Jakub suggestion would be to drop the fixes tag as 'are not actually bugs.':
+Before patch:
 
-https://lore.kernel.org/netdev/20260604155422.167314ff@kernel.org/
+# sar -n DEV 1  | grep eth1
+08:09:51         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:52         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:53         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:54         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:55         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:56         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:57         eth1   4225.00   1801.00    736.18   1125.49
+0.00      0.00      0.00      0.00
+08:09:58         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:09:59         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:00         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:01         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:02         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:03         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:04         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:05         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:06         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:07         eth1      0.00      0.00      0.00      0.00
+0.00      0.00      0.00      0.00
+08:10:08         eth1   3788.00   1435.00    628.26    535.24
+0.00      0.00      0.00      0.00
 
-Note that I could misread his wording.
+After patch (you can now see background traffic reported right away!):
 
-Fixes tag could be stripped when applying the patches as needed, and I
-think that could be preferable to a repost just for such thing, given
-the current PW load...
+# sar -n DEV 1 | grep eth1
+08:08:33         eth1    527.00    443.00    261.74     76.69
+0.00      0.00      0.00      0.00
+08:08:34         eth1    440.00    423.00    101.89     78.75
+0.00      0.00      0.00      0.00
+08:08:35         eth1    356.00    353.00     68.68     57.02
+0.00      0.00      0.00      0.00
+08:08:36         eth1    437.00    462.00    114.18    124.07
+0.00      0.00      0.00      0.00
+08:08:37         eth1    377.00    383.00     61.40     65.97
+0.00      0.00      0.00      0.00
+08:08:38         eth1    335.00    337.00     83.08     75.39
+0.00      0.00      0.00      0.00
+08:08:39         eth1    387.00    392.00     58.95     74.58
+0.00      0.00      0.00      0.00
+08:08:40         eth1    351.00    371.00     51.39    103.25
+0.00      0.00      0.00      0.00
+08:08:41         eth1    339.00    338.00     55.38     54.91
+0.00      0.00      0.00      0.00
+08:08:42         eth1    324.00    328.00     54.15     55.71
+0.00      0.00      0.00      0.00
 
-> Regarding the latest Sahiko comments .. this specific one about divide-by-zero panic
-> is false-positive. It was fixed with the latest revision.
-> I'll respond in a separate message with my view on the other high ones.
-... unless sashiko points to something really relevant. Please report on
-the ML.
 
-Thanks,
-
-Paolo
-
+On Wed, Jun 10, 2026 at 8:24=E2=80=AFPM Danny Gonzalez <digonzal@google.com=
+> wrote:
+>
+> The default 10s statistics refresh interval is too slow for real-time
+> monitoring and causes network selftests (e.g., uso.py) to fail when
+> verifying traffic immediately after transmission.
+>
+> A 10s delay also causes aliasing in telemetry tools polling at shorter
+> intervals (e.g., 5s), leading to inaccurate rate calculations on
+> high-throughput NICs.
+>
+> Decrease the refresh interval to 250ms to ensure fresh stats and fix
+> test failures.
+>
+> Tested: drivers/net/hw:uso.py now passes
+> Fixes: a251eee62133 ("idpf: add SRIOV support and other ndo_ops")
+> Signed-off-by: Danny Gonzalez <digonzal@google.com>
+> ---
+>  drivers/net/ethernet/intel/idpf/idpf_lib.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/eth=
+ernet/intel/idpf/idpf_lib.c
+> index cf966fe6c759..e2890d219431 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+> @@ -1364,7 +1364,7 @@ void idpf_statistics_task(struct work_struct *work)
+>         }
+>
+>         queue_delayed_work(adapter->stats_wq, &adapter->stats_task,
+> -                          msecs_to_jiffies(10000));
+> +                          msecs_to_jiffies(250));
+>  }
+>
+>  /**
+> --
+> 2.54.0.1099.g489fc7bff1-goog
+>
