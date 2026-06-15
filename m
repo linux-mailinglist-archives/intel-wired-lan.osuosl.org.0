@@ -2,213 +2,165 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id A5T/IRdBMGrbQQUAu9opvQ
+	id upjhKulnMWpnigUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 20:14:47 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:41 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F9236891C2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 20:14:46 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52698690D40
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:40 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=FK+X3zul;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none);
-	arc=reject ("signature check failed: fail, {[1] = sig:microsoft.com:reject}")
+	dkim=pass header.d=osuosl.org header.s=default header.b="eNXgQl8/";
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=ibm.com (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F4B982A29;
-	Mon, 15 Jun 2026 18:14:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 021FC42CCC;
+	Tue, 16 Jun 2026 15:12:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JhSC6OW853OO; Tue, 16 Jun 2026 15:12:37 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0C6F42CC1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1781622757;
+	bh=2Ul6nM7ohRVaXLyZbA2q+iy5yeHdJ9qor+CXP+6ek8A=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=eNXgQl8/HMFhleyUlLVKYorHFVO10rZwyFtw2e3MaEygCeD7rpaBJEHGRimsIfQSd
+	 YYttHBK6YV2XpqQL+/sfo/1OtYZCDl+OogjDeThgOEhSAzaOjbgCo4lqHOr5slzzhY
+	 XhjtyawzHgTkrJ8tvHJp2WIobnJpP15ZjUtbPcYi4UYyvl6c9NZdMcm5wrVPaIO4yC
+	 k2HmWAGlri+eOYiWFe52sYI1MfZdZGbayoXqj5wk5guzBjk0wB1n8NHT87GG4EYO3C
+	 Mna9wWSvWzUJBtDbnun+qoNENt3K4HxsNOjHt6JJiHNk05shduKYQQyotVLCbPrL2u
+	 KCWbilZxp75hg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id D0C6F42CC1;
+	Tue, 16 Jun 2026 15:12:37 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5356F169
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:19 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 38E2F8440E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8FcyEUhhLVYT; Mon, 15 Jun 2026 18:14:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 06F4C836C3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781547283;
-	bh=s2c2NU/jXSjPpRuTm5kl+U5BMKHzFMw4563XVQ30DNY=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=FK+X3zulgtESD94zO4LXlwVNdUR9uhH3bIV0eR4RT4FiZEthdEISHPPuLBkk2ZGko
-	 jzhaA7RncT5gasdm06+7OQycYZpVnCK4ldeSrk/VEY2iYBIGa6TCpFlukbAN2pQcvP
-	 gUzjMWBJwoGYMceNuXVI/vSD5L2BqfqoZS/RIp1iWvkaqYJVYgiTKPrXRS2paJ0Ran
-	 qhAGKdhj3d1ao6ulOcndtt/trSUpzTKKrOSG7mkztuuvAzqX88Bcdt3bGuWkHXz1UK
-	 9k4L4Vzi//RYgbACZS4gVbxaZUSUjArtQfmOwn+zjuex7AcOQULWe4nSBMSHgvI2Zc
-	 NJflYCYU47VVQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 06F4C836C3;
-	Mon, 15 Jun 2026 18:14:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2E4292B8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 18:14:42 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 142394040A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 18:14:42 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BVTEzGzcS479 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jun 2026 18:14:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=sunithax.d.mekala@intel.com;
+ id i7k7tNLBDfjD for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jun 2026 19:22:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.156.1;
+ helo=mx0a-001b2d01.pphosted.com; envelope-from=alifm@linux.ibm.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3476F4031A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3476F4031A
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3476F4031A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 18:14:40 +0000 (UTC)
-X-CSE-ConnectionGUID: ksSLNE37S8OvLwrhebqv7A==
-X-CSE-MsgGUID: tmNycmsqRGuJBveuT2yfbQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11818"; a="104968441"
-X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; d="scan'208";a="104968441"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2026 11:14:40 -0700
-X-CSE-ConnectionGUID: mHvUhZB8Q5uG97VgY4yMyg==
-X-CSE-MsgGUID: a0ZpgupZSWaqd1w8GwoCjg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,206,1774335600"; d="scan'208";a="251834336"
-Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
- by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jun 2026 11:14:40 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Mon, 15 Jun 2026 11:14:40 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Mon, 15 Jun 2026 11:14:40 -0700
-Received: from SA9PR02CU001.outbound.protection.outlook.com (40.93.196.37) by
- edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Mon, 15 Jun 2026 11:14:39 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LvXcZs+J/UHH6JImGPazQ8fMib7L1J9yo8cOQPz6KUduN5dAt8QynlPqmvQGYnmqOI9CQJyLNe4I5Cq5ncjkD/PcMKAUQU2wC8Y/5efCQIKEt7BnKVvb3d0CmUbHzNHgfa4d66pSNJOpIcz+M6MtWoyUX5LWAwFPtGPQ8d9S7bQNNTjDWoUrJ9FLLzb2OOg5rDU95wSufkgW/oDF/FEElhq2j5iXXjLw242UICiqgOU3C2Tt2dsiX+VZWM0Wmmeckvzyeq5vI8wFgJIc6X54KeFAvWHoRn2pg7o5uOhFuF1RGtBYfFbEznPsadMrk0RNB5lBOMMBqgCQVRt+3gX8kg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=s2c2NU/jXSjPpRuTm5kl+U5BMKHzFMw4563XVQ30DNY=;
- b=FHCa34x6eaWrOm1IVTkDfmU9x3ocowTKe59kk8ghKsTHBR8Zv0PH4/7zKyX9VOOP0yamXvr0mPPrnqgXio4gCLnO/603wzM6UdV5yUMnvxeGbpfo4enoEiM2RFD0UHyHWqWvzIQmDKsecHjFoRkiysJnKhfI9UUPBA60MYgQ1fzDv6F78y6YgDJPoRFh+IsH4eIucFJv3bFmWI7ZjSd+6NPkQB6WiL4Igrx8OoZGr9ChymZFjGjYL3+st26qfOzVhoUjG+0Y64IT0GYjpLSr/SqsGC79WhzNQ7iElQ8+AZmJ52i8Ib4XZkSYniSQ/fcT6ctx679jv2k9eeleqnbdTg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from PH0PR11MB7522.namprd11.prod.outlook.com (2603:10b6:510:289::8)
- by CO1PR11MB5025.namprd11.prod.outlook.com (2603:10b6:303:9e::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.113.18; Mon, 15 Jun
- 2026 18:14:31 +0000
-Received: from PH0PR11MB7522.namprd11.prod.outlook.com
- ([fe80::ba5b:e8f1:5eb8:3ca3]) by PH0PR11MB7522.namprd11.prod.outlook.com
- ([fe80::ba5b:e8f1:5eb8:3ca3%6]) with mapi id 15.21.0048.016; Mon, 15 Jun 2026
- 18:14:31 +0000
-From: "Mekala, SunithaX D" <sunithax.d.mekala@intel.com>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
- Arkadiusz" <arkadiusz.kubalewski@intel.com>, "Loktionov, Aleksandr"
- <aleksandr.loktionov@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Fodor, Zoltan" <zoltan.fodor@intel.com>,
- "horms@kernel.org" <horms@kernel.org>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "Grinberg, Vitaly" <vgrinber@redhat.com>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v12] ice: add support for
- unmanaged DPLL on E830 NIC
-Thread-Index: AQHc3twdLLW8WIY8IkSSVUTjpDZGs7Y/NBpg
-Date: Mon, 15 Jun 2026 18:14:31 +0000
-Message-ID: <PH0PR11MB7522B24592865895CDC2637DA0E62@PH0PR11MB7522.namprd11.prod.outlook.com>
-References: <20260508110856.550999-1-arkadiusz.kubalewski@intel.com>
-In-Reply-To: <20260508110856.550999-1-arkadiusz.kubalewski@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: PH0PR11MB7522:EE_|CO1PR11MB5025:EE_
-x-ms-office365-filtering-correlation-id: 8f4ea098-884e-426d-0816-08decb09f272
-x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|23010399003|56012099006|11063799006|3023799007|6133799003|22082099003|38070700021|18002099003;
-x-microsoft-antispam-message-info: ZLpRLxOG7HG5mjGTm6OV3ALMeTmnNudsDQoUJaTj3z887B55bGc88opWuDLtghRNC0srJYvl7w8Sg3+yPzvxzMnw952+mb6xsz9dYB2kaz0+uKCEmZQJnQ79jAPfyOMTHyq9I708JB8GYyiTHvJLOim8FOwGNFE800+bK5KXgauNDcdW7V0e5FqluVMf2pqfhPxxOyYlBREgRsmNU4G6SrpFuDWbe6IhxDU9jNlrUca2abyZ6oP29+fAIAU1NCT/1U+jXZ6hh1MFjTuQ4M05p3TTQDAV6bcb9IND8ok+Qnds6lgbWZiViFfTMw2BKCZz7EEO0hWtF+ElcdEjqOdpiDNxp/70ClMdAWWaOREHsBLcWtScm2BUDBKl8nyfXtK2VN7IYkwlXW7t3l3saEsxT/5mL4OIzyZl78nAJSmUP0B1L6+X0jdB5sLZoBgn5Ru0S1GHtiCBrU7r7TRajwTEXRAanqyIK55UKK8iKPbL5ul3gvRUV1SXizY9UWWgFwhNzglDVSgBElAYnOFwabyOXrsyMe0msmHV807ylZdoJ++ujawVXrAuicSMCHfUUK5sZrqpDKkYxF6Dj+88BNbPwx6jkPCgHd6XxD5UGR0jv/Dpn+sUe+2ntnJtBC8yn+zHGXjw/30yslD3jag8Da635CO6+I1XH61TGO4WgzG5TBRhmo93asxE6u0zGCVArMYSONVKuq35Pzxt7Nm+9zGejnD7Ik5pBmigK+amJnft9MttNxn9/ehIoqD2hVDRGZ8e
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB7522.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(23010399003)(56012099006)(11063799006)(3023799007)(6133799003)(22082099003)(38070700021)(18002099003);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?lj+3+9M1HqKmXNgdfKeZOS1AgEYuIQW1Ffxb5buYRkJBZPM+UAqdTRxYZBXW?=
- =?us-ascii?Q?Nckp5k6XWA8nEETn+6IGq4Wmwqs4EfAT5UEIlgQz3sdZdInX6fsI4D6zGYZg?=
- =?us-ascii?Q?GsoXrScH7wQL03st9eECdQCwhHiAG6ocyqSIo961ViAWU8W+qCfkqAQ87MHw?=
- =?us-ascii?Q?BZTpxE+7QwE5wPOsnVKqhAcYcAbVX3yYAFJa86kr204OTBijG6jUjrVQRyyO?=
- =?us-ascii?Q?27s/sgDNORRi8DYcK1Y4U2xmEXZKhU/Rk97KVLR9dS/ret8JYJg14GCukf0h?=
- =?us-ascii?Q?rG38WnjgpYhVaA2lOBaHdaIsk6W1BedxpTfoAv1BhQ3CD4URTNDn1/i/I2EG?=
- =?us-ascii?Q?IM9523Te/FWGuOO33qA9XTHhocmkAXGW+ZyQ/U1OmqrrVantKU1T+bq3MiWP?=
- =?us-ascii?Q?4CbiIGnyJHLk+TvPmD8rahApMExsaq/HScgPefRjZwOxNBcsug/I67kR5jLz?=
- =?us-ascii?Q?OjZFygpYVroHGxGnJkdPlfQRHcKJnNjTBpVhZikwJTAo1xvErqHaCdE08xpS?=
- =?us-ascii?Q?5noZHeQ4lvpb5U/OrRxlhRgddz3xrslKfOgi+LYIw6VYnLNWe6Pd+gbdRvE/?=
- =?us-ascii?Q?HVlF7Ekmsl1Lk4cLJOG1XvSBNSSUIHngIrPRs5dwbk5yc5ZWkf9o0GuCMrp8?=
- =?us-ascii?Q?hMqkg3sw+Euv1yANdF5aIOakPepq0+TcIBT2OKkSWHfvHIPNOO6291KTAXke?=
- =?us-ascii?Q?Lxzc4OTLax0WqQGic2Nmp9rR0Q/4MBBl9+LeoKMqLkQ/3qNjstS7ageWiizG?=
- =?us-ascii?Q?nfdqVS6+x5Biz8KFgYuHO7xqgQeD/cNev+xVt6Ni3KCU651xCOze8lroQ6Gz?=
- =?us-ascii?Q?x5PY4MLpr+1YT0A6dxSUt0z8DeDjADG3CqFqRikk1VPL432aOMxZs+oPYfsW?=
- =?us-ascii?Q?MdtMNJa+C/XnNR9ZPQWOw5wAM1AO6bRJ0HbCPq5owH1nWv4nvMasq8Zdy5B7?=
- =?us-ascii?Q?StPq93bdwAE39Ob6eu5q9UFpwMc+reBBhU+EWzCMT6rwTL6Qf2eOEJ3Pk2rb?=
- =?us-ascii?Q?R25t1lYc2LSB9zhIdVcHwwuAW+SJkjNIe7ci0Q+Ocy4YswbK2VcLXWwBG014?=
- =?us-ascii?Q?XMFK/cSQ2t7M+pIUcThx5HPkOlKHMgoOhBXMqn2DiQTPMQvWdjqwpyzLebDK?=
- =?us-ascii?Q?mAUeWKzCUyWDV/Tf3rxNXzoZKx1yb/E1tk0QVL70y5LDU0SQaU94jdF2CAWl?=
- =?us-ascii?Q?gDCQeSP7YTjorsc9YIXp017M/HVOQtJnmDsguRxUDbL2IfAWzd9GUOeEVzpg?=
- =?us-ascii?Q?2TP+FfP+XWKak9cAYjQHBL/l54ChTQqz/D9VoWIJEb4OnVlWTQcHPPq298/g?=
- =?us-ascii?Q?GYkB96HUaYpC7kEpKiR+jcZSEgY8Z3wPtkdPDzB9e95bjd8ggbLOkpDFUGAr?=
- =?us-ascii?Q?xxNio36hmgWjpBeNL0f1h3r+uQ+NjRwQQIsrWp+OdbimJ2CoNgDDDwuqLmZ2?=
- =?us-ascii?Q?riACegYdlj6Cvj8gL00jRdn0pbzdRpNwIzlSnsAXgeBQAqbQMae0jLlxAS/J?=
- =?us-ascii?Q?wXfrKPqhbu9xR/jTn0ZnzbW1hkAdc61hEvD1sFxsWMuPlMXTWTeJ0nMj0NPa?=
- =?us-ascii?Q?/GToo/pTJPnogOhIvJAEohF1E8WltLckGXYBL39ZDiJoTU0tIO2Rt5XnM/fE?=
- =?us-ascii?Q?O7wq7F+u615v7V6V2vsOpTPX8zCVbEUxILeRl/ACQudKozzWl9Nzp5ij0Mdf?=
- =?us-ascii?Q?xLRYtGZIW+8OXHzVF/IRPCrLqs6bEcR3yhxMJ/WUIitFCoz3bcLdCqubKrI/?=
- =?us-ascii?Q?xr5fDUxzHyOBaCaeeghsHBBHHG0e6PE=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DBE798440D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBE798440D
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DBE798440D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:17 +0000 (UTC)
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 65FJIEdu3289605; Mon, 15 Jun 2026 19:22:06 GMT
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4es23nj7yh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 15 Jun 2026 19:22:05 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 65FJJdcR010461;
+ Mon, 15 Jun 2026 19:22:04 GMT
+Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4esjhk00vr-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 15 Jun 2026 19:22:04 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
+ [10.241.53.104])
+ by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 65FJM4Jh9831074
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 15 Jun 2026 19:22:04 GMT
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id D63C458052;
+ Mon, 15 Jun 2026 19:22:03 +0000 (GMT)
+Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5DE5658067;
+ Mon, 15 Jun 2026 19:22:01 +0000 (GMT)
+Received: from IBM-D32RQW3.ibm.com (unknown [9.61.247.102])
+ by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 15 Jun 2026 19:22:01 +0000 (GMT)
+From: Farhan Ali <alifm@linux.ibm.com>
+To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
+Cc: helgaas@kernel.org, giovanni.cabiddu@intel.com, alifm@linux.ibm.com,
+ herbert@gondor.apana.org.au, davem@davemloft.net,
+ dennis.dalessandro@cornelisnetworks.com, jgg@ziepe.ca, leon@kernel.org,
+ vikas.gupta@broadcom.com, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, michael.chan@broadcom.com,
+ pavan.chebbi@broadcom.com, claudiu.manoil@nxp.com,
+ vladimir.oltean@nxp.com, wei.fang@nxp.com, xiaoning.wang@nxp.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org,
+ decui@microsoft.com, longli@microsoft.com, richardcochran@gmail.com,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>,
+ qat-linux@intel.com (open list:QAT DRIVER),
+ linux-crypto@vger.kernel.org (open list:CRYPTO API),
+ linux-rdma@vger.kernel.org (open list:HFI1 DRIVER),
+ netdev@vger.kernel.org (open list:BROADCOM BNG_EN 800 GIGABIT ETHERNET DRIVER),
+ imx@lists.linux.dev (open list:FREESCALE ENETC ETHERNET DRIVERS),
+ intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
+ linux-hyperv@vger.kernel.org (open list:Hyper-V/Azure CORE AND DRIVERS)
+Date: Mon, 15 Jun 2026 12:21:58 -0700
+Message-ID: <20260615192200.3489-1-alifm@linux.ibm.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: lT78MOtQzoWZ12Df05HzxHuJZtjtS080y+U2xwZlmbBHy0yjSTlWrmGlSmCD3SbIpz4YIMEVQXcAZs+Th2Z1LgRPe49yKKbVB5+Iw7KJMES4KE5YgfHwu0TT42M7DGhg07WlBycvF4/s0mmHb6QgMq3HfX1gS/wA6ick+9bv+2+G2xN0u7r+Q4blbHVijgMop3+Nu3zJHUkSaV1NaOjIezLpa4sz6XdDEpUxhXyVhJJQQwW4zFX44i3cGq95F9YnrLKCjVKjIyTvc0WGfTuJcnxUJzxCZMIfiZChjcNzISJ3WIMcY2XSNZi+bD5fUb0EdZ+fWs086hH71X9mvPICpg==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB7522.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8f4ea098-884e-426d-0816-08decb09f272
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jun 2026 18:14:31.5392 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ZEkvy35KNBrks/Zh+IpnNChzD3hcAi8VT9jXCmBojj/PtOkO8iCYEJm4I7s3C2fdDRoeJ0Nn2m4Pg4IlqQGU8GfNsMQKZurW4Nodl1Na7QQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR11MB5025
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1781547281; x=1813083281;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=ke+tnYdFZT7P94qsdfDjm+uFNWFP1aB02kb1efk/kXc=;
- b=ENce0SEOeqgY5lPFrIY+J3veOfpRMCf73QQrr4pFL/Sb6UaIGw5StRUj
- FHW7wubbFe57aMeWe/8MLioWSNuImz7Kfp0tf/AoRPdTMB2lEO6zqmAIR
- gzvmUQaPF05EWuC6BmyOGfkc2kCwGnFWsdalY35Key8Chwtdef9c8sK0d
- plsq37jN2SxDTppOa1Uc7/RRc0pgeDR/xkSKqxYWLgrm4gS6UJ9jz+5GF
- GXuRj220/1+SWcKH8t6CmARTkYno5NNS0lPqk9GmSjEC7/MMbFBELc7Sg
- zG/SUgvxKcDoOfygw7RVVljFYy7kAh3JX3H/u9ypCmtNF4LXWbzx9fv7L
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Authority-Analysis: v=2.4 cv=XtnK/1F9 c=1 sm=1 tr=0 ts=6a3050de cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+ a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
+ a=iQ6ETzBq9ecOQQE5vZCe:22 a=QyXUC8HyAAAA:8 a=VnNF1IyMAAAA:8
+ a=rrdNmPcgNGMj36RtdNMA:9 a=O8hF6Hzn-FEA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE1MDIwNCBTYWx0ZWRfX15D2ERi6K36E
+ cfuKhpGulDA1q5GV1D4QABpqX93qm1T2iLTDzg+x2djf44fCjprtYNs/z6Cgxr+9JzS4ZJPUxG/
+ bWItgek2EE45W2AKmoHWGBOqz8IbnPY9czT9fZ55OKmhaId3EaEvVqSc7SqjPdf+/EKFIqXnDLa
+ GB/CkvFOkhJDMj9DIfnsVMVjgHqJbTYbro+YZnLFWZuLaVxT7IsqPFnD/cTkoRe/NUKTJpHE9UT
+ KpGxtCexYwDpp7HVl5zpW5M5JKwWtJNvGxIHHagTUBbN6MF1o8qFpxHPmF9FH4vgObHUAYmuZSp
+ OiZ9gdzTUT63mbLuB43NcwvV4PjrpAzNnTWZrb5nAxTzxUe+UP7jZTMDnBX1h/rtYDp8wP21ygC
+ KapFBjkV+9up+O9lzChzbcxkZoNRqaRlB/rJki5AWgaRk4cG3NrTWLbMu15U8JvBJrZ6l3I/upp
+ DULV8mTLV54wYMit44g==
+X-Proofpoint-GUID: 0_j4JWqQX8RSuVA9OmMvQpFslvkDXYKl
+X-Proofpoint-ORIG-GUID: fD3CfdWkUO2xFqIwvrcrU9u1pqC9A76p
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE1MDIwNCBTYWx0ZWRfXxPPmC5y5Uuy0
+ +P87YY4UR8RCkU8E8NytutzriOGmKekg289scdUV2wkw95TKaGVZY+CfgiuwPSpzP9UmhzMzSQO
+ K07q5C5Zhu7FmIb2aOvPYnjEWcZvlC8=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-15_05,2026-06-15_04,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 adultscore=0 phishscore=0 lowpriorityscore=0 priorityscore=1501
+ suspectscore=0 clxscore=1011 malwarescore=0 spamscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606040000 definitions=main-2606150204
+X-Mailman-Approved-At: Tue, 16 Jun 2026 15:12:36 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ibm.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=pp1; bh=2Ul6nM7ohRVaXLyZbA2q+iy5yeHdJ9qor+CXP+6ek
+ 8A=; b=gmrWJfYij8KI+pZjeonZXvKhkT14HMHi5Wj2ig/UL7hnV7GYy0D+rz33h
+ mXsM7ghGodLChYjlruPtL+hIf1lAghcIiz1arsMQZYOuEoKyo6Hox4E3hacDfqhj
+ bUuiPqcStJDdZSKQGiZCFnuvwM1vzAqsu6aNitTChr4HUZ9cyqx4XMYfr9OtUCyq
+ vZo8zbiPfBtVaLFMT+LuC8y2FcCnmj7kDQy8m5G2IuyIXj0P31MqlUfARioOfqwS
+ PT2arz1Ngt/vh6bCWizwK51FuoVOVr9wvBdCb9dOPxOCIWpzbXdnRGJoPdMBM4L7
+ Vp+UHZuCozRCAKI7IutGBNz9uXk2Q==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.ibm.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ENce0SEO
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v12] ice: add support for
- unmanaged DPLL on E830 NIC
+ unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256
+ header.s=pp1 header.b=gmrWJfYi
+Subject: [Intel-wired-lan] [RFC PATCH v1] PCI: Remove pcie_flr() and convert
+ all callers to use pcie_reset_flr()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -224,99 +176,425 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.39 / 15.00];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
+X-Spamd-Result: default: False [2.39 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_SPF_ALLOW(-0.20)[+mx];
+	DMARC_POLICY_SOFTFAIL(0.10)[ibm.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:arkadiusz.kubalewski@intel.com,m:pmenzel@molgen.mpg.de,m:linux-doc@vger.kernel.org,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:zoltan.fodor@intel.com,m:horms@kernel.org,m:przemyslaw.kitszel@intel.com,m:vgrinber@redhat.com,s:lists@lfdr.de];
+	FREEMAIL_CC(0.00)[kernel.org,intel.com,linux.ibm.com,gondor.apana.org.au,davemloft.net,cornelisnetworks.com,ziepe.ca,broadcom.com,google.com,redhat.com,nxp.com,microsoft.com,gmail.com,lunn.ch,vger.kernel.org,lists.linux.dev,lists.osuosl.org];
 	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[37];
+	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER(0.00)[sunithax.d.mekala@intel.com,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
 	MIME_TRACE(0.00)[0:+];
+	FORGED_SENDER(0.00)[alifm@linux.ibm.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:linux-kernel@vger.kernel.org,m:linux-pci@vger.kernel.org,m:helgaas@kernel.org,m:giovanni.cabiddu@intel.com,m:alifm@linux.ibm.com,m:herbert@gondor.apana.org.au,m:davem@davemloft.net,m:dennis.dalessandro@cornelisnetworks.com,m:jgg@ziepe.ca,m:leon@kernel.org,m:vikas.gupta@broadcom.com,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:michael.chan@broadcom.com,m:pavan.chebbi@broadcom.com,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:kys@microsoft.com,m:haiyangz@microsoft.com,m:wei.liu@kernel.org,m:decui@microsoft.com,m:longli@microsoft.com,m:richardcochran@gmail.com,m:andrew+netdev@lunn.ch,m:bhelgaas@google.com,m:qat-linux@intel.com,m:linux-crypto@vger.kernel.org,m:linux-rdma@vger.kernel.org,m:netdev@vger.kernel.org,m:imx@lists.linux.dev,m:linux-hyperv@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	FROM_NEQ_ENVFROM(0.00)[sunithax.d.mekala@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[alifm@linux.ibm.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	RCVD_COUNT_TWELVE(0.00)[15];
 	ALIAS_RESOLVED(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	TO_DN_SOME(0.00)[]
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:url,linux.ibm.com:mid,linux.ibm.com:from_mime,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 3F9236891C2
+X-Rspamd-Queue-Id: 52698690D40
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of A=
-rkadiusz Kubalewski
-> Sent: Friday, May 8, 2026 4:09 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: pmenzel@molgen.mpg.de; linux-doc@vger.kernel.org; netdev@vger.kernel.=
-org; linux-kernel@vger.kernel.org; Kubalewski, Arkadiusz <arkadiusz.kubalew=
-ski@intel.com>; Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Nguye=
-n, Anthony L <anthony.l.nguyen@intel.com>; Fodor, Zoltan <zoltan.fodor@inte=
-l.com>; horms@kernel.org; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com=
->; Grinberg, Vitaly <vgrinber@redhat.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v12] ice: add support for unma=
-naged DPLL on E830 NIC
->
-> Hardware variants of E830 may support an unmanaged DPLL where the
-> configuration is hardcoded within the hardware and firmware, meaning
-> users cannot modify settings. However, users are able to check the DPLL
-> lock status and obtain configuration information through the Linux DPLL
-> and devlink health subsystem.
->
-> Availability of 'loss of lock' health status code determines if such
-> support is available, if true, register single DPLL device with 1 input
-> and 1 output and provide hardcoded/read only properties of a pin and
-> DPLL device. User is only allowed to check DPLL device status and receive
-> notifications on DPLL lock status change.
->
-> When present, the DPLL device locks to an external signal provided
-> through the PCIe/OCP pin. The expected input signal is 1PPS
-> (1 Pulse Per Second) embedded on a 10MHz reference clock.
-> The DPLL produces output:
-> - for MAC (Media Access Control) & PHY (Physical Layer) clocks,
-> - 1PPS for synchronization of onboard PHC (Precision Hardware Clock) time=
-r.
->
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-> Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-> ---
-> v12:
-> - remove HAVE_DPLL_ESYNC ifdef
-> - guard ice_dpll_lock_state_set_unmanaged() call in health event handler
->   with test_bit(ICE_FLAG_DPLL, pf->flags) and pf->dplls.unmanaged
-> - add NULL guards for first/second dpll in ice_dpll_deinit_direct_pins()
-> - add comments explaining intentional continue in
->   ice_dpll_init_info_direct_pins() for unmanaged pins
-> v11:
-> - rebase and fix conflicts
-> ---
->  .../device_drivers/ethernet/intel/ice.rst     |  83 +++++
->  .../net/ethernet/intel/ice/devlink/health.c   |   6 +
->  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  12 +
->  drivers/net/ethernet/intel/ice/ice_common.c   | 136 ++++++++
->  drivers/net/ethernet/intel/ice/ice_common.h   |   8 +
->  drivers/net/ethernet/intel/ice/ice_dpll.c     | 314 ++++++++++++++++--
->  drivers/net/ethernet/intel/ice/ice_dpll.h     |  10 +
->  drivers/net/ethernet/intel/ice/ice_main.c     |  11 +-
->  drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  46 +++
->  drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   1 +
->  10 files changed, 604 insertions(+), 23 deletions(-)
+The pcie_reset_flr() function includes validation checks to verify FLR
+support before performing the reset, while pcie_flr() performs the reset
+unconditionally. Having both functions creates unnecessary complexity.
 
-Tested-by: Sunitha Mekala <sunithax.d.mekala@intel.com> (A Contingent worke=
-r at Intel)
+Commit 56f107d7813f ("PCI: Add pcie_reset_flr() with 'probe' argument")
+introduced pcie_reset_flr() and removed pcie_has_flr(), converting callers
+that previously used the pcie_has_flr() + pcie_flr() to use
+pcie_reset_flr() instead. However, it did not convert all pcie_flr()
+callers, leaving two different FLR mechanisms in the kernel.
+
+One of the callers of pcie_flr(), the Intel 82599 Virtual Function has a
+defect where FLR works despite not advertising FLR support in the PCIe
+Device Capability register.  Rather than using pcie_flr() to work around
+this, enable the FLR capability bit in devcap via an early quirk. This
+allows the device to use the standard pcie_reset_flr() path instead of
+requiring a device-specific reset method.
+
+Remove pcie_flr() entirely and convert all remaining callers to
+pcie_reset_flr(), ensuring consistent validation across the kernel.
+
+Signed-off-by: Farhan Ali <alifm@linux.ibm.com>
+---
+ drivers/crypto/intel/qat/qat_common/adf_aer.c |  2 +-
+ drivers/infiniband/hw/hfi1/chip.c             |  4 +-
+ .../net/ethernet/broadcom/bnge/bnge_core.c    |  2 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  4 +-
+ .../ethernet/cavium/liquidio/lio_vf_main.c    |  2 +-
+ .../ethernet/cavium/liquidio/octeon_mailbox.c |  3 +-
+ drivers/net/ethernet/freescale/enetc/enetc.c  |  2 +-
+ .../ethernet/freescale/enetc/enetc_pci_mdio.c |  2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  2 +-
+ drivers/net/ethernet/microsoft/mana/mana_en.c |  3 +-
+ drivers/pci/pci.c                             | 38 ++++++------------
+ drivers/pci/quirks.c                          | 40 +++++++++----------
+ drivers/ptp/ptp_netc.c                        |  2 +-
+ include/linux/pci.h                           |  1 -
+ 15 files changed, 49 insertions(+), 60 deletions(-)
+
+diff --git a/drivers/crypto/intel/qat/qat_common/adf_aer.c b/drivers/crypto/intel/qat/qat_common/adf_aer.c
+index ed01fb9ad74e..a2364a59bc7f 100644
+--- a/drivers/crypto/intel/qat/qat_common/adf_aer.c
++++ b/drivers/crypto/intel/qat/qat_common/adf_aer.c
+@@ -89,7 +89,7 @@ EXPORT_SYMBOL_GPL(adf_reset_sbr);
+ 
+ void adf_reset_flr(struct adf_accel_dev *accel_dev)
+ {
+-	pcie_flr(accel_to_pci_dev(accel_dev));
++	pcie_reset_flr(accel_to_pci_dev(accel_dev), PCI_RESET_DO_RESET);
+ }
+ EXPORT_SYMBOL_GPL(adf_reset_flr);
+ 
+diff --git a/drivers/infiniband/hw/hfi1/chip.c b/drivers/infiniband/hw/hfi1/chip.c
+index 44c524e45396..9f53d73e5e76 100644
+--- a/drivers/infiniband/hw/hfi1/chip.c
++++ b/drivers/infiniband/hw/hfi1/chip.c
+@@ -14042,7 +14042,7 @@ static int init_chip(struct hfi1_devdata *dd)
+ 		dd_dev_info(dd, "Resetting CSRs with FLR\n");
+ 
+ 		/* do the FLR, the DC reset will remain */
+-		pcie_flr(dd->pcidev);
++		pcie_reset_flr(dd->pcidev, PCI_RESET_DO_RESET);
+ 
+ 		/* restore command and BARs */
+ 		ret = restore_pci_variables(dd);
+@@ -14054,7 +14054,7 @@ static int init_chip(struct hfi1_devdata *dd)
+ 
+ 		if (is_ax(dd)) {
+ 			dd_dev_info(dd, "Resetting CSRs with FLR\n");
+-			pcie_flr(dd->pcidev);
++			pcie_reset_flr(dd->pcidev, PCI_RESET_DO_RESET);
+ 			ret = restore_pci_variables(dd);
+ 			if (ret) {
+ 				dd_dev_err(dd, "%s: Could not restore PCI variables\n",
+diff --git a/drivers/net/ethernet/broadcom/bnge/bnge_core.c b/drivers/net/ethernet/broadcom/bnge/bnge_core.c
+index 68b74eb2c3a2..4aec01f53e54 100644
+--- a/drivers/net/ethernet/broadcom/bnge/bnge_core.c
++++ b/drivers/net/ethernet/broadcom/bnge/bnge_core.c
+@@ -274,7 +274,7 @@ static int bnge_probe_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 
+ 	if (is_kdump_kernel()) {
+ 		pci_clear_master(pdev);
+-		pcie_flr(pdev);
++		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 	}
+ 
+ 	rc = bnge_pci_enable(pdev);
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index 35e1f8f663c7..21f8dcbe671e 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -16918,7 +16918,7 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	 */
+ 	if (is_kdump_kernel()) {
+ 		pci_clear_master(pdev);
+-		pcie_flr(pdev);
++		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 	}
+ 
+ 	max_irqs = bnxt_get_max_irq(pdev);
+@@ -17203,7 +17203,7 @@ static void bnxt_shutdown(struct pci_dev *pdev)
+ 		netif_close(dev);
+ 
+ 	if (bnxt_hwrm_func_drv_unrgtr(bp)) {
+-		pcie_flr(pdev);
++		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 		goto shutdown_exit;
+ 	}
+ 	bnxt_ptp_clear(bp);
+diff --git a/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c b/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
+index 43c595f3b84e..7f3557d36341 100644
+--- a/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
++++ b/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
+@@ -429,7 +429,7 @@ static void octeon_pci_flr(struct octeon_device *oct)
+ 	pci_write_config_word(oct->pci_dev, PCI_COMMAND,
+ 			      PCI_COMMAND_INTX_DISABLE);
+ 
+-	pcie_flr(oct->pci_dev);
++	pcie_reset_flr(oct->pci_dev, PCI_RESET_DO_RESET);
+ 
+ 	pci_cfg_access_unlock(oct->pci_dev);
+ 
+diff --git a/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c b/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
+index ad685f5d0a13..be08e213aa9a 100644
+--- a/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
++++ b/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
+@@ -260,7 +260,8 @@ static int octeon_mbox_process_cmd(struct octeon_mbox *mbox,
+ 		dev_info(&oct->pci_dev->dev,
+ 			 "got a request for FLR from VF that owns DPI ring %u\n",
+ 			 mbox->q_no);
+-		pcie_flr(oct->sriov_info.dpiring_to_vfpcidev_lut[mbox->q_no]);
++		pcie_reset_flr(oct->sriov_info.dpiring_to_vfpcidev_lut[mbox->q_no],
++			       PCI_RESET_DO_RESET);
+ 		break;
+ 
+ 	case OCTEON_PF_CHANGED_VF_MACADDR:
+diff --git a/drivers/net/ethernet/freescale/enetc/enetc.c b/drivers/net/ethernet/freescale/enetc/enetc.c
+index aa8a87124b10..c1c1b523abb5 100644
+--- a/drivers/net/ethernet/freescale/enetc/enetc.c
++++ b/drivers/net/ethernet/freescale/enetc/enetc.c
+@@ -3635,7 +3635,7 @@ int enetc_pci_probe(struct pci_dev *pdev, const char *name, int sizeof_priv)
+ 	size_t alloc_size;
+ 	int err, len;
+ 
+-	pcie_flr(pdev);
++	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 	err = pci_enable_device_mem(pdev);
+ 	if (err)
+ 		return dev_err_probe(&pdev->dev, err, "device enable failed\n");
+diff --git a/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c b/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
+index e108cac8288d..cfccfca1981d 100644
+--- a/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
++++ b/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
+@@ -73,7 +73,7 @@ static int enetc_pci_mdio_probe(struct pci_dev *pdev,
+ 	mdio_priv->mdio_base = ENETC_EMDIO_BASE;
+ 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
+ 
+-	pcie_flr(pdev);
++	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 	err = pci_enable_device_mem(pdev);
+ 	if (err) {
+ 		dev_err(dev, "device enable failed\n");
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index e2fbe111f849..14b8a90625a8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -5180,7 +5180,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	if (is_kdump_kernel()) {
+ 		pci_save_state(pdev);
+ 		pci_clear_master(pdev);
+-		err = pcie_flr(pdev);
++		err = pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 		if (err)
+ 			return err;
+ 		pci_restore_state(pdev);
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 2646ee6f295f..d8796a68094f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -8318,7 +8318,7 @@ static void ixgbe_check_for_bad_vf(struct ixgbe_adapter *adapter)
+ 		if (status_reg != IXGBE_FAILED_READ_CFG_WORD &&
+ 		    status_reg & PCI_STATUS_REC_MASTER_ABORT) {
+ 			ixgbe_bad_vf_abort(adapter, vf);
+-			pcie_flr(vfdev);
++			pcie_reset_flr(vfdev, PCI_RESET_DO_RESET);
+ 		}
+ 	}
+ }
+diff --git a/drivers/net/ethernet/microsoft/mana/mana_en.c b/drivers/net/ethernet/microsoft/mana/mana_en.c
+index c9b1df1ed109..e51c1170aba7 100644
+--- a/drivers/net/ethernet/microsoft/mana/mana_en.c
++++ b/drivers/net/ethernet/microsoft/mana/mana_en.c
+@@ -3305,7 +3305,8 @@ static int mana_dealloc_queues(struct net_device *ndev)
+ 			}
+ 			if (atomic_read(&txq->pending_sends)) {
+ 				err =
+-				    pcie_flr(to_pci_dev(gd->gdma_context->dev));
++				    pcie_reset_flr(to_pci_dev(gd->gdma_context->dev),
++						   PCI_RESET_DO_RESET);
+ 				if (err) {
+ 					netdev_err(ndev, "flr failed %d with %d pkts pending in txq %u\n",
+ 						   err,
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index d34266651ad0..878556ea50de 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -4321,16 +4321,25 @@ int pci_wait_for_pending_transaction(struct pci_dev *dev)
+ EXPORT_SYMBOL(pci_wait_for_pending_transaction);
+ 
+ /**
+- * pcie_flr - initiate a PCIe function level reset
++ * pcie_reset_flr - initiate a PCIe function level reset
+  * @dev: device to reset
++ * @probe: if true, return 0 if device can be reset this way
+  *
+- * Initiate a function level reset unconditionally on @dev without
+- * checking any flags and DEVCAP
++ * Initiate a function level reset on @dev.
+  */
+-int pcie_flr(struct pci_dev *dev)
++int pcie_reset_flr(struct pci_dev *dev, bool probe)
+ {
+ 	int ret;
+ 
++	if (dev->dev_flags & PCI_DEV_FLAGS_NO_FLR_RESET)
++		return -ENOTTY;
++
++	if (!(dev->devcap & PCI_EXP_DEVCAP_FLR))
++		return -ENOTTY;
++
++	if (probe)
++		return 0;
++
+ 	if (!pci_wait_for_pending_transaction(dev))
+ 		pci_err(dev, "timed out waiting for pending transaction; performing function level reset anyway\n");
+ 
+@@ -4357,28 +4366,7 @@ int pcie_flr(struct pci_dev *dev)
+ done:
+ 	pci_dev_reset_iommu_done(dev);
+ 	return ret;
+-}
+-EXPORT_SYMBOL_GPL(pcie_flr);
+-
+-/**
+- * pcie_reset_flr - initiate a PCIe function level reset
+- * @dev: device to reset
+- * @probe: if true, return 0 if device can be reset this way
+- *
+- * Initiate a function level reset on @dev.
+- */
+-int pcie_reset_flr(struct pci_dev *dev, bool probe)
+-{
+-	if (dev->dev_flags & PCI_DEV_FLAGS_NO_FLR_RESET)
+-		return -ENOTTY;
+-
+-	if (!(dev->devcap & PCI_EXP_DEVCAP_FLR))
+-		return -ENOTTY;
+-
+-	if (probe)
+-		return 0;
+ 
+-	return pcie_flr(dev);
+ }
+ EXPORT_SYMBOL_GPL(pcie_reset_flr);
+ 
+diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
+index caaed1a01dc0..564f581599b8 100644
+--- a/drivers/pci/quirks.c
++++ b/drivers/pci/quirks.c
+@@ -2019,6 +2019,23 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXH_0,	quirk_pc
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXH_1,	quirk_pcie_pxh);
+ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXHV,	quirk_pcie_pxh);
+ 
++#define PCI_DEVICE_ID_INTEL_82599_SFP_VF   0x10ed
++static void quirk_intel_82599_sfp_virtfn(struct pci_dev *dev)
++{
++	/*
++	 * http://www.intel.com/content/dam/doc/datasheet/82599-10-gbe-controller-datasheet.pdf
++	 *
++	 * The 82599 supports FLR on VFs, but FLR support is reported only
++	 * in the PF DEVCAP (sec 9.3.10.4), not in the VF DEVCAP (sec 9.5).
++	 * So enable PCI_EXP_DEVCAP_FLR directly without first checking if it is
++	 * supported.
++	 */
++
++	dev->devcap |= PCI_EXP_DEVCAP_FLR;
++}
++
++DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF, quirk_intel_82599_sfp_virtfn);
++
+ /*
+  * Some Intel PCI Express chipsets have trouble with downstream device
+  * power management.
+@@ -3944,20 +3961,6 @@ DECLARE_PCI_FIXUP_SUSPEND_LATE(PCI_VENDOR_ID_INTEL,
+  * reset a single function if other methods (e.g. FLR, PM D0->D3) are
+  * not available.
+  */
+-static int reset_intel_82599_sfp_virtfn(struct pci_dev *dev, bool probe)
+-{
+-	/*
+-	 * http://www.intel.com/content/dam/doc/datasheet/82599-10-gbe-controller-datasheet.pdf
+-	 *
+-	 * The 82599 supports FLR on VFs, but FLR support is reported only
+-	 * in the PF DEVCAP (sec 9.3.10.4), not in the VF DEVCAP (sec 9.5).
+-	 * Thus we must call pcie_flr() directly without first checking if it is
+-	 * supported.
+-	 */
+-	if (!probe)
+-		pcie_flr(dev);
+-	return 0;
+-}
+ 
+ #define SOUTH_CHICKEN2		0xc2004
+ #define PCH_PP_STATUS		0xc7200
+@@ -4058,7 +4061,7 @@ static int reset_chelsio_generic_dev(struct pci_dev *dev, bool probe)
+ 				      PCI_MSIX_FLAGS_ENABLE |
+ 				      PCI_MSIX_FLAGS_MASKALL);
+ 
+-	pcie_flr(dev);
++	pcie_reset_flr(dev, PCI_RESET_DO_RESET);
+ 
+ 	/*
+ 	 * Restore the configuration information (BAR values, etc.) including
+@@ -4070,7 +4073,6 @@ static int reset_chelsio_generic_dev(struct pci_dev *dev, bool probe)
+ 	return 0;
+ }
+ 
+-#define PCI_DEVICE_ID_INTEL_82599_SFP_VF   0x10ed
+ #define PCI_DEVICE_ID_INTEL_IVB_M_VGA      0x0156
+ #define PCI_DEVICE_ID_INTEL_IVB_M2_VGA     0x0166
+ 
+@@ -4150,7 +4152,7 @@ static int nvme_disable_and_flr(struct pci_dev *dev, bool probe)
+ 
+ 	pci_iounmap(dev, bar);
+ 
+-	pcie_flr(dev);
++	pcie_reset_flr(dev, PCI_RESET_DO_RESET);
+ 
+ 	return 0;
+ }
+@@ -4207,7 +4209,7 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, bool probe)
+ 	val = val | HINIC_VF_FLR_PROC_BIT;
+ 	iowrite32be(val, bar + HINIC_VF_OP);
+ 
+-	pcie_flr(pdev);
++	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 
+ 	/*
+ 	 * The device must recapture its Bus and Device Numbers after FLR
+@@ -4238,8 +4240,6 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, bool probe)
+ }
+ 
+ static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
+-	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF,
+-		 reset_intel_82599_sfp_virtfn },
+ 	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_IVB_M_VGA,
+ 		reset_ivb_igd },
+ 	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_IVB_M2_VGA,
+diff --git a/drivers/ptp/ptp_netc.c b/drivers/ptp/ptp_netc.c
+index 94e952ee6990..24bae237926a 100644
+--- a/drivers/ptp/ptp_netc.c
++++ b/drivers/ptp/ptp_netc.c
+@@ -802,7 +802,7 @@ static int netc_timer_pci_probe(struct pci_dev *pdev)
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+-	pcie_flr(pdev);
++	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
+ 	err = pci_enable_device_mem(pdev);
+ 	if (err)
+ 		return dev_err_probe(dev, err, "Failed to enable device\n");
+diff --git a/include/linux/pci.h b/include/linux/pci.h
+index 2c4454583c11..345f0821471a 100644
+--- a/include/linux/pci.h
++++ b/include/linux/pci.h
+@@ -1468,7 +1468,6 @@ u32 pcie_bandwidth_available(struct pci_dev *dev, struct pci_dev **limiting_dev,
+ int pcie_link_speed_mbps(struct pci_dev *pdev);
+ void pcie_print_link_status(struct pci_dev *dev);
+ int pcie_reset_flr(struct pci_dev *dev, bool probe);
+-int pcie_flr(struct pci_dev *dev);
+ int __pci_reset_function_locked(struct pci_dev *dev);
+ int pci_reset_function(struct pci_dev *dev);
+ int pci_reset_function_locked(struct pci_dev *dev);
+-- 
+2.43.0
+
