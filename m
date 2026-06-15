@@ -2,107 +2,114 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id /J/YNjFYL2rA+gQAu9opvQ
+	id evCpHKGvL2ocEgUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 03:41:05 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 09:54:09 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44184682C59
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 03:41:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 485A4684585
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jun 2026 09:54:08 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b="8max/Xw2";
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=163.com (policy=none)
+	dkim=pass header.d=osuosl.org header.s=default header.b=Rgx5qNNx;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=linutronix.de (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E7CF283083;
-	Mon, 15 Jun 2026 01:41:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5B4844107D;
+	Mon, 15 Jun 2026 07:54:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1S3XDXNXbuT6; Mon, 15 Jun 2026 01:41:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id LWCvfK7Lo9bM; Mon, 15 Jun 2026 07:54:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5DE8883089
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E1F241004
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781487661;
-	bh=rkSJZJv6R0h/oeGm4YkXS/z977/uuGVq+lopNuX2gt8=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1781510045;
+	bh=OBrL6lgGQBMYLJZdswh2V1MoY8JuyilmLozsgGz4/8o=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=8max/Xw2EJQjaTcsoo0LUkeCymP/iuF9JVjRuOZaE4rWnutlZMmHaolwnLkQ60uxv
-	 aCo7d/GEmexgeeJ7fQdtrfS7uOuTVikIztXOTaQbD2eKDV/A8zvCI5rlQQWKoPbziJ
-	 rQSHvUrf9tx2VDH49fUX6NAEVASOQvw8D00Mp5vEhL+frUSbjmEjwkquZ4R7JZGAVj
-	 7zyUptHghEsLYuSGRugqyGG7tvFSXHeaiJEEq0jMsp1ELS6ohoTotYcjK9aePKzJRq
-	 B9qv/0v4FQ5wUKOrC3kCNzMyhJlvfP/F9XAYG2dP7aqYtjHPbmI7lRKw7OFXTHfjLS
-	 QfyPeWHHnKAVg==
+	b=Rgx5qNNx2z0c4wI+XBIS0pLs4d81+h/Nf9QSN+bvCSNMKE/aiSnHiSyhdQPls2weL
+	 GoTtyXvnV1QEE3iVRR8SB8go3g3+JXTcFZPVk+3UEcL6UllL/94f+pNRo6000jv1oZ
+	 tk8jW5ss4sdTUROdFLh7GFq7B6RQ/n3UbPh3u0pXmi3aTNc2qpzSpJfPedId1Qapnm
+	 T6EhMmXrUh3IH4MB9VUDan0nat4x0Dbp5aNRM6WJb1jhU9TafEdmt2j/00Uqt+HNn8
+	 Fk+GQ4fZdOqXegY6NgreFPMhrrmFQ0x5vyaZ/E2cZSTqWx1kwtIumZ8XWTAVIgtL/W
+	 J1Hq76aMww/hQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5DE8883089;
-	Mon, 15 Jun 2026 01:41:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7E1F241004;
+	Mon, 15 Jun 2026 07:54:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 789DE169
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 01:40:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id B16142B8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 07:54:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6A43183054
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 01:40:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A340640258
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 07:54:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NukeeE7mvIQZ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jun 2026 01:40:58 +0000 (UTC)
-X-Greylist: delayed 742 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 15 Jun 2026 01:40:57 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7471B83051
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7471B83051
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=117.135.210.2;
- helo=m16.mail.163.com; envelope-from=clementwei90@163.com; receiver=<UNKNOWN> 
-Received: from m16.mail.163.com (m16.mail.163.com [117.135.210.2])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7471B83051
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 01:40:57 +0000 (UTC)
-Received: from [10.42.20.136] (unknown [])
- by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id
- _____wDnZ5caWC9q21ylDg--.7092S2; 
- Mon, 15 Jun 2026 09:40:43 +0800 (CST)
-Message-ID: <9d3dfe98-676f-4a85-9e85-241f79ecfaea@163.com>
-Date: Mon, 15 Jun 2026 09:40:42 +0800
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wkyXPC2QuhY4 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jun 2026 07:54:02 +0000 (UTC)
+X-Greylist: delayed 609 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 15 Jun 2026 07:54:02 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 81261400FE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81261400FE
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 81261400FE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 07:54:02 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Tjerk Kusters <tkusters@aweta.nl>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+Cc: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ "przemyslaw.kitszel@intel.com" <przemyslaw.kitszel@intel.com>,
+ "andrew+netdev@lunn.ch" <andrew+netdev@lunn.ch>, "davem@davemloft.net"
+ <davem@davemloft.net>, "edumazet@google.com" <edumazet@google.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com"
+ <pabeni@redhat.com>, "richardcochran@gmail.com"
+ <richardcochran@gmail.com>, "hawk@kernel.org" <hawk@kernel.org>,
+ "stable@vger.kernel.org" <stable@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+In-Reply-To: <PAWPR05MB1069106D52F4E17F1EDB99C67B9182@PAWPR05MB10691.eurprd05.prod.outlook.com>
+References: <PAWPR05MB1069106D52F4E17F1EDB99C67B9182@PAWPR05MB10691.eurprd05.prod.outlook.com>
+Date: Mon, 15 Jun 2026 09:43:48 +0200
+Message-ID: <8733yojljf.fsf@jax.kurt.home>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: "Jagielski, Jedrzej" <jedrzej.jagielski@intel.com>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Rongguang Wei <weirongguang@kylinos.cn>
-References: <20260612080331.120096-1-clementwei90@163.com>
- <PH0PR11MB590263784927AAB47EE558BAF0182@PH0PR11MB5902.namprd11.prod.outlook.com>
-From: Rongguang Wei <clementwei90@163.com>
-In-Reply-To: <PH0PR11MB590263784927AAB47EE558BAF0182@PH0PR11MB5902.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnZ5caWC9q21ylDg--.7092S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Ar4xZFW3WryfWF4xJFykAFb_yoW8Cr1Dpr
- WUCa4DCr4UWr9Fga97Xw18ZF90k392qrWruF4fCw1Yg3s8JrWktr1xtF4UGryavw47C3y3
- JF1Yv3ZxA3Z8AaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Uca9-UUUUU=
-X-Originating-IP: [116.128.244.169]
-X-CM-SenderInfo: 5fohzv5qwzvxizq6il2tof0z/xtbC4huC7WovWBvqpgAA3c
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=163.com; 
- s=s110527; h=Message-ID:Date:MIME-Version:Subject:To:From:
- Content-Type; bh=rkSJZJv6R0h/oeGm4YkXS/z977/uuGVq+lopNuX2gt8=;
- b=jj/zqXFeTA0dWoN//f2z6vDL56BJfsqUUHvoSLib3FVpIsC85nYvjxKWoelmNX
- YwtnMDtWfd1i5QA364AKIP5ThuhMyli8owciGFTPiUQp265WAllpu4cvlr1f7DpO
- 8rLYacTySYS97WF8/k8W68F7likyHtbeTiFE7hmGjvj2o=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=linutronix.de; s=2020; t=1781509428;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=OBrL6lgGQBMYLJZdswh2V1MoY8JuyilmLozsgGz4/8o=;
+ b=ODNxDDQOCe9UfjLWIOph6jNPzGzUPcQ+xb+ydJN9M0i6CFMiDsHRgjKbJLr26Xs92UIUER
+ lKk3TdIbh4npedW/uj/ukiC4XGVc+eObQqnG/f4MIP5kVqDZDM/CLqZ5YNUESHyzn+cLy2
+ /yMm/xh19asWEgDKSKbe4u6Rg+QWSI2SfIM6JuIixgrz8fEimXRjEJxM2P4RyF60ZpOSK7
+ Du6tM6kFrNhg64BegewC6SFUM7+veG/iZtTEBVDQ1OjGbkbULfgR9PhU7HX0X8gHyVY2Mt
+ hV9T1J+MgpL1sefve2st+f6Ub7LERak9Nj+SzSHpQ5DlIoUYAxaXF4UOvWxOBQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1781509428;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=OBrL6lgGQBMYLJZdswh2V1MoY8JuyilmLozsgGz4/8o=;
+ b=/8pMZfjPCT/NlvqtaxZ/j9kB+C0va9VKo3CGEL3R2t074ZTbNOt/mu7QDZ8BlQUZmbWcIa
+ 6osH4nK734IJz6CQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=163.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256
- header.s=s110527 header.b=jj/zqXFe
-Subject: Re: [Intel-wired-lan] [PATCH net-next v1] e1000: Initialize
- phy_data to avoid unexpected values
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=ODNxDDQO; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=/8pMZfjP
+Subject: Re: [Intel-wired-lan] [PATCH net] igb: only strip Rx timestamp
+ header on the first buffer of a frame
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,92 +125,163 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-0.61 / 15.00];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+X-Spamd-Result: default: False [-0.71 / 15.00];
+	SIGNED_PGP(-2.00)[];
+	SUSPICIOUS_RECIPS(1.50)[];
+	R_MISSING_CHARSET(0.50)[];
+	MIME_GOOD(-0.20)[multipart/signed,text/plain];
 	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[163.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	DMARC_POLICY_SOFTFAIL(0.10)[linutronix.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:jedrzej.jagielski@intel.com,m:przemyslaw.kitszel@intel.com,m:anthony.l.nguyen@intel.com,m:netdev@vger.kernel.org,m:weirongguang@kylinos.cn,s:lists@lfdr.de];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	SUSPICIOUS_AUTH_ORIGIN(0.00)[];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[kylinos.cn:email];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	ARC_NA(0.00)[];
-	FORGED_SENDER(0.00)[clementwei90@163.com,intel-wired-lan-bounces@osuosl.org];
-	FREEMAIL_FROM(0.00)[163.com];
-	MIME_TRACE(0.00)[0:+];
-	TO_DN_SOME(0.00)[];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[6];
+	RCPT_COUNT_TWELVE(0.00)[14];
+	FORGED_SENDER(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:tkusters@aweta.nl,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:richardcochran@gmail.com,m:hawk@kernel.org,m:stable@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FREEMAIL_CC(0.00)[lists.osuosl.org,intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,gmail.com,vger.kernel.org];
+	TO_DN_EQ_ADDR_SOME(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
+	MISSING_XM_UA(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[jax.kurt.home:mid,linutronix.de:from_mime,linutronix.de:email,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[clementwei90@163.com,intel-wired-lan-bounces@osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	HAS_XOIP(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FROM_NEQ_ENVFROM(0.00)[kurt@linutronix.de,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	TO_DN_SOME(0.00)[];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	ARC_NA(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[7]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 44184682C59
+X-Rspamd-Queue-Id: 485A4684585
 
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-
-在 2026/6/12 16:58, Jagielski, Jedrzej 写道:
-> From: Rongguang Wei <clementwei90@163.com> 
-> Sent: Friday, June 12, 2026 10:04 AM
-> 
->> From: Rongguang Wei <weirongguang@kylinos.cn>
->>
->> The phy_data variable is not initialized. If e1000_read_phy_reg
->> returns an error, phy_data will not point to a valid value from
->> the PHY register, which may cause the regs_buff array to be populated
->> with unexpected values.
-> 
-> Hi,
-> 
-> Sounds like a fix, but i believe we would like to have any real
-> scenario when the issue occurs and how it can be reproduced.
-> If such is provided please target the patch against net tree and
-> add fixes tag.
-> 
 Hi,
-I was not face a real scenario. I just found out there is no check for 
-e1000_read_phy_reg return value when I reading the driver code. 
-Maybe is better to initialized the value or check the return value of e1000_read_phy_reg.
->>
->> Signed-off-by: Rongguang Wei <weirongguang@kylinos.cn>
->> Change-Id: I46071b3b21a566f8da650168d38d6968251b077d
-> 
-> 
-> i doubt this is a correct kernel commit tag
-> 
->> ---
->> drivers/net/ethernet/intel/e1000/e1000_ethtool.c | 2 +-
->> 1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
->> index 4dcbeabb3ad2..f068108c5004 100644
->> --- a/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
->> +++ b/drivers/net/ethernet/intel/e1000/e1000_ethtool.c
->> @@ -327,7 +327,7 @@ static void e1000_get_regs(struct net_device *netdev, struct ethtool_regs *regs,
->> 	struct e1000_adapter *adapter = netdev_priv(netdev);
->> 	struct e1000_hw *hw = &adapter->hw;
->> 	u32 *regs_buff = p;
->> -	u16 phy_data;
->> +	u16 phy_data = 0;
->>
->> 	memset(p, 0, E1000_REGS_LEN * sizeof(u32));
->>
->> -- 
->> 2.25.1
-> 
 
+On Fri Jun 12 2026, Tjerk Kusters wrote:
+> Hi,
+>
+> The patch is attached (0001-igb-only-strip-Rx-timestamp-header-on-the-fir=
+st-buff.patch)
+> as my mail setup cannot send it inline via git send-email; apologies for =
+the
+> attachment.
+
+b4 has a web submission endpoint. Maybe you can use that one:
+
+https://b4.docs.kernel.org/en/latest/contributor/send.html
+
+[snip]
+
+> From fee3e3452dfcd7e109332369672a3e0090cadeb3 Mon Sep 17 00:00:00 2001
+> From: T Kusters <tkusters@aweta.nl>
+> Date: Tue, 9 Jun 2026 14:06:24 +0200
+> Subject: [PATCH net] igb: only strip Rx timestamp header on the first buf=
+fer
+>  of a frame
+>
+> When Rx hardware timestamping is enabled (e.g. ptp4l, which configures
+> HWTSTAMP_FILTER_ALL), the NIC prepends a 16-byte timestamp header to the
+> first Rx buffer of every received frame. igb_clean_rx_irq() strips this
+> header inside its per-buffer loop:
+>
+> 	if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+> 		ts_hdr_len =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
+> 						 pktbuf, &timestamp);
+> 		pkt_offset +=3D ts_hdr_len;
+> 		size -=3D ts_hdr_len;
+> 	}
+>
+> For a frame that spans more than one Rx buffer (e.g. a jumbo frame), this
+> block runs once per buffer. The timestamp header only exists at the start
+> of the first buffer, but igb_ptp_rx_pktstamp() is called for every buffer.
+>
+> On a continuation buffer the data is packet payload, not a timestamp
+> header. igb_ptp_rx_pktstamp() already has two guards against acting on a
+> non-header buffer: it returns 0 if PTP is disabled, and returns 0 if the
+> reserved dwords (the first 8 bytes) are non-zero. Neither is sufficient
+> here: PTP is enabled, and a continuation buffer whose payload happens to
+> begin with 8 zero bytes passes the reserved-dword check. In that case the
+> payload is mistaken for a valid timestamp header and igb_ptp_rx_pktstamp()
+> returns IGB_TS_HDR_LEN, so the caller strips 16 bytes of real data from
+> that buffer. A frame spanning N buffers whose continuation buffers start
+> with zero bytes therefore loses 16 * (N - 1) bytes from its tail.
+>
+> This is easily triggered by a GigE Vision camera streaming dark frames
+> (mostly 0x00 pixel data) over jumbo UDP with PTP active on the receiver:
+> the all-zero frames arrive truncated while frames with non-zero content
+> are fine. There is no error indication.
+>
+> No content-based check can reliably tell a continuation buffer that begins
+> with zero bytes from a real timestamp header, because both are all zero.
+> Fix it structurally instead: only attempt the strip on the first buffer of
+> a frame, which is the only buffer that can contain a timestamp header. In
+> igb_clean_rx_irq() skb is NULL until the first buffer has been processed,
+> so guarding the strip with !skb restricts it to the first buffer
+> regardless of payload content.
+>
+> Fixes: 5379260852b0 ("igb: Fix XDP with PTP enabled")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: T Kusters <tkusters@aweta.nl>
+
+Great explanation! igb_clean_rx_irq_zc() does not need the same
+treatment, correct?
+
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
+
+> ---
+>  drivers/net/ethernet/intel/igb/igb_main.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethe=
+rnet/intel/igb/igb_main.c
+> index ce91dda00ec0..abb55cd589a9 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -9061,7 +9061,8 @@ static int igb_clean_rx_irq(struct igb_q_vector *q_=
+vector, const int budget)
+>  		pktbuf =3D page_address(rx_buffer->page) + rx_buffer->page_offset;
+>=20=20
+>  		/* pull rx packet timestamp if available and valid */
+> -		if (igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+> +		if (!skb &&
+> +		    igb_test_staterr(rx_desc, E1000_RXDADV_STAT_TSIP)) {
+>  			int ts_hdr_len;
+>=20=20
+>  			ts_hdr_len =3D igb_ptp_rx_pktstamp(rx_ring->q_vector,
+> --=20
+> 2.27.0
+>
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmovrTQTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgiv3D/0UL1rHA6YpGPl2jWtXbXCrHgwJJdw5
+A7Gz5HXnRnXa9w1rEAJR5yTlDo6NGCctjf0ZQbauwUVEoZ24+mBdNWHZbRi+alOw
+CiiLygla3wwCp6bwPdOfxoOWWw1RM9E+auZCv+8Gl9yFinuJkwY7ZgRmdzf99U//
+FhM/mxLAcnheWAWmvPFeaQZY8jcBh7gy//sN5FaFnIamQXIVulKMmfLAuzqPtoUf
+QMT/wL9nLi/yyp0cQUM9OXsb3WCFWfk1VyIHdOFtDKt8xZE3tgotUAH1JwYvUb5A
+EBb7PwgbvPhlqBEjDgtCi7p+KL/Jk8AIxjReHNjG+nXxxc6FURTEkuvkHAu0Zfx9
+O9hc9reE3zsvwDvtrL+wfcMst894XDrQfdlMhDGZDaDHkiOUHk5wpm2FTO3BhM43
+cR1xUuXchLSmUufMYh4aW9iP+k6TqZqdRMK3x/v+4RGhkuHUvHbjEnyCKkfhsRAn
+bqDgB2tnCHHHi3DUAPAu+fRf8yK/D5DYDWTrLT2EIsrDeTqU4DmTrA++NNsfkQU4
+FqPIZssxIYXDDC9PtiG9CEscDL+EkMDeFVGzvYUIL5kLxAUl1UfmMCky9k7Qd4Mt
+Paph8NOdC03rwrQQikqJ2SoH4hnakRiIeBu8YkWVhGKvzU/WTx9PtSKtrhVkzWeR
+tnGF2+a/wNMIOQ==
+=+94Q
+-----END PGP SIGNATURE-----
+--=-=-=--
