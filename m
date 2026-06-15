@@ -2,165 +2,229 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id upjhKulnMWpnigUAu9opvQ
+	id fcTfLupnMWpoigUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:41 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:42 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 52698690D40
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1017B690D43
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 17:12:42 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b="eNXgQl8/";
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=ibm.com (policy=none)
+	dkim=pass header.d=osuosl.org header.s=default header.b=W7yRqXgh;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=gmx.de (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 021FC42CCC;
+	by smtp1.osuosl.org (Postfix) with ESMTP id 51EAC8558C;
 	Tue, 16 Jun 2026 15:12:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JhSC6OW853OO; Tue, 16 Jun 2026 15:12:37 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0C6F42CC1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781622757;
-	bh=2Ul6nM7ohRVaXLyZbA2q+iy5yeHdJ9qor+CXP+6ek8A=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=eNXgQl8/HMFhleyUlLVKYorHFVO10rZwyFtw2e3MaEygCeD7rpaBJEHGRimsIfQSd
-	 YYttHBK6YV2XpqQL+/sfo/1OtYZCDl+OogjDeThgOEhSAzaOjbgCo4lqHOr5slzzhY
-	 XhjtyawzHgTkrJ8tvHJp2WIobnJpP15ZjUtbPcYi4UYyvl6c9NZdMcm5wrVPaIO4yC
-	 k2HmWAGlri+eOYiWFe52sYI1MfZdZGbayoXqj5wk5guzBjk0wB1n8NHT87GG4EYO3C
-	 Mna9wWSvWzUJBtDbnun+qoNENt3K4HxsNOjHt6JJiHNk05shduKYQQyotVLCbPrL2u
-	 KCWbilZxp75hg==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D0C6F42CC1;
-	Tue, 16 Jun 2026 15:12:37 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by lists1.osuosl.org (Postfix) with ESMTP id 5356F169
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:19 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 38E2F8440E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i7k7tNLBDfjD for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jun 2026 19:22:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.156.1;
- helo=mx0a-001b2d01.pphosted.com; envelope-from=alifm@linux.ibm.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DBE798440D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBE798440D
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DBE798440D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 19:22:17 +0000 (UTC)
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 65FJIEdu3289605; Mon, 15 Jun 2026 19:22:06 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4es23nj7yh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 15 Jun 2026 19:22:05 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 65FJJdcR010461;
- Mon, 15 Jun 2026 19:22:04 GMT
-Received: from smtprelay02.wdc07v.mail.ibm.com ([172.16.1.69])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4esjhk00vr-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 15 Jun 2026 19:22:04 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
- [10.241.53.104])
- by smtprelay02.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 65FJM4Jh9831074
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 15 Jun 2026 19:22:04 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D63C458052;
- Mon, 15 Jun 2026 19:22:03 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5DE5658067;
- Mon, 15 Jun 2026 19:22:01 +0000 (GMT)
-Received: from IBM-D32RQW3.ibm.com (unknown [9.61.247.102])
- by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 15 Jun 2026 19:22:01 +0000 (GMT)
-From: Farhan Ali <alifm@linux.ibm.com>
-To: linux-kernel@vger.kernel.org, linux-pci@vger.kernel.org
-Cc: helgaas@kernel.org, giovanni.cabiddu@intel.com, alifm@linux.ibm.com,
- herbert@gondor.apana.org.au, davem@davemloft.net,
- dennis.dalessandro@cornelisnetworks.com, jgg@ziepe.ca, leon@kernel.org,
- vikas.gupta@broadcom.com, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, michael.chan@broadcom.com,
- pavan.chebbi@broadcom.com, claudiu.manoil@nxp.com,
- vladimir.oltean@nxp.com, wei.fang@nxp.com, xiaoning.wang@nxp.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- kys@microsoft.com, haiyangz@microsoft.com, wei.liu@kernel.org,
- decui@microsoft.com, longli@microsoft.com, richardcochran@gmail.com,
- Andrew Lunn <andrew+netdev@lunn.ch>, Bjorn Helgaas <bhelgaas@google.com>,
- qat-linux@intel.com (open list:QAT DRIVER),
- linux-crypto@vger.kernel.org (open list:CRYPTO API),
- linux-rdma@vger.kernel.org (open list:HFI1 DRIVER),
- netdev@vger.kernel.org (open list:BROADCOM BNG_EN 800 GIGABIT ETHERNET DRIVER),
- imx@lists.linux.dev (open list:FREESCALE ENETC ETHERNET DRIVERS),
- intel-wired-lan@lists.osuosl.org (moderated list:INTEL ETHERNET DRIVERS),
- linux-hyperv@vger.kernel.org (open list:Hyper-V/Azure CORE AND DRIVERS)
-Date: Mon, 15 Jun 2026 12:21:58 -0700
-Message-ID: <20260615192200.3489-1-alifm@linux.ibm.com>
-X-Mailer: git-send-email 2.43.0
+ id s29bP9hgP771; Tue, 16 Jun 2026 15:12:38 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B31685475
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1781622758;
+	bh=jSx3vFjseUZCLVWbOLiqF2EIr0Elyg6HZ6B9OjtTpMY=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=W7yRqXghlMKN8G4UePRqBws+Zy1cnEHX/nASdIb/8ChdhSuZNI3BV4VU17LciVUeM
+	 gr40Caqg/htWM2oFMR+D0BycYrp/ZjkwA8YxGWG1cIxt8trl9EQZ2w/OgcugqxpoWh
+	 5dYyifC9I7iX+7IRu+kPFOQQDc2mFImnetQulLHIP5u2LB7zjfJkOlmHqdmuQQWIUj
+	 Xa8lJK6deK51EMYqn1cNaVQ1PEl3teYuHCKFl03dbHEl14J1oE5/AKDHjlMooC0Q29
+	 /oeFNlpFR+73gImOIT0wE+7x2S34joIKCax1uTmhM7k83N1BXm9NLCQKa8DTvEuka/
+	 KtSEhnd6B9JYw==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6B31685475;
+	Tue, 16 Jun 2026 15:12:38 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 5ADE42F3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 20:36:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3DD7E41487
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 20:36:14 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jQkee5oDDgzW for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jun 2026 20:36:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.15.19;
+ helo=mout.gmx.net; envelope-from=deller@gmx.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D4E7540526
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4E7540526
+Received: from mout.gmx.net (mout.gmx.net [212.227.15.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D4E7540526
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jun 2026 20:36:12 +0000 (UTC)
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from client.hidden.invalid by mail.gmx.net (mrgmx005
+ [212.227.17.190]) with ESMTPSA (Nemesis) id 1MWASe-1wgINv3MkM-00WtCj; Mon, 15
+ Jun 2026 22:36:09 +0200
+Message-ID: <9d80ed59-5483-4c33-9d27-52fdf24aac6e@gmx.de>
+Date: Mon, 15 Jun 2026 22:36:07 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=XtnK/1F9 c=1 sm=1 tr=0 ts=6a3050de cx=c_pps
- a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
- a=FelO9ux0wxsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=iQ6ETzBq9ecOQQE5vZCe:22 a=QyXUC8HyAAAA:8 a=VnNF1IyMAAAA:8
- a=rrdNmPcgNGMj36RtdNMA:9 a=O8hF6Hzn-FEA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjE1MDIwNCBTYWx0ZWRfX15D2ERi6K36E
- cfuKhpGulDA1q5GV1D4QABpqX93qm1T2iLTDzg+x2djf44fCjprtYNs/z6Cgxr+9JzS4ZJPUxG/
- bWItgek2EE45W2AKmoHWGBOqz8IbnPY9czT9fZ55OKmhaId3EaEvVqSc7SqjPdf+/EKFIqXnDLa
- GB/CkvFOkhJDMj9DIfnsVMVjgHqJbTYbro+YZnLFWZuLaVxT7IsqPFnD/cTkoRe/NUKTJpHE9UT
- KpGxtCexYwDpp7HVl5zpW5M5JKwWtJNvGxIHHagTUBbN6MF1o8qFpxHPmF9FH4vgObHUAYmuZSp
- OiZ9gdzTUT63mbLuB43NcwvV4PjrpAzNnTWZrb5nAxTzxUe+UP7jZTMDnBX1h/rtYDp8wP21ygC
- KapFBjkV+9up+O9lzChzbcxkZoNRqaRlB/rJki5AWgaRk4cG3NrTWLbMu15U8JvBJrZ6l3I/upp
- DULV8mTLV54wYMit44g==
-X-Proofpoint-GUID: 0_j4JWqQX8RSuVA9OmMvQpFslvkDXYKl
-X-Proofpoint-ORIG-GUID: fD3CfdWkUO2xFqIwvrcrU9u1pqC9A76p
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNjE1MDIwNCBTYWx0ZWRfXxPPmC5y5Uuy0
- +P87YY4UR8RCkU8E8NytutzriOGmKekg289scdUV2wkw95TKaGVZY+CfgiuwPSpzP9UmhzMzSQO
- K07q5C5Zhu7FmIb2aOvPYnjEWcZvlC8=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
- definitions=2026-06-15_05,2026-06-15_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 adultscore=0 phishscore=0 lowpriorityscore=0 priorityscore=1501
- suspectscore=0 clxscore=1011 malwarescore=0 spamscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606040000 definitions=main-2606150204
+User-Agent: Mozilla Thunderbird
+To: Andrew Lunn <andrew@lunn.ch>, Helge Deller <deller@kernel.org>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
+References: <ai8hmGQmXQu64Ld3@carbonx1>
+ <e78576e0-9b55-446f-9d10-da3b7aec9b31@lunn.ch>
+Content-Language: en-US
+From: Helge Deller <deller@gmx.de>
+Autocrypt: addr=deller@gmx.de; keydata=
+ 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
+In-Reply-To: <e78576e0-9b55-446f-9d10-da3b7aec9b31@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:JJxrpBqmbzHZ4ovM0RX6I6FHeca82GPQ440ebuBwp+eJ9tAPnEJ
+ U6P2/97YjdCxlJ3IHYizFNadN2kIjBr5N6UQKoTPDahknGky/Fv08fqGWEvvH8YrecxQCjE
+ ZHyXuAivd3pgZt8hW2aA9Ypm++tzNiRB27bNL/MepdH71XeWr5t+NqjNPGVcr/Alb9oddnk
+ 3j0t0IANs0l/5tj0UmcvQ==
+UI-OutboundReport: notjunk:1;M01:P0:Ah3v4mWKrZE=;wLtKQbiPN0X+LqrQ4IMd7UviBBB
+ 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
 X-Mailman-Approved-At: Tue, 16 Jun 2026 15:12:36 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=cc
- :content-transfer-encoding:date:from:message-id:mime-version
- :subject:to; s=pp1; bh=2Ul6nM7ohRVaXLyZbA2q+iy5yeHdJ9qor+CXP+6ek
- 8A=; b=gmrWJfYij8KI+pZjeonZXvKhkT14HMHi5Wj2ig/UL7hnV7GYy0D+rz33h
- mXsM7ghGodLChYjlruPtL+hIf1lAghcIiz1arsMQZYOuEoKyo6Hox4E3hacDfqhj
- bUuiPqcStJDdZSKQGiZCFnuvwM1vzAqsu6aNitTChr4HUZ9cyqx4XMYfr9OtUCyq
- vZo8zbiPfBtVaLFMT+LuC8y2FcCnmj7kDQy8m5G2IuyIXj0P31MqlUfARioOfqwS
- PT2arz1Ngt/vh6bCWizwK51FuoVOVr9wvBdCb9dOPxOCIWpzbXdnRGJoPdMBM4L7
- Vp+UHZuCozRCAKI7IutGBNz9uXk2Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256
- header.s=pp1 header.b=gmrWJfYi
-Subject: [Intel-wired-lan] [RFC PATCH v1] PCI: Remove pcie_flr() and convert
- all callers to use pcie_reset_flr()
+ d=gmx.de; 
+ s=s31663417; t=1781555770; x=1782160570; i=deller@gmx.de;
+ bh=jSx3vFjseUZCLVWbOLiqF2EIr0Elyg6HZ6B9OjtTpMY=;
+ h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
+ References:From:In-Reply-To:Content-Type:
+ Content-Transfer-Encoding:cc:content-transfer-encoding:
+ content-type:date:from:message-id:mime-version:reply-to:subject:
+ to;
+ b=dZHDpZTp+i1PapL/5Fz2m6vTsFA9R3WjgOtKLZSfGYH+G0CWB5KgS23rf9K7i9/k
+ LTuYUO3vp3aougDkw7rvsDHsKqyQkzVdmUoGzCjG1aDnPyeBmIitI3W4OLJZ8CG0h
+ CvkTjdyT+VHqUFx4Qa7qTteafPSmlvLOArFz9P3U8NoR3RDVOv9jAtrbfGUfFQfbz
+ pwCQfQqy3Cth07h45JJ/dT212TGp0m7mvb47gvgUjkelVWk/nObzNzSTPuPEoH6HW
+ fI8iE8ZWb0CeZIU7TC1y+7O1pbN6t8ZAPjx4C/PMMu5RLbbPCYdU0HtYOHgGNoz5w
+ 3PyjbzdwaVwn8MmQBA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=gmx.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmx.de header.i=deller@gmx.de
+ header.a=rsa-sha256 header.s=s31663417 header.b=dZHDpZTp
+Subject: Re: [Intel-wired-lan] e1000e: Report link down after "Detected
+ Hardware Unit Hang" ?
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -176,425 +240,85 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.39 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
+X-Spamd-Result: default: False [1.79 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[gmx.de : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUBJECT_ENDS_QUESTION(1.00)[];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
-	DMARC_POLICY_SOFTFAIL(0.10)[ibm.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FREEMAIL_CC(0.00)[kernel.org,intel.com,linux.ibm.com,gondor.apana.org.au,davemloft.net,cornelisnetworks.com,ziepe.ca,broadcom.com,google.com,redhat.com,nxp.com,microsoft.com,gmail.com,lunn.ch,vger.kernel.org,lists.linux.dev,lists.osuosl.org];
-	RCVD_TLS_LAST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[37];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORGED_SENDER(0.00)[alifm@linux.ibm.com,intel-wired-lan-bounces@osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:linux-kernel@vger.kernel.org,m:linux-pci@vger.kernel.org,m:helgaas@kernel.org,m:giovanni.cabiddu@intel.com,m:alifm@linux.ibm.com,m:herbert@gondor.apana.org.au,m:davem@davemloft.net,m:dennis.dalessandro@cornelisnetworks.com,m:jgg@ziepe.ca,m:leon@kernel.org,m:vikas.gupta@broadcom.com,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:michael.chan@broadcom.com,m:pavan.chebbi@broadcom.com,m:claudiu.manoil@nxp.com,m:vladimir.oltean@nxp.com,m:wei.fang@nxp.com,m:xiaoning.wang@nxp.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:kys@microsoft.com,m:haiyangz@microsoft.com,m:wei.liu@kernel.org,m:decui@microsoft.com,m:longli@microsoft.com,m:richardcochran@gmail.com,m:andrew+netdev@lunn.ch,m:bhelgaas@google.com,m:qat-linux@intel.com,m:linux-crypto@vger.kernel.org,m:linux-rdma@vger.kernel.org,m:netdev@vger.kernel.org,m:imx@lists.linux.dev,m:linux-hyperv@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORGED_RECIPIENTS(0.00)[m:andrew@lunn.ch,m:deller@kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[gmx.de:mid,gmx.de:from_mime,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
+	FORGED_SENDER(0.00)[deller@gmx.de,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[alifm@linux.ibm.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_FROM(0.00)[gmx.de];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_SOME(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	RCVD_COUNT_TWELVE(0.00)[15];
-	ALIAS_RESOLVED(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:url,linux.ibm.com:mid,linux.ibm.com:from_mime,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo]
+	RCPT_COUNT_FIVE(0.00)[6];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[deller@gmx.de,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ALIAS_RESOLVED(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	MID_RHS_MATCH_FROM(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[8]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 52698690D40
+X-Rspamd-Queue-Id: 1017B690D43
 
-The pcie_reset_flr() function includes validation checks to verify FLR
-support before performing the reset, while pcie_flr() performs the reset
-unconditionally. Having both functions creates unnecessary complexity.
+On 6/15/26 18:41, Andrew Lunn wrote:
+> On Sun, Jun 14, 2026 at 11:48:08PM +0200, Helge Deller wrote:
+>> I'm regularily facing the known "eno1: Detected Hardware Unit Hang:"
+>> with my on-board intel e1000e NIC hardware.
+>> Since none of he various tips on the internet helped, I had the idea
+>> to setup a master/slave bond networking to fail over to another NIC whe=
+n
+>> the Intel chip hangs.
+>>
+>> Sadly this doesn't work as intended, because the link of the intel NIC
+>> isn't reported "down", so the failover never happens, unless I manually
+>> start "ifconfig eno1 down".
+>>
+>> My question: Shouldn't the intel NIC ideally report Link Down if we kno=
+w
+>> it hangs? That way a fail-over should at least happen, right?
+>>
+>> Below is a completely untested patch.
+>> Does it make sense that I try to test and/or develop such a patch, or
+>> are there things I miss?
+>=20
+> If the interface is dead, then setting the carrier down makes a lot of
+> sense.=20
 
-Commit 56f107d7813f ("PCI: Add pcie_reset_flr() with 'probe' argument")
-introduced pcie_reset_flr() and removed pcie_has_flr(), converting callers
-that previously used the pcie_has_flr() + pcie_flr() to use
-pcie_reset_flr() instead. However, it did not convert all pcie_flr()
-callers, leaving two different FLR mechanisms in the kernel.
+That's what I think as well. Thanks for confirming.
 
-One of the callers of pcie_flr(), the Intel 82599 Virtual Function has a
-defect where FLR works despite not advertising FLR support in the PCIe
-Device Capability register.  Rather than using pcie_flr() to work around
-this, enable the FLR capability bit in devcap via an early quirk. This
-allows the device to use the standard pcie_reset_flr() path instead of
-requiring a device-specific reset method.
+> One question i have is, what do you need to do to recover the
+> hardware? Will it correctly set the carrier up when you do the
+> recovery?
 
-Remove pcie_flr() entirely and convert all remaining callers to
-pcie_reset_flr(), ensuring consistent validation across the kernel.
+The only way I could recover was to plug the network cable and re-insert i=
+t.
+I have not tested bringing the NIC down.
+But in both cases the driver will need to re-detect the media & link
 
-Signed-off-by: Farhan Ali <alifm@linux.ibm.com>
----
- drivers/crypto/intel/qat/qat_common/adf_aer.c |  2 +-
- drivers/infiniband/hw/hfi1/chip.c             |  4 +-
- .../net/ethernet/broadcom/bnge/bnge_core.c    |  2 +-
- drivers/net/ethernet/broadcom/bnxt/bnxt.c     |  4 +-
- .../ethernet/cavium/liquidio/lio_vf_main.c    |  2 +-
- .../ethernet/cavium/liquidio/octeon_mailbox.c |  3 +-
- drivers/net/ethernet/freescale/enetc/enetc.c  |  2 +-
- .../ethernet/freescale/enetc/enetc_pci_mdio.c |  2 +-
- drivers/net/ethernet/intel/ice/ice_main.c     |  2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  2 +-
- drivers/net/ethernet/microsoft/mana/mana_en.c |  3 +-
- drivers/pci/pci.c                             | 38 ++++++------------
- drivers/pci/quirks.c                          | 40 +++++++++----------
- drivers/ptp/ptp_netc.c                        |  2 +-
- include/linux/pci.h                           |  1 -
- 15 files changed, 49 insertions(+), 60 deletions(-)
+> Also, just looking at your proposed change, it is not clear to me why
+> such an assignment will result in carrier down. It would be good to
+> explain it in the commit message.
 
-diff --git a/drivers/crypto/intel/qat/qat_common/adf_aer.c b/drivers/crypto/intel/qat/qat_common/adf_aer.c
-index ed01fb9ad74e..a2364a59bc7f 100644
---- a/drivers/crypto/intel/qat/qat_common/adf_aer.c
-+++ b/drivers/crypto/intel/qat/qat_common/adf_aer.c
-@@ -89,7 +89,7 @@ EXPORT_SYMBOL_GPL(adf_reset_sbr);
- 
- void adf_reset_flr(struct adf_accel_dev *accel_dev)
- {
--	pcie_flr(accel_to_pci_dev(accel_dev));
-+	pcie_reset_flr(accel_to_pci_dev(accel_dev), PCI_RESET_DO_RESET);
- }
- EXPORT_SYMBOL_GPL(adf_reset_flr);
- 
-diff --git a/drivers/infiniband/hw/hfi1/chip.c b/drivers/infiniband/hw/hfi1/chip.c
-index 44c524e45396..9f53d73e5e76 100644
---- a/drivers/infiniband/hw/hfi1/chip.c
-+++ b/drivers/infiniband/hw/hfi1/chip.c
-@@ -14042,7 +14042,7 @@ static int init_chip(struct hfi1_devdata *dd)
- 		dd_dev_info(dd, "Resetting CSRs with FLR\n");
- 
- 		/* do the FLR, the DC reset will remain */
--		pcie_flr(dd->pcidev);
-+		pcie_reset_flr(dd->pcidev, PCI_RESET_DO_RESET);
- 
- 		/* restore command and BARs */
- 		ret = restore_pci_variables(dd);
-@@ -14054,7 +14054,7 @@ static int init_chip(struct hfi1_devdata *dd)
- 
- 		if (is_ax(dd)) {
- 			dd_dev_info(dd, "Resetting CSRs with FLR\n");
--			pcie_flr(dd->pcidev);
-+			pcie_reset_flr(dd->pcidev, PCI_RESET_DO_RESET);
- 			ret = restore_pci_variables(dd);
- 			if (ret) {
- 				dd_dev_err(dd, "%s: Could not restore PCI variables\n",
-diff --git a/drivers/net/ethernet/broadcom/bnge/bnge_core.c b/drivers/net/ethernet/broadcom/bnge/bnge_core.c
-index 68b74eb2c3a2..4aec01f53e54 100644
---- a/drivers/net/ethernet/broadcom/bnge/bnge_core.c
-+++ b/drivers/net/ethernet/broadcom/bnge/bnge_core.c
-@@ -274,7 +274,7 @@ static int bnge_probe_one(struct pci_dev *pdev, const struct pci_device_id *ent)
- 
- 	if (is_kdump_kernel()) {
- 		pci_clear_master(pdev);
--		pcie_flr(pdev);
-+		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 	}
- 
- 	rc = bnge_pci_enable(pdev);
-diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-index 35e1f8f663c7..21f8dcbe671e 100644
---- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-+++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
-@@ -16918,7 +16918,7 @@ static int bnxt_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	 */
- 	if (is_kdump_kernel()) {
- 		pci_clear_master(pdev);
--		pcie_flr(pdev);
-+		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 	}
- 
- 	max_irqs = bnxt_get_max_irq(pdev);
-@@ -17203,7 +17203,7 @@ static void bnxt_shutdown(struct pci_dev *pdev)
- 		netif_close(dev);
- 
- 	if (bnxt_hwrm_func_drv_unrgtr(bp)) {
--		pcie_flr(pdev);
-+		pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 		goto shutdown_exit;
- 	}
- 	bnxt_ptp_clear(bp);
-diff --git a/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c b/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
-index 43c595f3b84e..7f3557d36341 100644
---- a/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
-+++ b/drivers/net/ethernet/cavium/liquidio/lio_vf_main.c
-@@ -429,7 +429,7 @@ static void octeon_pci_flr(struct octeon_device *oct)
- 	pci_write_config_word(oct->pci_dev, PCI_COMMAND,
- 			      PCI_COMMAND_INTX_DISABLE);
- 
--	pcie_flr(oct->pci_dev);
-+	pcie_reset_flr(oct->pci_dev, PCI_RESET_DO_RESET);
- 
- 	pci_cfg_access_unlock(oct->pci_dev);
- 
-diff --git a/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c b/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
-index ad685f5d0a13..be08e213aa9a 100644
---- a/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
-+++ b/drivers/net/ethernet/cavium/liquidio/octeon_mailbox.c
-@@ -260,7 +260,8 @@ static int octeon_mbox_process_cmd(struct octeon_mbox *mbox,
- 		dev_info(&oct->pci_dev->dev,
- 			 "got a request for FLR from VF that owns DPI ring %u\n",
- 			 mbox->q_no);
--		pcie_flr(oct->sriov_info.dpiring_to_vfpcidev_lut[mbox->q_no]);
-+		pcie_reset_flr(oct->sriov_info.dpiring_to_vfpcidev_lut[mbox->q_no],
-+			       PCI_RESET_DO_RESET);
- 		break;
- 
- 	case OCTEON_PF_CHANGED_VF_MACADDR:
-diff --git a/drivers/net/ethernet/freescale/enetc/enetc.c b/drivers/net/ethernet/freescale/enetc/enetc.c
-index aa8a87124b10..c1c1b523abb5 100644
---- a/drivers/net/ethernet/freescale/enetc/enetc.c
-+++ b/drivers/net/ethernet/freescale/enetc/enetc.c
-@@ -3635,7 +3635,7 @@ int enetc_pci_probe(struct pci_dev *pdev, const char *name, int sizeof_priv)
- 	size_t alloc_size;
- 	int err, len;
- 
--	pcie_flr(pdev);
-+	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 	err = pci_enable_device_mem(pdev);
- 	if (err)
- 		return dev_err_probe(&pdev->dev, err, "device enable failed\n");
-diff --git a/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c b/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
-index e108cac8288d..cfccfca1981d 100644
---- a/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
-+++ b/drivers/net/ethernet/freescale/enetc/enetc_pci_mdio.c
-@@ -73,7 +73,7 @@ static int enetc_pci_mdio_probe(struct pci_dev *pdev,
- 	mdio_priv->mdio_base = ENETC_EMDIO_BASE;
- 	snprintf(bus->id, MII_BUS_ID_SIZE, "%s", dev_name(dev));
- 
--	pcie_flr(pdev);
-+	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 	err = pci_enable_device_mem(pdev);
- 	if (err) {
- 		dev_err(dev, "device enable failed\n");
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index e2fbe111f849..14b8a90625a8 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5180,7 +5180,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	if (is_kdump_kernel()) {
- 		pci_save_state(pdev);
- 		pci_clear_master(pdev);
--		err = pcie_flr(pdev);
-+		err = pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 		if (err)
- 			return err;
- 		pci_restore_state(pdev);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 2646ee6f295f..d8796a68094f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -8318,7 +8318,7 @@ static void ixgbe_check_for_bad_vf(struct ixgbe_adapter *adapter)
- 		if (status_reg != IXGBE_FAILED_READ_CFG_WORD &&
- 		    status_reg & PCI_STATUS_REC_MASTER_ABORT) {
- 			ixgbe_bad_vf_abort(adapter, vf);
--			pcie_flr(vfdev);
-+			pcie_reset_flr(vfdev, PCI_RESET_DO_RESET);
- 		}
- 	}
- }
-diff --git a/drivers/net/ethernet/microsoft/mana/mana_en.c b/drivers/net/ethernet/microsoft/mana/mana_en.c
-index c9b1df1ed109..e51c1170aba7 100644
---- a/drivers/net/ethernet/microsoft/mana/mana_en.c
-+++ b/drivers/net/ethernet/microsoft/mana/mana_en.c
-@@ -3305,7 +3305,8 @@ static int mana_dealloc_queues(struct net_device *ndev)
- 			}
- 			if (atomic_read(&txq->pending_sends)) {
- 				err =
--				    pcie_flr(to_pci_dev(gd->gdma_context->dev));
-+				    pcie_reset_flr(to_pci_dev(gd->gdma_context->dev),
-+						   PCI_RESET_DO_RESET);
- 				if (err) {
- 					netdev_err(ndev, "flr failed %d with %d pkts pending in txq %u\n",
- 						   err,
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index d34266651ad0..878556ea50de 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -4321,16 +4321,25 @@ int pci_wait_for_pending_transaction(struct pci_dev *dev)
- EXPORT_SYMBOL(pci_wait_for_pending_transaction);
- 
- /**
-- * pcie_flr - initiate a PCIe function level reset
-+ * pcie_reset_flr - initiate a PCIe function level reset
-  * @dev: device to reset
-+ * @probe: if true, return 0 if device can be reset this way
-  *
-- * Initiate a function level reset unconditionally on @dev without
-- * checking any flags and DEVCAP
-+ * Initiate a function level reset on @dev.
-  */
--int pcie_flr(struct pci_dev *dev)
-+int pcie_reset_flr(struct pci_dev *dev, bool probe)
- {
- 	int ret;
- 
-+	if (dev->dev_flags & PCI_DEV_FLAGS_NO_FLR_RESET)
-+		return -ENOTTY;
-+
-+	if (!(dev->devcap & PCI_EXP_DEVCAP_FLR))
-+		return -ENOTTY;
-+
-+	if (probe)
-+		return 0;
-+
- 	if (!pci_wait_for_pending_transaction(dev))
- 		pci_err(dev, "timed out waiting for pending transaction; performing function level reset anyway\n");
- 
-@@ -4357,28 +4366,7 @@ int pcie_flr(struct pci_dev *dev)
- done:
- 	pci_dev_reset_iommu_done(dev);
- 	return ret;
--}
--EXPORT_SYMBOL_GPL(pcie_flr);
--
--/**
-- * pcie_reset_flr - initiate a PCIe function level reset
-- * @dev: device to reset
-- * @probe: if true, return 0 if device can be reset this way
-- *
-- * Initiate a function level reset on @dev.
-- */
--int pcie_reset_flr(struct pci_dev *dev, bool probe)
--{
--	if (dev->dev_flags & PCI_DEV_FLAGS_NO_FLR_RESET)
--		return -ENOTTY;
--
--	if (!(dev->devcap & PCI_EXP_DEVCAP_FLR))
--		return -ENOTTY;
--
--	if (probe)
--		return 0;
- 
--	return pcie_flr(dev);
- }
- EXPORT_SYMBOL_GPL(pcie_reset_flr);
- 
-diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
-index caaed1a01dc0..564f581599b8 100644
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
-@@ -2019,6 +2019,23 @@ DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXH_0,	quirk_pc
- DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXH_1,	quirk_pcie_pxh);
- DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL,	PCI_DEVICE_ID_INTEL_PXHV,	quirk_pcie_pxh);
- 
-+#define PCI_DEVICE_ID_INTEL_82599_SFP_VF   0x10ed
-+static void quirk_intel_82599_sfp_virtfn(struct pci_dev *dev)
-+{
-+	/*
-+	 * http://www.intel.com/content/dam/doc/datasheet/82599-10-gbe-controller-datasheet.pdf
-+	 *
-+	 * The 82599 supports FLR on VFs, but FLR support is reported only
-+	 * in the PF DEVCAP (sec 9.3.10.4), not in the VF DEVCAP (sec 9.5).
-+	 * So enable PCI_EXP_DEVCAP_FLR directly without first checking if it is
-+	 * supported.
-+	 */
-+
-+	dev->devcap |= PCI_EXP_DEVCAP_FLR;
-+}
-+
-+DECLARE_PCI_FIXUP_EARLY(PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF, quirk_intel_82599_sfp_virtfn);
-+
- /*
-  * Some Intel PCI Express chipsets have trouble with downstream device
-  * power management.
-@@ -3944,20 +3961,6 @@ DECLARE_PCI_FIXUP_SUSPEND_LATE(PCI_VENDOR_ID_INTEL,
-  * reset a single function if other methods (e.g. FLR, PM D0->D3) are
-  * not available.
-  */
--static int reset_intel_82599_sfp_virtfn(struct pci_dev *dev, bool probe)
--{
--	/*
--	 * http://www.intel.com/content/dam/doc/datasheet/82599-10-gbe-controller-datasheet.pdf
--	 *
--	 * The 82599 supports FLR on VFs, but FLR support is reported only
--	 * in the PF DEVCAP (sec 9.3.10.4), not in the VF DEVCAP (sec 9.5).
--	 * Thus we must call pcie_flr() directly without first checking if it is
--	 * supported.
--	 */
--	if (!probe)
--		pcie_flr(dev);
--	return 0;
--}
- 
- #define SOUTH_CHICKEN2		0xc2004
- #define PCH_PP_STATUS		0xc7200
-@@ -4058,7 +4061,7 @@ static int reset_chelsio_generic_dev(struct pci_dev *dev, bool probe)
- 				      PCI_MSIX_FLAGS_ENABLE |
- 				      PCI_MSIX_FLAGS_MASKALL);
- 
--	pcie_flr(dev);
-+	pcie_reset_flr(dev, PCI_RESET_DO_RESET);
- 
- 	/*
- 	 * Restore the configuration information (BAR values, etc.) including
-@@ -4070,7 +4073,6 @@ static int reset_chelsio_generic_dev(struct pci_dev *dev, bool probe)
- 	return 0;
- }
- 
--#define PCI_DEVICE_ID_INTEL_82599_SFP_VF   0x10ed
- #define PCI_DEVICE_ID_INTEL_IVB_M_VGA      0x0156
- #define PCI_DEVICE_ID_INTEL_IVB_M2_VGA     0x0166
- 
-@@ -4150,7 +4152,7 @@ static int nvme_disable_and_flr(struct pci_dev *dev, bool probe)
- 
- 	pci_iounmap(dev, bar);
- 
--	pcie_flr(dev);
-+	pcie_reset_flr(dev, PCI_RESET_DO_RESET);
- 
- 	return 0;
- }
-@@ -4207,7 +4209,7 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, bool probe)
- 	val = val | HINIC_VF_FLR_PROC_BIT;
- 	iowrite32be(val, bar + HINIC_VF_OP);
- 
--	pcie_flr(pdev);
-+	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 
- 	/*
- 	 * The device must recapture its Bus and Device Numbers after FLR
-@@ -4238,8 +4240,6 @@ static int reset_hinic_vf_dev(struct pci_dev *pdev, bool probe)
- }
- 
- static const struct pci_dev_reset_methods pci_dev_reset_methods[] = {
--	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_82599_SFP_VF,
--		 reset_intel_82599_sfp_virtfn },
- 	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_IVB_M_VGA,
- 		reset_ivb_igd },
- 	{ PCI_VENDOR_ID_INTEL, PCI_DEVICE_ID_INTEL_IVB_M2_VGA,
-diff --git a/drivers/ptp/ptp_netc.c b/drivers/ptp/ptp_netc.c
-index 94e952ee6990..24bae237926a 100644
---- a/drivers/ptp/ptp_netc.c
-+++ b/drivers/ptp/ptp_netc.c
-@@ -802,7 +802,7 @@ static int netc_timer_pci_probe(struct pci_dev *pdev)
- 	if (!priv)
- 		return -ENOMEM;
- 
--	pcie_flr(pdev);
-+	pcie_reset_flr(pdev, PCI_RESET_DO_RESET);
- 	err = pci_enable_device_mem(pdev);
- 	if (err)
- 		return dev_err_probe(dev, err, "Failed to enable device\n");
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 2c4454583c11..345f0821471a 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -1468,7 +1468,6 @@ u32 pcie_bandwidth_available(struct pci_dev *dev, struct pci_dev **limiting_dev,
- int pcie_link_speed_mbps(struct pci_dev *pdev);
- void pcie_print_link_status(struct pci_dev *dev);
- int pcie_reset_flr(struct pci_dev *dev, bool probe);
--int pcie_flr(struct pci_dev *dev);
- int __pci_reset_function_locked(struct pci_dev *dev);
- int pci_reset_function(struct pci_dev *dev);
- int pci_reset_function_locked(struct pci_dev *dev);
--- 
-2.43.0
+Sure. The patch I attached was completely untested and just based on
+the analysis of the flow and how to make the Link possibly report to be do=
+wn.
+Maybe someone knowledgeable of the driver has a better suggestion how to
+report the link down situation in a clean way?
 
+Helge
