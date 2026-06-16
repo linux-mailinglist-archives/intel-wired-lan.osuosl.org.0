@@ -2,145 +2,102 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id IJRGLoEtMWpgdQUAu9opvQ
+	id R0KUHr5zMWrRjgUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 13:03:29 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 18:03:10 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7609968E99F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 13:03:28 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4802E691A4A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jun 2026 18:03:02 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=KWq1MiNR;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
+	dkim=pass header.d=osuosl.org header.s=default header.b="sF2/igK3";
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=seu.edu.cn (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5880885534;
-	Tue, 16 Jun 2026 11:03:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A8F442BAD;
+	Tue, 16 Jun 2026 16:02:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g0dLw4xJdNNY; Tue, 16 Jun 2026 11:03:24 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lKskQ-Tn58i5; Tue, 16 Jun 2026 16:02:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A4FA185532
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00BC542B8F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781607804;
-	bh=tm5qA4bByar3MWTXjpvE4+fTboSmxNHbQF0mM/91USI=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=KWq1MiNRShdaDiRYJphVEDPXvotv4Qx05BZ/pxIHtFOLf8DycEv8a497U+gJoj5Bz
-	 NnQAxZojbUWXxafSkhFoIJnL8A2OLdb+1ilRzhfguZmD0vTej8AVxa/6AVa/R6MJL3
-	 E8zuTgSz6oWJB0vh/KyRVwg4A7oTmjNIXw8ViepsXieeSWfHjDihovLZUcdj5jrkPR
-	 zVD0U9LxOxkm5QOfXi+5UfR6KSzTDduvKISum2wPFGXe8nFKCHjttQfRsn6Klfg9UC
-	 omr1rIWnB4BdM0RD4lMaw9g19c+EGX5iJR2qnMNkOw5swcUt0FuzGjUYPPQKyHQG+X
-	 e3g6SUoxkEjsA==
+	s=default; t=1781625779;
+	bh=nvoZVV9gxYlV8gdYEFEmCBm8zHB/8MAJLgD2t4vMXMc=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=sF2/igK3UpFY0g0ZZCYwPdSw24jP1BzsziOnh3e4/Nw/+NvJD1phnsyEaYRiR4ZfN
+	 cB8zyWqiaHlxRkHtq159tHI2InX5tV7d8HnJtAPcYkbcqT8ew48VeMmCfw4j4gMZK/
+	 29wgnT7vDhZTFBJuMqaUgkj7fvDEfGqa93KasEQ0Sh6ZtMlB8ujST3bezjCr2SAQ+T
+	 NstecFp+MtrKZkVNCesiF32SqYwZJdkHuU/J6uRP6EYnBo6EGv9AFajqz9Rj6iEpXQ
+	 5i9IorOIpFDvk6RowIThZJrPpJ/6ubFO1LdIc2T+4z6oiGA5kY41MhDKQCFFO290kT
+	 1MGjcpe6LdGjw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A4FA185532;
-	Tue, 16 Jun 2026 11:03:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 00BC542B8F;
+	Tue, 16 Jun 2026 16:02:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id C44712B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 11:03:22 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 88BB32B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 16:02:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A167C85530
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 11:03:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 660456176E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 16:02:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Y7G795yHD3Pj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Jun 2026 11:03:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8mhGtwwfeEch for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Jun 2026 16:02:56 +0000 (UTC)
+X-Greylist: delayed 305 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 16 Jun 2026 16:02:55 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3EBF961769
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3EBF961769
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.195.24.41;
+ helo=mail-m2441.xmail.ntesmail.com; envelope-from=dawei.feng@seu.edu.cn;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 848FC8552F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 848FC8552F
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 848FC8552F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 11:03:19 +0000 (UTC)
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-483-5B3vJJSIP-mygmoVXn2fNg-1; Tue, 16 Jun 2026 07:03:17 -0400
-X-MC-Unique: 5B3vJJSIP-mygmoVXn2fNg-1
-X-Mimecast-MFC-AGG-ID: 5B3vJJSIP-mygmoVXn2fNg_1781607796
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-45ef63d1214so2842814f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 04:03:17 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781607796; x=1782212596;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tm5qA4bByar3MWTXjpvE4+fTboSmxNHbQF0mM/91USI=;
- b=qts5rQokh+5RtBNXbi3r3abl+BhaEGpi2nZcvbDw1Y0B68sDCsXzD2bitrH1kJCCWg
- eXuB7ib2ZtSSc7n+DpWy9q7sLeZ5gT5t7S9yUEuquUi9C/Gc+r/ZEkBI4/ghI1IWwi4P
- NxpAwK7SmaMEWS3piLijHBZZRditGARZI/yyCZChcKlO+SkLE9Dm5EE7/VJSXGeNKsY8
- yZhv+eicC5nTfWByhfzkG0Al50ukDGXIIDe9ytLp14GkAF19AyVC1peyjIBjHZmwiAoT
- F90GL0c5sjTVPk7eilCMomnkfOyLPW396MAWVJs2iDm/ys9us0uWOpx7pYNsr5cJTuV2
- 2c2Q==
-X-Gm-Message-State: AOJu0YyOpwOma0k4k0SDFtAX+hdK+9e6geWtKfAyTAngP/UYh5ahR8HC
- 2R1c/IQBWFpESV1PQ26aPe4c85Hd7YY0TPTXPbs3bbfhzE/+Q6e6G2Sx2RFSQtq29u/RaemRAId
- P2doLo2eAPC0VRL6Zay/MTJ//2MncyEgY9ZfeHiLV++hctrsbz333KWfZ/q6qIVu7hAee8yw36u
- MJLZujJx9XyI17Vg2CDr0R7XvFI0ieX1hMSYYi5aF/+cZVq6iBGCq3Pw==
-X-Gm-Gg: Acq92OFcjqBGkdVHRYqMtB0i7GKFxvROlK6LojQDLPo8b4Mh39gXshjjNbYedT29QkK
- fxiVI1tWrDWRqhzkOeErwpdqGKirIxXZcLWK1KEAzelMz5E5BZREnTr2xzRdi5Et8s0Yq4VQ2OA
- aEshlIJZZKiTz4jlO4h32fIsDRN6348iYL9zBiuvFqlN5kxwJwsiawJ8GQx8+miVEB7o7GcmfCs
- zJ6O8PEzNUEyvKQS212YPS/zqacFJmVE9WklvqDy2XXwUIghAixdUU3KfQbGz7XviozOy9PT8CZ
- QSjg5lVXxR6N5nuft89J6ZFWkNoe2klzFAFhN/RmYndtA+LycVKENtbYEYjLd4PZSqR5ZQ89z/B
- mfO4PXJuJT+0Dfu9R37LI/FZEHyjfeHSuXVezKd4g5KEPd46/gVvXDNUMbwmAmzVjVVc=
-X-Received: by 2002:a05:600c:4ec6:b0:490:3d62:f5e1 with SMTP id
- 5b1f17b1804b1-4922ffb6836mr46074965e9.22.1781607795649; 
- Tue, 16 Jun 2026 04:03:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:4ec6:b0:490:3d62:f5e1 with SMTP id
- 5b1f17b1804b1-4922ffb6836mr46073585e9.22.1781607794799; 
- Tue, 16 Jun 2026 04:03:14 -0700 (PDT)
-Received: from ?IPV6:2a0d:3344:17d1:b608:8e5:8aea:ed86:b36b?
- ([2a0d:3344:17d1:b608:8e5:8aea:ed86:b36b])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49230a58becsm50581875e9.7.2026.06.16.04.03.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jun 2026 04:03:13 -0700 (PDT)
-Message-ID: <283859f6-8a60-49be-8439-146f8c2a6bb5@redhat.com>
-Date: Tue, 16 Jun 2026 14:03:08 +0300
+Received: from mail-m2441.xmail.ntesmail.com (mail-m2441.xmail.ntesmail.com
+ [45.195.24.41])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3EBF961769
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jun 2026 16:02:54 +0000 (UTC)
+Received: from DESKTOP-SUEFNF9.taila7e912.ts.net (unknown [221.228.238.82])
+ by smtp.qiye.163.com (Hmail) with ESMTP id 429e07efd;
+ Tue, 16 Jun 2026 23:57:45 +0800 (GMT+08:00)
+From: Dawei Feng <dawei.feng@seu.edu.cn>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ jianhao.xu@seu.edu.cn, Dawei Feng <dawei.feng@seu.edu.cn>,
+ stable@vger.kernel.org
+Date: Tue, 16 Jun 2026 23:57:42 +0800
+Message-Id: <20260616155742.4052021-1-dawei.feng@seu.edu.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, jiri@resnulli.us, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
- corbet@lwn.net, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch
-References: <20260614161131.192068-1-mheib@redhat.com>
-From: mohammad heib <mheib@redhat.com>
-In-Reply-To: <20260614161131.192068-1-mheib@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: DZE-mgz8R1IzoZxV2T-MdjDG6dQi9wW9b25P7pitF0g_1781607796
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1781607798;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tm5qA4bByar3MWTXjpvE4+fTboSmxNHbQF0mM/91USI=;
- b=fgYOYfbPfPRfYnYRvpexQEi327Uiub0y+kTF52I/O29s53yZtxz2b42IfP1FAZQO5nolEx
- 2NjOCaayYhcBIBHL1g6RQ65w61VJBokvMYWHm/0Pw6wcZWQaEmXyxMZiHm0do9mCuqF7bI
- Jz3XV6AgxMsGL/oMIuVu231K6mmbGDA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0a9ed127289903a2kunm68ae6ddd4b895
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+ tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSx8fVkpJHUwYGRlJHUJNTVYeHw
+ 5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJSUpVSUlDVUlIQ1VDSVlXWRYaDxIVHRRZQVlPS0hVSktISk
+ 9ITFVKS0tVSkJLS1kG
+X-Mailman-Original-DKIM-Signature: a=rsa-sha256;
+ b=Zth6olDn4pHnkHSYvSKvAJ+GMYqXvoyBC/nK4iBIFPu5OMaNLkNkpBk+4DNuVqwK0J+OEVAOv3rZ9QsQNaS6A+3+KoL8cIzxkV/jCJt9NuOwkxEpyg2jwT6v/b92TfSYPvOgEwkaLMi1oBLezu17n9/fyYWUPZPSf+TMAF7mLpU=;
+ s=default; c=relaxed/relaxed; d=seu.edu.cn; v=1; 
+ bh=nvoZVV9gxYlV8gdYEFEmCBm8zHB/8MAJLgD2t4vMXMc=;
+ h=date:mime-version:subject:message-id:from;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=seu.edu.cn
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=fgYOYfbP
-Subject: Re: [Intel-wired-lan] [PATCH net-next] i40e: add devlink parameter
- for Flow Director ATR sample rate
+ unprotected) header.d=seu.edu.cn header.i=@seu.edu.cn header.a=rsa-sha256
+ header.s=default header.b=Zth6olDn
+Subject: [Intel-wired-lan] [PATCH net v2] ice: fix memory leak in
+ ice_lbtest_prepare_rings()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -156,248 +113,101 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.29 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	MAILLIST(-0.20)[mailman];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MIME_GOOD(-0.10)[text/plain];
+	DMARC_POLICY_SOFTFAIL(0.10)[seu.edu.cn : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[12];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MIME_TRACE(0.00)[0:+];
+	ASN_FAIL(0.00)[7.3.1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.0.3.0.8.c.b.5.0.6.2.asn6.rspamd.com:query timed out];
+	RCPT_COUNT_TWELVE(0.00)[13];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:jianhao.xu@seu.edu.cn,m:dawei.feng@seu.edu.cn,m:stable@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	TO_DN_NONE(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[mheib@redhat.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_SENDER(0.00)[dawei.feng@seu.edu.cn,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_COUNT_SEVEN(0.00)[8];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[dawei.feng@seu.edu.cn,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	ALIAS_RESOLVED(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RSPAMD_EMAILBL_FAIL(0.00)[intel-wired-lan-bounces@osuosl.org:query timed out];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[seu.edu.cn:email,seu.edu.cn:mid,seu.edu.cn:from_mime,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 7609968E99F
+X-Rspamd-Queue-Id: 4802E691A4A
 
+ice_lbtest_prepare_rings() frees Rx rings only when
+ice_vsi_start_all_rx_rings() fails. If ice_vsi_setup_rx_rings() fails
+after allocating some descriptors, or if ice_vsi_cfg_lan() fails after
+the Rx rings were prepared, the function reaches the Tx cleanup path
+without releasing the initialized Rx resources.
 
+Fix this by adding separate unwind paths for Rx setup failure and LAN
+configuration failure. The Rx setup failure path releases the partially
+prepared Rx rings before freeing Tx rings, while later failures first
+undo the LAN Tx configuration and then release the Rx rings in reverse
+setup order.
 
-On 6/14/26 7:11 PM, mheib@redhat.com wrote:
-> From: Mohammad Heib <mheib@redhat.com>
-> 
-> The i40e driver uses Flow Director ATR to periodically update flow
-> steering information for active TCP flows. The update frequency is
-> currently controlled by I40E_DEFAULT_ATR_SAMPLE_RATE and is fixed at
-> driver build time.
-> 
-> On systems with a large number of queues and high-rate TCP workloads,
-> the default sampling interval can result in frequent Flow Director
-> reprogramming for long-lived flows.
-> 
-> The amount of TCP packet reordering observed on some systems is
-> sensitive to the ATR sampling interval. Increasing the interval reduces
-> Flow Director programming activity and can significantly reduce the
-> associated reordering.
-> 
-> Since the optimal sampling interval depends on the workload and system
-> configuration, a single fixed value is not suitable for all deployments.
-> 
-> Add a devlink parameter to allow administrators to tune the ATR sample
-> rate at runtime without rebuilding the driver or disabling ATR
-> functionality entirely.
-> 
-> Signed-off-by: Mohammad Heib <mheib@redhat.com>
-> ---
->   Documentation/networking/devlink/i40e.rst     | 19 ++++++
->   drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
->   .../net/ethernet/intel/i40e/i40e_devlink.c    | 65 +++++++++++++++++++
->   drivers/net/ethernet/intel/i40e/i40e_main.c   |  4 +-
->   drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  4 +-
->   5 files changed, 90 insertions(+), 3 deletions(-)
-> 
-> diff --git a/Documentation/networking/devlink/i40e.rst b/Documentation/networking/devlink/i40e.rst
-> index 51c887f0dc83..704469aa9acf 100644
-> --- a/Documentation/networking/devlink/i40e.rst
-> +++ b/Documentation/networking/devlink/i40e.rst
-> @@ -40,6 +40,25 @@ Parameters
->   
->           The default value is ``0`` (internal calculation is used).
->   
-> +.. list-table:: Driver specific parameters implemented
-> +    :widths: 5 5 90
-> +
-> +    * - Name
-> +      - Mode
-> +      - Description
-> +    * - ``atr_sample_rate``
-> +      - runtime
-> +      - Controls how frequently Flow Director ATR updates flow steering
-> +        information for active TCP flows.
-> +
-> +        ATR programs Flow Director entries based on sampled transmitted
-> +        packets. The sampling interval is specified as the number of
-> +        transmitted packets between ATR updates.
-> +
-> +        Lower values increase Flow Director programming activity, while
-> +        higher values reduce the update frequency.
-> +
-> +        The default value is ``20``.
->   
->   Info versions
->   =============
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-> index 1b6a8fbaa648..88eb40ee45f0 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
-> @@ -487,6 +487,7 @@ struct i40e_pf {
->   	u16 rss_size_max;          /* HW defined max RSS queues */
->   	u16 fdir_pf_filter_count;  /* num of guaranteed filters for this PF */
->   	u16 num_alloc_vsi;         /* num VSIs this driver supports */
-> +	u32 atr_sample_rate;
->   	bool wol_en;
->   
->   	struct hlist_head fdir_filter_list;
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> index 229179ccc131..16e51762db45 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-> @@ -33,12 +33,77 @@ static int i40e_max_mac_per_vf_get(struct devlink *devlink,
->   	return 0;
->   }
->   
-> +static int i40e_atr_sample_rate_set(struct devlink *devlink,
-> +				    u32 id,
-> +				    struct devlink_param_gset_ctx *ctx,
-> +				    struct netlink_ext_ack *extack)
-> +{
-> +	struct i40e_pf *pf = devlink_priv(devlink);
-> +	struct i40e_vsi *vsi;
-> +	u32 sample_rate = ctx->val.vu32;
-> +	int i;
-> +
-> +	pf->atr_sample_rate = sample_rate;
-> +
-> +	if (!test_bit(I40E_FLAG_FD_ATR_ENA, pf->flags))
-> +		return 0;
-> +
-> +	vsi = i40e_pf_get_main_vsi(pf);
-> +	if (!vsi)
-> +		return 0;
-> +
-> +	for (i = 0; i < vsi->num_queue_pairs; i++) {
-> +		if (!vsi->tx_rings[i])
-> +			continue;
-> +		vsi->tx_rings[i]->atr_sample_rate = sample_rate;
-> +		vsi->tx_rings[i]->atr_count = 0;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int i40e_atr_sample_rate_get(struct devlink *devlink,
-> +				    u32 id,
-> +				    struct devlink_param_gset_ctx *ctx,
-> +				    struct netlink_ext_ack *extack)
-> +{
-> +	struct i40e_pf *pf = devlink_priv(devlink);
-> +
-> +	ctx->val.vu32 = pf->atr_sample_rate;
-> +
-> +	return 0;
-> +}
-> +
-> +static int i40e_atr_sample_rate_validate(struct devlink *devlink, u32 id,
-> +					 union devlink_param_value val,
-> +					 struct netlink_ext_ack *extack)
-> +{
-> +	if (!val.vu32) {
-> +		NL_SET_ERR_MSG_MOD(extack,
-> +				   "ATR sample rate must be greater than 0");
-> +		return -EINVAL;
-> +	}
-> +	return 0;
-> +}
-> +
-> +enum i40e_dl_param_id {
-> +	I40E_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
-> +	I40E_DEVLINK_PARAM_ID_ATR_SAMPLE_RATE,
-> +};
-> +
->   static const struct devlink_param i40e_dl_params[] = {
->   	DEVLINK_PARAM_GENERIC(MAX_MAC_PER_VF,
->   			      BIT(DEVLINK_PARAM_CMODE_RUNTIME),
->   			      i40e_max_mac_per_vf_get,
->   			      i40e_max_mac_per_vf_set,
->   			      NULL),
-> +	DEVLINK_PARAM_DRIVER(I40E_DEVLINK_PARAM_ID_ATR_SAMPLE_RATE,
-> +			     "atr_sample_rate",
-> +			     DEVLINK_PARAM_TYPE_U32,
-> +			     BIT(DEVLINK_PARAM_CMODE_RUNTIME),
-> +			     i40e_atr_sample_rate_get,
-> +			     i40e_atr_sample_rate_set,
-> +			     i40e_atr_sample_rate_validate),
->   };
->   
->   static void i40e_info_get_dsn(struct i40e_pf *pf, char *buf, size_t len)
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> index d59750c490f4..9c8144970a34 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> @@ -3458,7 +3458,7 @@ static int i40e_configure_tx_ring(struct i40e_ring *ring)
->   
->   	/* some ATR related tx ring init */
->   	if (test_bit(I40E_FLAG_FD_ATR_ENA, vsi->back->flags)) {
-> -		ring->atr_sample_rate = I40E_DEFAULT_ATR_SAMPLE_RATE;
-> +		ring->atr_sample_rate = vsi->back->atr_sample_rate;
->   		ring->atr_count = 0;
->   	} else {
->   		ring->atr_sample_rate = 0;
-> @@ -12745,6 +12745,8 @@ static int i40e_sw_init(struct i40e_pf *pf)
->   		}
->   	}
->   
-> +	pf->atr_sample_rate = I40E_DEFAULT_ATR_SAMPLE_RATE;
-> +
->   	if ((pf->hw.func_caps.fd_filters_guaranteed > 0) ||
->   	    (pf->hw.func_caps.fd_filters_best_effort > 0)) {
->   		set_bit(I40E_FLAG_FD_ATR_ENA, pf->flags);
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> index bb741ff3e5f2..7e29e9244c3a 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-> @@ -372,8 +372,8 @@ struct i40e_ring {
->   	u16 next_to_clean;
->   	u16 xdp_tx_active;
->   
-> -	u8 atr_sample_rate;
-> -	u8 atr_count;
-> +	u32 atr_sample_rate;
-> +	u32 atr_count;
->   
->   	bool ring_active;		/* is ring online or not */
->   	bool arm_wb;		/* do something to arm write back */
+The bug was first flagged by an experimental analysis tool we are
+developing for kernel memory-management bugs while analyzing
+v6.13-rc1. The tool is still under development and is not yet publicly
+available. Manual inspection confirms that the bug is still
+present in v7.1-rc7.
 
-Hi Aleksandr,
+An x86_64 allyesconfig build showed no new warnings. As we do not have an
+Intel E800 Series adapter available to run the ethtool offline loopback
+selftest, no runtime testing was able to be performed.
 
-Your concern is indeed valid. I'm not 100% sure whether devlink 
-callbacks are still protected by rtnl_lock after the large locking 
-changes that recently went into net/core.
+Fixes: 0e674aeb0b77 ("ice: Add handler for ethtool selftest")
+Cc: stable@vger.kernel.org
+Signed-off-by: Dawei Feng <dawei.feng@seu.edu.cn>
+---
+Changes in v2:
+- Fix cleanup order
 
-That said, I'm wondering whether we need to store the ATR sample rate 
-per ring at all. As far as I can tell, there is no option to configure 
-the sample rate independently for individual rings, so maintaining a 
-copy in every ring may not be necessary.
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Would it make sense to remove the per-ring copy entirely and keep the 
-sample rate only at the PF level? That would avoid the need to walk the 
-rings from the devlink callback and would eliminate the race you pointed 
-out.
-
-Thanks Piotr for the review. I'll address your comment in v2.
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index f28416a707d7..10a4abc66974 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -1069,18 +1069,18 @@ static int ice_lbtest_prepare_rings(struct ice_vsi *vsi)
+ 
+ 	status = ice_vsi_cfg_lan(vsi);
+ 	if (status)
+-		goto err_setup_rx_ring;
++		goto err_cfg_lan;
+ 
+ 	status = ice_vsi_start_all_rx_rings(vsi);
+ 	if (status)
+-		goto err_start_rx_ring;
++		goto err_cfg_lan;
+ 
+ 	return 0;
+ 
+-err_start_rx_ring:
+-	ice_vsi_free_rx_rings(vsi);
+-err_setup_rx_ring:
++err_cfg_lan:
+ 	ice_vsi_stop_lan_tx_rings(vsi, ICE_NO_RESET, 0);
++err_setup_rx_ring:
++	ice_vsi_free_rx_rings(vsi);
+ err_setup_tx_ring:
+ 	ice_vsi_free_tx_rings(vsi);
+ 
+-- 
+2.34.1
