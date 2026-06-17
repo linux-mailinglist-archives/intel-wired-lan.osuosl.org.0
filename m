@@ -2,91 +2,129 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id iFubKWxsMmrpzgUAu9opvQ
+	id vKqXHo9xMmo50AUAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2026 11:44:12 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2026 12:06:07 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 737FB69805E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2026 11:44:11 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB066698407
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jun 2026 12:06:06 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=41hpHk5m;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (strict), DKIM not aligned (relaxed)" header.from=lunn.ch (policy=none)
+	dkim=pass header.d=osuosl.org header.s=default header.b="AsQ/2hVT";
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=none
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9245340A08;
-	Wed, 17 Jun 2026 09:44:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CD9E885D57;
+	Wed, 17 Jun 2026 10:06:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I0mI61OlfY2S; Wed, 17 Jun 2026 09:44:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id t8ewWwYrh1qO; Wed, 17 Jun 2026 10:06:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1DCB04091E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B61585D50
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1781689449;
-	bh=k74zDYNsIHMKvFenq5Y945axJ1MFbmkTfoPjO5NmnpI=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=41hpHk5mCnG1fowX7FnxZGaTaHOH6BVDe8GuahbDYCM5wVgsrFwIpAH04rXJV6l0q
-	 18jWjdUTJGf7U9Q2hCY2tE3Yk3V90EP1ZX+cwrDoeK5MDI9S0kvohvX6wOkHww7KLN
-	 lEhzChobhcoKBFfW9dh0X/lOkOD2GhDpp8+zkenRQ+l8lxbL3l7tGRU2mivyvOaTld
-	 9Rrjo2ukE5UiUgU+JcamNQ2iJqy5doMx8lbR7Qe6vSMLFi3MHCIpOs5fYTTeAhJsOo
-	 XtnqTg30JY42PRev4Ou8+XCv3aeSSQfK7Te2CNp791RMDeNNXNsAxO45NZ77UUgFS8
-	 PYQ/M2M3EuByQ==
+	s=default; t=1781690764;
+	bh=aFsSmP6aMO4TG59Hc8Zv34xLQSsBRpaPGd67pr1FIwc=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=AsQ/2hVTMk7C9vBk6JLLGrgxFvD7ru61TdNHBjVuJ1+jm9tA14RCtiyCsDF/93QXa
+	 8mnfc+cDn56+qYxfZ0k3T8P03Qpgeh1VvO2SRv/h3ybnXDUIUJv5cDi5fTKOpUgepM
+	 imWoU/TGEiEyepRalpA+b3MBAUwVIqXedUf76cAZeZ6jZ21aGSVrzuIYafojg6P7NW
+	 u0UhGw4WAL6oenWTT25XOTHLjbluwD8UWhJDhQ0lY6+pefh1leff6HTz0NZoTuUrDn
+	 PQ8kUaaPM7mN8MeMvPXFP4Zk4rRDU6NRkB/pIFtP+o0Fs/U711t32PD7NtWHGweF9t
+	 J4ubRUnjxx/Pg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1DCB04091E;
-	Wed, 17 Jun 2026 09:44:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1B61585D50;
+	Wed, 17 Jun 2026 10:06:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 55A69347
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 09:44:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 643BCD8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 10:06:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 38D1D40910
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 09:44:07 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 41DF94063E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 10:06:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ug8gdoRv_rfU for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jun 2026 09:44:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4DBB44091E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DBB44091E
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4DBB44091E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 09:44:06 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1wZmoT-0089tB-LK; Wed, 17 Jun 2026 11:44:01 +0200
-Date: Wed, 17 Jun 2026 11:44:01 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-Message-ID: <9befcf6b-a20b-4e2a-8d22-1bcf1a7460d8@lunn.ch>
-References: <20260617084329.199110-1-sergey.temerkhanov@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HkJg-RI67Z-M for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Jun 2026 10:06:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::432; helo=mail-wr1-x432.google.com;
+ envelope-from=doruk@0sec.ai; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E3BAE40480
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E3BAE40480
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
+ [IPv6:2a00:1450:4864:20::432])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E3BAE40480
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 10:06:00 +0000 (UTC)
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-461edb387ddso1138069f8f.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jun 2026 03:06:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781690759; x=1782295559;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=aFsSmP6aMO4TG59Hc8Zv34xLQSsBRpaPGd67pr1FIwc=;
+ b=eBn5hXtsDKi/farWKvSjVFVlq4gQ6+pixr4+iQBzpeHhwaZevxfAYHJYL+iRg1kJ7L
+ KxYcpnzVfmVLG7yqlBy1QyyiACiP1TDGvPYCZY2C+UAbUxYWbwWUEUUZNwbKnKF7pwP4
+ SXBizp3e+U54Cvf9jrK7lSV02zAugzs3vbtenF/bpuFYqyCzS9fPnP5hMb/J7GboVyf5
+ NHHDaxbyVj+RWAfqxj4d07hgnB4H8DkImke9XgDstEUgmWucV5S8PLpxPihTupOPRHBp
+ 3bAY4tCWHBW1v3quAL78iIrtnFsCROMpZTH1krs33/u3RzrAfxhuYStzx/CXVBv8+dpo
+ bWeg==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+7IlsM+lYBtq720x92Acv4x53tIGJnq0mS8gYanUt+5H7w2rWSJt0SxhYsztRpLx/rMp/qv2H04HEbaSfRXEw=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyELvfAUqBGS9t8mPoc0WZV/At/keo73nKMMyQObiyu49lznGPV
+ qS8D9JWTjJLcXN2TCVgxUx5XEGaEq5Gkr+NjamYimc9FhS9AuLn76lWXs9Jjx0ctxRNn
+X-Gm-Gg: AfdE7cmK6lJxkjChxTDkMtLIyVicschC4q2nqKP5m9W1PTFKGc0tOpGyQLNYvUHMHWZ
+ +dkDNh2+bkhw5SpisltKXiwT0HltcTZDQ2+fHw184ITOqOWCpWpRS62fwBkQzhVvhG8djv1+Ms8
+ iwe7Y8ve5H87ci8fI+krKlecfYbZF2zN0IaFezExqP7a2uE+fMYbOYw0k1RGkZ6YTq3WRZqf9Iv
+ rrqoURLMHxohEuyYPgll+gtL66+kUUaJs9xofn4ByzOSUr+UOtYVFrNJuOMK1F/mbh+XiaYarQK
+ BxASGBE6FTaw7y+lyyjqP7RJ7SfXpNvFEQaJIxCgzzP/gE8+n7iqYqYagP8Hwpa4U8ONffSUX2R
+ QclHZxVbYVZ+GNJubtWdZd+L88++QHpUynk0plZfgyE8IOMxf2w3YcVJrUn6lOskywAI1XT7EMz
+ EuKfM+20hxYLsVtuSru3gps6QD0rX60VwuHP9/WKVxVeeg75OAjX1d1b9IaNRXY9hyFC19iTsBB
+ f5Uazg4ZTWxl6/Z5MFJuo2tQqSUsSLR3mo=
+X-Received: by 2002:a05:6000:2302:b0:461:a159:98c6 with SMTP id
+ ffacd0b85a97d-46235e9ac51mr5885239f8f.6.1781690758585; 
+ Wed, 17 Jun 2026 03:05:58 -0700 (PDT)
+Received: from PeakBook-Mini.tail8e484.ts.net ([178.197.218.209])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4606f26f1cdsm55033847f8f.11.2026.06.17.03.05.57
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 17 Jun 2026 03:05:58 -0700 (PDT)
+From: Doruk Tan Ozturk <doruk@0sec.ai>
+To: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com
+Cc: michal.swiatkowski@linux.intel.com, wojciech.drewek@intel.com,
+ horms@kernel.org, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Doruk Tan Ozturk <doruk@0sec.ai>,
+ stable@vger.kernel.org
+Date: Wed, 17 Jun 2026 12:05:56 +0200
+Message-ID: <20260617100556.83620-1-doruk@0sec.ai>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260617084329.199110-1-sergey.temerkhanov@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=k74zDYNsIHMKvFenq5Y945axJ1MFbmkTfoPjO5NmnpI=; b=ZMUC71+bhO8Z0xj37TQV8CRqMC
- iKR5RMZTw3EPnHkgzm42OxSq9vInMJX6kUHZjldFGEV6qu4M8TrasdodNuanotzZ63Mj3YuzcngtL
- dCVD5L8DLDGK7QOqDZM+DgD2Tyww8Ke3mHE0fldiu63qPZKu53xOB2BgI+nx0DRFGGhA=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=ZMUC71+b
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ixgbe: Implement PCI
- reset handler
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=0sec.ai; s=google; t=1781690759; x=1782295559; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=aFsSmP6aMO4TG59Hc8Zv34xLQSsBRpaPGd67pr1FIwc=;
+ b=d2bOpnTUASevYdPkcfYRvBXCFMjY8P9+YTJhvjGZTGey8VF/A2DaC9SpuSOEiTm8R9
+ c13IFE6F9OmUjXejsTXTsr2trhrrmFuFo5sahXVO93dz9287V6lcNNBfXoj+jApCgXZZ
+ 2fjNcAX6fEx9QRITin0+T3z+v3JEYOYovVg8cgT879y2icllBuAWKZpxBgmgCnyKhi8T
+ bVsdvgfTWSVPZgUMFZqMbCTlTn/5msXub/AQcvwto+SuD9T9GoZTUFXElXQu6IAxUX/3
+ NKPJRvMvJHQ01q/rexhd3HQVjZ/eQG2/iWYwtKlNeE/45nuEL+xfVlgh7L0iYCcJ8W4h
+ mqMA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=0sec.ai
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=temperror header.d=0sec.ai header.i=@0sec.ai header.a=rsa-sha256
+ header.s=google header.b=d2bOpnTU
+Subject: [Intel-wired-lan] [PATCH net v2] ice: eswitch: fix use-after-free
+ of metadata_dst in repr release
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,72 +140,86 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-0.61 / 15.00];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [2.19 / 15.00];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	R_SPF_ALLOW(-0.20)[+mx];
+	MAILLIST(-0.20)[mailman];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[lunn.ch : SPF not aligned (strict), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:sergey.temerkhanov@intel.com,m:netdev@vger.kernel.org,s:lists@lfdr.de];
-	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[lunn.ch:mid,lunn.ch:from_mime,osuosl.org:dkim,osuosl.org:from_smtp,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
-	FORGED_SENDER(0.00)[andrew@lunn.ch,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:michal.swiatkowski@linux.intel.com,m:wojciech.drewek@intel.com,m:horms@kernel.org,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:doruk@0sec.ai,m:stable@vger.kernel.org,m:andrew@lunn.ch,s:lists@lfdr.de];
+	DMARC_NA(0.00)[0sec.ai];
+	RCPT_COUNT_TWELVE(0.00)[15];
 	MIME_TRACE(0.00)[0:+];
 	ARC_NA(0.00)[];
+	FORGED_SENDER(0.00)[doruk@0sec.ai,intel-wired-lan-bounces@osuosl.org];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	MISSING_XM_UA(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	TO_DN_SOME(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[0sec.ai:email,0sec.ai:mid,0sec.ai:from_mime,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_NEQ_ENVFROM(0.00)[andrew@lunn.ch,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	FROM_HAS_DN(0.00)[];
-	RCPT_COUNT_THREE(0.00)[3];
+	FROM_NEQ_ENVFROM(0.00)[doruk@0sec.ai,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	ALIAS_RESOLVED(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 737FB69805E
+X-Rspamd-Queue-Id: DB066698407
 
-> +static void ixgbe_reset_prep(struct pci_dev *pdev)
-> +{
-> +	struct ixgbe_adapter *adapter = pci_get_drvdata(pdev);
-> +	unsigned int timeout = IXGBE_PCIE_RESET_RETRIES;
-> +
-> +	if (!adapter)
-> +		return;
-> +
-> +	/* Prevent the service task from being requeued in the timer callback
-> +	 * while we're resetting.
-> +	 */
-> +	if (test_bit(__IXGBE_SERVICE_INITED, &adapter->state)) {
-> +		timer_delete_sync(&adapter->service_timer);
-> +		/* Prevent the service task from running while we're resetting. */
-> +		cancel_work_sync(&adapter->service_task);
-> +	}
-> +
-> +	pci_clear_master(pdev);
-> +
-> +	while (test_and_set_bit(__IXGBE_RESETTING, &adapter->state) && --timeout)
-> +		usleep_range(1000, 2000);
+ice_eswitch_release_repr() frees the port representor metadata_dst via
+metadata_dst_free(), which directly kfree()s the object and ignores the
+dst_entry refcount. The eswitch slow-path TX routine
+ice_eswitch_port_start_xmit() takes a reference on this dst with
+dst_hold() and attaches it to the skb via skb_dst_set(). If such an skb
+is still in flight (e.g. queued in a qdisc) when the representor is torn
+down, the metadata_dst is freed while the skb still points at it. When
+the skb is later freed, dst_release() operates on already-freed memory.
 
-Please consider using something from iopoll.h
+Replace metadata_dst_free() with dst_release() so the metadata_dst is
+freed only after the last reference is dropped. The dst subsystem frees
+metadata_dst objects from dst_destroy() once the refcount reaches zero
+(DST_METADATA is set by metadata_dst_alloc()).
 
-> +
-> +	if (!timeout) {
-> +		e_err(drv, "Timed out waiting for __IXGBE_RESETTING to be released. Reset is needed\n");
-> +		pci_set_master(pdev);
-> +		return;
-> +	}
+Same class of bug and fix as commit c32b26aaa2f9 ("netfilter:
+nft_tunnel: fix use-after-free on object destroy").
 
-because this is broken. You need to retest the condition before
-declaring ETIMEDOUT.
+Fixes: 1a1c40df2e80 ("ice: set and release switchdev environment")
+Cc: stable@vger.kernel.org
+Signed-off-by: Doruk Tan Ozturk <doruk@0sec.ai>
+Reviewed-by: Simon Horman <horms@kernel.org>
+---
+ v2:
+  - Correct the Fixes: tag to the commit that introduced the switchdev
+    teardown (Simon Horman); add his Reviewed-by. No functional change.
+ v1: https://lore.kernel.org/netdev/20260615140532.52676-1-doruk@0sec.ai/
 
-	Andrew
+ drivers/net/ethernet/intel/ice/ice_eswitch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index 2e4f0969035f..41b30a7ca4a9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -95,7 +95,7 @@ ice_eswitch_release_repr(struct ice_pf *pf, struct ice_repr *repr)
+ 		return;
+ 
+ 	ice_vsi_update_security(vsi, ice_vsi_ctx_set_antispoof);
+-	metadata_dst_free(repr->dst);
++	dst_release(&repr->dst->dst);
+ 	repr->dst = NULL;
+ 	ice_fltr_add_mac_and_broadcast(vsi, repr->parent_mac,
+ 				       ICE_FWD_TO_VSI);
+-- 
+2.43.0
+
