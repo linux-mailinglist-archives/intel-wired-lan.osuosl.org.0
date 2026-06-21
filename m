@@ -2,205 +2,138 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id B66aA1uYN2qWPAcAu9opvQ
+	id HzyNHqDfN2r0UwcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jun 2026 09:52:59 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jun 2026 14:57:04 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C5C416AA5E1
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jun 2026 09:52:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6A4CE6AAC80
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 21 Jun 2026 14:57:03 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=mKNW2dKz;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none);
-	arc=reject ("signature check failed: fail, {[1] = sig:microsoft.com:reject}")
+	dkim=pass header.d=osuosl.org header.s=default header.b=v09Pfx7Q;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3C504409A3;
-	Sun, 21 Jun 2026 07:52:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1FD3F6FD80;
+	Sun, 21 Jun 2026 12:57:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5vEbl8Zip8WF; Sun, 21 Jun 2026 07:52:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xKhDA0zCldAq; Sun, 21 Jun 2026 12:56:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DB9F40881
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6BC6F6FD81
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782028374;
-	bh=9/opGyMw67lkDblNLZOfnPCAOJ8Q3LOn8U3DD2hSvs4=;
-	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=mKNW2dKzrJhcbZtILkB2Go3UGS+6PE8UbYIqAft/1d4X/PxDzl0f1wcw4mzZpWFM7
-	 J2GqCCiMZOKDy8gqQqQ6sR3ngGiKFffmZKtDh3JeO/hRYoDs80+ZrxHvrdBvZ3msye
-	 SlnlDW8SS2Cz7f6p9itpsss+mZy9ZXCA7wuB8Ze2CdKbddRtIQA7J0eI19RDSfY8AK
-	 qomG4BQnVjO9cGVJ5ZHZ4k1zLmBBWo37+HgTIbgFeK7Fwilx8quIboJxOqAR5HdbL7
-	 xZ0saW8fQ1MvjCRYzcmW+1Y7QNgYQkWS1sZiVP3h2Lx47toktDcyd8XQtC+TYE8hMa
-	 V9BtZY5aaO/RA==
+	s=default; t=1782046619;
+	bh=OzuDjTBVZnVblzhpPthtqKRuK4UuaGylmLKeDqO4kyA=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=v09Pfx7Q3vu9P5VlL3RSDfvzsEJNOvlstbpiJpMfmfXqth/P5mRV/ivF8xc9tiBw0
+	 9wALGBJz9HoUS5XK5bxSARSb+B0GtHShzcayYX5M9+4tUKxfB+ZNCLcTYZPTbmgUHe
+	 CZvJNuglQtcBwrS3OIbBqKy6CJwDRegE7JzyNcscEfizeLFxucEXxO80rgvFcb9Xhl
+	 Bz/tE79FLZl27vpUfoJTDqaDKyZpbAKWzMbFlJMGlwoLUN9OjyjbGUu5DfcPPA8WhS
+	 E1FpShPCNHCZRckCl9Bh//qwXITC3PceaaxPqGV6TGAHLsg7wpTFiwVIgF2tOc9iuS
+	 RzD80NoZvQdFg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5DB9F40881;
-	Sun, 21 Jun 2026 07:52:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6BC6F6FD81;
+	Sun, 21 Jun 2026 12:56:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 0A8F524D
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 07:52:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 72A8B367
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 12:56:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E7E85864AC
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 07:52:52 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 584BD42E87
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 12:56:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F0PoSG4G8hID for <intel-wired-lan@lists.osuosl.org>;
- Sun, 21 Jun 2026 07:52:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id t4xYrk-3lVDB for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 21 Jun 2026 12:56:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mheib@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0A24685937
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A24685937
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0A24685937
- for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 07:52:51 +0000 (UTC)
-X-CSE-ConnectionGUID: 10K7FcjkQKee9nQ9zNecsw==
-X-CSE-MsgGUID: /hJ5arwTRKWKf6Pcq7303g==
-X-IronPort-AV: E=McAfee;i="6800,10657,11823"; a="86636497"
-X-IronPort-AV: E=Sophos;i="6.24,216,1774335600"; d="scan'208";a="86636497"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2026 00:52:51 -0700
-X-CSE-ConnectionGUID: k9AB4XOISmKkkjC3BxlQUg==
-X-CSE-MsgGUID: YcNxtC0rRYuo9vhGtDqNhQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.24,216,1774335600"; d="scan'208";a="279141536"
-Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
- by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2026 00:52:51 -0700
-Received: from FMSMSX901.amr.corp.intel.com (10.18.126.90) by
- fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Sun, 21 Jun 2026 00:52:50 -0700
-Received: from fmsedg901.ED.cps.intel.com (10.1.192.143) by
- FMSMSX901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Sun, 21 Jun 2026 00:52:50 -0700
-Received: from DM1PR04CU001.outbound.protection.outlook.com (52.101.61.49) by
- edgegateway.intel.com (192.55.55.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Sun, 21 Jun 2026 00:52:48 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GGQOhXWUXf+USXxDjqz1AjrAnR+P5Odgh7F2R2GbrBNedXPMfNFq9Vkf4SruO08Ifso0sKVkReUrRpkyJ4Fx8Tovi+knYq8QDxr3jPUQqqEUFXKBfrZiRar7si95nUNwZemvvARV0rMN3wZBIAbeWiHlo3dE6i1dAaeVlMYJQqsWLttAjL6yLJ7Pp9kj349fletmzjwyLGcbypZrtVF5Ob7Nn/Ge98MEFkgP4ggYLlM+WazGesp94ZqDNiZM/bUXgt+JClYHNv85PCwUa52s6Vi8K1UIbU+EcXJ6GLZkvErxswu4H9+yRKZYf99a74d2ZLe7FX8b5glwvM5M8ElZmQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9/opGyMw67lkDblNLZOfnPCAOJ8Q3LOn8U3DD2hSvs4=;
- b=K+Zlr3W3bHtHn/t9RaUVhJTqmpr+2V15S9RvdcS1l9CcbOVWJmQvWUM1tKejQ3PlRQAyQZw03bFEs6YswOW+PSpZ3JxBctW7ifA77gQexLTsRacPMbZlymbwlW6yjE8HFqRSZ1jAZ9mL1rddxzXAj5oDV/OyRdIgNDiSaEuh2II08jmMKdeuyajIjba/iuaQZ5qDHSut2lcnadg3BZARux7nlqko581YBaChhFt4HKcxFQvaG1IgAIJ3DcE/Ii+9qJzoo00Hr0cJ36hKlGH5zq1h0oPz4up/ju0983W0n58z8SbD0vsVsjq79YvsuOeyVGj2mQUBVEFL0hjEXKLeUw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB6864.namprd11.prod.outlook.com (2603:10b6:303:21b::16)
- by BL3PR11MB6507.namprd11.prod.outlook.com (2603:10b6:208:38e::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.139.19; Sun, 21 Jun
- 2026 07:52:46 +0000
-Received: from MW4PR11MB6864.namprd11.prod.outlook.com
- ([fe80::3cb9:afc2:1be5:5d7b]) by MW4PR11MB6864.namprd11.prod.outlook.com
- ([fe80::3cb9:afc2:1be5:5d7b%7]) with mapi id 15.21.0139.018; Sun, 21 Jun 2026
- 07:52:45 +0000
-From: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>
-To: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-CC: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "pmenzel@molgen.mpg.de"
- <pmenzel@molgen.mpg.de>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: Implement PCI reset
- handler
-Thread-Index: AQHc/y3pkOfhu4/2PEaaJPdGejQGe7ZIpzDQ
-Date: Sun, 21 Jun 2026 07:52:45 +0000
-Message-ID: <MW4PR11MB686478EA94DDAF47191C16FA80E02@MW4PR11MB6864.namprd11.prod.outlook.com>
-References: <20260618142212.310475-1-sergey.temerkhanov@intel.com>
-In-Reply-To: <20260618142212.310475-1-sergey.temerkhanov@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB6864:EE_|BL3PR11MB6507:EE_
-x-ms-office365-filtering-correlation-id: 82e4482c-9ff4-4ffb-e678-08decf6a1501
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|23010399003|376014|38070700021|18002099003|22082099003|6133799003|56012099006|11063799006;
-x-microsoft-antispam-message-info: RUIYWInYvBK6oM6MOEO8VkrP/ym4Znz8eq4w/QAAUyvtHRCOE9yeDqwz0io4uu5bLlsNr4N9pQSEe4Qxsu8x6xEmfevJGWQNWT4wow0ERXBdYb5GbYUVLFzufADJxsp9R5yf0Vw7DjzWV9a6zNDR4f6dhR+kyUR4KNGu8WIfsq4IKeUrrqdNa2EhFFqiKB+7/bP0rt7YDrnNmXo0BTxGB1FEsdmb5JFiSANtvIyH7a61FJ3st9+70UUYKeEV9ZXjn25VbeXYKPYu7vTDPSlsnPnMUnpVmwasrQ5CwmKOpwsHYm6u+o8nw/3dmUk/2g5NoGZtR3lyh3Wmrz89pWk/11xxpP3LRdz0vjBZS9Qvuagdk3haBHXJxLTc42evdpHPN0nhjuQJgFgB753LlWpGw+TbW+Kl3TNwY2ujKfWMFdIQJ9FkTVx1ZUxwVHfuOBfZ9XavoIXqwYC5Xn82nZ4DVU+M41DssE9VRzKzxyJk78EsI+FCbAWdoxzSArvDKLqoNbcDKi6XF2S7pYNSFuxCwkp7fRdo1yHqdabvElJhgDxiE130+1AXGnAhQhRcJXYsso0vYtot1ScPOy66wO1blH8YFTNuG+WvNKqER6vYH1W8w/E9dh/okSRK2epCq2YLTYgKFTqRbKmVjjvK5viLxZAJ7aHzluc8arfWpm4lCcbemEnvkYD5GFKDUmKFeJyzY1gHhXAB7EsvhG/rjWzef1VKCOeYtoo0g1mkBZi5vn0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB6864.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(38070700021)(18002099003)(22082099003)(6133799003)(56012099006)(11063799006);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HQek6SFsT/+qNyeDO1VaJdtbwKyxkroHvHeDOyEFXMX2hMVj+TRpySU76Aaj?=
- =?us-ascii?Q?Nbsf+CS9V/FMxV3DeEahKAigAunAMCna2CASQeUz6Q5zrN2RyXTT1sZQ43FB?=
- =?us-ascii?Q?i2+n5GWNu9li/qI8eA7HLwpeh/9AXPds6phUs4BttSLKqoJLOss/wNpRsmzn?=
- =?us-ascii?Q?qD7C5bcLxAeo1Tak9wRKAmD2tM5ltdWEuBENXbF+3Hh9P05/nuOAjAvkexXK?=
- =?us-ascii?Q?g/8ni/dLwxbA4Epms09K0INNXfaXHDSf1OgWlpuFkU7ES7bBb9znelvWxj12?=
- =?us-ascii?Q?FT9+Tcp4/9VjQaErDoI3j8U+Vj0fJu1E2sjL2egFrVscEQt+RlZbUKHOTyXQ?=
- =?us-ascii?Q?rJ7TSIJdzBf3+BlBMPePwEEZrPp615188zIjoAWFLv8u3KYJGl+tBoTWrq6w?=
- =?us-ascii?Q?97tnV/WlPDLDriOvbDCKLOnW7RmUeO2YAX3duYUJZ3C5pYCBKcxj0nTIJL5n?=
- =?us-ascii?Q?lTdTWrf/IaKb2xp+y2K682xjhw/JpQ+cPB7135M4KqbyAJYZq9GCGJdoNueo?=
- =?us-ascii?Q?l1cW+KCPnXRUIy0hlarDMu4OEkLyAxzkx61LxbIh0LRaC/jxVoXibhIOOIm0?=
- =?us-ascii?Q?TKsE+4P3EYnfcldXkBokxOMAUDlkIWxeb9E3rLmCARg1PgSUHyok1CtMvgQ9?=
- =?us-ascii?Q?gTs2VWBvYT0py00cWNVVSoJKxsucRlFgu0rNPuBJGZA9761Tzgl4E1FN6nTg?=
- =?us-ascii?Q?rG4V3I+PnMmuqrCjzEmQxL/yS9J9l/w02M3108WtnUZmoQN7Wtd+BBXH4Vrz?=
- =?us-ascii?Q?6GUQNmbA/qOX1L3dinEmAAE9TeEQmb7WGWQuYhNFFlfWDDdg0vHUEHYiD7JR?=
- =?us-ascii?Q?uBikVs8O5qxIaucbDhWMnxTFtHEjanvqsYlUwAP2wgsXVxlqGLMgNN2bC06f?=
- =?us-ascii?Q?hKLCCLGqrtBolUzcbGouaDV1gI71csViqDL5FWX+kY9kHfWUlZJKTzhHtLdQ?=
- =?us-ascii?Q?7PcP4pCYVQN5Jrpkg4KENNNSMfbPxyeOWKQtWiky2/Hu+2Xg0/n3to9dQXX+?=
- =?us-ascii?Q?4jQf5mOuZIM47gnx4KMz3o9f/MurSmEWNqgFOmo7NlpzLUq2bfiU50KRis+/?=
- =?us-ascii?Q?wQlpLlPvFI6sRMjahgkvrUeDwxyAVsD3Qg1+FJO1Pi6m8yimRm5vCgXYAi4e?=
- =?us-ascii?Q?WCrSgbNVgiGrFnc7aNIBCzxp6ACnRw/vbxwNNA/r72TD/ZHbB1DAnU05U7P2?=
- =?us-ascii?Q?/9tJBPX2ugYfqhApIO7fPdW7B9K2jLe/COef4rq/uyGjWwH70RWiNqfJKytE?=
- =?us-ascii?Q?77TAYnaF38qWnbyiubk+R2yj42Kxwih1swyH1A7emzFM/jHKunxsRKB9moeR?=
- =?us-ascii?Q?tMvBRd8Onq+uWBsCco0S7cR1WhC4lbDzIahQjUX9D8tOhQWdWpTfBWbKbZ5q?=
- =?us-ascii?Q?6xgrQT5qKbc9AfuFFlkVH/8IQsqoSF2tuEW5KcUBOZXi2thY6zzdOf9Z84vM?=
- =?us-ascii?Q?zXxpu2wIxMHf9+8aPM0mFoVphZVrbp9POJoeQvVFG9sGMXiSX7WVhvbj5PZC?=
- =?us-ascii?Q?P8mXGMA5IR1X29gUDMdWLBYgGGFZ/SNwfmZR+lP2JZAduCIuzERW6TGHVNtz?=
- =?us-ascii?Q?6wnLbc9UgTJjEL9Cs1Kf0dppSxuNwt6atGKwqQ9r/9kwIPQ4TOEfoLYHNVAz?=
- =?us-ascii?Q?V4u9di0RIXT1GzXVhTqG9CtxLDQgU1CG/yWgAL9IVOEzoDnr+lrT5Mm0n2Eu?=
- =?us-ascii?Q?dqGGCTknoge8XkFOHQBi79rtPkXv1WZLlrnIsl2uxkS3jyxDlEPQIgAM2xCz?=
- =?us-ascii?Q?/n2aSJrThA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3F4D142CA0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F4D142CA0
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3F4D142CA0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 12:56:56 +0000 (UTC)
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-117-JPdM09B7Nwa2c7Qefb0Okw-1; Sun, 21 Jun 2026 08:56:54 -0400
+X-MC-Unique: JPdM09B7Nwa2c7Qefb0Okw-1
+X-Mimecast-MFC-AGG-ID: JPdM09B7Nwa2c7Qefb0Okw_1782046613
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-462c1cf9003so3241110f8f.1
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 21 Jun 2026 05:56:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1782046613; x=1782651413;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=OzuDjTBVZnVblzhpPthtqKRuK4UuaGylmLKeDqO4kyA=;
+ b=WvPxo3miw4rl2FBa9R8qU3ISnZyI7POwEsZUfuqjyF3zM+KJ70Mx+77tlZe1ktULUk
+ RE91vZvZLwZl2gzaLcTx47+4rxf1L5jug0cMR1y+lL1BmArmkv25WxxgWx3O7wi4+7ZS
+ PWOLdqDJ6+yFJmg9yl9wAyNp6sOoiYuZ/eDMhqZRAxWgkq1YGvrtZ+OGVNfA0WdLtlcD
+ +xHGmRTzlpioLU9+oJw5mEAbIUf1Aj+UtWiXnIzD1WyTDwgCGc5gDkKNDSywphcHOijf
+ S3LO7vzBGX6XyQf7YiNHkTN5Map9ciMVN1oM+z82iSdTb5OwrsITQKXAD+7O6yfwfRh5
+ Tvlw==
+X-Gm-Message-State: AOJu0Yxu89tlQZZ5MvK3pm0TckXeqKv1RMixym6tBzxK1h5jlJeZnGwP
+ TfYFjQCBgSlQR/ToeHP680KnYctsJZFcEoNhCzjpwNNnU4KNBNYkxubRN90GFSqomdeqOQndbfj
+ gnNp3HBdCeyNK4KNxN7eWvfKKEhISXUDNXLY9l0QrfvSAYeOb4ccpAgPtQ1Phd+KJH7tL5K6A/h
+ Ly54gEDnd2K/Hs+Lju7zp08RYO9wx+bQfB7FayNjmlG5OKVr8VQ6LKew==
+X-Gm-Gg: AfdE7cn3KSdMBmaXxeiCJysV5nVIFUlGDSoPcOJczuqfX5JZDsTseNcxtNnJrRwO6cP
+ 3il11CdhV/VRjsf6bm0N/Kk7+V/uQEZVihdyaLVe8DT+FHC2Gn17HbVz2N/7TCYfz8U+6Uc4tql
+ qbmbPTOXb8eZcsiSUG935wHsyaK0ID5iYmstPCrdMksNAR+NPXWGw1rJcvwmGMohaJdPYcwRXPV
+ KmhCUqPkfG8Mc1Fh3D+noT73cI5gcDNWWBkSQfy6v33KCLOaBYzVA2ByLzgUTkpZjEfQAnrK7nm
+ +/qnFhEcfKol5lwDyBQeIyyfh537eFcOMyESKLEDskO3+/Lu4L9MqpW/cHwWwbr9ZizXoVtQIr4
+ zlxRLpB2hTwgWMxRD02WgEy4=
+X-Received: by 2002:a05:6000:461e:b0:464:b8d7:e5d8 with SMTP id
+ ffacd0b85a97d-4656c69b646mr15818577f8f.14.1782046612868; 
+ Sun, 21 Jun 2026 05:56:52 -0700 (PDT)
+X-Received: by 2002:a05:6000:461e:b0:464:b8d7:e5d8 with SMTP id
+ ffacd0b85a97d-4656c69b646mr15818536f8f.14.1782046612468; 
+ Sun, 21 Jun 2026 05:56:52 -0700 (PDT)
+Received: from fedora.redhat.com ([216.128.14.31])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-466648c4f01sm17884258f8f.9.2026.06.21.05.56.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 21 Jun 2026 05:56:51 -0700 (PDT)
+From: mheib@redhat.com
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, jiri@resnulli.us, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, horms@kernel.org,
+ corbet@lwn.net, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, Mohammad Heib <mheib@redhat.com>
+Date: Sun, 21 Jun 2026 15:56:43 +0300
+Message-ID: <20260621125644.253844-1-mheib@redhat.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: McrITIReL74O0eYH565e9xjt4XJOPBxJzkBdDVa//TVfbDJq8FNQN85iUtpHagDK6PcvYtpCrrDLMcIG1pdffxj0ddeqKdCE+49b7lGFDEDI3dsT7s1qqy1Xw9ckJanUQ2iZ8iQBuyzfKms30kvGxcJm/U2efqsgMco2O6CFXhRKSqAxF72vXZ8TKtJlekNhAiNK2HNT3daf3xE3pqxgvhqznEq0/qT8/smTzS0of/WqzfrUrvPYZyE/XSC9NVx6C/1Q8hGcUaEm+IUVS2/tjbQO4lZvTAk4N2/XvRkLWnjZqHkDZIa9azzez4fnWUhA0qGPzEDtBf49ur0AT3OALw==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6864.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 82e4482c-9ff4-4ffb-e678-08decf6a1501
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jun 2026 07:52:45.8827 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qiKxto4hr5PVS293Gd5SIWy62JJ/RJJdbu0Je5UfkWcnb4GIEvWSdtKXTKg+0C4lbZQclCU1eaEdvWms+KrBH/a36ZdSYFQdOpkxQNGSAZ0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6507
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1782028372; x=1813564372;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=J0bTr9NAyV8x1P5/xyWiAqow74biM33sGTuH0Vnc8Wo=;
- b=ItJpUJzuDZRyhV/0kc1zfsdoPO5URp5na1yINNojizJytiC3IlJaU+sI
- 4Vj3AKHltVIYoyEK6RUYUwSH5jZ3orToUcJa9Cnfw68FdnkuGVC58qwxA
- IpmraS7scCquaOlTHnjiC2ijiIRU2bgBnp/LWRTVmFjeIgX3r/d4ycu+c
- g9mAHSpx2LgTgA8W0mSBt+EEFiQgl6s0UiwyQPq1QLwMuoAoU7E9MLv8p
- FkdCSVG4tQu1u8W4aXnGCEj9gyaIi/lSqSFP2IWywGqtcnfR5BpJKQUJq
- jENxkUwuZGULqLGvNQhX6XlRAvLekGirBqVGW6Viecci3qXfKBzTMtzUd
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ItJpUJzu
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: Implement PCI
- reset handler
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: c_hLJ_EZZ-75D6I9LZpgE-6fngK6sMoMc1TtNUBuLQY_1782046613
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1782046615;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=OzuDjTBVZnVblzhpPthtqKRuK4UuaGylmLKeDqO4kyA=;
+ b=ASTSQAm3Mn9GbgLA2vJ6VD/YzpiV8c8DV8/g28YbmmwE23rLFRxayjls2MqnylqVtDsc6y
+ 49bIdcDBuNrRDyyt6G1Lgm7ljA3ZZs0xM84MxBcXSn8BblETHqEPMmVO4MBN8d7AW+NIvc
+ oPXyUfD13/hX+mRxOBNqy0hDaNcGWxg=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=ASTSQAm3
+Subject: [Intel-wired-lan] [PATCH 1/2 net-next,
+ v1] i40e: move ATR sample rate from ring to PF level
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -216,192 +149,130 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.39 / 15.00];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
-	MAILLIST(-0.20)[mailman];
+X-Spamd-Result: default: False [3.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:sergey.temerkhanov@intel.com,m:netdev@vger.kernel.org,m:pmenzel@molgen.mpg.de,s:lists@lfdr.de];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
+	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_EQ_ADDR_SOME(0.00)[];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER(0.00)[sergey.temerkhanov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	RCPT_COUNT_TWELVE(0.00)[13];
 	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_THREE(0.00)[4];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCVD_COUNT_TWELVE(0.00)[14];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[sergey.temerkhanov@intel.com,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FROM_NO_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[mheib@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[MW4PR11MB6864.namprd11.prod.outlook.com:mid,osuosl.org:dkim,osuosl.org:email,osuosl.org:from_smtp,outlook.com:email,intel.com:from_mime,intel.com:email,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo]
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: C5C416AA5E1
+X-Rspamd-Queue-Id: 6A4CE6AAC80
 
-Please disregard, this is a broken version mistakenly sent.
+From: Mohammad Heib <mheib@redhat.com>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Sergey Temerkhanov
-> Sent: Thursday, June 18, 2026 4:22 PM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; pmenzel@molgen.mpg.de
-> Subject: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: Implement PCI reset
-> handler
->=20
-> Implement PCI device reset handler to allow the network device to get re-
-> initialized and function after a PCI-level reset.
->=20
-> This is necessary for the adapter to avoid TX queue timeouts occurring wh=
-en
-> the PCI reset is initiated via sysfs during the operation
->=20
-> Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
->=20
-> Previous version:
-> https://lore.kernel.org/netdev/MW4PR11MB6864BC9CA84F060AF7E02484
-> 80E42@MW4PR11MB6864.namprd11.prod.outlook.com/
-> v1->v2 changes: Rearranged the order of operations, switched to
-> v1->poll_timeout_us() macro
->=20
->  drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
->  drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 82 +++++++++++++++++++
->  2 files changed, 83 insertions(+)
->=20
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> index 594ccb28da20..c4b0c5bb89c6 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-> @@ -912,6 +912,7 @@ enum ixgbe_state_t {
->  	__IXGBE_PTP_TX_IN_PROGRESS,
->  	__IXGBE_RESET_REQUESTED,
->  	__IXGBE_PHY_INIT_COMPLETE,
-> +	__IXGBE_PCIE_RESET_IN_PROGRESS,
->  };
->=20
->  struct ixgbe_cb {
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index 2ac274c73d61..0fb64aef223e 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -12352,6 +12352,86 @@ static pci_ers_result_t
-> ixgbe_io_slot_reset(struct pci_dev *pdev)
->  	return result;
->  }
->=20
-> +/* 1500 us poll interval */
-> +#define IXGBE_RESET_PREP_POLL_INTERVAL_US 1500
-> +/* 2 second timeout to acquire reset lock before proceeding */ #define
-> +IXGBE_RESET_PREP_TIMEOUT_US 2000000
-> +
-> +/**
-> + * ixgbe_reset_prep - called before the pci bus is reset.
-> + * @pdev: Pointer to PCI device
-> + *
-> + * Prepare the card for a reset, preventing the service task from runnin=
-g.
-> + */
-> +static void ixgbe_reset_prep(struct pci_dev *pdev) {
-> +	struct ixgbe_adapter *adapter =3D pci_get_drvdata(pdev);
-> +
-> +	if (!adapter)
-> +		return;
-> +
-> +	if (poll_timeout_us(test_and_set_bit(__IXGBE_RESETTING, &adapter-
-> >state),
-> +			    test_bit(__IXGBE_RESETTING, &adapter->state),
-> +			    IXGBE_RESET_PREP_POLL_INTERVAL_US,
-> +			    IXGBE_RESET_PREP_TIMEOUT_US, false)) {
-> +		/* ixgbe_reset_done() will exit early if this happens.
-> +		 * A retry will be needed
-> +		 */
-> +		e_err(drv, "Timed out waiting for __IXGBE_RESETTING to be
-> released. Reset is needed\n");
-> +		return;
-> +	}
-> +
-> +	/* Sync __IXGBE_RESETTING */
-> +	smp_mb__after_atomic();
-> +
-> +	if (test_bit(__IXGBE_SERVICE_INITED, &adapter->state)) {
-> +		/* Prevent the service task from being requeued in the timer
-> callback */
-> +		timer_delete_sync(&adapter->service_timer);
-> +		/* Cancel any possibly queued service task */
-> +		cancel_work_sync(&adapter->service_task);
-> +	}
-> +
-> +	pci_clear_master(pdev);
-> +
-> +	set_bit(__IXGBE_PCIE_RESET_IN_PROGRESS, &adapter->state); }
-> +
-> +/**
-> + * ixgbe_reset_done - called after the pci bus has been reset.
-> + * @pdev: Pointer to PCI device
-> + *
-> + * Allow the service task to run and schedule re-initialization.
-> + */
-> +static void ixgbe_reset_done(struct pci_dev *pdev) {
-> +	struct ixgbe_adapter *adapter =3D pci_get_drvdata(pdev);
-> +
-> +	if (!adapter)
-> +		return;
-> +
-> +	if (!test_and_clear_bit(__IXGBE_PCIE_RESET_IN_PROGRESS,
-> &adapter->state)) {
-> +		/* Should never get here */
-> +		e_err(drv, "Reset done called without PCIe reset in
-> progress\n");
-> +		return;
-> +	}
-> +
-> +	pci_set_master(pdev);
-> +
-> +	/* Allow the service task to run */
-> +	if (!test_bit(__IXGBE_REMOVING, &adapter->state)) {
-> +		clear_bit(__IXGBE_RESETTING, &adapter->state);
-> +		/* Sync __IXGBE_RESETTING */
-> +		smp_mb__after_atomic();
-> +	}
-> +
-> +	/* Schedule re-initialization */
-> +	if (!test_bit(__IXGBE_DOWN, &adapter->state)) {
-> +		set_bit(__IXGBE_RESET_REQUESTED, &adapter->state);
-> +		if (test_bit(__IXGBE_SERVICE_INITED, &adapter->state))
-> +			mod_timer(&adapter->service_timer, jiffies + 1);
-> +	}
-> +}
-> +
->  /**
->   * ixgbe_io_resume - called when traffic can start flowing again.
->   * @pdev: Pointer to PCI device
-> @@ -12384,6 +12464,8 @@ static const struct pci_error_handlers
-> ixgbe_err_handler =3D {
->  	.error_detected =3D ixgbe_io_error_detected,
->  	.slot_reset =3D ixgbe_io_slot_reset,
->  	.resume =3D ixgbe_io_resume,
-> +	.reset_prepare =3D ixgbe_reset_prep,
-> +	.reset_done =3D ixgbe_reset_done,
->  };
->=20
->  static DEFINE_SIMPLE_DEV_PM_OPS(ixgbe_pm_ops, ixgbe_suspend,
-> ixgbe_resume);
-> --
-> 2.53.0
+The ATR sample rate is currently stored per-ring and initialized when each
+TX ring is configured. Since the sample rate is a global policy that
+applies uniformly across all rings, it makes more sense to store it at
+the PF level.
+
+Move atr_sample_rate from struct i40e_ring to struct i40e_pf and initialize
+it once during i40e_sw_init(). Update i40e_atr() to reference the PF-level
+field. Change atr_count from u8 to u32 to match the sample rate type.
+
+Signed-off-by: Mohammad Heib <mheib@redhat.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h      | 1 +
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 9 +++------
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c | 4 ++--
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h | 3 +--
+ 4 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 1b6a8fbaa648..88eb40ee45f0 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -487,6 +487,7 @@ struct i40e_pf {
+ 	u16 rss_size_max;          /* HW defined max RSS queues */
+ 	u16 fdir_pf_filter_count;  /* num of guaranteed filters for this PF */
+ 	u16 num_alloc_vsi;         /* num VSIs this driver supports */
++	u32 atr_sample_rate;
+ 	bool wol_en;
+ 
+ 	struct hlist_head fdir_filter_list;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index d59750c490f4..9695d160bc59 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -3457,12 +3457,7 @@ static int i40e_configure_tx_ring(struct i40e_ring *ring)
+ 		ring->xsk_pool = i40e_xsk_pool(ring);
+ 
+ 	/* some ATR related tx ring init */
+-	if (test_bit(I40E_FLAG_FD_ATR_ENA, vsi->back->flags)) {
+-		ring->atr_sample_rate = I40E_DEFAULT_ATR_SAMPLE_RATE;
+-		ring->atr_count = 0;
+-	} else {
+-		ring->atr_sample_rate = 0;
+-	}
++	ring->atr_count = 0;
+ 
+ 	/* configure XPS */
+ 	i40e_config_xps_tx_ring(ring);
+@@ -12745,6 +12740,8 @@ static int i40e_sw_init(struct i40e_pf *pf)
+ 		}
+ 	}
+ 
++	pf->atr_sample_rate = I40E_DEFAULT_ATR_SAMPLE_RATE;
++
+ 	if ((pf->hw.func_caps.fd_filters_guaranteed > 0) ||
+ 	    (pf->hw.func_caps.fd_filters_best_effort > 0)) {
+ 		set_bit(I40E_FLAG_FD_ATR_ENA, pf->flags);
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 61525ab7d21e..da94cb2ce94d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -2882,7 +2882,7 @@ static void i40e_atr(struct i40e_ring *tx_ring, struct sk_buff *skb,
+ 		return;
+ 
+ 	/* if sampling is disabled do nothing */
+-	if (!tx_ring->atr_sample_rate)
++	if (!pf->atr_sample_rate)
+ 		return;
+ 
+ 	/* Currently only IPv4/IPv6 with TCP is supported */
+@@ -2934,7 +2934,7 @@ static void i40e_atr(struct i40e_ring *tx_ring, struct sk_buff *skb,
+ 	if (!th->fin &&
+ 	    !th->syn &&
+ 	    !th->rst &&
+-	    (tx_ring->atr_count < tx_ring->atr_sample_rate))
++	    (tx_ring->atr_count < pf->atr_sample_rate))
+ 		return;
+ 
+ 	tx_ring->atr_count = 0;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index bb741ff3e5f2..be587f804e7a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -372,8 +372,7 @@ struct i40e_ring {
+ 	u16 next_to_clean;
+ 	u16 xdp_tx_active;
+ 
+-	u8 atr_sample_rate;
+-	u8 atr_count;
++	u32 atr_count;
+ 
+ 	bool ring_active;		/* is ring online or not */
+ 	bool arm_wb;		/* do something to arm write back */
+-- 
+2.53.0
 
