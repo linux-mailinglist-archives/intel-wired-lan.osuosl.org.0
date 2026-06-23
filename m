@@ -2,90 +2,117 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id ohfQIShcOWpmrAcAu9opvQ
+	id GqmFKwUtOmpx3QcAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2026 18:00:40 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jun 2026 08:51:49 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8635F6B0F04
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jun 2026 18:00:39 +0200 (CEST)
-Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=UeMrLaDH;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=none
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 34F8880F30;
-	Mon, 22 Jun 2026 16:00:38 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c_K_atTHlmco; Mon, 22 Jun 2026 16:00:36 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 84C8B80F32
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782144036;
-	bh=GL3oeBCRrbpCjjh6sxmq5ekOO6xnhDFz9CL6H1DCMAY=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=UeMrLaDH628A76ij+IDzv0hw03G80DGkor0qQ51JisR2+GEWvJc0P2Y/ZB4YQ3Gy+
-	 SWF1TvUe+vqhoqd8NS8y4VH/VYYdYJIzjxIXcedFaFO0gQv+IrEpFRlanufvEiiEfi
-	 LpJ79Uobj8iYAQWDrzBTvuYD/S32DsdhIJKYf7oi2GEaQfcRgKWesCsXvDho3gx1kd
-	 4p93dGQPMzjPpEggBlidYe9/HTTMQrUeP7hdYNBqnWDFRUQ7AO/jgR5oSNugNcvnBJ
-	 zKEvNLhZehQ86vqgFqU8I7GfvAri288H3+yat2oqE1Kl0X0JvK6lUVDAvrSGHsWKp9
-	 lx1t7OujPvQcw==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 84C8B80F32;
-	Mon, 22 Jun 2026 16:00:36 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 60105367
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2026 16:00:34 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D5AE6B4A4A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jun 2026 08:51:48 +0200 (CEST)
+Authentication-Results: mail.lfdr.de;
+	dkim=pass header.d=osuosl.org header.s=default header.b=XemidTFE;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5DD326066B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2026 16:00:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD61E607EA;
+	Tue, 23 Jun 2026 06:51:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HEQsCuAuhNzZ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jun 2026 16:00:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id 9oJCB8WIok1s; Tue, 23 Jun 2026 06:51:46 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03D00607F5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1782197506;
+	bh=x8TJwUtC+G+n+qNyQWu0ehmMk+LBRSH9bQBQaUoR0T0=;
+	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=XemidTFEtLNbRGl6MBinndQnuffe2qNvxmFu1J1GvhH2tcwJyqFWplanoyAOg51t2
+	 lQ7Q8W+DXo2Dyo+02o6M2UukF311pKm87YIbEwpc2HPBSzbgr4k10cIiP0MoM8T6pP
+	 7QpWbKujQxTsinTSe9URGLobna72+gfFUtLq+COZRhl+unVUBL5qdn+/deQR0F1/Or
+	 dinUVzXS3VFeeHqGvcL+/2WJroGUifsRIVDHS9x3MsSaY3e7pOnrhxAHxdYRvVZlIu
+	 ThQvJQ0cN7joW9MHZq7pPHeTlZJCwNDJoDL2kGVbv8Vp7AigGV98C6hpvdUVZn8pxg
+	 17+78rtey6YhA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 03D00607F5;
+	Tue, 23 Jun 2026 06:51:46 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 16BE6256
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2026 06:51:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id F1444401D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2026 06:51:44 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZwUoCMmdBukl for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jun 2026 06:51:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=jtornosm@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3C2FB6066A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C2FB6066A
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3C2FB6066A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jun 2026 16:00:31 +0000 (UTC)
-Received: from [141.14.220.42] (g42.guest.molgen.mpg.de [141.14.220.42])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DF2F64019E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF2F64019E
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DF2F64019E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jun 2026 06:51:42 +0000 (UTC)
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-111-zoNZJuxdNRquAp2fEwsbbQ-1; Tue,
+ 23 Jun 2026 02:51:38 -0400
+X-MC-Unique: zoNZJuxdNRquAp2fEwsbbQ-1
+X-Mimecast-MFC-AGG-ID: zoNZJuxdNRquAp2fEwsbbQ_1782197496
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2FF704C28871AA;
- Mon, 22 Jun 2026 17:59:55 +0200 (CEST)
-Message-ID: <40abd0b5-7f3f-4cd4-9975-9db4498d15d3@molgen.mpg.de>
-Date: Mon, 22 Jun 2026 17:59:53 +0200
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0A1911956041; Tue, 23 Jun 2026 06:51:36 +0000 (UTC)
+Received: from fedora.redhat.com (unknown [10.44.48.11])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C0C551800591; Tue, 23 Jun 2026 06:51:31 +0000 (UTC)
+From: Jose Ignacio Tornos Martinez <jtornosm@redhat.com>
+To: przemyslaw.kitszel@intel.com
+Cc: aleksandr.loktionov@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, horms@kernel.org,
+ intel-wired-lan@lists.osuosl.org, jacob.e.keller@intel.com,
+ jtornosm@redhat.com, kuba@kernel.org, netdev@vger.kernel.org,
+ pabeni@redhat.com, stable@vger.kernel.org
+Date: Tue, 23 Jun 2026 08:51:29 +0200
+Message-ID: <20260623065130.600628-1-jtornosm@redhat.com>
+In-Reply-To: <55f9e2af-54fb-4257-af25-dc9c0fbeb72c@intel.com>
+References: <55f9e2af-54fb-4257-af25-dc9c0fbeb72c@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Ding Meng <meng.ding@siemens.com>,
- Florian Bezdeka <florian.bezdeka@siemens.com>
-Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, jan.kiszka@siemens.com,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, wq.wang@siemens.com
-References: <20260622041718.6106-1-meng.ding@siemens.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20260622041718.6106-1-meng.ding@siemens.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH net] igc: Fix RX HW timestamp
- reporting when NET_RX_BUSY_POLL is disabled
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: c5HHgzdM1lLUvIBzQcN09NfjdEoWzBfvuZmlVDP3L0Q_1782197496
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1782197501;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=x8TJwUtC+G+n+qNyQWu0ehmMk+LBRSH9bQBQaUoR0T0=;
+ b=FWdk4FYslAe1lXIqYulk4tHPgN97ECbFyrqFMQLf5c/ozvMt3p1JiH4Q0C08g2gFjBcUXL
+ vKRmJe4lLa0fCeHBG2GK847LGWgksOY83R8+04YFRxxZl09Uvkj3YU/1loek5I+jTcc9jc
+ FRFvx4WwyY/yQ/qby/KQEU+8L68w4yU=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=FWdk4FYs
+Subject: Re: [Intel-wired-lan] [PATCH net v6 3/4] iavf: send MAC change
+ request synchronously
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -101,170 +128,53 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.69 / 15.00];
-	SUSPICIOUS_RECIPS(1.50)[];
+X-Spamd-Result: default: False [1.69 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	MID_CONTAINS_FROM(1.00)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
+	RCPT_COUNT_TWELVE(0.00)[13];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:meng.ding@siemens.com,m:florian.bezdeka@siemens.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:jan.kiszka@siemens.com,m:linux-kernel@vger.kernel.org,m:netdev@vger.kernel.org,m:wq.wang@siemens.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
-	DMARC_NA(0.00)[mpg.de];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[siemens.com:email,osuosl.org:dkim,osuosl.org:from_smtp];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[14];
-	FORGED_SENDER(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:przemyslaw.kitszel@intel.com,m:aleksandr.loktionov@intel.com,m:anthony.l.nguyen@intel.com,m:davem@davemloft.net,m:edumazet@google.com,m:horms@kernel.org,m:jacob.e.keller@intel.com,m:jtornosm@redhat.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:pabeni@redhat.com,m:stable@vger.kernel.org,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
-	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[pmenzel@molgen.mpg.de,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	TO_DN_NONE(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[jtornosm@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[8]
+	MISSING_XM_UA(0.00)[];
+	ALIAS_RESOLVED(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 8635F6B0F04
+X-Rspamd-Queue-Id: 9D5AE6B4A4A
 
-Dear Ding,
+Hello,
 
+Thank you for catching this.
+You're absolutely right - the loop can't work without polling between
+iterations since the second call would hit the current_op check and
+return -EBUSY. I will remove the multi-batch loop and revert this to
+v5's approach.
 
-Thank you for your patch.
+v7 will be posted shortly with these changes.
 
-Am 22.06.26 um 06:13 schrieb Ding Meng via Intel-wired-lan:
-> When CONFIG_NET_RX_BUSY_POLL is deactivated, fetching RX HW timestamps
-> from the NIC no longer works as expected.
+Thanks
 
-Maybe paste some logs/errors, so it can be easier found by people with 
-the same issue.
+Best regards
+José Ignacio
 
-> This occurs because disabling CONFIG_NET_RX_BUSY_POLL disables the
-> SKB NAPI mapping in __skb_mark_napi_id(). Consequently, get_timestamp()
-> fails to perform its driver lookup, and the igc driver's struct
-> net_device_ops::ndo_get_tstamp is never invoked.
-> 
-> Instead, get_timestamp() falls back to use shhwtstamps(skb)->hwtstamp,
-> a field that the driver has not populated.
-> 
-> Fix this by populating the hwtstamp field with the correct timestamp
-> in the default timer when CONFIG_NET_RX_BUSY_POLL is disabled.
-
-Maybe detail, why the adapter needs to be passed now.
-
-Also, please describe a test case to check the change.
-
-> Fixes: 069b142f5819 ("igc: Add support for PTP .getcyclesx64()")
-> Co-developed-by: Florian Bezdeka <florian.bezdeka@siemens.com>
-> Signed-off-by: Florian Bezdeka <florian.bezdeka@siemens.com>
-> Signed-off-by: Ding Meng <meng.ding@siemens.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_main.c | 38 ++++++++++++++++-------
->   1 file changed, 26 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-> index 8ac16808023..1da8d7aa76d 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -1992,7 +1992,26 @@ static struct sk_buff *igc_build_skb(struct igc_ring *rx_ring,
->   	return skb;
->   }
->   
-> -static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
-> +static void igc_construct_skb_timestamps(struct igc_adapter *adapter,
-> +					 struct sk_buff *skb,
-> +					 struct igc_xdp_buff *ctx)
-> +{
-> +	if (!ctx->rx_ts)
-> +		return;
-> +#ifdef CONFIG_NET_RX_BUSY_POLL
-
-Is there a way to do this in C instead of the pre-processor. That way 
-all the code gets build tested. (Is there a config with disabled 
-NET_RX_BUSY_POLL?)
-
-> +	skb_shinfo(skb)->tx_flags |= SKBTX_HW_TSTAMP_NETDEV;
-> +	skb_hwtstamps(skb)->netdev_data = ctx->rx_ts;
-> +#else
-> +	struct igc_inline_rx_tstamps *tstamps;
-> +
-> +	tstamps = ctx->rx_ts;
-> +	skb_hwtstamps(skb)->hwtstamp = igc_ptp_rx_pktstamp(adapter,
-> +							   tstamps->timer0);
-> +#endif
-> +}
-> +
-> +static struct sk_buff *igc_construct_skb(struct igc_adapter *adapter,
-> +					 struct igc_ring *rx_ring,
->   					 struct igc_rx_buffer *rx_buffer,
->   					 struct igc_xdp_buff *ctx)
->   {
-> @@ -2013,10 +2032,7 @@ static struct sk_buff *igc_construct_skb(struct igc_ring *rx_ring,
->   	if (unlikely(!skb))
->   		return NULL;
->   
-> -	if (ctx->rx_ts) {
-> -		skb_shinfo(skb)->tx_flags |= SKBTX_HW_TSTAMP_NETDEV;
-> -		skb_hwtstamps(skb)->netdev_data = ctx->rx_ts;
-> -	}
-> +	igc_construct_skb_timestamps(adapter, skb, ctx);
->   
->   	/* Determine available headroom for copy */
->   	headlen = size;
-> @@ -2686,7 +2702,7 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   		else if (ring_uses_build_skb(rx_ring))
->   			skb = igc_build_skb(rx_ring, rx_buffer, &ctx.xdp);
->   		else
-> -			skb = igc_construct_skb(rx_ring, rx_buffer, &ctx);
-> +			skb = igc_construct_skb(adapter, rx_ring, rx_buffer, &ctx);
->   
->   		/* exit if we failed to retrieve a buffer */
->   		if (!xdp_res && !skb) {
-> @@ -2738,7 +2754,8 @@ static int igc_clean_rx_irq(struct igc_q_vector *q_vector, const int budget)
->   	return total_packets;
->   }
->   
-> -static struct sk_buff *igc_construct_skb_zc(struct igc_ring *ring,
-> +static struct sk_buff *igc_construct_skb_zc(struct igc_adapter *adapter,
-> +					    struct igc_ring *ring,
->   					    struct igc_xdp_buff *ctx)
->   {
->   	struct xdp_buff *xdp = &ctx->xdp;
-> @@ -2760,10 +2777,7 @@ static struct sk_buff *igc_construct_skb_zc(struct igc_ring *ring,
->   		__skb_pull(skb, metasize);
->   	}
->   
-> -	if (ctx->rx_ts) {
-> -		skb_shinfo(skb)->tx_flags |= SKBTX_HW_TSTAMP_NETDEV;
-> -		skb_hwtstamps(skb)->netdev_data = ctx->rx_ts;
-> -	}
-> +	igc_construct_skb_timestamps(adapter, skb, ctx);
->   
->   	return skb;
->   }
-> @@ -2775,7 +2789,7 @@ static void igc_dispatch_skb_zc(struct igc_q_vector *q_vector,
->   	struct igc_ring *ring = q_vector->rx.ring;
->   	struct sk_buff *skb;
->   
-> -	skb = igc_construct_skb_zc(ring, ctx);
-> +	skb = igc_construct_skb_zc(q_vector->adapter, ring, ctx);
->   	if (!skb) {
->   		ring->rx_stats.alloc_failed++;
->   		set_bit(IGC_RING_FLAG_RX_ALLOC_FAILED, &ring->flags);
-
-Otherwise this looks good.
-
-
-Kind regards,
-
-Paul
