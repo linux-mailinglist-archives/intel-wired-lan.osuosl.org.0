@@ -2,72 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id K5q/AXTeQ2rtkgoAu9opvQ
+	id Da/dFHTeQ2rvkgoAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:16 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42A2C6E5DBD
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E03226E5DC7
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:15 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=lXQbFYEE;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b="kdbr/+y/";
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 58972813BD;
-	Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E8B261082;
+	Tue, 30 Jun 2026 15:19:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JSlo2oA5Ih_H; Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MWG6JDt0Pq-Z; Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96C198139F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3BBF561064
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782832751;
-	bh=Iyk9farFukAIvKGcWCVjubpPNe4OtJIT0B3fPfHAcek=;
+	s=default; t=1782832752;
+	bh=pbgNrbVcE6yo3qKfNUymapKPERWtTNs1YyhYIxOunlw=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=lXQbFYEEY16zlFtJozAlb0cgVONdH49Hcwd7XnS3vpPTqL6vT+pw5A12epK3byaUS
-	 xpIB7//c1AvonpUjH2U4tE+RO6zPK953DJiLvzqRGH/IWgoRh/j1Gj7qa29NMq5o/m
-	 yzV1UGInqoQs9hpeU69Pp8q5UkUYKLGb0LMhVFUW3i8YakTxXy1uLl7yfnUGzHGw97
-	 LzeiXLGBZTRRuAzymOSc2xQHrtLuLws7YzKfPl0a29yWBKqGhXMLycsUDnrFXJHRAL
-	 bx2MfH4DoJigOz/P4ISwIRqqroORbwY0pliqkaJohQJQv54Iu3NhCGx+QNyU+hY74G
-	 tfJxdskbJ7dpQ==
+	b=kdbr/+y/ebd/fap2h2z6yXKKzmmfAM8sjXc0IeJ8J37CH5gzZF2n5hKMeqJVyuY5l
+	 q+tcxSO2R2icuHwyVA2dXDhB4yMy5/EDrY6g0nFh5EZctaSGslb2W/FfaSDtNeSYry
+	 G3Jw1efh53VU9aG22nHv23X9DZEnhn4QW/Ylf6FbI7VtOQSQSOEuShOtmCT6w34+Wx
+	 L/ksikSHpOxKg/YxGlSg3OssrHwohYvFvNWNJe9SaxkYmfbVdhS7G8K/+9rGivh8nk
+	 dTGkIofhvIpQG4BOOo0gf9NwfSmafKWzANwCm/ow5xK+AE1eE4mtH+NT1FX3UL1ZKY
+	 4O1QkMED3ZL8w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 96C198139F;
-	Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3BBF561064;
+	Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 04A471338
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:44 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id ADA2A1338
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EAD2B40FAF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9435B82496
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YTREX7zCfA41 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
- helo=sea.source.kernel.org; envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3C3DB40207
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3C3DB40207
-Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3C3DB40207
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sdGOe_yifp64 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jun 2026 10:59:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AA8A4824A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA8A4824A4
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AA8A4824A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:48 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id E531341711;
- Tue, 30 Jun 2026 10:59:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 483751F000E9;
- Tue, 30 Jun 2026 10:59:38 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id ECF9343C7C;
+ Tue, 30 Jun 2026 10:59:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 506821F00A3A;
+ Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
 From: "Mike Rapoport (Microsoft)" <rppt@kernel.org>
-Date: Tue, 30 Jun 2026 13:59:22 +0300
+Date: Tue, 30 Jun 2026 13:59:23 +0300
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260630-b4-drivers-net-v1-3-672162a91f37@kernel.org>
+Message-Id: <20260630-b4-drivers-net-v1-4-672162a91f37@kernel.org>
 References: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 In-Reply-To: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -86,24 +88,23 @@ Cc: Brian Norris <briannorris@chromium.org>,
 X-Mailer: b4 0.15.2
 X-Mailman-Approved-At: Tue, 30 Jun 2026 15:19:08 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1782817182;
- bh=Iyk9farFukAIvKGcWCVjubpPNe4OtJIT0B3fPfHAcek=;
+ d=kernel.org; s=k20260515; t=1782817187;
+ bh=pbgNrbVcE6yo3qKfNUymapKPERWtTNs1YyhYIxOunlw=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc;
- b=DgtHvom+XpxZXXgnBz9yJtGhfbx53DMTm3ffkikikYQtwt3tKs2l3gb0W9BGYsxFr
- HBMmkEkqHjLTrCQSdfgOPCoqG8pLs59vVpY0RhShTSDjPiccqeO5eLAh2KzloZldjB
- 9aQB/cqqC5E01rOsg5+4e1GjyJr/Mqxg3CsHsbce9L7s1baDkgwVpzWQjdt8McI+gi
- tIoYZb5Gxfgsm1yHnCPN1NEXfJ+zehRfkmNSrkeBDoxPX/B2fvjXhFo93wYmNxhjYM
- HB5IPDc4Vq1cQdfMn2rOXAQ8BWdAmEUSqtfEwRWxSf5CT9AAGH1bqQISufWjD7MsMw
- Z5dTleKHYc+8A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=CQkkhZRBHHfobx6i8LR25033YOFT01rNrX0kyeipLKqLNF9BFgAy8s9JCwf2j/vq/
+ eS+GIvwPdBaem60TRTg8gPtQBHnvDN3UJKx+Z1n+bWbwYhFLkHQ5Q9E6reXSf0OhSX
+ 7aJVtLVCY0Y8zaytM//DLEtFjwC4DZ9ubENo+sUUBFHRPy+4I3/hDOhp+osMXhQ8DE
+ Jp8OQjwqHXfE/Sf+yV97a/f2u5a2t8IYcEmoigGTJjWa0f+8BWJQqTpMmf9ZEjeBYV
+ UNKaFsEUBwWljJqmbIsS1Ki4cZFK+nk2EYxJGpveiDh6cF05HUrvteXBTqlHwXBVBJ
+ auSHAeBkZXxNQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=DgtHvom+
-Subject: [Intel-wired-lan] [PATCH net-next 3/8] ice: use kzalloc() to
- allocate staging buffer for reading from GNSS
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20260515 header.b=CQkkhZRB
+Subject: [Intel-wired-lan] [PATCH net-next 4/8] libertas: debugfs: use
+ kzalloc() to allocate formatting buffers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,47 +120,48 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.29 / 15.00];
+X-Spamd-Result: default: False [2.19 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
 	MIME_GOOD(-0.10)[text/plain];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
-	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
+	MIME_TRACE(0.00)[0:+];
 	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
-	ARC_NA(0.00)[];
 	RCPT_COUNT_TWELVE(0.00)[21];
 	FORGED_SENDER(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
+	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	ALIAS_RESOLVED(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
-	ALIAS_RESOLVED(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 42A2C6E5DBD
+X-Rspamd-Queue-Id: E03226E5DC7
 
-ice_gnss_read() uses get_zeroed_page() to  allocate a staging buffer for
-reading GNSS module data via I2C bus.
+libertas debugfs functions allocate buffers for formatting debug
+output text using get_zeroed_page().
 
-This buffer can be allocated with kmalloc() as there's nothing special
-about it to go directly to the page allocator.
+These buffers can be allocated with kmalloc() as there's nothing special
+about them to go directly to the page allocator.
 
 kmalloc() provides a better API that does not require ugly casts and
 kfree() does not need to know the size of the freed object.
@@ -177,39 +179,164 @@ kfree().
 Link: https://lore.kernel.org/all/635405e4-9423-4a25-a6e7-e03c8ea0bcbe@redhat.com
 Signed-off-by: Mike Rapoport (Microsoft) <rppt@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_gnss.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/net/wireless/marvell/libertas/debugfs.c | 39 ++++++++++---------------
+ 1 file changed, 16 insertions(+), 23 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
-index 8fd954f1ebd6..7d21c3417b0b 100644
---- a/drivers/net/ethernet/intel/ice/ice_gnss.c
-+++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2021-2022, Intel Corporation. */
+diff --git a/drivers/net/wireless/marvell/libertas/debugfs.c b/drivers/net/wireless/marvell/libertas/debugfs.c
+index 9ebd69134940..9428f954837a 100644
+--- a/drivers/net/wireless/marvell/libertas/debugfs.c
++++ b/drivers/net/wireless/marvell/libertas/debugfs.c
+@@ -35,8 +35,7 @@ static ssize_t lbs_dev_info(struct file *file, char __user *userbuf,
+ {
+ 	struct lbs_private *priv = file->private_data;
+ 	size_t pos = 0;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	ssize_t res;
+ 	if (!buf)
+ 		return -ENOMEM;
+@@ -48,7 +47,7 @@ static ssize_t lbs_dev_info(struct file *file, char __user *userbuf,
  
- #include "ice.h"
-+#include <linux/slab.h>
- #include "ice_lib.h"
+ 	res = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
  
- /**
-@@ -124,7 +125,7 @@ static void ice_gnss_read(struct kthread_work *work)
+-	free_page(addr);
++	kfree(buf);
+ 	return res;
+ }
  
- 	data_len = min_t(typeof(data_len), data_len, PAGE_SIZE);
+@@ -96,8 +95,7 @@ static ssize_t lbs_sleepparams_read(struct file *file, char __user *userbuf,
+ 	ssize_t ret;
+ 	size_t pos = 0;
+ 	struct sleep_params sp;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+@@ -113,7 +111,7 @@ static ssize_t lbs_sleepparams_read(struct file *file, char __user *userbuf,
+ 	ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+ 
+ out_unlock:
+-	free_page(addr);
++	kfree(buf);
+ 	return ret;
+ }
+ 
+@@ -165,8 +163,7 @@ static ssize_t lbs_host_sleep_read(struct file *file, char __user *userbuf,
+ 	struct lbs_private *priv = file->private_data;
+ 	ssize_t ret;
+ 	size_t pos = 0;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+@@ -174,7 +171,7 @@ static ssize_t lbs_host_sleep_read(struct file *file, char __user *userbuf,
+ 
+ 	ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+ 
+-	free_page(addr);
++	kfree(buf);
+ 	return ret;
+ }
+ 
+@@ -228,7 +225,7 @@ static ssize_t lbs_threshold_read(uint16_t tlv_type, uint16_t event_mask,
+ 	u8 freq;
+ 	int events = 0;
  
 -	buf = (char *)get_zeroed_page(GFP_KERNEL);
 +	buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	if (!buf) {
- 		err = -ENOMEM;
- 		goto requeue;
-@@ -151,7 +152,7 @@ static void ice_gnss_read(struct kthread_work *work)
- 			 count, i);
- 	delay = ICE_GNSS_TIMER_DELAY_TIME;
- free_buf:
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+@@ -261,7 +258,7 @@ static ssize_t lbs_threshold_read(uint16_t tlv_type, uint16_t event_mask,
+ 	kfree(subscribed);
+ 
+  out_page:
 -	free_page((unsigned long)buf);
 +	kfree(buf);
- requeue:
- 	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, delay);
- 	if (err)
+ 	return ret;
+ }
+ 
+@@ -436,8 +433,7 @@ static ssize_t lbs_rdmac_read(struct file *file, char __user *userbuf,
+ 	struct lbs_private *priv = file->private_data;
+ 	ssize_t pos = 0;
+ 	int ret;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	u32 val = 0;
+ 
+ 	if (!buf)
+@@ -450,7 +446,7 @@ static ssize_t lbs_rdmac_read(struct file *file, char __user *userbuf,
+ 				priv->mac_offset, val);
+ 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+ 	}
+-	free_page(addr);
++	kfree(buf);
+ 	return ret;
+ }
+ 
+@@ -506,8 +502,7 @@ static ssize_t lbs_rdbbp_read(struct file *file, char __user *userbuf,
+ 	struct lbs_private *priv = file->private_data;
+ 	ssize_t pos = 0;
+ 	int ret;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	u32 val;
+ 
+ 	if (!buf)
+@@ -520,7 +515,7 @@ static ssize_t lbs_rdbbp_read(struct file *file, char __user *userbuf,
+ 				priv->bbp_offset, val);
+ 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+ 	}
+-	free_page(addr);
++	kfree(buf);
+ 
+ 	return ret;
+ }
+@@ -578,8 +573,7 @@ static ssize_t lbs_rdrf_read(struct file *file, char __user *userbuf,
+ 	struct lbs_private *priv = file->private_data;
+ 	ssize_t pos = 0;
+ 	int ret;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	u32 val;
+ 
+ 	if (!buf)
+@@ -592,7 +586,7 @@ static ssize_t lbs_rdrf_read(struct file *file, char __user *userbuf,
+ 				priv->rf_offset, val);
+ 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+ 	}
+-	free_page(addr);
++	kfree(buf);
+ 
+ 	return ret;
+ }
+@@ -812,8 +806,7 @@ static ssize_t lbs_debugfs_read(struct file *file, char __user *userbuf,
+ 	char *p;
+ 	int i;
+ 	struct debug_data *d;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 
+@@ -836,7 +829,7 @@ static ssize_t lbs_debugfs_read(struct file *file, char __user *userbuf,
+ 
+ 	res = simple_read_from_buffer(userbuf, count, ppos, p, pos);
+ 
+-	free_page(addr);
++	kfree(buf);
+ 	return res;
+ }
+ 
 
 -- 
 2.53.0
