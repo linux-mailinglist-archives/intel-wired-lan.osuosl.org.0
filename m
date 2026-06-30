@@ -2,74 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id BM8aInLeQ2rmkgoAu9opvQ
+	id K5q/AXTeQ2rtkgoAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:14 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:16 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4B066E5DB4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42A2C6E5DBD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:15 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=FAvhVadV;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b=lXQbFYEE;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B9B7D60FF5;
-	Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58972813BD;
+	Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ab1NeiHNq_N9; Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JSlo2oA5Ih_H; Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 03B42606C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 96C198139F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
 	s=default; t=1782832751;
-	bh=KN3v4O8jkhd6Mt2HpgZaziumJD8qk36FkI+IylasYd4=;
+	bh=Iyk9farFukAIvKGcWCVjubpPNe4OtJIT0B3fPfHAcek=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=FAvhVadVsKi77mJAX/morhygbGY0GBJ9BZ4Zq7tJipzPHInPw33cg+w7hcLqnzqPG
-	 KbxQD+i09U/D3xL6X9wRmLNyaaXPkzCanK1TJUsG4eeKbr78ruUbl2xyhIJn39kABY
-	 go23Y4BQobPaG+skN2GiyWMkpLEANHhpfjIGedi54uLEynkrVdqM+WhVucjexry0XH
-	 m6GkVYP+/Cy7okHq71VCJaJA2aMPGgZGT3OGXzWNoTBab2e7RhPszSwKIICT0//ekk
-	 ZPAUsSJbG0Lvyvxv7hg0rKkz84ruzcI/TfDw5rN0l+bPU0k1QvmyzyeuHNZ8cXBtRO
-	 89IaM0t/+TaaQ==
+	b=lXQbFYEEY16zlFtJozAlb0cgVONdH49Hcwd7XnS3vpPTqL6vT+pw5A12epK3byaUS
+	 xpIB7//c1AvonpUjH2U4tE+RO6zPK953DJiLvzqRGH/IWgoRh/j1Gj7qa29NMq5o/m
+	 yzV1UGInqoQs9hpeU69Pp8q5UkUYKLGb0LMhVFUW3i8YakTxXy1uLl7yfnUGzHGw97
+	 LzeiXLGBZTRRuAzymOSc2xQHrtLuLws7YzKfPl0a29yWBKqGhXMLycsUDnrFXJHRAL
+	 bx2MfH4DoJigOz/P4ISwIRqqroORbwY0pliqkaJohQJQv54Iu3NhCGx+QNyU+hY74G
+	 tfJxdskbJ7dpQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 03B42606C4;
+	by smtp1.osuosl.org (Postfix) with ESMTP id 96C198139F;
 	Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 2B1CFED6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 04A471338
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2910260FC9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EAD2B40FAF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id euLU3OcGkFXu for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jun 2026 10:59:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5AB0960B4A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AB0960B4A
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5AB0960B4A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YTREX7zCfA41 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3C3DB40207
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3C3DB40207
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3C3DB40207
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id DD18941711;
- Tue, 30 Jun 2026 10:59:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 403D61F00A3D;
- Tue, 30 Jun 2026 10:59:33 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id E531341711;
+ Tue, 30 Jun 2026 10:59:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 483751F000E9;
+ Tue, 30 Jun 2026 10:59:38 +0000 (UTC)
 From: "Mike Rapoport (Microsoft)" <rppt@kernel.org>
-Date: Tue, 30 Jun 2026 13:59:21 +0300
+Date: Tue, 30 Jun 2026 13:59:22 +0300
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260630-b4-drivers-net-v1-2-672162a91f37@kernel.org>
+Message-Id: <20260630-b4-drivers-net-v1-3-672162a91f37@kernel.org>
 References: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 In-Reply-To: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -88,24 +86,24 @@ Cc: Brian Norris <briannorris@chromium.org>,
 X-Mailer: b4 0.15.2
 X-Mailman-Approved-At: Tue, 30 Jun 2026 15:19:08 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1782817177;
- bh=KN3v4O8jkhd6Mt2HpgZaziumJD8qk36FkI+IylasYd4=;
+ d=kernel.org; s=k20260515; t=1782817182;
+ bh=Iyk9farFukAIvKGcWCVjubpPNe4OtJIT0B3fPfHAcek=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc;
- b=MXQEF3aHWSiWNFSvYXHU4R7tW6cLU800PWaoSIs368VJxA7phfv+Es8c+cLkEeAW6
- N+cXvy7GWxnDbC1bFm9jgfCrZuJ7NcmOzPRxV0f8rFe0NonrUKVi/oDpm1r0R9GiMH
- cFOmtV0Vf+osCftv3+z9BekM2fYxe3pkef2/XzhRaonSJCjH2k1BUQb+abz3ksERB5
- ID+PK5GmcE2FHvH8VaVrrDkXHHS9PnbWWtmKluZc/es6TuUdTPfONxggTOYT41WBK/
- yoD9s2qt4xuVYdBtBHU1XDZGLStlv3wqrZawLDg0DkelNXb1Y5TLnaXGaGmtkKIZNf
- utF9NJfRkg01A==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=DgtHvom+XpxZXXgnBz9yJtGhfbx53DMTm3ffkikikYQtwt3tKs2l3gb0W9BGYsxFr
+ HBMmkEkqHjLTrCQSdfgOPCoqG8pLs59vVpY0RhShTSDjPiccqeO5eLAh2KzloZldjB
+ 9aQB/cqqC5E01rOsg5+4e1GjyJr/Mqxg3CsHsbce9L7s1baDkgwVpzWQjdt8McI+gi
+ tIoYZb5Gxfgsm1yHnCPN1NEXfJ+zehRfkmNSrkeBDoxPX/B2fvjXhFo93wYmNxhjYM
+ HB5IPDc4Vq1cQdfMn2rOXAQ8BWdAmEUSqtfEwRWxSf5CT9AAGH1bqQISufWjD7MsMw
+ Z5dTleKHYc+8A==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=MXQEF3aH
-Subject: [Intel-wired-lan] [PATCH net-next 2/8] bnx2x: use kzalloc() to
- allocate mac filtering list
+ header.s=k20260515 header.b=DgtHvom+
+Subject: [Intel-wired-lan] [PATCH net-next 3/8] ice: use kzalloc() to
+ allocate staging buffer for reading from GNSS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -121,47 +119,46 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.19 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
+	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
 	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
 	RCPT_COUNT_TWELVE(0.00)[21];
 	FORGED_SENDER(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
-	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	ALIAS_RESOLVED(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ALIAS_RESOLVED(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: E4B066E5DB4
+X-Rspamd-Queue-Id: 42A2C6E5DBD
 
-bnx2x_mcast_enqueue_cmd() allocates memory for mac filtering list using
-__get_free_pages().
+ice_gnss_read() uses get_zeroed_page() to  allocate a staging buffer for
+reading GNSS module data via I2C bus.
 
-This memory can be allocated with kzalloc() as there's nothing special
+This buffer can be allocated with kmalloc() as there's nothing special
 about it to go directly to the page allocator.
 
 kmalloc() provides a better API that does not require ugly casts and
@@ -174,46 +171,45 @@ fast path allocations.
 For the slow path the performance is anyway determined by the amount of
 reclaim involved rather than by what allocator is used.
 
-Replace use of __get_free_page() with kzalloc() and free_page() with
+Replace use of get_zeroed_page() with kzalloc() and free_page() with
 kfree().
 
 Link: https://lore.kernel.org/all/635405e4-9423-4a25-a6e7-e03c8ea0bcbe@redhat.com
 Signed-off-by: Mike Rapoport (Microsoft) <rppt@kernel.org>
 ---
- drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_gnss.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
-index 07a908a2c72f..d560524d317d 100644
---- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
-+++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
-@@ -26,6 +26,7 @@
- #include <linux/netdevice.h>
- #include <linux/etherdevice.h>
- #include <linux/crc32c.h>
-+#include <linux/slab.h>
- #include "bnx2x.h"
- #include "bnx2x_cmn.h"
- #include "bnx2x_sp.h"
-@@ -2664,7 +2665,7 @@ static void bnx2x_free_groups(struct list_head *mcast_group_list)
- 				      struct bnx2x_mcast_elem_group,
- 				      mcast_group_link);
- 		list_del(&current_mcast_group->mcast_group_link);
--		free_page((unsigned long)current_mcast_group);
-+		kfree(current_mcast_group);
- 	}
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
+index 8fd954f1ebd6..7d21c3417b0b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_gnss.c
++++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
+@@ -2,6 +2,7 @@
+ /* Copyright (C) 2021-2022, Intel Corporation. */
  
-@@ -2713,8 +2714,7 @@ static int bnx2x_mcast_enqueue_cmd(struct bnx2x *bp,
- 				total_elems = BNX2X_MCAST_BINS_NUM;
- 		}
- 		while (total_elems > 0) {
--			elem_group = (struct bnx2x_mcast_elem_group *)
--				     __get_free_page(GFP_ATOMIC | __GFP_ZERO);
-+			elem_group = kzalloc(PAGE_SIZE, GFP_ATOMIC);
- 			if (!elem_group) {
- 				bnx2x_free_groups(&new_cmd->group_head);
- 				kfree(new_cmd);
+ #include "ice.h"
++#include <linux/slab.h>
+ #include "ice_lib.h"
+ 
+ /**
+@@ -124,7 +125,7 @@ static void ice_gnss_read(struct kthread_work *work)
+ 
+ 	data_len = min_t(typeof(data_len), data_len, PAGE_SIZE);
+ 
+-	buf = (char *)get_zeroed_page(GFP_KERNEL);
++	buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf) {
+ 		err = -ENOMEM;
+ 		goto requeue;
+@@ -151,7 +152,7 @@ static void ice_gnss_read(struct kthread_work *work)
+ 			 count, i);
+ 	delay = ICE_GNSS_TIMER_DELAY_TIME;
+ free_buf:
+-	free_page((unsigned long)buf);
++	kfree(buf);
+ requeue:
+ 	kthread_queue_delayed_work(gnss->kworker, &gnss->read_work, delay);
+ 	if (err)
 
 -- 
 2.53.0
