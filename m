@@ -2,77 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id paZNOnHeQ2rlkgoAu9opvQ
+	id KKRtHHPeQ2rqkgoAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:13 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:15 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFBE66E5DB3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:12 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC5996E5DBB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:14 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=Lc94g1U1;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b=MogWFLSQ;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 17E6D813AD;
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9F52360FF1;
 	Tue, 30 Jun 2026 15:19:11 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zV9vum-aFITq; Tue, 30 Jun 2026 15:19:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5ADED60FEB
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1782832750;
+	bh=udqDNDVFCOySMLOfAhXC2bToWftZ0GPwWAg1pyNOXMM=;
+	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=MogWFLSQti4FjOfI8JuyLPzlKpnFrsZ5UNeX9SzorbMyZis50cqYSDnSY6FrElGUy
+	 s06njAY0xH1Xfk9Atx3b2PtZuZLRmZMrggXNi17eQq1YQok8auMNuoY6290vfgrsdi
+	 PjQn8XNgcIrvPjNbF/tH4IM3yXa9IweDW2VukS5j60xPO4CQBjHxkyhbYNVkGCqw3b
+	 VlfDy7PD+oy6Pl2bHaDWWF5M/Wns/UyWDGBWMOrUVanwmmBpjKNASr5JDF2MZ1wRXq
+	 gadqjMBaOpLxV7+NJzQOqf7k0IL/Iw1l6RtRyohhHvl/dX3IUQp+dhgDDyQ6XrU0CS
+	 vjFv8axRgF+GA==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5ADED60FEB;
+	Tue, 30 Jun 2026 15:19:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id C6672ED6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B8EB4824C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3wKk8eRUQCmf; Tue, 30 Jun 2026 15:19:10 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2F03813B8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782832749;
-	bh=/60oaCW2BQae8L1Ed3jr0q0Fd1+merS/wb25bNKYVmA=;
-	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Lc94g1U1rOnHSoqWEbADl/7FmDux3M/MGl51Z7ZwLlFA3mThi0ZtXvcMvtjvioMWH
-	 fuKLv53X52uB4djxN509UWp/iQ+9Dmy4XqhsbIubuMZx1NvWdmdrhf6ve+gyx3fml/
-	 tee9yyGU2pEP6zqLMbBd9Zw3it9UZnQtKvuXZe1JG0QBnEyDO7B3Nn8R/c22wbdodE
-	 6ir4LtYIGOj5ACItLq2NBZ9iO6d3j34iNZCEdj6fGc0iJ4oVTUXYjo2yKo78inALYD
-	 2n+5pe7C2P68qAFEDs5GhyODOyp0+Sk+Z3nomCA46ksvjFkYLvzo40RUdgUb42wbK2
-	 cNCDdehlNhLjQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D2F03813B8;
-	Tue, 30 Jun 2026 15:19:09 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 50DF91338
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4273D411C8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:30 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Zcii0RUfS18D for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jun 2026 10:59:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c04:e001:324:0:1991:8:25; helo=tor.source.kernel.org;
- envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5CBFF411C5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CBFF411C5
-Received: from tor.source.kernel.org (tor.source.kernel.org
- [IPv6:2600:3c04:e001:324:0:1991:8:25])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5CBFF411C5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:29 +0000 (UTC)
+ id sgd1rVZ8-HQm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jun 2026 10:59:34 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D182682496
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D182682496
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D182682496
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:33 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by tor.source.kernel.org (Postfix) with ESMTP id 053D1600C3;
+ by tor.source.kernel.org (Postfix) with ESMTP id 0D28D600DA;
+ Tue, 30 Jun 2026 10:59:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 385961F00A3A;
  Tue, 30 Jun 2026 10:59:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2C4A31F000E9;
- Tue, 30 Jun 2026 10:59:22 +0000 (UTC)
 From: "Mike Rapoport (Microsoft)" <rppt@kernel.org>
-Date: Tue, 30 Jun 2026 13:59:19 +0300
-Message-Id: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
+Date: Tue, 30 Jun 2026 13:59:20 +0300
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAIehQ2oC/yWMQQ7CMAwEv1L5TERahVTiK4hD7DrUHAKyS1Wp6
- t9J4Li7s7ODsQobXLsdlFcxeZUa+lMHNKfyYCdTzTD4IfrYR4fBTSorq7nCi8s05guO7FMgqKe
- 3cpbtJ7xBAwpvC9z/i33wybQ0X2MxGTvUVGhuFYazkQkcxxdv1FOalgAAAA==
-X-Change-ID: 20260616-b4-drivers-net-fc7f5b7e0a4c
+Message-Id: <20260630-b4-drivers-net-v1-1-672162a91f37@kernel.org>
+References: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
+In-Reply-To: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
@@ -89,24 +86,24 @@ Cc: Brian Norris <briannorris@chromium.org>,
 X-Mailer: b4 0.15.2
 X-Mailman-Approved-At: Tue, 30 Jun 2026 15:19:08 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1782817167;
- bh=/60oaCW2BQae8L1Ed3jr0q0Fd1+merS/wb25bNKYVmA=;
- h=From:Subject:Date:To:Cc;
- b=b9bL17tgX9g/0VWgldenTIgpoi2fQRFDuEHc7FExVmS+6DkVl65hZBJImOgYFJX+b
- YJO18n/S4id56u9kjbmBjTHiscZwwq3pQL7DcehaGvyp5PmPxTvIPjMD1ZUtGMp/Hk
- tS8+tmTA+wc0TXD6U9QAorrRL7GRWN72GGJ0ziqgp91Sa2+l38toe7uxR6Y3gy5AW+
- WQVZ9yPo7tiHLFokWgMD0t2Sb1Etya7v78Q+6IFfOdPfQDcQc+IhRChSZ9lvmpCmz7
- 10Llg8Ddec0qLa+tZnjZlnkUMGYQgmjcbTGtBt3K54SCLkjnwhH3RPIpJTs0ET4Pp3
- 2Kv+U1cljNjKw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20260515; t=1782817172;
+ bh=udqDNDVFCOySMLOfAhXC2bToWftZ0GPwWAg1pyNOXMM=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc;
+ b=NanyFOkuNnCFD4REgVloCb2Qcv70ieoZFHA+glnEOoTfDGSW1U/DDx8oMUE+zS2Sp
+ DgmvDEy3oMXzkgJ2B9g8E75PPjHjioMBmgt09WDdrO65JYRO3Q+WAyS9Dp/wmfkjck
+ YdFb/qB8cTjmYhjXSQ/v9LQz/ASgDqkj+RmSdyAYxAkOse/s5AJkfLYDagOoOM3SMz
+ JWxJliS0qGvgbCmMqIzDh9OsIaYURy3OPl9KFwhVkB+hKup9gPdjpCqzj6cUBo48fC
+ IXOiJjMJAOuhnoI/IV/anZGDbOmTj3wcZRGg4bFg7bH4Io93W18rY3rdjqoxpZ8jHR
+ X/kBU7tjuYfOA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=b9bL17tg
-Subject: [Intel-wired-lan] [PATCH net-next 0/8] drivers/net: replace
- __get_free_pages() with kmalloc()
+ header.s=k20260515 header.b=NanyFOku
+Subject: [Intel-wired-lan] [PATCH net-next 1/8] b43,
+ b43legacy: debugfs: use kmalloc() to allocate formatting buffers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -122,103 +119,173 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [2.19 / 15.00];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
+	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
 	RCVD_TLS_LAST(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
+	ARC_NA(0.00)[];
 	RCPT_COUNT_TWELVE(0.00)[21];
 	FORGED_SENDER(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:briannorris@chromium.org,m:ecree.xilinx@gmail.com,m:francesco@dolcini.it,m:manishc@marvell.com,m:rppt@kernel.org,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:b43-dev@lists.infradead.org,m:libertas-dev@lists.infradead.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:linux-wireless@vger.kernel.org,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
-	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	FROM_NEQ_ENVFROM(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	ALIAS_RESOLVED(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	MID_RHS_MATCH_FROM(0.00)[];
 	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ALIAS_RESOLVED(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: DFBE66E5DB3
+X-Rspamd-Queue-Id: AC5996E5DBB
 
-This is a (small) part of larger work of replacing page allocator calls
-with kmalloc.
+b43* debugfs functions allocate 16 KiB buffers for formatting debug output
+text using __get_free_pages().
 
-My initial intention a few month ago was to remove ugly casts [1], but then
-willy pointed out that Linus objected to something like this [2] and it
-looks like more than a decade old technical debt.
+kmalloc() provides a better API that does not require ugly casts and
+kfree() does not need to know the size of the freed object and for 16 Kib
+allocation kmalloc() will anyway delegate it to buddy.
 
-Largely, anything that doesn't need struct page (or a memdesc in the
-future) should just use kmalloc() or kvmalloc() to allocate memory.
-kmalloc() guarantees alignment, physical contiguity and working
-virt_to_phys() and beside nicer API that returns void * on alloc and
-doesn't require to know the allocation size on free, kmalloc() provides
-better debugging capabilities than page allocator.
+Replace use of __get_free_pages() with kmalloc().
 
-Another thing is that touching these allocation sites gives the reviewers
-opportunity to see if a PAGE_SIZE buffer is actually needed or maybe
-another size is appropriate.
-
-For larger allocations that don't need physically contiguous memory
-kvmalloc() can be a better option that __get_free_pages() because under
-memory pressure it's is easier to allocate several order-0 pages than a
-physically contiguous chunk with the same number of pages.
-
-And last, but not least, removing needless calls to page allocator should
-help with memdesc (aka project folio) conversion. There will be way less
-places to audit to see if the user was actually using struct page.
-
-Also in git:
-https://git.kernel.org/pub/scm/linux/kernel/git/rppt/linux.git gfp-to-kmalloc/drivers-net
-
-[1] https://lore.kernel.org/all/20251018093002.3660549-1-rppt@kernel.org/
-[2] https://lore.kernel.org/all/CA+55aFwp4iy4rtX2gE2WjBGFL=NxMVnoFeHqYa2j1dYOMMGqxg@mail.gmail.com/
-
+Link: https://lore.kernel.org/all/635405e4-9423-4a25-a6e7-e03c8ea0bcbe@redhat.com
+Signed-off-by: Mike Rapoport (Microsoft) <rppt@kernel.org>
 ---
-Mike Rapoport (Microsoft) (8):
-      b43, b43legacy: debugfs: use kmalloc() to allocate formatting buffers
-      bnx2x: use kzalloc() to allocate mac filtering list
-      ice: use kzalloc() to allocate staging buffer for reading from GNSS
-      libertas: debugfs: use kzalloc() to allocate formatting buffers
-      mwifiex: debugfs: use kzalloc() to allocate formatting buffers
-      sfc/siena: use kmalloc() to allocate logging buffer
-      sfc: use kmalloc() to allocate logging buffer
-      wlcore: allocate aggregation and firmware log buffers with kzalloc()
+ drivers/net/wireless/broadcom/b43/debugfs.c       | 12 +++++-------
+ drivers/net/wireless/broadcom/b43legacy/debugfs.c | 11 +++++------
+ 2 files changed, 10 insertions(+), 13 deletions(-)
 
- drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c    |  6 +--
- drivers/net/ethernet/intel/ice/ice_gnss.c         |  5 +-
- drivers/net/ethernet/sfc/mcdi.c                   |  7 +--
- drivers/net/ethernet/sfc/siena/mcdi.c             |  7 +--
- drivers/net/wireless/broadcom/b43/debugfs.c       | 12 ++---
- drivers/net/wireless/broadcom/b43legacy/debugfs.c | 11 ++--
- drivers/net/wireless/marvell/libertas/debugfs.c   | 39 ++++++--------
- drivers/net/wireless/marvell/mwifiex/debugfs.c    | 62 ++++++++++-------------
- drivers/net/wireless/ti/wlcore/main.c             | 14 +++--
- 9 files changed, 73 insertions(+), 90 deletions(-)
----
-base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
-change-id: 20260616-b4-drivers-net-fc7f5b7e0a4c
+diff --git a/drivers/net/wireless/broadcom/b43/debugfs.c b/drivers/net/wireless/broadcom/b43/debugfs.c
+index acddae68947a..31a1ff00c1a4 100644
+--- a/drivers/net/wireless/broadcom/b43/debugfs.c
++++ b/drivers/net/wireless/broadcom/b43/debugfs.c
+@@ -495,7 +495,6 @@ static ssize_t b43_debugfs_read(struct file *file, char __user *userbuf,
+ 	ssize_t ret;
+ 	char *buf;
+ 	const size_t bufsize = 1024 * 16; /* 16 kiB buffer */
+-	const size_t buforder = get_order(bufsize);
+ 	int err = 0;
+ 
+ 	if (!count)
+@@ -518,15 +517,14 @@ static ssize_t b43_debugfs_read(struct file *file, char __user *userbuf,
+ 	dfile = fops_to_dfs_file(dev, dfops);
+ 
+ 	if (!dfile->buffer) {
+-		buf = (char *)__get_free_pages(GFP_KERNEL, buforder);
++		buf = kzalloc(bufsize, GFP_KERNEL);
+ 		if (!buf) {
+ 			err = -ENOMEM;
+ 			goto out_unlock;
+ 		}
+-		memset(buf, 0, bufsize);
+ 		ret = dfops->read(dev, buf, bufsize);
+ 		if (ret <= 0) {
+-			free_pages((unsigned long)buf, buforder);
++			kfree(buf);
+ 			err = ret;
+ 			goto out_unlock;
+ 		}
+@@ -538,7 +536,7 @@ static ssize_t b43_debugfs_read(struct file *file, char __user *userbuf,
+ 				      dfile->buffer,
+ 				      dfile->data_len);
+ 	if (*ppos >= dfile->data_len) {
+-		free_pages((unsigned long)dfile->buffer, buforder);
++		kfree(dfile->buffer);
+ 		dfile->buffer = NULL;
+ 		dfile->data_len = 0;
+ 	}
+@@ -577,7 +575,7 @@ static ssize_t b43_debugfs_write(struct file *file,
+ 		goto out_unlock;
+ 	}
+ 
+-	buf = (char *)get_zeroed_page(GFP_KERNEL);
++	buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf) {
+ 		err = -ENOMEM;
+ 		goto out_unlock;
+@@ -591,7 +589,7 @@ static ssize_t b43_debugfs_write(struct file *file,
+ 		goto out_freepage;
+ 
+ out_freepage:
+-	free_page((unsigned long)buf);
++	kfree(buf);
+ out_unlock:
+ 	mutex_unlock(&dev->wl->mutex);
+ 
+diff --git a/drivers/net/wireless/broadcom/b43legacy/debugfs.c b/drivers/net/wireless/broadcom/b43legacy/debugfs.c
+index 3ad99124d522..42cce5e0402d 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/debugfs.c
++++ b/drivers/net/wireless/broadcom/b43legacy/debugfs.c
+@@ -192,7 +192,6 @@ static ssize_t b43legacy_debugfs_read(struct file *file, char __user *userbuf,
+ 	ssize_t ret;
+ 	char *buf;
+ 	const size_t bufsize = 1024 * 16; /* 16 KiB buffer */
+-	const size_t buforder = get_order(bufsize);
+ 	int err = 0;
+ 
+ 	if (!count)
+@@ -215,7 +214,7 @@ static ssize_t b43legacy_debugfs_read(struct file *file, char __user *userbuf,
+ 	dfile = fops_to_dfs_file(dev, dfops);
+ 
+ 	if (!dfile->buffer) {
+-		buf = (char *)__get_free_pages(GFP_KERNEL, buforder);
++		buf = kmalloc(bufsize, GFP_KERNEL);
+ 		if (!buf) {
+ 			err = -ENOMEM;
+ 			goto out_unlock;
+@@ -228,7 +227,7 @@ static ssize_t b43legacy_debugfs_read(struct file *file, char __user *userbuf,
+ 		} else
+ 			ret = dfops->read(dev, buf, bufsize);
+ 		if (ret <= 0) {
+-			free_pages((unsigned long)buf, buforder);
++			kfree(buf);
+ 			err = ret;
+ 			goto out_unlock;
+ 		}
+@@ -240,7 +239,7 @@ static ssize_t b43legacy_debugfs_read(struct file *file, char __user *userbuf,
+ 				      dfile->buffer,
+ 				      dfile->data_len);
+ 	if (*ppos >= dfile->data_len) {
+-		free_pages((unsigned long)dfile->buffer, buforder);
++		kfree(dfile->buffer);
+ 		dfile->buffer = NULL;
+ 		dfile->data_len = 0;
+ 	}
+@@ -279,7 +278,7 @@ static ssize_t b43legacy_debugfs_write(struct file *file,
+ 		goto out_unlock;
+ 	}
+ 
+-	buf = (char *)get_zeroed_page(GFP_KERNEL);
++	buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	if (!buf) {
+ 		err = -ENOMEM;
+ 		goto out_unlock;
+@@ -298,7 +297,7 @@ static ssize_t b43legacy_debugfs_write(struct file *file,
+ 		goto out_freepage;
+ 
+ out_freepage:
+-	free_page((unsigned long)buf);
++	kfree(buf);
+ out_unlock:
+ 	mutex_unlock(&dev->wl->mutex);
+ 
 
-Best regards,
---  
-Sincerely yours,
-Mike.
+-- 
+2.53.0
 
