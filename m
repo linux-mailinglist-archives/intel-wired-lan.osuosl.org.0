@@ -2,74 +2,72 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id Da/dFHTeQ2rvkgoAu9opvQ
+	id ftYqKHPeQ2rskgoAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:16 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:15 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E03226E5DC7
+	by mail.lfdr.de (Postfix) with ESMTPS id 636506E5DBE
 	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jun 2026 17:19:15 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b="kdbr/+y/";
+	dkim=pass header.d=osuosl.org header.s=default header.b=bUPil9wT;
 	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E8B261082;
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0321C6106C;
 	Tue, 30 Jun 2026 15:19:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MWG6JDt0Pq-Z; Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
+ id IPpUmBW4_5Zp; Tue, 30 Jun 2026 15:19:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3BBF561064
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E97A96104F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782832752;
-	bh=pbgNrbVcE6yo3qKfNUymapKPERWtTNs1YyhYIxOunlw=;
+	s=default; t=1782832753;
+	bh=mIRRvN16ToAQb1e9zetNytMS/So59mpcGLgkkM3oXG4=;
 	h=From:Date:References:In-Reply-To:To:Cc:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=kdbr/+y/ebd/fap2h2z6yXKKzmmfAM8sjXc0IeJ8J37CH5gzZF2n5hKMeqJVyuY5l
-	 q+tcxSO2R2icuHwyVA2dXDhB4yMy5/EDrY6g0nFh5EZctaSGslb2W/FfaSDtNeSYry
-	 G3Jw1efh53VU9aG22nHv23X9DZEnhn4QW/Ylf6FbI7VtOQSQSOEuShOtmCT6w34+Wx
-	 L/ksikSHpOxKg/YxGlSg3OssrHwohYvFvNWNJe9SaxkYmfbVdhS7G8K/+9rGivh8nk
-	 dTGkIofhvIpQG4BOOo0gf9NwfSmafKWzANwCm/ow5xK+AE1eE4mtH+NT1FX3UL1ZKY
-	 4O1QkMED3ZL8w==
+	b=bUPil9wTOedccAPL3L3JW9f8HyqHxIOGGjBB+BUbYv12WiNsUB2pEVP5HPdLZYxc7
+	 jtrJzU1pzBou/tqdWnX9l63V4t98/oCwdHCCny9soMoE5KR8yQjCgtZU1SBKjxzKgs
+	 8UeqdIEGIQzWv7zmjElqXJ/+gPgKPVJhIQo/KjewhqMAY/5avGx3WJba5KnonWqxLK
+	 qGhQmQEslwiiEz5DAJ5wm+ApDWj/6hh4yTlVOsEfjWMr8WwN4DYoKPXQwiB3QML11+
+	 KjzyiwDJiJrBsdLOiAuIod7qerBmhtCMrLIzAokbt2xlN97ZWlcxPS3Obox0se3bre
+	 4ERklnmGiEEkw==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3BBF561064;
+	by smtp3.osuosl.org (Postfix) with ESMTP id E97A96104F;
 	Tue, 30 Jun 2026 15:19:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id ADA2A1338
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:49 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 488B1ED6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9435B82496
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:49 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 46A20824C1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sdGOe_yifp64 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jun 2026 10:59:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
- envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AA8A4824A4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA8A4824A4
-Received: from sea.source.kernel.org (sea.source.kernel.org
- [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AA8A4824A4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:48 +0000 (UTC)
+ id Yh8K-fTDqTxL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jun 2026 10:59:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.234.252.31;
+ helo=sea.source.kernel.org; envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5644C82496
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5644C82496
+Received: from sea.source.kernel.org (sea.source.kernel.org [172.234.252.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5644C82496
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jun 2026 10:59:53 +0000 (UTC)
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id ECF9343C7C;
- Tue, 30 Jun 2026 10:59:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 506821F00A3A;
- Tue, 30 Jun 2026 10:59:43 +0000 (UTC)
+ by sea.source.kernel.org (Postfix) with ESMTP id 024B041711;
+ Tue, 30 Jun 2026 10:59:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58BF31F000E9;
+ Tue, 30 Jun 2026 10:59:48 +0000 (UTC)
 From: "Mike Rapoport (Microsoft)" <rppt@kernel.org>
-Date: Tue, 30 Jun 2026 13:59:23 +0300
+Date: Tue, 30 Jun 2026 13:59:24 +0300
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260630-b4-drivers-net-v1-4-672162a91f37@kernel.org>
+Message-Id: <20260630-b4-drivers-net-v1-5-672162a91f37@kernel.org>
 References: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 In-Reply-To: <20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -88,22 +86,22 @@ Cc: Brian Norris <briannorris@chromium.org>,
 X-Mailer: b4 0.15.2
 X-Mailman-Approved-At: Tue, 30 Jun 2026 15:19:08 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1782817187;
- bh=pbgNrbVcE6yo3qKfNUymapKPERWtTNs1YyhYIxOunlw=;
+ d=kernel.org; s=k20260515; t=1782817192;
+ bh=mIRRvN16ToAQb1e9zetNytMS/So59mpcGLgkkM3oXG4=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc;
- b=CQkkhZRBHHfobx6i8LR25033YOFT01rNrX0kyeipLKqLNF9BFgAy8s9JCwf2j/vq/
- eS+GIvwPdBaem60TRTg8gPtQBHnvDN3UJKx+Z1n+bWbwYhFLkHQ5Q9E6reXSf0OhSX
- 7aJVtLVCY0Y8zaytM//DLEtFjwC4DZ9ubENo+sUUBFHRPy+4I3/hDOhp+osMXhQ8DE
- Jp8OQjwqHXfE/Sf+yV97a/f2u5a2t8IYcEmoigGTJjWa0f+8BWJQqTpMmf9ZEjeBYV
- UNKaFsEUBwWljJqmbIsS1Ki4cZFK+nk2EYxJGpveiDh6cF05HUrvteXBTqlHwXBVBJ
- auSHAeBkZXxNQ==
+ b=hnXL8u7DMOm61ET2YFbf/5HG/UOM//MlyIUC1ghjFLWaMFK141AlmTM8FUJgs3RAn
+ RX1cWUUYGaqEsVtUipC1zlFqCjMTLg3N2LPmKOGTSgsaGmsFPT+Ms8Vlw+IEhsK8Nj
+ 3MTBHNq+YJKJW9KJMD2Y+hb13ctB6uNi6q59EqSVoBp6J69Q9zlpe3ota+j8R5N6gq
+ ayMXVIE+LyBCz80hv5zKhkjroxVtZ+1iMlZhIDQEhp7t/fmsh/MArdtmfrHvN29KrU
+ LCfNiNAbWeNajuZRrNkEnu35SQ2y+pjxqnAqO8Pp9rb+Lq2NbBlVcpamK8CZv0r+EW
+ YwTjWPvrvQzJw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20260515 header.b=CQkkhZRB
-Subject: [Intel-wired-lan] [PATCH net-next 4/8] libertas: debugfs: use
+ header.a=rsa-sha256 header.s=k20260515 header.b=hnXL8u7D
+Subject: [Intel-wired-lan] [PATCH net-next 5/8] mwifiex: debugfs: use
  kzalloc() to allocate formatting buffers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -139,7 +137,7 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	FREEMAIL_CC(0.00)[chromium.org,gmail.com,dolcini.it,marvell.com,kernel.org,intel.com,lists.infradead.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
 	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
@@ -155,10 +153,10 @@ X-Spamd-Result: default: False [2.19 / 15.00];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: E03226E5DC7
+X-Rspamd-Queue-Id: 636506E5DBE
 
-libertas debugfs functions allocate buffers for formatting debug
-output text using get_zeroed_page().
+mwifiex debugfs functions allocate buffers for formatting debug output
+text using get_zeroed_page().
 
 These buffers can be allocated with kmalloc() as there's nothing special
 about them to go directly to the page allocator.
@@ -179,162 +177,214 @@ kfree().
 Link: https://lore.kernel.org/all/635405e4-9423-4a25-a6e7-e03c8ea0bcbe@redhat.com
 Signed-off-by: Mike Rapoport (Microsoft) <rppt@kernel.org>
 ---
- drivers/net/wireless/marvell/libertas/debugfs.c | 39 ++++++++++---------------
- 1 file changed, 16 insertions(+), 23 deletions(-)
+ drivers/net/wireless/marvell/mwifiex/debugfs.c | 62 +++++++++++---------------
+ 1 file changed, 27 insertions(+), 35 deletions(-)
 
-diff --git a/drivers/net/wireless/marvell/libertas/debugfs.c b/drivers/net/wireless/marvell/libertas/debugfs.c
-index 9ebd69134940..9428f954837a 100644
---- a/drivers/net/wireless/marvell/libertas/debugfs.c
-+++ b/drivers/net/wireless/marvell/libertas/debugfs.c
-@@ -35,8 +35,7 @@ static ssize_t lbs_dev_info(struct file *file, char __user *userbuf,
+diff --git a/drivers/net/wireless/marvell/mwifiex/debugfs.c b/drivers/net/wireless/marvell/mwifiex/debugfs.c
+index 9deaf59dcb62..573768b6ad91 100644
+--- a/drivers/net/wireless/marvell/mwifiex/debugfs.c
++++ b/drivers/net/wireless/marvell/mwifiex/debugfs.c
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <linux/debugfs.h>
++#include <linux/slab.h>
+ 
+ #include "main.h"
+ #include "11n.h"
+@@ -67,8 +68,8 @@ mwifiex_info_read(struct file *file, char __user *ubuf,
+ 	struct net_device *netdev = priv->netdev;
+ 	struct netdev_hw_addr *ha;
+ 	struct netdev_queue *txq;
+-	unsigned long page = get_zeroed_page(GFP_KERNEL);
+-	char *p = (char *) page, fmt[64];
++	char *page = kzalloc(PAGE_SIZE, GFP_KERNEL);
++	char *p = page, fmt[64];
+ 	struct mwifiex_bss_info info;
+ 	ssize_t ret;
+ 	int i = 0;
+@@ -133,11 +134,10 @@ mwifiex_info_read(struct file *file, char __user *ubuf,
+ 	}
+ 	p += sprintf(p, "\n");
+ 
+-	ret = simple_read_from_buffer(ubuf, count, ppos, (char *) page,
+-				      (unsigned long) p - page);
++	ret = simple_read_from_buffer(ubuf, count, ppos, page, p - page);
+ 
+ free_and_exit:
+-	free_page(page);
++	kfree(page);
+ 	return ret;
+ }
+ 
+@@ -168,8 +168,8 @@ mwifiex_getlog_read(struct file *file, char __user *ubuf,
  {
- 	struct lbs_private *priv = file->private_data;
- 	size_t pos = 0;
--	unsigned long addr = get_zeroed_page(GFP_KERNEL);
--	char *buf = (char *)addr;
-+	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	ssize_t res;
- 	if (!buf)
- 		return -ENOMEM;
-@@ -48,7 +47,7 @@ static ssize_t lbs_dev_info(struct file *file, char __user *userbuf,
- 
- 	res = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
- 
--	free_page(addr);
-+	kfree(buf);
- 	return res;
- }
- 
-@@ -96,8 +95,7 @@ static ssize_t lbs_sleepparams_read(struct file *file, char __user *userbuf,
+ 	struct mwifiex_private *priv =
+ 		(struct mwifiex_private *) file->private_data;
+-	unsigned long page = get_zeroed_page(GFP_KERNEL);
+-	char *p = (char *) page;
++	char *page = kzalloc(PAGE_SIZE, GFP_KERNEL);
++	char *p = page;
  	ssize_t ret;
- 	size_t pos = 0;
- 	struct sleep_params sp;
--	unsigned long addr = get_zeroed_page(GFP_KERNEL);
--	char *buf = (char *)addr;
-+	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
+ 	struct mwifiex_ds_get_stats stats;
  
-@@ -113,7 +111,7 @@ static ssize_t lbs_sleepparams_read(struct file *file, char __user *userbuf,
- 	ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+@@ -220,11 +220,10 @@ mwifiex_getlog_read(struct file *file, char __user *ubuf,
+ 		     stats.bcn_miss_cnt);
  
- out_unlock:
--	free_page(addr);
-+	kfree(buf);
+ 
+-	ret = simple_read_from_buffer(ubuf, count, ppos, (char *) page,
+-				      (unsigned long) p - page);
++	ret = simple_read_from_buffer(ubuf, count, ppos, page, p - page);
+ 
+ free_and_exit:
+-	free_page(page);
++	kfree(page);
  	return ret;
  }
  
-@@ -165,8 +163,7 @@ static ssize_t lbs_host_sleep_read(struct file *file, char __user *userbuf,
- 	struct lbs_private *priv = file->private_data;
+@@ -247,8 +246,8 @@ mwifiex_histogram_read(struct file *file, char __user *ubuf,
  	ssize_t ret;
- 	size_t pos = 0;
--	unsigned long addr = get_zeroed_page(GFP_KERNEL);
--	char *buf = (char *)addr;
-+	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	if (!buf)
+ 	struct mwifiex_histogram_data *phist_data;
+ 	int i, value;
+-	unsigned long page = get_zeroed_page(GFP_KERNEL);
+-	char *p = (char *)page;
++	char *page = kzalloc(PAGE_SIZE, GFP_KERNEL);
++	char *p = page;
+ 
+ 	if (!p)
  		return -ENOMEM;
- 
-@@ -174,7 +171,7 @@ static ssize_t lbs_host_sleep_read(struct file *file, char __user *userbuf,
- 
- 	ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
- 
--	free_page(addr);
-+	kfree(buf);
- 	return ret;
- }
- 
-@@ -228,7 +225,7 @@ static ssize_t lbs_threshold_read(uint16_t tlv_type, uint16_t event_mask,
- 	u8 freq;
- 	int events = 0;
- 
--	buf = (char *)get_zeroed_page(GFP_KERNEL);
-+	buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
- 
-@@ -261,7 +258,7 @@ static ssize_t lbs_threshold_read(uint16_t tlv_type, uint16_t event_mask,
- 	kfree(subscribed);
- 
-  out_page:
--	free_page((unsigned long)buf);
-+	kfree(buf);
- 	return ret;
- }
- 
-@@ -436,8 +433,7 @@ static ssize_t lbs_rdmac_read(struct file *file, char __user *userbuf,
- 	struct lbs_private *priv = file->private_data;
- 	ssize_t pos = 0;
- 	int ret;
--	unsigned long addr = get_zeroed_page(GFP_KERNEL);
--	char *buf = (char *)addr;
-+	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	u32 val = 0;
- 
- 	if (!buf)
-@@ -450,7 +446,7 @@ static ssize_t lbs_rdmac_read(struct file *file, char __user *userbuf,
- 				priv->mac_offset, val);
- 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
+@@ -309,11 +308,10 @@ mwifiex_histogram_read(struct file *file, char __user *ubuf,
+ 				i, value);
  	}
+ 
+-	ret = simple_read_from_buffer(ubuf, count, ppos, (char *)page,
+-				      (unsigned long)p - page);
++	ret = simple_read_from_buffer(ubuf, count, ppos, page, p - page);
+ 
+ free_and_exit:
+-	free_page(page);
++	kfree(page);
+ 	return ret;
+ }
+ 
+@@ -383,8 +381,8 @@ mwifiex_debug_read(struct file *file, char __user *ubuf,
+ {
+ 	struct mwifiex_private *priv =
+ 		(struct mwifiex_private *) file->private_data;
+-	unsigned long page = get_zeroed_page(GFP_KERNEL);
+-	char *p = (char *) page;
++	char *page = kzalloc(PAGE_SIZE, GFP_KERNEL);
++	char *p = page;
+ 	ssize_t ret;
+ 
+ 	if (!p)
+@@ -396,11 +394,10 @@ mwifiex_debug_read(struct file *file, char __user *ubuf,
+ 
+ 	p += mwifiex_debug_info_to_buffer(priv, p, &info);
+ 
+-	ret = simple_read_from_buffer(ubuf, count, ppos, (char *) page,
+-				      (unsigned long) p - page);
++	ret = simple_read_from_buffer(ubuf, count, ppos, page, p - page);
+ 
+ free_and_exit:
+-	free_page(page);
++	kfree(page);
+ 	return ret;
+ }
+ 
+@@ -457,8 +454,7 @@ mwifiex_regrdwr_read(struct file *file, char __user *ubuf,
+ {
+ 	struct mwifiex_private *priv =
+ 		(struct mwifiex_private *) file->private_data;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *) addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	int pos = 0, ret = 0;
+ 	u32 reg_value;
+ 
+@@ -497,7 +493,7 @@ mwifiex_regrdwr_read(struct file *file, char __user *ubuf,
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, pos);
+ 
+ done:
 -	free_page(addr);
 +	kfree(buf);
  	return ret;
  }
  
-@@ -506,8 +502,7 @@ static ssize_t lbs_rdbbp_read(struct file *file, char __user *userbuf,
- 	struct lbs_private *priv = file->private_data;
- 	ssize_t pos = 0;
- 	int ret;
--	unsigned long addr = get_zeroed_page(GFP_KERNEL);
--	char *buf = (char *)addr;
+@@ -511,8 +507,7 @@ mwifiex_debug_mask_read(struct file *file, char __user *ubuf,
+ {
+ 	struct mwifiex_private *priv =
+ 		(struct mwifiex_private *)file->private_data;
+-	unsigned long page = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *)page;
 +	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	u32 val;
+ 	size_t ret = 0;
+ 	int pos = 0;
  
- 	if (!buf)
-@@ -520,7 +515,7 @@ static ssize_t lbs_rdbbp_read(struct file *file, char __user *userbuf,
- 				priv->bbp_offset, val);
- 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
- 	}
--	free_page(addr);
+@@ -523,7 +518,7 @@ mwifiex_debug_mask_read(struct file *file, char __user *ubuf,
+ 			priv->adapter->debug_mask);
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, pos);
+ 
+-	free_page(page);
 +	kfree(buf);
- 
  	return ret;
  }
-@@ -578,8 +573,7 @@ static ssize_t lbs_rdrf_read(struct file *file, char __user *userbuf,
- 	struct lbs_private *priv = file->private_data;
- 	ssize_t pos = 0;
- 	int ret;
+ 
+@@ -652,8 +647,7 @@ mwifiex_memrw_read(struct file *file, char __user *ubuf,
+ 		   size_t count, loff_t *ppos)
+ {
+ 	struct mwifiex_private *priv = (void *)file->private_data;
 -	unsigned long addr = get_zeroed_page(GFP_KERNEL);
 -	char *buf = (char *)addr;
 +	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	u32 val;
+ 	int ret, pos = 0;
  
  	if (!buf)
-@@ -592,7 +586,7 @@ static ssize_t lbs_rdrf_read(struct file *file, char __user *userbuf,
- 				priv->rf_offset, val);
- 		ret = simple_read_from_buffer(userbuf, count, ppos, buf, pos);
- 	}
+@@ -663,7 +657,7 @@ mwifiex_memrw_read(struct file *file, char __user *ubuf,
+ 			priv->mem_rw.value);
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, pos);
+ 
 -	free_page(addr);
 +	kfree(buf);
- 
  	return ret;
  }
-@@ -812,8 +806,7 @@ static ssize_t lbs_debugfs_read(struct file *file, char __user *userbuf,
- 	char *p;
- 	int i;
- 	struct debug_data *d;
+ 
+@@ -719,8 +713,7 @@ mwifiex_rdeeprom_read(struct file *file, char __user *ubuf,
+ {
+ 	struct mwifiex_private *priv =
+ 		(struct mwifiex_private *) file->private_data;
+-	unsigned long addr = get_zeroed_page(GFP_KERNEL);
+-	char *buf = (char *) addr;
++	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
+ 	int pos, ret, i;
+ 	u8 value[MAX_EEPROM_DATA];
+ 
+@@ -749,7 +742,7 @@ mwifiex_rdeeprom_read(struct file *file, char __user *ubuf,
+ done:
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, pos);
+ out_free:
+-	free_page(addr);
++	kfree(buf);
+ 	return ret;
+ }
+ 
+@@ -820,8 +813,7 @@ mwifiex_hscfg_read(struct file *file, char __user *ubuf,
+ 		   size_t count, loff_t *ppos)
+ {
+ 	struct mwifiex_private *priv = (void *)file->private_data;
 -	unsigned long addr = get_zeroed_page(GFP_KERNEL);
 -	char *buf = (char *)addr;
 +	char *buf = kzalloc(PAGE_SIZE, GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
+ 	int pos, ret;
+ 	struct mwifiex_ds_hs_cfg hscfg;
  
-@@ -836,7 +829,7 @@ static ssize_t lbs_debugfs_read(struct file *file, char __user *userbuf,
+@@ -836,7 +828,7 @@ mwifiex_hscfg_read(struct file *file, char __user *ubuf,
  
- 	res = simple_read_from_buffer(userbuf, count, ppos, p, pos);
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, buf, pos);
  
 -	free_page(addr);
 +	kfree(buf);
- 	return res;
+ 	return ret;
  }
  
 
