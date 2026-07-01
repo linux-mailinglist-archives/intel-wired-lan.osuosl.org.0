@@ -2,111 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id X3KrN+AXRWqJ6woAu9opvQ
+	id fsDZEsocRWrT7AoAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:36:32 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:57:30 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 634D76EE325
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:36:32 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BFAFD6EE6E2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:57:29 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=deliyXDU;
+	dkim=pass header.d=osuosl.org header.s=default header.b=EajReQeZ;
 	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E690F40E7C;
-	Wed,  1 Jul 2026 13:36:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6C447410C8;
+	Wed,  1 Jul 2026 13:57:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NIlr3fJPH38H; Wed,  1 Jul 2026 13:36:30 +0000 (UTC)
+ id Rdq1b1VBX9aT; Wed,  1 Jul 2026 13:57:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3BC2A40ECB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A65CB410B8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782912990;
-	bh=FaQqKWe1A+SJoHq5B5QalZHgHJG98WSXNQHkK70ytgM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=deliyXDUYrFyZ+fh5/F7JVnpbN7+kqG7S61gWtXpmrWlg5gFvOfmLeae/pTDlNW9u
-	 6iQQuKk9ofmNgYJlMjjdojVPtiusC7vdq9j5aQvsBdtB4OG4OoYMxcOCH2+VWRDLPm
-	 Tsig6odK6m0dVOdjpbFwk0bwy2nObH2H9DgMnTCLFo3IRRXXb5yEBVQAPI4e0kIA4c
-	 t5Qj3n2UiCLheLi12w7cwMt9r+Op0OFRiVRWZ6dk4mynx+ngI9t35buC+H3FdkQezJ
-	 8+fxmTgrXeC2zbJmZF3HgrqSZHoC03y432MOph2NSDt9Vc3yKlJbnY8eyQz3BoXEnE
-	 QVtB/XX5KpPRg==
+	s=default; t=1782914247;
+	bh=zag35WAocY+5o+OvST/25DSXMEyjKxN2j2GDhfTpF5s=;
+	h=From:Date:To:Cc:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=EajReQeZ2qWagsQHRuCyIeKeCHgNmaNRYAir5e4PeXO4DnBeuPzXMEZHvcwe2715K
+	 89e0zcOlyC4PhKQlfhq+kBnSsWMCfBqDlapNh1/VG7kowgitqhTAgnlJ1hjw4fRBlt
+	 11wfag0w/ZOY2x7m856uwmo6ZUAHEsaYDgDiu7ED6Bekcb8x6IkuJMATv6EJ4UU1Mj
+	 gjs+NHSWE8jQK7w1BxghLMdSjkvn8Z2dwBxliXsr0jYxtSIa/c3r+0rpPcDFAoNkJY
+	 Hr34pkZiRwRgRscVG+fwl9ELih05ZUPGLSd2mAl+IvL5QOlbjNNlnCnObbO6OG8KwR
+	 vcnthS4/Lw9YA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3BC2A40ECB;
-	Wed,  1 Jul 2026 13:36:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A65CB410B8;
+	Wed,  1 Jul 2026 13:57:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id D85FC2D5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:28 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1F82C127
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:57:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CA10640E60
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 10D3D60EE1
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:57:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JqGaHSp0g68b for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jul 2026 13:36:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C0F6A40E7C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0F6A40E7C
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C0F6A40E7C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:27 +0000 (UTC)
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-FKf5wlHyPC2FqAvItdaLFg-1; Wed,
- 01 Jul 2026 09:36:23 -0400
-X-MC-Unique: FKf5wlHyPC2FqAvItdaLFg-1
-X-Mimecast-MFC-AGG-ID: FKf5wlHyPC2FqAvItdaLFg_1782912980
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B5E5A1954237; Wed,  1 Jul 2026 13:36:19 +0000 (UTC)
-Received: from ShadowPeak.redhat.com (unknown [10.44.49.212])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2EAD3180076D; Wed,  1 Jul 2026 13:36:14 +0000 (UTC)
-From: Petr Oros <poros@redhat.com>
-To: netdev@vger.kernel.org
-Date: Wed,  1 Jul 2026 15:36:01 +0200
-Message-ID: <20260701133601.2118382-3-poros@redhat.com>
-In-Reply-To: <20260701133601.2118382-1-poros@redhat.com>
-References: <20260701133601.2118382-1-poros@redhat.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 353lyHK9TRPn for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jul 2026 13:57:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2600:3c0a:e001:78e:0:1991:8:25; helo=sea.source.kernel.org;
+ envelope-from=rppt@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 31D3660EDF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 31D3660EDF
+Received: from sea.source.kernel.org (sea.source.kernel.org
+ [IPv6:2600:3c0a:e001:78e:0:1991:8:25])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 31D3660EDF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:57:24 +0000 (UTC)
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by sea.source.kernel.org (Postfix) with ESMTP id 7182941252;
+ Wed,  1 Jul 2026 13:57:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DAF371F00A3D;
+ Wed,  1 Jul 2026 13:57:20 +0000 (UTC)
+From: "Mike Rapoport (Microsoft)" <rppt@kernel.org>
+Date: Wed, 01 Jul 2026 16:57:17 +0300
+Message-Id: <20260701-b4-drivers-ethernet-v1-0-58776615db6e@kernel.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 9vbSVu7wa7hw1NeNOcYQaA-TotMVfIwB7SQ2YQC2KLg_1782912980
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAL0cRWoC/yXMwQ6CMBAE0F8he3aTgkLQXzEeumW09VDNLhATw
+ r/b6vFNZmYjgyYYXZqNFGuy9MoF7aGhEH1+gNNUTJ3rBjccHcuJJ00r1BhzhGbMLD3c2Mt59NJ
+ SWb4V9/T5vV5vf9siT4S5XtWGeAOL+hxijSpp37/MWFb8jgAAAA==
+X-Change-ID: 20260630-b4-drivers-ethernet-b5e085b98ab1
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Manish Chopra <manishc@marvell.com>, 
+ Paolo Abeni <pabeni@redhat.com>
+Cc: Edward Cree <ecree.xilinx@gmail.com>, 
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
+ Sudarsana Kalluru <skalluru@marvell.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Mike Rapoport <rppt@kernel.org>, 
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org, 
+ linux-mm@kvack.org, linux-net-drivers@amd.com, netdev@vger.kernel.org
+X-Mailer: b4 0.16-dev
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1782912986;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FaQqKWe1A+SJoHq5B5QalZHgHJG98WSXNQHkK70ytgM=;
- b=birNuMUoe6U/hIKbT8OiS3HhEsx36iCz9KY3glGCgEbqdj+aqsCiEN0qohZb6XP98w7CoP
- d+nUKlBUQEaSYQKWII0R7pag9jB/dEERbe2Gt2zpqY+rxA24JaHX9zfZmDOZezMGfSj3ye
- JZ9moPmEikLn9ymofpxhaGwbIVj+GnE=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20260515; t=1782914244;
+ bh=zag35WAocY+5o+OvST/25DSXMEyjKxN2j2GDhfTpF5s=;
+ h=From:Subject:Date:To:Cc;
+ b=TlVDab3taKef0cAHAYzvZWbe8q1YtiZZL2iPNyoLbK/g1DgwhDk/Gg9XGmwG9yKBF
+ PnWzy//tKPnrrbIuL4frm/k3LfXeFGF2iCiZ2yEZWg2OFMYpIXXwpiqEGDdeYqHh12
+ FxuPhn3YvDMqXdAYksh7EzEe29c/SLkcjH6s6U2CkKGL02I4pNZDh36BF+vzSNse+L
+ 4L4BLyrOyvTeZB/fzHFqta9oFP7ZoXHXgsn7JsvszUlmHn9T2thGwzYpuKnFPY6iZ4
+ /hQnQLexd22jTT31Sc43CUIAg/Usjb6WzwhcixRdNrLp6OWItHPtroKWH161IHgwTI
+ elkTYlpzGTUfw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=birNuMUo
-Subject: [Intel-wired-lan] [PATCH iwl-net v3 2/2] ice: preserve uplink DFLT
- Rx rule on switchdev release
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20260515 header.b=TlVDab3t
+Subject: [Intel-wired-lan] [PATCH 0/4] drivers/net/ethernet: replace
+ __get_free_pages() with kmalloc()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -119,124 +115,102 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, Alice Michael <alice.michael@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Eric Dumazet <edumazet@google.com>, linux-kernel@vger.kernel.org,
- Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
- intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [3.29 / 15.00];
-	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+X-Spamd-Result: default: False [2.29 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
 	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_SPF_ALLOW(-0.20)[+mx:c];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo,osuosl.org:dkim,osuosl.org:from_smtp,msgid.link:url];
+	FREEMAIL_CC(0.00)[gmail.com,intel.com,marvell.com,kernel.org,lists.osuosl.org,vger.kernel.org,kvack.org,amd.com];
 	RCVD_TLS_LAST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:alice.michael@intel.com,m:przemyslaw.kitszel@intel.com,m:edumazet@google.com,m:linux-kernel@vger.kernel.org,m:martyna.szapar-mudlaw@linux.intel.com,m:andrew+netdev@lunn.ch,m:marcin.szycik@linux.intel.com,m:anthony.l.nguyen@intel.com,m:horms@kernel.org,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:manishc@marvell.com,m:pabeni@redhat.com,m:ecree.xilinx@gmail.com,m:przemyslaw.kitszel@intel.com,m:skalluru@marvell.com,m:anthony.l.nguyen@intel.com,m:rppt@kernel.org,m:linux-kernel@vger.kernel.org,m:linux-mm@kvack.org,m:linux-net-drivers@amd.com,m:netdev@vger.kernel.org,m:andrew@lunn.ch,m:ecreexilinx@gmail.com,s:lists@lfdr.de];
 	ARC_NA(0.00)[];
 	RCPT_COUNT_TWELVE(0.00)[16];
-	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FORGED_SENDER(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	MIME_TRACE(0.00)[0:+];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp4.osuosl.org:rdns,smtp4.osuosl.org:helo];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[rppt@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	RCVD_COUNT_SEVEN(0.00)[10]
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 634D76EE325
+X-Rspamd-Queue-Id: BFAFD6EE6E2
 
-When the uplink PF is promiscuous, ice_vsi_sync_fltr() installs an
-ICE_SW_LKUP_DFLT catch-all Rx rule on the uplink VSI. Entering switchdev
-re-affirms it through the idempotent ice_set_dflt_vsi(), but
-ice_eswitch_release_env() removed both the Rx and Tx DFLT rules
-unconditionally on teardown. That clobbered a promisc-owned Rx rule: it
-disappeared while IFF_PROMISC was still set and the sync path was not
-retriggered, leaving the uplink without the catch-all the netdev
-requested.
+This is a (small) part of larger work of replacing page allocator calls
+with kmalloc.
 
-Skip the Rx DFLT removal when the uplink is promiscuous, both in
-ice_eswitch_release_env() and the err_def_tx unwind of
-ice_eswitch_setup_env(); the Tx leg, owned by switchdev, is still removed.
-Test the live netdev->flags, the same value ena_rx_filtering() ->
-ice_cfg_vlan_pruning() above already keys on, so the preserved rule and
-the pruning state stay consistent, including for a promisc change made
-while switchdev ran (which never reached the gated filter sync).
+My initial intention a few month ago was to remove ugly casts [1], but then
+willy pointed out that Linus objected to something like this [2] and it
+looks like more than a decade old technical debt.
 
-Fixes: 5c07be96d8b3 ("ice: Avoid setting default Rx VSI twice in switchdev setup")
-Signed-off-by: Petr Oros <poros@redhat.com>
+Largely, anything that doesn't need struct page (or a memdesc in the
+future) should just use kmalloc() or kvmalloc() to allocate memory.
+kmalloc() guarantees alignment, physical contiguity and working
+virt_to_phys() and beside nicer API that returns void * on alloc and
+doesn't require to know the allocation size on free, kmalloc() provides
+better debugging capabilities than page allocator.
+
+Another thing is that touching these allocation sites gives the reviewers
+opportunity to see if a PAGE_SIZE buffer is actually needed or maybe
+another size is appropriate.
+
+For larger allocations that don't need physically contiguous memory
+kvmalloc() can be a better option that __get_free_pages() because under
+memory pressure it's is easier to allocate several order-0 pages than a
+physically contiguous chunk with the same number of pages.
+
+And last, but not least, removing needless calls to page allocator should
+help with memdesc (aka project folio) conversion. There will be way less
+places to audit to see if the user was actually using struct page.
+
+Also in git:
+https://git.kernel.org/pub/scm/linux/kernel/git/rppt/linux.git gfp-to-kmalloc/drivers-net-ethernet
+
+[1] https://lore.kernel.org/all/20251018093002.3660549-1-rppt@kernel.org/
+[2] https://lore.kernel.org/all/CA+55aFwp4iy4rtX2gE2WjBGFL=NxMVnoFeHqYa2j1dYOMMGqxg@mail.gmail.com/
+
 ---
-v3:
-- Corrected the Fixes tag from 1a1c40df2e80 ("ice: set and release
-  switchdev environment") to 5c07be96d8b3 ("ice: Avoid setting default
-  Rx VSI twice in switchdev setup"), the commit that made
-  ice_eswitch_setup_env() use the idempotent ice_set_dflt_vsi(); before
-  it a pre-existing promisc DFLT rule made setup fail with -EEXIST so the
-  release path was never reached. No code change.
+v2 changes:
+- split out ethernet drivers from a larger set 
 
-v2: https://lore.kernel.org/all/20260622113428.2565255-3-poros@redhat.com/
-v1: https://lore.kernel.org/all/deef5756e534ef06c12d910c5305d3fd205d30a0.1781786935.git.poros@redhat.com/
+v1: https://patch.msgid.link/20260630-b4-drivers-net-v1-0-672162a91f37@kernel.org
+
 ---
- drivers/net/ethernet/intel/ice/ice_eswitch.c | 18 ++++++++++++++----
- 1 file changed, 14 insertions(+), 4 deletions(-)
+Mike Rapoport (Microsoft) (4):
+      bnx2x: use kzalloc() to allocate mac filtering list
+      ice: use kzalloc() to allocate staging buffer for reading from GNSS
+      sfc/siena: use kmalloc() to allocate logging buffer
+      sfc: use kmalloc() to allocate logging buffer
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-index c30e27bbfe6e25..07e2016fb9481f 100644
---- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
-@@ -66,8 +66,10 @@ static int ice_eswitch_setup_env(struct ice_pf *pf)
- 	ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx, false,
- 			 ICE_FLTR_TX);
- err_def_tx:
--	ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx, false,
--			 ICE_FLTR_RX);
-+	/* keep the Rx DFLT rule if the uplink is promiscuous (see release_env) */
-+	if (!(uplink_vsi->netdev->flags & IFF_PROMISC))
-+		ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx,
-+				 false, ICE_FLTR_RX);
- err_def_rx:
- 	ice_vsi_del_vlan_zero(uplink_vsi);
- err_vlan_zero:
-@@ -276,8 +278,16 @@ static void ice_eswitch_release_env(struct ice_pf *pf)
- 	vlan_ops->ena_rx_filtering(uplink_vsi);
- 	ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx, false,
- 			 ICE_FLTR_TX);
--	ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx, false,
--			 ICE_FLTR_RX);
-+
-+	/* Keep the Rx DFLT rule if the uplink is promiscuous; it must outlive
-+	 * the session. Test the live netdev->flags, the same value
-+	 * ena_rx_filtering() -> ice_cfg_vlan_pruning() above keys its decision
-+	 * on, so the preserved DFLT rule and the pruning state stay consistent.
-+	 */
-+	if (!(uplink_vsi->netdev->flags & IFF_PROMISC))
-+		ice_cfg_dflt_vsi(uplink_vsi->port_info, uplink_vsi->idx,
-+				 false, ICE_FLTR_RX);
-+
- 	ice_fltr_add_mac_and_broadcast(uplink_vsi,
- 				       uplink_vsi->port_info->mac.perm_addr,
- 				       ICE_FWD_TO_VSI);
--- 
-2.54.0
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c | 6 +++---
+ drivers/net/ethernet/intel/ice/ice_gnss.c      | 5 +++--
+ drivers/net/ethernet/sfc/mcdi.c                | 7 ++++---
+ drivers/net/ethernet/sfc/siena/mcdi.c          | 7 ++++---
+ 4 files changed, 14 insertions(+), 11 deletions(-)
+---
+base-commit: dc59e4fea9d83f03bad6bddf3fa2e52491777482
+change-id: 20260630-b4-drivers-ethernet-b5e085b98ab1
+
+Best regards,
+--  
+Sincerely yours,
+Mike.
 
