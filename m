@@ -2,108 +2,107 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id veNvKgIMRWpM5woAu9opvQ
+	id ND2CDdcXRWp46woAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 14:45:54 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:36:23 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0AE5C6ED873
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 14:45:54 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D4066EE31B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 01 Jul 2026 15:36:22 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=nCyxWh2U;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none)
+	dkim=pass header.d=osuosl.org header.s=default header.b=4X+cWz0N;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=redhat.com (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9FB768416B;
-	Wed,  1 Jul 2026 12:45:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id F123760E95;
+	Wed,  1 Jul 2026 13:36:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e_GxNMhojiDL; Wed,  1 Jul 2026 12:45:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZhVW5tp1XEaZ; Wed,  1 Jul 2026 13:36:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5130A84161
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21C1860EA6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782909951;
-	bh=jW0MG+cQXaad438Im67EkaVBfvGS6j8ejOHQpyo22v0=;
-	h=From:To:Cc:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=nCyxWh2U9tWLWXzqWcKOvcJsutfPNNp+XMOXVyGQ4HxChIL8biJeqkLN3PRblQPBP
-	 /3L7DYadG2AIQKCX2egZs0DpRTNTqBJ7GJkpr9JuekATbYd2q+nkcC7zLowmFBKpp8
-	 rZY9l9fEH2S6Q0Pk6hf659HhAz8L5QYFjbAFJpv6PKn9Og3kq2rDXDrkEFDPXOA1+v
-	 3h0Clap+kvOscs9gYr/WM98WDwI9z24kZS3+sHB8C6TDAC2eXjEE6BK/PNlg0P7vS7
-	 z0jEs/EUKDr0gPReRvCXQQuuOGZkBSk+7WkxC4lgrU3K7CyfRoy2hFNsSbo+o3c7q5
-	 k4ii70zXHaetg==
+	s=default; t=1782912980;
+	bh=bxNSXwEfd2C9VIxBjMEbeHul80x6G0tO5M0XauZwaxQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=4X+cWz0NYiiezvMV4Q+Eg0mHP25uxIUn8OBHEHRztK81jBnh68+UT2w5tSYYEFQXI
+	 H0+BF/xWKxhcnPHd5ltMi68JIMz2GpOzQSyDuzvZ9MAkvHPFIG3aPCugi/EebG/hN2
+	 ti6JO+yKMM/r7NBvu4IHD3o3IqWIrJCwutRyT3fvxPzQd741m3tvo2NrBGrhemsfy/
+	 dhBNixxMSH5F9BGZpHaNWMp1tNdtqgz2s0bi/MagR4xXNk/V0a4vjhZBa1U8uVDSYl
+	 cVfuaIWdFX9zOKGBH3X/t3DzA0vLALqzbCQ+DmHzgY8ccUyCgnGoOoOCB9eu5kASmX
+	 qGPYHpiaHin+w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5130A84161;
-	Wed,  1 Jul 2026 12:45:51 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 21C1860EA6;
+	Wed,  1 Jul 2026 13:36:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id DC8472D5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 12:45:46 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id E1680127
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DA0934053A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 12:45:46 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6F2044018E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IzX8W9oRD9Gz for <intel-wired-lan@lists.osuosl.org>;
- Wed,  1 Jul 2026 12:45:46 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id B2jNfJJjSLzS for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  1 Jul 2026 13:36:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2F1F40517
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2F1F40517
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D2F1F40517
- for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 12:45:45 +0000 (UTC)
-X-CSE-ConnectionGUID: DrKLYMv+TWOH+XlYctnVHA==
-X-CSE-MsgGUID: 85MtO4ICTD2P1C+AwJrcvw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11833"; a="83839264"
-X-IronPort-AV: E=Sophos;i="6.25,141,1779174000"; d="scan'208";a="83839264"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2026 05:45:45 -0700
-X-CSE-ConnectionGUID: uR70C+L6S1aR6XAgUC5DqQ==
-X-CSE-MsgGUID: O7S0kl4sTTGoM9R8J1lOKA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,141,1779174000"; d="scan'208";a="276864956"
-Received: from boxer.igk.intel.com ([10.102.20.173])
- by fmviesa001.fm.intel.com with ESMTP; 01 Jul 2026 05:45:43 -0700
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, magnus.karlsson@intel.com, kuba@kernel.org,
- pabeni@redhat.com, horms@kernel.org, przemyslaw.kitszel@intel.com,
- jacob.e.keller@intel.com, Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Wed,  1 Jul 2026 14:45:24 +0200
-Message-Id: <20260701124524.13644-8-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20260701124524.13644-1-maciej.fijalkowski@intel.com>
-References: <20260701124524.13644-1-maciej.fijalkowski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 619D640132
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 619D640132
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 619D640132
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  1 Jul 2026 13:36:16 +0000 (UTC)
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-244-Q5LFiP8EMGCGnLR0AFbI3g-1; Wed,
+ 01 Jul 2026 09:36:11 -0400
+X-MC-Unique: Q5LFiP8EMGCGnLR0AFbI3g-1
+X-Mimecast-MFC-AGG-ID: Q5LFiP8EMGCGnLR0AFbI3g_1782912969
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6FA311808978; Wed,  1 Jul 2026 13:36:09 +0000 (UTC)
+Received: from ShadowPeak.redhat.com (unknown [10.44.49.212])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A076E180076D; Wed,  1 Jul 2026 13:36:04 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed,  1 Jul 2026 15:35:59 +0200
+Message-ID: <20260701133601.2118382-1-poros@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: uLt7iT-bKyH7XjieTKzTauyxEv7MskgxWjiu29lprWM_1782912969
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1782909946; x=1814445946;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=6DOTZZLMzhI/ndLqAd1UjHACb2Zu5h/9HaOuowLGsRs=;
- b=YPT7qqSKkMvs1JSx6KP+LMfNNGJx7qNsmv/sf4pG1JTgx4YMV+kJ0XIq
- /OJ3OhBMvYqo+rlPJG+4X5yy5J7U+9TvxoL6herXNsYYMljefeaBnVT9T
- zzWAfm4lpt5XAgk5SO+bTfn+gkYN7cZi+bNnyVALmjD8UfarFWRhS5dcm
- 0kjICINJH1UPMtdDkiM/4U5WsXSKGH4RinMR1/yoJ8wRNGILMhEG5QKHa
- rZQ7u1pfrTF6jXm/eoDNaASWEd/WhME8JY5YIZeQt7ELNypQOUUCcAlA2
- v6u0Hse8WQmAPOamPEDmGIYmJLcl4cON07wLA4f/o4Rd74692Wtq0pwH2
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YPT7qqSK
-Subject: [Intel-wired-lan] [PATCH v5 net 7/7] i40e: keep q_vectors array in
- sync with channel count changes
+content-type: text/plain; charset="US-ASCII"; x-default=true
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1782912975;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=bxNSXwEfd2C9VIxBjMEbeHul80x6G0tO5M0XauZwaxQ=;
+ b=JRe7Q80+YHyA/qwQaWarlUFJKW/kw+WCbuKHuXo0oE4VPnTfDr3gsOjNrRBXgV43hA02YK
+ ZPfQ2L777bs4zNYo2J5VIA8ffPM82mRclrlAE6IriTEdcW5WeoQbClLdz4oVpMcMKGgBNg
+ EoKgf2b34g0Ej7SCq6ZB21Pxoqy/8R4=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=JRe7Q80+
+Subject: [Intel-wired-lan] [PATCH iwl-net v3 0/2] ice: fix DFLT Rx rule
+ handling for promisc and switchdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -116,275 +115,101 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ivan Vecera <ivecera@redhat.com>, Alice Michael <alice.michael@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Eric Dumazet <edumazet@google.com>, linux-kernel@vger.kernel.org,
+ Martyna Szapar-Mudlaw <martyna.szapar-mudlaw@linux.intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.79 / 15.00];
+X-Spamd-Result: default: False [3.19 / 15.00];
+	DMARC_POLICY_QUARANTINE(1.50)[redhat.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	SUSPICIOUS_RECIPS(1.50)[];
 	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_SPF_ALLOW(-0.20)[+mx];
 	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_TLS_LAST(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	RCVD_TLS_LAST(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[16];
+	FORGED_SENDER(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:netdev@vger.kernel.org,m:ivecera@redhat.com,m:alice.michael@intel.com,m:przemyslaw.kitszel@intel.com,m:edumazet@google.com,m:linux-kernel@vger.kernel.org,m:martyna.szapar-mudlaw@linux.intel.com,m:andrew+netdev@lunn.ch,m:marcin.szycik@linux.intel.com,m:anthony.l.nguyen@intel.com,m:horms@kernel.org,m:jacob.e.keller@intel.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:davem@davemloft.net,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
+	ARC_NA(0.00)[];
 	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:dkim,osuosl.org:from_smtp,smtp3.osuosl.org:rdns,smtp3.osuosl.org:helo];
+	TO_DN_SOME(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:email,intel.com:mid,intel.com:from_mime,osuosl.org:dkim,osuosl.org:from_smtp,smtp1.osuosl.org:rdns,smtp1.osuosl.org:helo,napi_threaded.py:url];
-	FROM_NEQ_ENVFROM(0.00)[maciej.fijalkowski@intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_NEQ_ENVFROM(0.00)[poros@redhat.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	RCPT_COUNT_SEVEN(0.00)[9];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 0AE5C6ED873
+X-Rspamd-Queue-Id: 4D4066EE31B
 
-For the main VSI, i40e_set_num_rings_in_vsi() always derives
-num_q_vectors from pf->num_lan_msix. At the same time, ethtool -L stores
-the user requested channel count in vsi->req_queue_pairs and the queue
-setup path uses that value for the effective number of queue pairs.
+Two fixes for the uplink default VSI Rx rule (DFLT) on E810 when the
+netdev is in IFF_PROMISC.
 
-This leaves queue and vector counts out of sync after shrinking channel
-count via ethtool -L. The active queue configuration is reduced, but the
-VSI still keeps the full PF-sized q_vector topology.
+Patch 1 drops the redundant per-VLAN promisc expansion that exhausts
+the FLU pool on a wide VLAN trunk across several PFs.
 
-That mismatch breaks reconfiguration flows which rely on vector/NAPI
-state matching the effective channel configuration. In particular,
-toggling /sys/class/net/<dev>/threaded after reducing the channel count
-can hang, and later channel-count changes can fail because VSI reinit
-does not rebuild q_vectors to match the new vector count.
+Patch 2 keeps the DFLT Rx rule across a switchdev teardown instead of
+clobbering the promisc state the operator asked for.
 
-Fix this by making the main VSI num_q_vectors follow the effective
-requested channel count, capped by the available MSI-X vectors. Update
-i40e_vsi_reinit_setup() to rebuild q_vectors during VSI reinit so the
-vector topology is refreshed together with the ring arrays when channel
-count changes.
+Changes since v2:
+- Patch 1: dropped the two vid=0 ICE_SW_LKUP_PROMISC <->
+  ICE_SW_LKUP_PROMISC_VLAN recipe-swap guards; each swap is net-zero and
+  guarding the demote stranded the vid=0 rule when the last VLAN was
+  removed under the DFLT rule.
+- Patch 1: drop the now-redundant per-VID multicast promisc rules right
+  after ice_set_dflt_vsi(). A bridge join raises IFF_ALLMULTI and
+  IFF_PROMISC in separate sync passes, so the allmulti pass expands the
+  per-VID rules before the DFLT rule exists; the cleanup keeps them from
+  lingering and exhausting the FLU pool. exit_dflt_promisc() reinstates
+  them on promisc off.
+- Patch 1: issue ice_set_promisc(ICE_MCAST_PROMISC_BITS) whenever the
+  netdev is promiscuous, not only when this VSI installs the default VSI
+  rule, so multicast promisc is not lost when the rule is already in use
+  (owned by another VSI, or preserved across a switchdev session).
+- Patch 1: hoisted the combined VLAN promisc mask in ice_clear_promisc()
+  into a local for alignment. Dropped Aleksandr's Reviewed-by since the
+  code changed.
+- Patch 2: corrected the Fixes tag to 5c07be96d8b3, the commit that made
+  ice_eswitch_setup_env() use the idempotent ice_set_dflt_vsi(); before
+  it a pre-existing promisc DFLT rule made setup fail with -EEXIST so the
+  release path was never reached.
 
-Keep alloc_queue_pairs unchanged and based on pf->num_lan_qps so the VSI
-retains its full queue capacity. Also do not touch irq_pile when
-rebuilding vectors.
+Link to v2:
+https://lore.kernel.org/all/20260622113428.2565255-1-poros@redhat.com/
 
-Selftest napi_threaded.py was originally used when Jakub reported hang
-on /sys/class/net/<dev>/threaded toggle. In order to make it pass on
-i40e, use persistent NAPI configuration for q_vector NAPIs so NAPI
-identity and threaded settings survive q_vector reallocation across
-channel-count changes. This is achieved by using netif_napi_add_config()
-when configuring q_vectors.
+Link to v1:
+https://lore.kernel.org/all/cover.1781786935.git.poros@redhat.com/
 
-$ export NETIF=ens259f1np1
-$ sudo -E env PATH="$PATH" ./tools/testing/selftests/drivers/net/napi_threaded.py
-TAP version 13
-1..3
-ok 1 napi_threaded.napi_init
-ok 2 napi_threaded.change_num_queues
-ok 3 napi_threaded.enable_dev_threaded_disable_napi_threaded
-Totals: pass:3 fail:0 xfail:0 xpass:0 skip:0 error:0
+Petr Oros (2):
+  ice: skip per-VLAN promisc rules when default VSI Rx rule is set
+  ice: preserve uplink DFLT Rx rule on switchdev release
 
-Reported-by: Jakub Kicinski <kuba@kernel.org>
-Closes: https://lore.kernel.org/intel-wired-lan/20260316133100.6054a11f@kernel.org/
-Fixes: d2a69fefd756 ("i40e: Fix changing previously set num_queue_pairs for PFs")
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 69 +++++++++++++--------
- 1 file changed, 44 insertions(+), 25 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_eswitch.c |  18 ++-
+ drivers/net/ethernet/intel/ice/ice_main.c    | 111 +++++++++++++++----
+ 2 files changed, 104 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index a9ec53cfd905..8a23bd99bd12 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -11406,10 +11406,14 @@ static void i40e_service_timer(struct timer_list *t)
- static int i40e_set_num_rings_in_vsi(struct i40e_vsi *vsi)
- {
- 	struct i40e_pf *pf = vsi->back;
-+	u16 qps;
- 
- 	switch (vsi->type) {
- 	case I40E_VSI_MAIN:
- 		vsi->alloc_queue_pairs = pf->num_lan_qps;
-+		qps = vsi->req_queue_pairs ?
-+		      min(vsi->req_queue_pairs, pf->num_lan_qps) :
-+		      pf->num_lan_qps;
- 		if (!vsi->num_tx_desc)
- 			vsi->num_tx_desc = ALIGN(I40E_DEFAULT_NUM_DESCRIPTORS,
- 						 I40E_REQ_DESCRIPTOR_MULTIPLE);
-@@ -11417,7 +11421,7 @@ static int i40e_set_num_rings_in_vsi(struct i40e_vsi *vsi)
- 			vsi->num_rx_desc = ALIGN(I40E_DEFAULT_NUM_DESCRIPTORS,
- 						 I40E_REQ_DESCRIPTOR_MULTIPLE);
- 		if (test_bit(I40E_FLAG_MSIX_ENA, pf->flags))
--			vsi->num_q_vectors = pf->num_lan_msix;
-+			vsi->num_q_vectors = clamp(qps, 1, pf->num_lan_msix);
- 		else
- 			vsi->num_q_vectors = 1;
- 
-@@ -11469,12 +11473,11 @@ static int i40e_set_num_rings_in_vsi(struct i40e_vsi *vsi)
- /**
-  * i40e_vsi_alloc_arrays - Allocate queue and vector pointer arrays for the vsi
-  * @vsi: VSI pointer
-- * @alloc_qvectors: a bool to specify if q_vectors need to be allocated.
-  *
-  * On error: returns error code (negative)
-  * On success: returns 0
-  **/
--static int i40e_vsi_alloc_arrays(struct i40e_vsi *vsi, bool alloc_qvectors)
-+static int i40e_vsi_alloc_arrays(struct i40e_vsi *vsi)
- {
- 	struct i40e_ring **next_rings;
- 	int size;
-@@ -11493,19 +11496,20 @@ static int i40e_vsi_alloc_arrays(struct i40e_vsi *vsi, bool alloc_qvectors)
- 	}
- 	vsi->rx_rings = next_rings;
- 
--	if (alloc_qvectors) {
--		/* allocate memory for q_vector pointers */
--		size = sizeof(struct i40e_q_vector *) * vsi->num_q_vectors;
--		vsi->q_vectors = kzalloc(size, GFP_KERNEL);
--		if (!vsi->q_vectors) {
--			ret = -ENOMEM;
--			goto err_vectors;
--		}
-+	/* allocate memory for q_vector pointers */
-+	size = sizeof(struct i40e_q_vector *) * vsi->num_q_vectors;
-+	vsi->q_vectors = kzalloc(size, GFP_KERNEL);
-+	if (!vsi->q_vectors) {
-+		ret = -ENOMEM;
-+		goto err_vectors;
- 	}
- 	return ret;
- 
- err_vectors:
- 	kfree(vsi->tx_rings);
-+	vsi->tx_rings = NULL;
-+	vsi->rx_rings = NULL;
-+	vsi->xdp_rings = NULL;
- 	return ret;
- }
- 
-@@ -11578,7 +11582,7 @@ static int i40e_vsi_mem_alloc(struct i40e_pf *pf, enum i40e_vsi_type type)
- 	if (ret)
- 		goto err_rings;
- 
--	ret = i40e_vsi_alloc_arrays(vsi, true);
-+	ret = i40e_vsi_alloc_arrays(vsi);
- 	if (ret)
- 		goto err_rings;
- 
-@@ -11603,18 +11607,15 @@ static int i40e_vsi_mem_alloc(struct i40e_pf *pf, enum i40e_vsi_type type)
- /**
-  * i40e_vsi_free_arrays - Free queue and vector pointer arrays for the VSI
-  * @vsi: VSI pointer
-- * @free_qvectors: a bool to specify if q_vectors need to be freed.
-  *
-  * On error: returns error code (negative)
-  * On success: returns 0
-  **/
--static void i40e_vsi_free_arrays(struct i40e_vsi *vsi, bool free_qvectors)
-+static void i40e_vsi_free_arrays(struct i40e_vsi *vsi)
- {
- 	/* free the ring and vector containers */
--	if (free_qvectors) {
--		kfree(vsi->q_vectors);
--		vsi->q_vectors = NULL;
--	}
-+	kfree(vsi->q_vectors);
-+	vsi->q_vectors = NULL;
- 	kfree(vsi->tx_rings);
- 	vsi->tx_rings = NULL;
- 	vsi->rx_rings = NULL;
-@@ -11674,7 +11675,7 @@ static int i40e_vsi_clear(struct i40e_vsi *vsi)
- 	i40e_put_lump(pf->irq_pile, vsi->base_vector, vsi->idx);
- 
- 	bitmap_free(vsi->af_xdp_zc_qps);
--	i40e_vsi_free_arrays(vsi, true);
-+	i40e_vsi_free_arrays(vsi);
- 	i40e_clear_rss_config_user(vsi);
- 
- 	pf->vsi[vsi->idx] = NULL;
-@@ -12048,7 +12049,8 @@ static int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx)
- 	cpumask_copy(&q_vector->affinity_mask, cpu_possible_mask);
- 
- 	if (vsi->netdev)
--		netif_napi_add(vsi->netdev, &q_vector->napi, i40e_napi_poll);
-+		netif_napi_add_config(vsi->netdev, &q_vector->napi,
-+				      i40e_napi_poll, v_idx);
- 
- 	/* tie q_vector and vsi together */
- 	vsi->q_vectors[v_idx] = q_vector;
-@@ -14203,8 +14205,9 @@ int i40e_vsi_release(struct i40e_vsi *vsi)
-  **/
- static int i40e_vsi_setup_vectors(struct i40e_vsi *vsi)
- {
--	int ret = -ENOENT;
- 	struct i40e_pf *pf = vsi->back;
-+	bool reuse_irq_lump = false;
-+	int ret = -ENOENT;
- 
- 	if (vsi->q_vectors[0]) {
- 		dev_info(&pf->pdev->dev, "VSI %d has existing q_vectors\n",
-@@ -14212,7 +14215,10 @@ static int i40e_vsi_setup_vectors(struct i40e_vsi *vsi)
- 		return -EEXIST;
- 	}
- 
--	if (vsi->base_vector) {
-+	if (vsi->type == I40E_VSI_MAIN && vsi->base_vector)
-+		reuse_irq_lump = true;
-+
-+	if (vsi->base_vector && !reuse_irq_lump) {
- 		dev_info(&pf->pdev->dev, "VSI %d has non-zero base vector %d\n",
- 			 vsi->seid, vsi->base_vector);
- 		return -EEXIST;
-@@ -14232,6 +14238,10 @@ static int i40e_vsi_setup_vectors(struct i40e_vsi *vsi)
- 	*/
- 	if (!test_bit(I40E_FLAG_MSIX_ENA, pf->flags))
- 		return ret;
-+
-+	if (reuse_irq_lump)
-+		return ret;
-+
- 	if (vsi->num_q_vectors)
- 		vsi->base_vector = i40e_get_lump(pf, pf->irq_pile,
- 						 vsi->num_q_vectors, vsi->idx);
-@@ -14271,11 +14281,20 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi,
- 	pf = vsi->back;
- 
- 	i40e_put_lump(pf->qp_pile, vsi->base_queue, vsi->idx);
-+	i40e_vsi_free_q_vectors(vsi);
- 	i40e_vsi_clear_rings(vsi);
-+	i40e_vsi_free_arrays(vsi);
- 
--	i40e_vsi_free_arrays(vsi, false);
- 	i40e_set_num_rings_in_vsi(vsi);
--	ret = i40e_vsi_alloc_arrays(vsi, false);
-+	ret = i40e_vsi_alloc_arrays(vsi);
-+	if (ret)
-+		goto err_netdev;
-+
-+	/* Rebuild q_vectors during VSI reinit because the effective channel
-+	 * count may change num_q_vectors. Keep vector topology aligned with the
-+	 * queue configuration after ethtool's .set_channels() callback.
-+	 */
-+	ret = i40e_vsi_setup_vectors(vsi);
- 	if (ret)
- 		goto err_netdev;
- 
-@@ -14287,7 +14306,7 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi,
- 		dev_info(&pf->pdev->dev,
- 			 "failed to get tracking for %d queues for VSI %d err %d\n",
- 			 alloc_queue_pairs, vsi->seid, ret);
--		goto err_netdev;
-+		goto err_rings;
- 	}
- 	vsi->base_queue = ret;
- 
 -- 
-2.43.0
+2.54.0
 
