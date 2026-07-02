@@ -2,110 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id 8RzJDqY8RmoQMgsAu9opvQ
+	id 2aanKeZLRmohOAsAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Jul 2026 12:25:42 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Jul 2026 13:30:46 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E9ED96F5DCC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Jul 2026 12:25:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBAD36F6BA2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 02 Jul 2026 13:30:45 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=CDThJpXZ;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dkim=pass header.d=osuosl.org header.s=default header.b=61AXBrcB;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 12B3F4068C;
-	Thu,  2 Jul 2026 10:25:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DDAE740798;
+	Thu,  2 Jul 2026 11:30:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NVO51Ep7R_cp; Thu,  2 Jul 2026 10:25:33 +0000 (UTC)
+ id A3EAteRKO3PI; Thu,  2 Jul 2026 11:30:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2EE3640659
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E7CEA4072E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1782987933;
-	bh=/t0/lSRFWMvEMxsmChSBtc/o/dzPhev8nZDxmCkJ3lk=;
-	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=CDThJpXZXfCf/pGpJRKE9b7y0gxfwlwKVj5wo1DtBcDzMiSFGUxaWu0caeIsda+l2
-	 NrEwRCQzKROgmn7aYLf3YrQCCf7qE6bayRBCDn65ShESCfMYI1VRLrSrsT0fy+ojw8
-	 GyCjOav7uHBQdspuPB3l+oTio2xAa3DNbd8hwoRRdTI0ZEgH0buztQbRzABbeLfCed
-	 OA3GJJMQz8CorXKt9We2lTM+3oWeWIBImJJe+ayGQqFuOYrGiCqjCFLJ95rNbRrhBw
-	 uXQw8N9rocnMjm36O8Hk4xaC3yMauGKoemy1gg0euYpNZCCYkJm2fjfvIilO11nGCH
-	 PJRQkX9/yAbXQ==
+	s=default; t=1782991843;
+	bh=jeJS2MKRrY4uEOU9rIxtV80vRlPz2RBs0ZRfWWAqL0o=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=61AXBrcBSrziWLIRdFuw1mTAyHChTe1u/5YiElNAS3gDJyqSocx+ArfMoQQM/6CHd
+	 g39pT6F3hOiGXPiuCXRGvqKr9ANcEuxf8tzr4srPR5qBUsQyMN9vEzz08Vsg5+WqLq
+	 70+xOZwFxcAGF6/9GyM92fCH0C66Td/Qi35RpEdQq8/OL7hC/z2uVxnb16iqdXf1sm
+	 GzTMwVqW5R7EoftgZXqFxWxkCkbDsKT0qIWKRrZZQ+z2JnVTlefWiEvn1++zJhosj3
+	 SJnq+9G0Ay8IrcyBPQifDzHSyxYK9uOe4PcfW9TcbrMrDnAxxpiKrByIn1psKorJFz
+	 u0DI/hYOiTepA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2EE3640659;
-	Thu,  2 Jul 2026 10:25:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E7CEA4072E;
+	Thu,  2 Jul 2026 11:30:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 1EEFA4B5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 10:25:31 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id F3644127
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 11:30:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 10C3183806
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 10:25:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id D924D82349
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 11:30:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id zQxU5YOpjrW6 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  2 Jul 2026 10:25:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ id PHrsYUgfNVQk for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  2 Jul 2026 11:30:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CDADB839C0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDADB839C0
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CDADB839C0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 10:25:29 +0000 (UTC)
-X-CSE-ConnectionGUID: /tUvKap2SpeTfBQuGGaW9A==
-X-CSE-MsgGUID: Sb98QLiEQrqhiUEtLXmFsg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11834"; a="83517586"
-X-IronPort-AV: E=Sophos;i="6.25,143,1779174000"; d="scan'208";a="83517586"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2026 03:25:29 -0700
-X-CSE-ConnectionGUID: pY+dMFr6Qti2xVAGggsMww==
-X-CSE-MsgGUID: Geg4lS0BSdaTqVCAkVNbng==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4A7D882376
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A7D882376
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4A7D882376
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  2 Jul 2026 11:30:38 +0000 (UTC)
+X-CSE-ConnectionGUID: O/wuXEy2RMu0gEX+GaiY/A==
+X-CSE-MsgGUID: alBlHPJ0R4e33rAUblDJyg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11834"; a="83611716"
+X-IronPort-AV: E=Sophos;i="6.25,143,1779174000"; d="scan'208";a="83611716"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Jul 2026 04:30:38 -0700
+X-CSE-ConnectionGUID: iZnM8CcuTqi/9jMIu8hz3Q==
+X-CSE-MsgGUID: nza/4zQVTUeTkkkiOLPaKw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,143,1779174000"; d="scan'208";a="248846372"
-Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.94.248.198])
- ([10.94.248.198])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2026 03:25:25 -0700
-Message-ID: <f2c285ba-8089-41a1-b28a-9062f2b584c8@linux.intel.com>
-Date: Thu, 2 Jul 2026 12:25:22 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org, Michal Schmidt <mschmidt@redhat.com>,
- Jakub Kicinski <kuba@kernel.org>
-Cc: netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Paolo Abeni <pabeni@redhat.com>,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-References: <20260701104141.9740-1-przemyslaw.kitszel@intel.com>
- <20260701104141.9740-2-przemyslaw.kitszel@intel.com>
-Content-Language: en-US
+X-IronPort-AV: E=Sophos;i="6.25,143,1779174000"; d="scan'208";a="251788386"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa010.jf.intel.com with ESMTP; 02 Jul 2026 04:30:36 -0700
+Received: from gond.igk.intel.com (gond.igk.intel.com [10.123.220.52])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 8E4BC284FF;
+ Thu,  2 Jul 2026 12:30:34 +0100 (IST)
 From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <20260701104141.9740-2-przemyslaw.kitszel@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+To: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, sandeep.penigalapati@intel.com, ananth.s@intel.com,
+ alexander.duyck@gmail.com, anthony.l.nguyen@intel.com,
+ Marcin Szycik <marcin.szycik@linux.intel.com>
+Date: Thu,  2 Jul 2026 12:29:54 +0200
+Message-ID: <20260702103007.97020-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.49.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1782987930; x=1814523930;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=4c9MR/wjhvT2gCHUXqup3VyOlygWwo/sdPuGMz2qwJ4=;
- b=mmbMJopUkjFY09kSIYPBKB/ybmx/EU94jEJEtIUKI4ywMIjhjgpg4z+0
- Q71qoS9x9smgLuyI9wMo94Ao5f40gD7n5c+OHPnTqBD2EWWAHPmI5UzsL
- rHvRmjMCL6rCeuDc6grnOGx75FK/jw71B92LuSrHCPrSUlxMdqQpTW71E
- svBIVicah3ivvqOLUlCBklVJMt7EAgjnYMLPcTWmNlU2cNZCVJWdMNBuR
- 8nSkd0FOqEEc9Nvp08w8waIpMmmDnjZLkzpXyOg6B0RLPSG0RlpzI1lds
- umRVL1zPDPOK0oeGxDRFEQBMabWejJMIa6KXMADnu95rdARvhEWpNuzPR
+ t=1782991839; x=1814527839;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cH7nlEfczE7YdcgGlWkHCxEkujAtZYJKnkz/SkefEw0=;
+ b=Q90JTIkCmqI/tn4HYw2eVsNQqqgbeQDKzFxNRnXhLfHZ3LRAEtjoIiXT
+ +SHLmlZyycdUBpV++K2V9TgFOOlNiDeOK2lLhUUrBMFO7OIeINdW1AUwq
+ oa55tmPoUHtVAcBYEiElS9KKyHVpzp1lJQlGYCsfTEPMLmTTo308mNcq3
+ zk9uPzZ8H+TEwNLM16hsX4RixXyv7jzCjf4tHtOhUSPoQVzboH0nnXnzf
+ UFF9qJKwsefwfUa/QKfjVHPl5Ycyhi4lo6MdqvwCgZam8tiuvmQxhPP4b
+ o3PJ52s0+tZCSSoU+abEp0+/vl4PxAox+/IQ4K9mebUipkY3J5k0QvNym
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
@@ -113,9 +102,8 @@ X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=mmbMJopU
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 2/2] ice: fix stats array
- overflow via proper realloc
+ header.s=Intel header.b=Q90JTIkC
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 00/12] Add ACL support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -131,208 +119,187 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.89 / 15.00];
+X-Spamd-Result: default: False [2.39 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	MIME_GOOD(-0.10)[text/plain];
+	R_SPF_ALLOW(-0.20)[+mx:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_RECIPIENTS(0.00)[m:przemyslaw.kitszel@intel.com,m:mschmidt@redhat.com,m:kuba@kernel.org,m:netdev@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:aleksandr.loktionov@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:jedrzej.jagielski@intel.com,m:piotr.kwapulinski@intel.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	RCVD_TLS_LAST(0.00)[];
-	RECEIVED_HELO_LOCALHOST(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[atlassian.net:url,osuosl.org:dkim,osuosl.org:from_smtp,intel.com:email];
-	FORGED_SENDER(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	ARC_NA(0.00)[];
-	MIME_TRACE(0.00)[0:+];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	FREEMAIL_CC(0.00)[vger.kernel.org,intel.com,gmail.com,linux.intel.com];
 	TO_DN_SOME(0.00)[];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RCVD_TLS_LAST(0.00)[];
+	ARC_NA(0.00)[];
+	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	MID_RHS_MATCH_FROM(0.00)[];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	ALIAS_RESOLVED(0.00)[];
-	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	RCVD_COUNT_SEVEN(0.00)[9]
+	TAGGED_RCPT(0.00)[intel-wired-lan];
+	RCPT_COUNT_SEVEN(0.00)[7];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_COUNT_SEVEN(0.00)[10]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: E9ED96F5DCC
+X-Rspamd-Queue-Id: BBAD36F6BA2
 
+E8xx hardware provides a Ternary Classifier block for implementing
+functions such as ACL (Access Control List). In this series it's simply
+referred to as "ACL".
 
+Implement ACL filtering. This expands support of network flow classification
+rules for the ethtool ntuple command. ACL filtering allows for an ip or port
+field's optional mask to be specified.
 
-On 01.07.2026 12:41, Przemek Kitszel wrote:
-> Integrate ice_vsi_alloc_stat_arrays() with realloc variant.
-> 
-> Instead of keeping two functions for stat arrays allocation, change the
-> ice_vsi_realloc_stat_arrays() to handle initial condition (no vsi_stat
-> entry) and replace ice_vsi_alloc_stat_arrays() by the more generic
-> ice_vsi_realloc_stat_arrays().
-> 
-> Note that VSIs of ICE_VSI_CHNL type are ignored in realloc variant as they
-> were in the replaced ice_vsi_alloc_stat_arrays().
-> 
-> This is a fix for stats array overflow that occurs when VF is given more
-> queues (an operation that will be more frequent, and by bigger increase,
-> when we will merge my "XLVF" series).
-> 
-> Splat for increasing number of queues thanks to Michal Schmidt:
-> KASAN detects the bug:
->  ==================================================================
->  BUG: KASAN: slab-out-of-bounds in ice_vsi_alloc_ring_stats+0x385/0x4a0 [ice]
->  Read of size 8 at addr ffff88810affea60 by task kworker/u131:7/221
-> 
->  CPU: 24 UID: 0 PID: 221 Comm: kworker/u131:7 Not tainted 7.1.0-rc1+ #1 PREEMPT(lazy)
->  ...
->  Workqueue: ice ice_service_task [ice]
->  Call Trace:
->   <TASK>
->   ...
->   kasan_report+0xd7/0x120
->   ice_vsi_alloc_ring_stats+0x385/0x4a0 [ice]
->   ice_vsi_cfg_def+0x12e2/0x2060 [ice]
->   ice_vsi_cfg+0xb5/0x3c0 [ice]
->   ice_reset_vf+0x858/0xf80 [ice]
->   ice_vc_request_qs_msg+0x1da/0x290 [ice]
->   ice_vc_process_vf_msg+0xb15/0x1430 [ice]
->   __ice_clean_ctrlq+0x70d/0x9d0 [ice]
->   ice_service_task+0x840/0xf20 [ice]
->   process_one_work+0x690/0xff0
->   worker_thread+0x4d9/0xd20
->   kthread+0x322/0x410
->   ret_from_fork+0x332/0x660
->   ret_from_fork_asm+0x1a/0x30
->   </TASK>
-> 
->  Allocated by task 2439:
->   kasan_save_stack+0x1c/0x40
->   kasan_save_track+0x10/0x30
->   __kasan_kmalloc+0x96/0xb0
->   __kmalloc_noprof+0x1d8/0x580
->   ice_vsi_cfg_def+0x115c/0x2060 [ice]
->   ice_vsi_cfg+0xb5/0x3c0 [ice]
->   ice_vsi_setup+0x180/0x320 [ice]
->   ice_start_vfs+0x1f3/0x590 [ice]
->   ice_ena_vfs+0x66d/0x798 [ice]
->   ice_sriov_configure.cold+0xe4/0x121 [ice]
->   sriov_numvfs_store+0x279/0x480
->   kernfs_fop_write_iter+0x331/0x4f0
->   vfs_write+0x4c4/0xe40
->   ksys_write+0x10c/0x240
->   do_syscall_64+0xd9/0x650
->   entry_SYSCALL_64_after_hwframe+0x76/0x7e
-> 
->  The buggy address belongs to the object at ffff88810affea40
->                 which belongs to the cache kmalloc-32 of size 32
->  The buggy address is located 0 bytes to the right of
->                 allocated 32-byte region [ffff88810affea40, ffff88810affea60)
-> 
-> Fixes: 2a2cb4c6c181 ("ice: replace ice_vf_recreate_vsi() with ice_vf_reconfig_vsi()")
-> Closes: https://redhat.atlassian.net/browse/RHEL-164321
+Example filters:
+  ethtool -N eth0 flow-type tcp4 dst-port 8880 m 0x00ff action 10
+  ethtool -N eth0 flow-type tcp4 src-ip 192.168.0.55 m 0.0.0.255 action -1
 
-Is there a simpler reproducer than the script attached in the ticket?
+This is a resurrection of an old series from 2020 [1] with several
+improvements, but the fundamental logic unchanged. v1 was almost pulled
+in, but ultimately it was decided to drop it [2] because of unresolved
+issues. One issue was too many defensive NULL checks. Second issue is
+about inconsistency when using multiple input sets. Both are addressed
+in this patchset.
 
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+More about the second issue:
 
-Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+From [3]:
+>I would argue that you need to have some sort of logic that basically
+>checks to see if you are going to hit the input set issue and falls
+>back and applies the ACL rules. Otherwise you are significantly
+>hampering the usefulness of this filter type. It doesn't make sense
+>that dropping a field will cause a rule to fail to be added, but
+>masking a single bit in some field will make it valid. It would make
+>it a nightmare to use from the user point of view as the rules come
+>across as arbitrary.
 
-> ---
-> This is an alternative to the fix [1] by Michal Schmidt, which were
-> blocked due to AI feedback. My fix was already developed before Michal's,
-> just not public back then. We have agreed to go on with my version.
-> 
-> [1] https://lore.kernel.org/netdev/20260520183501.3360810-3-anthony.l.nguyen@intel.com
-> ---
->  drivers/net/ethernet/intel/ice/ice_lib.c | 57 +++++-------------------
->  1 file changed, 11 insertions(+), 46 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-> index e48ee5940f17..ae167b42c558 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> @@ -513,51 +513,6 @@ static irqreturn_t ice_msix_clean_rings(int __always_unused irq, void *data)
->  	return IRQ_HANDLED;
->  }
->  
-> -/**
-> - * ice_vsi_alloc_stat_arrays - Allocate statistics arrays
-> - * @vsi: VSI pointer
-> - */
-> -static int ice_vsi_alloc_stat_arrays(struct ice_vsi *vsi)
-> -{
-> -	struct ice_vsi_stats *vsi_stat;
-> -	struct ice_pf *pf = vsi->back;
-> -
-> -	if (vsi->type == ICE_VSI_CHNL)
-> -		return 0;
-> -	if (!pf->vsi_stats)
-> -		return -ENOENT;
-> -
-> -	if (pf->vsi_stats[vsi->idx])
-> -	/* realloc will happen in rebuild path */
-> -		return 0;
-> -
-> -	vsi_stat = kzalloc_obj(*vsi_stat);
-> -	if (!vsi_stat)
-> -		return -ENOMEM;
-> -
-> -	vsi_stat->tx_ring_stats =
-> -		kzalloc_objs(*vsi_stat->tx_ring_stats, vsi->alloc_txq);
-> -	if (!vsi_stat->tx_ring_stats)
-> -		goto err_alloc_tx;
-> -
-> -	vsi_stat->rx_ring_stats =
-> -		kzalloc_objs(*vsi_stat->rx_ring_stats, vsi->alloc_rxq);
-> -	if (!vsi_stat->rx_ring_stats)
-> -		goto err_alloc_rx;
-> -
-> -	pf->vsi_stats[vsi->idx] = vsi_stat;
-> -
-> -	return 0;
-> -
-> -err_alloc_rx:
-> -	kfree(vsi_stat->rx_ring_stats);
-> -err_alloc_tx:
-> -	kfree(vsi_stat->tx_ring_stats);
-> -	kfree(vsi_stat);
-> -	pf->vsi_stats[vsi->idx] = NULL;
-> -	return -ENOMEM;
-> -}
-> -
->  /**
->   * ice_vsi_alloc_def - set default values for already allocated VSI
->   * @vsi: ptr to VSI
-> @@ -2319,7 +2274,17 @@ static int ice_vsi_realloc_stat_arrays(struct ice_vsi *vsi)
->  	u16 prev_txq = vsi->alloc_txq;
->  	u16 prev_rxq = vsi->alloc_rxq;
->  
-> +	if (vsi->type == ICE_VSI_CHNL)
-> +		return 0;
-> +
->  	vsi_stat = pf->vsi_stats[vsi->idx];
-> +	if (!vsi_stat) {
-> +		vsi_stat = kzalloc_obj(*vsi_stat);
-> +		if (!vsi_stat)
-> +			return -ENOMEM;
-> +
-> +		pf->vsi_stats[vsi->idx] = vsi_stat;
-> +	}
->  
->  	if (req_txq < prev_txq) {
->  		for (int i = req_txq; i < prev_txq; i++) {
-> @@ -2379,7 +2344,7 @@ static int ice_vsi_cfg_def(struct ice_vsi *vsi)
->  		return ret;
->  
->  	/* allocate memory for Tx/Rx ring stat pointers */
-> -	ret = ice_vsi_alloc_stat_arrays(vsi);
-> +	ret = ice_vsi_realloc_stat_arrays(vsi);
->  	if (ret)
->  		goto unroll_vsi_alloc;
->  
+Flow Director (FD) has a hardware limitation where all filters for the same
+packet type must use identical input sets. Previously, attempting to add the
+second filter would fail.
+
+Patch 12 adds automatic fallback to ACL block when FD cannot accommodate a
+filter due to input set conflicts, which resolves this inconsistency.
+
+v5 note:
+I haven't addressed *every* issue reported by sashikos; the amount of
+issues to analyze and potentially fix was frankly overwhelming: 35 from
+left brain (netdev-ai), 31 from right brain (sashiko.dev), and these are
+not simple typos, but issues that often require deep analysis, something
+particularly tricky in a large, messy codebase that was originally not
+authored by me. I focused on netdev-ai, since I believe this is the
+"main" one (please correct me if I'm wrong), addressing highs and some
+meds/lows. I skimmed through sashiko.dev, but it looked like a lot of
+duplicates.
+The code has already went through 2 rounds of sashiko. I've
+significantly improved code quality (see changelog), likely beyond what
+one could expect from such a large code addition before the introduction
+of automated review. Before, this would've gotten very little attention
+due to the amount of effort required to just read through it, let alone
+understand it.
+I'm sure both sashikos will have a new bag full of (potential) defects
+waiting for me after submitting this version. We could iterate this
+patchset till December until it's spotless, however I humbly suggest to
+move on now, of course assuming no *human* review arrives and validation
+is successful.
+
+v5:
+* Purely sashiko [5][6] issues fixing. See specific patches for details
+* Add patches 2 and 10
+* The biggest change is the addition of proper reset handling, which was
+  apparently mostly missing in the original code - see patch 10
+v4:
+* Fix a bug where filters with different flow types would use the same
+  profile, leading to strange behaviour. See patch 5 for details
+* Clean up confusing code using struct ice_fd_hw_prof for ACL. This
+  struct has many members that are not relevant to ACL. Also remove some
+  code that dealt with those extra members (it was redundant). See
+  patches 4, 5, 8, 9
+* Resend for sashiko. v3 failed to be applied and therefore was not
+  analyzed
+v3:
+* Various minor fixes, mostly reported by sashiko [4] - check individual
+  changelogs. Not all comments were addressed (some were irrelevant)
+v2:
+* Rebase. Notable conflicts were the removal of ice_status and the addition of
+  libie (which affected AdminQ communication)
+* Reduce the number of defensive NULL checks
+* Use = {} instead of memset for definitions
+* Use kzalloc_obj() instead of plain kzalloc()
+* Move from devm_ to plain allocation for objects that don't require it
+* Move iterator declaration to loop start
+* Move some defines out of structs
+* Fix kdoc (except untouched ice_ethtool_fdir.c functions)
+* Adjust style (err for return variable, spacing, rewrite some comments,
+* commit messages)
+* Remove overly verbose comments
+* Add patches 6, 7, 11 and 12
+* More changes listed in patches (if applicable)
+
+[1] https://lore.kernel.org/intel-wired-lan/20200914153720.48498-1-anthony.l.nguyen@intel.com
+[2] https://lore.kernel.org/netdev/7192efe4d27c93148b3205e65f37203c89170316.camel@intel.com/#t
+[3] https://lore.kernel.org/netdev/CAKgT0Ucxd5-gvEwWAdbL04ER2o++RX_oekUV3E0rYquEgFKj1w@mail.gmail.com
+[4] https://sashiko.dev/#/patchset/20260409120003.2719-1-marcin.szycik%40linux.intel.com
+[5] https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260603220828.829969-1-anthony.l.nguyen%40intel.com
+[6] https://sashiko.dev/#/patchset/20260603220828.829969-4-anthony.l.nguyen@intel.com
+
+Lukasz Czapnik (1):
+  ice: use ACL for ntuple rules that conflict with FDir
+
+Marcin Szycik (5):
+  ice: remove unused ICE_FD_FLUSH_REQ from PF state
+  Revert "ice: remove unused ice_flow_entry fields"
+  ice: use plain alloc/dealloc for ice_ntuple_fltr
+  ice: add ACL reset recovery and NTUPLE feature toggle
+  ice: re-introduce ice_dealloc_flow_entry() helper
+
+Real Valiquette (5):
+  ice: initialize ACL table
+  ice: initialize ACL scenario
+  ice: create flow profile
+  ice: create ACL entry
+  ice: program ACL entry
+
+Tony Nguyen (1):
+  ice: rename shared Flow Director functions and structs
+
+ drivers/net/ethernet/intel/ice/Makefile       |    5 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   27 +-
+ drivers/net/ethernet/intel/ice/ice_acl.h      |  177 +++
+ drivers/net/ethernet/intel/ice/ice_acl_main.h |   10 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  393 ++++-
+ drivers/net/ethernet/intel/ice/ice_arfs.h     |    2 +-
+ drivers/net/ethernet/intel/ice/ice_fdir.h     |   16 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |    2 +
+ drivers/net/ethernet/intel/ice/ice_flow.h     |   39 +-
+ .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |    3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   14 +-
+ drivers/net/ethernet/intel/ice/ice_acl.c      |  486 +++++++
+ drivers/net/ethernet/intel/ice/ice_acl_ctrl.c | 1140 +++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_acl_main.c |  377 +++++
+ drivers/net/ethernet/intel/ice/ice_arfs.c     |    8 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   13 +-
+ ...ce_ethtool_fdir.c => ice_ethtool_ntuple.c} |  817 ++++++++---
+ drivers/net/ethernet/intel/ice/ice_fdir.c     |   38 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |   11 +-
+ drivers/net/ethernet/intel/ice/ice_flow.c     | 1267 ++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   10 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  162 ++-
+ drivers/net/ethernet/intel/ice/virt/fdir.c    |   32 +-
+ 23 files changed, 4769 insertions(+), 280 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_ctrl.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_acl_main.c
+ rename drivers/net/ethernet/intel/ice/{ice_ethtool_fdir.c => ice_ethtool_ntuple.c} (74%)
+
+-- 
+2.49.0
 
