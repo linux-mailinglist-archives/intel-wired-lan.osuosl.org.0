@@ -2,106 +2,115 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id KuiIK059S2oPSQEAu9opvQ
+	id TVkqBZl6S2p4SAEAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Jul 2026 12:02:54 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Jul 2026 11:51:21 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F1DD70EDDA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Jul 2026 12:02:54 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5A3A70EC94
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 06 Jul 2026 11:51:19 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=LCUTYzv3;
+	dkim=pass header.d=osuosl.org header.s=default header.b=4HvWkz0X;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none);
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::137 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A273C608D4;
-	Mon,  6 Jul 2026 10:02:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A09F240A51;
+	Mon,  6 Jul 2026 09:51:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ea9kDRLca38f; Mon,  6 Jul 2026 10:02:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Kfkgc0DvSxqa; Mon,  6 Jul 2026 09:51:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EDCF6608D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68F4640A80
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1783332171;
-	bh=n/pnLXlixpDFGremVEM5Ndqi7N2jYLu1n5EEizzeeNI=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=LCUTYzv33ysMA9bpgX+tTxxImzRJZawQMcqRElRKs1B22IjBTeg5ps+6MA44eWFCe
-	 9qWHQfQ97c1q/iWNgaWBNrG7V3VdfWQrg+JkAZ3FDbDEdVY9qexRh/w9F0fSto2VMH
-	 NsDqNe0Tl4pNY5Xvq2MIPWrLFVjHXOGln/GMqg8Lf7IXJnqkxwn+VeoHnQaqfxPOh+
-	 PNW/YJF7klCoi5eAoaJPrvlVq/JVaYBZoPow2CAXPtoZjgkN4xmDctQPTXARrQgIc6
-	 X0TrnXqaBpdGvznVqpeqDOesLOV/eMFTDbSQLUdCRZPj84DTiWAsI/AtUjpePbtHjM
-	 5Ewo/ta82uY7w==
+	s=default; t=1783331475;
+	bh=BYBZhplRdudVjZ0tSfbfUivOx27YdDhCEs3BTVtXds4=;
+	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=4HvWkz0XhNo0IpusQp0sWGeFPuXtAu7rQ66KHiMu8rfE48y/GJL9OSRO3u/NP+c44
+	 S7L1sY9/tM+2YssozEtmfzk+IHwJXpQscxXzK6GoK5gIGFbG5KuQL5uTiEeB4J/TtK
+	 3Ih3jU4t0KVwwJEfZ5eN7Sv+9OyKiAYRtJ/SZA2DB9gCEnBYwM7K14IanAi0OZcbWg
+	 WajD6MmNxsjUSCRnQGwL+Sdzw70+mwgDkpVL8jgObDKyy4YoPsmU80KmIAlimbywEm
+	 foGCsHfLlbtevPYd6/QMlpf2aRw27ULsAS/AntamndZq0h03223x9FarKRKA76XRqY
+	 Ud/VRHt8dJqPA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EDCF6608D6;
-	Mon,  6 Jul 2026 10:02:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68F4640A80;
+	Mon,  6 Jul 2026 09:51:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 2797C2A8
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 10:02:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id F1A71F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 09:51:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0DBE640386
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 10:02:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CFF1A40142
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 09:51:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EU4cSFj2ihBB for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 Jul 2026 10:02:48 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=jedrzej.jagielski@intel.com;
+ id Q4GhUb1s6Wa3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  6 Jul 2026 09:51:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 47031400AE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47031400AE
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 47031400AE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 10:02:48 +0000 (UTC)
-X-CSE-ConnectionGUID: ieorSVYMQKCapxBYAS8Pnw==
-X-CSE-MsgGUID: /VMAxHK+RyqLiMQTbBTOag==
-X-IronPort-AV: E=McAfee;i="6800,10657,11838"; a="94566406"
-X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; d="scan'208";a="94566406"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jul 2026 03:02:47 -0700
-X-CSE-ConnectionGUID: uUOeQ0LSSqCEQ38s38Xcmg==
-X-CSE-MsgGUID: ECgfHR/gQtupEWtSNd6oJA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F042C400AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F042C400AE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F042C400AE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Jul 2026 09:51:11 +0000 (UTC)
+X-CSE-ConnectionGUID: tXHQIeHsQH+EK0qvmQAFRg==
+X-CSE-MsgGUID: Hq0xcaDsQGiE32478Ehvsw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11838"; a="83824465"
+X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; d="scan'208";a="83824465"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jul 2026 02:51:11 -0700
+X-CSE-ConnectionGUID: z9CLoUOsTy2VFlZjUx6WyQ==
+X-CSE-MsgGUID: w0LGO3M/SGmg5pUekZArgA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; d="scan'208";a="251930799"
-Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orviesa006.jf.intel.com with ESMTP; 06 Jul 2026 03:02:47 -0700
-From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Date: Mon,  6 Jul 2026 11:43:29 +0200
-Message-Id: <20260706094330.186341-1-jedrzej.jagielski@intel.com>
-X-Mailer: git-send-email 2.31.1
+X-IronPort-AV: E=Sophos;i="6.25,149,1779174000"; d="scan'208";a="276884555"
+Received: from unknown (HELO [10.217.160.239]) ([10.217.160.239])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jul 2026 02:51:08 -0700
+Message-ID: <a0fd140e-9c0a-4cee-a692-2e697bd4762f@linux.intel.com>
+Date: Mon, 6 Jul 2026 11:51:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: xuanqiang.luo@linux.dev, intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, Joshua Hay <joshua.a.hay@intel.com>,
+ Tatyana Nikolova <tatyana.e.nikolova@intel.com>,
+ Xuanqiang Luo <luoxuanqiang@kylinos.cn>
+References: <20260703104132.47419-1-xuanqiang.luo@linux.dev>
+Content-Language: en-US
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20260703104132.47419-1-xuanqiang.luo@linux.dev>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1783332168; x=1814868168;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=2yPPPI4sVPsogh1N8K42E/+yAXC8cm8D6ZakBHj/BSM=;
- b=QepcjkmT0abBR7HoP3p/mDCO5UcV7mKQNxcWlBiPZ/EMaJgTCvd5LTr9
- J6t5XJvxVi/NHL3T5KEmoBwxm7Uh0Bi5NRntMZQEhY79nhJnTXTbpr34L
- BCwECeWcAQgXaTM7+AiTBZqg15++4ClfXMchdoqIXLCeMnrI0eVyJbF9r
- wH08ALvzKvX7kkfBMPOm8gNyf4pgANHkqIwIlEbwHEfKRLssrfVhafWyI
- zVGDxgmctRI9tgNsYlu8G4MlPWwXiaHCwIkaXLKZjzSXVeDntx2lddMX4
- iMfZbIjhNqJ4F5Xnn2ZZbjMF4Ygwis8RkPP+hJiZfbJcJ4+erFAUNgkOE
+ t=1783331473; x=1814867473;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=1cw2dtvKWTaAGRljDiJTLFfP1+KQjkYN/p7W+Z6InYo=;
+ b=UAyoKqrczH8LX1VNgx3ZLfD65VLgfeuHxuuA253cnHNCnz7sq5Z4f1yl
+ MitPolkHmNyzTrMQQ2zYxmIlj3yTYQr5ZvJvwFAPEjUXvK2/2VWuqfAO6
+ zpQPvGLPKCWRBKA103KADk/diipzg4OFqy3RtEdhJgmSDr6qPIwE0HfJk
+ 3vvOchl/u+7EcUvs8NHlAI2MBN7/SAChHrE1FycgeF3qPKZvqLPW3miu7
+ nCdRjTYaP0FTr4C64zsJRiFXF9TfS0ClHltHz21tf+7xSXK9fJ59+79+3
+ fl6emBdE933xnyszu86//D003TXLSnCYxeWJ1n5W83wx/x5ezpkz2QQHK
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=QepcjkmT
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: E610: force phy link
- to get down when interface is down
+ header.s=Intel header.b=UAyoKqrc
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] idpf: fix lan_regs leak on
+ core init failure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -118,243 +127,111 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
 X-Spamd-Result: default: False [0.89 / 15.00];
-	MID_CONTAINS_FROM(1.00)[];
-	R_MISSING_CHARSET(0.50)[];
-	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
+	SUSPICIOUS_RECIPS(1.50)[];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
+	MAILLIST(-0.20)[mailman];
 	MIME_GOOD(-0.10)[text/plain];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	HAS_LIST_UNSUB(-0.01)[];
-	MIME_TRACE(0.00)[0:+];
-	RCVD_TLS_LAST(0.00)[];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	ARC_NA(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
+	FORGED_RECIPIENTS(0.00)[m:xuanqiang.luo@linux.dev,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:andrew+netdev@lunn.ch,m:joshua.a.hay@intel.com,m:tatyana.e.nikolova@intel.com,m:luoxuanqiang@kylinos.cn,m:andrew@lunn.ch,s:lists@lfdr.de];
+	RCVD_TLS_LAST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[linux.dev:email,kylinos.cn:email,linux.intel.com:mid,linux.intel.com:from_mime,smtp4.osuosl.org:helo,smtp4.osuosl.org:rdns];
+	ARC_NA(0.00)[];
 	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_FIVE(0.00)[5];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[osuosl.org:from_smtp,osuosl.org:dkim,intel.com:from_mime,intel.com:email,intel.com:mid];
-	FROM_NEQ_ENVFROM(0.00)[jedrzej.jagielski@intel.com,intel-wired-lan-bounces@osuosl.org];
-	FROM_HAS_DN(0.00)[];
+	FORGED_SENDER(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
+	FORGED_SENDER_FORWARDING(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	TAGGED_RCPT(0.00)[intel-wired-lan];
+	FROM_NEQ_ENVFROM(0.00)[marcin.szycik@linux.intel.com,intel-wired-lan-bounces@osuosl.org];
+	FROM_HAS_DN(0.00)[];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[10];
 	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
+	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 1F1DD70EDDA
+X-Rspamd-Queue-Id: B5A3A70EC94
 
-For the E610 family, similarly to the E8xx adapters, the default behavior
-is for the PHY link to remain up even when the corresponding OS interface
-is down.
 
-Add function setting down the PHY config IXGBE_ACI_PHY_ENA_LINK bit
-what leads to disabling PHY link.
 
-Now ixgbe_close() needs to share some of the ixgbe_watchdog_link_is_down
-code so move the common part into the separate function.
+On 03/07/2026 12:41, xuanqiang.luo@linux.dev wrote:
+> From: Xuanqiang Luo <luoxuanqiang@kylinos.cn>
+> 
+> idpf_vc_core_init() gets the LAN memory region layout before mapping the
+> regions and allocating vport resources. Both layout paths allocate
+> hw->lan_regs, but later error paths return without freeing it.
+> 
+> idpf_vc_core_deinit() does not cover these paths because it returns unless
+> IDPF_VC_CORE_INIT is set, and that bit is set only after core init
+> succeeds.
+> 
+> Free hw->lan_regs on the post-allocation error paths and clear the
+> pointer and region count.
+> 
+> Fixes: 6aa53e861c1a ("idpf: implement get LAN MMIO memory regions")
+> Signed-off-by: Xuanqiang Luo <luoxuanqiang@kylinos.cn>
+> ---
+>  drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> index be66f9b2e101c..da49bb7b7e671 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> @@ -3479,6 +3479,7 @@ static int idpf_vport_params_buf_alloc(struct idpf_adapter *adapter)
+>   */
+>  int idpf_vc_core_init(struct idpf_adapter *adapter)
+>  {
+> +	struct idpf_hw *hw = &adapter->hw;
+>  	int task_delay = 30;
+>  	u16 num_max_vports;
+>  	int err = 0;
+> @@ -3550,15 +3551,18 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
+>  	if (err) {
+>  		dev_err(&adapter->pdev->dev, "Failed to map BAR0 region(s): %d\n",
+>  			err);
+> -		return -ENOMEM;
+> +		err = -ENOMEM;
+> +		goto err_lan_regs;
+>  	}
+>  
+>  	pci_sriov_set_totalvfs(adapter->pdev, idpf_get_max_vfs(adapter));
+>  	num_max_vports = idpf_get_max_vports(adapter);
+>  	adapter->max_vports = num_max_vports;
+>  	adapter->vports = kzalloc_objs(*adapter->vports, num_max_vports);
+> -	if (!adapter->vports)
+> -		return -ENOMEM;
+> +	if (!adapter->vports) {
+> +		err = -ENOMEM;
+> +		goto err_lan_regs;
+> +	}
+>  
+>  	if (!adapter->netdevs) {
+>  		adapter->netdevs = kzalloc_objs(struct net_device *,
+> @@ -3624,6 +3628,10 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
+>  err_netdev_alloc:
+>  	kfree(adapter->vports);
+>  	adapter->vports = NULL;
+> +err_lan_regs:
+> +	kfree(hw->lan_regs);
+> +	hw->lan_regs = NULL;
+> +	hw->num_lan_regs = 0;
+>  	return err;
+>  
+>  init_failed:
 
-Align functionality with the implementation of the ice driver.
+Does this apply? struct idpf_hw was removed in 9f4334ac4a5a ("idpf: refactor
+idpf to use libie control queues") [1].
 
-Let user to configure link-down-on-close enablement through ethtool.
+[1] https://lore.kernel.org/intel-wired-lan/20260608144127.2751230-10-larysa.zaremba@intel.com/
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
----
-v2: apply Paul's notes
----
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 35 ++++++++++++++++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  1 +
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 15 ++++++++
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 27 +++++++++++---
- 5 files changed, 73 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index 30f62174acf2..7bbb82dd962c 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -685,6 +685,7 @@ struct ixgbe_adapter {
- #define IXGBE_FLAG2_MOD_POWER_UNSUPPORTED	BIT(22)
- #define IXGBE_FLAG2_API_MISMATCH		BIT(23)
- #define IXGBE_FLAG2_FW_ROLLBACK			BIT(24)
-+#define IXGBE_FLAG2_LINK_DOWN_ON_CLOSE		BIT(25)
- 
- 	/* Tx fast path data */
- 	int num_tx_queues;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-index 831cfe9a4697..02bc0dac5123 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
-@@ -1923,6 +1923,33 @@ void ixgbe_fc_autoneg_e610(struct ixgbe_hw *hw)
- 	hw->fc.current_mode = hw->fc.requested_mode;
- }
- 
-+/**
-+ * ixgbe_disable_phy_link - force phy link to get down
-+ * @hw: pointer to hardware structure
-+ *
-+ * Send 0x0601 with the IXGBE_ACI_PHY_ENA_LINK bit set down.
-+ *
-+ * Return: the exit code of the operation.
-+ */
-+int ixgbe_disable_phy_link(struct ixgbe_hw *hw)
-+{
-+	struct ixgbe_aci_cmd_get_phy_caps_data pcaps = {};
-+	struct ixgbe_aci_cmd_set_phy_cfg_data pcfg = {};
-+	int err;
-+
-+	err = ixgbe_aci_get_phy_caps(hw, false, IXGBE_ACI_REPORT_ACTIVE_CFG,
-+				     &pcaps);
-+	if (err)
-+		return err;
-+
-+	ixgbe_copy_phy_caps_to_cfg(&pcaps, &pcfg);
-+
-+	pcfg.caps &= ~IXGBE_ACI_PHY_ENA_LINK;
-+	pcfg.caps |= IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT;
-+
-+	return ixgbe_aci_set_phy_cfg(hw, &pcfg);
-+}
-+
- /**
-  * ixgbe_disable_rx_e610 - Disable RX unit
-  * @hw: pointer to hardware structure
-@@ -2207,6 +2234,7 @@ int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw)
- 	u8 rmode = IXGBE_ACI_REPORT_TOPO_CAP_MEDIA;
- 	u64 sup_phy_type_low, sup_phy_type_high;
- 	u64 phy_type_low = 0, phy_type_high = 0;
-+	bool force_on_required;
- 	int err;
- 
- 	err = ixgbe_aci_get_link_info(hw, false, NULL);
-@@ -2272,6 +2300,11 @@ int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw)
- 		phy_type_high |= IXGBE_PHY_TYPE_HIGH_10G_USXGMII;
- 	}
- 
-+	/* If IXGBE_ACI_PHY_ENA_LINK has been explicitly disabled that means
-+	 * we need to force PHY link UP state during PHY link setup
-+	 */
-+	force_on_required = !(pcfg.caps & IXGBE_ACI_PHY_ENA_LINK);
-+
- 	/* Mask the set values to avoid requesting unsupported link types. */
- 	phy_type_low &= sup_phy_type_low;
- 	pcfg.phy_type_low = cpu_to_le64(phy_type_low);
-@@ -2280,7 +2313,7 @@ int ixgbe_setup_phy_link_e610(struct ixgbe_hw *hw)
- 
- 	if (pcfg.phy_type_high != pcaps.phy_type_high ||
- 	    pcfg.phy_type_low != pcaps.phy_type_low ||
--	    pcfg.caps != pcaps.caps) {
-+	    pcfg.caps != pcaps.caps || force_on_required) {
- 		pcfg.caps |= IXGBE_ACI_PHY_ENA_LINK;
- 		pcfg.caps |= IXGBE_ACI_PHY_ENA_AUTO_LINK_UPDT;
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-index 2cb76a3d30ae..59044d67ebeb 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
-@@ -50,6 +50,7 @@ int ixgbe_cfg_phy_fc(struct ixgbe_hw *hw,
- 		     enum ixgbe_fc_mode req_mode);
- int ixgbe_setup_fc_e610(struct ixgbe_hw *hw);
- void ixgbe_fc_autoneg_e610(struct ixgbe_hw *hw);
-+int ixgbe_disable_phy_link(struct ixgbe_hw *hw);
- void ixgbe_disable_rx_e610(struct ixgbe_hw *hw);
- int ixgbe_init_phy_ops_e610(struct ixgbe_hw *hw);
- int ixgbe_identify_phy_e610(struct ixgbe_hw *hw);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index b8e85bc91a27..16e26d54f3be 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -139,6 +139,8 @@ static const char ixgbe_priv_flags_strings[][ETH_GSTRING_LEN] = {
- 	"vf-ipsec",
- #define IXGBE_PRIV_FLAGS_AUTO_DISABLE_VF	BIT(2)
- 	"mdd-disable-vf",
-+#define IXGBE_PRIV_LINK_DOWN_ON_CLOSE	BIT(3)
-+	"link-down-on-close",
- };
- 
- #define IXGBE_PRIV_FLAGS_STR_LEN ARRAY_SIZE(ixgbe_priv_flags_strings)
-@@ -3822,6 +3824,9 @@ static u32 ixgbe_get_priv_flags(struct net_device *netdev)
- 	if (adapter->flags2 & IXGBE_FLAG2_AUTO_DISABLE_VF)
- 		priv_flags |= IXGBE_PRIV_FLAGS_AUTO_DISABLE_VF;
- 
-+	if (adapter->flags2 & IXGBE_FLAG2_LINK_DOWN_ON_CLOSE)
-+		priv_flags |= IXGBE_PRIV_LINK_DOWN_ON_CLOSE;
-+
- 	return priv_flags;
- }
- 
-@@ -3859,6 +3864,16 @@ static int ixgbe_set_priv_flags(struct net_device *netdev, u32 priv_flags)
- 		}
- 	}
- 
-+	flags2 &= ~IXGBE_FLAG2_LINK_DOWN_ON_CLOSE;
-+	if (priv_flags & IXGBE_PRIV_LINK_DOWN_ON_CLOSE) {
-+		if (adapter->hw.mac.type == ixgbe_mac_e610) {
-+			flags2 |= IXGBE_FLAG2_LINK_DOWN_ON_CLOSE;
-+		} else {
-+			e_info(probe, "Cannot set private flags: Feature supported only for E610 devices\n");
-+			return -EOPNOTSUPP;
-+		}
-+	}
-+
- 	if (flags2 != adapter->flags2) {
- 		adapter->flags2 = flags2;
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 7a0783c1abc1..f650fa45b9ef 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -7551,6 +7551,17 @@ static void ixgbe_close_suspend(struct ixgbe_adapter *adapter)
- 	ixgbe_free_all_rx_resources(adapter);
- }
- 
-+static void ixgbe_handle_link_down(struct ixgbe_adapter *adapter)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+
-+	if (test_bit(__IXGBE_PTP_RUNNING, &adapter->state))
-+		ixgbe_ptp_start_cyclecounter(adapter);
-+
-+	e_info(drv, "NIC Link is Down\n");
-+	netif_carrier_off(netdev);
-+}
-+
- /**
-  * ixgbe_close - Disables a network interface
-  * @netdev: network interface device structure
-@@ -7573,6 +7584,16 @@ int ixgbe_close(struct net_device *netdev)
- 
- 	ixgbe_fdir_filter_exit(adapter);
- 
-+	if (adapter->flags2 & IXGBE_FLAG2_LINK_DOWN_ON_CLOSE) {
-+		int err;
-+
-+		err = ixgbe_disable_phy_link(&adapter->hw);
-+		if (err)
-+			e_error(drv, "Cannot set PHY link down\n");
-+
-+		ixgbe_handle_link_down(adapter);
-+	}
-+
- 	ixgbe_release_hw_control(adapter);
- 
- 	return 0;
-@@ -8251,11 +8272,7 @@ static void ixgbe_watchdog_link_is_down(struct ixgbe_adapter *adapter)
- 	if (ixgbe_is_sfp(hw) && hw->mac.type == ixgbe_mac_82598EB)
- 		adapter->flags2 |= IXGBE_FLAG2_SEARCH_FOR_SFP;
- 
--	if (test_bit(__IXGBE_PTP_RUNNING, &adapter->state))
--		ixgbe_ptp_start_cyclecounter(adapter);
--
--	e_info(drv, "NIC Link is Down\n");
--	netif_carrier_off(netdev);
-+	ixgbe_handle_link_down(adapter);
- }
- 
- static bool ixgbe_ring_tx_pending(struct ixgbe_adapter *adapter)
--- 
-2.31.1
-
+Thanks,
+Marcin
