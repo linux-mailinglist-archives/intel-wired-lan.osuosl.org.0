@@ -2,96 +2,96 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id DwlfEcvEUGo34wIAu9opvQ
+	id ip+KMvrEUGpE4wIAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2026 12:09:15 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2026 12:10:02 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7809D739787
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2026 12:09:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FDE573979E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Jul 2026 12:10:02 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=YwIcYLmJ;
+	dkim=pass header.d=osuosl.org header.s=default header.b=kfoXiyt2;
 	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none);
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 2605:bc80:3010::138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
 	arc=reject ("signature check failed: fail, {[1] = sig:microsoft.com:reject}")
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E3F1B811EE;
-	Fri, 10 Jul 2026 10:09:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 72B29811ED;
+	Fri, 10 Jul 2026 10:09:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cZRvMj3v6o17; Fri, 10 Jul 2026 10:09:12 +0000 (UTC)
+ id kTaHAWypQa5O; Fri, 10 Jul 2026 10:09:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E621811DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D47AE811EE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1783678152;
-	bh=zE0aOwgzXjB77Mj9jO7PhfyC5euNyy8WXLKUGkrpXzA=;
+	s=default; t=1783678198;
+	bh=6HA3FeO417PLDnfzbYny6UsZFWV9XW/fIxpwfC/AY8A=;
 	h=From:To:CC:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=YwIcYLmJjb5a/w7y8v5rcyAAh9Cbgr0IssT364+bzxzBFi5R02X3Ir2SN/L4oUDGH
-	 Y1bF+q/TlJHdRL5HYY+IInSv69V7cnq/zwA5sLT4km+y8fy0K2b17VH6+UKEvw7Tl3
-	 nPhaw2xEnXVgXyCelbE2w0rTcu1zU1znO8QefSVh3CF7Iu9PGruaB2ntyg/Pp+e4wR
-	 P1A4nrtq/wyYpsPKwTCuOLFsj5QENx/eF00orJoxRks8A4H+lfBGCs5dwelIS65MsH
-	 eLjIaLxwEJ7UuoGJSA42ZO1DXxoOBWBrpvHqwv7/G53zV8UbIzCzD1b+5w3gb+Icb6
-	 Bnwzb4g3YZK8g==
+	b=kfoXiyt2H99XbqSp5p10KRJIaoSrD/iToSThxCd0hfOsZpJqygZJzCcL2UeDlXAix
+	 7hwFuLSjtEMbZQKrTJrCckKKQeuFfmy0ZSFjPkZxNsHNsjtRYt9IaGUZlgDE8FL/o9
+	 m9KOEBqVuKt/5+9PBLecl6hAxi/rTRhxkYmswB49mYobU1nA/ge9l/5Ox8kw9SMY1C
+	 SIzZKxd1czgyLa/vhIWIZMtnymuFSf3RmfHsdQFAocuIgHuv4LY2C3nmyNx2PXPR/W
+	 8OP2L6E7+roSYAZyKlW2600mcy4wKEYHTjjI9G858Qr51eY7zs2++ZIAU53gQ/gF06
+	 M2ptokmTBhh1w==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1E621811DF;
-	Fri, 10 Jul 2026 10:09:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D47AE811EE;
+	Fri, 10 Jul 2026 10:09:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 53A78320
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 13226A3C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 498134018D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 01B0781142
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Bmo5-WBG3Nzl for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 Jul 2026 10:09:09 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gruXEeik827w for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 Jul 2026 10:09:56 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
  helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3A59840142
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A59840142
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3A59840142
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:08 +0000 (UTC)
-X-CSE-ConnectionGUID: NRHoFxBtQMy14MxJZrrIHA==
-X-CSE-MsgGUID: te6804GmT4+Qta21RqyVzQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="95529145"
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; d="scan'208";a="95529145"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2026 03:09:09 -0700
-X-CSE-ConnectionGUID: AoxEI526RZqY3Q2LTQCF/g==
-X-CSE-MsgGUID: vfY45/7uR4GYmi+XElIoSw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3C5B7811DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C5B7811DF
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3C5B7811DF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Jul 2026 10:09:55 +0000 (UTC)
+X-CSE-ConnectionGUID: n74QVRreRkeBdq4p8tHkcg==
+X-CSE-MsgGUID: X3PkuUjIRJqnQrkYCj1CwA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11841"; a="88060152"
+X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; d="scan'208";a="88060152"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2026 03:09:55 -0700
+X-CSE-ConnectionGUID: c1QCjO2MSWST7wwhvZINew==
+X-CSE-MsgGUID: ZmVDKiaQRrW7Kc6GacguAw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; d="scan'208";a="278089133"
-Received: from fmsmsx901.amr.corp.intel.com ([10.18.126.90])
- by fmviesa002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2026 03:09:08 -0700
+X-IronPort-AV: E=Sophos;i="6.25,154,1779174000"; d="scan'208";a="293047432"
+Received: from fmsmsx903.amr.corp.intel.com ([10.18.126.92])
+ by orviesa001.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2026 03:09:55 -0700
 Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ fmsmsx903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Fri, 10 Jul 2026 03:09:07 -0700
+ 15.2.2562.43; Fri, 10 Jul 2026 03:09:54 -0700
 Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
  FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43 via Frontend Transport; Fri, 10 Jul 2026 03:09:07 -0700
-Received: from PH0PR06CU001.outbound.protection.outlook.com (40.107.208.63) by
+ 15.2.2562.43 via Frontend Transport; Fri, 10 Jul 2026 03:09:54 -0700
+Received: from PH0PR06CU001.outbound.protection.outlook.com (40.107.208.58) by
  edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Fri, 10 Jul 2026 03:09:07 -0700
+ 15.2.2562.43; Fri, 10 Jul 2026 03:09:53 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rX0fYDWVZE3VW6yDYNHy5jsTpcL3jA4KNOjnohlmivB+T/0lCeW7j5m1QiD71ny7n+tmeIPBSvpOPPosn4jTcnGRq2SL/WhhVQd7pf57TMHxpoYw2xV7Pw7i1mR40k1aXYg2ows5NHmqWns/+1mwxupKuXItkLnAalcSw+qQkU0cf3XpubDnV6XXC3YMvEzOkj8TAGpp+TgCLKHT/wZIWiWupddguFdFP1IvJnl8HWMjnEQZgwm2Pi6fDezKMo6jWm90rwSgxDXlrH9Muc3YslkucGG69sZiJoJ8UvdKX25W7mtD1fn32aEW+qDTItPelWskYvUGNly02J6yujlkng==
+ b=ItQpsVRCGwOC/h32yqH8n9jV6ZV1JDub5w8ofGydD/MVW9IMzjb3LQ5oUnQ4RlJqrQRI+lzZyYtxKJ789xipNkHWNrZ8pgO3Gw99O399p5KRoUj5Jglq23l/v7UgKmn0CBLVJ//4preDMTLV1RkfsInHf+HwdLYVwNhmP1dCm6GIluLS+lnj9CL26UB6CyUZTcHUO8ZWkDNJWhwQJ547LMyjoLEAN5BklBpMXtiIOIf4cNO2jt+fmp+bJPeksw6s+BcOvtGCE5zWmNEukvUmFehAbesfMS/qTjUXMBDy0ZZ59/0Y9I8EpitgaKIu7TkrKN1AMInQEW7m5RmlofZF3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zE0aOwgzXjB77Mj9jO7PhfyC5euNyy8WXLKUGkrpXzA=;
- b=hpNVqaWs9xEjYAcbEsfTVsQCPP672HgJn7+j9pmrzdfMJTLed1IoDajP1mb2p3IH+cdqjYDXy/3nA2sapiC5fE7eOoxwjlOgKhilSlNBZa0xIAMyITOWlv8jV7jaJ9qFN9OEme7HsqYHHlw1dgMDooPvDHs1hUz7UZB02Fd5xv/pkwYL8UzCU/A05weK3iSg2dZ70i5HyBMEG+duRBXaePKDWfaS/sSW4FvzrAyN0y1oyOLvJRJPnwbXk/CmO3IxfpNckuUY09j/hRX0BMJptd6FbJzMxIsSK8XDqhECkKq0uSeSMTVEd/ivr094sSXEgD0kmmjLqgclZs3hPCzBWQ==
+ bh=6HA3FeO417PLDnfzbYny6UsZFWV9XW/fIxpwfC/AY8A=;
+ b=ACZtcHODMFdpC9IIRhqEOfZ9ChExqmU/impsuVCCfCdCxt/fql32LmvGuUAiTTaPp+eWssf/NVbuAcX+CviyDVoBa4zCY7kbgznUHZEPfvIQORUkQnWiB80GiaV5eI+L0L/pLPjXhv+05JVFSXZLCSuis/2q6q+w/vNcr8pDumsfpH8mf69iwAdd3vG8x5yz3QSWpQ2nOtywcSeJfG+8jGzMNVkd9hhnRsf58ENL68M0MfJmIoP/jxDvVsC3s7mTOSsedOXUVR9dEj2QXvYJ44HZRx4mbF8yw7SBx7rRpc+06xm7MK3twNXl0IvDB8SRQcqaGL2aQt08hPQjxc9mLA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -99,11 +99,11 @@ Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
  by LV8PR11MB8509.namprd11.prod.outlook.com (2603:10b6:408:1e6::15)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.181.8; Fri, 10 Jul
- 2026 10:09:02 +0000
+ 2026 10:09:51 +0000
 Received: from IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
  ([fe80::e6f0:6afb:6ef9:ab5c%6]) with mapi id 15.21.0181.014; Fri, 10 Jul 2026
- 10:09:02 +0000
+ 10:09:51 +0000
 From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
 To: Vladimir Vdovin <deliran@verdict.gg>, Lorenzo Bianconi
  <lorenzo@kernel.org>, Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski
@@ -125,99 +125,99 @@ CC: Jakub Sitnicki <jakub@cloudflare.com>, "netdev@vger.kernel.org"
  <netdev@vger.kernel.org>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
  "linux-kselftest@vger.kernel.org" <linux-kselftest@vger.kernel.org>
-Thread-Topic: [PATCH bpf-next v4 1/6] netlink: specs: Add XDP RX checksum
- capability to XDP metadata specs
-Thread-Index: AQHdDxlIFTEtJ/W0m0qzpkQ9OeV8mLZmifuw
-Date: Fri, 10 Jul 2026 10:09:02 +0000
-Message-ID: <IA3PR11MB8986F269901513518E3B90A6E5FD2@IA3PR11MB8986.namprd11.prod.outlook.com>
+Thread-Topic: [PATCH bpf-next v4 2/6] net: veth: Add xmo_rx_checksum callback
+ to veth driver
+Thread-Index: AQHdDxlfLpOsSXhOZEymmxGAxOsScrZmiinw
+Date: Fri, 10 Jul 2026 10:09:50 +0000
+Message-ID: <IA3PR11MB8986EFEB423FA81E72D2542FE5FD2@IA3PR11MB8986.namprd11.prod.outlook.com>
 References: <20260708203410.45121-1-deliran@verdict.gg>
- <20260708203410.45121-2-deliran@verdict.gg>
-In-Reply-To: <20260708203410.45121-2-deliran@verdict.gg>
+ <20260708203410.45121-3-deliran@verdict.gg>
+In-Reply-To: <20260708203410.45121-3-deliran@verdict.gg>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|LV8PR11MB8509:EE_
-x-ms-office365-filtering-correlation-id: 1ba5a1f4-8c23-43ce-6633-08dede6b445b
+x-ms-office365-filtering-correlation-id: 8edbcadb-b6ab-40f9-f980-08dede6b6158
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|23010399003|376014|366016|1800799024|38070700021|6133799003|56012099006|11063799006|921020|5023799004|4143699003|22082099003|18002099003;
-x-microsoft-antispam-message-info: lVQ5k7HjJ69+ZwBoCD+wsg3A80A7w7VyBOmb+/N5C/KMyapfUiFV2tHo+PbLmbQ/LeoRpYu9eq8KH1jjnNMRn6J65PmS6aBXXS61bsD5IHENC1tTyinHyXXQs/OTwJWK/blHCZUNGOz8nrtsUDCBdL0EAWAqS7lmf4k4Wad5mplODwxJKwOeHXvtM+Aieu0dgbC9Ta1jAv3wMCp5m1dSdKrNSf68eHB4K1AKW/WuiMXqeHkDRWpYDfAUcR7kPOFjnrSZks2xuvm0GiAxjV+D1lxklRcJ1jPrhNstYsOAtGP9GjoVEh/rVMUXCVZnS0cAv0O3VMObv+4+TS31A3LOR8b3P48riLsepqG8jOgUuhmWWazXIbRyAbJ++d2KNUZUt6QtEixmxl7tXrTbqgN32J4EfpQ5xsrM49depVAznkJGlTSpVFtb1h5+JuXUMq+u7z9gnCCxjsvF4af+Je5gJipzOogOlF4a2FA2Do/dMF4zs/PNg+XPYSegA7o9wSDFGxuRRphBEXHtTrsAzdi3lTpp6WeUVW0HAq1u0fg2n1AzE7WpPUUAok9LTpAV1bYslzzE4x7WJ1pRTk5G7ICcV+5w17sugspf5NR6xNKufMX/cHiCmqPUzw66dljn3yx3uD2n9fb9UvYqf9eoWMl6AgGeS5YfZlrPEaB+siAI7c2bIDTpIwNstdMgoyvESn945KdO/2GUA4BMbIzcSwXcdz+GHWP/OG/QdvKx0K+azjzro8ZBoftuS3nneG/yuAhI
+ ARA:13230040|7416014|23010399003|376014|366016|1800799024|38070700021|56012099006|11063799006|921020|4143699003|22082099003|18002099003;
+x-microsoft-antispam-message-info: MdqU402MNRqEU02jTbD93STENpXC4ZsJE85O2yUgw26KnEjm3Cwu34QnSqzp/RA1PM/SkmnynikuA/yoyj8gTwT063hgmUBvTfafDXU/BxIINe4Y2aEu814k90nTb3PhlZElXeHhx2yWwG4kDYFV3MWCt1YYl2ZJDt5xZzLhua3uTzR6URyv2bHkJz0GJka+p52hesd3yuoFMhFNBUM7HIfDzc6vTuFrVdhGc/kMJe/w7uBp+su+oZPiX6DNQuCnhlFIaSMimvZBbdARM/e4VAFqHrSAxC23I0o+Q5CaFws9JyG0g7kC3m50ihiQ202Zizw1gO/RU56FSFKlFPgjNUUgdUxtdvKmCrLgHEKJbu7R99E6ukOFtYiRmdP3dNTnoW3XehghWsDEJJfoq5y1wlfJb1Xcly0diBumuFr5n1WhccGHqvSFYOjLk5ionBp/4iIRq8Ygw2iatehWfqpFGUwI166L1EYYgBZrz9hRwa0bxruIsTb0HV1gQv9dUGicyrtExmhveCUJe4dlSh+MG/ObTwJ8CahzsRLbTygWCSv/t1sUE/KaWWKDJQ/zwhmQF8nZ/Y/SDToZPjIavEBvdDr7jhVyIbCDA0X5QHAF4l2CbbC2mbqX1YfVXh/Hq6iSu8yas1FKrQJvcPsNMPV/XwOCE/lf08DuBDjIZrFCQ5mkWJTYEnfjgURKP+2htnSVtMPMtp/iTcXL5ca2S1bZ3307tIQ6bS6S51jDYIBHgpassG7XQMOjSQ+bwPpyak4g
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:IA3PR11MB8986.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(23010399003)(376014)(366016)(1800799024)(38070700021)(6133799003)(56012099006)(11063799006)(921020)(5023799004)(4143699003)(22082099003)(18002099003);
+ SFS:(13230040)(7416014)(23010399003)(376014)(366016)(1800799024)(38070700021)(56012099006)(11063799006)(921020)(4143699003)(22082099003)(18002099003);
  DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?nWeQcKmcXNhDPYwCzdt2yJD1BbQT73TuqcUuMLWPgBH86Q1KhDdGZIt3MlOS?=
- =?us-ascii?Q?UlIWFlx/gsqbLq5JWjlIybshgCY4TakY/NpHzGuFYRY+vqaiYgpi21FGrCuy?=
- =?us-ascii?Q?9qJiu1rKT6/ox2pdvNEFen5GNkgbLKAM1gu5neUcqp2NXRPeeIH6P2hdcTa7?=
- =?us-ascii?Q?u9A04cUk3J7OSYrxSPpE89a5GZ1Ia4+16F8rzQY3DiGJSx+cxr7L20YqpS7K?=
- =?us-ascii?Q?RTdNvd4NCHXxXeOgRr3+4xJ5QpW42d77lBVZfgmB26NJwpVDeRUUkRo8nCEX?=
- =?us-ascii?Q?8u8EsV+dR6cKjKS7ZtK2IsUGtiUD/KzU7xQ30r9Al1lwaqYHEZaA6e0hzj/i?=
- =?us-ascii?Q?to8TYs9c50eNoGhIzK+xCU+/Q05dbHS5iVqtx3015WtxjqPmygulVaZxd//Q?=
- =?us-ascii?Q?UE8SD+kksWDR38m2f5iorsKPh9H667xM/uGxS+Ci68NvW7Hdnax6FpR7R/Uc?=
- =?us-ascii?Q?e1Fax+XfsNQgA1NN5UfFFfMzi2xlJmqnuUgc7v71sDBnMI6iVcrGJp/LwGAP?=
- =?us-ascii?Q?8FCEH6mH9nP+R289axpmyPTLDNB0JedYbAK4SQnf7oKhr3NCONoXSo261CSY?=
- =?us-ascii?Q?6UpakBB/k6dBLFx/1jOAsiFgpQ5lV0MEMVK5d+tmRIEs4QcIia6WtoyQwpnu?=
- =?us-ascii?Q?WzKnn2XL0OwbYelhcWbsRuKhrtcXK0HTzcA+aA4eT0qYNLj7EBPhhrbnHXb1?=
- =?us-ascii?Q?V4jco2o7kbhjYze5Bwub/X11lCYTF6HbX0hLvmTWs6K6Jh2MSzCohBB3gQXs?=
- =?us-ascii?Q?88JdacVUPLOL6YmJqsXzMik2RtztrcjMNG6FsqmjpuxCBebCqbYkWnkII9QD?=
- =?us-ascii?Q?Hdc/N7WUUDBwJh9+FBD5sFVqKRHfA+kxFDDcfL8Yq9S++u5ERYp/PXkVoAcV?=
- =?us-ascii?Q?xbq+8YYCyEvx2OwcRJBO3ZdZ/atWlEcI929VGoEn036t2SA7ShuA9ccNzoaw?=
- =?us-ascii?Q?VyT/btoasHSnBf2GoRnEFHETFeCPAKhrPrqZmiC2kso+h62iyeaSjLi0t3SX?=
- =?us-ascii?Q?5iq6lln5xDrkEvM39IaEIXEh0nS80wMdmukqrjSC5zTvB1ym8/AwugmXZ/uO?=
- =?us-ascii?Q?Qalb2OvaKDjwv1qKreCJpIKC/ANCjOs9bl6Zt4bRc+e9+19IYXR7i4bYl6BA?=
- =?us-ascii?Q?K5otRfO494RM6E9EegA/mXbUlk+BRlUQb5qzb/daEJZipY5faYUy22O+1ibY?=
- =?us-ascii?Q?0nDjyQgDUPZC5G23nIxAVKigYUdow7PFMuW4nlGJshnBxdlDEuZn/v1hYZGX?=
- =?us-ascii?Q?QDoQ5X+DuMVa5Vvzizqzf1f7lADtgxGVEZRFuvyYSeMhqOB36u2itZFLnowj?=
- =?us-ascii?Q?ZmaaYwMcVNL5Q7zoNY6tDo5klrUwJxUCw5EedNAwZ8YgbjDd9Ptu/h2K2iBb?=
- =?us-ascii?Q?a9yeGoG8XMPnCSBplOqd2cCoTX2twspcHYPQEqpnFevm9qX5FPPIaVdNb6l/?=
- =?us-ascii?Q?6z3b/FnLh6VeANlbqEZoP8JaWNIRbyDEsegvf1wh+29RQtRB0oOkkrSkmlEO?=
- =?us-ascii?Q?pwMAl7/RrX6+SHQLcvG2XdDsLUEs1G4KpFrmzppXMU3qWw0pYq9WKSd2U2re?=
- =?us-ascii?Q?e/ipV56rF/QcI5zNghmExi39b3MqB4e9d44iXqOFHU95ueWv3b9SQ6TD/v/f?=
- =?us-ascii?Q?xKnmTF5aAc21fleQf0BK8+pktdlmPGO2vGPd/SgBjF9VHgaG0E2Qp7XPnHPY?=
- =?us-ascii?Q?RPQogudyGIiC95bR1ApTasCMCTb2tEKjXeDT3zeoQkuw9VsnPYWW+WWAaQsD?=
- =?us-ascii?Q?qORIH1bmycxFG9YYqbtIifFjKBzV5ZQ=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Fpzt9vYYiTpJ5CR5J6xZ0A0ez97QhEKzK2QB7fwBbks0S9kV7RAY8w++LMo2?=
+ =?us-ascii?Q?Y6UnbTVhXFI6XN3Xjuj54ytzANH8zDJhpgZma0z21EXJZFmTaacP5bX9hOuQ?=
+ =?us-ascii?Q?imt/veKToK2t9pm/X7pOI34rcw2ZfmaqlV7vhmm0AkxMoQf6NtRIgcOG9HIo?=
+ =?us-ascii?Q?9gJpInzgT44JYfP2QTJ8MSmbqrK1Ta5DkWw446cEGaV/wyUhziTGIm6xeIDg?=
+ =?us-ascii?Q?r1vR0qtkcj/UV+L4TJBi8prYYE349wmoWS/WciyzS63vpQ4Q8NpVLYWCgiLw?=
+ =?us-ascii?Q?XR0Nmt5AUEYPedk8BQdSnfRjZvg4Ew/laDYl6r/R0+eqfgtulayCoSM1nLlG?=
+ =?us-ascii?Q?AhyIGmRGHk8/dt7OtySB/yi/lF7vWCQm4wzgtpFitpqdGt5LmthK2qjx/Jb0?=
+ =?us-ascii?Q?Y5dSszUCYwlJ3XvcqZx6a5achU4EQ9FPvKVbbHpDocDtf4tmjVwZ3W53zfmH?=
+ =?us-ascii?Q?n5SmnH7C/4O0aDm7rEjt9hO/bEMx+x2ERPB2StWrjd78OfWEcx177NiIhkX4?=
+ =?us-ascii?Q?wGHn3HuUE8ur2UbZh8XYiVfNYQA73lDoGQEhaDGaCy/Q15qlYLz6rDINH1SE?=
+ =?us-ascii?Q?gGwixaHZ1FPvtAJKnPI5blW4vproTJk1qQmCSAiCKsGm1Rk+UXE+xCEuLiFw?=
+ =?us-ascii?Q?LTh4VOHxVAATdFlqecP2TvOE64S/Y4eMBpfgvxhC379JZuZxgp4L0k7KU/1y?=
+ =?us-ascii?Q?en4wnFS+qywpxc84I1kFWCJmhtxssaTX2608u67gDzyNloCpHjOearjVvLTJ?=
+ =?us-ascii?Q?HMb5nZy7Vgkykk0ftcJpU8cqiipXfSeJWorg0Enr1BhBOqfxDdJKZ9Dnkosh?=
+ =?us-ascii?Q?bCN2W2sOJODvirTSWPa7aQARA31D5+p6hln2BE6GFkcqch6yZI/adZ+5N69h?=
+ =?us-ascii?Q?A3dvsq5B1cSdunOdHV++JMf3dMwiA4qFQfG7wEo+vEh+9+ACD3efI7qQU5dm?=
+ =?us-ascii?Q?hYur0plVs7LjBSzMLWRR5OTvKWalwFbcuNIBnJr+Rh7oDGIzrYOcMZAvynqn?=
+ =?us-ascii?Q?Xc1G+KLDqws55SVfTEwSfqM2WuvfT/Dnx0ZK2m7jpT1pZoa73HF8TWdjXerW?=
+ =?us-ascii?Q?UGsjOGBcc+Lg8BPiQSJJaiTMXlYIAKYKkDEgu7RnHw7CmZuR2xssdwm63qgB?=
+ =?us-ascii?Q?ejqE5w6tR3udBvXmNIpJzVuqLMMTEgQgaiO2aFFseyDJpmiuYqVxjmaTU5Fg?=
+ =?us-ascii?Q?w4LpKvdxiPPisCBxkMdrgpp0JfPmIpME6kL8t//vrrmgVv0kdpU3ussd0nXn?=
+ =?us-ascii?Q?E+r5F+imphqY6D90EhpyrBEnw5g5b1TnOPnKkg++WTiHsVS/Wi4uK8ZMJfHH?=
+ =?us-ascii?Q?/1nxPQACZUVfg2zGNdwX2nBGplMtIMvBmeGG8MCEaRlNbUrJWG0EawdIG9vQ?=
+ =?us-ascii?Q?8TM83bB2cebWiylyCVGV61T+t6ckNVao9/IyidplQSlZhk4cF55fuJTB8GJT?=
+ =?us-ascii?Q?CCVK/+TIT1RLUwlB7yXnORsMQJONfQ2XXxSroLFxKgCsd+GVetoQmzpMUxN7?=
+ =?us-ascii?Q?bkKyByo/YceI4DrHNu1KR9rtGe///RXJttipt9ydmQEm+MBBW4duciuZ/BNT?=
+ =?us-ascii?Q?90MgZBVGJvDxT/zxMUcvYXpxABT/o7RR/RuaTNbsHo4ckOD7jbgz1XbSeMvI?=
+ =?us-ascii?Q?QBXfF29hPfUzStpj3umU2j2MpZHSUNycQQ3xi1Xl1Z8wbfR9GzDnIGOoxMn7?=
+ =?us-ascii?Q?adxbWk2YQ4zwRYxWjGnY9XaQB0+CxAMOyTnPmGlDMq7lLvrf8QklcX7fh91L?=
+ =?us-ascii?Q?PmmWvdWCoA=3D=3D?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: NbGupqzEXioCBXb5WrDbbjR+e/WI33aoj/DqwN+DrjPcta+un5yEgYMA7Rq2Q6348O9IfDUW/2wt5xnSEdB3ka4EjeIs7pHeuavkcXWyqy1iMzSMQYxU8aUYmpLZeHZFNQlBMStWOZV3XLoLrkYqqHpxW8hxSsAfnKrhv/xJzUxcVj4bZ51yPGJ8+YYGLfho/jI4vRN5OpumLdl/Ziu9SPMci4leStPpTGnWtp7XLIJqxXc2sl8Q2EPS0/XCc61Pqt8nLH4TvTDFsDmHeYqpsg2v8R/IOvi/GEuYexv+UMrp1xBpazt/5tC1KgUNqrGhFt2e3MqEYs8+U7QHK+7IfA==
+X-Exchange-RoutingPolicyChecked: g4Dg0jwdDR0/Y+1S+Wj8fL3SK51EPiC2w5eOk1WIsyH4iVpQWDSAjdtWhdrF7jyKW0IuHaKGcwm4NSZTsRII/TFtIUELohdVq/7yALxMB1AWG5EA9mbSSxHz388WhGDmcNtyfhxhcyFeaHnl4Yg0ul5h7JtrGkgrrb1sYSgXCs4YagDc7FMeymVF9XvzIIwaKxR0UN7X2V6aa0o6zTcOoJIZ4pGo4gh8tGJovv+RET4DZ8/v9e4M3LfIw4WEaIP9E1CkP2uiGWHTHBZRizjF1bGwOzqASH/d+jcJ5PhMoqUreJjt9C3j4XQU9ZWzGPKljJ3dJek/6TFCTO0j6f4zBA==
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1ba5a1f4-8c23-43ce-6633-08dede6b445b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jul 2026 10:09:02.2352 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8edbcadb-b6ab-40f9-f980-08dede6b6158
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jul 2026 10:09:50.8799 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +rx4vCcueKCsgGJBYxISw6AgRYGxfgEFFXmtFSlKhGT186QdXHKerlwbItdsbpgLvrnxowYZftXFXw41fIktMqOFI2lkUtnmXDSjPSchAyQ=
+X-MS-Exchange-CrossTenant-userprincipalname: fG2unSKpQIpVK3y8SCRyocfFaSzKb5ZmEj0N91FSxFBDbe7kAOazOQr/RO2Pm8Yk1uLg92dT5DfaH33RmAuoRnRY7xCAQKJOmJJpaOUSHpQ=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8509
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1783678150; x=1815214150;
+ t=1783678197; x=1815214197;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=yzNulAacOpy59RdMpJLtIue+mcD1nUlYwe4czWfMQyg=;
- b=gdJhtUjRNVex6bzDgug5m/8zqIcsTN7bpOKXD6UMKOuHoCR9E+WgIR4e
- 7xdXMrOzOLAff4WeYPT3GzD8pKANdFtNYg2ST+H4KMRZwbQxEh8epoNkG
- WBj+9p/zcYnOZ/WSmwqsxpib645joGPLbUW9h319gKTWPbGwHLFKr1rFu
- Zx3XzVBSH7X188cBb5HB4XHUh0CpLxaHFBuV/wH9o4lD5LyPHnts+8u+U
- W180OSUWVQijcRXMW8iuGSWndLAB6uuA4Np2EWNT3DvZ5O2GCZcTIlHRQ
- a9K4Rj6052mjT1RpvvJUZn6XnMN45frTBoCp5OAgGN4MPhnUJqqHQ3qFO
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=CRuv7oIh2VACW/EI+O8EdMN+5Xlv6yP9Pn8CGfRQ1l8=;
+ b=KFD6xl8PUZFEsp2zqLvQXdcR2RQOTjf4KSoETWpX19DCjfTz42cxirbb
+ zo5Zycud9LqjjBVHIM7I1cZUsULJj+QNJUEQIzzOYiT3fuvvua4x5Ot3V
+ 7lar1m4VSWYGGk67LbqBdNYmazewSe+4RE+U4sHBW2M8Rz6lEsICvJKqk
+ DnmjqHbOSsFzuio7z+atfzMTx5vYHJmHd0WdFstASErsmcToMopiKXk9I
+ 9DS2+MYXqFv+BgNtYIkjpXHUis7l8z5NpXZrE/2qjKEzKMeESi2Hd4HBb
+ j21RhP4+OLM5GQ6S8I/Oeo/JB9TuomBVVpnns02KUiGZVyZdSiH+H1r0c
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gdJhtUjR
+ header.s=Intel header.b=KFD6xl8P
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 1/6] netlink: specs: Add
- XDP RX checksum capability to XDP metadata specs
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 2/6] net: veth: Add
+ xmo_rx_checksum callback to veth driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -233,27 +233,27 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [1.79 / 15.00];
+X-Spamd-Result: default: False [1.89 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	R_SPF_ALLOW(-0.20)[+mx];
-	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+ip6:2605:bc80:3010::/48:c];
+	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
 	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
 	MIME_GOOD(-0.10)[text/plain];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
-	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:deliran@verdict.gg,m:lorenzo@kernel.org,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_RECIPIENTS(0.00)[m:deliran@verdict.gg,m:lorenzo@kernel.org,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
 	FREEMAIL_TO(0.00)[verdict.gg,kernel.org,gmail.com,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev];
 	TO_DN_EQ_ADDR_SOME(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[32];
+	FORGED_SENDER(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+];
+	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_MAILLIST(0.00)[];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[32];
+	TO_DN_SOME(0.00)[];
 	FORGED_SENDER_FORWARDING(0.00)[];
 	RCVD_COUNT_TWELVE(0.00)[14];
 	FROM_NEQ_ENVFROM(0.00)[aleksandr.loktionov@intel.com,intel-wired-lan-bounces@osuosl.org];
@@ -263,11 +263,11 @@ X-Spamd-Result: default: False [1.79 / 15.00];
 	FORGED_RECIPIENTS_FORWARDING(0.00)[];
 	MISSING_XM_UA(0.00)[];
 	ALIAS_RESOLVED(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	ASN(0.00)[asn:3701, ipnet:2605:bc80::/32, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	TO_DN_SOME(0.00)[]
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp1.osuosl.org:helo,smtp1.osuosl.org:rdns]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 7809D739787
+X-Rspamd-Queue-Id: 0FDE573979E
 
 
 
@@ -294,192 +294,73 @@ X-Rspamd-Queue-Id: 7809D739787
 > <aleksandr.loktionov@intel.com>; netdev@vger.kernel.org;
 > bpf@vger.kernel.org; intel-wired-lan@lists.osuosl.org; linux-
 > kselftest@vger.kernel.org; Vladimir Vdovin <deliran@verdict.gg>
-> Subject: [PATCH bpf-next v4 1/6] netlink: specs: Add XDP RX checksum
-> capability to XDP metadata specs
+> Subject: [PATCH bpf-next v4 2/6] net: veth: Add xmo_rx_checksum
+> callback to veth driver
 >=20
 > From: Lorenzo Bianconi <lorenzo@kernel.org>
 >=20
-> Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
-> checksum will be use by devices capable of exposing receive checksum
-> result via bpf_xdp_metadata_rx_checksum().
-> Moreover, introduce xmo_rx_checksum netdev callback in order to allow
-> the eBPF program bound to the device to retrieve the RX checksum
-> result computed by the hw NIC and reported via DMA descriptors.
+> Implement xmo_rx_checksum callback in veth driver to report RX
+> checksum result to the eBPF program bounded to the veth device.
 >=20
 > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 > Signed-off-by: Vladimir Vdovin <deliran@verdict.gg>
 > ---
->  Documentation/netlink/specs/netdev.yaml |  5 ++++
->  include/net/xdp.h                       | 18 ++++++++++++++
->  include/uapi/linux/netdev.h             |  3 +++
->  net/core/xdp.c                          | 32
-> +++++++++++++++++++++++++
->  tools/include/uapi/linux/netdev.h       |  3 +++
->  5 files changed, 61 insertions(+)
+>  drivers/net/veth.c | 32 ++++++++++++++++++++++++++++++++
+>  1 file changed, 32 insertions(+)
 >=20
-> diff --git a/Documentation/netlink/specs/netdev.yaml
-> b/Documentation/netlink/specs/netdev.yaml
-> index 5f143da7458c..6d0d90d3a614 100644
-> --- a/Documentation/netlink/specs/netdev.yaml
-> +++ b/Documentation/netlink/specs/netdev.yaml
-> @@ -61,6 +61,11 @@ definitions:
->          doc: |
->            Device is capable of exposing receive packet VLAN tag via
->            bpf_xdp_metadata_rx_vlan_tag().
-> +      -
-> +        name: checksum
-> +        doc: |
-> +          Device is capable of exposing receive checksum result via
-> +          bpf_xdp_metadata_rx_checksum().
->    -
->      type: flags
->      name: xsk-flags
-> diff --git a/include/net/xdp.h b/include/net/xdp.h index
-> aa742f413c35..e255ff786131 100644
-> --- a/include/net/xdp.h
-> +++ b/include/net/xdp.h
-> @@ -586,6 +586,10 @@ void xdp_attachment_setup(struct
-> xdp_attachment_info *info,
->  			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
->  			   bpf_xdp_metadata_rx_vlan_tag, \
->  			   xmo_rx_vlan_tag) \
-> +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
-> +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
-> +			   bpf_xdp_metadata_rx_checksum, \
-> +			   xmo_rx_checksum)
->=20
->  enum xdp_rx_metadata {
->  #define XDP_METADATA_KFUNC(name, _, __, ___) name, @@ -643,12 +647,26
-> @@ enum xdp_rss_hash_type {
->  	XDP_RSS_TYPE_L4_IPV6_SCTP_EX =3D XDP_RSS_TYPE_L4_IPV6_SCTP |
-> XDP_RSS_L3_DYNHDR,  };
->=20
-> +/* Please note the driver is required to invalidate the checksum if
-> the
-> +NIC
-> + * reports CHECKSUM_UNNECESSARY or CHECKSUM_COMPLETE and the eBPF
-> +program
-> + * modifies the packet since it can change some fields validated by
-> the
-> + * checksum.
-> + */
-> +enum xdp_checksum {
-> +	XDP_CHECKSUM_NONE		=3D BIT(CHECKSUM_NONE),
-> +	XDP_CHECKSUM_UNNECESSARY	=3D BIT(CHECKSUM_UNNECESSARY),
-> +	XDP_CHECKSUM_COMPLETE		=3D BIT(CHECKSUM_COMPLETE),
-> +};
-> +
->  struct xdp_metadata_ops {
->  	int	(*xmo_rx_timestamp)(const struct xdp_md *ctx, u64
-> *timestamp);
->  	int	(*xmo_rx_hash)(const struct xdp_md *ctx, u32 *hash,
->  			       enum xdp_rss_hash_type *rss_type);
->  	int	(*xmo_rx_vlan_tag)(const struct xdp_md *ctx, __be16
-> *vlan_proto,
->  				   u16 *vlan_tci);
-> +	int	(*xmo_rx_checksum)(const struct xdp_md *ctx,
-> +				   enum xdp_checksum *ip_summed,
-> +				   u32 *cksum, u8 *cksum_level);
->  };
->=20
->  #ifdef CONFIG_NET
-> diff --git a/include/uapi/linux/netdev.h b/include/uapi/linux/netdev.h
-> index 2f3ab75e8cc0..f8caade93c8c 100644
-> --- a/include/uapi/linux/netdev.h
-> +++ b/include/uapi/linux/netdev.h
-> @@ -47,11 +47,14 @@ enum netdev_xdp_act {
->   *   hash via bpf_xdp_metadata_rx_hash().
->   * @NETDEV_XDP_RX_METADATA_VLAN_TAG: Device is capable of exposing
-> receive
->   *   packet VLAN tag via bpf_xdp_metadata_rx_vlan_tag().
-> + * @NETDEV_XDP_RX_METADATA_CHECKSUM: Device is capable of exposing
-> receive
-> + *   checksum result via bpf_xdp_metadata_rx_checksum().
->   */
->  enum netdev_xdp_rx_metadata {
->  	NETDEV_XDP_RX_METADATA_TIMESTAMP =3D 1,
->  	NETDEV_XDP_RX_METADATA_HASH =3D 2,
->  	NETDEV_XDP_RX_METADATA_VLAN_TAG =3D 4,
-> +	NETDEV_XDP_RX_METADATA_CHECKSUM =3D 8,
->  };
->=20
->  /**
-> diff --git a/net/core/xdp.c b/net/core/xdp.c index
-> 9890a30584ba..9bcaa423ad17 100644
-> --- a/net/core/xdp.c
-> +++ b/net/core/xdp.c
-> @@ -961,6 +961,38 @@ __bpf_kfunc int
-> bpf_xdp_metadata_rx_vlan_tag(const struct xdp_md *ctx,
->  	return -EOPNOTSUPP;
+> diff --git a/drivers/net/veth.c b/drivers/net/veth.c index
+> 1c5142149175..498d894d043d 100644
+> --- a/drivers/net/veth.c
+> +++ b/drivers/net/veth.c
+> @@ -1700,6 +1700,37 @@ static int veth_xdp_rx_vlan_tag(const struct
+> xdp_md *ctx, __be16 *vlan_proto,
+>  	return err;
 >  }
 >=20
-> +/**
-> + * bpf_xdp_metadata_rx_checksum - Read XDP frame RX checksum.
-> + * @ctx: XDP context pointer.
-> + * @ip_summed: Return value pointer to a bitmask indicating available
-> checksums.
-> + * @cksum: Return value pointer indicating the hw checksum value.
-> + * @cksum_level: Return value pointer indicating the checksum level
-> result.
-> + *
-> + * In case of success, ``ip_summed`` is set to the RX checksum
-> result.
-> +Possible
-> + * values are:
-> + * ``XDP_CHECKSUM_NONE``
-> + * ``XDP_CHECKSUM_UNNECESSARY``
-> + * ``XDP_CHECKSUM_COMPLETE``
-> + * ``XDP_CHECKSUM_COMPLETE`` | ``XDP_CHECKSUM_UNNECESSARY``
-> + *
-> + * In case of success, ``cksum`` contains the checksum value
-> calculated
-> +by the
-> + * NIC. ``cksum`` is valid only if ``XDP_CHECKSUM_COMPLETE`` is set
-> in
-> + * ``ip_summed``. ``cksum_level`` contains the checksum level
-> reported
-> +by the
-> + * hw. ``cksum_level`` can be considered valid only if
-> + * ``XDP_CHECKSUM_UNNECESSARY`` is set in ``ip_summed``.
-> + *
-> + * Return:
-> + * * Returns 0 on success or ``-errno`` on error.
-> + * * ``-EOPNOTSUPP`` : means device driver does not implement kfunc
-> + * * ``-ENODATA``    : means no RX-checksum available for this frame
-> + */
-> +__bpf_kfunc int bpf_xdp_metadata_rx_checksum(const struct xdp_md
-> *ctx,
-> +					     enum xdp_checksum *ip_summed,
-> +					     u32 *cksum, u8 *cksum_level)
+> +static int veth_xdp_rx_checksum(const struct xdp_md *ctx,
+> +				enum xdp_checksum *ip_summed,
+> +				u32 *cksum, u8 *cksum_level)
 > +{
-> +	return -EOPNOTSUPP;
+> +	const struct veth_xdp_buff *_ctx =3D (void *)ctx;
+> +	const struct sk_buff *skb =3D _ctx->skb;
+> +
+> +	if (!skb)
+> +		return -ENODATA;
+> +
+> +	switch (skb->ip_summed) {
+> +	case CHECKSUM_COMPLETE:
+> +		*ip_summed =3D XDP_CHECKSUM_COMPLETE;
+> +		*cksum =3D skb->csum;
+> +		*cksum_level =3D 0;
+> +		break;
+> +	case CHECKSUM_UNNECESSARY:
+> +		*ip_summed =3D XDP_CHECKSUM_UNNECESSARY;
+> +		*cksum_level =3D skb->csum_level;
+> +		*cksum =3D 0;
+> +		break;
+> +	default:
+> +		*ip_summed =3D XDP_CHECKSUM_NONE;
+> +		*cksum_level =3D 0;
+> +		*cksum =3D 0;
+> +		break;
+> +	}
+> +
+> +	return 0;
 > +}
 > +
->  __bpf_kfunc_end_defs();
->=20
->  BTF_KFUNCS_START(xdp_metadata_kfunc_ids)
-> diff --git a/tools/include/uapi/linux/netdev.h
-> b/tools/include/uapi/linux/netdev.h
-> index 2f3ab75e8cc0..f8caade93c8c 100644
-> --- a/tools/include/uapi/linux/netdev.h
-> +++ b/tools/include/uapi/linux/netdev.h
-> @@ -47,11 +47,14 @@ enum netdev_xdp_act {
->   *   hash via bpf_xdp_metadata_rx_hash().
->   * @NETDEV_XDP_RX_METADATA_VLAN_TAG: Device is capable of exposing
-> receive
->   *   packet VLAN tag via bpf_xdp_metadata_rx_vlan_tag().
-> + * @NETDEV_XDP_RX_METADATA_CHECKSUM: Device is capable of exposing
-> receive
-> + *   checksum result via bpf_xdp_metadata_rx_checksum().
->   */
->  enum netdev_xdp_rx_metadata {
->  	NETDEV_XDP_RX_METADATA_TIMESTAMP =3D 1,
->  	NETDEV_XDP_RX_METADATA_HASH =3D 2,
->  	NETDEV_XDP_RX_METADATA_VLAN_TAG =3D 4,
-> +	NETDEV_XDP_RX_METADATA_CHECKSUM =3D 8,
+>  static const struct net_device_ops veth_netdev_ops =3D {
+>  	.ndo_init            =3D veth_dev_init,
+>  	.ndo_open            =3D veth_open,
+> @@ -1725,6 +1756,7 @@ static const struct xdp_metadata_ops
+> veth_xdp_metadata_ops =3D {
+>  	.xmo_rx_timestamp		=3D veth_xdp_rx_timestamp,
+>  	.xmo_rx_hash			=3D veth_xdp_rx_hash,
+>  	.xmo_rx_vlan_tag		=3D veth_xdp_rx_vlan_tag,
+> +	.xmo_rx_checksum		=3D veth_xdp_rx_checksum,
 >  };
 >=20
->  /**
+>  #define VETH_FEATURES (NETIF_F_SG | NETIF_F_FRAGLIST |
+> NETIF_F_HW_CSUM | \
 > --
 > 2.47.0
 
