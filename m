@@ -2,217 +2,121 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id gdHtL+dlVmou4wAAu9opvQ
+	id 2PG/Ki5tVmpa5QAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 18:37:59 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 19:09:02 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74C54756FD3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 18:37:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 957C6757377
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 19:09:01 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=LkdqFv0W;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=intel.com (policy=none);
-	arc=reject ("signature check failed: fail, {[1] = sig:microsoft.com:reject}")
+	dkim=pass header.d=osuosl.org header.s=default header.b=bTk1HwH5;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 23AC260828;
-	Tue, 14 Jul 2026 16:37:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8FBCC81156;
+	Tue, 14 Jul 2026 17:08:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gVaEr-zLWfTm; Tue, 14 Jul 2026 16:37:56 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id X_HeewTtsgaH; Tue, 14 Jul 2026 17:08:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 956EF60AB0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D305081142
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1784047076;
-	bh=+XXU1w163hgzD3L09DbRR3sCfXvMifc+PQZMaui+oh0=;
-	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1784048938;
+	bh=Kh2P97NR23r0bPnBVfJUq5G6C7YiA7uuewthu/bIN7I=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=LkdqFv0Wvb/rgPtkfY9FFlJOdtU9y7XJJfWucayDVw3yaTavKi7c1INmsNW4NRRly
-	 Z/1YygHKjua6Dndyl90HV5B0xu9yIMmMZqwAATV570O876QfuOzvh/jDu9uIKwE9b8
-	 ei9Hwbjqg1b9WaxDJYxAer35wuu0w7grSAMqCXXGr7PJEazIU/SV5hZUhJg89OoVOZ
-	 1UpK07jaB+bktVml+wtN0PjWmKJBv6Q54vhE5Ko56DTiHHE/NphV7sw9b+f9c5KKHU
-	 74eBSJECn+Y4hFZF9xoKy7kz6h2FrxpmJLBOxemX2McTuHrVvgEWm4oKdiDfAl3pTP
-	 8JKx0DnZg2wfA==
+	b=bTk1HwH5lJnQvK4MZADfCCPGWbmr44iw655XGruBJddHDfB9LujdXjnaby5k1I24u
+	 09WiS+C4vgsC1o/+fkByBICdvs1LZZ56Due1muB3DP4Fznj8dUZuWYIjk0QctJk+3Y
+	 dXWSSmaaMmpITl/JkkHEkibZwX5e37VWvxA4TFYkjPX8MCVCa27lPTJfmX7kP302GJ
+	 vC1X4S7wLJ5MeW2+ot2vqvRgRXTwMb1atsMAg/oP5Fzb9zGkCyXoX7l5U18YzoBfv4
+	 dH+RIv/sVzA2zO561Tkr69xGf1ydmYDJ4rxHFSUWGvH5D0L9bso0d8TjGuGMzdTUu2
+	 rxz/4JjQ2P9fg==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 956EF60AB0;
-	Tue, 14 Jul 2026 16:37:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D305081142;
+	Tue, 14 Jul 2026 17:08:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 9F43A438
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 16:37:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 679F4499
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 88DF9400BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 16:37:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4DD9240945
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DYVKVQyDMtQF for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jul 2026 16:37:53 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=emil.s.tantilov@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9rYLU5mSdj9P for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jul 2026 17:08:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
+ helo=tor.source.kernel.org; envelope-from=lorenzo@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A374E40086
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A374E40086
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A374E40086
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 16:37:10 +0000 (UTC)
-X-CSE-ConnectionGUID: GpbYs9k0QfiPMsSv9WNIqw==
-X-CSE-MsgGUID: qhS4p+GWR5OOyiOKHNw2Bw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11846"; a="72198618"
-X-IronPort-AV: E=Sophos;i="6.25,164,1779174000"; d="scan'208";a="72198618"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jul 2026 09:36:58 -0700
-X-CSE-ConnectionGUID: 3IzL51kLSGWtKh7xpr5iHQ==
-X-CSE-MsgGUID: 5Nd40KPaRSq1+K9CBVmJMA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,164,1779174000"; d="scan'208";a="253294860"
-Received: from fmsmsx902.amr.corp.intel.com ([10.18.126.91])
- by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jul 2026 09:36:58 -0700
-Received: from FMSMSX902.amr.corp.intel.com (10.18.126.91) by
- fmsmsx902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Tue, 14 Jul 2026 09:36:58 -0700
-Received: from fmsedg902.ED.cps.intel.com (10.1.192.144) by
- FMSMSX902.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43 via Frontend Transport; Tue, 14 Jul 2026 09:36:58 -0700
-Received: from BN1PR04CU002.outbound.protection.outlook.com (52.101.56.54) by
- edgegateway.intel.com (192.55.55.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.43; Tue, 14 Jul 2026 09:36:57 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tLLcwOK48tsKJcbMbsmv0s0/TMnvK20lcO1XDdFOg2woiXjkNtXpKN0OfkEruwsXPneEpyNmXxaJTiP0Vol02FSNM5wlp6iG1y1HVWik0Yg4qPR7jWbt2yqmLTEHnoPQtuTTtuhtFIiqiEZ53ks0O3yDX+NrzOQZxcgpHb/j+wCCyD3vitc0L+0SLNt0a6Sz6D9/PraTowyXI2JU4AMgitmjespqErr8Pbtm8FAHmY+cRLXUp/tlCu6FOXWUoCAeegt2PyZwFb2hv0c3qE1v59xVYxIUht4nC73BEhMwyHphy4fRKk9mZ/LcXIJfEbKqpgyHHDXLLz2DaEQBRGph2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+XXU1w163hgzD3L09DbRR3sCfXvMifc+PQZMaui+oh0=;
- b=MjnT7fD1ReUXMPcDEMxFCJ9SShqqYnlzDN81drFGp2opNyGVegiwApONUxFlGuA8r7wdWg2KnFdBO5esBZcwGqu4qrKARFumvLLs0ORxOmY3hzs0ipFBMLAToR1YfnNDMLeUZRbJgD7tIE61w6rekQ7yzGnFFytDSNNcqyquPLXOqW5JCJxPLFI/gG7dyX5NQ1mtEA4M0nJt+1DvAiEovALbdM0mHzWcJwr4mYgAGUIhCAYpFJgn2IDE6bmWmHG973RN0dYNtpSI43xE5+Ckp8CPKrqw4uQkUk9ZrEb7Ouwt6kba3DvVLKYTkWbRzPc532asRkH10SMaZM+PBUgUKw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CH0PR11MB8168.namprd11.prod.outlook.com (2603:10b6:610:186::20)
- by IA4PR11MB8916.namprd11.prod.outlook.com (2603:10b6:208:55e::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.202.19; Tue, 14 Jul
- 2026 16:36:55 +0000
-Received: from CH0PR11MB8168.namprd11.prod.outlook.com
- ([fe80::9549:c8e9:6748:12ee]) by CH0PR11MB8168.namprd11.prod.outlook.com
- ([fe80::9549:c8e9:6748:12ee%3]) with mapi id 15.21.0202.014; Tue, 14 Jul 2026
- 16:36:55 +0000
-Message-ID: <edc9c916-1a9b-407d-b2e4-cd8709287a34@intel.com>
-Date: Tue, 14 Jul 2026 09:36:52 -0700
-User-Agent: Mozilla Thunderbird
-To: Myeonghun Pak <mhun512@gmail.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- <intel-wired-lan@lists.osuosl.org>
-CC: Milena Olech <milena.olech@intel.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S . Miller" <davem@davemloft.net>, "Eric
- Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, <netdev@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, Ijae Kim <ae878000@gmail.com>
-References: <20260714081124.90962-1-mhun512@gmail.com>
-Content-Language: en-US
-From: "Tantilov, Emil S" <emil.s.tantilov@intel.com>
-In-Reply-To: <20260714081124.90962-1-mhun512@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW3PR05CA0014.namprd05.prod.outlook.com
- (2603:10b6:303:2b::19) To CH0PR11MB8168.namprd11.prod.outlook.com
- (2603:10b6:610:186::20)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4EEEF4093B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4EEEF4093B
+Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4EEEF4093B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:56 +0000 (UTC)
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id AD353601ED;
+ Tue, 14 Jul 2026 17:08:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB86C1F000E9;
+ Tue, 14 Jul 2026 17:08:53 +0000 (UTC)
+Date: Tue, 14 Jul 2026 19:08:51 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Stanislav Fomichev <sdf.kernel@gmail.com>
+Cc: Vladimir Vdovin <deliran@verdict.gg>,
+ Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
+ Simon Horman <horms@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Andrii Nakryiko <andrii@kernel.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>,
+ Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
+ Yonghong Song <yonghong.song@linux.dev>,
+ KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
+ Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jakub Sitnicki <jakub@cloudflare.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ netdev@vger.kernel.org, bpf@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org
+Message-ID: <alZtI782RGKb8y4Y@lore-desk>
+References: <20260708203410.45121-1-deliran@verdict.gg>
+ <20260708203410.45121-2-deliran@verdict.gg>
+ <alE8oBxkrak8n602@devvm7509.cco0.facebook.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR11MB8168:EE_|IA4PR11MB8916:EE_
-X-MS-Office365-Filtering-Correlation-Id: 956d14be-2a2e-4293-b91c-08dee1c61d4c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|376014|7416014|366016|1800799024|18002099003|22082099003|56012099006|11063799006;
-X-Microsoft-Antispam-Message-Info: 7p1gPsr8DOaYTLcr2WivVWGQinoLwU5gh6W/gg5Rn70Mlh/YQtXwk6ucuXQy4zJ5Lz9bHf52YWJDCTTwr4Y9UzIkJRtLAnpnMQ0v7euVwMbpVFyohf4RSENw7btGQbjzNZHKYsSsp/VQ0KbtnhL1VNwfN1TIDRl7T6s5AMP5o43yanGIzk7BNBchuafBSZCDCEap1ln4b9V8JtLZEnpeSGpZC0ycQn93kVy34WuBN28L0cAH2pN3WihXuKIjxsw+TlVhCX+8KCaqo2NcFDauiPbvRYYCN8AGKrrhtLIOwzvy450CQYt3tuO+5Juw/shWJu4wDICSLWT0s1JaGo7d5U6CQ9vbjFPAcHhaEtn7XPXLlT889YFFkLP0kmcyDdJDJGb7C3rtBtmENNKXEl9jFG/WCpakGEk3eXPRyOrn0g98jTW58IN9pcR/rTmOvYvv/s9JNPLU0e80VJl1N2WBFKdrLI7FTw8WnnglFGF3XKZ31Xi88+0dDEpspcrPG4NXjU7feD4i++kWqTBzd6f5ny2nqr4oZXN7Dn084Grpcbc/lMNG8Y/8t8Rqvlq63Ml0RedO+OijmhX+2E4dw1FQ8bvhiV+vJagrImG5tgkv6mpqTlbhpvP7wqxhAVpIlvKBWQQHiwlnMBl/56U0xImbypx3pgtXc+buMUb0iipa3Vs=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH0PR11MB8168.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(7416014)(366016)(1800799024)(18002099003)(22082099003)(56012099006)(11063799006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cys3YWVlc210SGhqK0FTWVU5UWFBSjU3WHZpd0ZjR2lJVkY0dFc5RmR0a3hk?=
- =?utf-8?B?MjZqYUpHT0Y1RjhBNk9WUUt1ZWl0UDgzR2dEdEdydHBrYURDN2U0akN1elEw?=
- =?utf-8?B?Z0xPc3hyTis5aEhwOHVtYVBEUVpoTWtPamlQOVl1NHFaWVZXYXNuTXMwazdR?=
- =?utf-8?B?MmFPNDhDcExycElxRU9TNTRtdE5ONU1jd3ExTzhzNkVuOVBPQnZVZ25qUGNJ?=
- =?utf-8?B?cXg5M2Y1cTVGRDNJQms5MndYYm9YM1ZWWFBrdFI2NDJDOEhTNWtIb1poMlVn?=
- =?utf-8?B?YXFmb1EwWWNyQklnR25JSnVsaDlBRUE1R0FiamJNL3lPUVpsT2FvdHVkS3Qx?=
- =?utf-8?B?TVQvdW9mNDU2QzdaaUVZKy94WWhXMzhUMUhPbHViUFZkQjNzNTl6WDYreEMx?=
- =?utf-8?B?alN1TVBJYkkvcDBQK25Hb2EwVW14QlZzd3hZellVbGdhdTJVSUlZckJtV2pj?=
- =?utf-8?B?RDZNTEtCVXQxTHV2Y2JXUDY1VXd0Zng2QWRudWplOUMxRW5KbUtiVmVYSDZw?=
- =?utf-8?B?UlhXb1llQjhwSStET1FmVUNCQjBKSHN2Si9tcjFGNlhmUEFaMVhOeXd3UlI1?=
- =?utf-8?B?NzIveTNRNk01ajlxMGphL0RaTy9MSzIzWFBzT0ZoV3NxM3JxUE5DeWdKVEZx?=
- =?utf-8?B?eGdKQTFCb2k4MnJhWDRsSjdRalgxMlgrWnNQT3ZFaGZUckhMTDRIeVFRZWtD?=
- =?utf-8?B?RXBGS0VjQzFGWmM3Ny9ZRk1TNFJsOXZhenNoc0o1T05TWGRaVDVGc2I4eG5t?=
- =?utf-8?B?dEJCd0NhZ3RXS0JSZytra0VYbE1nU3I4bnFYclpoeFl5YkZqMXR0KzdPZ05l?=
- =?utf-8?B?c0hNRE9hbTRhZnhNUDgxNkRrWC9CSWZLaUU5VHVDQ1dJV3BXYkpGQmpMbGUw?=
- =?utf-8?B?eVF4M2h5eFVWL3N1V2tVaDNzVXNGNzcrdTBTQ0UwLzFnVURHQzgxVGI2Nlkw?=
- =?utf-8?B?QVVzc0NqN0dHRFp0VG14aHRWZ21ZdWdUZzlISjdZcWhNOXMyWDlJQTVKWStE?=
- =?utf-8?B?bEJiY3ZyVDFRUGl0SGdTNjhOQXBSZXR3ckp1a1pCVGNPRE5EZFVqTkNUOHNL?=
- =?utf-8?B?N3htdlM3dlJnV21kSXc1U2pQQWdtK0lXVXhMZW05ak41UnpKN0JlTlJBVzEx?=
- =?utf-8?B?eWI3T29pK1dWV0VLUHR5SVR2QmlCWG8xVGVLREZXN3RvcVE0VU1maWNwTHEy?=
- =?utf-8?B?NFVxZlNINWZMd3U0YWNHZEpLWWlRWktUK1hRaE5Ndy9yTGkzZjF6M0xOSlgv?=
- =?utf-8?B?UDA2N1lRbDJleTI2T05BaExQR2NqT1NTL25NZUpGSVc1bkhSazM0U2lxL290?=
- =?utf-8?B?QTBHeElSYnEvWjRXejM5N3l4YU52OGdRZ3RlaldzemJvbmNza3FVdWlpcEtT?=
- =?utf-8?B?Y3BuNkRWeTR3ZmlkOFNZL3V2MmJxQUFzODk2UW9SUHhGcDg5endXUlBSS1FF?=
- =?utf-8?B?ZWhRcTVjazZiWHovL044VCtpSW1GemQ0QURtY2ZKZVZ1WEZwTE54RkNFTTNT?=
- =?utf-8?B?Ri84cythOVZMckhqTkRFMjhxNDZUTWhNaWlTNmg0cnlyV0Q4eFc0bkEwTG1V?=
- =?utf-8?B?Q05KQUU1cGFjcnhNcFAxQU9LOVRuR0VNcEh6NklycGhQOGRqbXA1bmNJOWsv?=
- =?utf-8?B?eTUyOEc5LzgrdnJjYUlXb1h1ckk2TEZ6NzZrUzhwTk1uN3FWS0tydnl5Ymh1?=
- =?utf-8?B?UktQakthT3lIbU1kVVJvRUx5SEl2ZkNKOVEwY0M4Um4vVUFOSEdYSkoyRkRN?=
- =?utf-8?B?azlhSWJPamhQekVxcG5wQ2FpSjNzT1ZhV3FFQ1RqLzhGYkZsV296NTJHcDRT?=
- =?utf-8?B?dnlobWFkTzBwTG95bncxR3B3OFFaU2loZTZuWWN2R1NVS0J6K1JiOFJ5Ujli?=
- =?utf-8?B?bFQ0bzc5VjF1UURBQ0NjQmhrQnhVZVNjZjhlbjArWDB6d0ZncHRsRUhxclph?=
- =?utf-8?B?RTVjUGQ3dlpwQVo1WFFaeEZuMWt6ZjBCUGx3eFFJT08xMzVWaGJ0TXlRYWxQ?=
- =?utf-8?B?U0lHS0J5ZVQ1dG5nTW5WL0tUQ1ZsU2NzODgrNWRWM0tIWnlZRTl6akJQZzZ0?=
- =?utf-8?B?SWhkcXhnZUdKS1FwV2YzbFFhUmFkV25uYUFSRGZSMDVnQXEvK0lvYkJzeHZQ?=
- =?utf-8?B?bGkvM3poamc0cy91SDFLUS9zakNQV1c3bzVUWk02N0JHcXhIMFMzdUNCeFNX?=
- =?utf-8?B?RUFEQllZR2ZRdnh1cG9NQjBJQUt5N0ZvN3JlKzh3OHI4NUhXdEVkMkgxQm5W?=
- =?utf-8?B?SlprQlFNK3M5N3FlU0lFNXQ3THhCcmFuSSs4TXhqS2JrMVhwUlFBYUZBbnpM?=
- =?utf-8?B?OWp2TkZpQWNYblN2cHdFQzMvS0VLTHdEUXA3MHhhWEs5YkRvTnlUdWpZV2k3?=
- =?utf-8?Q?Ngte3oty+sUuYVzM=3D?=
-X-Exchange-RoutingPolicyChecked: M6XcQAW9JV40E8xP0QTZY3bo93Q2Mej596/5XXQ6TbStxr/iYbxceGACS9gOYJCZuMz2yWVKHUxGh9rItJuSsZNUEurevem2GPx+CF8FxoThcoXeNjs1Xj/dv0RpxiKMWxDdovIMY4N3PWceBCYjnl+AY538Nkb3Iffj2/8LyQoP4tWTFyG1ivFE7StMkUruHNeY2XMOUPn8D4/i9qDrTUt6mYWYm0mMw/Q9LBRhZVg545vCQLaV64cUFmgmlI49pBn0Kb9JxeIDTAZCFPdFf+rVxSEArTgxMDzG6BVe6vxhfyBQNmQeZZyL6jLCOIKnkziZ/Ns1ep7nXjfPHKthPg==
-X-MS-Exchange-CrossTenant-Network-Message-Id: 956d14be-2a2e-4293-b91c-08dee1c61d4c
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR11MB8168.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jul 2026 16:36:54.8033 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: I4LbL8zrdt47WpQzZsCPCe27Rbd+JEMhW3V59RZBGkRdMngw/JFF5Kk3aa30PFs0ZKML5F5+VJZbuifEK1hP8HwYWhnoYSZhTkTaz+WJ1YA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA4PR11MB8916
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1784047073; x=1815583073;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=GquZ2z+uYrdZ3gML84IU5ydmqJVd3B1jnPn4qAAT8Nc=;
- b=nX4bakulh+XMNLoWKQgQ39Uv1Z0r1xTU61vwjq5jTFLzLSFCuWCE6CUF
- riQTik5+FoGrr7r982sRftGiN4N7YoWn0eG/+w+fDb8iAOjAdhnajbx26
- d7qJsb05qVpBRhAoNMOeTN7CeVlaY98sJmiGBWJkYumwvCFcV/qXXjF+G
- KFa46U908hVWKzSMrNYGPtGiqV4O8A+P+EHBNCRDXYFtzd+99RF3aE9NT
- OUjVE2QQwpu4HNQPhZYyARaJhrYv8g1P/iBopiGk5xbXFdex3ie0XcAsT
- z3vc/sa8qtlDTglAWoC1RLjwOpwdHmW0IPcidB6d5edxIVdqTEHeDQxTl
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="KHFfhBMWGk3EjgnD"
+Content-Disposition: inline
+In-Reply-To: <alE8oBxkrak8n602@devvm7509.cco0.facebook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=kernel.org; s=k20260515; t=1784048934;
+ bh=Kh2P97NR23r0bPnBVfJUq5G6C7YiA7uuewthu/bIN7I=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=byVwXbtL6pok60WoSXAQqDT9TWgMfVeTqOGTrFMFwA6AltQP5sZCa7aNR3xUn08rn
+ 98GWpxt2dYNmGN3CJfXbCsFPoQPyYPMQI3kXe6SG80ABed69gGNkY5Rp2sd/Lt2Awv
+ p705lkbKrb86dy2CiTMLuTug1WxXpWM//OVfutelgu9l8QdbINaOd00urKNlK09LaY
+ WVTNVNF88fHrRfCN7D+T5MpHamui9ymXS5/O9MsHoSNXn0GiIT+fAuFqoG9QVKh6l/
+ OPEf8UexSOkk1UttwLnKuzJutIP/3N35XinvooYC6gdBZqJYcBqsUWKs419va0ZZgA
+ RZQu0vRoP673g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=nX4bakul
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] idpf: disable PCIe PTM on device
- removal
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20260515 header.b=byVwXbtL
+Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 1/6] netlink: specs: Add
+ XDP RX checksum capability to XDP metadata specs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -228,82 +132,162 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [1.79 / 15.00];
+X-Spamd-Result: default: False [0.59 / 15.00];
+	SIGNED_PGP(-2.00)[];
 	SUSPICIOUS_RECIPS(1.50)[];
-	ARC_REJECT(1.00)[signature check failed: fail, {[1] = sig:microsoft.com:reject}];
-	R_SPF_ALLOW(-0.20)[+mx];
+	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
+	MID_RHS_NOT_FQDN(0.50)[];
+	MIME_GOOD(-0.20)[multipart/signed,text/plain];
 	MAILLIST(-0.20)[mailman];
+	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	MIME_GOOD(-0.10)[text/plain];
-	DMARC_POLICY_SOFTFAIL(0.10)[intel.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:mhun512@gmail.com,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:milena.olech@intel.com,m:andrew+netdev@lunn.ch,m:davem@davemloft.net,m:edumazet@google.com,m:kuba@kernel.org,m:pabeni@redhat.com,m:netdev@vger.kernel.org,m:linux-kernel@vger.kernel.org,m:ae878000@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FREEMAIL_TO(0.00)[gmail.com,intel.com,lists.osuosl.org];
-	FORGED_SENDER_MAILLIST(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[13];
-	FORGED_SENDER(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+];
+	FORGED_RECIPIENTS(0.00)[m:sdf.kernel@gmail.com,m:deliran@verdict.gg,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:aleksandr.loktionov@intel.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:sdfkernel@gmail.com,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
+	FREEMAIL_TO(0.00)[gmail.com];
+	ARC_NA(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[33];
+	FORGED_SENDER(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	MIME_TRACE(0.00)[0:+,1:+,2:~];
 	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[intel.com,lunn.ch,davemloft.net,google.com,kernel.org,redhat.com,vger.kernel.org,gmail.com];
-	DKIM_TRACE(0.00)[osuosl.org:+];
-	RCVD_COUNT_TWELVE(0.00)[14];
+	FREEMAIL_CC(0.00)[verdict.gg,gmail.com,kernel.org,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev,cloudflare.com,vger.kernel.org,lists.osuosl.org];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[lore-desk:mid,osuosl.org:from_smtp,osuosl.org:dkim];
+	FORGED_RECIPIENTS_MAILLIST(0.00)[];
+	FORGED_SENDER_MAILLIST(0.00)[];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
 	FORGED_SENDER_FORWARDING(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[emil.s.tantilov@intel.com,intel-wired-lan-bounces@osuosl.org];
-	TO_DN_SOME(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
+	DKIM_TRACE(0.00)[osuosl.org:+];
 	ALIAS_RESOLVED(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	FORGED_RECIPIENTS_MAILLIST(0.00)[];
-	MID_RHS_MATCH_FROM(0.00)[];
-	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[intel.com:from_mime,intel.com:mid,osuosl.org:from_smtp,osuosl.org:dkim]
+	TO_DN_SOME(0.00)[];
+	FORGED_RECIPIENTS_FORWARDING(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 74C54756FD3
+X-Rspamd-Queue-Id: 957C6757377
 
-On 7/14/2026 1:11 AM, Myeonghun Pak wrote:
-> idpf_probe() enables PCIe Precision Time Measurement with
-> pci_enable_ptm(pdev, NULL), which programs the PTM control bits and sets
-> pdev->ptm_enabled when the bus/controller supports it.  The teardown path
-> in idpf_remove() releases the workqueues, vports, mutexes and the adapter
-> memory but never calls pci_disable_ptm(), so PTM is left enabled on the
-> device after the driver detaches.
-> 
-> This leaves the PCI core's software PTM state and the device's PTM control
-> bits set with no bound driver.  pcim_enable_device() only arranges for
-> pci_disable_device() on teardown and does not undo the PTM enable, so it
-> is not a substitute here.
-> 
-> Pair the enable with pci_disable_ptm(pdev) in idpf_remove(), matching the
-> igc and mlx5 drivers which already disable PTM on their remove paths.
-> 
-> Fixes: 8d5e12c5921c ("idpf: add initial PTP support")
-> Co-developed-by: Ijae Kim <ae878000@gmail.com>
-> Signed-off-by: Ijae Kim <ae878000@gmail.com>
-> Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
-> ---
->   drivers/net/ethernet/intel/idpf/idpf_main.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> index 0dd741dcfc..3d3471d3f7 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-> @@ -159,6 +159,7 @@ static void idpf_remove(struct pci_dev *pdev)
->   	mutex_destroy(&adapter->queue_lock);
->   	mutex_destroy(&adapter->vc_buf_lock);
->   
-> +	pci_disable_ptm(pdev);
->   	pci_set_drvdata(pdev, NULL);
->   	kfree(adapter);
->   }
+--KHFfhBMWGk3EjgnD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I think another call will also be needed in idpf_probe() in the error 
-path, following pci_enable_ptm().
+> On 07/08, Vladimir Vdovin wrote:
+> > From: Lorenzo Bianconi <lorenzo@kernel.org>
+> >=20
+> > Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
+> > checksum will be use by devices capable of exposing receive checksum
+> > result via bpf_xdp_metadata_rx_checksum().
+> > Moreover, introduce xmo_rx_checksum netdev callback in order to allow
+> > the eBPF program bound to the device to retrieve the RX checksum result
+> > computed by the hw NIC and reported via DMA descriptors.
+> >=20
+> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
+> > Signed-off-by: Vladimir Vdovin <deliran@verdict.gg>
+> > ---
+> >  Documentation/netlink/specs/netdev.yaml |  5 ++++
+> >  include/net/xdp.h                       | 18 ++++++++++++++
+> >  include/uapi/linux/netdev.h             |  3 +++
+> >  net/core/xdp.c                          | 32 +++++++++++++++++++++++++
+> >  tools/include/uapi/linux/netdev.h       |  3 +++
+> >  5 files changed, 61 insertions(+)
+> >=20
+> > diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/ne=
+tlink/specs/netdev.yaml
+> > index 5f143da7458c..6d0d90d3a614 100644
+> > --- a/Documentation/netlink/specs/netdev.yaml
+> > +++ b/Documentation/netlink/specs/netdev.yaml
+> > @@ -61,6 +61,11 @@ definitions:
+> >          doc: |
+> >            Device is capable of exposing receive packet VLAN tag via
+> >            bpf_xdp_metadata_rx_vlan_tag().
+> > +      -
+> > +        name: checksum
+> > +        doc: |
+> > +          Device is capable of exposing receive checksum result via
+> > +          bpf_xdp_metadata_rx_checksum().
+> >    -
+> >      type: flags
+> >      name: xsk-flags
+> > diff --git a/include/net/xdp.h b/include/net/xdp.h
+> > index aa742f413c35..e255ff786131 100644
+> > --- a/include/net/xdp.h
+> > +++ b/include/net/xdp.h
+> > @@ -586,6 +586,10 @@ void xdp_attachment_setup(struct xdp_attachment_in=
+fo *info,
+> >  			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
+> >  			   bpf_xdp_metadata_rx_vlan_tag, \
+> >  			   xmo_rx_vlan_tag) \
+> > +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
+> > +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
+> > +			   bpf_xdp_metadata_rx_checksum, \
+> > +			   xmo_rx_checksum)
+> > =20
+> >  enum xdp_rx_metadata {
+> >  #define XDP_METADATA_KFUNC(name, _, __, ___) name,
+> > @@ -643,12 +647,26 @@ enum xdp_rss_hash_type {
+> >  	XDP_RSS_TYPE_L4_IPV6_SCTP_EX =3D XDP_RSS_TYPE_L4_IPV6_SCTP | XDP_RSS_=
+L3_DYNHDR,
+> >  };
+>=20
+> [..]
+> =20
+> > +/* Please note the driver is required to invalidate the checksum if th=
+e NIC
+> > + * reports CHECKSUM_UNNECESSARY or CHECKSUM_COMPLETE and the eBPF prog=
+ram
+> > + * modifies the packet since it can change some fields validated by the
+> > + * checksum.
+> > + */
+>=20
+> Sorry, a bit confused about this part. IIUC this is in response to this
+> discussion https://lore.kernel.org/bpf/aaLYfWnuuf_ne72u@lore-desk/ ?
+>=20
+> Looking at a few drivers:
+> - bnxt (bnxt_rx_pkt) does UNNECESSARY - ok
+> - mlx5 (mlx5e_handle_csum) does UNNECESSARY and skips COMPLETE if there is
+>   bpf prog attached
+> - fbnic (fbnic_rx_csum) - can do COMPLETE even with xdp attached?
+> - gve (gve_rx) - can do COMPLETE even with xdp attached?
+>=20
+> So none of the drivers invalidate anything (and nether the bpf machinery)=
+, some
+> choose to (correctly?) not report COMPLETE when there is XDP. So was the
+> discussion about documenting this and giving some guidance? This probably
+> belongs to that `DOC: skb checksums` section of include/linux/skbuff.h?
 
-Thanks,
-Emil
+Hi Stanislav,
+
+re-reading the previous upstream discussion, I guess we should just documen=
+t the
+expected driver behaviour (invalidate the cksum for both COMPLETE and
+UNNECESSARY cases when the XDP program running on the NIC returns XDP_PASS)=
+ and
+add a given kselftest for it. Agree?
+
+>=20
+> Also, can you add your new rx_checksum to
+> Documentation/networking/xdp-rx-metadata.rst's list of supported kfuncs?
+
+ack, I will do it in the next iteration.
+
+Regards,
+Lorenzo
+
+--KHFfhBMWGk3EjgnD
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCalZtIwAKCRA6cBh0uS2t
+rGL6AQCi2BM+G5ULVwlhiTQ9mResmshhs2Y13j4jDPNLyIsVpAEAnHqdZsYDNeis
+roaeeQ5EZov1q2vIZr/DExysvRJVBAg=
+=iMpE
+-----END PGP SIGNATURE-----
+
+--KHFfhBMWGk3EjgnD--
