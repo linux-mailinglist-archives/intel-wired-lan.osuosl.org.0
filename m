@@ -2,121 +2,125 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from mail.lfdr.de
 	by mail.lfdr.de with LMTP
-	id 2PG/Ki5tVmpa5QAAu9opvQ
+	id ml4sDqeMVmqV8wAAu9opvQ
 	(envelope-from <intel-wired-lan-bounces@osuosl.org>)
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 19:09:02 +0200
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 21:23:19 +0200
 X-Original-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 957C6757377
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 19:09:01 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D901758351
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 14 Jul 2026 21:23:18 +0200 (CEST)
 Authentication-Results: mail.lfdr.de;
-	dkim=pass header.d=osuosl.org header.s=default header.b=bTk1HwH5;
-	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.138 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
-	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=kernel.org (policy=quarantine)
+	dkim=pass header.d=osuosl.org header.s=default header.b=aL0wKzQN;
+	spf=pass (mail.lfdr.de: domain of intel-wired-lan-bounces@osuosl.org designates 140.211.166.136 as permitted sender) smtp.mailfrom=intel-wired-lan-bounces@osuosl.org;
+	dmarc=fail reason="SPF not aligned (relaxed), DKIM not aligned (relaxed)" header.from=gmail.com (policy=none)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8FBCC81156;
-	Tue, 14 Jul 2026 17:08:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A4E2060663;
+	Tue, 14 Jul 2026 19:23:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id X_HeewTtsgaH; Tue, 14 Jul 2026 17:08:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CucRgUU1cgTB; Tue, 14 Jul 2026 19:23:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D305081142
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2AF0960AC1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1784048938;
-	bh=Kh2P97NR23r0bPnBVfJUq5G6C7YiA7uuewthu/bIN7I=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=bTk1HwH5lJnQvK4MZADfCCPGWbmr44iw655XGruBJddHDfB9LujdXjnaby5k1I24u
-	 09WiS+C4vgsC1o/+fkByBICdvs1LZZ56Due1muB3DP4Fznj8dUZuWYIjk0QctJk+3Y
-	 dXWSSmaaMmpITl/JkkHEkibZwX5e37VWvxA4TFYkjPX8MCVCa27lPTJfmX7kP302GJ
-	 vC1X4S7wLJ5MeW2+ot2vqvRgRXTwMb1atsMAg/oP5Fzb9zGkCyXoX7l5U18YzoBfv4
-	 dH+RIv/sVzA2zO561Tkr69xGf1ydmYDJ4rxHFSUWGvH5D0L9bso0d8TjGuGMzdTUu2
-	 rxz/4JjQ2P9fg==
+	s=default; t=1784056996;
+	bh=4YxMZuS3O1N4LeRTy/92z3+raTT8LPy5OGFMt00nrLg=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=aL0wKzQNibbgz5ClktVzhC9CPKF1qq3QNwDQqK6uoK+bNlJmT1xZWLyQpif2dwbbE
+	 P4XOx0TyrSDj6WLAjcNb6HEiRYP6k9DXC5TUuSJbTEQZ6HIrZ+JRVUbkuZjOhKA+W7
+	 1d0g7GSs9gpKgqIIniKZZHMmXSefIDBhiMnlUlsroDMRrI5ek6H4ZEqVzaCpHWEeow
+	 hgwKtEoUto/oR5VHE2azYPQKIttMxUoI3cARcGBBUuaR8r9gBtBww9tcjocpRheCNL
+	 r8O/3V4VnitZqdS8mQyfvpT/pW8kZS4ZIrUwX3xies8dmVmR35SSI/icV1AqZ8WRce
+	 YJAWQIqcV1BpA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D305081142;
-	Tue, 14 Jul 2026 17:08:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2AF0960AC1;
+	Tue, 14 Jul 2026 19:23:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 679F4499
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:57 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id E1C2D499
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 19:23:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4DD9240945
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:57 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CAC0040999
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 19:23:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9rYLU5mSdj9P for <intel-wired-lan@lists.osuosl.org>;
- Tue, 14 Jul 2026 17:08:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=172.105.4.254;
- helo=tor.source.kernel.org; envelope-from=lorenzo@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4EEEF4093B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4EEEF4093B
-Received: from tor.source.kernel.org (tor.source.kernel.org [172.105.4.254])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4EEEF4093B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 17:08:56 +0000 (UTC)
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by tor.source.kernel.org (Postfix) with ESMTP id AD353601ED;
- Tue, 14 Jul 2026 17:08:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB86C1F000E9;
- Tue, 14 Jul 2026 17:08:53 +0000 (UTC)
-Date: Tue, 14 Jul 2026 19:08:51 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Stanislav Fomichev <sdf.kernel@gmail.com>
-Cc: Vladimir Vdovin <deliran@verdict.gg>,
- Donald Hunter <donald.hunter@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>, Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Stanislav Fomichev <sdf@fomichev.me>, Andrew Lunn <andrew+netdev@lunn.ch>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Andrii Nakryiko <andrii@kernel.org>,
- Martin KaFai Lau <martin.lau@linux.dev>,
- Eduard Zingerman <eddyz87@gmail.com>, Song Liu <song@kernel.org>,
- Yonghong Song <yonghong.song@linux.dev>,
- KP Singh <kpsingh@kernel.org>, Hao Luo <haoluo@google.com>,
- Jiri Olsa <jolsa@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jakub Sitnicki <jakub@cloudflare.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- netdev@vger.kernel.org, bpf@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kselftest@vger.kernel.org
-Message-ID: <alZtI782RGKb8y4Y@lore-desk>
-References: <20260708203410.45121-1-deliran@verdict.gg>
- <20260708203410.45121-2-deliran@verdict.gg>
- <alE8oBxkrak8n602@devvm7509.cco0.facebook.com>
+ id RIrEHXk-kcu7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 14 Jul 2026 19:23:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::1030; helo=mail-pj1-x1030.google.com;
+ envelope-from=hayatake396@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 10F7F4098F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10F7F4098F
+Received: from mail-pj1-x1030.google.com (mail-pj1-x1030.google.com
+ [IPv6:2607:f8b0:4864:20::1030])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 10F7F4098F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 19:23:13 +0000 (UTC)
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-38101f85591so1051332a91.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 14 Jul 2026 12:23:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1784056993; x=1784661793;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=4YxMZuS3O1N4LeRTy/92z3+raTT8LPy5OGFMt00nrLg=;
+ b=RyGv3+88B/Is7UxmfhCzMo+wSeHMf33tVDPD5K86vrv9VwteYpLrMdOld8oNl6Udji
+ qmq+Oe0chYSYaJAwik+UYypHMis0X3Aj27Rk1oNKWUnmLvlR3fFx5FXUbyqjGx97Dn0c
+ 2neHAPvPyCF0kB2CzzVmZodFvCCht5SLMGQXQcxDxKJc2L7T4YVXCppGv4Bs6Ry4wKTl
+ 5QZmaziiZEykd3WdeDJwT0fcn5mvE/26C5Bf4ZT/hyyhwHTparP34bdEWcHWQMHh9M/v
+ sNRPRmXU5WXbXxNBsv301qrinZ6pOUH8dRHGEX5tR0KCOQA73qteYSw8zJ38plG3kKmJ
+ 5WvA==
+X-Gm-Message-State: AOJu0YxshSnwfgVIvZ9jLj1V4fKmoTyx8pQbTgG6tA8yUW96ae1OvPlk
+ 2OFY05hjNZwtDsCe15Sv/zOnDjX5StTtpCbKq6mZPDOPholxbDRdEemmDIQUug==
+X-Gm-Gg: AfdE7cltRWmX3jsnemOHa2dveMgr6NCELqaSSLKH/QFFF7sv5lGxf/h2ViFdcAHc2C5
+ FVhKMmSN8lbH6P78YI/Vn6pY9gLdVaymGHpr1A7bPt6rHjIhx0DKgna8eu1fLD887QhygLuc2bP
+ YkyZZkQpQbO1p/T7oNgTPizIfJZt9cpEMJSMdE7N4kQdcJ2ZYVXKXqVvYgRErzh9jiuwfTTidi3
+ dD1bnptXNVUSiVfpyYw3zFIsdwIZog2ve+tt3s+G+I4Tnjni0uFW2LQm7rmihI//BQVJ21daRex
+ OupuRJnCVFNHKUIxfLnfGhkRURIknqEsLQe1jsrlFxUHub39LI9SSyJxLYi88Prg92ZIEbphogW
+ l4MqNTHqlV5SltUh+wdGqaAd9Re9jeCz1AwKZU4kOodQLmWrn4OOAB5i0JyTFMAtWpMNg0EIj51
+ kjUqd1xVrZei8wRsoHSY/nUbWjjVYqOJnSx+Om30YvYOXzu/xvtjKXtNmOgtIvrvouMCHUyadvs
+ 3pXIChryJdooI7eH6dKRyw=
+X-Received: by 2002:a17:90b:3c0f:b0:37f:f089:c81b with SMTP id
+ 98e67ed59e1d1-38dc8071aeamr11838700a91.3.1784056993076; 
+ Tue, 14 Jul 2026 12:23:13 -0700 (PDT)
+Received: from lab-kiba-ocxma-dut-01.. (191.68.231.218.rev.ocx2915.net.
+ [218.231.68.191]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-38e16e1d2e8sm1979029a91.0.2026.07.14.12.23.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Jul 2026 12:23:11 -0700 (PDT)
+From: Takeru Hayasaka <hayatake396@gmail.com>
+To: intel-wired-lan@lists.osuosl.org
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ andrew+netdev@lunn.ch, marcin.szycik@linux.intel.com,
+ netdev@vger.kernel.org, Takeru Hayasaka <hayatake396@gmail.com>
+Date: Tue, 14 Jul 2026 19:22:30 +0000
+Message-ID: <20260714192302.631428-1-hayatake396@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="KHFfhBMWGk3EjgnD"
-Content-Disposition: inline
-In-Reply-To: <alE8oBxkrak8n602@devvm7509.cco0.facebook.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=kernel.org; s=k20260515; t=1784048934;
- bh=Kh2P97NR23r0bPnBVfJUq5G6C7YiA7uuewthu/bIN7I=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To;
- b=byVwXbtL6pok60WoSXAQqDT9TWgMfVeTqOGTrFMFwA6AltQP5sZCa7aNR3xUn08rn
- 98GWpxt2dYNmGN3CJfXbCsFPoQPyYPMQI3kXe6SG80ABed69gGNkY5Rp2sd/Lt2Awv
- p705lkbKrb86dy2CiTMLuTug1WxXpWM//OVfutelgu9l8QdbINaOd00urKNlK09LaY
- WVTNVNF88fHrRfCN7D+T5MpHamui9ymXS5/O9MsHoSNXn0GiIT+fAuFqoG9QVKh6l/
- OPEf8UexSOkk1UttwLnKuzJutIP/3N35XinvooYC6gdBZqJYcBqsUWKs419va0ZZgA
- RZQu0vRoP673g==
+ d=gmail.com; s=20251104; t=1784056993; x=1784661793; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=4YxMZuS3O1N4LeRTy/92z3+raTT8LPy5OGFMt00nrLg=;
+ b=Fyf+tOdOWanDAyTBO8eM2xskdOlsXm5Yf5k0erZVvTR8ywNkcyDRPaUx/c/FyKM89c
+ TIQ9q9Kcn56uayJMLHbWQUjkVNOjKN3Xw0Tu35BE9mdGeejiPE5ALlfZJx+CIVXd7DAP
+ nh9zSNX9iqU21LEIitgyN3MHHvDOwughycMaW7PFSlZiHFAlEh6Au8BpEfDQNfXWdc+7
+ 7S0Rs2z1nqbi5wD7UDEjJiHfax5eFmQWwsWcqyjyXfbiJpJd2QZnDcZOpphbo69GZPF8
+ 3dWy3+YWUX4J0lcRnM9UWDcYDkFnf8wuXamuXdoSMhA/hpm54BHx9s3yYSQIvI0Rqykb
+ cPXQ==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20260515 header.b=byVwXbtL
-Subject: Re: [Intel-wired-lan] [PATCH bpf-next v4 1/6] netlink: specs: Add
- XDP RX checksum capability to XDP metadata specs
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20251104 header.b=Fyf+tOdO
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix empty PTYPE set for GTP
+ RSS profiles
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -132,162 +136,93 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 X-Rspamd-Action: no action
-X-Spamd-Result: default: False [0.59 / 15.00];
-	SIGNED_PGP(-2.00)[];
+X-Spamd-Result: default: False [2.29 / 15.00];
 	SUSPICIOUS_RECIPS(1.50)[];
-	DMARC_POLICY_QUARANTINE(1.50)[kernel.org : SPF not aligned (relaxed), DKIM not aligned (relaxed),quarantine];
-	MID_RHS_NOT_FQDN(0.50)[];
-	MIME_GOOD(-0.20)[multipart/signed,text/plain];
+	MID_CONTAINS_FROM(1.00)[];
+	R_MISSING_CHARSET(0.50)[];
 	MAILLIST(-0.20)[mailman];
-	R_SPF_ALLOW(-0.20)[+mx];
 	R_DKIM_ALLOW(-0.20)[osuosl.org:s=default];
-	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.138:from];
+	R_SPF_ALLOW(-0.20)[+mx];
+	DMARC_POLICY_SOFTFAIL(0.10)[gmail.com : SPF not aligned (relaxed), DKIM not aligned (relaxed),none];
+	RWL_MAILSPIKE_GOOD(-0.10)[140.211.166.136:from];
+	MIME_GOOD(-0.10)[text/plain];
 	HAS_LIST_UNSUB(-0.01)[];
 	RCVD_TLS_LAST(0.00)[];
+	FREEMAIL_FROM(0.00)[gmail.com];
+	FREEMAIL_CC(0.00)[intel.com,lunn.ch,linux.intel.com,vger.kernel.org,gmail.com];
 	RECEIVED_HELO_LOCALHOST(0.00)[];
-	FORGED_RECIPIENTS(0.00)[m:sdf.kernel@gmail.com,m:deliran@verdict.gg,m:donald.hunter@gmail.com,m:kuba@kernel.org,m:davem@davemloft.net,m:edumazet@google.com,m:pabeni@redhat.com,m:horms@kernel.org,m:ast@kernel.org,m:daniel@iogearbox.net,m:hawk@kernel.org,m:john.fastabend@gmail.com,m:sdf@fomichev.me,m:andrew+netdev@lunn.ch,m:anthony.l.nguyen@intel.com,m:przemyslaw.kitszel@intel.com,m:aleksander.lobakin@intel.com,m:andrii@kernel.org,m:martin.lau@linux.dev,m:eddyz87@gmail.com,m:song@kernel.org,m:yonghong.song@linux.dev,m:kpsingh@kernel.org,m:haoluo@google.com,m:jolsa@kernel.org,m:shuah@kernel.org,m:maciej.fijalkowski@intel.com,m:jakub@cloudflare.com,m:aleksandr.loktionov@intel.com,m:netdev@vger.kernel.org,m:bpf@vger.kernel.org,m:linux-kselftest@vger.kernel.org,m:sdfkernel@gmail.com,m:donaldhunter@gmail.com,m:johnfastabend@gmail.com,m:andrew@lunn.ch,s:lists@lfdr.de];
-	FREEMAIL_TO(0.00)[gmail.com];
+	TO_DN_SOME(0.00)[];
 	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[33];
-	FORGED_SENDER(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
-	MIME_TRACE(0.00)[0:+,1:+,2:~];
-	FORWARDED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FREEMAIL_CC(0.00)[verdict.gg,gmail.com,kernel.org,davemloft.net,google.com,redhat.com,iogearbox.net,fomichev.me,lunn.ch,intel.com,linux.dev,cloudflare.com,vger.kernel.org,lists.osuosl.org];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[lore-desk:mid,osuosl.org:from_smtp,osuosl.org:dkim];
+	MIME_TRACE(0.00)[0:+];
 	FORGED_RECIPIENTS_MAILLIST(0.00)[];
 	FORGED_SENDER_MAILLIST(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[smtp3.osuosl.org:helo,smtp3.osuosl.org:rdns];
 	PREVIOUSLY_DELIVERED(0.00)[intel-wired-lan@lists.osuosl.org];
-	FORGED_SENDER_FORWARDING(0.00)[];
+	FROM_NEQ_ENVFROM(0.00)[hayatake396@gmail.com,intel-wired-lan-bounces@osuosl.org];
 	FROM_HAS_DN(0.00)[];
-	FROM_NEQ_ENVFROM(0.00)[lorenzo@kernel.org,intel-wired-lan-bounces@osuosl.org];
 	DKIM_TRACE(0.00)[osuosl.org:+];
 	ALIAS_RESOLVED(0.00)[];
 	TAGGED_RCPT(0.00)[intel-wired-lan,netdev];
-	TO_DN_SOME(0.00)[];
-	FORGED_RECIPIENTS_FORWARDING(0.00)[];
-	MISSING_XM_UA(0.00)[];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
+	RCPT_COUNT_SEVEN(0.00)[7];
 	ASN(0.00)[asn:3701, ipnet:140.211.0.0/16, country:US];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
 	RCVD_COUNT_SEVEN(0.00)[9]
 X-Rspamd-Server: lfdr
-X-Rspamd-Queue-Id: 957C6757377
+X-Rspamd-Queue-Id: 1D901758351
 
---KHFfhBMWGk3EjgnD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Configuring RSS for GTP flows via ethtool, e.g.
 
-> On 07/08, Vladimir Vdovin wrote:
-> > From: Lorenzo Bianconi <lorenzo@kernel.org>
-> >=20
-> > Introduce XDP RX checksum capability to XDP metadata specs. XDP RX
-> > checksum will be use by devices capable of exposing receive checksum
-> > result via bpf_xdp_metadata_rx_checksum().
-> > Moreover, introduce xmo_rx_checksum netdev callback in order to allow
-> > the eBPF program bound to the device to retrieve the RX checksum result
-> > computed by the hw NIC and reported via DMA descriptors.
-> >=20
-> > Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
-> > Signed-off-by: Vladimir Vdovin <deliran@verdict.gg>
-> > ---
-> >  Documentation/netlink/specs/netdev.yaml |  5 ++++
-> >  include/net/xdp.h                       | 18 ++++++++++++++
-> >  include/uapi/linux/netdev.h             |  3 +++
-> >  net/core/xdp.c                          | 32 +++++++++++++++++++++++++
-> >  tools/include/uapi/linux/netdev.h       |  3 +++
-> >  5 files changed, 61 insertions(+)
-> >=20
-> > diff --git a/Documentation/netlink/specs/netdev.yaml b/Documentation/ne=
-tlink/specs/netdev.yaml
-> > index 5f143da7458c..6d0d90d3a614 100644
-> > --- a/Documentation/netlink/specs/netdev.yaml
-> > +++ b/Documentation/netlink/specs/netdev.yaml
-> > @@ -61,6 +61,11 @@ definitions:
-> >          doc: |
-> >            Device is capable of exposing receive packet VLAN tag via
-> >            bpf_xdp_metadata_rx_vlan_tag().
-> > +      -
-> > +        name: checksum
-> > +        doc: |
-> > +          Device is capable of exposing receive checksum result via
-> > +          bpf_xdp_metadata_rx_checksum().
-> >    -
-> >      type: flags
-> >      name: xsk-flags
-> > diff --git a/include/net/xdp.h b/include/net/xdp.h
-> > index aa742f413c35..e255ff786131 100644
-> > --- a/include/net/xdp.h
-> > +++ b/include/net/xdp.h
-> > @@ -586,6 +586,10 @@ void xdp_attachment_setup(struct xdp_attachment_in=
-fo *info,
-> >  			   NETDEV_XDP_RX_METADATA_VLAN_TAG, \
-> >  			   bpf_xdp_metadata_rx_vlan_tag, \
-> >  			   xmo_rx_vlan_tag) \
-> > +	XDP_METADATA_KFUNC(XDP_METADATA_KFUNC_RX_CHECKSUM, \
-> > +			   NETDEV_XDP_RX_METADATA_CHECKSUM, \
-> > +			   bpf_xdp_metadata_rx_checksum, \
-> > +			   xmo_rx_checksum)
-> > =20
-> >  enum xdp_rx_metadata {
-> >  #define XDP_METADATA_KFUNC(name, _, __, ___) name,
-> > @@ -643,12 +647,26 @@ enum xdp_rss_hash_type {
-> >  	XDP_RSS_TYPE_L4_IPV6_SCTP_EX =3D XDP_RSS_TYPE_L4_IPV6_SCTP | XDP_RSS_=
-L3_DYNHDR,
-> >  };
->=20
-> [..]
-> =20
-> > +/* Please note the driver is required to invalidate the checksum if th=
-e NIC
-> > + * reports CHECKSUM_UNNECESSARY or CHECKSUM_COMPLETE and the eBPF prog=
-ram
-> > + * modifies the packet since it can change some fields validated by the
-> > + * checksum.
-> > + */
->=20
-> Sorry, a bit confused about this part. IIUC this is in response to this
-> discussion https://lore.kernel.org/bpf/aaLYfWnuuf_ne72u@lore-desk/ ?
->=20
-> Looking at a few drivers:
-> - bnxt (bnxt_rx_pkt) does UNNECESSARY - ok
-> - mlx5 (mlx5e_handle_csum) does UNNECESSARY and skips COMPLETE if there is
->   bpf prog attached
-> - fbnic (fbnic_rx_csum) - can do COMPLETE even with xdp attached?
-> - gve (gve_rx) - can do COMPLETE even with xdp attached?
->=20
-> So none of the drivers invalidate anything (and nether the bpf machinery)=
-, some
-> choose to (correctly?) not report COMPLETE when there is XDP. So was the
-> discussion about documenting this and giving some guidance? This probably
-> belongs to that `DOC: skb checksums` section of include/linux/skbuff.h?
+  ethtool -N <if> rx-flow-hash gtpu4 sde
 
-Hi Stanislav,
+is accepted but has no effect: the hash of GTP-U packets does not
+include the TEID, so all traffic between a given SGW/PGW pair lands on
+a single Rx queue. The GTP RSS configurations the driver installs by
+default at VSI init are affected the same way.
 
-re-reading the previous upstream discussion, I guess we should just documen=
-t the
-expected driver behaviour (invalidate the cksum for both COMPLETE and
-UNNECESSARY cases when the XDP program running on the NIC returns XDP_PASS)=
- and
-add a given kselftest for it. Agree?
+ice_flow_set_rss_seg_info() does not set IPV_OTHER on GTP segments, and
+such a segment carries no L4 header bit either. ice_flow_proc_seg_hdrs()
+therefore takes the "no L4" branch and ANDs the PTYPE set with
+ice_ptypes_ipv4_ofos_no_l4, or ice_ptypes_ipv4_il_no_l4 for the inner
+segment. Neither holds a GTP PTYPE, so ANDing with ice_ptypes_gtpu
+leaves the set empty: the profile matches no packet at all and the
+configured TEID field never enters the hash.
 
->=20
-> Also, can you add your new rx_checksum to
-> Documentation/networking/xdp-rx-metadata.rst's list of supported kfuncs?
+Set IPV_OTHER on GTP segments so that the tunnel-inclusive PTYPE sets
+are selected instead, which do contain the GTP PTYPEs.
 
-ack, I will do it in the next iteration.
+Verified on E810 (kernel 7.2-rc2, COMMS DDP 1.3.63.0) by reading the RSS
+hash from the Rx descriptor: GTP-U traffic varying only the TEID goes
+from one constant hash on a single Rx queue to 4096 distinct hashes
+across all Rx queues. The same holds for inner IPv6 (gtpu6) and for a
+PDU session container extension header (gtpu4e); plain UDP flows are
+unaffected.
 
-Regards,
-Lorenzo
+Signed-off-by: Takeru Hayasaka <hayatake396@gmail.com>
+---
+ drivers/net/ethernet/intel/ice/ice_flow.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
---KHFfhBMWGk3EjgnD
-Content-Type: application/pgp-signature; name=signature.asc
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+index 121552c644cd..2156bf246921 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.c
++++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+@@ -2088,6 +2088,14 @@ ice_flow_set_rss_seg_info(struct ice_flow_seg_info *segs, u8 seg_cnt,
+ 
+ 	ICE_FLOW_SET_HDRS(seg, cfg->addl_hdrs);
+ 
++	/* A GTP segment has no L4 header bit: without IPV_OTHER the "no L4"
++	 * PTYPE sets are picked, and they hold no GTP PTYPE at all.
++	 */
++	if (seg->hdrs & (ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_GTPU_EH |
++			 ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_GTPU_DWN |
++			 ICE_FLOW_SEG_HDR_GTPC | ICE_FLOW_SEG_HDR_GTPC_TEID))
++		seg->hdrs |= ICE_FLOW_SEG_HDR_IPV_OTHER;
++
+ 	/* set outer most header */
+ 	if (cfg->hdr_type == ICE_RSS_INNER_HEADERS_W_OUTER_IPV4)
+ 		segs[ICE_RSS_OUTER_HEADERS].hdrs |= ICE_FLOW_SEG_HDR_IPV4 |
 
------BEGIN PGP SIGNATURE-----
+base-commit: 1cd23ca80784223fa2204e16203f754da4e821f8
+-- 
+2.43.0
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCalZtIwAKCRA6cBh0uS2t
-rGL6AQCi2BM+G5ULVwlhiTQ9mResmshhs2Y13j4jDPNLyIsVpAEAnHqdZsYDNeis
-roaeeQ5EZov1q2vIZr/DExysvRJVBAg=
-=iMpE
------END PGP SIGNATURE-----
-
---KHFfhBMWGk3EjgnD--
